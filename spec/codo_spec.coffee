@@ -1,0 +1,2 @@
+describe 'codo', ->
+  describe '#run', ->

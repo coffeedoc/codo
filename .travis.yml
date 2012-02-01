@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - 0.4
+  - 0.5
+  - 0.6
+branches:
+  only:
+    - master
+notifications:
+  recipients:
+    - michi@netzpiraten.ch

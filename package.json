@@ -1,0 +1,48 @@
+{
+  "name" : "codo",
+  "description" : "A CoffeeScript documentation generator.",
+  "keywords" : ["coffeescript", "doc"],
+  "author" : "Michael Kessler <michi@netzpiraten.ch>",
+  "maintainers" : [
+    {
+      "name" : "Michael Kessler"
+    }
+  ],
+  "version" : "0.1.0",
+  "licenses" : [
+    {
+      "type" : "MIT",
+      "url" : "http://github.com/netzpirat/codo/raw/master/LICENSE"
+    }
+  ],
+  "engines" : {
+    "node" : ">=0.4.0"
+  },
+  "directories" : {
+    "lib" : "./lib"
+  },
+  "main" : "./lib/codo",
+  "bin" : {
+    "haml-coffee" : "./bin/codo"
+  },
+  "dependencies" : {
+    "dox" : ">= 0.1.3",
+    "coffee-script" : ">= 1.1.3",
+    "findit" : ">= 0.1.2",
+    "optimist" : ">= 0.3.0"
+  },
+  "devDependencies" : {
+    "mocha" : ">= 0.10.2"
+  },
+  "homepage" : "https://github.com/netzpirat/codo",
+  "repository" : {
+    "type" : "git",
+    "url" : "git://github.com/netzpirat/codo.git"
+  },
+  "bugs" : {
+    "url" : "https://github.com/netzpirat/codo/issues"
+  },
+  "scripts" : {
+    "test" : "mocha -u bdd spec/**/*.coffee"
+  }
+}
