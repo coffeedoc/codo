@@ -1,5 +1,6 @@
 fs          = require('fs')
 findit      = require('findit')
+Parser      = require('./parser')
 
 argv = require('optimist')
   .usage('Usage: $0')
@@ -17,3 +18,12 @@ argv = require('optimist')
 exports.run = ->
   input  = argv.i
   output = argv.o
+
+  parser = new Parser()
+
+  for filename in findit.sync input
+    if filename.match /\.coffee$/
+      parser.parse filename
+
+  for clazz in parser.classes
+    console.log "Clazz: #{ clazz.clazz() } / #{ clazz.name() } / #{ clazz.namespace() }"
