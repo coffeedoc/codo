@@ -9,11 +9,13 @@
     "methods":   [
       {
         "type":       "instance",
+        "signature":  "helper()",
         "name":       "helper",
         "parameters": []
       },
       {
         "type":       "instance",
+        "signature":  "another(param, obj)",
         "name":       "another",
         "parameters": [
           {
@@ -28,6 +30,7 @@
       },
       {
         "type":       "instance",
+        "signature":  "anotherWithValues(param = 123, obj = { a: 1 }, yup, comp = new TestInstanceMethods())",
         "name":       "anotherWithValues",
         "parameters": [
           {
@@ -53,6 +56,7 @@
       },
       {
         "type":       "instance",
+        "signature":  "nowWithSpalt(foo, bar...)",
         "name":       "nowWithSpalt",
         "parameters": [
           {

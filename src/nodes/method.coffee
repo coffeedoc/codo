@@ -33,11 +33,24 @@ module.exports = class Method
   #
   getDescription: ->
 
-  # Get the class signature.
+  # Get the full method signature.
   #
   # @return [String] the signature
   #
   getSignature: ->
+    unless @signature
+      @signature = @getName()
+      @signature += '('
+
+      params = []
+
+      for param in @getParamaters()
+        params.push param.getSignature()
+
+      @signature += params.join(', ')
+      @signature += ')'
+
+    @signature
 
   # Get the method name
   #
@@ -87,6 +100,7 @@ module.exports = class Method
   toJSON: ->
     json =
       type: @getType()
+      signature: @getSignature()
       name: @getName()
       parameters: []
 

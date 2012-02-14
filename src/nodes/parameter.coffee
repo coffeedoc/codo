@@ -8,6 +8,22 @@ module.exports = class Parameter
   #
   constructor: (@node) ->
 
+  # Get the full parameter signature.
+  #
+  # @return [String] the signature
+  #
+  getSignature: ->
+    unless @signature
+      @signature = @getName()
+
+      if @isSplat()
+        @signature += '...'
+
+      value = @getDefault()
+      @signature += " = #{ value.replace(/\n\s*/g, ' ') }" if value
+
+    @signature
+
   # Get the parameter name
   #
   # @return [String] the name
@@ -16,7 +32,7 @@ module.exports = class Parameter
 
   # Get the parameter default value
   #
-  # @return [Object] the default
+  # @return [String] the default
   #
   getDefault: -> @node.value?.compile({ indent: '' })
 

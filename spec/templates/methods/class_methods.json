@@ -9,11 +9,13 @@
     "methods":   [
       {
         "type":       "class",
+        "signature":  "helper()",
         "name":       "helper",
         "parameters": []
       },
       {
         "type":       "class",
+        "signature":  "another(a, b)",
         "name":       "another",
         "parameters": [
           {
@@ -28,6 +30,7 @@
       },
       {
         "type":       "class",
+        "signature":  "withDefault(a = 2, c, d = 'hi', d, e = { a: 2 }, f = new TestClassMethods())",
         "name":       "withDefault",
         "parameters": [
           {
@@ -62,6 +65,7 @@
       },
       {
         "type":       "class",
+        "signature":  "nowWithSpalt(foo, bar...)",
         "name":       "nowWithSpalt",
         "parameters": [
           {
