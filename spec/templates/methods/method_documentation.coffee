@@ -4,6 +4,7 @@ class App.TestMethodDocumentation extends App.Doc
   #
   # @see {#undo} for more information
   #
+  # @private
   # @param [String] it The thing to do
   # @param [Object] options The do options
   # @option options [String] speed The speed

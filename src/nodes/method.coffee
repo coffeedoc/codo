@@ -42,7 +42,12 @@ module.exports = class Method
   #
   getSignature: ->
     unless @signature
-      @signature = @getName()
+      @signature = if @getType() is 'instance' then '- ' else '+ '
+
+      if @getDoc()
+        @signature += if @getDoc().returnValue then "(#{ @getDoc().returnValue.type }) " else "(void) "
+
+      @signature += @getName()
       @signature += '('
 
       params = []
@@ -52,6 +57,9 @@ module.exports = class Method
 
       @signature += params.join(', ')
       @signature += ')'
+
+      if @getDoc()
+        @signature += if @getDoc().private then ' (private)' else ''
 
     @signature
 

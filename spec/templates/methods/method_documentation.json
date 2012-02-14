@@ -10,6 +10,7 @@
     "methods":   [
       {
         "doc":        {
+          "private":     true,
           "comment":     "<p>Do it!</p>",
           "params":      [
             {
@@ -52,7 +53,7 @@
           }
         },
         "type":       "instance",
-        "signature":  "do(it, options)",
+        "signature":  "- (Boolean) do(it, options) (private)",
         "name":       "do",
         "parameters": [
           {
