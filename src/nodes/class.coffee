@@ -37,8 +37,6 @@ module.exports = class Class
     unless @className
       @className = @node.variable.base.value
 
-      console.log util.inspect @node, false, null
-
       for prop in @node.variable.properties
         @className += ".#{ prop.name.value }"
 
@@ -109,6 +107,7 @@ module.exports = class Class
         className: @getClassName()
         name: @getName()
         namespace: @getNamespace()
+        parent: @getParentClassName()
       methods: []
       variables: []
 

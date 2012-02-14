@@ -1,0 +1,11 @@
+[
+  {
+    "class":     {
+      "className": "Some.Namespace.MyClass",
+      "name":      "MyClass",
+      "namespace": "Some.Namespace"
+    },
+    "methods":   [],
+    "variables": []
+  }
+]

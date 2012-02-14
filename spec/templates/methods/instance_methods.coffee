@@ -1,0 +1,5 @@
+class TestInstanceMethods
+
+  helper: ->
+
+  another: ->

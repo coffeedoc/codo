@@ -1,0 +1,35 @@
+fs     = require 'fs'
+findit = require('findit')
+Parser = require('../lib/parser')
+
+beforeEach ->
+  @addMatchers
+    toBeCompiledTo: (expected) ->
+      @message = -> @actual.report
+      @actual.generated is expected
+
+for filename in findit.sync './spec/templates'
+  if filename.match /\.coffee$/
+    source = fs.readFileSync filename, 'utf8'
+    expected = JSON.stringify(JSON.parse(fs.readFileSync filename.replace(/\.coffee$/, '.json'), 'utf8'), null, 2)
+
+    do (source, expected) ->
+
+      describe "The CoffeeScript file #{ filename }", ->
+        it 'parses correctly to JSON', ->
+          parser = new Parser()
+          parser.parseContent source
+          generated = JSON.stringify(parser.toJSON(), null, 2)
+
+          report = "\n-------------------- CoffeeScript ------------------------\n"
+          report += source
+          report += "-------------------- Parsed JSON ------------------------\n"
+          report += generated
+          report += "\n------------------- Expected JSON -----------------------\n"
+          report += expected
+          report += "\n---------------------------------------------------------------\n"
+
+          expect({
+            generated: generated
+            report: report.split('\n').join('\n    ')
+          }).toBeCompiledTo(expected)

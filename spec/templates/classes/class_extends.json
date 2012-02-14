@@ -1,0 +1,12 @@
+[
+  {
+    "class":     {
+      "className": "NS.Clazz",
+      "name":      "Clazz",
+      "namespace": "NS",
+      "parent":    "Another.Clazz"
+    },
+    "methods":   [],
+    "variables": []
+  }
+]

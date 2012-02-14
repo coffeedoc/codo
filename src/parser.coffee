@@ -15,14 +15,18 @@ module.exports = class Parser
 
   # Parse the given CoffeeScript file
   #
-  # @param [String] file the CoffeeScript file
+  # @param [String] file the CoffeeScript file name
   #
-  parse: (file) ->
-    content = fs.readFileSync file, 'utf8'
+  parseFile: (file) ->
+    @parseContent fs.readFileSync(file, 'utf8')
 
-    root = CoffeeScript.nodes(content)
-    root.traverseChildren true, (child) =>
-        @classes.push new Class(child) if child.constructor.name is 'Class'
+  # Parse the given CoffeeScript content
+  #
+  # @param [String] content the CoffeeScript file content
+  #
+  parseContent: (content) ->
+    CoffeeScript.nodes(content).traverseChildren true, (child) =>
+      @classes.push new Class(child) if child.constructor.name is 'Class'
 
   # Get a JSON representation of the object
   #

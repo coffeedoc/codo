@@ -1,0 +1,30 @@
+[
+  {
+    "class":     {
+      "className": "TestClassVariables",
+      "name":      "TestClassVariables",
+      "namespace": ""
+    },
+    "methods":   [],
+    "variables": [
+      {
+        "type":     "class",
+        "constant": false,
+        "name":     "this.test",
+        "value":    "'Hi'"
+      },
+      {
+        "type":     "class",
+        "constant": false,
+        "name":     "this.another",
+        "value":    "['a', 'b']"
+      },
+      {
+        "type":     "class",
+        "constant": false,
+        "name":     "this.more",
+        "value":    "{\n  a: 1,\n  b: 2\n}"
+      }
+    ]
+  }
+]

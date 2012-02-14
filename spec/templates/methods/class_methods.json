@@ -1,0 +1,20 @@
+[
+  {
+    "class":     {
+      "className": "TestClassMethods",
+      "name":      "TestClassMethods",
+      "namespace": ""
+    },
+    "methods":   [
+      {
+        "type": "class",
+        "name": "helper"
+      },
+      {
+        "type": "class",
+        "name": "another"
+      }
+    ],
+    "variables": []
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "class":     {
+      "className": "MyTestClass",
+      "name":      "MyTestClass",
+      "namespace": ""
+    },
+    "methods":   [],
+    "variables": []
+  }
+]

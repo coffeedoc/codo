@@ -1,0 +1,30 @@
+[
+  {
+    "class":     {
+      "className": "TestInstanceVariables",
+      "name":      "TestInstanceVariables",
+      "namespace": ""
+    },
+    "methods":   [],
+    "variables": [
+      {
+        "type":     "instance",
+        "constant": false,
+        "name":     "test",
+        "value":    "'Hi'"
+      },
+      {
+        "type":     "instance",
+        "constant": false,
+        "name":     "another",
+        "value":    "['a', 'b']"
+      },
+      {
+        "type":     "instance",
+        "constant": false,
+        "name":     "more",
+        "value":    "{\n  a: 1,\n  b: 2\n}"
+      }
+    ]
+  }
+]

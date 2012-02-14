@@ -8,6 +8,7 @@ module.exports = class Method
   # @param [Boolean] clazz whether its a class variable or not
   #
   constructor: (@node, @clazz = false) ->
+    @getName()
 
   # Get the method type, either `class` or `instance`
   #
@@ -38,6 +39,13 @@ module.exports = class Method
   getName: ->
     unless @name
       @name = @node.variable.base.value
+
+      for prop in @node.variable.properties
+        @name += ".#{ prop.name.value }"
+
+      if /^this\./.test @name
+        @name = @name.substring(5)
+        @type = 'class'
 
     @name
 

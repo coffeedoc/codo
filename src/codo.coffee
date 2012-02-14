@@ -25,6 +25,6 @@ exports.run = ->
 
   for filename in findit.sync input
     if filename.match /\.coffee$/
-      parser.parse filename
+      parser.parseFile filename
 
   console.log util.inspect parser.toJSON(), false, null
