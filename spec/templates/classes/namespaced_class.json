@@ -1,5 +1,6 @@
 [
   {
+    "file":      "spec/templates/classes/namespaced_class.coffee",
     "class":     {
       "className": "Some.Namespace.MyClass",
       "name":      "MyClass",

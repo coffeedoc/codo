@@ -1,5 +1,6 @@
 [
   {
+    "file":      "spec/templates/variables/constant_variables.coffee",
     "class":     {
       "className": "TestContsantVariables",
       "name":      "TestContsantVariables",

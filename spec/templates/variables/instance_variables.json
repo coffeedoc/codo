@@ -1,5 +1,6 @@
 [
   {
+    "file":      "spec/templates/variables/instance_variables.coffee",
     "class":     {
       "className": "TestInstanceVariables",
       "name":      "TestInstanceVariables",

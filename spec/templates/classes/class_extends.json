@@ -1,5 +1,6 @@
 [
   {
+    "file":      "spec/templates/classes/class_extends.coffee",
     "class":     {
       "className": "NS.Clazz",
       "name":      "Clazz",

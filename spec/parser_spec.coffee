@@ -13,12 +13,12 @@ for filename in findit.sync './spec/templates'
     source = fs.readFileSync filename, 'utf8'
     expected = JSON.stringify(JSON.parse(fs.readFileSync filename.replace(/\.coffee$/, '.json'), 'utf8'), null, 2)
 
-    do (source, expected) ->
+    do (source, expected, filename) ->
 
       describe "The CoffeeScript file #{ filename }", ->
         it 'parses correctly to JSON', ->
           parser = new Parser()
-          parser.parseContent source
+          parser.parseContent source, filename
           generated = JSON.stringify(parser.toJSON(), null, 2)
 
           report = "\n-------------------- CoffeeScript ------------------------\n"

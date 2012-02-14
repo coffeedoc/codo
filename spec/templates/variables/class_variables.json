@@ -1,5 +1,6 @@
 [
   {
+    "file": "spec/templates/variables/class_variables.coffee",
     "class":     {
       "className": "TestClassVariables",
       "name":      "TestClassVariables",

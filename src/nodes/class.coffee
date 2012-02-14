@@ -8,8 +8,9 @@ module.exports = class Class
   # Construct a class
   #
   # @param [Object] node the node
+  # @param [String] the filename
   #
-  constructor: (@node) ->
+  constructor: (@node, @fileName) ->
     @methods = []
     @variables = []
 
@@ -26,6 +27,12 @@ module.exports = class Class
                 @methods.push new Method(prop)
               when 'Value'
                 @variables.push new Variable(prop)
+
+  # Get the source file name.
+  #
+  # @return [String] the filename of the class
+  #
+  getFileName: -> @fileName
 
   # Get the method description
   #
@@ -107,6 +114,7 @@ module.exports = class Class
   #
   toJSON: ->
     json =
+      file: @getFileName()
       class:
         className: @getClassName()
         name: @getName()

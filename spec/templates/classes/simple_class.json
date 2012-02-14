@@ -1,5 +1,6 @@
 [
   {
+    "file":      "spec/templates/classes/simple_class.coffee",
     "class":     {
       "className": "MyTestClass",
       "name":      "MyTestClass",

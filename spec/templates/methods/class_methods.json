@@ -1,5 +1,6 @@
 [
   {
+    "file":      "spec/templates/methods/class_methods.coffee",
     "class":     {
       "className": "TestClassMethods",
       "name":      "TestClassMethods",
