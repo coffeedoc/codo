@@ -15,6 +15,7 @@ module.exports = class Class
   constructor: (@node, comment, @fileName) ->
     @methods = []
     @variables = []
+    @previousExp = null
 
     @doc = new Doc(comment)
 
@@ -25,12 +26,17 @@ module.exports = class Class
           @variables.push new Variable(exp, true)
 
         when 'Value'
+          previousProp = null
+
           for prop in exp.base.properties
-            switch prop.value.constructor.name
+            switch prop.value?.constructor.name
               when 'Code'
-                @methods.push new Method(prop)
+                doc = previousProp if previousProp?.constructor.name is 'Comment'
+                @methods.push new Method(prop, doc)
               when 'Value'
                 @variables.push new Variable(prop)
+
+            previousProp = prop
 
   # Get the source file name.
   #

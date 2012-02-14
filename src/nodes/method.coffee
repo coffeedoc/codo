@@ -1,4 +1,5 @@
-Parameter   = require './parameter'
+Parameter = require './parameter'
+Doc       = require './doc'
 
 # A CoffeeScript method
 #
@@ -7,10 +8,12 @@ module.exports = class Method
   # Construct a method
   #
   # @param [Object] node the node
-  # @param [Boolean] clazz whether its a class variable or not
+  # @param [Object] comment the comment node
   #
-  constructor: (@node, @clazz = false) ->
+  constructor: (@node, comment) ->
     @parameters = []
+
+    @doc = new Doc(comment)
 
     for param in @node.value.params
       @parameters.push new Parameter(param)
@@ -27,11 +30,11 @@ module.exports = class Method
 
     @type
 
-  # Get the method description
+  # Get the class doc
   #
-  # @return [String] the description
+  # @return [Doc] the class doc
   #
-  getDescription: ->
+  getDoc: -> @doc
 
   # Get the full method signature.
   #
@@ -99,6 +102,7 @@ module.exports = class Method
   #
   toJSON: ->
     json =
+      doc: @getDoc().toJSON()
       type: @getType()
       signature: @getSignature()
       name: @getName()

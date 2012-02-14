@@ -18,16 +18,20 @@ for filename in findit.sync './spec/templates'
       describe "The CoffeeScript file #{ filename }", ->
         it 'parses correctly to JSON', ->
           parser = new Parser()
-          parser.parseContent source, filename
+          tokens = parser.parseContent source, filename
           generated = JSON.stringify(parser.toJSON(), null, 2)
 
-          report = "\n-------------------- CoffeeScript ------------------------\n"
+          report = "\n-------------------- CoffeeScript ----------------------\n"
           report += source
-          report += "-------------------- Parsed JSON ------------------------\n"
+          report += "\n------------- Preprocessed CoffeeScript-----------------\n"
+          report += parser.convertComments(source)
+          report += "\n----------------------- Nodes --------------------------"
+          report += tokens.toString()
+          report += "\n-------------------- Parsed JSON ------------------------\n"
           report += generated
-          report += "\n------------------- Expected JSON -----------------------\n"
+          report += "\n------------------- Expected JSON ---------------------\n"
           report += expected
-          report += "\n---------------------------------------------------------------\n"
+          report += "\n-------------------------------------------------------\n"
 
           expect({
             generated: generated

@@ -8,6 +8,7 @@ module.exports = class Doc
   # Construct a documentation
   #
   # @param [Object] node the node
+  # @param [Object] comment the comment node
   #
   constructor: (@node) ->
     if @node
@@ -21,7 +22,33 @@ module.exports = class Doc
           while /^  \w+/.test(lines[0])
             line += lines.shift().substring(1)
 
-        if author = /^@author\s+(.*)/.exec line
+        # TODO: @overload
+
+        if returnValue = /^@return\s+\[(.*?)\]\s+(.*)/.exec line
+          @returnValue =
+            type: returnValue[1]
+            desc: returnValue[2]
+
+        else if param = /^@param\s+\[(.*?)\]\s+([^ ]*)\s+(.*)/.exec line
+          @params or= []
+          @params.push
+            type: param[1]
+            name: param[2]
+            desc: param[3]
+
+        else if option = /^@option\s+([^ ]*)\s+\[(.*?)\]\s+([^ ]*)\s+(.*)/.exec line
+          @options or= []
+          @options.push
+            param: option[1]
+            type: option[2]
+            name: option[3]
+            desc: option[4]
+
+        else if see = /^@see\s+(.*)/.exec line
+          @see or= []
+          @see.push see[1]
+
+        else if author = /^@author\s+(.*)/.exec line
           @authors or= []
           @authors.push author[1]
 
@@ -84,5 +111,9 @@ module.exports = class Doc
         notes: @notes
         authors: @authors
         comment: @comment
+        params: @params
+        options: @options
+        see: @see
+        returnValue: @returnValue
 
       json

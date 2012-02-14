@@ -4,11 +4,10 @@ module.exports =
 
   # Whitespace helper function
   #
-  # @param [Number] n the number if indents
-  # @return [String] the indention string
+  # @param [Number] n the number of spaces
+  # @return [String] the space string
   #
   whitespace: (n) ->
-    n = n * 2
     a = []
     while a.length < n
       a.push ' '

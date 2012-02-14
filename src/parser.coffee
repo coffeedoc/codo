@@ -30,13 +30,16 @@ module.exports = class Parser
   parseContent: (content, file = '') ->
     @previousNode = null
 
-    CoffeeScript.nodes(@convertComments(content)).traverseChildren true, (child) =>
+    tokens = CoffeeScript.nodes(@convertComments(content))
+    tokens.traverseChildren true, (child) =>
       if child.constructor.name is 'Class'
         doc = @previousNode if @previousNode?.constructor.name is 'Comment'
         @classes.push new Class(child, doc, file)
 
       @previousNode = child
       true
+
+    tokens
 
   # Convert the comments to block comments,
   # so they appear in the nodes.
@@ -53,13 +56,13 @@ module.exports = class Parser
         show = true
 
         if inComment
-          result.push whitespace(indentComment) + comment[2]
+          result.push comment[2]
         else
           inComment = true
           indentComment =  comment[1].length - 1
 
           result.push whitespace(indentComment) + '###'
-          result.push whitespace(indentComment) + comment[2]
+          result.push comment[2]
       else
         if inComment
           inComment = false
