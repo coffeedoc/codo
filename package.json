@@ -43,6 +43,6 @@
     "url" : "https://github.com/netzpirat/codo/issues"
   },
   "scripts" : {
-    "test" : "mocha -u bdd spec/**/*.coffee"
+    "test" : "jasmine-node --coffee spec"
   }
 }
