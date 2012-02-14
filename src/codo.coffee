@@ -27,4 +27,4 @@ exports.run = ->
     if filename.match /\.coffee$/
       parser.parseFile filename
 
-  console.log util.inspect parser.toJSON(), false, null
+  console.log "Codo is not ready yet. It has been published to reserve the name on NPM."
