@@ -1,6 +1,28 @@
 # Codo [![Build Status](https://secure.travis-ci.org/netzpirat/codo.png)](http://travis-ci.org/netzpirat/codo.png)
 
-## Authors
+Codo is a CoffeeScript API documentation generator, similar to [YARD](http://yardoc.org/). It's generated documentation
+is focused on CoffeeScript class syntax for classical inheritance and not for JavaScript's prototypal inheritance.
+
+## Installation
+
+TODO
+
+## Supported documentation tags
+
+TODO
+
+## Generate documentation
+
+TODO
+
+## Alternatives
+
+* [Docco](http://jashkenas.github.com/docco/) is a quick-and-dirty, literate-programming-style documentation generator.
+* [CoffeeDoc](https://github.com/omarkhan/coffeedoc) an alternative API documentation generator for CoffeeScript
+* [JsDoc](https://github.com/micmath/jsdoc) an automatic documentation generator for JavaScript.
+* [Dox](https://github.com/visionmedia/dox) JavaScript documentation generator for node using markdown and jsdoc.
+
+## Author
 
 * [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat))
 
