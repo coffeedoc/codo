@@ -78,12 +78,6 @@ module.exports = class Method
   #
   getParamaters: -> @parameters
 
-  # Get the method return value.
-  #
-  # @return [String] the value
-  #
-  getReturnValue: ->
-
   # Get the method source in CoffeeScript
   #
   # @return [String] the CoffeeScript source
