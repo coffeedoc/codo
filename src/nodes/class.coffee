@@ -1,5 +1,6 @@
 Method   = require './method'
 Variable = require './variable'
+Doc      = require './doc'
 
 # A CoffeeScript class
 #
@@ -7,12 +8,15 @@ module.exports = class Class
 
   # Construct a class
   #
-  # @param [Object] node the node
+  # @param [Object] node the class node
+  # @param [Object] comment the comment node
   # @param [String] the filename
   #
-  constructor: (@node, @fileName) ->
+  constructor: (@node, comment, @fileName) ->
     @methods = []
     @variables = []
+
+    @doc = new Doc(comment)
 
     for exp in @node.body.expressions
       switch exp.constructor.name
@@ -34,11 +38,11 @@ module.exports = class Class
   #
   getFileName: -> @fileName
 
-  # Get the method description
+  # Get the class doc
   #
-  # @return [String] the description
+  # @return [Doc] the class doc
   #
-  getDescription: ->
+  getDoc: -> @doc
 
   # Get the full class name
   #
@@ -115,6 +119,7 @@ module.exports = class Class
   toJSON: ->
     json =
       file: @getFileName()
+      doc: @getDoc().toJSON()
       class:
         className: @getClassName()
         name: @getName()

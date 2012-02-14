@@ -3,6 +3,8 @@ fs           = require 'fs'
 CoffeeScript = require 'coffee-script'
 Class        = require './nodes/class'
 
+{whitespace} = require('./util/text')
+
 # CoffeeScript parser to convert the files into a
 # documentation domain nodes.
 #
@@ -26,8 +28,46 @@ module.exports = class Parser
   # @param [String] file the CoffeeScript file name
   #
   parseContent: (content, file = '') ->
-    CoffeeScript.nodes(content).traverseChildren true, (child) =>
-      @classes.push new Class(child, file) if child.constructor.name is 'Class'
+    @previousNode = null
+
+    CoffeeScript.nodes(@convertComments(content)).traverseChildren true, (child) =>
+      if child.constructor.name is 'Class'
+        doc = @previousNode if @previousNode?.constructor.name is 'Comment'
+        @classes.push new Class(child, doc, file)
+
+      @previousNode = child
+      true
+
+  # Convert the comments to block comments,
+  # so they appear in the nodes.
+  #
+  # @param [String] content the CoffeeScript file content
+  #
+  convertComments: (content) ->
+    result = []
+    inComment = false
+    indentComment = 0
+
+    for line in content.split('\n')
+      if comment = /^(\s*#)\s?(\s*.*)/.exec line
+        show = true
+
+        if inComment
+          result.push whitespace(indentComment) + comment[2]
+        else
+          inComment = true
+          indentComment =  comment[1].length - 1
+
+          result.push whitespace(indentComment) + '###'
+          result.push whitespace(indentComment) + comment[2]
+      else
+        if inComment
+          inComment = false
+          result.push whitespace(indentComment) + '###'
+
+        result.push line
+
+    result.join('\n')
 
   # Get a JSON representation of the object
   #
