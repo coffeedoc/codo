@@ -1,12 +1,71 @@
 [
   {
-    "file":      "spec/templates/classes/simple_class.coffee",
+    "file":      "spec/templates/methods/method_documentation.coffee",
     "class":     {
-      "className": "MyTestClass",
-      "name":      "MyTestClass",
-      "namespace": ""
+      "className": "App.TestMethodDocumentation",
+      "name":      "TestMethodDocumentation",
+      "namespace": "App",
+      "parent":    "App.Doc"
     },
-    "methods":   [],
+    "methods":   [
+      {
+        "doc":        {
+          "comment":     "<p>Do it!</p>",
+          "params":      [
+            {
+              "type": "String",
+              "name": "it",
+              "desc": "The thing to do"
+            },
+            {
+              "type": "Object",
+              "name": "options",
+              "desc": "The do options"
+            }
+          ],
+          "options":     [
+            {
+              "param": "options",
+              "type":  "String",
+              "name":  "speed",
+              "desc":  "The speed"
+            },
+            {
+              "param": "options",
+              "type":  "Number",
+              "name":  "repeat",
+              "desc":  "How wany time to repeat"
+            },
+            {
+              "param": "options",
+              "type":  "Array<Tasks>",
+              "name":  "tasks",
+              "desc":  "The tasks to do"
+            }
+          ],
+          "see":         [
+            "{#undo} for more information"
+          ],
+          "returnValue": {
+            "type": "Boolean",
+            "desc": "When successful executed"
+          }
+        },
+        "type":       "instance",
+        "signature":  "do(it, options)",
+        "name":       "do",
+        "parameters": [
+          {
+            "name":  "it",
+            "splat": false
+          },
+          {
+            "name":  "options",
+            "splat": false
+          }
+        ]
+      }
+    ],
     "variables": []
   }
 ]
