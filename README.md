@@ -5,7 +5,7 @@ is focused on CoffeeScript class syntax for classical inheritance and not for Ja
 
 ## Installation
 
-Codo is not released yet. Watch this repo and follow ([@netzpirat](http://twitter.com/#!/netzpirat)) to get notified
+Codo is not released yet. Watch this repo and follow [@netzpirat](http://twitter.com/#!/netzpirat) to get notified
 when Codo is ready!
 
 ## Supported documentation tags
