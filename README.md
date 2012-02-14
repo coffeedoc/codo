@@ -23,11 +23,11 @@ and can be tagged to add more structured information to class and method comment
 Marks a class or method as abstract.
 
 ```CoffeeScript
-# # @abstract
-# class Listener
-#
-#   # @abstract
-#   listen: ->
+# @abstract
+class Listener
+
+  # @abstract
+  listen: ->
 ```
 
 ### @deprecated
@@ -35,11 +35,11 @@ Marks a class or method as abstract.
 Marks a class or method as deprecated. You can optionally describe the deprecation reason.
 
 ```CoffeeScript
-# # @deprecated Use Stripe
-# class PayPal
-#
-#   # @deprecated
-#   pay: ->
+# @deprecated Use Stripe
+class PayPal
+
+  # @deprecated
+  pay: ->
 ```
 
 ### @version
@@ -47,11 +47,11 @@ Marks a class or method as deprecated. You can optionally describe the deprecati
 Set the current version of a class or method:
 
 ```CoffeeScript
-# # @version 1.0.9
-# class Watcher
-#
-#   # @version 1.0.9
-#   watch: ->
+# @version 1.0.9
+class Watcher
+
+  # @version 1.0.9
+  watch: ->
 ```
 
 ### @since
@@ -59,11 +59,11 @@ Set the current version of a class or method:
 Set the version when the class or method was first added:
 
 ```CoffeeScript
-# # @since 1.0.2
-# class Codo
-#
-#   # @since 1.0.3
-#   parse: ->
+# @since 1.0.2
+class Codo
+
+  # @since 1.0.3
+  parse: ->
 ```
 
 ### @example
@@ -72,20 +72,20 @@ Add your open tasks to a class or method. You can provide an optional example ti
 you can specify this tag multiple times.
 
 ```CoffeeScript
-# # @example
-# #   adapter = Adapter.detect()
-# #   adapter.start()
-# #
-# # @example Get adapter for a specific OS
-# #   adapter = Adapter.for('darwin')
-# #   adapter.start()
-# #
-# class Adapter
+# @example
+#   adapter = Adapter.detect()
+#   adapter.start()
 #
-#   # @example
-#   #   adapter = Adapter.detect()
-#   #   adapter.stop()
-#   stop: ->
+# @example Get adapter for a specific OS
+#   adapter = Adapter.for('darwin')
+#   adapter.start()
+#
+class Adapter
+
+  # @example
+  #   adapter = Adapter.detect()
+  #   adapter.stop()
+  stop: ->
 ```
 
 ### @todo
@@ -93,12 +93,12 @@ you can specify this tag multiple times.
 Add your open tasks to a class or method. You can specify this tag multiple times.
 
 ```CoffeeScript
-# # @todo Refactor to use the new mailer library
-# # @todo Cleanup handlers
-# class Mailer
-#
-#   # @todo Enable TLS
-#   send: ->
+# @todo Refactor to use the new mailer library
+# @todo Cleanup handlers
+class Mailer
+
+  # @todo Enable TLS
+  send: ->
 ```
 
 ### @note
@@ -106,11 +106,11 @@ Add your open tasks to a class or method. You can specify this tag multiple time
 Add your open tasks to a class or method. You can specify this tag multiple times.
 
 ```CoffeeScript
-# # @note This class is thread safe
-# class SocketPool
-#
-#   # @note Make sure the backend is running
-#   connect: ->
+# @note This class is thread safe
+class SocketPool
+
+  # @note Make sure the backend is running
+  connect: ->
 ```
 
 ### @author
@@ -118,15 +118,15 @@ Add your open tasks to a class or method. You can specify this tag multiple time
 Marks a class or method as written by a specific author. You can specify this tag multiple times.
 
 ```CoffeeScript
-# # @author Mickey Mouse
-# # @author Donald Duck
-# class Cartoon
-#
-#   # @author Mickey Mouse
-#   play: ->
-#
-#   # @author Donald Duck
-#   wait: (seconds) ->
+# @author Mickey Mouse
+# @author Donald Duck
+class Cartoon
+
+  # @author Mickey Mouse
+  play: ->
+
+  # @author Donald Duck
+  wait: (seconds) ->
 ```
 
 ### Method tags
@@ -136,10 +136,10 @@ Marks a class or method as written by a specific author. You can specify this ta
 Marks a method as abstract:
 
 ```CoffeeScript
-# class Renderer
-#
-#   # @private
-#   detectEngine: ->
+class Renderer
+
+  # @private
+  detectEngine: ->
 ```
 
 ## Generate documentation
