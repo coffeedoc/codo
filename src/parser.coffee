@@ -1,4 +1,5 @@
 fs           = require 'fs'
+
 CoffeeScript = require 'coffee-script'
 Class        = require './nodes/class'
 
@@ -22,3 +23,15 @@ module.exports = class Parser
     root = CoffeeScript.nodes(content)
     root.traverseChildren true, (child) =>
         @classes.push new Class(child) if child.constructor.name is 'Class'
+
+  # Get a JSON representation of the object
+  #
+  # @return [Object] the JSON object
+  #
+  toJSON: ->
+    json = []
+
+    for clazz in @classes
+      json.push clazz.toJSON()
+
+    json

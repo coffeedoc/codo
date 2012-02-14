@@ -1,3 +1,8 @@
+util    = require('util')
+
+Method   = require './method'
+Variable = require './variable'
+
 # A CoffeeScript class
 #
 module.exports = class Class
@@ -7,78 +12,110 @@ module.exports = class Class
   # @param [Object] node the node
   #
   constructor: (@node) ->
+    @methods = []
+    @variables = []
 
-  # Get the class
+    for exp in @node.body.expressions
+      switch exp.constructor.name
+
+        when 'Assign'
+          @variables.push new Variable(exp, true)
+
+        when 'Value'
+          for prop in exp.base.properties
+            switch prop.value.constructor.name
+              when 'Code'
+                @methods.push new Method(prop)
+              when 'Value'
+                @variables.push new Variable(prop)
+
+  # Get the full class name
   #
   # @return [String] the class
   #
-  clazz: ->
-    clazz = @node.variable.base.value
+  getClassName: ->
+    unless @className
+      @className = @node.variable.base.value
 
-    for property in @node.variable.properties
-      clazz += ".#{ property.name.value }"
+      console.log util.inspect @node, false, null
 
-    clazz
+      for prop in @node.variable.properties
+        @className += ".#{ prop.name.value }"
+
+    @className
 
   # Get the class name
   #
   # @return [String] the name
   #
-  name: ->
-     @clazz().split('.').pop()
+  getName: ->
+    unless @name
+      @name = @getClassName().split('.').pop()
+
+    @name
 
   # Get the class namespace
   #
   # @return [String] the namespace
   #
-  namespace: ->
-    namespace = @clazz().split('.')
-    namespace.pop()
+  getNamespace: ->
+    unless @namespace
+      @namespace = @getClassName().split('.')
+      @namespace.pop()
 
-    namespace.join('.')
+      @namespace = @namespace.join('.')
 
-  # Get the class parent
+    @namespace
+
+  # Get the full parent class name
   #
-  # @return [String] the parent class
+  # @return [String] the parent class name
   #
-  parentClazz: ->
-    if @node.parent
-      clazz = @node.parent.base.value
+  getParentClassName: ->
+    unless @parentClassName
+      if @node.parent
+        @parentClassName = @node.parent.base.value
 
-      for property in @node.parent.properties
-        clazz += ".#{ property.name.value }"
+        for prop in @node.parent.properties
+          @parentClassName += ".#{ prop.name.value }"
 
-      clazz
-
-    else
-      undefined
+    @parentClassName
 
   # Get the direct subclasses
   #
   # @return [Array<Class>] the subclasses
   #
-  subclasses: ->
+  getSubClasses: ->
 
-  # Get all class methods.
+  # Get all methods.
   #
   # @return [Array<Method>] the methods
   #
-  classMethods: ->
+  getMethods: -> @methods
 
-  # Get all instance methods.
-  #
-  # @return [Array<Method>] the methods
-  #
-  instanceMethods: ->
-
-  # Get all class variables.
+  # Get all variables.
   #
   # @return [Array<Variable>] the variables
   #
-  classVariables: ->
+  getVariables: -> @variables
 
-  # Get all constants (uppercase class variables).
+  # Get a JSON representation of the object
   #
-  # @return [Array<Variable>] the variables
+  # @return [Object] the JSON object
   #
-  constants: ->
+  toJSON: ->
+    json =
+      class:
+        className: @getClassName()
+        name: @getName()
+        namespace: @getNamespace()
+      methods: []
+      variables: []
+
+    for method in @getMethods()
+      json.methods.push method.toJSON()
+
+    for variable in @getVariables()
+      json.variables.push variable.toJSON()
+
+    json
