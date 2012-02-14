@@ -49,6 +49,20 @@
             "splat":   false
           }
         ]
+      },
+      {
+        "type":       "instance",
+        "name":       "nowWithSpalt",
+        "parameters": [
+          {
+            "name":  "foo",
+            "splat": false
+          },
+          {
+            "name":  "bar",
+            "splat": true
+          }
+        ]
       }
     ],
     "variables": []
