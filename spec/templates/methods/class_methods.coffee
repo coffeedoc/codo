@@ -2,4 +2,6 @@ class TestClassMethods
 
   @helper: ->
 
-  @another: ->
+  @another: (a, b) ->
+
+  @withDefault: (a = 2, c, d = 'hi', d, e = { a: 2 }, f = new TestClassMethods()) ->

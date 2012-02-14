@@ -7,12 +7,48 @@
     },
     "methods":   [
       {
-        "type": "instance",
-        "name": "helper"
+        "type":       "instance",
+        "name":       "helper",
+        "parameters": []
       },
       {
-        "type": "instance",
-        "name": "another"
+        "type":       "instance",
+        "name":       "another",
+        "parameters": [
+          {
+            "name":  "param",
+            "splat": false
+          },
+          {
+            "name":  "obj",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "type":       "instance",
+        "name":       "anotherWithValues",
+        "parameters": [
+          {
+            "name":    "param",
+            "default": "123",
+            "splat":   false
+          },
+          {
+            "name":    "obj",
+            "default": "{\n  a: 1\n}",
+            "splat":   false
+          },
+          {
+            "name":  "yup",
+            "splat": false
+          },
+          {
+            "name":    "comp",
+            "default": "new TestInstanceMethods()",
+            "splat":   false
+          }
+        ]
       }
     ],
     "variables": []

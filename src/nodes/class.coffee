@@ -1,5 +1,3 @@
-util    = require('util')
-
 Method   = require './method'
 Variable = require './variable'
 
@@ -28,6 +26,12 @@ module.exports = class Class
                 @methods.push new Method(prop)
               when 'Value'
                 @variables.push new Variable(prop)
+
+  # Get the method description
+  #
+  # @return [String] the description
+  #
+  getDescription: ->
 
   # Get the full class name
   #

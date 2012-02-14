@@ -7,12 +7,57 @@
     },
     "methods":   [
       {
-        "type": "class",
-        "name": "helper"
+        "type":       "class",
+        "name":       "helper",
+        "parameters": []
       },
       {
-        "type": "class",
-        "name": "another"
+        "type":       "class",
+        "name":       "another",
+        "parameters": [
+          {
+            "name":  "a",
+            "splat": false
+          },
+          {
+            "name":  "b",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "type":       "class",
+        "name":       "withDefault",
+        "parameters": [
+          {
+            "name":    "a",
+            "default": "2",
+            "splat":   false
+          },
+          {
+            "name":  "c",
+            "splat": false
+          },
+          {
+            "name":    "d",
+            "default": "'hi'",
+            "splat":   false
+          },
+          {
+            "name":  "d",
+            "splat": false
+          },
+          {
+            "name":    "e",
+            "default": "{\n  a: 2\n}",
+            "splat":   false
+          },
+          {
+            "name":    "f",
+            "default": "new TestClassMethods()",
+            "splat":   false
+          }
+        ]
       }
     ],
     "variables": []

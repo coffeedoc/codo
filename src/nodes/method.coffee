@@ -1,3 +1,5 @@
+Parameter   = require './parameter'
+
 # A CoffeeScript method
 #
 module.exports = class Method
@@ -8,6 +10,11 @@ module.exports = class Method
   # @param [Boolean] clazz whether its a class variable or not
   #
   constructor: (@node, @clazz = false) ->
+    @parameters = []
+
+    for param in @node.value.params
+      @parameters.push new Parameter(param)
+
     @getName()
 
   # Get the method type, either `class` or `instance`
@@ -49,11 +56,17 @@ module.exports = class Method
 
     @name
 
+  # Get the method parameters
+  #
+  # @param [Array<Parameter>] the method parameters
+  #
+  getParamaters: -> @parameters
+
   # Get the method return value.
   #
   # @return [String] the value
   #
-  getReturn: ->
+  getReturnValue: ->
 
   # Get the method source in CoffeeScript
   #
@@ -75,4 +88,9 @@ module.exports = class Method
     json =
       type: @getType()
       name: @getName()
+      parameters: []
+
+    for parameter in @getParamaters()
+      json.parameters.push parameter.toJSON()
+
     json
