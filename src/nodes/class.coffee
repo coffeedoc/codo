@@ -37,11 +37,21 @@ module.exports = class Class
 
     namespace.join('.')
 
-  # Get the class inheritance hierarchy
+  # Get the class parent
   #
-  # @return [Array<Clazz>] the parent classes
+  # @return [String] the parent class
   #
-  inherits: ->
+  parentClazz: ->
+    if @node.parent
+      clazz = @node.parent.base.value
+
+      for property in @node.parent.properties
+        clazz += ".#{ property.name.value }"
+
+      clazz
+
+    else
+      undefined
 
   # Get the direct subclasses
   #

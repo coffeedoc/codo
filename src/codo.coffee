@@ -26,4 +26,7 @@ exports.run = ->
       parser.parse filename
 
   for clazz in parser.classes
+    console.log "------------------------------------------------------------------------------------------"
     console.log "Clazz: #{ clazz.clazz() } / #{ clazz.name() } / #{ clazz.namespace() }"
+    if clazz.parentClazz()
+      console.log "Parent: #{ clazz.parentClazz() }"
