@@ -1,0 +1,24 @@
+[
+  {
+    "class":     {
+      "className": "TestContsantVariables",
+      "name":      "TestContsantVariables",
+      "namespace": ""
+    },
+    "methods":   [],
+    "variables": [
+      {
+        "type":     "class",
+        "constant": true,
+        "name":     "TEST",
+        "value":    "'Hi'"
+      },
+      {
+        "type":     "instance",
+        "constant": true,
+        "name":     "ANOTHER_CONST",
+        "value":    "['a', 'b']"
+      }
+    ]
+  }
+]

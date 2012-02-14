@@ -10,19 +10,19 @@
       {
         "type":     "class",
         "constant": false,
-        "name":     "this.test",
+        "name":     "test",
         "value":    "'Hi'"
       },
       {
         "type":     "class",
         "constant": false,
-        "name":     "this.another",
+        "name":     "another",
         "value":    "['a', 'b']"
       },
       {
         "type":     "class",
         "constant": false,
-        "name":     "this.more",
+        "name":     "more",
         "value":    "{\n  a: 1,\n  b: 2\n}"
       }
     ]

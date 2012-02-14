@@ -8,6 +8,7 @@ module.exports = class Variable
   # @param [Boolean] clazz whether its a class variable or not
   #
   constructor: (@node, @clazz = false) ->
+    @getName()
 
   # Get the variable type, either `class` or `constant`
   #
@@ -45,6 +46,10 @@ module.exports = class Variable
 
       for prop in @node.variable.properties
         @name += ".#{ prop.name.value }"
+
+      if /^this\./.test @name
+        @name = @name.substring(5)
+        @type = 'class'
 
     @name
 
