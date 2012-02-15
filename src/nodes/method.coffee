@@ -7,11 +7,12 @@ module.exports = class Method
 
   # Construct a method
   #
+  # @param [Class] clazz the methods class
   # @param [Object] node the node
   # @param [Object] options the parser options
   # @param [Object] comment the comment node
   #
-  constructor: (@node, @options, comment) ->
+  constructor: (@clazz, @node, @options, comment) ->
     @parameters = []
 
     @doc = new Doc(comment, @options)
@@ -27,7 +28,7 @@ module.exports = class Method
   #
   getType: ->
     unless @type
-      @type = if @clazz then 'class' else 'instance'
+      @type = 'instance'
 
     @type
 

@@ -36,7 +36,7 @@ module.exports = class Class
             switch prop.value?.constructor.name
               when 'Code'
                 doc = previousProp if previousProp?.constructor.name is 'Comment'
-                @methods.push new Method(prop, @options, doc)
+                @methods.push new Method(@, prop, @options, doc)
                 doc = null
 
               when 'Value'

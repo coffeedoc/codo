@@ -27,6 +27,9 @@ module.exports = class Generator
     @generateClasses()
     @generateExtras()
     @generateIndex()
+    @generateClassList()
+    @generateMethodList()
+    @generateFileList()
     @copyAssets()
 
   # Generate the home page. This is the readme
@@ -104,6 +107,33 @@ module.exports = class Generator
       breadcrumbs: []
     }, '_index.html'
 
+  # Generates the drop down class list
+  #
+  generateClassList: ->
+    @templater.render 'class_list', {
+      classes: @parser.classes
+    }, 'class_list.html'
+
+  # Generates the drop down method list
+  #
+  generateMethodList: ->
+    methods = _.map @parser.getAllMethods(), (method) ->
+      {
+        name: method.getName()
+        href: "classes/#{ method.clazz.getClassName().replace(/\./g, '/') }.html##{ method.getName() }"
+        classname: method.clazz.getClassName()
+      }
+    @templater.render 'method_list', {
+      methods: methods
+    }, 'method_list.html'
+
+  # Generates the drop down file list
+  #
+  generateFileList: ->
+    @templater.render 'file_list', {
+      files: _.union [@options.readme], @options.extras
+    }, 'file_list.html'
+
   # Copy the styles and scripts.
   #
   copyAssets: ->
@@ -124,3 +154,4 @@ module.exports = class Generator
         from = fs.createReadStream from
         to = fs.createWriteStream to
         to.once 'open', (fd) -> require('util').pump from, to
+
