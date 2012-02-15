@@ -50,7 +50,7 @@ module.exports = class Generator
     for extra in @options.extras
       try
         content = fs.readFileSync extra, 'utf-8'
-        content = ghm.parse(extra, @options.github) if /\.(markdown|md)$/.test @options.readme
+        content = ghm.parse(content, @options.github) if /\.(markdown|md)$/.test extra
         @templater.render 'file', { filename: extra, content: content }, "#{ extra }.html"
       catch error
         console.log "[ERROR] Cannot generate extra file #{ extra }: #{ error }"
