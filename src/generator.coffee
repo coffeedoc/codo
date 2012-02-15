@@ -91,8 +91,15 @@ module.exports = class Generator
   # Generate the alphabetical index
   #
   generateIndex: ->
+    sortedClasses = {}
+
+    for code in [97..122]
+      char = String.fromCharCode(code)
+      classes = _.filter @parser.classes, (clazz) -> clazz.getName().toLowerCase()[0] is char
+      sortedClasses[char] = classes unless _.isEmpty classes
+
     @templater.render 'index', {
-      classes: @parser.classes
+      classes: sortedClasses
       files: _.union [@options.readme], @options.extras
       breadcrumbs: []
     }, '_index.html'

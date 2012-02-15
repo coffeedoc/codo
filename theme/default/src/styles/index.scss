@@ -27,3 +27,35 @@
   }
 }
 
+table.index {
+  > tbody {
+    > tr {
+      > td {
+        vertical-align: top;
+        width: 33%;
+
+        > ul {
+          margin: 0;
+          padding: 0;
+          padding-bottom: 10px;
+
+          font-size: 1.1em;
+          list-style: none;
+
+          > li.letter {
+            font-size: 1.4em;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+          }
+
+          > ul {
+            margin: 0;
+            padding-left: 15px;
+          }
+        }
+
+      }
+    }
+  }
+}
+
