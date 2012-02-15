@@ -1,4 +1,4 @@
-ghm = require 'github-flavored-markdown'
+marked = require 'marked'
 
 # A documentation node is responsible for parsing
 # the comments for known tags.
@@ -91,7 +91,7 @@ module.exports = class Doc
         else
           comment.push line
 
-      @comment = ghm.parse comment.join('\n'), @options.github
+      @comment = marked(comment.join('\n')).replace /\n/g, ''
 
   # Get a JSON representation of the object
   #

@@ -42,11 +42,6 @@ exports.run = ->
       describe  : 'The output directory.'
       default   : codoopts['output-dir'] || codoopts.o || './doc'
     )
-    .options('g',
-      alias     : 'github'
-      describe  : 'The GitHub repository.'
-      default   : codoopts['github'] || codoopts.g || ''
-    )
     .options('h',
       alias     : 'help'
       describe  : 'Show the help.'
@@ -58,7 +53,7 @@ exports.run = ->
     )
     .default('title', codoopts.title || 'CoffeeScript API Documentation')
 
-  argv     = optimist.argv
+  argv = optimist.argv
 
   if argv.h
     console.log optimist.help()
@@ -72,7 +67,6 @@ exports.run = ->
       title: argv.title
       quiet: argv.q
       private: argv.private
-      github: argv.g
 
     extra = false
 

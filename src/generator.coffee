@@ -1,6 +1,6 @@
 fs        = require 'fs'
 path      = require 'path'
-ghm       = require 'github-flavored-markdown'
+marked    = require 'marked'
 mkdirp    = require 'mkdirp'
 _         = require 'underscore'
 
@@ -37,7 +37,7 @@ module.exports = class Generator
   generateReadme: ->
     try
       readme   = fs.readFileSync @options.readme, 'utf-8'
-      readme   = ghm.parse(readme, @options.github) if /\.(markdown|md)$/.test @options.readme
+      readme   = marked readme if /\.(markdown|md)$/.test @options.readme
       filename = 'index.html'
 
       @templater.render 'file', {
@@ -70,7 +70,7 @@ module.exports = class Generator
     for extra in _.union [@options.readme], @options.extras
       try
         content = fs.readFileSync extra, 'utf-8'
-        content = ghm.parse(content, @options.github) if /\.(markdown|md)$/.test extra
+        content = marked content if /\.(markdown|md)$/.test extra
         filename = "#{ extra }.html"
 
         @templater.render 'file', {

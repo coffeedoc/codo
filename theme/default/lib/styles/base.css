@@ -31,3 +31,7 @@ h2 {
 #content a:hover {
   background: #ffffa5;
 }
+/* line 33, ../../src/styles/base.scss */
+#content #filecontents li {
+  line-height: 25px;
+}

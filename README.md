@@ -1,7 +1,8 @@
 # Codo [![Build Status](https://secure.travis-ci.org/netzpirat/codo.png)](http://travis-ci.org/netzpirat/codo.png)
 
-Codo is a CoffeeScript API documentation generator, similar to [YARD](http://yardoc.org/). Its generated documentation
-is focused on CoffeeScript class syntax for classical inheritance and not for JavaScript's prototypal inheritance.
+Codo is a [CoffeeScript](http://coffeescript.org/) API documentation generator, similar to [YARD](http://yardoc.org/).
+Its generated documentation is focused on CoffeeScript class syntax for classical inheritance and not for JavaScript's
+prototypal inheritance.
 
 ## Installation
 
@@ -20,11 +21,11 @@ and can be tagged to add more structured information to class and method comment
 Marks a method or class as private:
 
 ```CoffeeScript
- # @private
- class Renderer
+# @private
+class Renderer
 
-   # @private
-   detectEngine: ->
+  # @private
+  detectEngine: ->
 ```
 
 #### @abstract
@@ -32,11 +33,11 @@ Marks a method or class as private:
 Marks a class or method as abstract.
 
 ```CoffeeScript
- # @abstract
- class Listener
+# @abstract
+class Listener
 
-   # @abstract
-   listen: ->
+  # @abstract
+  listen: ->
 ```
 
 ### @deprecated
@@ -44,11 +45,11 @@ Marks a class or method as abstract.
 Marks a class or method as deprecated. You can optionally describe the deprecation reason.
 
 ```CoffeeScript
- # @deprecated Use Stripe
- class PayPal
+# @deprecated Use Stripe
+class PayPal
 
-   # @deprecated
-   pay: ->
+  # @deprecated
+  pay: ->
 ```
 
 ### @version
@@ -56,11 +57,11 @@ Marks a class or method as deprecated. You can optionally describe the deprecati
 Set the current version of a class or method:
 
 ```CoffeeScript
- # @version 1.0.9
- class Watcher
+# @version 1.0.9
+class Watcher
 
-   # @version 1.0.9
-   watch: ->
+  # @version 1.0.9
+  watch: ->
 ```
 
 ### @since
@@ -68,11 +69,11 @@ Set the current version of a class or method:
 Set the version when the class or method was first added:
 
 ```CoffeeScript
- # @since 1.0.2
- class Codo
+# @since 1.0.2
+class Codo
 
-   # @since 1.0.3
-   parse: ->
+  # @since 1.0.3
+  parse: ->
 ```
 
 ### @example
@@ -81,20 +82,20 @@ Add your open tasks to a class or method. You can provide an optional example ti
 you can specify this tag multiple times.
 
 ```CoffeeScript
- # @example
- #   adapter = Adapter.detect()
- #   adapter.start()
- #
- # @example Get adapter for a specific OS
- #   adapter = Adapter.for('darwin')
- #   adapter.start()
- #
- class Adapter
+# @example
+#   adapter = Adapter.detect()
+#   adapter.start()
+#
+# @example Get adapter for a specific OS
+#   adapter = Adapter.for('darwin')
+#   adapter.start()
+#
+class Adapter
 
-   # @example
-   #   adapter = Adapter.detect()
-   #   adapter.stop()
-   stop: ->
+  # @example
+  #   adapter = Adapter.detect()
+  #   adapter.stop()
+  stop: ->
 ```
 
 ### @todo
@@ -102,12 +103,12 @@ you can specify this tag multiple times.
 Add your open tasks to a class or method. You can specify this tag multiple times.
 
 ```CoffeeScript
- # @todo Refactor to use the new mailer library
- # @todo Cleanup handlers
- class Mailer
+# @todo Refactor to use the new mailer library
+# @todo Cleanup handlers
+class Mailer
 
-   # @todo Enable TLS
-   send: ->
+  # @todo Enable TLS
+  send: ->
 ```
 
 ### @note
@@ -115,11 +116,11 @@ Add your open tasks to a class or method. You can specify this tag multiple time
 Add your open tasks to a class or method. You can specify this tag multiple times.
 
 ```CoffeeScript
- # @note This class is thread safe
- class SocketPool
+# @note This class is thread safe
+class SocketPool
 
-   # @note Make sure the backend is running
-   connect: ->
+  # @note Make sure the backend is running
+  connect: ->
 ```
 
 ### @author
@@ -127,15 +128,15 @@ Add your open tasks to a class or method. You can specify this tag multiple time
 Marks a class or method as written by a specific author. You can specify this tag multiple times.
 
 ```CoffeeScript
- # @author Mickey Mouse
- # @author Donald Duck
- class Cartoon
+# @author Mickey Mouse
+# @author Donald Duck
+class Cartoon
 
-   # @author Mickey Mouse
-   play: ->
+  # @author Mickey Mouse
+  play: ->
 
-   # @author Donald Duck
-   wait: (seconds) ->
+  # @author Donald Duck
+  wait: (seconds) ->
 ```
 
 ## Generate documentation
@@ -151,7 +152,6 @@ Options:
   -r, --readme      The readme file used.  [default: "README.md"]
   -q, --quiet       Show no warnings.      [boolean]  [default: false]
   -o, --output-dir  The output directory.  [default: "./doc"]
-  -g, --github      The GitHub repository. [default: ""]
   -h, --help        Show the help.
   --private         Show private methods
   --title                                  [default: "CoffeeScript API Documentation"]
@@ -162,15 +162,15 @@ Options:
 You can define your project defaults by write your command line options to a `.codoopts` file:
 
 ```bash
- --readme     README.md
- --title      "Codo Documentation"
- --private
- --quiet
- --output-dir ./doc
- ./src
- -
- LICENSE
- CHANGELOG.md
+--readme     README.md
+--title      "Codo Documentation"
+--private
+--quiet
+--output-dir ./doc
+./src
+-
+LICENSE
+CHANGELOG.md
 ```
 
 ## Development
@@ -189,8 +189,8 @@ Pull requests are very welcome! Please try to follow these simple rules if appli
 
 ## Acknowledgment
 
-- [Jeremy Ashkenas](https://github.com/jashkenas) for [CoffeeScript][], that little language that compiles into
-JavaScript and makes me enjoy JavaScript development.
+- [Jeremy Ashkenas](https://github.com/jashkenas) for [CoffeeScript](http://coffeescript.org/), that mighty language
+that compiles to JavaScript and makes me enjoy JavaScript development.
 - [Loren Segal](https://github.com/lsegal) for creating YARD and giving me the perfect documentation syntax for
 dynamic programming languages.
 
