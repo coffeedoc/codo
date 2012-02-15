@@ -6,6 +6,8 @@ javascripts:
   codo:
     - theme/default/lib/scripts/jquery.js
     - theme/default/lib/scripts/codo.js
+    - theme/default/lib/scripts/highlight.js
+    - theme/default/lib/scripts/languages/*.js
 
 stylesheets:
   codo:

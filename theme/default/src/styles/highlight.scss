@@ -2,8 +2,9 @@
 
 pre {
   @include border-radius(3px);
+  @include box-shadow(rgba(0, 0, 0, 0.1) 1px 1px 2px);
 
-  padding: 5px 12px;
+  padding: 0;
   margin-top: 4px;
 
   border: 1px solid #EEF;

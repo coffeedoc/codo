@@ -6,7 +6,11 @@ pre {
   -ms-border-radius: 3px;
   -khtml-border-radius: 3px;
   border-radius: 3px;
-  padding: 5px 12px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
+  -o-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
+  padding: 0;
   margin-top: 4px;
   border: 1px solid #EEF;
   background-color: #F5F5FF;
