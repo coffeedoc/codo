@@ -15,8 +15,8 @@ exports.run = ->
 
     for config in configs.split('\n')
       # Key value configs
-      if option = /^-{1,2}([\w-]+)\s+['"]?(.*)['"]?$/.exec config
-        codoopts[option[1]] = option[2]
+      if option = /^-{1,2}([\w-]+)\s+(['"])?(.*?)\2?$/.exec config
+        codoopts[option[1]] = option[3]
       # Boolean configs
       else if bool = /^-{1,2}([\w-]+)\s*$/.exec config
         codoopts[bool[1]] = true
