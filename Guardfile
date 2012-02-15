@@ -6,6 +6,11 @@ group :codo do
   guard :shell do
     watch(%r{src|spec}) { `jasmine-node --coffee --color spec/parser_spec.coffee` }
   end
+
+  # Generate codo doc
+  guard :shell do
+    watch(%r{src|theme}) { `./bin/codo` }
+  end
 end
 
 group :theme do
@@ -31,7 +36,6 @@ group :theme do
 
   # Load changes with LiveReload into browser
   guard :livereload do
-    watch(%r{^doc\/assets\/codo\.css$}) { 'doc/assets/codo.css' }
-    watch(%r{^doc\/assets\/codo\.js}) { 'doc/assets/codo.js' }
+    watch(%r{^doc\/(.+)$})
   end
 end

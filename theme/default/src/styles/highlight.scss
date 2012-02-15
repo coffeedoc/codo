@@ -1,0 +1,13 @@
+@import "compass";
+
+pre {
+  @include border-radius(3px);
+
+  padding: 5px 12px;
+  margin-top: 4px;
+
+  border: 1px solid #EEF;
+  background-color: #F5F5FF;
+
+  font-family: monospace;
+}

@@ -1,0 +1,14 @@
+/* line 3, ../../src/styles/highlight.scss */
+pre {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  padding: 5px 12px;
+  margin-top: 4px;
+  border: 1px solid #EEF;
+  background-color: #F5F5FF;
+  font-family: monospace;
+}

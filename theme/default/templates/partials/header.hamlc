@@ -1,9 +1,13 @@
 #header
   #menu
-    %a{ href: '_index.html', title: 'Index' } Index
-    %span.title File: README
-  #search
+    - if @breadcrumbs.length isnt 0
+      - current = @breadcrumbs.pop()
+      - for breadcrumb in @breadcrumbs
+        %a{ href: breadcrumb.href, title: breadcrumb.name }= breadcrumb.name
+        &raquo;
+      %span.title= current.name
 
+  #search
     %a{ id: 'class_list_link', href: '#' } Class List
     %a{ id: 'method_list_link', href: '#' } Method List
     %a{ id: 'file_list_link', href: '#' } File List

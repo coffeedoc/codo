@@ -21,6 +21,7 @@ module.exports = class Templater
       codoVersion: 'v' + JSON.parse(fs.readFileSync('package.json', 'utf-8'))['version']
       generationDate: new Date().toString()
       JST: @JST
+      title: @options.title
 
     for filename in findit.sync './theme/default/templates'
       if match = /theme\/default\/templates\/(.+).hamlc$/.exec filename

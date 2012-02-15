@@ -1,0 +1,18 @@
+/* line 1, ../../src/styles/footer.scss */
+#footer {
+  margin-top: 15px;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 7px 0;
+  color: #999;
+}
+/* line 8, ../../src/styles/footer.scss */
+#footer a:link, #footer a:visited {
+  color: #444;
+  text-decoration: none;
+  border-bottom: 1px dotted #bbd;
+}
+/* line 14, ../../src/styles/footer.scss */
+#footer a:hover {
+  color: #05a;
+}

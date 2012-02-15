@@ -1,0 +1,33 @@
+/* line 1, ../../src/styles/base.scss */
+body {
+  padding: 0 20px;
+  font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+  font-size: 13px;
+}
+
+/* line 7, ../../src/styles/base.scss */
+h1 {
+  font-size: 25px;
+  margin: 1em 0 0.5em;
+  padding-top: 4px;
+  border-top: 1px dotted #d5d5d5;
+}
+
+/* line 14, ../../src/styles/base.scss */
+h2 {
+  padding: 0;
+  padding-bottom: 3px;
+  border-bottom: 1px #aaa solid;
+  font-size: 1.4em;
+  margin: 1.8em 0 0.5em;
+}
+
+/* line 23, ../../src/styles/base.scss */
+#content a:link, #content a:visited {
+  text-decoration: none;
+  color: #05a;
+}
+/* line 28, ../../src/styles/base.scss */
+#content a:hover {
+  background: #ffffa5;
+}

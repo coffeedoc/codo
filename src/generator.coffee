@@ -2,6 +2,7 @@ fs        = require 'fs'
 path      = require 'path'
 ghm       = require 'github-flavored-markdown'
 mkdirp    = require 'mkdirp'
+_         = require 'underscore'
 
 Templater = require './util/templater'
 
@@ -32,9 +33,25 @@ module.exports = class Generator
   #
   generateReadme: ->
     try
-      readme = fs.readFileSync @options.readme, 'utf-8'
-      readme = ghm.parse(readme, @options.github) if /\.(markdown|md)$/.test @options.readme
-      @templater.render 'file', { filename: @options.readme, content: readme }, 'index.html'
+      readme   = fs.readFileSync @options.readme, 'utf-8'
+      readme   = ghm.parse(readme, @options.github) if /\.(markdown|md)$/.test @options.readme
+      filename = 'index.html'
+
+      @templater.render 'file', {
+        filename: @options.readme,
+        content: readme
+        breadcrumbs: [
+          {
+            href: '_index.html'
+            name: 'Index'
+          }
+          {
+            href: filename
+            name: @options.readme
+          }
+        ]
+      }, filename
+
     catch error
       console.log "[ERROR] Cannot generate readme file #{ @options.readme }: #{ error }"
 
@@ -47,24 +64,44 @@ module.exports = class Generator
   # Generates the pages for all the extra files.
   #
   generateExtras: ->
-    for extra in @options.extras
+    for extra in _.union [@options.readme], @options.extras
       try
         content = fs.readFileSync extra, 'utf-8'
         content = ghm.parse(content, @options.github) if /\.(markdown|md)$/.test extra
-        @templater.render 'file', { filename: extra, content: content }, "#{ extra }.html"
+        filename = "#{ extra }.html"
+
+        @templater.render 'file', {
+          filename: extra,
+          content: content
+          breadcrumbs: [
+            {
+              href: '_index.html'
+              name: 'Index'
+            }
+            {
+              href: filename
+              name: extra
+            }
+          ]
+        }, filename
+
       catch error
         console.log "[ERROR] Cannot generate extra file #{ extra }: #{ error }"
 
   # Generate the alphabetical index
   #
   generateIndex: ->
-    @templater.render 'index', { classes: @parser.classes }, '_index.html'
+    @templater.render 'index', {
+      classes: @parser.classes
+      files: _.union [@options.readme], @options.extras
+      breadcrumbs: []
+    }, '_index.html'
 
   # Copy the styles and scripts.
   #
   copyAssets: ->
-    @copy './theme/default/assets/codo.css', "#{ @options.output }/style/codo.css"
-    @copy './theme/default/assets/codo.js', "#{ @options.output }/script/codo.js"
+    @copy './theme/default/assets/codo.css', "#{ @options.output }/assets/codo.css"
+    @copy './theme/default/assets/codo.js', "#{ @options.output }/assets/codo.js"
 
   # Copy a file
   #
@@ -80,4 +117,3 @@ module.exports = class Generator
         from = fs.createReadStream from
         to = fs.createWriteStream to
         to.once 'open', (fd) -> require('util').pump from, to
-

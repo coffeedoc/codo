@@ -1,7 +1,4 @@
 %head
   %title= @title
-
-  %link{ rel: 'stylesheet', href: 'style/codo.css', type: 'text/css' }
-
-  %script{ src: 'script/jquery.js' }
-  %script{ src: 'script/codo.js' }
+  %link{ rel: 'stylesheet', href: 'assets/codo.css', type: 'text/css' }
+  %script{ src: 'assets/codo.js' }
