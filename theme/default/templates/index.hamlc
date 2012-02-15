@@ -12,7 +12,7 @@
 
         %h2 File Listing
 
-        #%ul#files
+        %ul#files
           - for file in @files
             %li
               %a{ href: file + '.html', title: file, }= file
