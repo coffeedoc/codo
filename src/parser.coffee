@@ -14,7 +14,9 @@ module.exports = class Parser
 
   # Construct the parser
   #
-  constructor: ->
+  # @param [Object] options the parser options
+  #
+  constructor: (@options) ->
     @files   = []
     @classes = []
 
@@ -38,7 +40,7 @@ module.exports = class Parser
     tokens.traverseChildren true, (child) =>
       if child.constructor.name is 'Class'
         doc = @previousNode if @previousNode?.constructor.name is 'Comment'
-        @classes.push new Class(child, doc, file)
+        @classes.push new Class(child, file, @options, doc)
 
       @previousNode = child
       true
@@ -143,7 +145,7 @@ module.exports = class Parser
       Classes:   #{ _.str.pad(classCount, maxCountLength) } (#{ _.str.pad(noDocClasses, maxNoDocLength) } undocumented)
       Methods:   #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethods, maxNoDocLength) } undocumented)
       Constants: #{ _.str.pad(constantCount, maxCountLength) } (#{ _.str.pad(noDocConstants, maxNoDocLength) } undocumented)
-       #{ _.str.sprintf("%.2f", documented) }% documented
+       #{ _.str.sprintf('%.2f', documented) }% documented
       """
 
     console.log stats

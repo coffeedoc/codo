@@ -8,15 +8,16 @@ module.exports = class Method
   # Construct a method
   #
   # @param [Object] node the node
+  # @param [Object] options the parser options
   # @param [Object] comment the comment node
   #
-  constructor: (@node, comment) ->
+  constructor: (@node, @options, comment) ->
     @parameters = []
 
-    @doc = new Doc(comment)
+    @doc = new Doc(comment, @options)
 
     for param in @node.value.params
-      @parameters.push new Parameter(param)
+      @parameters.push new Parameter(param, @options)
 
     @getName()
 

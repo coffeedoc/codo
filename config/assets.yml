@@ -1,0 +1,12 @@
+embed_assets: off
+compress_assets: on
+gzip_assets: off
+
+javascripts:
+  codo:
+    - theme/default/lib/scripts/jquery.js
+    - theme/default/lib/scripts/codo.js
+
+stylesheets:
+  codo:
+    - theme/default/lib/styles/*.css

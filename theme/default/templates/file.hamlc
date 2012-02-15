@@ -1,0 +1,11 @@
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body
+    != @JST['partials/header'](@)
+
+    #content
+      #filecontents
+        != @content
+
+    != @JST['partials/footer'](@)

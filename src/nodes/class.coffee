@@ -9,14 +9,15 @@ module.exports = class Class
   # Construct a class
   #
   # @param [Object] node the class node
-  # @param [Object] comment the comment node
   # @param [String] the filename
+  # @param [Object] options the parser options
+  # @param [Object] comment the comment node
   #
-  constructor: (@node, comment, @fileName) ->
+  constructor: (@node, @fileName, @options, comment) ->
     @methods = []
     @variables = []
 
-    @doc = new Doc(comment)
+    @doc = new Doc(comment, @options)
 
     previousExp = null
 
@@ -25,7 +26,7 @@ module.exports = class Class
 
         when 'Assign'
           doc = previousExp if previousExp?.constructor.name is 'Comment'
-          @variables.push new Variable(exp, true, doc)
+          @variables.push new Variable(exp, @options, true, doc)
           doc = null
 
         when 'Value'
@@ -35,11 +36,11 @@ module.exports = class Class
             switch prop.value?.constructor.name
               when 'Code'
                 doc = previousProp if previousProp?.constructor.name is 'Comment'
-                @methods.push new Method(prop, doc)
+                @methods.push new Method(prop, @options, doc)
                 doc = null
 
               when 'Value'
-                @variables.push new Variable(prop)
+                @variables.push new Variable(prop, @options)
 
             previousProp = prop
       previousExp = exp

@@ -19,7 +19,8 @@
     "node" : ">=0.4.0"
   },
   "directories" : {
-    "lib" : "./lib"
+    "lib" : "./lib",
+    "theme/default/assets" : "./theme/default/assets"
   },
   "main" : "./lib/codo",
   "bin" : {
@@ -31,7 +32,9 @@
     "optimist" : ">= 0.3.0",
     "github-flavored-markdown": ">= 1.0.1",
     "underscore" : ">= 0.1.0",
-    "underscore.string" : ">= 0.1.0"
+    "underscore.string" : ">= 0.1.0",
+    "haml-coffee" : ">= 0.6.0",
+    "mkdirp" : ">= 0.1.0"
   },
   "devDependencies" : {
     "jasmine-node" : ">= 1.0.13"

@@ -1,7 +1,8 @@
-fs      = require('fs')
-util    = require('util')
-findit  = require('findit')
-Parser  = require('./parser')
+fs        = require('fs')
+util      = require('util')
+findit    = require('findit')
+Parser    = require('./parser')
+Generator = require('./generator')
 
 exports.run = ->
 
@@ -41,6 +42,11 @@ exports.run = ->
       describe  : 'The output directory.'
       default   : codoopts['output-dir'] || codoopts.o || './doc'
     )
+    .options('g',
+      alias     : 'github'
+      describe  : 'The GitHub repository.'
+      default   : codoopts['github'] || codoopts.g || ''
+    )
     .options('h',
       alias     : 'help'
       describe  : 'Show the help.'
@@ -66,6 +72,7 @@ exports.run = ->
       title: argv.title
       quiet: argv.q
       private: argv.private
+      github: argv.g
 
     extra = false
 
@@ -80,7 +87,7 @@ exports.run = ->
     options.inputs.push './src' if options.inputs.length is 0
 
     try
-      parser = new Parser()
+      parser = new Parser(options)
 
       for input in options.inputs
         for filename in findit.sync input
@@ -90,6 +97,7 @@ exports.run = ->
             catch error
               console.log "Cannot parse file #{ filename }: #{ error.message }"
 
+      new Generator(parser, options).generate()
       parser.showResult() unless options.quiet
 
     catch error

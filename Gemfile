@@ -4,4 +4,6 @@ gem 'ruby_gntp'
 
 gem 'guard'
 gem 'guard-coffeescript'
-gem 'guard-process'
+gem 'guard-shell'
+gem 'guard-compass'
+gem 'guard-jammit'

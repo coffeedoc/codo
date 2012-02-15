@@ -5,8 +5,9 @@ module.exports = class Parameter
   # Construct a parameter
   #
   # @param [Object] node the node
+  # @param [Object] options the parser options
   #
-  constructor: (@node) ->
+  constructor: (@node, @options) ->
 
   # Get the full parameter signature.
   #

@@ -1,0 +1,7 @@
+#footer
+  Generated on
+  = @generationDate
+  by
+  %a{ href: 'https://github.com/netzpirat/codo', title: 'CoffeeScript API documentation generator' } codo
+  = @codoVersion
+  = surround '(Node.js ', ')', -> process.version

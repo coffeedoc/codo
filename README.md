@@ -20,10 +20,11 @@ and can be tagged to add more structured information to class and method comment
 Marks a method or class as private:
 
 ```CoffeeScript
-class Renderer
+ # @private
+ class Renderer
 
-  # @private
-  detectEngine: ->
+   # @private
+   detectEngine: ->
 ```
 
 #### @abstract
@@ -31,11 +32,11 @@ class Renderer
 Marks a class or method as abstract.
 
 ```CoffeeScript
-# @abstract
-class Listener
+ # @abstract
+ class Listener
 
-  # @abstract
-  listen: ->
+   # @abstract
+   listen: ->
 ```
 
 ### @deprecated
@@ -43,11 +44,11 @@ class Listener
 Marks a class or method as deprecated. You can optionally describe the deprecation reason.
 
 ```CoffeeScript
-# @deprecated Use Stripe
-class PayPal
+ # @deprecated Use Stripe
+ class PayPal
 
-  # @deprecated
-  pay: ->
+   # @deprecated
+   pay: ->
 ```
 
 ### @version
@@ -55,11 +56,11 @@ class PayPal
 Set the current version of a class or method:
 
 ```CoffeeScript
-# @version 1.0.9
-class Watcher
+ # @version 1.0.9
+ class Watcher
 
-  # @version 1.0.9
-  watch: ->
+   # @version 1.0.9
+   watch: ->
 ```
 
 ### @since
@@ -67,11 +68,11 @@ class Watcher
 Set the version when the class or method was first added:
 
 ```CoffeeScript
-# @since 1.0.2
-class Codo
+ # @since 1.0.2
+ class Codo
 
-  # @since 1.0.3
-  parse: ->
+   # @since 1.0.3
+   parse: ->
 ```
 
 ### @example
@@ -80,20 +81,20 @@ Add your open tasks to a class or method. You can provide an optional example ti
 you can specify this tag multiple times.
 
 ```CoffeeScript
-# @example
-#   adapter = Adapter.detect()
-#   adapter.start()
-#
-# @example Get adapter for a specific OS
-#   adapter = Adapter.for('darwin')
-#   adapter.start()
-#
-class Adapter
+ # @example
+ #   adapter = Adapter.detect()
+ #   adapter.start()
+ #
+ # @example Get adapter for a specific OS
+ #   adapter = Adapter.for('darwin')
+ #   adapter.start()
+ #
+ class Adapter
 
-  # @example
-  #   adapter = Adapter.detect()
-  #   adapter.stop()
-  stop: ->
+   # @example
+   #   adapter = Adapter.detect()
+   #   adapter.stop()
+   stop: ->
 ```
 
 ### @todo
@@ -101,12 +102,12 @@ class Adapter
 Add your open tasks to a class or method. You can specify this tag multiple times.
 
 ```CoffeeScript
-# @todo Refactor to use the new mailer library
-# @todo Cleanup handlers
-class Mailer
+ # @todo Refactor to use the new mailer library
+ # @todo Cleanup handlers
+ class Mailer
 
-  # @todo Enable TLS
-  send: ->
+   # @todo Enable TLS
+   send: ->
 ```
 
 ### @note
@@ -114,11 +115,11 @@ class Mailer
 Add your open tasks to a class or method. You can specify this tag multiple times.
 
 ```CoffeeScript
-# @note This class is thread safe
-class SocketPool
+ # @note This class is thread safe
+ class SocketPool
 
-  # @note Make sure the backend is running
-  connect: ->
+   # @note Make sure the backend is running
+   connect: ->
 ```
 
 ### @author
@@ -126,15 +127,15 @@ class SocketPool
 Marks a class or method as written by a specific author. You can specify this tag multiple times.
 
 ```CoffeeScript
-# @author Mickey Mouse
-# @author Donald Duck
-class Cartoon
+ # @author Mickey Mouse
+ # @author Donald Duck
+ class Cartoon
 
-  # @author Mickey Mouse
-  play: ->
+   # @author Mickey Mouse
+   play: ->
 
-  # @author Donald Duck
-  wait: (seconds) ->
+   # @author Donald Duck
+   wait: (seconds) ->
 ```
 
 ## Generate documentation
@@ -160,16 +161,15 @@ Options:
 You can define your project defaults by write your command line options to a `.codoopts` file:
 
 ```bash
---readme     README.md
---title      "Codo Documentation"
---private
---quiet
---output-dir ./doc
-./src
--
-LICENSE
-CHANGELOG.md
-
+ --readme     README.md
+ --title      "Codo Documentation"
+ --private
+ --quiet
+ --output-dir ./doc
+ ./src
+ -
+ LICENSE
+ CHANGELOG.md
 ```
 
 ## Alternatives

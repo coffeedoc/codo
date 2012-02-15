@@ -7,10 +7,10 @@ module.exports = class Doc
 
   # Construct a documentation
   #
-  # @param [Object] node the node
-  # @param [Object] comment the comment node
+  # @param [Object] node the comment node
+  # @param [Object] options the parser options
   #
-  constructor: (@node) ->
+  constructor: (@node, @options) ->
     if @node
       comment = []
       lines = @node.comment.split '\n'
@@ -37,8 +37,8 @@ module.exports = class Doc
             desc: param[3]
 
         else if option = /^@option\s+([^ ]*)\s+\[(.*?)\]\s+([^ ]*)\s+(.*)/.exec line
-          @options or= []
-          @options.push
+          @paramsOptions or= []
+          @paramsOptions.push
             param: option[1]
             type: option[2]
             name: option[3]
@@ -91,8 +91,7 @@ module.exports = class Doc
         else
           comment.push line
 
-      # TODO: Set github repo
-      @comment = ghm.parse comment.join('\n'), 'netzpirat/codo'
+      @comment = ghm.parse comment.join('\n'), @options.github
 
   # Get a JSON representation of the object
   #
@@ -112,7 +111,7 @@ module.exports = class Doc
         authors: @authors
         comment: @comment
         params: @params
-        options: @options
+        options: @paramsOptions
         see: @see
         returnValue: @returnValue
 

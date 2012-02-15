@@ -17,7 +17,17 @@ for filename in findit.sync './spec/templates'
 
       describe "The CoffeeScript file #{ filename }", ->
         it 'parses correctly to JSON', ->
-          parser = new Parser()
+          parser = new Parser({
+            inputs: []
+            output: ''
+            extras: []
+            readme: ''
+            title: ''
+            quiet: false
+            private: true
+            github: ''
+          })
+
           tokens = parser.parseContent source, filename
           generated = JSON.stringify(parser.toJSON(), null, 2)
 
