@@ -1,6 +1,6 @@
 # Codo [![Build Status](https://secure.travis-ci.org/netzpirat/codo.png)](http://travis-ci.org/netzpirat/codo.png)
 
-Codo is a CoffeeScript API documentation generator, similar to [YARD](http://yardoc.org/). It's generated documentation
+Codo is a CoffeeScript API documentation generator, similar to [YARD](http://yardoc.org/). Its generated documentation
 is focused on CoffeeScript class syntax for classical inheritance and not for JavaScript's prototypal inheritance.
 
 ## Installation
