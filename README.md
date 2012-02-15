@@ -151,6 +151,7 @@ Options:
   -r, --readme      The readme file used.  [default: "README.md"]
   -q, --quiet       Show no warnings.      [boolean]  [default: false]
   -o, --output-dir  The output directory.  [default: "./doc"]
+  -g, --github      The GitHub repository.  [default: ""]
   -h, --help        Show the help.
   --private         Show private methods
   --title                                  [default: "CoffeeScript API Documentation"]
