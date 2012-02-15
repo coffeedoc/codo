@@ -173,6 +173,27 @@ You can define your project defaults by write your command line options to a `.c
  CHANGELOG.md
 ```
 
+## Development
+
+- Source hosted at [GitHub](https://github.com/netzpirat/codo).
+- Issues hosted at [GitHub Issues](https://github.com/netzpirat/codo/issues).
+
+Pull requests are very welcome! Please try to follow these simple rules if applicable:
+
+* Please create a topic branch for every separate change you make.
+* Make sure your patches are well tested.
+* Update the documentation.
+* Update the README.
+* Update the CHANGELOG for noteworthy changes.
+* Please **do not change** the version number.
+
+## Acknowledgment
+
+- [Jeremy Ashkenas](https://github.com/jashkenas) for [CoffeeScript][], that little language that compiles into
+JavaScript and makes me enjoy JavaScript development.
+- [Loren Segal](https://github.com/lsegal) for creating YARD and giving me the perfect documentation syntax for
+dynamic programming languages.
+
 ## Alternatives
 
 * [Docco](http://jashkenas.github.com/docco/) is a quick-and-dirty, literate-programming-style documentation generator.
