@@ -15,6 +15,17 @@ and can be tagged to add more structured information to class and method comment
 
 ### Class and method tags
 
+#### @private
+
+Marks a method or class as private:
+
+```CoffeeScript
+class Renderer
+
+  # @private
+  detectEngine: ->
+```
+
 #### @abstract
 
 Marks a class or method as abstract.
@@ -126,36 +137,45 @@ class Cartoon
   wait: (seconds) ->
 ```
 
-### Method tags
-
-#### @private
-
-Marks a method as private:
-
-```CoffeeScript
-class Renderer
-
-  # @private
-  detectEngine: ->
-```
-
 ## Generate documentation
 
 After the installation you will have a `codo` binary that can be used to generate the documentation recursively for all
 CoffeeScript files within a directory.
 
 ```bash
-Usage: codo
+$ codo --help
+Usage: codo [options] [source_files [- extra_files]]
 
 Options:
-  -i, --input   Set the input directory   [required]
-  -o, --output  Set the output directory
+  -r, --readme      The readme file used.  [default: "README.md"]
+  -q, --quiet       Show no warnings.      [boolean]  [default: false]
+  -o, --output-dir  The output directory.  [default: "./doc"]
+  -h, --help        Show the help.
+  --private         Show private methods
+  --title                                  [default: "CoffeeScript API Documentation"]
+```
+
+### Project defaults
+
+You can define your project defaults by write your command line options to a `.codoopts` file:
+
+```bash
+--readme     README.md
+--title      "Codo Documentation"
+--private
+--quiet
+--output-dir ./doc
+./src
+-
+LICENSE
+CHANGELOG.md
+
 ```
 
 ## Alternatives
 
 * [Docco](http://jashkenas.github.com/docco/) is a quick-and-dirty, literate-programming-style documentation generator.
-* [CoffeeDoc](https://github.com/omarkhan/coffeedoc) an alternative API documentation generator for CoffeeScript
+* [CoffeeDoc](https://github.com/omarkhan/coffeedoc) an alternative API documentation generator for CoffeeScript.
 * [JsDoc](https://github.com/micmath/jsdoc) an automatic documentation generator for JavaScript.
 * [Dox](https://github.com/visionmedia/dox) JavaScript documentation generator for node using markdown and jsdoc.
 
