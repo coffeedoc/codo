@@ -4,4 +4,8 @@
   by
   %a{ href: 'https://github.com/netzpirat/codo', title: 'CoffeeScript API documentation generator' } codo
   = @codoVersion
-  = surround '(Node.js ', ')', -> process.version
+  = surround '(Node.js ', ').', -> process.version
+  &#10056;
+  %a{ href: 'http://twitter.com/#!/netzpirat'} @netzpirat
+  &#10056;
+  %a{ href: 'https://mksoft.ch'} mksoft.ch
