@@ -47,26 +47,41 @@ module.exports = class Parser
   # @param [String] content the CoffeeScript file content
   #
   convertComments: (content) ->
-    result = []
-    inComment = false
+    result        = []
+    comment       = []
+    inComment     = false
     indentComment = 0
 
     for line in content.split('\n')
-      if comment = /^(\s*#)\s?(\s*.*)/.exec line
+      if commentLine = /^(\s*#)\s?(\s*.*)/.exec line
         show = true
 
         if inComment
-          result.push comment[2]
+          comment.push commentLine[2]
         else
           inComment = true
-          indentComment =  comment[1].length - 1
+          indentComment =  commentLine[1].length - 1
 
-          result.push whitespace(indentComment) + '###'
-          result.push comment[2]
+          comment.push whitespace(indentComment) + '###'
+          comment.push commentLine[2]
       else
         if inComment
           inComment = false
-          result.push whitespace(indentComment) + '###'
+          comment.push whitespace(indentComment) + '###'
+
+          # Push here comments only before certain lines
+          if ///
+               ( # Class
+                 class\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
+               | # Function
+                 [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s+(\(.*\)\s+[-=]>)?
+               | # Constant
+                 @[$A-Z_][A-Z_]*)
+             ///.exec line
+
+            result.push c for c in comment
+
+          comment = []
 
         result.push line
 
