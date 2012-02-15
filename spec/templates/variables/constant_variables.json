@@ -2,20 +2,23 @@
   {
     "file":      "spec/templates/variables/constant_variables.coffee",
     "class":     {
-      "className": "TestContsantVariables",
-      "name":      "TestContsantVariables",
+      "className": "TestContstantVariables",
+      "name":      "TestContstantVariables",
       "namespace": ""
     },
     "methods":   [],
     "variables": [
       {
+        "doc":      {
+          "comment": "<p>Modify it here</p>"
+        },
         "type":     "class",
         "constant": true,
         "name":     "TEST",
         "value":    "'Hi'"
       },
       {
-        "type":     "instance",
+        "type":     "class",
         "constant": true,
         "name":     "ANOTHER_CONST",
         "value":    "['a', 'b']"

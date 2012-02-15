@@ -1,3 +1,5 @@
+Doc      = require './doc'
+
 # A CoffeeScript variable
 #
 module.exports = class Variable
@@ -6,9 +8,11 @@ module.exports = class Variable
   #
   # @param [Object] node the node
   # @param [Boolean] clazz whether its a class variable or not
+  # @param [Object] comment the comment node
   #
-  constructor: (@node, @clazz = false) ->
+  constructor: (@node, @clazz = false, comment = null) ->
     @getName()
+    @doc = new Doc(comment)
 
   # Get the variable type, either `class` or `constant`
   #
@@ -69,6 +73,7 @@ module.exports = class Variable
   #
   toJSON: ->
     json =
+      doc: @doc
       type: @getType()
       constant: @isConstant()
       name: @getName()
