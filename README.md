@@ -130,7 +130,7 @@ class Cartoon
 
 #### @private
 
-Marks a method as abstract:
+Marks a method as private:
 
 ```CoffeeScript
 class Renderer
