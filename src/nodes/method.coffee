@@ -11,8 +11,6 @@ module.exports = class Method
   # @param [Object] comment the comment node
   #
   constructor: (@node, comment) ->
-    console.log @node
-
     @parameters = []
 
     @doc = new Doc(comment)
