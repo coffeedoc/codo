@@ -1,73 +1,84 @@
 [
   {
-    "file":      "spec/templates/methods/instance_methods.coffee",
-    "class":     {
+    "file": "spec/templates/methods/instance_methods.coffee",
+    "class": {
       "className": "TestInstanceMethods",
-      "name":      "TestInstanceMethods",
+      "name": "TestInstanceMethods",
       "namespace": ""
     },
-    "methods":   [
+    "methods": [
       {
-        "type":       "instance",
-        "signature":  "- (void) helper()",
-        "name":       "helper",
+        "type": "instance",
+        "signature": "- (void) helper()",
+        "name": "helper",
+        "bound": false,
         "parameters": []
       },
       {
-        "type":       "instance",
-        "signature":  "- (void) another(param, obj)",
-        "name":       "another",
+        "type": "instance",
+        "signature": "- (void) another(param, obj)",
+        "name": "another",
+        "bound": false,
         "parameters": [
           {
-            "name":  "param",
+            "name": "param",
             "splat": false
           },
           {
-            "name":  "obj",
+            "name": "obj",
             "splat": false
           }
         ]
       },
       {
-        "type":       "instance",
-        "signature":  "- (void) anotherWithValues(param = 123, obj = { a: 1 }, yup, comp = new TestInstanceMethods())",
-        "name":       "anotherWithValues",
+        "type": "instance",
+        "signature": "- (void) anotherWithValues(param = 123, obj = { a: 1 }, yup, comp = new TestInstanceMethods())",
+        "name": "anotherWithValues",
+        "bound": false,
         "parameters": [
           {
-            "name":    "param",
+            "name": "param",
             "default": "123",
-            "splat":   false
-          },
-          {
-            "name":    "obj",
-            "default": "{\n  a: 1\n}",
-            "splat":   false
-          },
-          {
-            "name":  "yup",
             "splat": false
           },
           {
-            "name":    "comp",
+            "name": "obj",
+            "default": "{\n  a: 1\n}",
+            "splat": false
+          },
+          {
+            "name": "yup",
+            "splat": false
+          },
+          {
+            "name": "comp",
             "default": "new TestInstanceMethods()",
-            "splat":   false
+            "splat": false
           }
         ]
       },
       {
-        "type":       "instance",
-        "signature":  "- (void) nowWithSpalt(foo, bar...)",
-        "name":       "nowWithSpalt",
+        "type": "instance",
+        "signature": "- (void) nowWithSpalt(foo, bar...)",
+        "name": "nowWithSpalt",
+        "bound": false,
         "parameters": [
           {
-            "name":  "foo",
+            "name": "foo",
             "splat": false
           },
           {
-            "name":  "bar",
+            "name": "bar",
             "splat": true
           }
         ]
+      },
+      {
+        "type": "instance",
+        "signature": "- (void) bound()",
+        "name": "bound",
+        "bound": true,
+        "parameters": []
       }
     ],
     "variables": []

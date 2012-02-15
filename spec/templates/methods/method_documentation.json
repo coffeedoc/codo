@@ -55,6 +55,7 @@
         "type":       "instance",
         "signature":  "- (Boolean) do(it, options) (private)",
         "name":       "do",
+        "bound":      false,
         "parameters": [
           {
             "name":  "it",

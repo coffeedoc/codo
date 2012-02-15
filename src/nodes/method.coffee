@@ -11,6 +11,8 @@ module.exports = class Method
   # @param [Object] comment the comment node
   #
   constructor: (@node, comment) ->
+    console.log @node
+
     @parameters = []
 
     @doc = new Doc(comment)
@@ -108,6 +110,7 @@ module.exports = class Method
       type: @getType()
       signature: @getSignature()
       name: @getName()
+      bound: @node.value.bound
       parameters: []
 
     for parameter in @getParamaters()
