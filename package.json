@@ -29,7 +29,9 @@
     "coffee-script" : "= 1.2.0",
     "findit" : ">= 0.1.2",
     "optimist" : ">= 0.3.0",
-    "github-flavored-markdown": ">= 1.0.1"
+    "github-flavored-markdown": ">= 1.0.1",
+    "underscore" : ">= 0.1.0",
+    "underscore.string" : ">= 0.1.0"
   },
   "devDependencies" : {
     "jasmine-node" : ">= 1.0.13"

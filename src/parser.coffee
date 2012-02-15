@@ -1,4 +1,6 @@
 fs           = require 'fs'
+_            = require 'underscore'
+_.str        = require 'underscore.string'
 
 CoffeeScript = require 'coffee-script'
 Class        = require './nodes/class'
@@ -13,6 +15,7 @@ module.exports = class Parser
   # Construct the parser
   #
   constructor: ->
+    @files   = []
     @classes = []
 
   # Parse the given CoffeeScript file
@@ -21,6 +24,7 @@ module.exports = class Parser
   #
   parseFile: (file) ->
     @parseContent fs.readFileSync(file, 'utf8'), file
+    @files.push file
 
   # Parse the given CoffeeScript content
   #
@@ -86,6 +90,63 @@ module.exports = class Parser
         result.push line
 
     result.join('\n')
+
+  # Get all parsed methods
+  #
+  # @return [Array<Method>] all methods
+  #
+  getAllMethods: ->
+    unless @methods
+      @methods = []
+
+      for clazz in @classes
+        @methods = _.union @methods, clazz.getMethods()
+
+    @methods
+
+  # Get all parsed variables
+  #
+  # @return [Array<Variable>] all variables
+  #
+  getAllVariables: ->
+    unless @variables
+      @variables = []
+
+    for clazz in @classes
+      @variables = _.union @variables, clazz.getVariables()
+
+    @variables
+
+  # Show the parsing statistics
+  #
+  showResult: ->
+    fileCount      = @files.length
+
+    classCount     = @classes.length
+    noDocClasses   = _.filter(@classes, (clazz) -> _.isUndefined clazz.getDoc()).length
+
+    methodCount    = @getAllMethods().length
+    noDocMethods   = _.filter(@getAllMethods(), (method) -> _.isUndefined method.getDoc()).length
+
+    constants      = _.filter(@getAllVariables(), (variable) -> variable.isConstant())
+    constantCount  = constants.length
+    noDocConstants = _.filter(constants, (constant) -> _.isUndefined constant.getDoc()).length
+
+    documented = 100 - 100 / (classCount + methodCount + constantCount) * (noDocClasses + noDocMethods + noDocConstants)
+
+    maxCountLength = String(_.max([fileCount, classCount, methodCount, constantCount], (count) -> String(count).length)).length + 6
+    maxNoDocLength = String(_.max([noDocClasses, noDocMethods, noDocConstants], (count) -> String(count).length)).length
+
+    stats =
+      """
+      Files:     #{ _.str.pad(fileCount, maxCountLength) }
+      Classes:   #{ _.str.pad(classCount, maxCountLength) } (#{ _.str.pad(noDocClasses, maxNoDocLength) } undocumented)
+      Methods:   #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethods, maxNoDocLength) } undocumented)
+      Constants: #{ _.str.pad(constantCount, maxCountLength) } (#{ _.str.pad(noDocConstants, maxNoDocLength) } undocumented)
+       #{ _.str.sprintf("%.2f", documented) }% documented
+      """
+
+    console.log stats
 
   # Get a JSON representation of the object
   #

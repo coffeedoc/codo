@@ -90,5 +90,7 @@ exports.run = ->
             catch error
               console.log "Cannot parse file #{ filename }: #{ error.message }"
 
+      parser.showResult() unless options.quiet
+
     catch error
       console.log "Cannot generate documentation: #{ error.message }"
