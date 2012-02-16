@@ -18,7 +18,7 @@ module.exports = class Templater
     @JST = []
 
     @globalContext =
-      codoVersion: 'v' + JSON.parse(fs.readFileSync('package.json', 'utf-8'))['version']
+      codoVersion: 'v' + JSON.parse(fs.readFileSync("#{ __dirname }/../../package.json", 'utf-8'))['version']
       generationDate: new Date().toString()
       JST: @JST
       title: @options.title

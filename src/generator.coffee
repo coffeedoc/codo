@@ -172,8 +172,8 @@ module.exports = class Generator
   # Copy the styles and scripts.
   #
   copyAssets: ->
-    @copy './theme/default/assets/codo.css', "#{ @options.output }/assets/codo.css"
-    @copy './theme/default/assets/codo.js', "#{ @options.output }/assets/codo.js"
+    @copy "#{ __dirname }/../theme/default/assets/codo.css", "#{ @options.output }/assets/codo.css"
+    @copy "#{ __dirname }/../theme/default/assets/codo.js", "#{ @options.output }/assets/codo.js"
 
   # Copy a file
   #
