@@ -1,14 +1,19 @@
 %ul.summary
   - for method in @methods
     %li{ deprecated: if method.doc?.deprecated then true else false }
+
       %span.signature
         %a{ href: "##{ method.name }-#{ method.type }" }
           != method.signature
-      - if method.doc?.deprecated
+
+      - if method.doc?.abstract || method.doc?.abstract is ''
+        %span.abstract.note.title Abstract
+
+      - if method.doc?.deprecated || method.doc?.deprecated is ''
         %span.deprecated.note.title Deprecated
 
       %span.desc
-        - if method.doc?.deprecated
+        - if method.doc?.deprecated || method.doc?.deprecated is ''
           %strong Deprecated.
           != method.doc?.deprecated
         - else

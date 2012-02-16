@@ -15,8 +15,6 @@
 
 ### Tags
 
-- deprecated
-- abstract
 - private
 - option
 - note

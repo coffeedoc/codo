@@ -8,7 +8,11 @@
       %h1
         Class:
         = @classData.class.className
-        - if @classData.doc?.deprecated
+
+        - if @classData.doc?.abstract || @classData.doc?.abstract is ''
+          %span.note.title Abstract
+
+        - if @classData.doc?.deprecated || @classData.doc?.deprecated is ''
           %span.deprecated.note.title Deprecated
 
       %dl.box

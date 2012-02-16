@@ -134,13 +134,14 @@
   -ms-border-radius: 3px;
   -khtml-border-radius: 3px;
   border-radius: 3px;
+  margin-top: 10px;
   color: #222;
   background: #E3E4E3;
   border: 1px solid #D5D5D5;
   padding: 7px 10px;
   display: block;
 }
-/* line 137, ../../src/styles/class.scss */
+/* line 139, ../../src/styles/class.scss */
 #content .deprecated {
   background: #FFE5E5;
   border-color: #E9DADA;

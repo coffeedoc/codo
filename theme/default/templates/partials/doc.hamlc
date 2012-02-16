@@ -1,10 +1,15 @@
--if @doc?.comment
+- if @doc?.comment
   .docstring
 
-    -if @doc?.deprecated
+    - if @doc?.deprecated || @doc?.deprecated is ''
       .note.deprecated
         %strong Deprecated.
         = @doc.deprecated
+
+    - if @doc?.abstract || @doc?.abstract is ''
+      .note.abstract
+        %strong Abstract.
+        = @doc.abstract
 
     != @doc.comment
 
