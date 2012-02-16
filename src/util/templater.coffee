@@ -23,7 +23,7 @@ module.exports = class Templater
       JST: @JST
       title: @options.title
 
-    for filename in findit.sync './theme/default/templates'
+    for filename in findit.sync "#{ __dirname }/../../theme/default/templates"
       if match = /theme\/default\/templates\/(.+).hamlc$/.exec filename
         @JST[match[1]] = hamlc.compile(fs.readFileSync(filename, 'utf-8'))
 
