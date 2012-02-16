@@ -1,0 +1,25 @@
+[
+  {
+    "file":      "spec/templates/methods/assigned_parameters.coffee",
+    "class":     {
+      "className": "TestAssignedParameters",
+      "name":      "TestAssignedParameters",
+      "namespace": ""
+    },
+    "methods":   [
+      {
+        "type":       "instance",
+        "signature":  "- (void) <strong>help</strong>(me)",
+        "name":       "help",
+        "bound":      false,
+        "parameters": [
+          {
+            "name": "me",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": []
+  }
+]

@@ -29,7 +29,18 @@ module.exports = class Parameter
   #
   # @return [String] the name
   #
-  getName: -> @node.name.value
+  getName: ->
+    unless @name
+
+      # Normal attribute `do: (it) ->`
+      @name = @node.name.value
+
+      unless @name
+        if @node.name.properties
+          # Assigned attributes `do: (@it) ->`
+          @name = @node.name.properties[0]?.name.value
+
+    @name
 
   # Get the parameter default value
   #
