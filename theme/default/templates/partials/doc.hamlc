@@ -80,6 +80,13 @@
           &mdash;
           %span.desc= @doc.returnValue.desc
 
+  - if @doc?.authors
+    %h3 Author:
+    %ul.author
+      - for author in @doc.authors
+        %li
+          = author
+
   - if @doc?.since
     %h3 Since:
     %ul.since

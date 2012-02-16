@@ -16,9 +16,7 @@
 
 ### Tags
 
-- option
 - see
-- author
 - @overload
 
 ## Index View
