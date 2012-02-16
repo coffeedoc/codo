@@ -1,18 +1,18 @@
 [
   {
-    "file": "spec/templates/methods/method_documentation.coffee",
-    "class": {
+    "file":      "spec/templates/methods/method_documentation.coffee",
+    "class":     {
       "className": "App.TestMethodDocumentation",
-      "name": "TestMethodDocumentation",
+      "name":      "TestMethodDocumentation",
       "namespace": "App",
-      "parent": "App.Doc"
+      "parent":    "App.Doc"
     },
-    "methods": [
+    "methods":   [
       {
-        "doc": {
-          "private": true,
-          "comment": "<p>Do it!</p>",
-          "params": [
+        "doc":        {
+          "private":     true,
+          "comment":     "<p>Do it!</p>",
+          "params":      [
             {
               "type": "String",
               "name": "it",
@@ -24,27 +24,26 @@
               "desc": "The do options"
             }
           ],
-          "options": [
-            {
-              "param": "options",
-              "type": "String",
-              "name": "speed",
-              "desc": "The speed"
-            },
-            {
-              "param": "options",
-              "type": "Number",
-              "name": "repeat",
-              "desc": "How wany time to repeat"
-            },
-            {
-              "param": "options",
-              "type": "Array<Tasks>",
-              "name": "tasks",
-              "desc": "The tasks to do"
-            }
-          ],
-          "see": [
+          "options":     {
+            "options": [
+              {
+                "type": "String",
+                "name": "speed",
+                "desc": "The speed"
+              },
+              {
+                "type": "Number",
+                "name": "repeat",
+                "desc": "How wany time to repeat"
+              },
+              {
+                "type": "Array<Tasks>",
+                "name": "tasks",
+                "desc": "The tasks to do"
+              }
+            ]
+          },
+          "see":         [
             "{#undo} for more information"
           ],
           "returnValue": {
@@ -52,17 +51,17 @@
             "desc": "When successful executed"
           }
         },
-        "type": "instance",
-        "signature": "- (Boolean) <strong>do</strong>(it, options)",
-        "name": "do",
-        "bound": false,
+        "type":       "instance",
+        "signature":  "- (Boolean) <strong>do</strong>(it, options)",
+        "name":       "do",
+        "bound":      false,
         "parameters": [
           {
-            "name": "it",
+            "name":  "it",
             "splat": false
           },
           {
-            "name": "options",
+            "name":  "options",
             "splat": false
           }
         ]

@@ -37,9 +37,10 @@ module.exports = class Doc
             desc: param[3]
 
         else if option = /^@option\s+([^ ]*)\s+\[(.*?)\]\s+([^ ]*)\s+(.*)/.exec line
-          @paramsOptions or= []
-          @paramsOptions.push
-            param: option[1]
+          @paramsOptions or= {}
+          @paramsOptions[option[1]] or= []
+
+          @paramsOptions[option[1]].push
             type: option[2]
             name: option[3]
             desc: option[4]
