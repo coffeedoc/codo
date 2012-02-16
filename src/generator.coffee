@@ -153,6 +153,7 @@ module.exports = class Generator
         name: method.getName()
         href: "classes/#{ method.clazz.getClassName().replace(/\./g, '/') }.html##{ method.getName() }-#{ method.type }"
         classname: method.clazz.getClassName()
+        deprecated: method.doc?.deprecated
       }
 
     @templater.render 'method_list', {

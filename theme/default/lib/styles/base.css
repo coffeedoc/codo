@@ -3,10 +3,9 @@ body {
   padding: 0 20px;
   font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
   font-size: 13px;
-  line-height: 1.6;
 }
 
-/* line 8, ../../src/styles/base.scss */
+/* line 7, ../../src/styles/base.scss */
 h1 {
   font-size: 25px;
   margin: 0.8em 0 0.5em;
@@ -14,7 +13,7 @@ h1 {
   border-top: 1px dotted #d5d5d5;
 }
 
-/* line 15, ../../src/styles/base.scss */
+/* line 14, ../../src/styles/base.scss */
 h2 {
   padding: 0;
   padding-bottom: 3px;
@@ -23,16 +22,16 @@ h2 {
   margin: 1.8em 0 0.5em;
 }
 
-/* line 24, ../../src/styles/base.scss */
+/* line 23, ../../src/styles/base.scss */
 #content a:link, #content a:visited {
   text-decoration: none;
   color: #05a;
 }
-/* line 29, ../../src/styles/base.scss */
+/* line 28, ../../src/styles/base.scss */
 #content a:hover {
   background: #ffffa5;
 }
-/* line 34, ../../src/styles/base.scss */
+/* line 33, ../../src/styles/base.scss */
 #content #filecontents li {
   line-height: 25px;
 }

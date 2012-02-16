@@ -17,17 +17,35 @@
   padding-right: 10px;
 }
 /* line 25, ../../src/styles/class.scss */
+#content h1 .note, #content li .note {
+  font-weight: normal;
+  padding: 3px 5px;
+  position: relative;
+  top: -3px;
+  text-transform: capitalize;
+  display: inline;
+}
+/* line 34, ../../src/styles/class.scss */
+#content h1 .note {
+  font-size: 0.5em;
+}
+/* line 38, ../../src/styles/class.scss */
+#content li .note {
+  top: 0px;
+  font-size: 0.9em;
+}
+/* line 43, ../../src/styles/class.scss */
 #content ul.summary {
   list-style: none;
   font-family: monospace;
   font-size: 1em;
   line-height: 1.5em;
 }
-/* line 31, ../../src/styles/class.scss */
+/* line 49, ../../src/styles/class.scss */
 #content ul.summary li {
   margin-bottom: 5px;
 }
-/* line 35, ../../src/styles/class.scss */
+/* line 53, ../../src/styles/class.scss */
 #content ul.summary .signature {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -39,32 +57,40 @@
   background: #EAEAFF;
   border: 1px solid #DFDFE5;
 }
-/* line 42, ../../src/styles/class.scss */
+/* line 60, ../../src/styles/class.scss */
 #content ul.summary .signature a:hover {
   background: transparent;
 }
-/* line 47, ../../src/styles/class.scss */
+/* line 65, ../../src/styles/class.scss */
+#content ul.summary li[deprecated] .signature {
+  text-decoration: line-through;
+}
+/* line 69, ../../src/styles/class.scss */
+#content ul.summary .signature + .note.title {
+  margin-left: 7px;
+}
+/* line 73, ../../src/styles/class.scss */
 #content ul.summary .desc {
   margin-left: 32px;
   display: block;
   font-family: sans-serif;
 }
-/* line 52, ../../src/styles/class.scss */
+/* line 78, ../../src/styles/class.scss */
 #content ul.summary .desc p {
   padding: 0;
   margin: 0;
 }
-/* line 59, ../../src/styles/class.scss */
+/* line 85, ../../src/styles/class.scss */
 #content .method_details {
   border-top: 1px dotted #AAA;
   margin-top: 15px;
   padding-top: 0;
 }
-/* line 64, ../../src/styles/class.scss */
+/* line 90, ../../src/styles/class.scss */
 #content .method_details:first-child {
   border: none;
 }
-/* line 68, ../../src/styles/class.scss */
+/* line 94, ../../src/styles/class.scss */
 #content .method_details p.signature {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -80,23 +106,42 @@
   background: #E5E8FF;
   border: 1px solid #D8D8E5;
 }
-/* line 81, ../../src/styles/class.scss */
+/* line 107, ../../src/styles/class.scss */
 #content .tags {
   font-size: 13px;
 }
-/* line 84, ../../src/styles/class.scss */
+/* line 110, ../../src/styles/class.scss */
 #content .tags h3 {
   font-size: 1em;
-  margin-bottom: 0;
+  margin-bottom: 3;
 }
-/* line 89, ../../src/styles/class.scss */
+/* line 115, ../../src/styles/class.scss */
 #content .tags ul {
   margin-top: 0px;
   padding-left: 30px;
   list-style: square;
 }
-/* line 94, ../../src/styles/class.scss */
+/* line 120, ../../src/styles/class.scss */
 #content .tags ul .name {
   font-family: monospace;
   font-weight: bold;
+}
+/* line 127, ../../src/styles/class.scss */
+#content .note {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  color: #222;
+  background: #E3E4E3;
+  border: 1px solid #D5D5D5;
+  padding: 7px 10px;
+  display: block;
+}
+/* line 137, ../../src/styles/class.scss */
+#content .deprecated {
+  background: #FFE5E5;
+  border-color: #E9DADA;
 }

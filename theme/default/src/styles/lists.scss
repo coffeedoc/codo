@@ -38,6 +38,10 @@ body.list {
     list-style: none;
     margin-left: 0;
 
+    li[deprecated] {
+      text-decoration: line-through;
+    }
+
     li {
       padding: 5px;
       padding-left: 12px;

@@ -1,5 +1,11 @@
 -if @doc?.comment
   .docstring
+
+    -if @doc?.deprecated
+      .note.deprecated
+        %strong Deprecated.
+        = @doc.deprecated
+
     != @doc.comment
 
 .tags

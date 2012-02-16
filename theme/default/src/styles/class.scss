@@ -22,6 +22,24 @@
     }
   }
 
+  h1 .note, li .note {
+    font-weight: normal;
+    padding: 3px 5px;
+    position: relative;
+    top: -3px;
+    text-transform: capitalize;
+    display: inline;
+  }
+
+  h1 .note {
+    font-size: 0.5em;
+  }
+
+  li .note {
+    top: 0px;
+    font-size: 0.9em;
+  }
+
   ul.summary {
     list-style: none;
     font-family: monospace;
@@ -42,6 +60,14 @@
       a:hover {
         background: transparent;
       }
+    }
+
+    li[deprecated] .signature {
+      text-decoration: line-through;
+    }
+
+    .signature + .note.title {
+      margin-left: 7px;
     }
 
     .desc {
@@ -83,7 +109,7 @@
 
     h3 {
       font-size: 1em;
-      margin-bottom: 0;
+      margin-bottom: 3;
     }
 
     ul {
@@ -98,4 +124,18 @@
     }
   }
 
+  .note {
+    @include border-radius(3px);
+
+    color: #222;
+    background: #E3E4E3;
+    border: 1px solid #D5D5D5;
+    padding: 7px 10px;
+    display: block;
+  }
+
+  .deprecated {
+    background: #FFE5E5;
+    border-color: #E9DADA;
+  }
 }
