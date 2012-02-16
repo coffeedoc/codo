@@ -60,9 +60,6 @@ module.exports = class Method
       @signature += params.join(', ')
       @signature += ')'
 
-      if @getDoc()
-        @signature += if @getDoc().private then ' (private)' else ''
-
     @signature
 
   # Get the method name

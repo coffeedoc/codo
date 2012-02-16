@@ -14,7 +14,6 @@
 
 ### Tags
 
-- private
 - example
 - option
 - see

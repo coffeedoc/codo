@@ -1,6 +1,9 @@
 .methods
   - for method in @methods
     .method_details
-      %p.signature{ id: "#{ method.name }-#{ method.type }" }!= method.signature
+      %p.signature{ id: "#{ method.name }-#{ method.type }" }
+        != method.signature
+        - if method.doc?.private
+          (private)
 
       != @parent.JST['partials/doc']({ doc: method.doc, type: 'method' })
