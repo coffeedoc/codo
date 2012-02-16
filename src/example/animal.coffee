@@ -18,6 +18,9 @@
 #
 class Example.Animal
 
+  # The Answer to the Ultimate Question of Life, the Universe, and Everything
+  @ANSWER = 42
+
   # Construct a new animal.
   #
   # @todo Clean up

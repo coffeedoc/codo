@@ -35,11 +35,11 @@ module.exports = class Variable
 
     @constant
 
-  # Get the variable description
+  # Get the class doc
   #
-  # @return [String] the description
+  # @return [Doc] the class doc
   #
-  getDescription: ->
+  getDoc: -> @doc
 
   # Get the variable name
   #

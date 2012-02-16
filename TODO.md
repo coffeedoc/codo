@@ -9,8 +9,6 @@
 
 ## Class View
 
-- Show constants
-
 - Show inherited constants
 - Show inherited methods
 

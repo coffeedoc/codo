@@ -159,6 +159,16 @@
         "parameters": []
       }
     ],
-    "variables": []
+    "variables": [
+      {
+        "doc":      {
+          "comment": "<p>The Answer to the Ultimate Question of Life, the Universe, and Everything</p>"
+        },
+        "type":     "class",
+        "constant": true,
+        "name":     "ANSWER",
+        "value":    "42"
+      }
+    ]
   }
 ]

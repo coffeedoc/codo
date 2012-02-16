@@ -114,6 +114,26 @@
     }
   }
 
+  dl.constants {
+    margin-left: 40px;
+
+    dt {
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+
+      .docstring {
+        margin-left: 32px;
+        font-size: 0.9em;
+        font-weight: normal;
+      }
+    }
+
+    dd {
+      margin-bottom: 18px;
+    }
+  }
+
   .method_details {
     border-top: 1px dotted #AAA;
     margin-top: 15px;
