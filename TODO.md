@@ -1,9 +1,12 @@
 # TODO
 
+## Known Bugs
+
+- Fix breadcrumb navigation
+
 ## General
 
 - Reference parsing `{Classname}`
-- Fix breadcrumb navigation
 - Generate TOC for markdown files
 - Make the search class list a tree
 
@@ -13,6 +16,8 @@
 - Show constants
 - Show inherited constants
 - Show inherited methods
+- Show CoffeeScript source
+- Show JavaScript source
 
 ### Tags
 
