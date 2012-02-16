@@ -2,13 +2,12 @@
 
 ## General
 
-- Class and file reference parsing `{Classname}`
-- Overload tag
+- Reference parsing `{Classname}`
 
 ## Class View
 
+- Param and return type linking
 - Show constants
-- SHow constructor
 - Show bound functions
 - Show inherited constants
 - Show inherited methods
@@ -16,10 +15,11 @@
 ### Tags
 
 - private
+- example
 - option
 - see
 - author
-- example
+- @overload
 
 ## Search List
 
