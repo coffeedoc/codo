@@ -13,6 +13,6 @@
         - for method in @methods
           %li{ deprecated: if method.deprecated then true else false }
             %a{ href: method.href, title: method.name }
-              = method.name
+              = "#{ if method.type is 'instance' then '#' else '.' }#{ method.name }"
             %small
               = surround '(', ')', -> method.classname

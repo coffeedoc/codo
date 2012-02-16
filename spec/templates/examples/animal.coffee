@@ -57,3 +57,4 @@ class Example.Animal
   # @return [Boolean] true when all in Ark
   #
   @enterArk: ->
+

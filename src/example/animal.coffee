@@ -45,8 +45,15 @@ class Example.Animal
   # @private
   # @author Michael Kessler
   # @param [Animal] animal the partner animal
+  # @return [Boolean] true when success
   # @deprecated Do not copulate
   # @version 0.2.0
   # @since 0.1.0
   #
-  copulate: (animal) ->
+  copulate: (animal) =>
+
+  # Moves all animal into the ark.
+  #
+  # @return [Boolean] true when all in Ark
+  #
+  @enterArk: ->
