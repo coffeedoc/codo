@@ -1,27 +1,27 @@
 # TODO
 
-## Known Bugs
-
-- Fix breadcrumb navigation
-
 ## General
 
+- Add links to breadcrumbs
 - Reference parsing `{Classname}`
 - Generate TOC for markdown files
 - Make the search class list a tree
 
 ## Class View
 
-- Method param and return type linking
 - Show constants
+
 - Show inherited constants
 - Show inherited methods
+
+- Method param and return type linking
+
 - Show CoffeeScript source
 - Show JavaScript source
 
-### Tags
+### Missing Tags
 
-- see
+- @see
 - @overload
 
 ## Index View
