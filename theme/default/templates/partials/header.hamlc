@@ -8,8 +8,8 @@
       %span.title= current.name
 
   #search
-    %a{ id: 'class_list_link', href: '#' } Class List
-    %a{ id: 'method_list_link', href: '#' } Method List
-    %a{ id: 'file_list_link', href: '#' } File List
+    %a{ id: 'class_list_link', href: "#{ @path }class_list.html" } Class List
+    %a{ id: 'method_list_link', href: "#{ @path }method_list.html" } Method List
+    %a{ id: 'file_list_link', href: "#{ @path }file_list.html" } File List
 
   %iframe#search_frame

@@ -9,7 +9,7 @@ body {
 /* line 8, ../../src/styles/base.scss */
 h1 {
   font-size: 25px;
-  margin: 1em 0 0.5em;
+  margin: 0.8em 0 0.5em;
   padding-top: 4px;
   border-top: 1px dotted #d5d5d5;
 }

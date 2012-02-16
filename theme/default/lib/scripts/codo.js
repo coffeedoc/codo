@@ -8,8 +8,9 @@
       return $(this).show();
     });
     $('#search input').focus();
-    $('#search a').click(function() {
+    $('#search a').click(function(event) {
       var _this = this;
+      event.preventDefault();
       if ($(this).hasClass('active')) {
         $(this).removeClass('active');
         return $('#search_frame').hide();
@@ -18,14 +19,7 @@
         $('#search_frame').one('load', function() {
           return $(_this).addClass('active');
         });
-        switch ($(this).attr('id')) {
-          case 'class_list_link':
-            return $('#search_frame').attr('src', 'class_list.html');
-          case 'method_list_link':
-            return $('#search_frame').attr('src', 'method_list.html');
-          case 'file_list_link':
-            return $('#search_frame').attr('src', 'file_list.html');
-        }
+        return $('#search_frame').attr('src', $(this).attr('href'));
       }
     });
     $('#content.list ul').on('click', 'li', function(event) {

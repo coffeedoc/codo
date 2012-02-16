@@ -1,0 +1,99 @@
+@import "compass";
+
+#content {
+
+  dl.box {
+    width: 520px;
+
+    background: #EEE;
+    border: 1px solid #AAA;
+
+    padding: 5px 10px;
+    font-size: 1em;
+
+    dt {
+      float: left;
+      display: block;
+      width: 100px;
+      margin: 0;
+      text-align: right;
+      font-weight: bold;
+      padding-right: 10px;
+    }
+  }
+
+  ul.summary {
+    list-style: none;
+    font-family: monospace;
+    font-size: 1em;
+    line-height: 1.5em;
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    .signature {
+      @include border-radius(3px);
+
+      padding: 1px 10px;
+      background: #EAEAFF;
+      border: 1px solid #DFDFE5;
+
+      a:hover {
+        background: transparent;
+      }
+    }
+
+    .desc {
+      margin-left: 32px;
+      display: block;
+      font-family: sans-serif;
+
+      p {
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  .method_details {
+    border-top: 1px dotted #AAA;
+    margin-top: 15px;
+    padding-top: 0;
+
+    &:first-child {
+      border: none;
+    }
+
+    p.signature {
+      @include border-radius(3px);
+
+      font-size: 1.1em;
+      font-weight: normal;
+      font-family: Monaco, Consolas, Courier, monospace;
+      padding: 6px 10px;
+      margin-top: 18px;
+      background: #E5E8FF;
+      border: 1px solid #D8D8E5;
+    }
+
+    .tags {
+      h3 {
+        font-size: 1em;
+        margin-bottom: 0;
+      }
+
+      ul {
+        margin-top: 0px;
+        padding-left: 30px;
+        list-style: square;
+
+        .name {
+          font-family: monospace;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+}

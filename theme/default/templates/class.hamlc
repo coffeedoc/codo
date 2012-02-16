@@ -1,0 +1,54 @@
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body
+    != @JST['partials/header'](@)
+
+    #content
+      %h1
+        Class:
+        = @classData.class.className
+
+      %dl.box
+        - if @classData.parent
+          %dt Inherits:
+          %dd= @classData.parent
+
+        %dt Defined in:
+        %dd= @classData.file
+
+      - if @classData.doc?.comment
+        %h2 Overview
+
+        .docstring
+          = @classData.doc.comment
+
+      - if @constants.length isnt 0
+        %h2 Constant Summary
+        -# TODO: Constants inherited from
+
+        %ul.summary
+
+      - if @classMethods.length isnt 0
+        %h2 Class Method Summary
+        -# TODO: Methods inherited from
+
+        != @JST['partials/method_summary']({ methods: @classMethods })
+
+      - if @instanceMethods.length isnt 0
+        %h2 Instance Method Summary
+        -# TODO: Methods inherited from
+
+        != @JST['partials/method_summary']({ methods: @instanceMethods })
+
+      - if @classMethods.length isnt 0
+        %h2 Class Method Details
+
+        != @JST['partials/method_list']({ methods: @classMethods })
+
+      - if @instanceMethods.length isnt 0
+        %h2 Instance Method Details
+
+        != @JST['partials/method_list']({ methods: @instanceMethods })
+
+    != @JST['partials/footer'](@)

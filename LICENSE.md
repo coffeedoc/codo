@@ -1,3 +1,5 @@
+# MIT License
+
 Copyright (c) 2012 Michael Kessler
 
 Permission is hereby granted, free of charge, to any person

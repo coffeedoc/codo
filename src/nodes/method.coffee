@@ -49,7 +49,7 @@ module.exports = class Method
       if @getDoc()
         @signature += if @getDoc().returnValue then "(#{ @getDoc().returnValue.type }) " else "(void) "
 
-      @signature += @getName()
+      @signature += "<strong>#{ @getName() }</strong>"
       @signature += '('
 
       params = []

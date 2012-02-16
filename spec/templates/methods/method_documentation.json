@@ -53,7 +53,7 @@
           }
         },
         "type":       "instance",
-        "signature":  "- (Boolean) do(it, options) (private)",
+        "signature":  "- (Boolean) <strong>do</strong>(it, options) (private)",
         "name":       "do",
         "bound":      false,
         "parameters": [

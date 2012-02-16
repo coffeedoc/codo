@@ -14,18 +14,16 @@ $(document).ready ->
 
   # Search Tabs
   #
-  $('#search a').click ->
+  $('#search a').click (event) ->
+    event.preventDefault()
+
     if $(@).hasClass 'active'
       $(@).removeClass 'active'
       $('#search_frame').hide()
     else
       $('#search a').removeClass 'active'
       $('#search_frame').one 'load', => $(@).addClass 'active'
-
-      switch $(@).attr('id')
-        when 'class_list_link' then $('#search_frame').attr('src', 'class_list.html')
-        when 'method_list_link' then $('#search_frame').attr('src', 'method_list.html')
-        when 'file_list_link' then $('#search_frame').attr('src', 'file_list.html')
+      $('#search_frame').attr('src', $(@).attr('href'))
 
   # Navigate form a search list
   #

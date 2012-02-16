@@ -9,14 +9,14 @@
     "methods": [
       {
         "type": "class",
-        "signature": "+ (void) helper()",
+        "signature": "+ (void) <strong>helper</strong>()",
         "name": "helper",
         "bound": false,
         "parameters": []
       },
       {
         "type": "class",
-        "signature": "+ (void) another(a, b)",
+        "signature": "+ (void) <strong>another</strong>(a, b)",
         "name": "another",
         "bound": false,
         "parameters": [
@@ -32,7 +32,7 @@
       },
       {
         "type": "class",
-        "signature": "+ (void) withDefault(a = 2, c, d = 'hi', d, e = { a: 2 }, f = new TestClassMethods())",
+        "signature": "+ (void) <strong>withDefault</strong>(a = 2, c, d = 'hi', d, e = { a: 2 }, f = new TestClassMethods())",
         "name": "withDefault",
         "bound": false,
         "parameters": [
@@ -68,7 +68,7 @@
       },
       {
         "type": "class",
-        "signature": "+ (void) nowWithSpalt(foo, bar...)",
+        "signature": "+ (void) <strong>nowWithSpalt</strong>(foo, bar...)",
         "name": "nowWithSpalt",
         "bound": false,
         "parameters": [

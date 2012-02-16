@@ -1,0 +1,8 @@
+%ul.summary
+  - for method in @methods
+    %li
+      %span.signature
+        %a{ href: "##{ method.name }-#{ method.type }" }
+          != method.signature
+      %span.desc
+        != method.doc?.comment

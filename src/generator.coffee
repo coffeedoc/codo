@@ -41,6 +41,7 @@ module.exports = class Generator
       filename = 'index.html'
 
       @templater.render 'file', {
+        path: ''
         filename: @options.readme,
         content: readme
         breadcrumbs: [
@@ -49,7 +50,7 @@ module.exports = class Generator
             name: 'Index'
           }
           {
-            href: filename
+            href: "File: #{ filename }"
             name: @options.readme
           }
         ]
@@ -62,7 +63,32 @@ module.exports = class Generator
   #
   generateClasses: ->
     for clazz in @parser.classes
-      @templater.render 'class', clazz.toJSON(), "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
+      namespaces = _.compact clazz.getNamespace().split('.')
+      assetPath = '../'
+      assetPath += '../' for namespace in namespaces
+
+      breadcrumbs = [
+        {
+          href: "#{ assetPath }_index.html"
+          name: 'Index'
+        }
+      ]
+
+      for namespace in namespaces
+        breadcrumbs.push
+          name: namespace
+
+      breadcrumbs.push
+        name: clazz.getName()
+
+      @templater.render 'class', {
+        path: assetPath
+        classData: clazz.toJSON()
+        classMethods: _.map _.filter(clazz.getMethods(), (method) -> method.type is 'class'), (m) -> m.toJSON()
+        instanceMethods: _.map _.filter(clazz.getMethods(), (method) -> method.type is 'instance'), (m) -> m.toJSON()
+        constants: _.map _.filter(clazz.getVariables(), (variable) -> variable.isConstant()), (m) -> m.toJSON()
+        breadcrumbs: breadcrumbs
+      }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
 
   # Generates the pages for all the extra files.
   #
@@ -74,6 +100,7 @@ module.exports = class Generator
         filename = "#{ extra }.html"
 
         @templater.render 'file', {
+          path: ''
           filename: extra,
           content: content
           breadcrumbs: [
@@ -82,7 +109,7 @@ module.exports = class Generator
               name: 'Index'
             }
             {
-              href: filename
+              href: "File: #{ filename }"
               name: extra
             }
           ]
@@ -103,6 +130,7 @@ module.exports = class Generator
       sortedClasses[char] = classes unless _.isEmpty classes
 
     @templater.render 'index', {
+      path: ''
       classes: sortedClasses
       files: _.union [@options.readme], @options.extras.sort()
       breadcrumbs: []
@@ -112,6 +140,7 @@ module.exports = class Generator
   #
   generateClassList: ->
     @templater.render 'class_list', {
+      path: ''
       classes: _.sortBy @parser.classes, (clazz) -> clazz.getName()
     }, 'class_list.html'
 
@@ -120,8 +149,9 @@ module.exports = class Generator
   generateMethodList: ->
     methods = _.map @parser.getAllMethods(), (method) ->
       {
+        path: ''
         name: method.getName()
-        href: "classes/#{ method.clazz.getClassName().replace(/\./g, '/') }.html##{ method.getName() }"
+        href: "classes/#{ method.clazz.getClassName().replace(/\./g, '/') }.html##{ method.getName() }-#{ method.type }"
         classname: method.clazz.getClassName()
       }
 
@@ -133,6 +163,7 @@ module.exports = class Generator
   #
   generateFileList: ->
     @templater.render 'file_list', {
+      path: ''
       files: _.union [@options.readme], @options.extras.sort()
     }, 'file_list.html'
 

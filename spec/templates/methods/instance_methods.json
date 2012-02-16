@@ -9,14 +9,14 @@
     "methods": [
       {
         "type": "instance",
-        "signature": "- (void) helper()",
+        "signature": "- (void) <strong>helper</strong>()",
         "name": "helper",
         "bound": false,
         "parameters": []
       },
       {
         "type": "instance",
-        "signature": "- (void) another(param, obj)",
+        "signature": "- (void) <strong>another</strong>(param, obj)",
         "name": "another",
         "bound": false,
         "parameters": [
@@ -32,7 +32,7 @@
       },
       {
         "type": "instance",
-        "signature": "- (void) anotherWithValues(param = 123, obj = { a: 1 }, yup, comp = new TestInstanceMethods())",
+        "signature": "- (void) <strong>anotherWithValues</strong>(param = 123, obj = { a: 1 }, yup, comp = new TestInstanceMethods())",
         "name": "anotherWithValues",
         "bound": false,
         "parameters": [
@@ -59,7 +59,7 @@
       },
       {
         "type": "instance",
-        "signature": "- (void) nowWithSpalt(foo, bar...)",
+        "signature": "- (void) <strong>nowWithSpalt</strong>(foo, bar...)",
         "name": "nowWithSpalt",
         "bound": false,
         "parameters": [
@@ -75,7 +75,7 @@
       },
       {
         "type": "instance",
-        "signature": "- (void) bound()",
+        "signature": "- (void) <strong>bound</strong>()",
         "name": "bound",
         "bound": true,
         "parameters": []

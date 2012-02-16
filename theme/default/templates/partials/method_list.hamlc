@@ -1,0 +1,33 @@
+.methods
+  - for method in @methods
+    .method_details
+      %p.signature{ id: "#{ method.name }-#{ method.type }" }!= method.signature
+
+      -if method.doc?.comment
+        .docstring
+          != method.doc.comment
+
+      .tags
+        - if method.doc?.params
+          %h3 Parameters:
+          %ul.param
+            - for param in method.doc.params
+              %li
+                %span.name= param.name
+                %span.type
+                  (
+                    %tt>= param.type
+                  )
+                &mdash;
+                %span.desc= param.desc
+
+        - if method.doc?.returnValue
+          %h3 Returns:
+          %ul.return
+            %li
+              %span.type
+                (
+                  %tt>= method.doc.returnValue.type
+                )
+              &mdash;
+              %span.desc= method.doc.returnValue.desc
