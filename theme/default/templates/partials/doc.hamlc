@@ -28,6 +28,16 @@
 
     != @doc.comment
 
+    - if @doc?.examples
+      .examples
+        %h3 Examples:
+
+        - for example in @doc?.examples
+          %h4
+            != example.title
+          %pre
+            %code.CoffeeScript!= example.code
+
 .tags
   - if @doc?.params
     %h3 Parameters:

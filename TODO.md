@@ -16,7 +16,6 @@
 
 ### Tags
 
-- example
 - option
 - see
 - author
