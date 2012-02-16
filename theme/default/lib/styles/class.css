@@ -1,22 +1,45 @@
 /* line 5, ../../src/styles/class.scss */
 #content dl.box {
   width: 520px;
-  background: #EEE;
-  border: 1px solid #AAA;
-  padding: 5px 10px;
   font-size: 1em;
+  line-height: 2;
+  overflow: auto;
+  border-top: 1px solid #AAA;
+  border-left: 1px solid #AAA;
+  border-right: 1px solid #AAA;
 }
-/* line 14, ../../src/styles/class.scss */
+/* line 17, ../../src/styles/class.scss */
 #content dl.box dt {
   float: left;
   display: block;
-  width: 100px;
+  clear: both;
   margin: 0;
+  padding-right: 10px;
+  border-bottom: 1px solid #AAA;
+  width: 100px;
+  background: #FFF;
   text-align: right;
   font-weight: bold;
-  padding-right: 10px;
 }
-/* line 25, ../../src/styles/class.scss */
+/* line 34, ../../src/styles/class.scss */
+#content dl.box dt:nth-child(1) {
+  background-color: #EEE;
+}
+/* line 39, ../../src/styles/class.scss */
+#content dl.box dd {
+  float: left;
+  display: block;
+  border-bottom: 1px solid #AAA;
+  width: 400px;
+  margin: 0;
+  padding-right: 10px;
+  background: #FFF;
+}
+/* line 51, ../../src/styles/class.scss */
+#content dl.box dd:nth-child(2) {
+  background-color: #EEE;
+}
+/* line 57, ../../src/styles/class.scss */
 #content h1 .note, #content li .note {
   font-weight: normal;
   padding: 3px 5px;
@@ -25,27 +48,27 @@
   text-transform: capitalize;
   display: inline;
 }
-/* line 34, ../../src/styles/class.scss */
+/* line 66, ../../src/styles/class.scss */
 #content h1 .note {
   font-size: 0.5em;
 }
-/* line 38, ../../src/styles/class.scss */
+/* line 70, ../../src/styles/class.scss */
 #content li .note {
   top: 0px;
   font-size: 0.9em;
 }
-/* line 43, ../../src/styles/class.scss */
+/* line 75, ../../src/styles/class.scss */
 #content ul.summary {
   list-style: none;
   font-family: monospace;
   font-size: 1em;
   line-height: 1.5em;
 }
-/* line 49, ../../src/styles/class.scss */
+/* line 81, ../../src/styles/class.scss */
 #content ul.summary li {
   margin-bottom: 5px;
 }
-/* line 53, ../../src/styles/class.scss */
+/* line 85, ../../src/styles/class.scss */
 #content ul.summary .signature {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -57,40 +80,40 @@
   background: #EAEAFF;
   border: 1px solid #DFDFE5;
 }
-/* line 60, ../../src/styles/class.scss */
+/* line 92, ../../src/styles/class.scss */
 #content ul.summary .signature a:hover {
   background: transparent;
 }
-/* line 65, ../../src/styles/class.scss */
+/* line 97, ../../src/styles/class.scss */
 #content ul.summary li[deprecated] .signature {
   text-decoration: line-through;
 }
-/* line 69, ../../src/styles/class.scss */
+/* line 101, ../../src/styles/class.scss */
 #content ul.summary .signature + .note.title {
   margin-left: 7px;
 }
-/* line 73, ../../src/styles/class.scss */
+/* line 105, ../../src/styles/class.scss */
 #content ul.summary .desc {
   margin-left: 32px;
   display: block;
   font-family: sans-serif;
 }
-/* line 78, ../../src/styles/class.scss */
+/* line 110, ../../src/styles/class.scss */
 #content ul.summary .desc p {
   padding: 0;
   margin: 0;
 }
-/* line 85, ../../src/styles/class.scss */
+/* line 117, ../../src/styles/class.scss */
 #content .method_details {
   border-top: 1px dotted #AAA;
   margin-top: 15px;
   padding-top: 0;
 }
-/* line 90, ../../src/styles/class.scss */
+/* line 122, ../../src/styles/class.scss */
 #content .method_details:first-child {
   border: none;
 }
-/* line 94, ../../src/styles/class.scss */
+/* line 126, ../../src/styles/class.scss */
 #content .method_details p.signature {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -106,27 +129,27 @@
   background: #E5E8FF;
   border: 1px solid #D8D8E5;
 }
-/* line 107, ../../src/styles/class.scss */
+/* line 139, ../../src/styles/class.scss */
 #content .tags {
   font-size: 13px;
 }
-/* line 110, ../../src/styles/class.scss */
+/* line 142, ../../src/styles/class.scss */
 #content .tags h3 {
   font-size: 1em;
   margin-bottom: 3;
 }
-/* line 115, ../../src/styles/class.scss */
+/* line 147, ../../src/styles/class.scss */
 #content .tags ul {
   margin-top: 0px;
   padding-left: 30px;
   list-style: square;
 }
-/* line 120, ../../src/styles/class.scss */
+/* line 152, ../../src/styles/class.scss */
 #content .tags ul .name {
   font-family: monospace;
   font-weight: bold;
 }
-/* line 127, ../../src/styles/class.scss */
+/* line 159, ../../src/styles/class.scss */
 #content .note {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -141,17 +164,17 @@
   padding: 7px 10px;
   display: block;
 }
-/* line 139, ../../src/styles/class.scss */
+/* line 171, ../../src/styles/class.scss */
 #content .deprecated {
   background: #FFE5E5;
   border-color: #E9DADA;
 }
-/* line 144, ../../src/styles/class.scss */
+/* line 176, ../../src/styles/class.scss */
 #content .todo {
   background: #FFFFC5;
   border-color: #ECECAA;
 }
-/* line 149, ../../src/styles/class.scss */
+/* line 181, ../../src/styles/class.scss */
 #content .private {
   background: #D5D5D5;
   border-color: #C5C5C5;

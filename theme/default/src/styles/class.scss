@@ -5,20 +5,52 @@
   dl.box {
     width: 520px;
 
-    background: #EEE;
-    border: 1px solid #AAA;
-
-    padding: 5px 10px;
     font-size: 1em;
+    line-height: 2;
+
+    overflow: auto;
+
+    border-top: 1px solid #AAA;
+    border-left: 1px solid #AAA;
+    border-right: 1px solid #AAA;
 
     dt {
       float: left;
       display: block;
-      width: 100px;
+      clear: both;
+
       margin: 0;
+      padding-right: 10px;
+
+      border-bottom: 1px solid #AAA;
+
+      width: 100px;
+
+      background: #FFF;
+
       text-align: right;
       font-weight: bold;
+
+      &:nth-child(1) {
+        background-color: #EEE;
+      }
+    }
+
+    dd {
+      float: left;
+      display: block;
+
+      border-bottom: 1px solid #AAA;
+      width: 400px;
+
+      margin: 0;
       padding-right: 10px;
+
+      background: #FFF;
+
+      &:nth-child(2) {
+        background-color: #EEE;
+      }
     }
   }
 
