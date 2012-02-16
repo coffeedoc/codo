@@ -6,12 +6,13 @@ module.exports = class Variable
 
   # Construct a variable
   #
+  # @param [Class] clazz the variables class
   # @param [Object] node the node
   # @param [Object] options the parser options
-  # @param [Boolean] clazz whether its a class variable or not
+  # @param [Boolean] classType whether its a class variable or not
   # @param [Object] comment the comment node
   #
-  constructor: (@node, @options, @clazz = false, comment = null) ->
+  constructor: (@clazz, @node, @options, @classType = false, comment = null) ->
     @getName()
     @doc = new Doc(comment, @options)
 
@@ -21,7 +22,7 @@ module.exports = class Variable
   #
   getType: ->
     unless @type
-      @type = if @clazz then 'class' else 'instance'
+      @type = if @classType then 'class' else 'instance'
 
     @type
 

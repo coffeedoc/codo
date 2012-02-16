@@ -26,7 +26,7 @@ module.exports = class Class
 
         when 'Assign'
           doc = previousExp if previousExp?.constructor.name is 'Comment'
-          @variables.push new Variable(exp, @options, true, doc)
+          @variables.push new Variable(@, exp, @options, true, doc)
           doc = null
 
         when 'Value'
@@ -40,7 +40,7 @@ module.exports = class Class
                 doc = null
 
               when 'Value'
-                @variables.push new Variable(prop, @options)
+                @variables.push new Variable(@, prop, @options)
 
             previousProp = prop
       previousExp = exp
