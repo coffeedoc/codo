@@ -16,9 +16,9 @@
           %span.deprecated.note.title Deprecated
 
       %dl.box
-        - if @classData.parent
+        - if @classData.class.parent
           %dt Inherits:
-          %dd= @classData.parent
+          %dd= @classData.class.parent
 
         %dt Defined in:
         %dd= @classData.file
