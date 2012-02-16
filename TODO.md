@@ -4,6 +4,7 @@
 
 - Reference parsing `{Classname}`
 - Fix breadcrumb navigation
+- Generate TOC for markdown files
 
 ## Class View
 
@@ -20,10 +21,6 @@
 - see
 - author
 - @overload
-
-## Search List
-
-- Prefix static methods with `#`
 
 ## Index View
 
