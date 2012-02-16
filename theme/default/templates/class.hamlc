@@ -21,7 +21,7 @@
         %h2 Overview
 
         .docstring
-          = @classData.doc.comment
+          != @classData.doc.comment
 
       - if @constants.length isnt 0
         %h2 Constant Summary

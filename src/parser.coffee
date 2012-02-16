@@ -34,15 +34,27 @@ module.exports = class Parser
   # @param [String] file the CoffeeScript file name
   #
   parseContent: (content, file = '') ->
-    @previousNode = null
+    @previousNodes = []
 
     tokens = CoffeeScript.nodes(@convertComments(content))
     tokens.traverseChildren true, (child) =>
       if child.constructor.name is 'Class'
-        doc = @previousNode if @previousNode?.constructor.name is 'Comment'
+
+        # Check the previous tokens for comment nodes
+        previous = @previousNodes[@previousNodes.length-1]
+        switch previous?.constructor.name
+          # A comment is preveding the class declaration
+          when 'Comment'
+            doc = previous
+          when 'Literal'
+            # The class is exported `module.exports = class Class`, take the comment before `module`
+            if previous.value is 'exports'
+              node = @previousNodes[@previousNodes.length-6]
+              doc = node if node.constructor.name is 'Comment'
+
         @classes.push new Class(child, file, @options, doc)
 
-      @previousNode = child
+      @previousNodes.push child
       true
 
     tokens

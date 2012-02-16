@@ -8,6 +8,7 @@
 ## Class View
 
 - Show constants
+- SHow constructor
 - Show bound functions
 - Show inherited constants
 - Show inherited methods
