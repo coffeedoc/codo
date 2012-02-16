@@ -6,6 +6,9 @@
         %a{ href: "##{ method.name }-#{ method.type }" }
           != method.signature
 
+      - if method.name is 'constructor'
+        %span.constructor.note.title Constructor
+
       - if method.doc?.abstract || method.doc?.abstract is ''
         %span.abstract.note.title Abstract
 
