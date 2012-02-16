@@ -1,0 +1,51 @@
+[
+  {
+    "file":      "spec/templates/examples/lion.coffee",
+    "doc":       {
+      "authors": [
+        "Simba"
+      ],
+      "comment": "<p>A dangerous lion. Take care.</p>"
+    },
+    "class":     {
+      "className": "Example.Animal.Lion",
+      "name":      "Lion",
+      "namespace": "Example.Animal",
+      "parent":    "Animal"
+    },
+    "methods":   [
+      {
+        "doc":        {
+          "comment": "<p>Move the lion fast</p>",
+          "params":  [
+            {
+              "type": "String",
+              "name": "direction",
+              "desc": "the moving direction"
+            },
+            {
+              "type": "Number",
+              "name": "speed",
+              "desc": "the moving speed"
+            }
+          ]
+        },
+        "type":       "instance",
+        "signature":  "- (void) <strong>move</strong>(direction, speed)",
+        "name":       "move",
+        "bound":      false,
+        "parameters": [
+          {
+            "name":  "direction",
+            "splat": false
+          },
+          {
+            "name":  "speed",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": []
+  }
+]
