@@ -20,6 +20,7 @@ class Example.Animal
 
   # Construct a new animal.
   #
+  # @todo Clean up
   # @param [String] name the name of the animal
   # @param [Date] birthDate when the animal was born
   #

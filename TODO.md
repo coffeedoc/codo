@@ -17,8 +17,6 @@
 
 - private
 - option
-- note
-- todo
 - see
 - author
 - example

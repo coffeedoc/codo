@@ -8,8 +8,23 @@
 
     - if @doc?.abstract || @doc?.abstract is ''
       .note.abstract
-        %strong Abstract.
+        %strong
+          This
+          = @type
+          is abstract.
         = @doc.abstract
+
+    - if @doc?.todos
+      - for todo in @doc?.todos
+        .note.todo
+          %strong TODO:
+          = todo
+
+    - if @doc?.notes
+      - for note in @doc?.notes
+        .note
+          %strong Note:
+          = note
 
     != @doc.comment
 

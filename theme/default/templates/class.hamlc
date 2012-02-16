@@ -26,7 +26,7 @@
       - if @classData.doc?.comment
         %h2 Overview
 
-        != @JST['partials/doc']({ doc: @classData.doc })
+        != @JST['partials/doc']({ doc: @classData.doc, type: 'class' })
 
       - if @constants.length isnt 0
         %h2 Constant Summary

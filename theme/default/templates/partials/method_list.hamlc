@@ -3,4 +3,4 @@
     .method_details
       %p.signature{ id: "#{ method.name }-#{ method.type }" }!= method.signature
 
-      != @parent.JST['partials/doc']({ doc: method.doc })
+      != @parent.JST['partials/doc']({ doc: method.doc, type: 'method' })

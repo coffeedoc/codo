@@ -31,6 +31,9 @@
     "methods":   [
       {
         "doc":        {
+          "todos":   [
+            "Clean up"
+          ],
           "comment": "<p>Construct a new animal.</p>",
           "params":  [
             {

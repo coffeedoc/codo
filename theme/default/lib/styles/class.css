@@ -146,3 +146,8 @@
   background: #FFE5E5;
   border-color: #E9DADA;
 }
+/* line 144, ../../src/styles/class.scss */
+#content .todo {
+  background: #FFFFC5;
+  border-color: #ECECAA;
+}
