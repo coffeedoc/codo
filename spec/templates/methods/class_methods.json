@@ -81,6 +81,22 @@
             "splat": true
           }
         ]
+      },
+      {
+        "type": "class",
+        "signature": "+ (void) <strong>andSoDoesThis</strong>(foo, bar)",
+        "name": "andSoDoesThis",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "foo",
+            "splat": false
+          },
+          {
+            "name": "bar",
+            "splat": false
+          }
+        ]
       }
     ],
     "variables": []

@@ -26,22 +26,28 @@ module.exports = class Class
 
         when 'Assign'
           doc = previousExp if previousExp?.constructor.name is 'Comment'
-          @variables.push new Variable(@, exp, @options, true, doc)
+
+          switch exp.value?.constructor.name
+            when 'Code'
+              @methods.push new Method(@, exp, @options, doc)
+            when 'Value'
+              @variables.push new Variable(@, exp, @options, true, doc)
+
           doc = null
 
         when 'Value'
           previousProp = null
 
           for prop in exp.base.properties
+            doc = previousProp if previousProp?.constructor.name is 'Comment'
+
             switch prop.value?.constructor.name
               when 'Code'
-                doc = previousProp if previousProp?.constructor.name is 'Comment'
                 @methods.push new Method(@, prop, @options, doc)
-                doc = null
-
               when 'Value'
-                @variables.push new Variable(@, prop, @options)
+                @variables.push new Variable(@, prop, @options, doc)
 
+            doc = null
             previousProp = prop
       previousExp = exp
 

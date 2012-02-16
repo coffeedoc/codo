@@ -7,3 +7,5 @@ class TestClassMethods
   @withDefault: (a = 2, c, d = 'hi', d, e = { a: 2 }, f = new TestClassMethods()) ->
 
   @nowWithSpalt: (foo, bar...) ->
+
+  @andSoDoesThis = (foo, bar) ->
