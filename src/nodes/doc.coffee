@@ -19,7 +19,7 @@ module.exports = class Doc
 
         # Look ahead
         unless /^@example/.exec line
-          while /^  \w+/.test(lines[0])
+          while /^\s{2}\w+/.test(lines[0])
             line += lines.shift().substring(1)
 
         # TODO: @overload
@@ -64,7 +64,7 @@ module.exports = class Doc
           title = example[1]
           code = []
 
-          while /^  \w+/.test(lines[0])
+          while /^\s{2}\s*\w+/.test(lines[0])
             code.push lines.shift().substring(2)
 
           if code.length isnt 0
@@ -73,7 +73,7 @@ module.exports = class Doc
               title: title
               code: code.join '\n'
 
-        else if abstract = /^@abstract\s+(.*)/.exec line
+        else if abstract = /^@abstract\s?(.*)/.exec line
           @abstract = abstract[1]
 
         else if /^@private/.exec line
