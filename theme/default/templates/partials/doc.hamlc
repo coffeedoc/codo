@@ -1,0 +1,40 @@
+-if @doc?.comment
+  .docstring
+    != @doc.comment
+
+.tags
+  - if @doc?.params
+    %h3 Parameters:
+    %ul.param
+      - for param in @doc.params
+        %li
+          %span.name= param.name
+          %span.type
+            (
+              %tt>= param.type
+            )
+          &mdash;
+          %span.desc= param.desc
+
+  - if @doc?.returnValue
+    %h3 Returns:
+    %ul.return
+      %li
+        %span.type
+          (
+            %tt>= @doc.returnValue.type
+          )
+        &mdash;
+        %span.desc= @doc.returnValue.desc
+
+  - if @doc?.since
+    %h3 Since:
+    %ul.since
+      %li
+        = @doc?.since
+
+  - if @doc?.version
+    %h3 Version:
+    %ul.version
+      %li
+        = @doc?.version

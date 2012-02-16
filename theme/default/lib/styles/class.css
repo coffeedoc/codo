@@ -81,18 +81,22 @@
   border: 1px solid #D8D8E5;
 }
 /* line 81, ../../src/styles/class.scss */
-#content .method_details .tags h3 {
+#content .tags {
+  font-size: 13px;
+}
+/* line 84, ../../src/styles/class.scss */
+#content .tags h3 {
   font-size: 1em;
   margin-bottom: 0;
 }
-/* line 86, ../../src/styles/class.scss */
-#content .method_details .tags ul {
+/* line 89, ../../src/styles/class.scss */
+#content .tags ul {
   margin-top: 0px;
   padding-left: 30px;
   list-style: square;
 }
-/* line 91, ../../src/styles/class.scss */
-#content .method_details .tags ul .name {
+/* line 94, ../../src/styles/class.scss */
+#content .tags ul .name {
   font-family: monospace;
   font-weight: bold;
 }

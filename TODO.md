@@ -15,8 +15,6 @@
 
 ### Tags
 
-- since
-- version
 - deprecated
 - abstract
 - private

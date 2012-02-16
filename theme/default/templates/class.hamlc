@@ -20,8 +20,7 @@
       - if @classData.doc?.comment
         %h2 Overview
 
-        .docstring
-          != @classData.doc.comment
+        != @JST['partials/doc']({ doc: @classData.doc })
 
       - if @constants.length isnt 0
         %h2 Constant Summary
@@ -44,11 +43,11 @@
       - if @classMethods.length isnt 0
         %h2 Class Method Details
 
-        != @JST['partials/method_list']({ methods: @classMethods })
+        != @JST['partials/method_list']({ methods: @classMethods, parent: @ })
 
       - if @instanceMethods.length isnt 0
         %h2 Instance Method Details
 
-        != @JST['partials/method_list']({ methods: @instanceMethods })
+        != @JST['partials/method_list']({ methods: @instanceMethods, parent: @ })
 
     != @JST['partials/footer'](@)

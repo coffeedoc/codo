@@ -76,22 +76,24 @@
       background: #E5E8FF;
       border: 1px solid #D8D8E5;
     }
+  }
 
-    .tags {
-      h3 {
-        font-size: 1em;
-        margin-bottom: 0;
-      }
+  .tags {
+    font-size: 13px;
 
-      ul {
-        margin-top: 0px;
-        padding-left: 30px;
-        list-style: square;
+    h3 {
+      font-size: 1em;
+      margin-bottom: 0;
+    }
 
-        .name {
-          font-family: monospace;
-          font-weight: bold;
-        }
+    ul {
+      margin-top: 0px;
+      padding-left: 30px;
+      list-style: square;
+
+      .name {
+        font-family: monospace;
+        font-weight: bold;
       }
     }
   }
