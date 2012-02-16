@@ -5,12 +5,12 @@
 - Reference parsing `{Classname}`
 - Fix breadcrumb navigation
 - Generate TOC for markdown files
+- Make the search class list a tree
 
 ## Class View
 
-- Param and return type linking
+- Method param and return type linking
 - Show constants
-- Show bound functions
 - Show inherited constants
 - Show inherited methods
 

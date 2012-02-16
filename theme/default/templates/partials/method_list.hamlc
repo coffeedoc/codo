@@ -3,6 +3,8 @@
     .method_details
       %p.signature{ id: "#{ method.name }-#{ method.type }" }
         != method.signature
+        - if method.bound
+          (bound)
         - if method.doc?.private
           (private)
 
