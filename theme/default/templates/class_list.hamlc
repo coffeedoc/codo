@@ -1,14 +1,19 @@
-%h1.full_list_header Class List
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body.list
+    #content.list
+      %h1.full_list_header Class List
 
-#search
-  Search:
-  #input{ type: 'text' }
+      #search
+        Search:
+        %input{ type: 'text' }
 
-%ul
-  - for clazz in @classes
-    %li
-      %a{ href: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"}= clazz.getName()
-      - if clazz.getParentClassName()
-        %small
-          <
-          = clazz.getParentClassName()
+      %ul
+        - for clazz in @classes
+          %li
+            %a{ href: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"}= clazz.getName()
+            - if clazz.getParentClassName()
+              %small
+                <
+                = clazz.getParentClassName()

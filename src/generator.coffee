@@ -96,6 +96,7 @@ module.exports = class Generator
   generateIndex: ->
     sortedClasses = {}
 
+    # Sort in character group
     for code in [97..122]
       char = String.fromCharCode(code)
       classes = _.filter @parser.classes, (clazz) -> clazz.getName().toLowerCase()[0] is char
@@ -103,7 +104,7 @@ module.exports = class Generator
 
     @templater.render 'index', {
       classes: sortedClasses
-      files: _.union [@options.readme], @options.extras
+      files: _.union [@options.readme], @options.extras.sort()
       breadcrumbs: []
     }, '_index.html'
 
@@ -111,7 +112,7 @@ module.exports = class Generator
   #
   generateClassList: ->
     @templater.render 'class_list', {
-      classes: @parser.classes
+      classes: _.sortBy @parser.classes, (clazz) -> clazz.getName()
     }, 'class_list.html'
 
   # Generates the drop down method list
@@ -123,15 +124,16 @@ module.exports = class Generator
         href: "classes/#{ method.clazz.getClassName().replace(/\./g, '/') }.html##{ method.getName() }"
         classname: method.clazz.getClassName()
       }
+
     @templater.render 'method_list', {
-      methods: methods
+      methods: _.sortBy methods, (method) -> method.name
     }, 'method_list.html'
 
   # Generates the drop down file list
   #
   generateFileList: ->
     @templater.render 'file_list', {
-      files: _.union [@options.readme], @options.extras
+      files: _.union [@options.readme], @options.extras.sort()
     }, 'file_list.html'
 
   # Copy the styles and scripts.

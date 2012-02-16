@@ -11,3 +11,5 @@
     %a{ id: 'class_list_link', href: '#' } Class List
     %a{ id: 'method_list_link', href: '#' } Method List
     %a{ id: 'file_list_link', href: '#' } File List
+
+  %iframe#search_frame

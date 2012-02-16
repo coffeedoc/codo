@@ -44,7 +44,7 @@
     float: left;
 
     margin-right: 4px;
-    padding: 8px 10px;
+    padding: 4px 10px;
 
     color: #05a;
     background: #eaf0ff;
@@ -74,3 +74,24 @@
     color: #999;
   }
 }
+
+#search_frame {
+  @include box-shadow(#aaa -7px 5px 25px);
+
+  display: none;
+  position: absolute;
+  overflow-y: scroll;
+
+  z-index: 9999;
+
+  top: 36px;
+  right: 18px;
+
+  width: 500px;
+  height: 80%;
+
+  background: white;
+  border: 1px solid #999;
+  border-collapse: collapse;
+}
+

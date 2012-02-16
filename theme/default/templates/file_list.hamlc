@@ -1,10 +1,15 @@
-%h1.full_list_header File List
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body.list
+    #content.list
+      %h1.full_list_header File List
 
-#search
-  Search:
-  #input{ type: 'text' }
+      #search
+        Search:
+        %input{ type: 'text' }
 
-%ul
-  - for file in @files
-    %li
-      %a{ href: file + '.html', title: file, }= file
+      %ul
+        - for file in @files
+          %li
+            %a{ href: file + '.html', title: file, }= file
