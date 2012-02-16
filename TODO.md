@@ -3,6 +3,7 @@
 ## General
 
 - Reference parsing `{Classname}`
+- Fix breadcrumb navigation
 
 ## Class View
 
