@@ -155,7 +155,8 @@ module.exports = class Generator
   # Generates the drop down method list
   #
   generateMethodList: ->
-    methods = _.map @parser.getAllMethods(), (method) ->
+    nonconstructors = _.filter @parser.getAllMethods(), (m) -> m.getName() isnt 'constructor'
+    methods = _.map nonconstructors, (method) ->
       {
         path: ''
         name: method.getName()
