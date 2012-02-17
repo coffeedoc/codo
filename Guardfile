@@ -4,7 +4,8 @@ group :codo do
 
   # Run Jasmine specs
   guard :shell do
-    watch(%r{src|spec}) { `jasmine-node --coffee --color spec/parser_spec.coffee` }
+    jasmine_node = File.expand_path '../node_modules/jasmine-node/bin/jasmine-node', __FILE__
+    watch(%r{src|spec}) { `#{jasmine_node} --coffee --color spec/parser_spec.coffee` }
   end
 
   # Generate codo doc
