@@ -14,7 +14,7 @@ pre {
 }
 
 .docstring {
-  p > code {
+  p > code, li > code {
     @include border-radius(3px);
 
     margin: 0 2px;
