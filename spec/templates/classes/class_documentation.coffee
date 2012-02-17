@@ -1,4 +1,4 @@
-# This is a test class
+# This is a test class with `inline.dot`. Beware.
 #
 # @note Please use
 #   this carefully
