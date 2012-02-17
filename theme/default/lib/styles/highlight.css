@@ -18,7 +18,7 @@ pre {
 }
 
 /* line 17, ../../src/styles/highlight.scss */
-.docstring code {
+.docstring p > code {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -o-border-radius: 3px;
