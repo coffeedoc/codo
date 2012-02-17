@@ -25,7 +25,7 @@
   },
   "main" : "./lib/codo",
   "bin" : {
-    "haml-coffee" : "./bin/codo"
+    "codo" : "./bin/codo"
   },
   "dependencies" : {
     "coffee-script" : "= 1.2.0",
