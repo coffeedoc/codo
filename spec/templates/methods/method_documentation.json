@@ -68,51 +68,8 @@
         ]
       },
       {
-        "doc": {
-          "private": true,
-          "comment": "<p>Do it!  </p>",
-          "summary": "Do it!",
-          "params": [
-            {
-              "type": "String",
-              "name": "it",
-              "desc": "The thing to do"
-            },
-            {
-              "type": "Object",
-              "name": "options",
-              "desc": "The do options"
-            }
-          ],
-          "options": {
-            "options": [
-              {
-                "type": "String",
-                "name": "speed",
-                "desc": "The speed"
-              },
-              {
-                "type": "Number",
-                "name": "repeat",
-                "desc": "How wany time to repeat"
-              },
-              {
-                "type": "Array<Tasks>",
-                "name": "tasks",
-                "desc": "The tasks to do"
-              }
-            ]
-          },
-          "see": [
-            "{#undo} for more information"
-          ],
-          "returnValue": {
-            "type": "Boolean",
-            "desc": "When successful executed"
-          }
-        },
         "type": "class",
-        "signature": "+ (Boolean) <strong>lets_do_it</strong>(it, options)",
+        "signature": "+ (void) <strong>lets_do_it</strong>(it, options)",
         "name": "lets_do_it",
         "bound": false,
         "parameters": [
