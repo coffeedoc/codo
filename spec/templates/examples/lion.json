@@ -5,7 +5,7 @@
       "authors": [
         "Simba"
       ],
-      "comment": "<p>A dangerous lion. Take care.</p>",
+      "comment": "<p>A dangerous lion. Take care.\n\n\n</p>\n",
       "summary": "A dangerous lion."
     },
     "class": {
@@ -17,7 +17,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Move the lion fast  </p>",
+          "comment": "<p>Move the lion fast\n\n\n</p>\n",
           "summary": "Move the lion fast",
           "params": [
             {

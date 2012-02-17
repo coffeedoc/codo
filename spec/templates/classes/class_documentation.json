@@ -29,7 +29,7 @@
         "Netzpirat",
         "Plasticman"
       ],
-      "comment": "<p>This is a test class</p>",
+      "comment": "<p>This is a test class\n\n\n\n\n\n</p>\n",
       "summary": "This is a test class"
     },
     "class": {

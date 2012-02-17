@@ -10,7 +10,7 @@
     "variables": [
       {
         "doc": {
-          "comment": "<p>Modify it here</p>",
+          "comment": "<p>Modify it here\n</p>\n",
           "summary": "Modify it here"
         },
         "type": "class",

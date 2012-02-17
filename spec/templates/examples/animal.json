@@ -21,7 +21,7 @@
       "authors": [
         "Michael Kessler"
       ],
-      "comment": "<p>Base class for all animals.</p>",
+      "comment": "<p>Base class for all animals.\n\n\n\n\n\n\n</p>\n",
       "summary": "Base class for all animals."
     },
     "class": {
@@ -35,7 +35,7 @@
           "todos": [
             "Clean up"
           ],
-          "comment": "<p>Construct a new animal.  </p>",
+          "comment": "<p>Construct a new animal.\n\n\n</p>\n",
           "summary": "Construct a new animal.",
           "params": [
             {
@@ -75,7 +75,7 @@
               "code": "new Lion('Simba').move('south', 12)"
             }
           ],
-          "comment": "<p>Move the animal.  </p>",
+          "comment": "<p>Move the animal.\n\n\n\n</p>\n",
           "summary": "Move the animal.",
           "params": [
             {
@@ -123,7 +123,7 @@
           "authors": [
             "Michael Kessler"
           ],
-          "comment": "<p>Copulate another animal.  </p>",
+          "comment": "<p>Copulate another animal.\n\n\n\n</p>\n",
           "summary": "Copulate another animal.",
           "params": [
             {
@@ -150,7 +150,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Moves all animal into the ark.  </p>",
+          "comment": "<p>Moves all animal into the ark.\n\n\n</p>\n",
           "summary": "Moves all animal into the ark.",
           "returnValue": {
             "type": "Boolean",
@@ -167,7 +167,7 @@
     "variables": [
       {
         "doc": {
-          "comment": "<p>The Answer to the Ultimate Question of Life, the Universe, and Everything</p>",
+          "comment": "<p>The Answer to the Ultimate Question of Life, the Universe, and Everything\n</p>\n",
           "summary": "The Answer to the Ultimate Question of Life, the Universe, and Everything"
         },
         "type": "class",

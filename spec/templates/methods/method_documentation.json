@@ -11,7 +11,7 @@
       {
         "doc": {
           "private": true,
-          "comment": "<p>Do it!  </p>",
+          "comment": "<p>Do it!\n\n\n\n</p>\n",
           "summary": "Do it!",
           "params": [
             {

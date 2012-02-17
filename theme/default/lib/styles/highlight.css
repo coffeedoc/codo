@@ -16,3 +16,18 @@ pre {
   background-color: #F5F5FF;
   font-family: monospace;
 }
+
+/* line 17, ../../src/styles/highlight.scss */
+.docstring code {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #EAEAEA;
+  background-color: #F8F8F8;
+}
