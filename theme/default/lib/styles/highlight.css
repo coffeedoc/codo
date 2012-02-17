@@ -16,8 +16,13 @@ pre {
   background-color: #F5F5FF;
   font-family: monospace;
 }
+/* line 15, ../../src/styles/highlight.scss */
+pre code {
+  overflow: hidden;
+  word-wrap: break-word;
+}
 
-/* line 17, ../../src/styles/highlight.scss */
+/* line 22, ../../src/styles/highlight.scss */
 .docstring p > code, .docstring li > code {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;

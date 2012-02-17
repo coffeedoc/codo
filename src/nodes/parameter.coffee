@@ -56,7 +56,11 @@ module.exports = class Parameter
   #
   getDefault: ->
     try
-      @node.value?.compile({ indent: '' })
+      if @node.value?.base.value is 'this'
+        # (attr = @attr)
+        "@#{ @node.value.properties[0]?.name.value }"
+      else
+        @node.value?.compile({ indent: '' })
 
     catch error
       console.warn('Get parameter default error:', @node, error) if @options.verbose
