@@ -1,9 +1,5 @@
 # TODO
 
-## Bugs
-
-- Multi line markdown misses space
-
 ## General
 
 - Add links to breadcrumbs
