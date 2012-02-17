@@ -4,10 +4,18 @@ Codo is a [CoffeeScript](http://coffeescript.org/) API documentation generator, 
 Its generated documentation is focused on CoffeeScript class syntax for classical inheritance and not for JavaScript's
 prototypal inheritance.
 
+## Codo in Action
+
+You can browse the [Codo documentation](http://netzpirat.github.com/codo/classes/Doc.html) and the
+[Haml-Coffee documentation](http://9elements.github.com/haml-coffee/) to see Codo in Action.
+
 ## Installation
 
-Codo is not released yet. Watch this repo and follow [@netzpirat](http://twitter.com/#!/netzpirat) to get notified
-when Codo is ready!
+Codo is available in NPM and can be installed with:
+
+```bash
+$ npm install codo
+```
 
 ## Tags
 
