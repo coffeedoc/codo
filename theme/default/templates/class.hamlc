@@ -38,9 +38,9 @@
               = constant.name
               \=
               != @JST['partials/doc']({ doc: constant.doc, type: 'constant' })
-          %dd
-            %pre
-              %code.CoffeeScript!= constant.value
+            %dd
+              %pre
+                %code.CoffeeScript!= constant.value
 
       - if @classMethods.length isnt 0
         %h2 Class Method Summary
