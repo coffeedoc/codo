@@ -34,9 +34,9 @@
 
         - for example in @doc?.examples
           %h4
-            != example.title
+            = example.title
           %pre
-            %code.CoffeeScript!= example.code
+            %code.CoffeeScript= example.code
 
 .tags
   - if @type is 'method'
