@@ -1,3 +1,5 @@
+@import "compass";
+
 .alphaindex {
   margin-top: 0;
   font-size: 22px;
@@ -27,35 +29,34 @@
   }
 }
 
-table.index {
-  > tbody {
-    > tr {
-      > td {
-        vertical-align: top;
-        width: 33%;
+#index {
+  @include column-count(3);
+  @include column-width(33%);
 
-        > ul {
-          margin: 0;
-          padding: 0;
-          padding-bottom: 10px;
+  > ul {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
 
-          font-size: 1.1em;
-          list-style: none;
+    font-size: 1.1em;
+    list-style: none;
 
-          > li.letter {
-            font-size: 1.4em;
-            padding-bottom: 10px;
-            text-transform: uppercase;
-          }
+    > li.letter {
+      -webkit-column-break-after: avoid;
 
-          > ul {
-            margin: 0;
-            padding-left: 15px;
-          }
-        }
+      font-size: 1.4em;
+      padding-bottom: 10px;
+      text-transform: uppercase;
+    }
 
+    > ul {
+      margin: 0;
+      padding-left: 20px;
+
+      small {
+        color: #666;
+        font-size: 0.7em;
       }
     }
   }
 }
-

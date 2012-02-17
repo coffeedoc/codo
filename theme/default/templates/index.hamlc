@@ -19,18 +19,16 @@
 
         %h2 Namespace Listing A-Z
 
-        %table.index
-          %tbody
-            %tr
-              %td
-                - for char, classes of @classes
-                  %ul
-                    %li.letter= char
-                    %ul
-                      - for clazz in classes
-                        %li
-                          %a{ href: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"}= clazz.getName()
-                          %small
-                            - surround '(', ')', -> clazz.getNamespace()
+        #index
+          - for char, classes of @classes
+            %ul
+              %li.letter= char
+              %ul
+                - for clazz in classes
+                  %li
+                    %a{ href: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"}= clazz.getName()
+                    - if clazz.getNamespace()
+                      %small
+                        = surround '(', ')', -> clazz.getNamespace()
 
     != @JST['partials/footer'](@)

@@ -1,27 +1,27 @@
-/* line 1, ../../src/styles/index.scss */
+/* line 3, ../../src/styles/index.scss */
 .alphaindex {
   margin-top: 0;
   font-size: 22px;
 }
 
-/* line 6, ../../src/styles/index.scss */
+/* line 8, ../../src/styles/index.scss */
 .noborder {
   border-top: 0px;
   margin-top: 0;
   padding-top: 4px;
 }
 
-/* line 12, ../../src/styles/index.scss */
+/* line 14, ../../src/styles/index.scss */
 .title {
   margin-bottom: 10px;
 }
 
-/* line 16, ../../src/styles/index.scss */
+/* line 18, ../../src/styles/index.scss */
 #files {
   padding: 0;
   font-size: 1.1em;
 }
-/* line 20, ../../src/styles/index.scss */
+/* line 22, ../../src/styles/index.scss */
 #files li {
   list-style: none;
   display: inline;
@@ -31,27 +31,39 @@
   margin-right: 5px;
 }
 
-/* line 33, ../../src/styles/index.scss */
-table.index > tbody > tr > td {
-  vertical-align: top;
-  width: 33%;
+/* line 32, ../../src/styles/index.scss */
+#index {
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  -o-column-count: 3;
+  column-count: 3;
+  -moz-column-width: 33%;
+  -webkit-column-width: 33%;
+  -o-column-width: 33%;
+  column-width: 33%;
 }
-/* line 37, ../../src/styles/index.scss */
-table.index > tbody > tr > td > ul {
+/* line 36, ../../src/styles/index.scss */
+#index > ul {
   margin: 0;
   padding: 0;
   padding-bottom: 10px;
   font-size: 1.1em;
   list-style: none;
 }
-/* line 45, ../../src/styles/index.scss */
-table.index > tbody > tr > td > ul > li.letter {
+/* line 44, ../../src/styles/index.scss */
+#index > ul > li.letter {
+  -webkit-column-break-after: avoid;
   font-size: 1.4em;
   padding-bottom: 10px;
   text-transform: uppercase;
 }
-/* line 51, ../../src/styles/index.scss */
-table.index > tbody > tr > td > ul > ul {
+/* line 52, ../../src/styles/index.scss */
+#index > ul > ul {
   margin: 0;
-  padding-left: 15px;
+  padding-left: 20px;
+}
+/* line 56, ../../src/styles/index.scss */
+#index > ul > ul small {
+  color: #666;
+  font-size: 0.7em;
 }

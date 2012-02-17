@@ -1,6 +1,5 @@
 # TODO
 
-- Split index into three columns
 - Make the search class list a tree
 - Generate TOC for markdown files
 
