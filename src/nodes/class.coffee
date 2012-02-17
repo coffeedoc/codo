@@ -133,12 +133,6 @@ module.exports = class Class
     catch error
       console.warn('Get class parent classname error:', @node, error) if @options.verbose
 
-  # Get the direct subclasses
-  #
-  # @return [Array<Class>] the subclasses
-  #
-  getSubClasses: ->
-
   # Get all methods.
   #
   # @return [Array<Method>] the methods

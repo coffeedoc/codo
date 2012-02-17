@@ -2,7 +2,7 @@
 #
 # @author Simba
 #
-class Example.Animal.Lion extends Animal
+class Example.Animal.Lion extends Example.Animal
 
   # Move the lion fast
   #

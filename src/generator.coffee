@@ -1,10 +1,11 @@
-fs        = require 'fs'
-path      = require 'path'
-marked    = require 'marked'
-mkdirp    = require 'mkdirp'
-_         = require 'underscore'
+fs         = require 'fs'
+path       = require 'path'
+marked     = require 'marked'
+mkdirp     = require 'mkdirp'
+_          = require 'underscore'
 
-Templater = require './util/templater'
+Templater  = require './util/templater'
+Referencer = require './util/referencer'
 
 # The documentation generator uses the parser JSON
 # to generate the final codo documentation.
@@ -18,6 +19,7 @@ module.exports = class Generator
   #
   constructor: (@parser, @options) ->
     @templater = new Templater(@options)
+    @referencer = new Referencer(@parser.classes)
 
   # Generate the documentation
   #
@@ -87,6 +89,9 @@ module.exports = class Generator
         classMethods: _.map _.filter(clazz.getMethods(), (method) -> method.type is 'class'), (m) -> m.toJSON()
         instanceMethods: _.map _.filter(clazz.getMethods(), (method) -> method.type is 'instance'), (m) -> m.toJSON()
         constants: _.map _.filter(clazz.getVariables(), (variable) -> variable.isConstant()), (m) -> m.toJSON()
+        subClasses: _.map @referencer.getDirectSubClasses(clazz), (c) -> c.getClassName()
+        inheritedMethods: _.groupBy @referencer.getInheritedMethods(clazz), (m) -> m.clazz.getClassName()
+        inheritedConstants: _.groupBy @referencer.getInheritedConstants(clazz), (m) -> m.clazz.getClassName()
         breadcrumbs: breadcrumbs
       }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
 

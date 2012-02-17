@@ -72,6 +72,21 @@ module.exports = class Method
     catch error
       console.warn('Get method signature error:', @node, error) if @options.verbose
 
+  # Get the short method signature.
+  #
+  # @return [String] the short signature
+  #
+  getShortSignature: ->
+    try
+      unless @shortSignature
+        @shortSignature = if @getType() is 'instance' then '#' else '.'
+        @shortSignature += @getName()
+
+      @shortSignature
+
+    catch error
+      console.warn('Get method short signature error:', @node, error) if @options.verbose
+
   # Get the method name
   #
   # @return [String] the method name

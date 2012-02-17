@@ -92,7 +92,9 @@ module.exports = class Parser
                ( # Class
                  class\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
                | # Function
-                 [@$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*[:=]\s+(\(.*\)\s+[-=]>)?
+                 [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s+(\(.*\)\s+[-=]>)?
+               | # Function
+                 @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*=\s+(\(.*\)\s+[-=]>)?
                | # Constant
                  @[$A-Z_][A-Z_]*)
              ///.exec line

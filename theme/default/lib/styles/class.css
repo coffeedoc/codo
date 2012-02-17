@@ -204,3 +204,28 @@
   background: #D5D5D5;
   border-color: #C5C5C5;
 }
+/* line 211, ../../src/styles/class.scss */
+#content .constructor {
+  color: white;
+  background: #6A98D6;
+  border-color: #6689D6;
+}
+/* line 217, ../../src/styles/class.scss */
+#content h3.inherited {
+  font-style: italic;
+  font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  margin-top: 12px;
+  margin-bottom: 3px;
+  font-size: 13px;
+}
+/* line 228, ../../src/styles/class.scss */
+#content p.inherited {
+  word-spacing: 5px;
+  font-size: 1.2em;
+  padding: 0;
+  margin: 0;
+  margin-left: 25px;
+}

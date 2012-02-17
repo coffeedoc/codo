@@ -17,12 +17,16 @@ pre {
   font-family: monospace;
 }
 /* line 15, ../../src/styles/highlight.scss */
+pre.code {
+  word-wrap: break-word;
+}
+/* line 19, ../../src/styles/highlight.scss */
 pre code {
   overflow: hidden;
   word-wrap: break-word;
 }
 
-/* line 22, ../../src/styles/highlight.scss */
+/* line 26, ../../src/styles/highlight.scss */
 .docstring p > code, .docstring li > code {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;

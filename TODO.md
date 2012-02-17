@@ -1,27 +1,17 @@
 # TODO
 
-## General
-
-- Add links to breadcrumbs
-- Reference parsing `{Classname}`
-- Generate TOC for markdown files
+- Split index into three columns
 - Make the search class list a tree
+- Generate TOC for markdown files
 
-## Class View
-
-- Show inherited constants
-- Show inherited methods
-
-- Method param and return type linking
+- Implement @overload tag
 
 - Show CoffeeScript source
 - Show JavaScript source
 
-### Missing Tags
-
+- Reference parsing `{Classname}`
+- Method param and return type linking
 - @see
-- @overload
+- Add links to breadcrumbs
 
-## Index View
 
-- Split index into three columns

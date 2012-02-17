@@ -28,9 +28,14 @@
 
         != @JST['partials/doc']({ doc: @classData.doc, type: 'class' })
 
+      - if @subClasses.length isnt 0
+        %h2 Direct Known Subclasses
+        %p.children
+          - for child in @subClasses
+            %span= child
+
       - if @constants.length isnt 0
         %h2 Constant Summary
-        -# TODO: Constants inherited from
 
         %dl.constants
           - for constant in @constants
@@ -42,26 +47,53 @@
               %pre
                 %code.CoffeeScript!= constant.value
 
+      - for parent, constants of @inheritedConstants
+        - if @constants.length is 0
+          %h2 Constant Summary
+
+        %h3.inherited
+          Constants inherited from
+          = parent
+        %p.inherited
+          - for constant in constants
+            %span= constant.getName()
+
       - if @classMethods.length isnt 0
         %h2 Class Method Summary
-        -# TODO: Methods inherited from
 
         != @JST['partials/method_summary']({ methods: @classMethods })
 
       - if @instanceMethods.length isnt 0
         %h2 Instance Method Summary
-        -# TODO: Methods inherited from
 
         != @JST['partials/method_summary']({ methods: @instanceMethods })
+
+      - for parent, methods of @inheritedMethods
+        - if @classMethods.length is 0 && @instanceMethods.length is 0
+          %h2 Method Summary
+
+        %h3.inherited
+          Methods inherited from
+          = parent
+        %p.inherited
+          - for method in methods
+            %span= method.getShortSignature()
 
       - if @classMethods.length isnt 0
         %h2 Class Method Details
 
         != @JST['partials/method_list']({ methods: @classMethods, parent: @ })
 
-      - if @instanceMethods.length isnt 0
+      - constructor = @underscore.filter @instanceMethods, (m) -> m.name is 'constructor'
+      - if constructor.length isnt 0
+        %h2 Constructor Details
+
+        != @JST['partials/method_list']({ methods: constructor, parent: @ })
+
+      - instanceMethods = @underscore.filter @instanceMethods, (m) -> m.name isnt 'constructor'
+      - if instanceMethods.length isnt 0
         %h2 Instance Method Details
 
-        != @JST['partials/method_list']({ methods: @instanceMethods, parent: @ })
+        != @JST['partials/method_list']({ methods: instanceMethods, parent: @ })
 
     != @JST['partials/footer'](@)

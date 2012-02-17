@@ -12,6 +12,10 @@ pre {
 
   font-family: monospace;
 
+  &.code {
+    word-wrap: break-word;
+  }
+
   code {
     overflow: hidden;
     word-wrap: break-word;
