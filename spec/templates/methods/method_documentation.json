@@ -1,18 +1,19 @@
 [
   {
-    "file":      "spec/templates/methods/method_documentation.coffee",
-    "class":     {
+    "file": "spec/templates/methods/method_documentation.coffee",
+    "class": {
       "className": "App.TestMethodDocumentation",
-      "name":      "TestMethodDocumentation",
+      "name": "TestMethodDocumentation",
       "namespace": "App",
-      "parent":    "App.Doc"
+      "parent": "App.Doc"
     },
-    "methods":   [
+    "methods": [
       {
-        "doc":        {
-          "private":     true,
-          "comment":     "<p>Do it!</p>",
-          "params":      [
+        "doc": {
+          "private": true,
+          "comment": "<p>Do it!  </p>",
+          "summary": "Do it!",
+          "params": [
             {
               "type": "String",
               "name": "it",
@@ -24,7 +25,7 @@
               "desc": "The do options"
             }
           ],
-          "options":     {
+          "options": {
             "options": [
               {
                 "type": "String",
@@ -43,7 +44,7 @@
               }
             ]
           },
-          "see":         [
+          "see": [
             "{#undo} for more information"
           ],
           "returnValue": {
@@ -51,17 +52,17 @@
             "desc": "When successful executed"
           }
         },
-        "type":       "instance",
-        "signature":  "- (Boolean) <strong>do</strong>(it, options)",
-        "name":       "do",
-        "bound":      false,
+        "type": "instance",
+        "signature": "- (Boolean) <strong>do</strong>(it, options)",
+        "name": "do",
+        "bound": false,
         "parameters": [
           {
-            "name":  "it",
+            "name": "it",
             "splat": false
           },
           {
-            "name":  "options",
+            "name": "options",
             "splat": false
           }
         ]

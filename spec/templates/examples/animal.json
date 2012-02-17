@@ -1,41 +1,43 @@
 [
   {
-    "file":      "spec/templates/examples/animal.coffee",
-    "doc":       {
-      "abstract":   "Each animal implementation must inherit from {Animal}",
+    "file": "spec/templates/examples/animal.coffee",
+    "doc": {
+      "abstract": "Each animal implementation must inherit from {Animal}",
       "deprecated": "This class is not used anymore",
-      "version":    "0.2.0",
-      "since":      "0.1.0",
-      "examples":   [
+      "version": "0.2.0",
+      "since": "0.1.0",
+      "examples": [
         {
           "title": "How to subclass an animal",
-          "code":  "class Lion extends Animal\n  move: (direction, speed): ->"
+          "code": "class Lion extends Animal\n  move: (direction, speed): ->"
         }
       ],
-      "todos":      [
+      "todos": [
         "Provide more examples"
       ],
-      "notes":      [
+      "notes": [
         "This is not used for codo, its purpose is to show all possible tags within a class."
       ],
-      "authors":    [
+      "authors": [
         "Michael Kessler"
       ],
-      "comment":    "<p>Base class for all animals.</p>"
+      "comment": "<p>Base class for all animals.</p>",
+      "summary": "Base class for all animals."
     },
-    "class":     {
+    "class": {
       "className": "Example.Animal",
-      "name":      "Animal",
+      "name": "Animal",
       "namespace": "Example"
     },
-    "methods":   [
+    "methods": [
       {
-        "doc":        {
-          "todos":   [
+        "doc": {
+          "todos": [
             "Clean up"
           ],
-          "comment": "<p>Construct a new animal.</p>",
-          "params":  [
+          "comment": "<p>Construct a new animal.  </p>",
+          "summary": "Construct a new animal.",
+          "params": [
             {
               "type": "String",
               "name": "name",
@@ -48,40 +50,41 @@
             }
           ]
         },
-        "type":       "instance",
-        "signature":  "- (void) <strong>constructor</strong>(name, birthDate = new Date())",
-        "name":       "constructor",
-        "bound":      false,
+        "type": "instance",
+        "signature": "- (void) <strong>constructor</strong>(name, birthDate = new Date())",
+        "name": "constructor",
+        "bound": false,
         "parameters": [
           {
-            "name":  "name",
+            "name": "name",
             "splat": false
           },
           {
-            "name":    "birthDate",
+            "name": "birthDate",
             "default": "new Date()",
-            "splat":   false
+            "splat": false
           }
         ]
       },
       {
-        "doc":        {
+        "doc": {
           "abstract": "",
           "examples": [
             {
               "title": "Move an animal",
-              "code":  "new Lion('Simba').move('south', 12)"
+              "code": "new Lion('Simba').move('south', 12)"
             }
           ],
-          "comment":  "<p>Move the animal.</p>",
-          "params":   [
+          "comment": "<p>Move the animal.  </p>",
+          "summary": "Move the animal.",
+          "params": [
             {
               "type": "Object",
               "name": "options",
               "desc": "the moving options"
             }
           ],
-          "options":  {
+          "options": {
             "options": [
               {
                 "type": "String",
@@ -96,32 +99,33 @@
             ]
           }
         },
-        "type":       "instance",
-        "signature":  "- (void) <strong>move</strong>(options = {})",
-        "name":       "move",
-        "bound":      false,
+        "type": "instance",
+        "signature": "- (void) <strong>move</strong>(options = {})",
+        "name": "move",
+        "bound": false,
         "parameters": [
           {
-            "name":    "options",
+            "name": "options",
             "default": "{}",
-            "splat":   false
+            "splat": false
           }
         ]
       },
       {
-        "doc":        {
-          "private":     true,
-          "deprecated":  "Do not copulate",
-          "version":     "0.2.0",
-          "since":       "0.1.0",
-          "notes":       [
+        "doc": {
+          "private": true,
+          "deprecated": "Do not copulate",
+          "version": "0.2.0",
+          "since": "0.1.0",
+          "notes": [
             "Don't take it seriously"
           ],
-          "authors":     [
+          "authors": [
             "Michael Kessler"
           ],
-          "comment":     "<p>Copulate another animal.</p>",
-          "params":      [
+          "comment": "<p>Copulate another animal.  </p>",
+          "summary": "Copulate another animal.",
+          "params": [
             {
               "type": "Animal",
               "name": "animal",
@@ -133,41 +137,43 @@
             "desc": "true when success"
           }
         },
-        "type":       "instance",
-        "signature":  "- (Boolean) <strong>copulate</strong>(animal)",
-        "name":       "copulate",
-        "bound":      true,
+        "type": "instance",
+        "signature": "- (Boolean) <strong>copulate</strong>(animal)",
+        "name": "copulate",
+        "bound": true,
         "parameters": [
           {
-            "name":  "animal",
+            "name": "animal",
             "splat": false
           }
         ]
       },
       {
-        "doc":        {
-          "comment":     "<p>Moves all animal into the ark.</p>",
+        "doc": {
+          "comment": "<p>Moves all animal into the ark.  </p>",
+          "summary": "Moves all animal into the ark.",
           "returnValue": {
             "type": "Boolean",
             "desc": "true when all in Ark"
           }
         },
-        "type":       "class",
-        "signature":  "+ (Boolean) <strong>enterArk</strong>()",
-        "name":       "enterArk",
-        "bound":      false,
+        "type": "class",
+        "signature": "+ (Boolean) <strong>enterArk</strong>()",
+        "name": "enterArk",
+        "bound": false,
         "parameters": []
       }
     ],
     "variables": [
       {
-        "doc":      {
-          "comment": "<p>The Answer to the Ultimate Question of Life, the Universe, and Everything</p>"
+        "doc": {
+          "comment": "<p>The Answer to the Ultimate Question of Life, the Universe, and Everything</p>",
+          "summary": "The Answer to the Ultimate Question of Life, the Universe, and Everything"
         },
-        "type":     "class",
+        "type": "class",
         "constant": true,
-        "name":     "ANSWER",
-        "value":    "42"
+        "name": "ANSWER",
+        "value": "42"
       }
     ]
   }

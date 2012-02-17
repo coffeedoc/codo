@@ -1,23 +1,25 @@
 [
   {
-    "file":      "spec/templates/examples/lion.coffee",
-    "doc":       {
+    "file": "spec/templates/examples/lion.coffee",
+    "doc": {
       "authors": [
         "Simba"
       ],
-      "comment": "<p>A dangerous lion. Take care.</p>"
+      "comment": "<p>A dangerous lion. Take care.</p>",
+      "summary": "A dangerous lion."
     },
-    "class":     {
+    "class": {
       "className": "Example.Animal.Lion",
-      "name":      "Lion",
+      "name": "Lion",
       "namespace": "Example.Animal",
-      "parent":    "Animal"
+      "parent": "Animal"
     },
-    "methods":   [
+    "methods": [
       {
-        "doc":        {
-          "comment": "<p>Move the lion fast</p>",
-          "params":  [
+        "doc": {
+          "comment": "<p>Move the lion fast  </p>",
+          "summary": "Move the lion fast",
+          "params": [
             {
               "type": "String",
               "name": "direction",
@@ -30,17 +32,17 @@
             }
           ]
         },
-        "type":       "instance",
-        "signature":  "- (void) <strong>move</strong>(direction, speed)",
-        "name":       "move",
-        "bound":      false,
+        "type": "instance",
+        "signature": "- (void) <strong>move</strong>(direction, speed)",
+        "name": "move",
+        "bound": false,
         "parameters": [
           {
-            "name":  "direction",
+            "name": "direction",
             "splat": false
           },
           {
-            "name":  "speed",
+            "name": "speed",
             "splat": false
           }
         ]

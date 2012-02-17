@@ -1,15 +1,16 @@
 [
   {
-    "file":      "spec/templates/classes/export_class.coffee",
-    "doc":       {
-      "comment": "<p>Yep, this should be assigned to the class</p>"
+    "file": "spec/templates/classes/export_class.coffee",
+    "doc": {
+      "comment": "<p>Yep, this should be assigned to the class</p>",
+      "summary": "Yep, this should be assigned to the class"
     },
-    "class":     {
+    "class": {
       "className": "TestExportClass",
-      "name":      "TestExportClass",
+      "name": "TestExportClass",
       "namespace": ""
     },
-    "methods":   [],
+    "methods": [],
     "variables": []
   }
 ]
