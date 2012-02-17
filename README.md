@@ -6,7 +6,7 @@ prototypal inheritance.
 
 ## Codo in Action
 
-You can browse the [Codo documentation](http://netzpirat.github.com/codo/classes/Doc.html) and the
+You can browse the [Codo documentation](http://netzpirat.github.com/codo) and the
 [Haml-Coffee documentation](http://9elements.github.com/haml-coffee/) to see Codo in Action.
 
 The Codo documentation contains a sample class [Example.Animal](http://netzpirat.github.com/codo/classes/Example/Animal.html)
