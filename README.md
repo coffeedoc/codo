@@ -4,10 +4,10 @@ Codo is a [CoffeeScript](http://coffeescript.org/) API documentation generator, 
 Its generated documentation is focused on CoffeeScript class syntax for classical inheritance and not for JavaScript's
 prototypal inheritance.
 
-## Codo in Action
+## Codo in action
 
 You can browse the [Codo documentation](http://netzpirat.github.com/codo) and the
-[Haml-Coffee documentation](http://9elements.github.com/haml-coffee/) to see Codo in Action.
+[Haml-Coffee documentation](http://9elements.github.com/haml-coffee/) to see Codo in action.
 
 The Codo documentation contains a sample class [Example.Animal](http://netzpirat.github.com/codo/classes/Example/Animal.html)
 that makes use of all available tags.
@@ -219,7 +219,7 @@ LICENSE
 CHANGELOG.md
 ```
 
-## Reporting issues
+## Report issues
 
 Issues hosted at [GitHub Issues](https://github.com/netzpirat/codo/issues).
 
