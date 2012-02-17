@@ -12,3 +12,15 @@ pre {
 
   font-family: monospace;
 }
+
+.docstring {
+  code {
+    @include border-radius(3px);
+
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: nowrap;
+    border: 1px solid #EAEAEA;
+    background-color: #F8F8F8;
+  }
+}
