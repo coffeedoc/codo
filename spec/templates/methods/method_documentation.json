@@ -20,6 +20,11 @@
               "desc": "The thing to do"
             },
             {
+              "type": "Boolean",
+              "name": "again",
+              "desc": "Do it again"
+            },
+            {
               "type": "Object",
               "name": "options",
               "desc": "The do options"
@@ -53,12 +58,16 @@
           }
         },
         "type": "instance",
-        "signature": "- (Boolean) <strong>do</strong>(it, options)",
+        "signature": "- (Boolean) <strong>do</strong>(it, again, options)",
         "name": "do",
         "bound": false,
         "parameters": [
           {
             "name": "it",
+            "splat": false
+          },
+          {
+            "name": "again",
             "splat": false
           },
           {

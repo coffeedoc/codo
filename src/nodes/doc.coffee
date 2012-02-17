@@ -32,6 +32,13 @@ module.exports = class Doc
               type: returnValue[1]
               desc: returnValue[2]
 
+          else if param = /^@param\s+([^ ]*)\s+\[(.*?)\]\s+(.*)/.exec line
+            @params or= []
+            @params.push
+              type: param[2]
+              name: param[1]
+              desc: param[3]
+
           else if param = /^@param\s+\[(.*?)\]\s+([^ ]*)\s+(.*)/.exec line
             @params or= []
             @params.push
