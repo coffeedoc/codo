@@ -210,16 +210,16 @@ CHANGELOG.md
 
 ## Reporting issues
 
-- Issues hosted at [GitHub Issues](https://github.com/netzpirat/codo/issues).
+Issues hosted at [GitHub Issues](https://github.com/netzpirat/codo/issues).
 
 The codo specs are template based, so make sure you provide a code snippet that can be added as failing spec to the
 project when reporting an issue with parsing your CoffeeScript code.
 
-You can check if some parsing errors have occured by running codo in verbose mode.
+_You can check if some parsing errors have occured by running codo in verbose mode._
 
 ## Development
 
-- Source hosted at [GitHub](https://github.com/netzpirat/codo).
+Source hosted at [GitHub](https://github.com/netzpirat/codo).
 
 Pull requests are very welcome! Please try to follow these simple rules if applicable:
 
