@@ -17,7 +17,7 @@ that makes use of all available tags.
 Codo is available in NPM and can be installed with:
 
 ```bash
-$ npm install codo
+$ npm install -g codo
 ```
 
 ## Tags
