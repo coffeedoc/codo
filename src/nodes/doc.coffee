@@ -92,7 +92,9 @@ module.exports = class Doc
         else
           comment.push line
 
-      @comment = marked(comment.join('\n')).replace /\n/g, ''
+      text = comment.join('\n')
+      @summary = /((?:.|\n)*?[.:;-])/.exec(text)?[1] || text
+      @comment = marked(text).replace /\n/g, ''
 
   # Get a JSON representation of the object
   #
@@ -111,6 +113,7 @@ module.exports = class Doc
         notes: @notes
         authors: @authors
         comment: @comment
+        summary: @summary
         params: @params
         options: @paramsOptions
         see: @see

@@ -26,4 +26,4 @@
           %strong Deprecated.
           != method.doc?.deprecated
         - else
-          != method.doc?.comment
+          != method.doc?.summary
