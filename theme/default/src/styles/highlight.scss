@@ -11,6 +11,11 @@ pre {
   background-color: #F5F5FF;
 
   font-family: monospace;
+
+  code {
+    overflow: hidden;
+    word-wrap: break-word;
+  }
 }
 
 .docstring {
