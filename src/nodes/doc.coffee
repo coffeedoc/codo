@@ -67,7 +67,7 @@ module.exports = class Doc
           title = example[1]
           code = []
 
-          while /^\s{2}\s*\w+/.test(lines[0])
+          while /^\s{2}.*/.test(lines[0])
             code.push lines.shift().substring(2)
 
           if code.length isnt 0
