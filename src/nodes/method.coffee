@@ -15,14 +15,18 @@ module.exports = class Method
   # @param [Object] comment the comment node
   #
   constructor: (@clazz, @node, @options, comment) ->
-    @parameters = []
+    try
+      @parameters = []
 
-    @doc = new Doc(comment, @options)
+      @doc = new Doc(comment, @options)
 
-    for param in @node.value.params
-      @parameters.push new Parameter(param, @options)
+      for param in @node.value.params
+        @parameters.push new Parameter(param, @options)
 
-    @getName()
+      @getName()
+
+    catch error
+      console.warn('Create method error:', @node, error) if @options.verbose
 
   # Get the method type, either `class` or `instance`
   #
@@ -45,41 +49,49 @@ module.exports = class Method
   # @return [String] the signature
   #
   getSignature: ->
-    unless @signature
-      @signature = if @getType() is 'instance' then '- ' else '+ '
+    try
+      unless @signature
+        @signature = if @getType() is 'instance' then '- ' else '+ '
 
-      if @getDoc()
-        @signature += if @getDoc().returnValue then "(#{ _.str.escapeHTML @getDoc().returnValue.type }) " else "(void) "
+        if @getDoc()
+          @signature += if @getDoc().returnValue then "(#{ _.str.escapeHTML @getDoc().returnValue.type }) " else "(void) "
 
-      @signature += "<strong>#{ @getName() }</strong>"
-      @signature += '('
+        @signature += "<strong>#{ @getName() }</strong>"
+        @signature += '('
 
-      params = []
+        params = []
 
-      for param in @getParamaters()
-        params.push param.getSignature()
+        for param in @getParamaters()
+          params.push param.getSignature()
 
-      @signature += params.join(', ')
-      @signature += ')'
+        @signature += params.join(', ')
+        @signature += ')'
 
-    @signature
+      @signature
+
+    catch error
+      console.warn('Get method signature error:', @node, error) if @options.verbose
 
   # Get the method name
   #
   # @return [String] the method name
   #
   getName: ->
-    unless @name
-      @name = @node.variable.base.value
+    try
+      unless @name
+        @name = @node.variable.base.value
 
-      for prop in @node.variable.properties
-        @name += ".#{ prop.name.value }"
+        for prop in @node.variable.properties
+          @name += ".#{ prop.name.value }"
 
-      if /^this\./.test @name
-        @name = @name.substring(5)
-        @type = 'class'
+        if /^this\./.test @name
+          @name = @name.substring(5)
+          @type = 'class'
 
-    @name
+      @name
+
+    catch error
+      console.warn('Get parameter name error:', @node, error) if @options.verbose
 
   # Get the method parameters
   #

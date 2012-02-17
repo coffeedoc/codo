@@ -13,8 +13,12 @@ module.exports = class Variable
   # @param [Object] comment the comment node
   #
   constructor: (@clazz, @node, @options, @classType = false, comment = null) ->
-    @getName()
-    @doc = new Doc(comment, @options)
+    try
+      @getName()
+      @doc = new Doc(comment, @options)
+
+    catch error
+      console.warn('Create variable error:', @node, error) if @options.verbose
 
   # Get the variable type, either `class` or `constant`
   #
@@ -47,27 +51,35 @@ module.exports = class Variable
   # @return [String] the variable name
   #
   getName: ->
-    unless @name
-      @name = @node.variable.base.value
+    try
+      unless @name
+        @name = @node.variable.base.value
 
-      for prop in @node.variable.properties
-        @name += ".#{ prop.name.value }"
+        for prop in @node.variable.properties
+          @name += ".#{ prop.name.value }"
 
-      if /^this\./.test @name
-        @name = @name.substring(5)
-        @type = 'class'
+        if /^this\./.test @name
+          @name = @name.substring(5)
+          @type = 'class'
 
-    @name
+      @name
+
+    catch error
+      console.warn('Get method name error:', @node, error) if @options.verbose
 
   # Get the variable value.
   #
   # @return [String] the value
   #
   getValue: ->
-    unless @value
-      @value = @node.value.base.compile({ indent: '' })
+    try
+      unless @value
+        @value = @node.value.base.compile({ indent: '' })
 
-    @value
+      @value
+
+    catch error
+      console.warn('Get method value error:', @node, error) if @options.verbose
 
   # Get a JSON representation of the object
   #

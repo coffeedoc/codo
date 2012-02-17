@@ -14,45 +14,63 @@ module.exports = class Parameter
   # @return [String] the signature
   #
   getSignature: ->
-    unless @signature
-      @signature = @getName()
+    try
+      unless @signature
+        @signature = @getName()
 
-      if @isSplat()
-        @signature += '...'
+        if @isSplat()
+          @signature += '...'
 
-      value = @getDefault()
-      @signature += " = #{ value.replace(/\n\s*/g, ' ') }" if value
+        value = @getDefault()
+        @signature += " = #{ value.replace(/\n\s*/g, ' ') }" if value
 
-    @signature
+      @signature
+
+    catch error
+      console.warn('Get parameter signature error:', @node, error) if @options.verbose
 
   # Get the parameter name
   #
   # @return [String] the name
   #
   getName: ->
-    unless @name
-
-      # Normal attribute `do: (it) ->`
-      @name = @node.name.value
-
+    try
       unless @name
-        if @node.name.properties
-          # Assigned attributes `do: (@it) ->`
-          @name = @node.name.properties[0]?.name.value
 
-    @name
+        # Normal attribute `do: (it) ->`
+        @name = @node.name.value
+
+        unless @name
+          if @node.name.properties
+            # Assigned attributes `do: (@it) ->`
+            @name = @node.name.properties[0]?.name.value
+
+      @name
+
+    catch error
+      console.warn('Get parameter name error:', @node, error) if @options.verbose
 
   # Get the parameter default value
   #
   # @return [String] the default
   #
-  getDefault: -> @node.value?.compile({ indent: '' })
+  getDefault: ->
+    try
+      @node.value?.compile({ indent: '' })
+
+    catch error
+      console.warn('Get parameter default error:', @node, error) if @options.verbose
 
   # Tests if the parameters is a splat
   #
   # @return [Boolean] true if a splat
   #
-  isSplat: -> @node.splat is true
+  isSplat: ->
+    try
+      @node.splat is true
+
+    catch error
+      console.warn('Get parameter splat type error:', @node, error) if @options.verbose
 
   # Get a JSON representation of the object
   #

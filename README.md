@@ -152,6 +152,7 @@ Options:
   -r, --readme      The readme file used.  [default: "README.md"]
   -q, --quiet       Show no warnings.      [boolean]  [default: false]
   -o, --output-dir  The output directory.  [default: "./doc"]
+  -v, --verbose     Show parsing errors.   [boolean]  [default: false]
   -h, --help        Show the help.
   --private         Show private methods
   --title                                  [default: "CoffeeScript API Documentation"]
@@ -173,10 +174,18 @@ LICENSE
 CHANGELOG.md
 ```
 
+## Reporting issues
+
+- Issues hosted at [GitHub Issues](https://github.com/netzpirat/codo/issues).
+
+The codo specs are template based, so make sure you provide a code snippet that can be added as failing spec to the
+project when reporting an issue with parsing your CoffeeScript code.
+
+You can check if some parsing errors have occured by running codo in verbose mode.
+
 ## Development
 
 - Source hosted at [GitHub](https://github.com/netzpirat/codo).
-- Issues hosted at [GitHub Issues](https://github.com/netzpirat/codo/issues).
 
 Pull requests are very welcome! Please try to follow these simple rules if applicable:
 

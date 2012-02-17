@@ -42,6 +42,12 @@ exports.run = ->
       describe  : 'The output directory.'
       default   : codoopts['output-dir'] || codoopts.o || './doc'
     )
+    .options('v',
+      alias     : 'verbose'
+      describe  : 'Show parsing errors.'
+      boolean   : true
+      default   : codoopts.verbose || codoopts.v  || false
+    )
     .options('h',
       alias     : 'help'
       describe  : 'Show the help.'
@@ -67,6 +73,7 @@ exports.run = ->
       title: argv.title
       quiet: argv.q
       private: argv.private
+      verbose: argv.v
 
     extra = false
 

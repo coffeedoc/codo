@@ -14,42 +14,46 @@ module.exports = class Class
   # @param [Object] comment the comment node
   #
   constructor: (@node, @fileName, @options, comment) ->
-    @methods = []
-    @variables = []
+    try
+      @methods = []
+      @variables = []
 
-    @doc = new Doc(comment, @options)
+      @doc = new Doc(comment, @options)
 
-    previousExp = null
+      previousExp = null
 
-    for exp in @node.body.expressions
-      switch exp.constructor.name
+      for exp in @node.body.expressions
+        switch exp.constructor.name
 
-        when 'Assign'
-          doc = previousExp if previousExp?.constructor.name is 'Comment'
+          when 'Assign'
+            doc = previousExp if previousExp?.constructor.name is 'Comment'
 
-          switch exp.value?.constructor.name
-            when 'Code'
-              @methods.push new Method(@, exp, @options, doc)
-            when 'Value'
-              @variables.push new Variable(@, exp, @options, true, doc)
-
-          doc = null
-
-        when 'Value'
-          previousProp = null
-
-          for prop in exp.base.properties
-            doc = previousProp if previousProp?.constructor.name is 'Comment'
-
-            switch prop.value?.constructor.name
+            switch exp.value?.constructor.name
               when 'Code'
-                @methods.push new Method(@, prop, @options, doc)
+                @methods.push new Method(@, exp, @options, doc)
               when 'Value'
-                @variables.push new Variable(@, prop, @options, doc)
+                @variables.push new Variable(@, exp, @options, true, doc)
 
             doc = null
-            previousProp = prop
-      previousExp = exp
+
+          when 'Value'
+            previousProp = null
+
+            for prop in exp.base.properties
+              doc = previousProp if previousProp?.constructor.name is 'Comment'
+
+              switch prop.value?.constructor.name
+                when 'Code'
+                  @methods.push new Method(@, prop, @options, doc)
+                when 'Value'
+                  @variables.push new Variable(@, prop, @options, doc)
+
+              doc = null
+              previousProp = prop
+        previousExp = exp
+
+    catch error
+      console.warn('Create class error:', @node, error) if @options.verbose
 
   # Get the source file name.
   #
@@ -68,50 +72,66 @@ module.exports = class Class
   # @return [String] the class
   #
   getClassName: ->
-    unless @className
-      @className = @node.variable.base.value
+    try
+      unless @className
+        @className = @node.variable.base.value
 
-      for prop in @node.variable.properties
-        @className += ".#{ prop.name.value }"
+        for prop in @node.variable.properties
+          @className += ".#{ prop.name.value }"
 
-    @className
+      @className
+
+    catch error
+      console.warn('Get class classname error:', @node, error) if @options.verbose
 
   # Get the class name
   #
   # @return [String] the name
   #
   getName: ->
-    unless @name
-      @name = @getClassName().split('.').pop()
+    try
+      unless @name
+        @name = @getClassName().split('.').pop()
 
-    @name
+      @name
+
+    catch error
+      console.warn('Get class name error:', @node, error) if @options.verbose
 
   # Get the class namespace
   #
   # @return [String] the namespace
   #
   getNamespace: ->
-    unless @namespace
-      @namespace = @getClassName().split('.')
-      @namespace.pop()
+    try
+      unless @namespace
+        @namespace = @getClassName().split('.')
+        @namespace.pop()
 
-      @namespace = @namespace.join('.')
+        @namespace = @namespace.join('.')
 
-    @namespace
+      @namespace
+
+    catch error
+      console.warn('Get class namespace error:', @node, error) if @options.verbose
 
   # Get the full parent class name
   #
   # @return [String] the parent class name
   #
   getParentClassName: ->
-    unless @parentClassName
-      if @node.parent
-        @parentClassName = @node.parent.base.value
+    try
+      unless @parentClassName
+        if @node.parent
+          @parentClassName = @node.parent.base.value
 
-        for prop in @node.parent.properties
-          @parentClassName += ".#{ prop.name.value }"
+          for prop in @node.parent.properties
+            @parentClassName += ".#{ prop.name.value }"
 
-    @parentClassName
+      @parentClassName
+
+    catch error
+      console.warn('Get class parent classname error:', @node, error) if @options.verbose
 
   # Get the direct subclasses
   #
