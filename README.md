@@ -9,6 +9,9 @@ prototypal inheritance.
 You can browse the [Codo documentation](http://netzpirat.github.com/codo/classes/Doc.html) and the
 [Haml-Coffee documentation](http://9elements.github.com/haml-coffee/) to see Codo in Action.
 
+The Codo documentation contains a sample class [Example.Animal](http://netzpirat.github.com/codo/classes/Example/Animal.html)
+that makes use of all available tags.
+
 ## Installation
 
 Codo is available in NPM and can be installed with:
