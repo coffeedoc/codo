@@ -13,8 +13,9 @@ module.exports = class Templater
   # the global template context.
   #
   # @param [Object] options the options
+  # @param [Referencer] referencer the link type referencer
   #
-  constructor: (@options) ->
+  constructor: (@options, @referencer) ->
     @JST = []
 
     @globalContext =
@@ -23,6 +24,7 @@ module.exports = class Templater
       JST: @JST
       underscore: _
       title: @options.title
+      referencer: @referencer
 
     for filename in findit.sync "#{ __dirname }/../../theme/default/templates"
       if match = /theme\/default\/templates\/(.+).hamlc$/.exec filename

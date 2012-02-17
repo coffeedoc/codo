@@ -229,3 +229,8 @@
   margin: 0;
   margin-left: 25px;
 }
+/* line 235, ../../src/styles/class.scss */
+#content p.inherited a {
+  font-family: monospace;
+  font-size: 0.9em;
+}

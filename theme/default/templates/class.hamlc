@@ -18,7 +18,8 @@
       %dl.box
         - if @classData.class.parent
           %dt Inherits:
-          %dd= @classData.class.parent
+          %dd
+            %a{ href: "#{ @path }classes/#{ @classData.class.parent.replace(/\./g, '/') }.html"}= @classData.class.parent
 
         %dt Defined in:
         %dd= @classData.file
@@ -26,13 +27,13 @@
       - if @classData.doc?.comment
         %h2 Overview
 
-        != @JST['partials/doc']({ doc: @classData.doc, type: 'class' })
+        != @JST['partials/doc']({ doc: @classData.doc, type: 'class', path: @path, referencer: @referencer })
 
       - if @subClasses.length isnt 0
         %h2 Direct Known Subclasses
         %p.children
           - for child in @subClasses
-            %span= child
+            %a{ href: "#{ @path }classes/#{ child.replace(/\./g, '/') }.html"}= child
 
       - if @constants.length isnt 0
         %h2 Constant Summary
@@ -42,7 +43,7 @@
             %dt{ id: "#{ constant.name }-constant" }
               = constant.name
               \=
-              != @JST['partials/doc']({ doc: constant.doc, type: 'constant' })
+              != @JST['partials/doc']({ doc: constant.doc, type: 'constant', path: @path, referencer: @referencer })
             %dd
               %pre
                 %code.CoffeeScript!= constant.value
@@ -53,10 +54,10 @@
 
         %h3.inherited
           Constants inherited from
-          = parent
+          %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html"}= parent
         %p.inherited
           - for constant in constants
-            %span= constant.getName()
+            %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ constant.getName() }-constant"}= constant.getName()
 
       - if @classMethods.length isnt 0
         %h2 Class Method Summary
@@ -74,10 +75,10 @@
 
         %h3.inherited
           Methods inherited from
-          = parent
+          %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html"}= parent
         %p.inherited
           - for method in methods
-            %span= method.getShortSignature()
+            %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= method.getShortSignature()
 
       - if @classMethods.length isnt 0
         %h2 Class Method Details

@@ -18,8 +18,8 @@ module.exports = class Generator
   # @param [Object] options the options
   #
   constructor: (@parser, @options) ->
-    @templater = new Templater(@options)
     @referencer = new Referencer(@parser.classes)
+    @templater = new Templater(@options, @referencer)
 
   # Generate the documentation
   #

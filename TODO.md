@@ -10,8 +10,5 @@
 - Show JavaScript source
 
 - Reference parsing `{Classname}`
-- Method param and return type linking
 - @see
 - Add links to breadcrumbs
-
-

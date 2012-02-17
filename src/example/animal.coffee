@@ -47,7 +47,7 @@ class Example.Animal
   #
   # @private
   # @author Michael Kessler
-  # @param [Animal] animal the partner animal
+  # @param [Example.Animal] animal the partner animal
   # @return [Boolean] true when success
   # @deprecated Do not copulate
   # @version 0.2.0

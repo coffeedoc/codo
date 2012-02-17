@@ -8,4 +8,4 @@
         - if method.doc?.private
           (private)
 
-      != @parent.JST['partials/doc']({ doc: method.doc, type: 'method' })
+      != @parent.JST['partials/doc']({ doc: method.doc, type: 'method', path: @parent.path, referencer: @parent.referencer })
