@@ -9,137 +9,171 @@ prototypal inheritance.
 Codo is not released yet. Watch this repo and follow [@netzpirat](http://twitter.com/#!/netzpirat) to get notified
 when Codo is ready!
 
-## Supported documentation tags
+## Tags
 
 Codo comments are rendered as [GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/)
 and can be tagged to add more structured information to class and method comments.
 
-### Class and method tags
+_Tags can take multiple lines, just indent subsequent lines by two spaces._
 
-#### @private
+### Overview
 
-Marks a method or class as private:
+<table>
+  <thead>
+    <tr>
+      <td><strong>Tag format</strong></td>
+      <td><strong>Multiple occurrences</strong></td>
+      <td><strong>Class level</strong></td>
+      <td><strong>Method level</strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>@abstract</strong> (message)</td>
+      <td></td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@author</strong> name</td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@deprecated</strong></td>
+      <td></td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@example</strong> (title)<br/>&nbsp;&nbsp;Code</td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@note</strong> message</td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@option</strong> option [type] name description</td>
+      <td>&#10004;</td>
+      <td></td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>@param</strong> [type] name description<br/>
+        <strong>@param</strong> name [type] description<br/>
+      </td>
+      <td>&#10004;</td>
+      <td></td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@private</strong></td>
+      <td></td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@return</strong> [type] description</td>
+      <td></td>
+      <td></td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@since</strong> version</td>
+      <td></td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@todo</strong> message</td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@version</strong> version</td>
+      <td></td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+  </tbody>
+<table>
+
+### Example
 
 ```CoffeeScript
-# @private
-class Renderer
+# Base class for all animals.
+#
+# @note This is not used for codo, its purpose is to show
+#   all possible tags within a class.
+#
+# @todo Provide more examples
+#
+# @example How to subclass an animal
+#   class Lion extends Animal
+#     move: (direction, speed): ->
+#
+# @abstract Each animal implementation must inherit from {Animal}
+#
+# @author Michael Kessler
+# @deprecated This class is not used anymore
+# @version 0.2.0
+# @since 0.1.0
+#
+class Example.Animal
 
-  # @private
-  detectEngine: ->
-```
+  # The Answer to the Ultimate Question of Life, the Universe, and Everything
+  @ANSWER = 42
 
-#### @abstract
+  # Construct a new animal.
+  #
+  # @todo Clean up
+  # @param [String] name the name of the animal
+  # @param [Date] birthDate when the animal was born
+  #
+  constructor: (@name, @birthDate = new Date()) ->
 
-Marks a class or method as abstract.
-
-```CoffeeScript
-# @abstract
-class Listener
-
+  # Move the animal.
+  #
+  # @example Move an animal
+  #   new Lion('Simba').move('south', 12)
+  #
   # @abstract
-  listen: ->
+  # @param [Object] options the moving options
+  # @option options [String] direction the moving direction
+  # @option options [Number] speed the speed in mph
+  #
+  move: (options = {}) ->
+
+  # Copulate another animal.
+  #
+  # @note Don't take it seriously
+  #
+  # @private
+  # @author Michael Kessler
+  # @param [Animal] animal the partner animal
+  # @return [Boolean] true when success
+  # @deprecated Do not copulate
+  # @version 0.2.0
+  # @since 0.1.0
+  #
+  copulate: (animal) =>
+
+  # Moves all animal into the ark.
+  #
+  # @return [Boolean] true when all in Ark
+  #
+  @enterArk: ->
 ```
 
-### @deprecated
-
-Marks a class or method as deprecated. You can optionally describe the deprecation reason.
-
-```CoffeeScript
-# @deprecated Use Stripe
-class PayPal
-
-  # @deprecated
-  pay: ->
-```
-
-### @version
-
-Set the current version of a class or method:
-
-```CoffeeScript
-# @version 1.0.9
-class Watcher
-
-  # @version 1.0.9
-  watch: ->
-```
-
-### @since
-
-Set the version when the class or method was first added:
-
-```CoffeeScript
-# @since 1.0.2
-class Codo
-
-  # @since 1.0.3
-  parse: ->
-```
-
-### @example
-
-Add your open tasks to a class or method. You can provide an optional example title on the same line as the tag and
-you can specify this tag multiple times.
-
-```CoffeeScript
-# @example
-#   adapter = Adapter.detect()
-#   adapter.start()
-#
-# @example Get adapter for a specific OS
-#   adapter = Adapter.for('darwin')
-#   adapter.start()
-#
-class Adapter
-
-  # @example
-  #   adapter = Adapter.detect()
-  #   adapter.stop()
-  stop: ->
-```
-
-### @todo
-
-Add your open tasks to a class or method. You can specify this tag multiple times.
-
-```CoffeeScript
-# @todo Refactor to use the new mailer library
-# @todo Cleanup handlers
-class Mailer
-
-  # @todo Enable TLS
-  send: ->
-```
-
-### @note
-
-Add your open tasks to a class or method. You can specify this tag multiple times.
-
-```CoffeeScript
-# @note This class is thread safe
-class SocketPool
-
-  # @note Make sure the backend is running
-  connect: ->
-```
-
-### @author
-
-Marks a class or method as written by a specific author. You can specify this tag multiple times.
-
-```CoffeeScript
-# @author Mickey Mouse
-# @author Donald Duck
-class Cartoon
-
-  # @author Mickey Mouse
-  play: ->
-
-  # @author Donald Duck
-  wait: (seconds) ->
-```
-
-## Generate documentation
+## Generate
 
 After the installation you will have a `codo` binary that can be used to generate the documentation recursively for all
 CoffeeScript files within a directory.
