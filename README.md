@@ -183,11 +183,11 @@ $ codo --help
 Usage: codo [options] [source_files [- extra_files]]
 
 Options:
-  -r, --readme      The readme file used.  [default: "README.md"]
-  -q, --quiet       Show no warnings.      [boolean]  [default: false]
-  -o, --output-dir  The output directory.  [default: "./doc"]
-  -v, --verbose     Show parsing errors.   [boolean]  [default: false]
-  -h, --help        Show the help.
+  -r, --readme      The readme file used   [default: "README.md"]
+  -q, --quiet       Show no warnings       [boolean]  [default: false]
+  -o, --output-dir  The output directory   [default: "./doc"]
+  -v, --verbose     Show parsing errors    [boolean]  [default: false]
+  -h, --help        Show the help
   --private         Show private methods
   --title                                  [default: "CoffeeScript API Documentation"]
 ```
