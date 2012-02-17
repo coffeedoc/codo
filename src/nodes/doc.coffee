@@ -95,7 +95,7 @@ module.exports = class Doc
           comment.push line
 
       text = comment.join('\n').replace(/\n\n+/g, '')
-      @summary = _.str.clean(/((?:.|\n)*?[.:;])/.exec(text)?[1] || text)
+      @summary = _.str.clean(/((?:.|\n)*?\.)/.exec(text)?[1] || text)
       @comment = marked(text).replace(/\n/g, '')
 
   # Get a JSON representation of the object
