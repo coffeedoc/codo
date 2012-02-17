@@ -1,5 +1,7 @@
 Parameter = require './parameter'
 Doc       = require './doc'
+_         = require 'underscore'
+_.str     = require 'underscore.string'
 
 # A CoffeeScript method
 #
@@ -47,7 +49,7 @@ module.exports = class Method
       @signature = if @getType() is 'instance' then '- ' else '+ '
 
       if @getDoc()
-        @signature += if @getDoc().returnValue then "(#{ @getDoc().returnValue.type }) " else "(void) "
+        @signature += if @getDoc().returnValue then "(#{ _.str.escapeHTML @getDoc().returnValue.type }) " else "(void) "
 
       @signature += "<strong>#{ @getName() }</strong>"
       @signature += '('

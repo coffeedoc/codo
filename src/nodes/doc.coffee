@@ -1,4 +1,6 @@
 marked = require 'marked'
+_      = require 'underscore'
+_.str  = require 'underscore.string'
 
 # A documentation node is responsible for parsing
 # the comments for known tags.
@@ -93,8 +95,8 @@ module.exports = class Doc
           comment.push line
 
       text = comment.join('\n')
-      @summary = /((?:.|\n)*?[.:;-])/.exec(text)?[1] || text
-      @comment = marked(text).replace /\n/g, ''
+      @summary = _.str.clean(/((?:.|\n)*?[.:;])/.exec(text)?[1] || text)
+      @comment = marked(text)
 
   # Get a JSON representation of the object
   #
