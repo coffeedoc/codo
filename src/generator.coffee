@@ -76,8 +76,11 @@ module.exports = class Generator
         }
       ]
 
+      combined = []
       for namespace in namespaces
+        combined.push namespace
         breadcrumbs.push
+          href: @referencer.getLink combined.join('.'), assetPath
           name: namespace
 
       breadcrumbs.push

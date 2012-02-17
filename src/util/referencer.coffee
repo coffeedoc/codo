@@ -54,20 +54,31 @@ module.exports = class Referencer
 
   # Create browsable links for known class types.
   #
+  # @see #getLink
+  #
   # @param [String] text the text to parse.
   # @param [String] path the path prefix
   # @return [String] the processed text
   #
   linkTypes: (text, path) ->
-    console.log "BEFORE", text
-
     for clazz in @classes
       text = text.replace ///^(#{ clazz.getClassName() })$///g, "<a href='#{ path }classes/#{ clazz.getClassName().replace(/\./g, '/') }.html'>$1</a>"
       text = text.replace ///([< ])(#{ clazz.getClassName() })([>, ])///g, "$1<a href='#{ path }classes/#{ clazz.getClassName().replace(/\./g, '/') }.html'>$2</a>$3"
 
-
-    console.log "AFTER", text
     text
+
+  # Get the link to classname.
+  #
+  # @see #linkTypes
+  # @param [String] classname the class name
+  # @param [String] path the path prefix
+  # @return [undefined, String] the link if any
+  #
+  getLink: (classname, path) ->
+    for clazz in @classes
+      if classname is clazz.getClassName() then return "#{ path }classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
+
+    undefined
 
   # Create browsable links to classes, methods
   # and constants.
