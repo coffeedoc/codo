@@ -46,7 +46,7 @@
               != @JST['partials/doc']({ doc: constant.doc, type: 'constant', path: @path, referencer: @referencer })
             %dd
               %pre
-                %code.CoffeeScript!= constant.value
+                %code.coffee!= constant.value
 
       - for parent, constants of @inheritedConstants
         - if @constants.length is 0
