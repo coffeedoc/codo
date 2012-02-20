@@ -52,7 +52,10 @@ module.exports = class Parser
               node = @previousNodes[@previousNodes.length-6]
               doc = node if node.constructor.name is 'Comment'
 
-        @classes.push new Class(child, file, @options, doc)
+        clazz = new Class(child, file, @options, doc)
+        
+        if @options.private || !clazz.doc.private
+          @classes.push clazz
 
       @previousNodes.push child
       true
