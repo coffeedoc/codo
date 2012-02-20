@@ -35,7 +35,11 @@
         %h2 Direct Known Subclasses
         %p.children
           - for child in @subClasses
-            %a{ href: "#{ @path }classes/#{ child.replace(/\./g, '/') }.html"}= child
+            - if child is @underscore.last @subClasses
+              %a{ href: "#{ @path }classes/#{ child.replace(/\./g, '/') }.html"}= child
+            - else
+              != succeed ',', ->
+                %a{ href: "#{ @path }classes/#{ child.replace(/\./g, '/') }.html"}= child
 
       - if @constants.length isnt 0
         %h2 Constant Summary
@@ -59,7 +63,11 @@
           %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html"}= parent
         %p.inherited
           - for constant in constants
-            %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ constant.getName() }-constant"}= constant.getName()
+            - if constant is @underscore.last constants
+              %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ constant.getName() }-constant"}= constant.getName()
+            - else
+              != succeed ',', ->
+                %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ constant.getName() }-constant"}= constant.getName()
 
       - if @classMethods.length isnt 0
         %h2 Class Method Summary
@@ -80,7 +88,11 @@
           %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html"}= parent
         %p.inherited
           - for method in methods
-            %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= method.getShortSignature()
+            - if method is @underscore.last methods
+              %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= method.getShortSignature()
+            - else
+              != succeed ',', ->
+                %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= method.getShortSignature()
 
       - if @classMethods.length isnt 0
         %h2 Class Method Details
