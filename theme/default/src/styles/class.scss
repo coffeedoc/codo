@@ -2,54 +2,36 @@
 
 #content {
 
-  dl.box {
-    width: 520px;
-
+  table.box {
     font-size: 1em;
     line-height: 2;
 
-    overflow: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
 
-    border-top: 1px solid #AAA;
-    border-left: 1px solid #AAA;
-    border-right: 1px solid #AAA;
+    tr {
+      background-color: #fff;
 
-    dt {
-      float: left;
-      display: block;
-      clear: both;
-
-      margin: 0;
-      padding-right: 10px;
-
-      border-bottom: 1px solid #AAA;
-
-      width: 100px;
-
-      background: #FFF;
-
-      text-align: right;
-      font-weight: bold;
-
-      &:nth-child(1) {
+      &:first-child {
         background-color: #EEE;
       }
-    }
 
-    dd {
-      float: left;
-      display: block;
+      td {
+        border: 1px solid #AAA;
+      }
 
-      border-bottom: 1px solid #AAA;
-      width: 400px;
+      td:first-child {
+        width: 100px;
+        padding-right: 10px;
 
-      margin: 0;
-      padding-right: 10px;
+        text-align: right;
+        font-weight: bold;
+      }
 
-      background: #FFF;
-
-      &:nth-child(2) {
-        background-color: #EEE;
+      td:last-child {
+        min-width: 420px;
+        padding-left: 10px;
+        padding-right: 10px;
       }
     }
   }

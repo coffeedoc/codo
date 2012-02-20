@@ -15,14 +15,16 @@
         - if @classData.doc?.deprecated || @classData.doc?.deprecated is ''
           %span.deprecated.note.title Deprecated
 
-      %dl.box
+      %table.box
         - if @classData.class.parent
-          %dt Inherits:
-          %dd
-            %a{ href: "#{ @path }classes/#{ @classData.class.parent.replace(/\./g, '/') }.html"}= @classData.class.parent
+          %tr
+            %td Inherits:
+            %td
+              %a{ href: "#{ @path }classes/#{ @classData.class.parent.replace(/\./g, '/') }.html"}= @classData.class.parent
 
-        %dt Defined in:
-        %dd= @classData.file
+        %tr
+          %td Defined in:
+          %td= @classData.file
 
       - if @classData.doc?.comment
         %h2 Overview
