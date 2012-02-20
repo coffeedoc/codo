@@ -27,10 +27,10 @@ module.exports = class Doc
 
           # TODO: @overload
 
-          if returnValue = /^@return\s+\[(.*?)\]\s+(.*)/.exec line
+          if returnValue = /^@return\s+\[(.*?)\](\s+(.*))?/.exec line
             @returnValue =
               type: returnValue[1]
-              desc: returnValue[2]
+              desc: returnValue[3]
 
           else if param = /^@param\s+([^ ]*)\s+\[(.*?)\]\s+(.*)/.exec line
             @params or= []
