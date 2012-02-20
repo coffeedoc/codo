@@ -6,11 +6,12 @@ prototypal inheritance.
 
 ## Codo in action
 
-You can browse the [Codo documentation](http://netzpirat.github.com/codo) and the
-[Haml-Coffee documentation](http://9elements.github.com/haml-coffee/) to see Codo in action.
+You can browse the [Codo documentation](http://netzpirat.github.com/codo), which contains a sample class
+[Example.Animal](http://netzpirat.github.com/codo/classes/Example/Animal.html) that makes use of all available tags.
 
-The Codo documentation contains a sample class [Example.Animal](http://netzpirat.github.com/codo/classes/Example/Animal.html)
-that makes use of all available tags.
+In addition there's list of
+[Codo generated documentations](https://github.com/netzpirat/codo/wiki/List-of-codo-generated-documentations)
+in the wiki.
 
 ## Installation
 
