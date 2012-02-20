@@ -8,8 +8,7 @@ prototypal inheritance.
 
 You can browse the [Codo documentation](http://netzpirat.github.com/codo), which contains a sample class
 [Example.Animal](http://netzpirat.github.com/codo/classes/Example/Animal.html) that makes use of all available tags.
-
-In addition there's list of
+In addition, there's a list of
 [Codo generated documentations](https://github.com/netzpirat/codo/wiki/List-of-codo-generated-documentations)
 in the wiki.
 
