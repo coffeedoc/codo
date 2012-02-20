@@ -1,3 +1,25 @@
-# Version 0.1.0
+# Version 0.3.0 - February 20, 2012
 
-  * Initial release
+- [#11](https://github.com/netzpirat/codo/issues/11): Add frame based sidebar. ([@netzpirat][])
+- [#12](https://github.com/netzpirat/codo/issues/12): Rename class index so it can be pushed to GithHub pages. ([@netzpirat][])
+- [#10](https://github.com/netzpirat/codo/issues/10): Improve the class comment section. ([@inossidabile][])
+- [#9](https://github.com/netzpirat/codo/issues/9): Real CoffeeScript code highlighting. ([@inossidabile][], Highlighter by [@dnagir][])
+- [#8](https://github.com/netzpirat/codo/issues/8): Improve comment parsing with dots. ([@inossidabile][])
+- [#7](https://github.com/netzpirat/codo/issues/7): Make `@return` description optional. ([@inossidabile][])
+- [#5](https://github.com/netzpirat/codo/issues/5): Support `@private` option for classes. ([@inossidabile][])
+
+# Version 0.2.1 - February 17, 2012
+
+- Fix wrong path to NPM package binary. ([@netzpirat][])
+
+# Version 0.2.0 - February 17, 2012
+
+- First public release. ([@netzpirat][])
+
+# Version 0.1.0 - February 14, 2012
+
+- Initial release to reserve the NPM name. ([@netzpirat][])
+
+[@dnagir]: https://github.com/dnagir
+[@inossidabile]: https://github.com/inossidabile
+[@netzpirat]: https://github.com/netzpirat
