@@ -28,14 +28,34 @@
   color: #05a;
 }
 
-/* line 32, ../../src/styles/header.scss */
-#search {
-  position: absolute;
-  right: 14px;
-  top: 0px;
+/* line 33, ../../src/styles/header.scss */
+#header nav {
+  float: right;
+  color: #000;
+  font-size: 0.7em;
 }
-/* line 38, ../../src/styles/header.scss */
-#search a:link, #search a:visited {
+/* line 39, ../../src/styles/header.scss */
+#header nav ul {
+  list-style-type: none;
+  margin: 4px !important;
+}
+/* line 5, ../../../../../../.rvm/gems/ruby-1.9.3-p0/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/typography/lists/_inline-list.scss */
+#header nav ul, #header nav ul li {
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+/* line 44, ../../src/styles/header.scss */
+#header nav a {
+  font-size: 1em;
+}
+/* line 49, ../../src/styles/header.scss */
+#header #search {
+  float: right;
+  margin-top: -3px;
+}
+/* line 53, ../../src/styles/header.scss */
+#header #search a:link, #header #search a:visited {
   -moz-box-shadow: #dddddd -1px 1px 3px;
   -webkit-box-shadow: #dddddd -1px 1px 3px;
   -o-box-shadow: #dddddd -1px 1px 3px;
@@ -55,19 +75,19 @@
   display: block;
   float: left;
   margin-right: 4px;
-  padding: 4px 10px;
+  padding: 8px 10px;
   color: #05a;
   background: #eaf0ff;
   text-decoration: none;
   border: 1px solid #d8d8e5;
 }
-/* line 56, ../../src/styles/header.scss */
-#search a:hover {
+/* line 71, ../../src/styles/header.scss */
+#header #search a:hover {
   background: #f5faff;
   color: #06b;
 }
-/* line 61, ../../src/styles/header.scss */
-#search a.active {
+/* line 76, ../../src/styles/header.scss */
+#header #search a.active {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   -o-border-top-left-radius: 5px;
@@ -85,12 +105,26 @@
   background: #568;
   border: 1px solid #457;
 }
-/* line 73, ../../src/styles/header.scss */
-#search a.inactive {
+/* line 88, ../../src/styles/header.scss */
+#header #search a.inactive {
   color: #999;
 }
 
-/* line 78, ../../src/styles/header.scss */
+/* line 95, ../../src/styles/header.scss */
+body.frames #header li.frames {
+  display: none;
+}
+/* line 99, ../../src/styles/header.scss */
+body.frames #header #search {
+  display: none;
+}
+
+/* line 104, ../../src/styles/header.scss */
+body.noframes #header li.noframes {
+  display: none;
+}
+
+/* line 108, ../../src/styles/header.scss */
 #search_frame {
   -moz-box-shadow: #aaaaaa -7px 5px 25px;
   -webkit-box-shadow: #aaaaaa -7px 5px 25px;

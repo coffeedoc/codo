@@ -5,6 +5,31 @@ body.list {
   margin: 0;
 }
 
+body.noframes {
+  #content.list {
+    nav {
+      display: none;
+    }
+
+    #search {
+      position: absolute;
+      right: 5px;
+      top: 9px;
+      padding-left: 10px;
+    }
+  }
+}
+
+body.frames {
+  #content.list {
+    #search {
+      position: relative;
+      margin-top: 5px;
+      margin-left: 10px;
+    }
+  }
+}
+
 #content.list {
   padding: 0;
   margin: 0;
@@ -20,15 +45,15 @@ body.list {
     background: transparent;
   }
 
+  nav {
+    margin-left: 10px;
+  }
+
   #search {
-    position: absolute;
-    right: 5px;
-    top: 9px;
-    padding-left: 24px;
+    color: #888;
 
     input {
       @include border-radius(3px);
-
       border: 1px solid #BBB;
     }
   }

@@ -5,6 +5,11 @@
     #content.list
       %h1.full_list_header Class List
 
+      %nav
+        %a{ target: '_self', href: 'class_list.html' } Classes
+        %a{ target: '_self', href: 'method_list.html' } Methods
+        %a{ target: '_self', href: 'file_list.html' } Files
+
       #search
         Search:
         %input{ type: 'text' }
@@ -12,7 +17,7 @@
       %ul
         - for clazz in @classes
           %li
-            %a{ href: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"}= clazz.getName()
+            %a{ href: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html", target: 'main' }= clazz.getName()
             - if clazz.getParentClassName()
               %small
                 <

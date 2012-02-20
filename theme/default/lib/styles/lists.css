@@ -4,30 +4,50 @@ body.list {
   margin: 0;
 }
 
-/* line 8, ../../src/styles/lists.scss */
+/* line 10, ../../src/styles/lists.scss */
+body.noframes #content.list nav {
+  display: none;
+}
+/* line 14, ../../src/styles/lists.scss */
+body.noframes #content.list #search {
+  position: absolute;
+  right: 5px;
+  top: 9px;
+  padding-left: 10px;
+}
+
+/* line 25, ../../src/styles/lists.scss */
+body.frames #content.list #search {
+  position: relative;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+/* line 33, ../../src/styles/lists.scss */
 #content.list {
   padding: 0;
   margin: 0;
 }
-/* line 12, ../../src/styles/lists.scss */
+/* line 37, ../../src/styles/lists.scss */
 #content.list h1 {
   padding: 12px 10px;
   padding-bottom: 0;
   margin: 0;
   font-size: 1.4em;
 }
-/* line 19, ../../src/styles/lists.scss */
+/* line 44, ../../src/styles/lists.scss */
 #content.list a:hover {
   background: transparent;
 }
-/* line 23, ../../src/styles/lists.scss */
-#content.list #search {
-  position: absolute;
-  right: 5px;
-  top: 9px;
-  padding-left: 24px;
+/* line 48, ../../src/styles/lists.scss */
+#content.list nav {
+  margin-left: 10px;
 }
-/* line 29, ../../src/styles/lists.scss */
+/* line 52, ../../src/styles/lists.scss */
+#content.list #search {
+  color: #888;
+}
+/* line 55, ../../src/styles/lists.scss */
 #content.list #search input {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -37,17 +57,17 @@ body.list {
   border-radius: 3px;
   border: 1px solid #BBB;
 }
-/* line 36, ../../src/styles/lists.scss */
+/* line 61, ../../src/styles/lists.scss */
 #content.list ul {
   padding: 0;
   list-style: none;
   margin-left: 0;
 }
-/* line 41, ../../src/styles/lists.scss */
+/* line 66, ../../src/styles/lists.scss */
 #content.list ul li[deprecated] {
   text-decoration: line-through;
 }
-/* line 45, ../../src/styles/lists.scss */
+/* line 70, ../../src/styles/lists.scss */
 #content.list ul li {
   padding: 5px;
   padding-left: 12px;
@@ -57,11 +77,11 @@ body.list {
   color: #888;
   cursor: pointer;
 }
-/* line 55, ../../src/styles/lists.scss */
+/* line 80, ../../src/styles/lists.scss */
 #content.list ul li:nth-child(odd) {
   background: #F0F0F0;
 }
-/* line 59, ../../src/styles/lists.scss */
+/* line 84, ../../src/styles/lists.scss */
 #content.list ul li:hover {
   background: #ddd;
 }

@@ -1,5 +1,12 @@
 $(document).ready ->
 
+  # Add frame markers
+  #
+  if window.top.frames.main
+    $('body').addClass 'frames'
+  else
+    $('body').addClass 'noframes'
+
   # Code Highlighting
   #
   $('pre code').each (i, e) -> hljs.highlightBlock e, '  '
@@ -25,12 +32,6 @@ $(document).ready ->
       $('#search_frame').one 'load', => $(@).addClass 'active'
       $('#search_frame').attr('src', $(@).attr('href'))
 
-  # Navigate form a search list
-  #
-  $('#content.list ul').on 'click', 'li', (event) ->
-    window.parent.location.href = $(@).find('a').attr('href')
-    event.preventDefault()
-
   # Search list
   #
   $('#content.list #search input').keyup (event) ->
@@ -44,3 +45,21 @@ $(document).ready ->
           $(@).hide()
         else
           $(@).show()
+
+  # Navigate form a search list
+  #
+  $('body.noframes #content.list ul').on 'click', 'li', (event) ->
+    window.parent.location.href = $(@).find('a').attr('href')
+    event.preventDefault()
+
+  # Switch to frame mode
+  #
+  $('a.frames').click (event) ->
+    location.href = $(@).attr 'href'
+    event.preventDefault()
+
+  # Switch to no frame mode
+  #
+  $('a.noframes').click (event) ->
+    parent.location.href = location.href
+    event.preventDefault()

@@ -25,6 +25,7 @@ module.exports = class Generator
   #
   #
   generate: ->
+    @generateFrames()
     @generateReadme()
     @generateClasses()
     @generateExtras()
@@ -33,6 +34,11 @@ module.exports = class Generator
     @generateMethodList()
     @generateFileList()
     @copyAssets()
+
+  # Generate the frame source.
+  #
+  generateFrames: ->
+    @templater.render 'frames', { path: '' }, 'frames.html'
 
   # Generate the home page. This is the readme
   #
