@@ -255,9 +255,9 @@ dynamic programming languages.
 * [JsDoc](https://github.com/micmath/jsdoc) an automatic documentation generator for JavaScript.
 * [Dox](https://github.com/visionmedia/dox) JavaScript documentation generator for node using markdown and jsdoc.
 
-## Constributors
+## Contributors
 
-# [Boris Staal](https://github.com/inossidabile)
+* [Boris Staal](https://github.com/inossidabile)
 
 ## Author
 
