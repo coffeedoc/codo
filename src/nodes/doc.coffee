@@ -103,7 +103,7 @@ module.exports = class Doc
             comment.push line
 
         text = comment.join('\n')
-        @summary = _.str.clean(/((?:.|\n)*?\.)/.exec(text)?[1] || text)
+        @summary = _.str.clean(/((?:.|\n)*?\.[\s$])/.exec(text)?[1] || text)
         @comment = marked(text)
 
     catch error
