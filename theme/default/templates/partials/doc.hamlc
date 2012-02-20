@@ -1,4 +1,7 @@
-- if @doc?.comment
+- show_description = false
+- show_description ||= @doc?[field] for field in ['comment', 'todos', 'notes', 'examples']
+
+- if show_description
   .docstring
 
     - if @doc?.deprecated || @doc?.deprecated is ''
