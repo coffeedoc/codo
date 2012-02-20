@@ -48,7 +48,7 @@ module.exports = class Generator
         content: readme
         breadcrumbs: [
           {
-            href: '_index.html'
+            href: 'class_index.html'
             name: 'Index'
           }
           {
@@ -71,7 +71,7 @@ module.exports = class Generator
 
       breadcrumbs = [
         {
-          href: "#{ assetPath }_index.html"
+          href: "#{ assetPath }class_index.html"
           name: 'Index'
         }
       ]
@@ -113,7 +113,7 @@ module.exports = class Generator
           content: content
           breadcrumbs: [
             {
-              href: '_index.html'
+              href: 'class_index.html'
               name: 'Index'
             }
             {
@@ -142,7 +142,7 @@ module.exports = class Generator
       classes: sortedClasses
       files: _.union [@options.readme], @options.extras.sort()
       breadcrumbs: []
-    }, '_index.html'
+    }, 'class_index.html'
 
   # Generates the drop down class list
   #
