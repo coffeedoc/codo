@@ -36,7 +36,7 @@
           %h4
             = example.title
           %pre
-            %code.CoffeeScript= example.code
+            %code.coffee= example.code
 
 .tags
   - if @type is 'method'
