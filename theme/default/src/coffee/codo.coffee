@@ -49,8 +49,28 @@ $(document).ready ->
   # Navigate form a search list
   #
   $('body.noframes #content.list ul').on 'click', 'li', (event) ->
-    window.parent.location.href = $(@).find('a').attr('href')
+    link = $(@).find('a').attr('href')
+    window.parent.location.href = link if link
     event.preventDefault()
+
+  # Add tree arrow links
+  #
+  $('#content.tree ul > ul').each ->
+    $(@).prev().prepend $('<a href="#" class="toggle"></a>')
+
+  # Create stripes
+  #
+  $('#content.list li:visible').each (i, el) ->
+    if i % 2 is 0 then $(el).addClass('stripe') else $(el).removeClass('stripe')
+
+  # Collapse/expand sub trees
+  #
+  $('#content.tree a.toggle').click ->
+    $(@).toggleClass 'collapsed'
+    $(@).parent().next().toggle()
+
+    $('#content.list li:visible, #content.tree li:visible').each (i, el) ->
+      if i % 2 is 0 then $(el).addClass('stripe') else $(el).removeClass('stripe')
 
   # Switch to frame mode
   #
@@ -63,3 +83,12 @@ $(document).ready ->
   $('a.noframes').click (event) ->
     parent.location.href = location.href
     event.preventDefault()
+
+  # Indent nested Lists
+  #
+  window.indentTree = (el, width) ->
+    $(el).find('> ul').each ->
+      $(@).find('> li').css 'padding-left', "#{ width }px"
+      window.indentTree $(@), width + 20
+
+  indentTree $('#content.list > ul'), 20

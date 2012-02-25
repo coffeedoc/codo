@@ -24,30 +24,84 @@ body.frames #content.list #search {
 }
 
 /* line 33, ../../src/styles/lists.scss */
+#content.list.tree {
+  font-size: 1.1em;
+}
+/* line 37, ../../src/styles/lists.scss */
+#content.list.tree ul {
+  margin: 0;
+  padding: 0;
+}
+/* line 41, ../../src/styles/lists.scss */
+#content.list.tree ul li {
+  margin: 0;
+  padding: 5px;
+  color: #000;
+  font-size: 1em;
+  list-style: none;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/* line 52, ../../src/styles/lists.scss */
+#content.list.tree ul li.namespace {
+  overflow: visible;
+}
+/* line 56, ../../src/styles/lists.scss */
+#content.list.tree ul li > a.toggle {
+  display: block;
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+  margin-left: 5px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAK8AAACvABQqw0mAAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTM5jWRgMAAAAVdEVYdENyZWF0aW9uIFRpbWUAMy8xNC8wOeNZPpQAAAE2SURBVDiNrZTBccIwEEXfelIAHUA6CZ24BGaWO+FuzZAK4k6gg5QAdGAq+Bxs2Yqx7BzyL7Llp/VfzZeQhCTc/ezuGzKKnKSzpCxXJM8fwNXda3df5RZETlIt6YUzSQDs93sl8w3wBZxCCE10GM1OcWbWjB2mWgEH4Mfdyxm3PSepBHibgQE2wLe7r4HjEidpnXMYdQPKEMJcsZ4zs2POYQOcaPfwMVOo58zsAdMt18BuoVDPxUJRacELbXv3hUIX2vYmOUvi8C8ydz/ThjXrqKqqLbDIAdsCKBd+Wo7GWa7o9qzOQHVVVXeAbs+yHHCH4aTsaCOQqunmUy1yBUAXkdMIfMlgF5EXLo2OpV/c/Up7jG4hhHcYLgWzAZXUc2b2ixsfvc/RmNNfOXD3Q/oeL9axJE1yT9IOoUu6MGUkAAAAAElFTkSuQmCC);
+  background-repeat: no-repeat;
+  background-position: 0px -10px;
+}
+/* line 70, ../../src/styles/lists.scss */
+#content.list.tree ul li > a.toggle.collapsed {
+  background-position: 0px 0px;
+}
+/* line 75, ../../src/styles/lists.scss */
+#content.list.tree ul li > span, #content.list.tree ul li a {
+  margin-left: 20px;
+  text-decoration: none;
+}
+/* line 80, ../../src/styles/lists.scss */
+#content.list.tree ul li > a.toggle + span, #content.list.tree ul li a.toggle + a {
+  margin-left: 5px;
+}
+/* line 84, ../../src/styles/lists.scss */
+#content.list.tree ul li small {
+  color: #888;
+  white-space: nowrap;
+}
+
+/* line 92, ../../src/styles/lists.scss */
 #content.list {
   padding: 0;
   margin: 0;
 }
-/* line 37, ../../src/styles/lists.scss */
+/* line 96, ../../src/styles/lists.scss */
 #content.list h1 {
   padding: 12px 10px;
-  padding-bottom: 0;
+  padding-bottom: 10px;
   margin: 0;
   font-size: 1.4em;
 }
-/* line 44, ../../src/styles/lists.scss */
+/* line 103, ../../src/styles/lists.scss */
 #content.list a:hover {
   background: transparent;
 }
-/* line 48, ../../src/styles/lists.scss */
+/* line 107, ../../src/styles/lists.scss */
 #content.list nav {
   margin-left: 10px;
 }
-/* line 52, ../../src/styles/lists.scss */
+/* line 111, ../../src/styles/lists.scss */
 #content.list #search {
   color: #888;
 }
-/* line 55, ../../src/styles/lists.scss */
+/* line 114, ../../src/styles/lists.scss */
 #content.list #search input {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -57,17 +111,27 @@ body.frames #content.list #search {
   border-radius: 3px;
   border: 1px solid #BBB;
 }
-/* line 61, ../../src/styles/lists.scss */
+/* line 120, ../../src/styles/lists.scss */
+#content.list a {
+  color: #05A;
+  cursor: pointer;
+  text-decoration: none;
+}
+/* line 126, ../../src/styles/lists.scss */
+#content.list a:hover {
+  text-decoration: underline;
+}
+/* line 130, ../../src/styles/lists.scss */
 #content.list ul {
   padding: 0;
   list-style: none;
   margin-left: 0;
 }
-/* line 66, ../../src/styles/lists.scss */
+/* line 135, ../../src/styles/lists.scss */
 #content.list ul li[deprecated] {
   text-decoration: line-through;
 }
-/* line 70, ../../src/styles/lists.scss */
+/* line 139, ../../src/styles/lists.scss */
 #content.list ul li {
   padding: 5px;
   padding-left: 12px;
@@ -77,11 +141,11 @@ body.frames #content.list #search {
   color: #888;
   cursor: pointer;
 }
-/* line 80, ../../src/styles/lists.scss */
-#content.list ul li:nth-child(odd) {
+/* line 149, ../../src/styles/lists.scss */
+#content.list ul li.stripe {
   background: #F0F0F0;
 }
-/* line 84, ../../src/styles/lists.scss */
+/* line 153, ../../src/styles/lists.scss */
 #content.list ul li:hover {
   background: #ddd;
 }

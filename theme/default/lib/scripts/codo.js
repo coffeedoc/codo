@@ -43,17 +43,47 @@
       }
     });
     $('body.noframes #content.list ul').on('click', 'li', function(event) {
-      window.parent.location.href = $(this).find('a').attr('href');
+      var link;
+      link = $(this).find('a').attr('href');
+      if (link) window.parent.location.href = link;
       return event.preventDefault();
+    });
+    $('#content.tree ul > ul').each(function() {
+      return $(this).prev().prepend($('<a href="#" class="toggle"></a>'));
+    });
+    $('#content.list li:visible').each(function(i, el) {
+      if (i % 2 === 0) {
+        return $(el).addClass('stripe');
+      } else {
+        return $(el).removeClass('stripe');
+      }
+    });
+    $('#content.tree a.toggle').click(function() {
+      $(this).toggleClass('collapsed');
+      $(this).parent().next().toggle();
+      return $('#content.list li:visible, #content.tree li:visible').each(function(i, el) {
+        if (i % 2 === 0) {
+          return $(el).addClass('stripe');
+        } else {
+          return $(el).removeClass('stripe');
+        }
+      });
     });
     $('a.frames').click(function(event) {
       location.href = $(this).attr('href');
       return event.preventDefault();
     });
-    return $('a.noframes').click(function(event) {
+    $('a.noframes').click(function(event) {
       parent.location.href = location.href;
       return event.preventDefault();
     });
+    window.indentTree = function(el, width) {
+      return $(el).find('> ul').each(function() {
+        $(this).find('> li').css('padding-left', "" + width + "px");
+        return window.indentTree($(this), width + 20);
+      });
+    };
+    return indentTree($('#content.list > ul'), 20);
   });
 
 }).call(this);

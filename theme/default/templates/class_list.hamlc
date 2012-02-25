@@ -2,7 +2,7 @@
 %html
   != @JST['partials/head'](@)
   %body.list
-    #content.list
+    #content.tree.list
       %h1.full_list_header Class List
 
       %nav
@@ -14,11 +14,20 @@
         Search:
         %input{ type: 'text' }
 
-      %ul
-        - for clazz in @classes
-          %li
-            %a{ href: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html", target: 'main' }= clazz.getName()
-            - if clazz.getParentClassName()
-              %small
-                <
-                = clazz.getParentClassName()
+      - createLevel = (classes) ->
+        %ul
+          - for clazz in classes
+            %li
+              - if clazz.href
+                %a{ href: clazz.href, target: 'main' }= clazz.name
+                - if clazz.parent
+                  %small
+                    <
+                    = clazz.parent
+              - else
+                %span
+                  = clazz.name
+
+            = createLevel(clazz.children) if clazz.children
+
+      = createLevel @classes

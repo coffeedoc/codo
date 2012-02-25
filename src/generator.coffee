@@ -153,9 +153,36 @@ module.exports = class Generator
   # Generates the drop down class list
   #
   generateClassList: ->
+    classes = []
+
+    # Create tree structure
+    for clazz in @parser.classes
+      children = classes
+
+      if clazz.getNamespace()
+        namespaces = clazz.getNamespace().split('.')
+
+        # Create all namespaces
+        while namespace = namespaces.shift()
+          child = _.find children, (c) -> c.name is namespace
+
+          unless child
+            child =
+              name: namespace
+            children.push child
+
+          child.children or= []
+          children = child.children
+
+      # Create a new class
+      children.push
+        name: clazz.getName()
+        href: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
+        parent: clazz.getParentClassName()
+
     @templater.render 'class_list', {
       path: ''
-      classes: _.sortBy @parser.classes, (clazz) -> clazz.getName()
+      classes: classes
     }, 'class_list.html'
 
   # Generates the drop down method list
