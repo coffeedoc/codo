@@ -2,7 +2,7 @@ class App.TestMethodDocumentation extends App.Doc
 
   # Do it!
   #
-  # @see {#undo} for more information
+  # @see #undo for more information
   #
   # @private
   # @param [String] it The thing to do

@@ -16,6 +16,9 @@
 # @version 0.2.0
 # @since 0.1.0
 # @private
+# @see Example.Animal.Lion
+# @see Example.Animal.Lion#move
+# @see Example.Animal.enterArk Enter the Ark
 #
 class Example.Animal
 
@@ -39,6 +42,7 @@ class Example.Animal
   # @param [Object] options the moving options
   # @option options [String] direction the moving direction
   # @option options [Number] speed the speed in mph
+  # @see .enterArk
   #
   move: (options = {}) ->
 
@@ -59,5 +63,6 @@ class Example.Animal
   # Moves all animal into the ark.
   #
   # @return [Boolean] true when all in Ark
+  # @see #move
   #
   @enterArk: ->

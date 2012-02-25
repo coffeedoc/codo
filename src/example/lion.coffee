@@ -1,6 +1,7 @@
 # A dangerous lion. Take care.
 #
 # @author Simba
+# @see http://en.wikipedia.org/wiki/Lion
 #
 class Example.Animal.Lion extends Example.Animal
 
@@ -10,4 +11,4 @@ class Example.Animal.Lion extends Example.Animal
   # @param [Number] speed the moving speed
   #
   move: (direction, speed) ->
-    super({ diection: direction, speed: speed })
+    super({ direction: direction, speed: speed })

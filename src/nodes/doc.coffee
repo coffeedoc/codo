@@ -10,9 +10,10 @@ module.exports = class Doc
   # Construct a documentation
   #
   # @param [Object] node the comment node
+  # @param [Class] clazz the class context
   # @param [Object] options the parser options
   #
-  constructor: (@node, @options) ->
+  constructor: (@node, @clazz, @options) ->
     try
       if @node
         comment = []
@@ -55,9 +56,11 @@ module.exports = class Doc
               name: option[3]
               desc: option[4]
 
-          else if see = /^@see\s+(.*)/.exec line
+          else if see = /^@see\s+([#.$A-Za-z_\x7f-\uffff][#/:.$\w\x7f-\uffff]*)\s*(.*)?/.exec line
             @see or= []
-            @see.push see[1]
+            @see.push
+              reference: see[1]
+              label: see[2]
 
           else if author = /^@author\s+(.*)/.exec line
             @authors or= []

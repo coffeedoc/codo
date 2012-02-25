@@ -101,3 +101,15 @@
     %ul.version
       %li
         = @doc?.version
+
+  - if @doc?.see
+    %h3 See also:
+    %ul.see
+      - for see in @doc.see
+        %li
+          - if see.reference && see.label
+            %a{ href: see.reference }= see.label
+          - else if see.reference
+            %a{ href: see.reference }= see.reference
+          - else
+            = see.label

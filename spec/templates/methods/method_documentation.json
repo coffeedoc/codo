@@ -50,7 +50,10 @@
             ]
           },
           "see": [
-            "{#undo} for more information"
+            {
+              "reference": "#undo",
+              "label": "for more information"
+            }
           ],
           "returnValue": {
             "type": "Boolean",

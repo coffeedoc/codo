@@ -18,7 +18,7 @@ module.exports = class Generator
   # @param [Object] options the options
   #
   constructor: (@parser, @options) ->
-    @referencer = new Referencer(@parser.classes)
+    @referencer = new Referencer(@parser.classes, @options)
     @templater = new Templater(@options, @referencer)
 
   # Generate the documentation
@@ -94,10 +94,10 @@ module.exports = class Generator
 
       @templater.render 'class', {
         path: assetPath
-        classData: clazz.toJSON()
-        classMethods: _.map _.filter(clazz.getMethods(), (method) -> method.type is 'class'), (m) -> m.toJSON()
-        instanceMethods: _.map _.filter(clazz.getMethods(), (method) -> method.type is 'instance'), (m) -> m.toJSON()
-        constants: _.map _.filter(clazz.getVariables(), (variable) -> variable.isConstant()), (m) -> m.toJSON()
+        classData: @referencer.linkReference(clazz.toJSON(), clazz, assetPath)
+        classMethods: _.map _.filter(clazz.getMethods(), (method) => method.type is 'class'), (m) => @referencer.linkReference(m.toJSON(), clazz, assetPath)
+        instanceMethods: _.map _.filter(clazz.getMethods(), (method) => method.type is 'instance'), (m) => @referencer.linkReference(m.toJSON(), clazz, assetPath)
+        constants: _.map _.filter(clazz.getVariables(), (variable) => variable.isConstant()), (m) => @referencer.linkReference(m.toJSON(), clazz, assetPath)
         subClasses: _.map @referencer.getDirectSubClasses(clazz), (c) -> c.getClassName()
         inheritedMethods: _.groupBy @referencer.getInheritedMethods(clazz), (m) -> m.clazz.getClassName()
         inheritedConstants: _.groupBy @referencer.getInheritedConstants(clazz), (m) -> m.clazz.getClassName()
