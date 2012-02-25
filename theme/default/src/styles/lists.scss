@@ -49,6 +49,8 @@ body.frames {
       white-space: nowrap;
       overflow: hidden;
 
+      cursor: pointer;
+
       &.namespace {
         overflow: visible;
       }
