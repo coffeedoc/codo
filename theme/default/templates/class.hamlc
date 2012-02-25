@@ -15,6 +15,9 @@
         - if @classData.doc?.deprecated || @classData.doc?.deprecated is ''
           %span.deprecated.note.title Deprecated
 
+        - if @classData.doc?.private || @classData.doc?.private is ''
+          %span.private.note.title Private
+
       %table.box
         - if @classData.class.parent
           %tr

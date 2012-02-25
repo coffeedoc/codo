@@ -15,6 +15,7 @@
 # @deprecated This class is not used anymore
 # @version 0.2.0
 # @since 0.1.0
+# @private
 #
 class Example.Animal
 
