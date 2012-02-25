@@ -22,6 +22,7 @@
 
     #search
       %a#class_list_link{ href: "#{ @path }class_list.html" } Class List
+      %a#class_list_link{ href: "#{ @path }module_list.html" } Module List
       %a#method_list_link{ href: "#{ @path }method_list.html" } Method List
       %a#file_list_link{ href: "#{ @path }file_list.html" } File List
 

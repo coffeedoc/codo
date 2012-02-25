@@ -3,7 +3,7 @@
   != @JST['partials/head'](@)
   %body.list
     #content.list
-      %h1.full_list_header Class List
+      %h1.full_list_header Module List
 
       %nav
         %a{ target: '_self', href: 'class_list.html' } Classes
@@ -16,10 +16,6 @@
         %input{ type: 'text' }
 
       %ul
-        - for clazz in @classes
+        - for module in @modules
           %li
-            %a{ href: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html", target: 'main' }= clazz.getName()
-            - if clazz.getParentClassName()
-              %small
-                <
-                = clazz.getParentClassName()
+            %a{ href: "modules/#{ module.getFullName().replace(/\./g, '/') }.html", target: 'main' }= module.getName()

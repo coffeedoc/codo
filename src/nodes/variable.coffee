@@ -6,13 +6,13 @@ module.exports = class Variable
 
   # Construct a variable
   #
-  # @param [Class] clazz the variables class
+  # @param [Class] entity the variables entity
   # @param [Object] node the node
   # @param [Object] options the parser options
   # @param [Boolean] classType whether its a class variable or not
   # @param [Object] comment the comment node
   #
-  constructor: (@clazz, @node, @options, @classType = false, comment = null) ->
+  constructor: (@entity, @node, @options, @classType = false, comment = null) ->
     try
       @getName()
       @doc = new Doc(comment, @options)
