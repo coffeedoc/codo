@@ -9,12 +9,12 @@ module.exports = class Method
 
   # Construct a method
   #
-  # @param [Class] clazz the methods class
+  # @param [Class] entity the methods entity
   # @param [Object] node the node
   # @param [Object] options the parser options
   # @param [Object] comment the comment node
   #
-  constructor: (@clazz, @node, @options, comment) ->
+  constructor: (@entity, @node, @options, comment) ->
     try
       @parameters = []
 

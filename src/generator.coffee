@@ -28,9 +28,11 @@ module.exports = class Generator
     @generateFrames()
     @generateReadme()
     @generateClasses()
+    @generateModules()
     @generateExtras()
     @generateIndex()
     @generateClassList()
+    @generateModulesList()
     @generateMethodList()
     @generateFileList()
     @copyAssets()
@@ -99,10 +101,43 @@ module.exports = class Generator
         instanceMethods: _.map _.filter(clazz.getMethods(), (method) -> method.type is 'instance'), (m) -> m.toJSON()
         constants: _.map _.filter(clazz.getVariables(), (variable) -> variable.isConstant()), (m) -> m.toJSON()
         subClasses: _.map @referencer.getDirectSubClasses(clazz), (c) -> c.getClassName()
-        inheritedMethods: _.groupBy @referencer.getInheritedMethods(clazz), (m) -> m.clazz.getClassName()
-        inheritedConstants: _.groupBy @referencer.getInheritedConstants(clazz), (m) -> m.clazz.getClassName()
+        inheritedMethods: _.groupBy @referencer.getInheritedMethods(clazz), (m) -> m.entity.getClassName()
+        inheritedConstants: _.groupBy @referencer.getInheritedConstants(clazz), (m) -> m.entity.getClassName()
         breadcrumbs: breadcrumbs
       }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
+
+  # Generate the pages for all the modules
+  #
+  generateModules: ->
+    for module in @parser.modules
+      namespaces = _.compact module.getNamespace().split('.')
+      assetPath = '../'
+      assetPath += '../' for namespace in namespaces
+
+      breadcrumbs = [
+        {
+          href: "#{ assetPath }class_index.html"
+          name: 'Index'
+        }
+      ]
+
+      combined = []
+      for namespace in namespaces
+        combined.push namespace
+        breadcrumbs.push
+          href: @referencer.getLink combined.join('.'), assetPath
+          name: namespace
+
+      breadcrumbs.push
+        name: module.getName()
+
+      @templater.render 'module', {
+        path: assetPath
+        moduleData: module.toJSON()
+        methods: _.map module.getMethods(), (m) -> m.toJSON()
+        constants: _.map _.filter(module.getVariables(), (variable) -> variable.isConstant()), (m) -> m.toJSON()
+        breadcrumbs: breadcrumbs
+      }, "modules/#{ module.getFullName().replace(/\./g, '/') }.html"
 
   # Generates the pages for all the extra files.
   #
@@ -141,7 +176,11 @@ module.exports = class Generator
     for code in [97..122]
       char = String.fromCharCode(code)
       classes = _.filter @parser.classes, (clazz) -> clazz.getName().toLowerCase()[0] is char
-      sortedClasses[char] = classes unless _.isEmpty classes
+      modules = _.filter @parser.modules, (module) -> module.getName().toLowerCase()[0] is char
+      if classes.length + modules.length > 0
+        sortedClasses[char] = []
+        sortedClasses[char].push x for x in classes unless _.isEmpty classes
+        sortedClasses[char].push x for x in modules unless _.isEmpty modules
 
     @templater.render 'index', {
       path: ''
@@ -184,6 +223,14 @@ module.exports = class Generator
       path: ''
       classes: classes
     }, 'class_list.html'
+      
+  # Generates the drop down module list
+  #
+  generateModulesList: ->
+    @templater.render 'module_list', {
+      path: ''
+      modules: _.sortBy @parser.modules, (module) -> module.getName()
+    }, 'module_list.html'
 
   # Generates the drop down method list
   #
@@ -193,8 +240,8 @@ module.exports = class Generator
       {
         path: ''
         name: method.getName()
-        href: "classes/#{ method.clazz.getClassName().replace(/\./g, '/') }.html##{ method.getName() }-#{ method.type }"
-        classname: method.clazz.getClassName()
+        href: "#{if method.entity.constructor.name == 'Class' then 'classes' else 'modules'}/#{ method.entity.getFullName().replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"
+        classname: method.entity.getFullName()
         deprecated: method.doc?.deprecated
         type: method.type
       }

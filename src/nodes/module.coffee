@@ -2,13 +2,13 @@ Method   = require './method'
 Variable = require './variable'
 Doc      = require './doc'
 
-# A CoffeeScript class
+# A CoffeeScript object-module
 #
-module.exports = class Class
-
-  # Construct a class
+module.exports = class Module
+  
+  # Construct a module
   #
-  # @param [Object] node the class node
+  # @param [Object] node the module node
   # @param [String] the filename
   # @param [Object] options the parser options
   # @param [Object] comment the comment node
@@ -22,95 +22,94 @@ module.exports = class Class
 
       previousExp = null
 
-      for exp in @node.body.expressions
+      for exp in @node.value.base.properties
         switch exp.constructor.name
-
           when 'Assign'
             doc = previousExp if previousExp?.constructor.name is 'Comment'
-
+      
             switch exp.value?.constructor.name
               when 'Code'
                 @methods.push new Method(@, exp, @options, doc)
               when 'Value'
                 @variables.push new Variable(@, exp, @options, true, doc)
-
+      
             doc = null
-
+      
           when 'Value'
             previousProp = null
-
+      
             for prop in exp.base.properties
               doc = previousProp if previousProp?.constructor.name is 'Comment'
-
+      
               switch prop.value?.constructor.name
                 when 'Code'
                   @methods.push new Method(@, prop, @options, doc)
                 when 'Value'
                   @variables.push new Variable(@, prop, @options, doc)
-
+      
               doc = null
               previousProp = prop
         previousExp = exp
 
     catch error
-      console.warn('Create class error:', @node, error) if @options.verbose
+      console.warn('Create module error:', @node, error) if @options.verbose
 
   # Get the source file name.
   #
-  # @return [String] the filename of the class
+  # @return [String] the filename of the module
   #
   getFileName: -> @fileName
 
-  # Get the class doc
+  # Get the module doc
   #
-  # @return [Doc] the class doc
+  # @return [Doc] the module doc
   #
   getDoc: -> @doc
 
-  # Get the full class name
+  # Get the full module name
   #
-  # @return [String] the class
+  # @return [String] full module name
   #
-  getClassName: ->
+  getModuleName: ->
     try
-      unless @className
-        @className = @node.variable.base.value
+      unless @moduleName
+        name = []
+        name = [@node.variable.base.value] unless @node.variable.base.value == 'this'
+        name.push p.name.value for p in @node.variable.properties
+        @moduleName = name.join('.')
 
-        for prop in @node.variable.properties
-          @className += ".#{ prop.name.value }"
-
-      @className
+      @moduleName
 
     catch error
-      console.warn('Get class classname error:', @node, error) if @options.verbose
-
-  # @see getClassName
+      console.warn('Get module full name error:', @node, error) if @options.verbose
+      
+  # @see getModuleName
   # 
   getFullName: ->
-    @getClassName()
+    @getModuleName()
 
-  # Get the class name
+  # Get the module name
   #
   # @return [String] the name
   #
   getName: ->
     try
       unless @name
-        @name = @getClassName().split('.').pop()
+        @name = @getModuleName().split('.').pop()
 
       @name
 
     catch error
-      console.warn('Get class name error:', @node, error) if @options.verbose
+      console.warn('Get module name error:', @node, error) if @options.verbose
 
-  # Get the class namespace
+  # Get the module namespace
   #
   # @return [String] the namespace
   #
   getNamespace: ->
     try
       unless @namespace
-        @namespace = @getClassName().split('.')
+        @namespace = @getModuleName().split('.')
         @namespace.pop()
 
         @namespace = @namespace.join('.')
@@ -118,32 +117,13 @@ module.exports = class Class
       @namespace
 
     catch error
-      console.warn('Get class namespace error:', @node, error) if @options.verbose
-
-  # Get the full parent class name
-  #
-  # @return [String] the parent class name
-  #
-  getParentClassName: ->
-    try
-      unless @parentClassName
-        if @node.parent
-          @parentClassName = @node.parent.base.value
-
-          for prop in @node.parent.properties
-            @parentClassName += ".#{ prop.name.value }"
-
-      @parentClassName
-
-    catch error
-      console.warn('Get class parent classname error:', @node, error) if @options.verbose
+      console.warn('Get module namespace error:', @node, error) if @options.verbose
 
   # Get all methods.
   #
   # @return [Array<Method>] the methods
   #
-  getMethods: ->
-    if @options.private then @methods else _.filter @methods, (method) -> if method.doc then !method.doc.private else true
+  getMethods: -> @methods
 
   # Get all variables.
   #
@@ -159,11 +139,10 @@ module.exports = class Class
     json =
       file: @getFileName()
       doc: @getDoc().toJSON()
-      class:
-        className: @getClassName()
+      module:
+        moduleName: @getModuleName()
         name: @getName()
         namespace: @getNamespace()
-        parent: @getParentClassName()
       methods: []
       variables: []
 
