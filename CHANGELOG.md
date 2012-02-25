@@ -1,3 +1,9 @@
+# Master
+
+- [#22](https://github.com/netzpirat/codo/issues/22): Add a `Private` badge to private classes. ([@netzpirat][])
+- [#21](https://github.com/netzpirat/codo/issues/21): Filter private methods when to explicit set to include. ([@netzpirat][])
+- [#14](https://github.com/netzpirat/codo/issues/14): Make the class list a tree. ([@netzpirat][])
+
 # Version 0.3.0 - February 20, 2012
 
 - [#11](https://github.com/netzpirat/codo/issues/11): Add frame based sidebar. ([@netzpirat][])
