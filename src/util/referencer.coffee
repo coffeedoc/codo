@@ -89,40 +89,41 @@ module.exports = class Referencer
   # @return [Object] the json data with resolved references
   #
   resolveDoc: (data, clazz, path) ->
-    if data.doc?.see
-      for see in data.doc.see
-        @resolveSee see, clazz, path
+    if data.doc
+      if data.doc.see
+        for see in data.doc.see
+          @resolveSee see, clazz, path
 
-    if _.isString data.doc.abstract
-      data.doc.abstract = @resolveTextReferences(data.doc.abstract, clazz, path)
+      if _.isString data.doc.abstract
+        data.doc.abstract = @resolveTextReferences(data.doc.abstract, clazz, path)
 
-    for name, options of data.doc.options
-      for option, index in options
-        data.doc.options[name][index].desc = @resolveTextReferences(option.desc, clazz, path)
+      for name, options of data.doc.options
+        for option, index in options
+          data.doc.options[name][index].desc = @resolveTextReferences(option.desc, clazz, path)
 
-    for name, param of data.doc.params
-      data.doc.params[name].desc = @resolveTextReferences(param.desc, clazz, path)
+      for name, param of data.doc.params
+        data.doc.params[name].desc = @resolveTextReferences(param.desc, clazz, path)
 
-    if data.doc.notes
-      for note, index in data.doc.notes
-        data.doc.notes[index] = @resolveTextReferences(note, clazz, path)
+      if data.doc.notes
+        for note, index in data.doc.notes
+          data.doc.notes[index] = @resolveTextReferences(note, clazz, path)
 
-    if data.doc.todos
-      for todo, index in data.doc.todos
-        data.doc.todos[index] = @resolveTextReferences(todo, clazz, path)
+      if data.doc.todos
+        for todo, index in data.doc.todos
+          data.doc.todos[index] = @resolveTextReferences(todo, clazz, path)
 
-    if data.doc.examples
-      for example, index in data.doc.examples
-        data.doc.examples[index].title = @resolveTextReferences(example.title, clazz, path)
+      if data.doc.examples
+        for example, index in data.doc.examples
+          data.doc.examples[index].title = @resolveTextReferences(example.title, clazz, path)
 
-    if _.isString data.doc.deprecated
-      data.doc.deprecated = @resolveTextReferences(data.doc.deprecated, clazz, path)
+      if _.isString data.doc.deprecated
+        data.doc.deprecated = @resolveTextReferences(data.doc.deprecated, clazz, path)
 
-    if data.doc.comment
-      data.doc.comment = @resolveTextReferences(data.doc.comment, clazz, path)
+      if data.doc.comment
+        data.doc.comment = @resolveTextReferences(data.doc.comment, clazz, path)
 
-    if data.doc.returnValue?.desc
-      data.doc.returnValue.desc = @resolveTextReferences(data.doc.returnValue.desc, clazz, path)
+      if data.doc.returnValue?.desc
+        data.doc.returnValue.desc = @resolveTextReferences(data.doc.returnValue.desc, clazz, path)
 
     data
 
