@@ -7,7 +7,7 @@
     - if @doc?.deprecated || @doc?.deprecated is ''
       .note.deprecated
         %strong Deprecated.
-        = @doc.deprecated
+        != @doc.deprecated
 
     - if @doc?.abstract || @doc?.abstract is ''
       .note.abstract
@@ -15,19 +15,19 @@
           This
           = @type
           is abstract.
-        = @doc.abstract
+        != @doc.abstract
 
     - if @doc?.todos
       - for todo in @doc?.todos
         .note.todo
           %strong TODO:
-          = todo
+          != todo
 
     - if @doc?.notes
       - for note in @doc?.notes
         .note
           %strong Note:
-          = note
+          != note
 
     != @doc.comment
 
@@ -37,7 +37,7 @@
 
         - for example in @doc?.examples
           %h4
-            = example.title
+            != example.title
           %pre
             %code.coffee= example.code
 
@@ -54,7 +54,7 @@
                 %tt>!= @referencer.linkTypes param.type, @path
               )
             &mdash;
-            %span.desc= param.desc
+            %span.desc!= param.desc
 
     - if @doc?.options
       - for hash, options of @doc.options
@@ -70,7 +70,7 @@
                   %tt>!= @referencer.linkTypes option.type, @path
                 )
               &mdash;
-              %span.desc= option.desc
+              %span.desc!= option.desc
 
     - if @doc?.returnValue
       %h3 Returns:
@@ -81,7 +81,7 @@
               %tt>!= @referencer.linkTypes @doc.returnValue.type, @path
             )
           &mdash;
-          %span.desc= @doc.returnValue.desc
+          %span.desc!= @doc.returnValue.desc
 
   - if @doc?.authors
     %h3 Author:

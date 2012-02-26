@@ -1,18 +1,19 @@
 # Base class for all animals.
 #
 # @note This is not used for codo, its purpose is to show
-#   all possible tags within a class.
+#   all possible tags within a class, even when it makes no sense at all.
+#   For example this reference test to {Example.Animal.Lion#move}
 #
-# @todo Provide more examples
+# @todo Provide more examples with {Example.Animal.Lion}
 #
-# @example How to subclass an animal
+# @example How to subclass an {Example.Animal}
 #   class Lion extends Animal
 #     move: (direction, speed): ->
 #
-# @abstract Each animal implementation must inherit from {Animal}
+# @abstract Each animal implementation must inherit from {Example.Animal}
 #
 # @author Michael Kessler
-# @deprecated This class is not used anymore
+# @deprecated This class is not used anymore, use {Example.Animal.Lion}
 # @version 0.2.0
 # @since 0.1.0
 # @private
@@ -28,7 +29,7 @@ class Example.Animal
   # Construct a new animal.
   #
   # @todo Clean up
-  # @param [String] name the name of the animal
+  # @param [String] name the name of the {Example.Animal}
   # @param [Date] birthDate when the animal was born
   #
   constructor: (@name, @birthDate = new Date()) ->
@@ -40,7 +41,7 @@ class Example.Animal
   #
   # @abstract
   # @param [Object] options the moving options
-  # @option options [String] direction the moving direction
+  # @option options [String] direction the {#move} direction
   # @option options [Number] speed the speed in mph
   # @see .enterArk
   #
@@ -53,14 +54,14 @@ class Example.Animal
   # @private
   # @author Michael Kessler
   # @param [Example.Animal] animal the partner animal
-  # @return [Boolean] true when success
-  # @deprecated Do not copulate
+  # @return [Boolean] true when success, test an {Example.Animal}
+  # @deprecated Do not copulate, use {Example.Animal.Lion}
   # @version 0.2.0
   # @since 0.1.0
   #
   copulate: (animal) =>
 
-  # Moves all animal into the ark.
+  # Moves all animals into the ark.
   #
   # @return [Boolean] true when all in Ark
   # @see #move

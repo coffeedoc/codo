@@ -1,4 +1,4 @@
-# A dangerous lion. Take care.
+# A dangerous lion. Take care. It's an {Example.Animal}
 #
 # @author Simba
 # @see http://en.wikipedia.org/wiki/Lion
