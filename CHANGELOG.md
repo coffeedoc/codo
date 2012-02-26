@@ -1,5 +1,7 @@
 # Master
 
+- [#20](https://github.com/netzpirat/codo/issues/20): Parse class/method references in the docs. ([@netzpirat][])
+- [#18](https://github.com/netzpirat/codo/issues/18): Support the `@see` tag. ([@netzpirat][])
 - [#22](https://github.com/netzpirat/codo/issues/22): Add a `Private` badge to private classes. ([@netzpirat][])
 - [#21](https://github.com/netzpirat/codo/issues/21): Filter private methods when to explicit set to include. ([@netzpirat][])
 - [#14](https://github.com/netzpirat/codo/issues/14): Make the class list a tree. ([@netzpirat][])
