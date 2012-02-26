@@ -97,6 +97,12 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td>&#10004;</td>
     </tr>
     <tr>
+      <td><strong>@see</strong> version</td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
       <td><strong>@since</strong> version</td>
       <td></td>
       <td>&#10004;</td>
@@ -116,6 +122,21 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
     </tr>
   </tbody>
 <table>
+
+### References
+
+Class/method comments and all tags texts will be parsed for references to other classes/methods and are linked
+automatically. You can use:
+
+* Normal links
+* Link to a class, e.g. `{Animal.Lion}`
+* Link to an instance method, e.g. `{Animal.Lion#walk}`
+* Link to a class method, e.g. `{Animal.Lion.constructor}`
+
+If you are referring to a method within the same class, you can omit the class name, like `{#walk}`. You can set an
+explicit label for the link by adding the label after the reference, e.g. `{#walk The lion walks}`.
+
+The `@see` tag supports the same linking, just without the curly braces.
 
 ### Example
 
