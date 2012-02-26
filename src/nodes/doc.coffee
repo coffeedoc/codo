@@ -56,7 +56,7 @@ module.exports = class Doc
               name: option[3]
               desc: option[4]
 
-          else if see = /^@see\s+([#.$A-Za-z_\x7f-\uffff][#/:.$\w\x7f-\uffff]*)\s*(.*)?/.exec line
+          else if see = /^@see\s+([^\s]*)\s*(.*)?/.exec line
             @see or= []
             @see.push
               reference: see[1]
