@@ -1,4 +1,4 @@
-# Master
+# Version 0.4.0 - February 26, 2012
 
 - [#20](https://github.com/netzpirat/codo/issues/20): Parse class/method references in the docs. ([@netzpirat][])
 - [#18](https://github.com/netzpirat/codo/issues/18): Support the `@see` tag. ([@netzpirat][])
