@@ -23,16 +23,17 @@ body.frames #content.list #search {
   margin-left: 10px;
 }
 
-/* line 33, ../../src/styles/lists.scss */
-#content.list.tree {
-  font-size: 1.1em;
+/* line 34, ../../src/styles/lists.scss */
+#content.list.tree > ul {
+  margin-top: 13px !important;
 }
-/* line 37, ../../src/styles/lists.scss */
+/* line 38, ../../src/styles/lists.scss */
 #content.list.tree ul {
+  font-size: 16px;
   margin: 0;
   padding: 0;
 }
-/* line 41, ../../src/styles/lists.scss */
+/* line 44, ../../src/styles/lists.scss */
 #content.list.tree ul li {
   margin: 0;
   padding: 5px;
@@ -43,11 +44,11 @@ body.frames #content.list #search {
   overflow: hidden;
   cursor: pointer;
 }
-/* line 54, ../../src/styles/lists.scss */
+/* line 57, ../../src/styles/lists.scss */
 #content.list.tree ul li.namespace {
   overflow: visible;
 }
-/* line 58, ../../src/styles/lists.scss */
+/* line 61, ../../src/styles/lists.scss */
 #content.list.tree ul li > a.toggle {
   display: block;
   float: left;
@@ -59,50 +60,50 @@ body.frames #content.list #search {
   background-repeat: no-repeat;
   background-position: 0px -10px;
 }
-/* line 72, ../../src/styles/lists.scss */
+/* line 75, ../../src/styles/lists.scss */
 #content.list.tree ul li > a.toggle.collapsed {
   background-position: 0px 0px;
 }
-/* line 77, ../../src/styles/lists.scss */
+/* line 80, ../../src/styles/lists.scss */
 #content.list.tree ul li > span, #content.list.tree ul li a {
   margin-left: 20px;
   text-decoration: none;
 }
-/* line 82, ../../src/styles/lists.scss */
+/* line 85, ../../src/styles/lists.scss */
 #content.list.tree ul li > a.toggle + span, #content.list.tree ul li a.toggle + a {
   margin-left: 5px;
 }
-/* line 86, ../../src/styles/lists.scss */
+/* line 89, ../../src/styles/lists.scss */
 #content.list.tree ul li small {
   color: #888;
   white-space: nowrap;
 }
 
-/* line 94, ../../src/styles/lists.scss */
+/* line 97, ../../src/styles/lists.scss */
 #content.list {
   padding: 0;
   margin: 0;
 }
-/* line 98, ../../src/styles/lists.scss */
+/* line 101, ../../src/styles/lists.scss */
 #content.list h1 {
   padding: 12px 10px;
   padding-bottom: 10px;
   margin: 0;
   font-size: 1.4em;
 }
-/* line 105, ../../src/styles/lists.scss */
+/* line 108, ../../src/styles/lists.scss */
 #content.list a:hover {
   background: transparent;
 }
-/* line 109, ../../src/styles/lists.scss */
+/* line 112, ../../src/styles/lists.scss */
 #content.list nav {
   margin-left: 10px;
 }
-/* line 113, ../../src/styles/lists.scss */
+/* line 116, ../../src/styles/lists.scss */
 #content.list #search {
   color: #888;
 }
-/* line 116, ../../src/styles/lists.scss */
+/* line 119, ../../src/styles/lists.scss */
 #content.list #search input {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -112,27 +113,27 @@ body.frames #content.list #search {
   border-radius: 3px;
   border: 1px solid #BBB;
 }
-/* line 122, ../../src/styles/lists.scss */
+/* line 125, ../../src/styles/lists.scss */
 #content.list a {
   color: #05A;
   cursor: pointer;
   text-decoration: none;
 }
-/* line 128, ../../src/styles/lists.scss */
+/* line 131, ../../src/styles/lists.scss */
 #content.list a:hover {
   text-decoration: underline;
 }
-/* line 132, ../../src/styles/lists.scss */
+/* line 135, ../../src/styles/lists.scss */
 #content.list ul {
   padding: 0;
   list-style: none;
   margin-left: 0;
 }
-/* line 137, ../../src/styles/lists.scss */
+/* line 140, ../../src/styles/lists.scss */
 #content.list ul li[deprecated] {
   text-decoration: line-through;
 }
-/* line 141, ../../src/styles/lists.scss */
+/* line 144, ../../src/styles/lists.scss */
 #content.list ul li {
   padding: 5px;
   padding-left: 12px;
@@ -142,11 +143,11 @@ body.frames #content.list #search {
   color: #888;
   cursor: pointer;
 }
-/* line 151, ../../src/styles/lists.scss */
+/* line 154, ../../src/styles/lists.scss */
 #content.list ul li.stripe {
   background: #F0F0F0;
 }
-/* line 155, ../../src/styles/lists.scss */
+/* line 158, ../../src/styles/lists.scss */
 #content.list ul li:hover {
   background: #ddd;
 }

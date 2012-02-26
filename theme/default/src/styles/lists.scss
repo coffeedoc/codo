@@ -31,10 +31,13 @@ body.frames {
 }
 
 #content.list.tree {
-
-  font-size: 1.1em;
+  > ul {
+    margin-top: 13px !important;
+  }
 
   ul {
+    font-size: 16px;
+
     margin: 0;
     padding: 0;
 

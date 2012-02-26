@@ -46,11 +46,18 @@ $(document).ready ->
         else
           $(@).show()
 
+    window.createStripes()
+
   # Navigate form a search list
   #
-  $('body.noframes #content.list ul').on 'click', 'li', (event) ->
+  $('body #content.list ul').on 'click', 'li', (event) ->
     link = $(@).find('a').attr('href')
-    window.parent.location.href = link if link
+
+    if $('body').hasClass 'noframes'
+      window.parent.location.href = link unless link is '#'
+    else
+      top.frames['main'].location.href = link unless link is '#'
+
     event.preventDefault()
 
   # Add tree arrow links
@@ -60,17 +67,16 @@ $(document).ready ->
 
   # Create stripes
   #
-  $('#content.list li:visible').each (i, el) ->
-    if i % 2 is 0 then $(el).addClass('stripe') else $(el).removeClass('stripe')
+  window.createStripes = ->
+    $('#content.list li:visible').each (i, el) ->
+      if i % 2 is 0 then $(el).addClass('stripe') else $(el).removeClass('stripe')
 
   # Collapse/expand sub trees
   #
   $('#content.tree a.toggle').click ->
     $(@).toggleClass 'collapsed'
     $(@).parent().next().toggle()
-
-    $('#content.list li:visible, #content.tree li:visible').each (i, el) ->
-      if i % 2 is 0 then $(el).addClass('stripe') else $(el).removeClass('stripe')
+    window.createStripes()
 
   # Switch to frame mode
   #
@@ -92,3 +98,4 @@ $(document).ready ->
       window.indentTree $(@), width + 20
 
   indentTree $('#content.list > ul'), 20
+  createStripes()

@@ -31,9 +31,9 @@
       var search;
       search = $(this).val().toLowerCase();
       if (search.length === 0) {
-        return $('#content.list ul li').show();
+        $('#content.list ul li').show();
       } else {
-        return $('#content.list ul li').each(function() {
+        $('#content.list ul li').each(function() {
           if ($(this).find('a').text().toLowerCase().indexOf(search) === -1) {
             return $(this).hide();
           } else {
@@ -41,33 +41,34 @@
           }
         });
       }
+      return window.createStripes();
     });
-    $('body.noframes #content.list ul').on('click', 'li', function(event) {
+    $('body #content.list ul').on('click', 'li', function(event) {
       var link;
       link = $(this).find('a').attr('href');
-      if (link) window.parent.location.href = link;
+      if ($('body').hasClass('noframes')) {
+        if (link !== '#') window.parent.location.href = link;
+      } else {
+        if (link !== '#') top.frames['main'].location.href = link;
+      }
       return event.preventDefault();
     });
     $('#content.tree ul > ul').each(function() {
       return $(this).prev().prepend($('<a href="#" class="toggle"></a>'));
     });
-    $('#content.list li:visible').each(function(i, el) {
-      if (i % 2 === 0) {
-        return $(el).addClass('stripe');
-      } else {
-        return $(el).removeClass('stripe');
-      }
-    });
-    $('#content.tree a.toggle').click(function() {
-      $(this).toggleClass('collapsed');
-      $(this).parent().next().toggle();
-      return $('#content.list li:visible, #content.tree li:visible').each(function(i, el) {
+    window.createStripes = function() {
+      return $('#content.list li:visible').each(function(i, el) {
         if (i % 2 === 0) {
           return $(el).addClass('stripe');
         } else {
           return $(el).removeClass('stripe');
         }
       });
+    };
+    $('#content.tree a.toggle').click(function() {
+      $(this).toggleClass('collapsed');
+      $(this).parent().next().toggle();
+      return window.createStripes();
     });
     $('a.frames').click(function(event) {
       location.href = $(this).attr('href');
@@ -83,7 +84,8 @@
         return window.indentTree($(this), width + 20);
       });
     };
-    return indentTree($('#content.list > ul'), 20);
+    indentTree($('#content.list > ul'), 20);
+    return createStripes();
   });
 
 }).call(this);
