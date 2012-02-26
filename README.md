@@ -97,7 +97,7 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td>&#10004;</td>
     </tr>
     <tr>
-      <td><strong>@see</strong> version</td>
+      <td><strong>@see</strong> link/reference</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
