@@ -153,6 +153,8 @@ module.exports = class Referencer
   # @return [Object] the resolved see
   #
   resolveSee: (see, clazz, path) ->
+    # If a reference starts with a space like `{ a: 1 }`, then it's not a valid reference
+    return see if see.reference.substring(0, 1) is ' '
 
     ref = see.reference
 
