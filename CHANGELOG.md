@@ -1,3 +1,7 @@
+# Version 0.4.1 - February 26, 2012
+
+- Make the doc reference resolver more fail safe. ([@netzpirat][])
+
 # Version 0.4.0 - February 26, 2012
 
 - [#20](https://github.com/netzpirat/codo/issues/20): Parse class/method references in the docs. ([@netzpirat][])
