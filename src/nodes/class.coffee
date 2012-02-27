@@ -138,7 +138,10 @@ module.exports = class Class
   # @return [Array<Method>] the methods
   #
   getMethods: ->
-    if @options.private then @methods else _.filter @methods, (method) -> if method.doc then !method.doc.private else true
+    if @options.private
+      @methods
+    else
+      method for method in @methods when !method.doc.private
 
   # Get all variables.
   #
