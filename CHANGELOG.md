@@ -1,3 +1,7 @@
+# Version 0.4.2 - February 27, 2012
+
+- [#24](https://github.com/netzpirat/codo/pull/24): Fix private method filter. ([@Squeegy][])
+
 # Version 0.4.1 - February 26, 2012
 
 - Make the doc reference resolver more fail safe. ([@netzpirat][])
@@ -35,3 +39,4 @@
 [@dnagir]: https://github.com/dnagir
 [@inossidabile]: https://github.com/inossidabile
 [@netzpirat]: https://github.com/netzpirat
+[@Squeegy]: https://github.com/Squeegy
