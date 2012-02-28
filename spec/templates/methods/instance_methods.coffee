@@ -9,3 +9,6 @@ class TestInstanceMethods
   nowWithSpalt: (foo, bar...) ->
 
   bound: =>
+
+  # This is not exposed to the outside world.
+  internalToClassClosure = -> alert 'internal!'

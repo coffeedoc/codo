@@ -30,7 +30,7 @@ module.exports = class Class
 
             switch exp.value?.constructor.name
               when 'Code'
-                @methods.push new Method(@, exp, @options, doc)
+                @methods.push(new Method(@, exp, @options, doc)) if exp.variable.base.value is 'this'
               when 'Value'
                 @variables.push new Variable(@, exp, @options, true, doc)
 

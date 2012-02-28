@@ -1,3 +1,7 @@
+# Master
+
+- [#25](https://github.com/netzpirat/codo/issues/25): Exclude functions internal to the class closure. ([@netzpirat][])
+
 # Version 0.4.2 - February 27, 2012
 
 - [#24](https://github.com/netzpirat/codo/pull/24): Fix private method filter. ([@Squeegy][])
