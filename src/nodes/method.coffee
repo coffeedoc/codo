@@ -112,7 +112,7 @@ module.exports = class Method
   #
   # @param [Array<Parameter>] the method parameters
   #
-  getParamaters: -> @parameters
+  getParameters: -> @parameters
 
   # Get the method source in CoffeeScript
   #
