@@ -61,7 +61,7 @@ module.exports = class Method
 
         params = []
 
-        for param in @getParamaters()
+        for param in @getParameters()
           params.push param.getSignature()
 
         @signature += params.join(', ')
@@ -139,7 +139,7 @@ module.exports = class Method
       bound: @node.value.bound
       parameters: []
 
-    for parameter in @getParamaters()
+    for parameter in @getParameters()
       json.parameters.push parameter.toJSON()
 
     json
