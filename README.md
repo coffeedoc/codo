@@ -286,12 +286,11 @@ dynamic programming languages.
 ## Contributors
 
 * [Boris Staal](https://github.com/inossidabile)
+* [Mattijs Hoitink](https://github.com/mattijs)
 
 ## Author
 
-* [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat))
-
-Development is sponsored by [mksoft.ch](https://mksoft.ch).
+* [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat), [mksoft.ch](https://mksoft.ch))
 
 ## License
 
