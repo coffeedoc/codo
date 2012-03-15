@@ -52,6 +52,12 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td>&#10004;</td>
     </tr>
     <tr>
+      <td><strong>@copyright</strong> name</td>
+      <td></td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
       <td><strong>@deprecated</strong></td>
       <td></td>
       <td>&#10004;</td>
