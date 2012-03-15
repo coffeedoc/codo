@@ -90,6 +90,12 @@
         %li
           = author
 
+  - if @doc?.copyright
+    %h3 Copyright: 
+    %ul.copyright
+      %li
+        = @doc.copyright
+
   - if @doc?.since
     %h3 Since:
     %ul.since
