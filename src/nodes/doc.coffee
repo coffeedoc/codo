@@ -66,6 +66,9 @@ module.exports = class Doc
             @authors or= []
             @authors.push author[1]
 
+          else if copyright = /^@copyright\s+(.*)/.exec line
+            @copyright = copyright[1]
+
           else if note = /^@note\s+(.*)/.exec line
             @notes or= []
             @notes.push note[1]
@@ -128,6 +131,7 @@ module.exports = class Doc
         todos: @todos
         notes: @notes
         authors: @authors
+        copyright: @copyright
         comment: @comment
         summary: @summary
         params: @params
