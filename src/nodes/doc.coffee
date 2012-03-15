@@ -33,28 +33,28 @@ module.exports = class Doc
               type: returnValue[1]
               desc: returnValue[3]
 
-          else if param = /^@param\s+([^ ]*)\s+\[(.*?)\]\s+(.*)/.exec line
+          else if param = /^@param\s+([^ ]*)\s+\[(.*?)\](?:\s+(.*))?/.exec line
             @params or= []
             @params.push
               type: param[2]
               name: param[1]
-              desc: param[3]
+              desc: param[3] or ''
 
-          else if param = /^@param\s+\[(.*?)\]\s+([^ ]*)\s+(.*)/.exec line
+          else if param = /^@param\s+\[(.*?)\]\s+([^ ]*)(?:\s+(.*))?/.exec line
             @params or= []
             @params.push
               type: param[1]
               name: param[2]
-              desc: param[3]
+              desc: param[3] or ''
 
-          else if option = /^@option\s+([^ ]*)\s+\[(.*?)\]\s+([^ ]*)\s+(.*)/.exec line
+          else if option = /^@option\s+([^ ]*)\s+\[(.*?)\]\s+([^ ]*)(?:\s+(.*))?/.exec line
             @paramsOptions or= {}
             @paramsOptions[option[1]] or= []
 
             @paramsOptions[option[1]].push
               type: option[2]
               name: option[3]
-              desc: option[4]
+              desc: option[4] or ''
 
           else if see = /^@see\s+([^\s]*)\s*(.*)?/.exec line
             @see or= []
