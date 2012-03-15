@@ -53,8 +53,9 @@
               (
                 %tt>!= @referencer.linkTypes param.type, @path
               )
-            &mdash;
-            %span.desc!= param.desc
+            - if param.desc
+              &mdash;
+              %span.desc!= param.desc
 
     - if @doc?.options
       - for hash, options of @doc.options
@@ -69,8 +70,9 @@
                 (
                   %tt>!= @referencer.linkTypes option.type, @path
                 )
-              &mdash;
-              %span.desc!= option.desc
+              - if option.desc
+                &mdash;
+                %span.desc!= option.desc
 
     - if @doc?.returnValue
       %h3 Returns:
