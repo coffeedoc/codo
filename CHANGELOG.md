@@ -1,3 +1,7 @@
+# Master
+
+- [#28](https://github.com/netzpirat/codo/pull/28): Description for `@param` and `@option` is now optional. ([@mattijs][])
+
 # Version 0.5.0 - March 15, 2012
 
 - [#27](https://github.com/netzpirat/codo/pull/27): Added support for `@copyright` tag. ([@mattijs][])
