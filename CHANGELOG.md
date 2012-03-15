@@ -1,5 +1,6 @@
-# Master
+# Version 0.5.0 - March 15, 2012
 
+- [#27](https://github.com/netzpirat/codo/pull/27): Added support for `@copyright` tag. ([@mattijs][])
 - [#25](https://github.com/netzpirat/codo/issues/25): Exclude functions internal to the class closure. ([@netzpirat][])
 
 # Version 0.4.2 - February 27, 2012
@@ -42,5 +43,6 @@
 
 [@dnagir]: https://github.com/dnagir
 [@inossidabile]: https://github.com/inossidabile
+[@mattijs]: https://github.com/mattijs
 [@netzpirat]: https://github.com/netzpirat
 [@Squeegy]: https://github.com/Squeegy
