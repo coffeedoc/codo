@@ -285,7 +285,7 @@ dynamic programming languages.
 
 ## Contributors
 
-* [Boris Staal](https://github.com/inossidabile)
+* [Boris Staal](https://github.com/inossidabile) ([@_inossidabile](http://twitter.com/#!/_inossidabile))
 * [Mattijs Hoitink](https://github.com/mattijs)
 
 ## Author
