@@ -197,7 +197,7 @@ module.exports = class Referencer
           if otherEntity
             # Link to another class
             if _.isUndefined refMethod
-              if _.include(_.map(@classes, (c) -> c.getFullName()), refClass)
+              if _.include(_.map(@classes, (c) -> c.getFullName()), refClass) || _.include(_.map(@modules, (c) -> c.getFullName()), refClass)
                 see.reference = "#{ path }#{if otherEntity.constructor.name == 'Class' then 'classes' else 'modules'}/#{ refClass.replace(/\./g, '/') }.html"
                 see.label = ref unless see.label
               else
