@@ -136,7 +136,7 @@ module.exports = class Referencer
   # @return [String] the text with hyperlinks
   #
   resolveTextReferences: (text, clazz, path) ->
-    text.replace /\{(.*)\}/gm, (match) =>
+    text.replace /\{([^\}]*)\}/gm, (match) =>
       reference = arguments[1].split()
       see = @resolveSee({ reference: reference[0], label: reference[1] }, clazz, path)
 
