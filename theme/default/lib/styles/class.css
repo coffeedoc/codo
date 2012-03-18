@@ -61,11 +61,10 @@
 }
 /* line 67, ../../src/styles/class.scss */
 #content ul.summary .signature {
-  -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  -o-border-radius: 3px;
+  -moz-border-radius: 3px;
   -ms-border-radius: 3px;
-  -khtml-border-radius: 3px;
+  -o-border-radius: 3px;
   border-radius: 3px;
   padding: 1px 10px;
   background: #EAEAFF;
@@ -126,11 +125,10 @@
 }
 /* line 128, ../../src/styles/class.scss */
 #content .method_details p.signature {
-  -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  -o-border-radius: 3px;
+  -moz-border-radius: 3px;
   -ms-border-radius: 3px;
-  -khtml-border-radius: 3px;
+  -o-border-radius: 3px;
   border-radius: 3px;
   font-size: 1.1em;
   font-weight: normal;
@@ -162,11 +160,10 @@
 }
 /* line 161, ../../src/styles/class.scss */
 #content .note {
-  -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  -o-border-radius: 3px;
+  -moz-border-radius: 3px;
   -ms-border-radius: 3px;
-  -khtml-border-radius: 3px;
+  -o-border-radius: 3px;
   border-radius: 3px;
   margin-top: 10px;
   color: #222;

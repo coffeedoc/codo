@@ -4,6 +4,7 @@ _.str        = require 'underscore.string'
 
 CoffeeScript = require 'coffee-script'
 Class        = require './nodes/class'
+Module       = require './nodes/module'
 
 {whitespace} = require('./util/text')
 
@@ -19,6 +20,7 @@ module.exports = class Parser
   constructor: (@options) ->
     @files   = []
     @classes = []
+    @modules = []
 
   # Parse the given CoffeeScript file
   #
@@ -36,9 +38,20 @@ module.exports = class Parser
   parseContent: (content, file = '') ->
     @previousNodes = []
 
+    # Defines typical conditions for entities we are looking through nodes
+    entities = 
+      clazz: (node) -> node.constructor.name is 'Class'
+      module: (node) -> node.constructor.name == 'Assign' && node.value.base?.generated
+
     tokens = CoffeeScript.nodes(@convertComments(content))
     tokens.traverseChildren true, (child) =>
-      if child.constructor.name is 'Class'
+      entity = false
+      
+      for type, condition of entities
+        if entities.hasOwnProperty(type)
+          entity = type if condition(child)
+          
+      if entity
 
         # Check the previous tokens for comment nodes
         previous = @previousNodes[@previousNodes.length-1]
@@ -51,11 +64,25 @@ module.exports = class Parser
             if previous.value is 'exports'
               node = @previousNodes[@previousNodes.length-6]
               doc = node if node.constructor.name is 'Comment'
-
-        clazz = new Class(child, file, @options, doc)
         
-        if @options.private || !clazz.doc.private
-          @classes.push clazz
+        if entity == 'module'
+          name = [child.variable.base.value]
+
+          # If p.name is empty value is going to be assigned to index...
+          name.push p.name?.value for p in child.variable.properties
+
+          # ... and therefore should be just skippped.
+          if name.indexOf(undefined) == -1
+            module = new Module(child, file, @options, doc)
+            
+            if module.doc.module? && (@options.private || !module.doc.private)
+              @modules.push module
+
+        if entity == 'clazz'
+          clazz = new Class(child, file, @options, doc)
+        
+          if @options.private || !clazz.doc.private
+            @classes.push clazz
 
       @previousNodes.push child
       true
@@ -134,6 +161,9 @@ module.exports = class Parser
     for clazz in @classes
       @variables = _.union @variables, clazz.getVariables()
 
+    for module in @modules
+      @methods = _.union @methods, module.getMethods()
+
     @variables
 
   # Show the parsing statistics
@@ -143,6 +173,8 @@ module.exports = class Parser
 
     classCount     = @classes.length
     noDocClasses   = _.filter(@classes, (clazz) -> _.isUndefined clazz.getDoc()).length
+      
+    modulesCount   = @modules.length
 
     methodCount    = @getAllMethods().length
     noDocMethods   = _.filter(@getAllMethods(), (method) -> _.isUndefined method.getDoc()).length
@@ -153,13 +185,14 @@ module.exports = class Parser
 
     documented = 100 - 100 / (classCount + methodCount + constantCount) * (noDocClasses + noDocMethods + noDocConstants)
 
-    maxCountLength = String(_.max([fileCount, classCount, methodCount, constantCount], (count) -> String(count).length)).length + 6
+    maxCountLength = String(_.max([fileCount, modulesCount, classCount, methodCount, constantCount], (count) -> String(count).length)).length + 6
     maxNoDocLength = String(_.max([noDocClasses, noDocMethods, noDocConstants], (count) -> String(count).length)).length
 
     stats =
       """
       Files:     #{ _.str.pad(fileCount, maxCountLength) }
       Classes:   #{ _.str.pad(classCount, maxCountLength) } (#{ _.str.pad(noDocClasses, maxNoDocLength) } undocumented)
+      Modules:   #{ _.str.pad(modulesCount, maxCountLength) }
       Methods:   #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethods, maxNoDocLength) } undocumented)
       Constants: #{ _.str.pad(constantCount, maxCountLength) } (#{ _.str.pad(noDocConstants, maxNoDocLength) } undocumented)
        #{ _.str.sprintf('%.2f', documented) }% documented

@@ -4,3 +4,4 @@ Gemfile.lock
 .bundle
 .idea
 doc
+.sass-cache

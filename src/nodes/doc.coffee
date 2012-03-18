@@ -105,6 +105,9 @@ module.exports = class Doc
           else if deprecated = /^@deprecated\s+(.*)/.exec line
             @deprecated = deprecated[1]
 
+          else if module = /^@module/.exec line
+            @module = true
+
           else
             comment.push line
 

@@ -1,0 +1,58 @@
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body
+    != @JST['partials/header'](@)
+
+    #content
+      %h1
+        Module:
+        = @moduleData.module.moduleName
+    
+        - if @moduleData.doc?.abstract || @moduleData.doc?.abstract is ''
+          %span.note.title Abstract
+    
+        - if @moduleData.doc?.deprecated || @moduleData.doc?.deprecated is ''
+          %span.deprecated.note.title Deprecated
+    
+      %dl.box
+        %dt Defined in:
+        %dd= @moduleData.file
+    
+      - if @moduleData.doc?.comment
+        %h2 Overview
+    
+        != @JST['partials/doc']({ doc: @moduleData.doc, type: 'module', path: @path, referencer: @referencer })
+    
+      - if @constants.length isnt 0
+        %h2 Constant Summary
+    
+        %dl.constants
+          - for constant in @constants
+            %dt{ id: "#{ constant.name }-constant" }
+              = constant.name
+              \=
+              != @JST['partials/doc']({ doc: constant.doc, type: 'constant', path: @path, referencer: @referencer })
+            %dd
+              %pre
+                %code.coffee!= constant.value
+
+      - if @methods.length isnt 0
+        %h2 Method Summary
+    
+        != @JST['partials/method_summary']({ methods: @methods })
+    
+    
+      - constructor = @underscore.filter @methods, (m) -> m.name is 'constructor'
+      - if constructor.length isnt 0
+        %h2 Constructor Details
+    
+        != @JST['partials/method_list']({ methods: constructor, parent: @ })
+    
+      - instanceMethods = @underscore.filter @methods, (m) -> m.name isnt 'constructor'
+      - if instanceMethods.length isnt 0
+        %h2 Instance Method Details
+    
+        != @JST['partials/method_list']({ methods: instanceMethods, parent: @ })
+    
+    != @JST['partials/footer'](@)
