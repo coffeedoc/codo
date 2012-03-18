@@ -18,7 +18,7 @@ module.exports = class Generator
   # @param [Object] options the options
   #
   constructor: (@parser, @options) ->
-    @referencer = new Referencer(@parser.classes, @options)
+    @referencer = new Referencer(@parser.classes, @parser.modules, @options)
     @templater = new Templater(@options, @referencer)
 
   # Generate the documentation
@@ -213,7 +213,7 @@ module.exports = class Generator
       # Create a new class
       children.push
         name: entity.getName()
-        href: "#{section}/#{ entity.getName().replace(/\./g, '/') }.html"
+        href: "#{section}/#{ entity.getFullName().replace(/\./g, '/') }.html"
         parent: entity.getParentClassName?()
 
     # Create tree structure

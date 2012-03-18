@@ -83,7 +83,7 @@ module.exports = class Module
     catch error
       console.warn('Get module full name error:', @node, error) if @options.verbose
       
-  # @see getModuleName
+  # Alias for {Module#getModuleName}
   # 
   getFullName: ->
     @getModuleName()

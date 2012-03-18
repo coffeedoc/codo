@@ -67,7 +67,7 @@ module.exports = class Class
   #
   getDoc: -> @doc
 
-  # @see getClassName
+  # Alias for {Class#getClassName}
   # 
   getFullName: ->
     @getClassName()
