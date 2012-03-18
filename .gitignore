@@ -3,5 +3,6 @@ node_modules
 Gemfile.lock
 .bundle
 .idea
+.sass-cache
 doc
 .sass-cache
