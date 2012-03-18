@@ -1,6 +1,8 @@
 /*
 Language: CoffeeScript
-Author: Dmytrii Nagirniak (@dnagir)
+Author: Dmytrii Nagirniak <dnagir@gmail.com>
+Contributors: Oleg Efimov <efimovov@gmail.com>
+Description: CoffeeScript is a programming language that transcompiles to JavaScript. For info about language see http://coffeescript.org/
 */
 
 hljs.LANGUAGES.coffee = function() {
@@ -11,16 +13,16 @@ hljs.LANGUAGES.coffee = function() {
       'new': 1, 'do': 1, 'return': 1, 'else': 1, 
       'break': 1, 'catch': 1, 'instanceof': 1, 'throw': 1, 
       'try': 1, 'this': 1, 'switch': 1, 'continue': 1, 'typeof': 1, 
-      'delete': 1, 'return': 1, 'debugger': 1,
+      'delete': 1, 'debugger': 1,
       'class': 1, 'extends': 1, 'super': 1,
-      // Coffee
+      // Coffee keywords
       'then': 1, 'unless': 1, 'until': 1, 'loop': 2, 'of': 2, 'by': 1, 'when': 2,
       'and': 1, 'or': 1, 'is': 1, 'isnt': 2, 'not': 1
     },
     'literal': {
-      // JS
+      // JS literals
       'true': 1, 'false': 1, 'null': 1, 'undefined': 1,
-      // Coffee
+      // Coffee literals
       'yes': 1, 'no': 1, 'on': 1, 'off': 1
     },
     'reserved': {
@@ -29,58 +31,96 @@ hljs.LANGUAGES.coffee = function() {
       '__hasProp': 1 , '__extends': 1 , '__slice': 1 , '__bind': 1 , '__indexOf': 1
     }
   };
+  
+  var JS_IDENT_RE = '[A-Za-z$_][0-9A-Za-z$_]*';
 
-  var String1 = {
-    className: 'string',
-    begin: "'", end: "'",
-    relevance: 0
-  };
-
-
-  var SUBST = {
+  var COFFEE_QUOTE_STRING_SUBST_MODE = {
     className: 'subst',
     begin: '#\\{', end: '}',
+    relevance: 1,
     keywords: keywords,
-    contains: [hljs.C_NUMBER_MODE ]
+    contains: [hljs.C_NUMBER_MODE]
   };
 
-  var String2 = {
+  var COFFEE_QUOTE_STRING_MODE = {
     className: 'string',
     begin: '"', end: '"',
     relevance: 0,
-    contains: [hljs.BACKSLASH_ESCAPE, SUBST]
+    contains: [hljs.BACKSLASH_ESCAPE, COFFEE_QUOTE_STRING_SUBST_MODE]
   };
 
-  var Arrow = {
-    className: 'function',
-    begin: '(->|=>)', end: hljs.IMMEIDATE_RE,
-    relevance: 10
+  var COFFEE_HEREDOC_MODE = {
+    className: 'string',
+    begin: '"""', end: '"""',
+    relevance: 2,
+    contains: [hljs.BACKSLASH_ESCAPE, COFFEE_QUOTE_STRING_SUBST_MODE]
   };
-  var FormalArgs = {
-    className: 'params',
-    begin: "\\(",
-    end: '\\)',
-    // TODO: Do not use recursive keywords and contains here as it should be on formal args ONLY
-    keywords: keywords,
-    contains: [hljs.C_NUMBER_MODE, String1, String2]
-  };
-  var CommentSharpMultiline = {
+
+  var COFFEE_HERECOMMENT_MODE = {
     className: 'comment',
     begin: '###',
     end: '###',
-    relevance: 5
+    relevance: 2
+  };
+
+  var COFFEE_HEREGEX_MODE = {
+    className: 'regexp',
+    begin: '///', end: '///',
+    relevance: 2,
+    contains: [hljs.HASH_COMMENT_MODE]
+  };
+
+ 
+  var COFFEE_FUNCTION_DECLARATION_MODE = {
+    className: 'function',
+    begin: '' + JS_IDENT_RE + '\\s*[=:](\\s*\\(.*\\)\\s*)',
+    returnBegin: true,
+    end: '[-=]>',
+    contains: [
+      {
+        className: 'title',
+        begin: JS_IDENT_RE
+      },
+      {
+        className: 'params',
+        begin: '\\(', returnBegin: true, end: '\\)'
+      }
+    ]
   };
   
+  var COFFEE_EMBEDDED_JAVASCRIPT = {
+    className: 'javascript',
+    begin: '`', end: '`',
+    subLanguage: 'javascript'
+  };
+
+  // Temporary disabled - does not work :(
+  /*COFFEE_EMBEDDED_JAVASCRIPT = {
+    className: 'javascript',
+    begin: '`', end: '`',
+    starts: {
+      className: 'javascript',
+      end: '`', returnEnd: true,
+      subLanguage: 'javascript'
+    }
+  };*/
+
   return {
     defaultMode: {
       keywords: keywords,
       contains: [
-        CommentSharpMultiline,
         hljs.C_NUMBER_MODE,
+        // Strings
+        hljs.APOS_STRING_MODE,
+        COFFEE_HEREDOC_MODE, // Should be before COFFEE_QUOTE_STRING_MODE for greater priority
+        COFFEE_QUOTE_STRING_MODE,
+        // comments
+        COFFEE_HERECOMMENT_MODE,// Should be before hljs.HASH_COMMENT_MODE for greater priority
         hljs.HASH_COMMENT_MODE,
-        String1, String2,
-        FormalArgs,
-        Arrow
+        // Other
+        COFFEE_HEREGEX_MODE,
+        COFFEE_EMBEDDED_JAVASCRIPT,
+        COFFEE_FUNCTION_DECLARATION_MODE
       ]
     }
   };
