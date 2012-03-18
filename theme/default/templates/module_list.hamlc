@@ -3,7 +3,7 @@
   != @JST['partials/head'](@)
   %body.list
     #content.tree.list
-      %h1.full_list_header Class List
+      %h1.full_list_header Modules List
 
       %nav
         %a{ target: '_self', href: 'class_list.html' } Classes
@@ -15,20 +15,16 @@
         Search:
         %input{ type: 'text' }
 
-      - createLevel = (classes) ->
+      - createLevel = (modules) ->
         %ul
-          - for clazz in classes
+          - for module in modules
             %li
-              - if clazz.href
-                %a{ href: clazz.href, target: 'main' }= clazz.name
-                - if clazz.parent
-                  %small
-                    <
-                    = clazz.parent
+              - if module.href
+                %a{ href: module.href, target: 'main' }= module.name
               - else
                 %span
-                  = clazz.name
+                  = module.name
 
-            = createLevel(clazz.children) if clazz.children
+            = createLevel(module.children) if module.children
 
-      = createLevel @classes
+      = createLevel @modules

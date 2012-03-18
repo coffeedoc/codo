@@ -1,0 +1,39 @@
+[
+  {
+    "file": "spec/templates/modules/module_documentation.coffee",
+    "doc": {
+      "abstract": "Each listener implementation must include",
+      "private": true,
+      "deprecated": "Use other module which is thread safe",
+      "version": "1.0.2",
+      "since": "1.0.0",
+      "examples": [
+        {
+          "title": "Use it in this way",
+          "code": "class Rumba\n  @include Foo.Bar"
+        }
+      ],
+      "todos": [
+        "Clean up socket handler",
+        "Refactor property factory"
+      ],
+      "notes": [
+        "Please use this carefully",
+        "For internal use only"
+      ],
+      "authors": [
+        "Netzpirat",
+        "Supermakaka"
+      ],
+      "comment": "<p>This is a test module with <code>inline.dot</code>. Beware.\n\n\n\n\n\n</p>\n",
+      "summary": "This is a test module with `inline.dot`."
+    },
+    "module": {
+      "moduleName": "Foo.Bar",
+      "name": "Bar",
+      "namespace": "Foo"
+    },
+    "methods": [],
+    "variables": []
+  }
+]
