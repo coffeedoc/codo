@@ -41,7 +41,7 @@ module.exports = class Parser
     # Defines typical conditions for entities we are looking through nodes
     entities = 
       clazz: (node) -> node.constructor.name is 'Class'
-      module: (node) -> node.constructor.name == 'Assign' && node.value.base?.generated
+      module: (node) -> node.constructor.name == 'Assign'
 
     tokens = CoffeeScript.nodes(@convertComments(content))
     tokens.traverseChildren true, (child) =>
@@ -211,5 +211,8 @@ module.exports = class Parser
 
     for clazz in @classes
       json.push clazz.toJSON()
+      
+    for module in @modules
+      json.push module.toJSON()
 
     json
