@@ -31,8 +31,7 @@ module.exports = class Generator
     @generateModules()
     @generateExtras()
     @generateIndex()
-    @generateClassList()
-    @generateModulesList()
+    @generateLists()
     @generateMethodList()
     @generateFileList()
     @copyAssets()
@@ -191,15 +190,13 @@ module.exports = class Generator
 
   # Generates the drop down class list
   #
-  generateClassList: ->
+  generateLists: ->
     classes = []
+    modules = []
 
-    # Create tree structure
-    for clazz in @parser.classes
-      children = classes
-
-      if clazz.getNamespace()
-        namespaces = clazz.getNamespace().split('.')
+    traverse = (entity, children) ->
+      if entity.getNamespace()
+        namespaces = entity.getNamespace().split('.')
 
         # Create all namespaces
         while namespace = namespaces.shift()
@@ -215,23 +212,26 @@ module.exports = class Generator
 
       # Create a new class
       children.push
-        name: clazz.getName()
-        href: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
-        parent: clazz.getParentClassName()
+        name: entity.getName()
+        href: "classes/#{ entity.getName().replace(/\./g, '/') }.html"
+        parent: entity.getParentClassName?()
+
+    # Create tree structure
+    for clazz in @parser.classes
+      traverse clazz, classes
+
+    for module in @parser.modules
+      traverse module, modules
 
     @templater.render 'class_list', {
       path: ''
       classes: classes
     }, 'class_list.html'
 
-  # Generates the drop down module list
-  #
-  generateModulesList: ->
     @templater.render 'module_list', {
       path: ''
-      modules: _.sortBy @parser.modules, (module) -> module.getName()
+      modules: modules
     }, 'module_list.html'
-
 
   # Generates the drop down method list
   #

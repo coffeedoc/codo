@@ -121,6 +121,8 @@ module.exports = class Parser
           if ///
                ( # Class
                  class\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
+               | # Module or assignment
+                 [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s+\=
                | # Function
                  [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s+(\(.*\)\s+[-=]>)?
                | # Function
@@ -129,7 +131,7 @@ module.exports = class Parser
                  @[$A-Z_][A-Z_]*)
              ///.exec line
 
-            result.push c for c in comment
+              result.push c for c in comment
 
           comment = []
 

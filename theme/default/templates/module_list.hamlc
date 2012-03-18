@@ -2,8 +2,8 @@
 %html
   != @JST['partials/head'](@)
   %body.list
-    #content.list
-      %h1.full_list_header Module List
+    #content.tree.list
+      %h1.full_list_header Modules List
 
       %nav
         %a{ target: '_self', href: 'class_list.html' } Classes
@@ -15,7 +15,16 @@
         Search:
         %input{ type: 'text' }
 
-      %ul
-        - for module in @modules
-          %li
-            %a{ href: "modules/#{ module.getFullName().replace(/\./g, '/') }.html", target: 'main' }= module.getName()
+      - createLevel = (modules) ->
+        %ul
+          - for module in modules
+            %li
+              - if module.href
+                %a{ href: module.href, target: 'main' }= module.name
+              - else
+                %span
+                  = module.name
+
+            = createLevel(module.children) if module.children
+
+      = createLevel @modules
