@@ -124,7 +124,7 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td><strong>@since</strong> version</td>
       <td></td>
       <td>&#10004;</td>
-      <td></td>
+      <td>&#10004;</td>
       <td>&#10004;</td>
     </tr>
     <tr>
