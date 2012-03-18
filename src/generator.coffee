@@ -194,7 +194,7 @@ module.exports = class Generator
     classes = []
     modules = []
 
-    traverse = (entity, children) ->
+    traverse = (entity, children, section) ->
       if entity.getNamespace()
         namespaces = entity.getNamespace().split('.')
 
@@ -213,15 +213,15 @@ module.exports = class Generator
       # Create a new class
       children.push
         name: entity.getName()
-        href: "classes/#{ entity.getName().replace(/\./g, '/') }.html"
+        href: "#{section}/#{ entity.getName().replace(/\./g, '/') }.html"
         parent: entity.getParentClassName?()
 
     # Create tree structure
     for clazz in @parser.classes
-      traverse clazz, classes
+      traverse clazz, classes, 'classes'
 
     for module in @parser.modules
-      traverse module, modules
+      traverse module, modules, 'modules'
 
     @templater.render 'class_list', {
       path: ''
