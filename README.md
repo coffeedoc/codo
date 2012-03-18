@@ -35,6 +35,7 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td><strong>Tag format</strong></td>
       <td><strong>Multiple occurrences</strong></td>
       <td><strong>Class level</strong></td>
+      <td><strong>Module level</strong></td>
       <td><strong>Method level</strong></td>
     </tr>
   </thead>
@@ -44,9 +45,11 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td></td>
       <td>&#10004;</td>
       <td>&#10004;</td>
+      <td>&#10004;</td>
     </tr>
     <tr>
       <td><strong>@author</strong> name</td>
+      <td>&#10004;</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
@@ -56,15 +59,18 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td></td>
       <td>&#10004;</td>
       <td>&#10004;</td>
+      <td>&#10004;</td>
     </tr>
     <tr>
       <td><strong>@deprecated</strong></td>
       <td></td>
       <td>&#10004;</td>
       <td>&#10004;</td>
+      <td>&#10004;</td>
     </tr>
     <tr>
       <td><strong>@example</strong> (title)<br/>&nbsp;&nbsp;Code</td>
+      <td>&#10004;</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
@@ -74,10 +80,12 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td>&#10004;</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
+      <td>&#10004;</td>
     </tr>
     <tr>
       <td><strong>@option</strong> option [type] name description</td>
       <td>&#10004;</td>
+      <td></td>
       <td></td>
       <td>&#10004;</td>
     </tr>
@@ -88,6 +96,7 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       </td>
       <td>&#10004;</td>
       <td></td>
+      <td></td>
       <td>&#10004;</td>
     </tr>
     <tr>
@@ -95,9 +104,11 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td></td>
       <td>&#10004;</td>
       <td>&#10004;</td>
+      <td>&#10004;</td>
     </tr>
     <tr>
       <td><strong>@return</strong> [type] description</td>
+      <td></td>
       <td></td>
       <td></td>
       <td>&#10004;</td>
@@ -107,15 +118,18 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td>&#10004;</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
+      <td>&#10004;</td>
     </tr>
     <tr>
       <td><strong>@since</strong> version</td>
       <td></td>
       <td>&#10004;</td>
+      <td></td>
       <td>&#10004;</td>
     </tr>
     <tr>
       <td><strong>@todo</strong> message</td>
+      <td>&#10004;</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
@@ -125,6 +139,14 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td></td>
       <td>&#10004;</td>
       <td>&#10004;</td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@module</strong> version</td>
+      <td></td>
+      <td></td>
+      <td>&#10004;</td>
+      <td></td>
     </tr>
   </tbody>
 <table>
