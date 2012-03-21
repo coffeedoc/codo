@@ -33,12 +33,12 @@
 
 /* line 32, ../../src/styles/index.scss */
 #index {
-  -moz-column-count: 3;
   -webkit-column-count: 3;
+  -moz-column-count: 3;
   -o-column-count: 3;
   column-count: 3;
-  -moz-column-width: 33%;
   -webkit-column-width: 33%;
+  -moz-column-width: 33%;
   -o-column-width: 33%;
   column-width: 33%;
 }

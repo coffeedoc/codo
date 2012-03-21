@@ -1,0 +1,92 @@
+[
+  {
+    "file": "spec/templates/methods/module_methods.coffee",
+    "doc": {
+      "comment": "",
+      "summary": ""
+    },
+    "module": {
+      "moduleName": "Foo",
+      "name": "Foo",
+      "namespace": ""
+    },
+    "methods": [
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>helper</strong>()",
+        "name": "helper",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>another</strong>(a, b)",
+        "name": "another",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "a",
+            "splat": false
+          },
+          {
+            "name": "b",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>withDefault</strong>(a = 2, c, d = 'hi', d, e = { a: 2 }, f = new TestClassMethods())",
+        "name": "withDefault",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "a",
+            "default": "2",
+            "splat": false
+          },
+          {
+            "name": "c",
+            "splat": false
+          },
+          {
+            "name": "d",
+            "default": "'hi'",
+            "splat": false
+          },
+          {
+            "name": "d",
+            "splat": false
+          },
+          {
+            "name": "e",
+            "default": "{\n  a: 2\n}",
+            "splat": false
+          },
+          {
+            "name": "f",
+            "default": "new TestClassMethods()",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>nowWithSpalt</strong>(foo, bar...)",
+        "name": "nowWithSpalt",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "foo",
+            "splat": false
+          },
+          {
+            "name": "bar",
+            "splat": true
+          }
+        ]
+      }
+    ],
+    "variables": []
+  }
+]

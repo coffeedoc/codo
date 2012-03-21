@@ -1,14 +1,12 @@
 /* line 3, ../../src/styles/highlight.scss */
 pre {
-  -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  -o-border-radius: 3px;
+  -moz-border-radius: 3px;
   -ms-border-radius: 3px;
-  -khtml-border-radius: 3px;
+  -o-border-radius: 3px;
   border-radius: 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
-  -o-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
   padding: 0;
   margin-top: 4px;
@@ -28,11 +26,10 @@ pre code {
 
 /* line 26, ../../src/styles/highlight.scss */
 .docstring p > code, .docstring li > code {
-  -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  -o-border-radius: 3px;
+  -moz-border-radius: 3px;
   -ms-border-radius: 3px;
-  -khtml-border-radius: 3px;
+  -o-border-radius: 3px;
   border-radius: 3px;
   margin: 0 2px;
   padding: 0 5px;

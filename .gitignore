@@ -5,3 +5,4 @@ Gemfile.lock
 .idea
 .sass-cache
 doc
+.sass-cache
