@@ -73,7 +73,7 @@ module.exports = class Doc
             @notes or= []
             @notes.push note[1]
 
-          else if todo = /^@todo\s+(.*)/.exec line
+          else if todo = /^@todo\s+(.*)/i.exec line
             @todos or= []
             @todos.push todo[1]
 
