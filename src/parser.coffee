@@ -39,18 +39,18 @@ module.exports = class Parser
     @previousNodes = []
 
     # Defines typical conditions for entities we are looking through nodes
-    entities = 
+    entities =
       clazz: (node) -> node.constructor.name is 'Class'
       module: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
 
     tokens = CoffeeScript.nodes(@convertComments(content))
     tokens.traverseChildren true, (child) =>
       entity = false
-      
+
       for type, condition of entities
         if entities.hasOwnProperty(type)
           entity = type if condition(child)
-          
+
       if entity
 
         # Check the previous tokens for comment nodes
@@ -64,7 +64,7 @@ module.exports = class Parser
             if previous.value is 'exports'
               node = @previousNodes[@previousNodes.length-6]
               doc = node if node.constructor.name is 'Comment'
-        
+
         if entity == 'module'
           name = [child.variable.base.value]
 
@@ -74,13 +74,13 @@ module.exports = class Parser
           # ... and therefore should be just skippped.
           if name.indexOf(undefined) == -1
             module = new Module(child, file, @options, doc)
-            
+
             if module.doc.module? && (@options.private || !module.doc.private)
               @modules.push module
 
         if entity == 'clazz'
           clazz = new Class(child, file, @options, doc)
-        
+
           if @options.private || !clazz.doc.private
             @classes.push clazz
 
@@ -122,7 +122,7 @@ module.exports = class Parser
                ( # Class
                  class\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
                | # Module or assignment
-                 [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s+\=
+                 ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff.]*\s+\=
                | # Function
                  [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s+(\(.*\)\s+[-=]>)?
                | # Function
@@ -175,7 +175,7 @@ module.exports = class Parser
 
     classCount     = @classes.length
     noDocClasses   = _.filter(@classes, (clazz) -> _.isUndefined clazz.getDoc()).length
-      
+
     modulesCount   = @modules.length
 
     methodCount    = @getAllMethods().length
@@ -211,7 +211,7 @@ module.exports = class Parser
 
     for clazz in @classes
       json.push clazz.toJSON()
-      
+
     for module in @modules
       json.push module.toJSON()
 
