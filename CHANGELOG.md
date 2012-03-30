@@ -1,5 +1,8 @@
 # Master
 
+- [#15](https://github.com/netzpirat/codo/issues/15): Generate a TOC for file contents. ([@netzpirat][])
+- Detect inner (nested) classes. ([@netzpirat][])
+- [#34](https://github.com/netzpirat/codo/issues/34): Fix label assignment in references. ([@netzpirat][])
 - [#28](https://github.com/netzpirat/codo/pull/28): Description for `@param` and `@option` is now optional. ([@mattijs][])
 
 # Version 0.5.0 - March 15, 2012
