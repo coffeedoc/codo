@@ -84,6 +84,39 @@
         return window.indentTree($(this), width + 20);
       });
     };
+    $('#filecontents').each(function() {
+      var ancestors, depth, heading, index, level, list, nav, target, _len, _ref;
+      nav = $('nav.toc');
+      target = nav;
+      level = 0;
+      ancestors = [];
+      _ref = $('h2,h3,h4,h5,h6', this);
+      for (index = 0, _len = _ref.length; index < _len; index++) {
+        heading = _ref[index];
+        heading = $(heading);
+        heading.before($("<a name='toc_" + index + "'></a>"));
+        depth = parseInt(heading.get(0).tagName.substring(1));
+        if (depth > level) {
+          list = $('<ol></ol>');
+          target.append(list);
+          ancestors.push(target);
+          target = list;
+          level = depth;
+        } else if (depth < level) {
+          target = ancestors.pop();
+          level = depth;
+        }
+        target.append($("<li><a href='#toc_" + index + "'>" + (heading.text()) + "</a></li>"));
+      }
+      if ($('ol', nav).length === 0) return nav.hide();
+    });
+    $('a.hide_toc').click(function() {
+      return $('nav.toc').toggleClass('hidden');
+    });
+    $('a.float_toc').click(function() {
+      $('nav.toc').toggleClass('inline');
+      return $(this).text($('nav.toc').hasClass('inline') ? 'float' : 'left');
+    });
     indentTree($('#content.list > ul'), 20);
     return createStripes();
   });

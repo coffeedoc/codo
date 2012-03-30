@@ -5,6 +5,13 @@
     != @JST['partials/header'](@)
 
     #content
+      %nav.toc
+        %p.title
+          %a.hide_toc{ href: '#' }
+            %strong Table of Contents
+          %small
+            != surround '(', ')', ->
+              %a.float_toc{ href: '#'}> left
       #filecontents
         != @content
 
