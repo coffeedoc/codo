@@ -3,7 +3,7 @@
   != @JST['partials/head'](@)
   %body.list
     #content.tree.list
-      %h1.full_list_header Modules List
+      %h1.full_list_header Module List
 
       %nav
         %a{ target: '_self', href: 'class_list.html' } Classes
