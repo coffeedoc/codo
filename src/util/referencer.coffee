@@ -97,6 +97,9 @@ module.exports = class Referencer
       if _.isString data.doc.abstract
         data.doc.abstract = @resolveTextReferences(data.doc.abstract, entity, path)
 
+      if _.isString data.doc.summary
+        data.doc.summary = @resolveTextReferences(data.doc.summary, entity, path)
+
       for name, options of data.doc.options
         for option, index in options
           data.doc.options[name][index].desc = @resolveTextReferences(option.desc, entity, path)
