@@ -1,11 +1,13 @@
+Node      = require './node'
 Parameter = require './parameter'
 Doc       = require './doc'
+
 _         = require 'underscore'
 _.str     = require 'underscore.string'
 
 # A CoffeeScript method
 #
-module.exports = class Method
+module.exports = class Method extends Node
 
   # Construct a method
   #

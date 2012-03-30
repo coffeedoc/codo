@@ -43,8 +43,10 @@ module.exports = class Parser
       clazz: (node) -> node.constructor.name is 'Class'
       module: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
 
-    tokens = CoffeeScript.nodes(@convertComments(content))
-    tokens.traverseChildren true, (child) =>
+    root = CoffeeScript.nodes(@convertComments(content))
+    @linkAncestors root
+
+    root.traverseChildren true, (child) =>
       entity = false
 
       for type, condition of entities
@@ -87,7 +89,7 @@ module.exports = class Parser
       @previousNodes.push child
       true
 
-    tokens
+    root
 
   # Convert the comments to block comments,
   # so they appear in the nodes.
@@ -138,6 +140,18 @@ module.exports = class Parser
         result.push line
 
     result.join('\n')
+
+  # Attach each parent to its children, so we are able
+  # to traverse the ancestor parse tree. Since the
+  # parent attribute is already used in the class node,
+  # the parent is stored as `ancestor`.
+  #
+  # @param [Base] nodes the CoffeeScript nodes
+  #
+  linkAncestors: (node) ->
+    node.eachChild (child) =>
+      child.ancestor = node
+      @linkAncestors child
 
   # Get all parsed methods
   #

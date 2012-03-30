@@ -1,3 +1,5 @@
+Node      = require './node'
+
 marked = require 'marked'
 _      = require 'underscore'
 _.str  = require 'underscore.string'
@@ -5,7 +7,7 @@ _.str  = require 'underscore.string'
 # A documentation node is responsible for parsing
 # the comments for known tags.
 #
-module.exports = class Doc
+module.exports = class Doc extends Node
 
   # Construct a documentation
   #

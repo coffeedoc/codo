@@ -1,6 +1,8 @@
+Node      = require './node'
+
 # A CoffeeScript method parameter
 #
-module.exports = class Parameter
+module.exports = class Parameter extends Node
 
   # Construct a parameter
   #

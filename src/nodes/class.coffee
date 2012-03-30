@@ -1,10 +1,11 @@
+Node      = require './node'
 Method   = require './method'
 Variable = require './variable'
 Doc      = require './doc'
 
 # A CoffeeScript class
 #
-module.exports = class Class
+module.exports = class Class extends Node
 
   # Construct a class
   #
@@ -68,7 +69,7 @@ module.exports = class Class
   getDoc: -> @doc
 
   # Alias for {Class#getClassName}
-  # 
+  #
   getFullName: ->
     @getClassName()
 
@@ -80,6 +81,19 @@ module.exports = class Class
     try
       unless @className
         @className = @node.variable.base.value
+
+        # Inner class definition inherits
+        # the namespace from the outer class
+        if @className is 'this'
+          outer = @findAncestor('Class')
+
+          if outer
+            @className = outer.variable.base.value
+            for prop in outer.variable.properties
+              @className += ".#{ prop.name.value }"
+
+          else
+            @className = ''
 
         for prop in @node.variable.properties
           @className += ".#{ prop.name.value }"

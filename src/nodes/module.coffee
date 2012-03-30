@@ -1,11 +1,12 @@
+Node     = require './node'
 Method   = require './method'
 Variable = require './variable'
 Doc      = require './doc'
 
 # A CoffeeScript object-module
 #
-module.exports = class Module
-  
+module.exports = class Module extends Node
+
   # Construct a module
   #
   # @param [Object] node the module node
@@ -26,27 +27,27 @@ module.exports = class Module
         switch exp.constructor.name
           when 'Assign'
             doc = previousExp if previousExp?.constructor.name is 'Comment'
-      
+
             switch exp.value?.constructor.name
               when 'Code'
                 @methods.push new Method(@, exp, @options, doc)
               when 'Value'
                 @variables.push new Variable(@, exp, @options, true, doc)
-      
+
             doc = null
-      
+
           when 'Value'
             previousProp = null
-      
+
             for prop in exp.base.properties
               doc = previousProp if previousProp?.constructor.name is 'Comment'
-      
+
               switch prop.value?.constructor.name
                 when 'Code'
                   @methods.push new Method(@, prop, @options, doc)
                 when 'Value'
                   @variables.push new Variable(@, prop, @options, doc)
-      
+
               doc = null
               previousProp = prop
         previousExp = exp
@@ -82,9 +83,9 @@ module.exports = class Module
 
     catch error
       console.warn('Get module full name error:', @node, error) if @options.verbose
-      
+
   # Alias for {Module#getModuleName}
-  # 
+  #
   getFullName: ->
     @getModuleName()
 

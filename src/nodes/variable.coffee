@@ -1,8 +1,9 @@
+Node      = require './node'
 Doc      = require './doc'
 
 # A CoffeeScript variable
 #
-module.exports = class Variable
+module.exports = class Variable extends Node
 
   # Construct a variable
   #
