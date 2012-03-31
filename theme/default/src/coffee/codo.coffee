@@ -123,6 +123,7 @@ $(document).ready ->
       # Go up one list level
       else if depth < level
         target = ancestors.pop()
+        target = $('nav.toc ol:first') unless target
         level = depth
 
       target.append $("<li><a href='#toc_#{ index }'>#{ heading.text() }</a></li>")

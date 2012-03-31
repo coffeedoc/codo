@@ -104,6 +104,7 @@
           level = depth;
         } else if (depth < level) {
           target = ancestors.pop();
+          if (!target) target = $('nav.toc ol:first');
           level = depth;
         }
         target.append($("<li><a href='#toc_" + index + "'>" + (heading.text()) + "</a></li>"));
