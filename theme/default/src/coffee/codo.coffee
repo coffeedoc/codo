@@ -48,10 +48,10 @@ $(document).ready ->
 
     window.createStripes()
 
-  # Navigate form a search list
+  # Navigate from a search list
   #
   $('body #content.list ul').on 'click', 'li', (event) ->
-    link = $(@).find('a').attr('href')
+    link = $(@).find('a:not(.toggle)').attr('href')
 
     if $('body').hasClass 'noframes'
       window.parent.location.href = link unless link is '#'

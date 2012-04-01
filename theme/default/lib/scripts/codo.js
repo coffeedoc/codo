@@ -45,7 +45,7 @@
     });
     $('body #content.list ul').on('click', 'li', function(event) {
       var link;
-      link = $(this).find('a').attr('href');
+      link = $(this).find('a:not(.toggle)').attr('href');
       if ($('body').hasClass('noframes')) {
         if (link !== '#') window.parent.location.href = link;
       } else {

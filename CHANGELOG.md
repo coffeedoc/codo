@@ -1,5 +1,6 @@
 # Master
 
+- [#35](https://github.com/netzpirat/codo/issues/35):  Links aren't working on Class/Module List dropdown for parent nodes. ([@netzpirat][])
 - [#15](https://github.com/netzpirat/codo/issues/15): Generate a TOC for file contents. ([@netzpirat][])
 - Detect inner (nested) classes. ([@netzpirat][])
 - [#34](https://github.com/netzpirat/codo/issues/34): Fix label assignment in references. ([@netzpirat][])
