@@ -35,3 +35,23 @@ h2 {
 #content #filecontents li {
   line-height: 25px;
 }
+/* line 37, ../../src/styles/base.scss */
+#content #filecontents table {
+  padding: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* line 42, ../../src/styles/base.scss */
+#content #filecontents table tr {
+  border-top: 1px solid #CCC;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+/* line 48, ../../src/styles/base.scss */
+#content #filecontents table tr td {
+  border: 1px solid #CCC;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
