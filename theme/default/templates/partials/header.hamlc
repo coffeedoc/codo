@@ -12,10 +12,6 @@
 
     %nav
       %ul
-        %li.frames
-          != surround '(', ')', =>
-            %a.frames{ href: "#{ @path }frames.html" }> frames
-
         %li.noframes
           != surround '(', ')', ->
             %a.noframes{ href: '#' }> no frames

@@ -25,48 +25,24 @@ module.exports = class Generator
   #
   #
   generate: ->
-    @generateFrames()
-    @generateReadme()
+    @generateIndex()
+
     @generateClasses()
     @generateModules()
-    @generateExtras()
-    @generateIndex()
-    @generateLists()
+    @generateFiles()
+
+    @generateClassAndModuleIndex()
+
+    @generateClassAndModuleLists()
     @generateMethodList()
     @generateFileList()
+
     @copyAssets()
 
   # Generate the frame source.
   #
-  generateFrames: ->
-    @templater.render 'frames', { path: '' }, 'frames.html'
-
-  # Generate the home page. This is the readme
-  #
-  generateReadme: ->
-    try
-      readme   = fs.readFileSync @options.readme, 'utf-8'
-      readme   = marked readme if /\.(markdown|md)$/.test @options.readme
-      filename = 'index.html'
-
-      @templater.render 'file', {
-        path: ''
-        filename: @options.readme,
-        content: readme
-        breadcrumbs: [
-          {
-            href: 'class_index.html'
-            name: 'Index'
-          }
-          {
-            href: "File: #{ filename }"
-            name: @options.readme
-          }
-        ]
-      }, filename
-
-    catch error
-      console.log "[ERROR] Cannot generate readme file #{ @options.readme }: #{ error }"
+  generateIndex: ->
+    @templater.render 'frames', { index: @options.readme, path: '' }, 'index.html'
 
   # Generates the pages for all the classes.
   #
@@ -140,7 +116,7 @@ module.exports = class Generator
 
   # Generates the pages for all the extra files.
   #
-  generateExtras: ->
+  generateFiles: ->
     for extra in _.union [@options.readme], @options.extras
       try
         content = fs.readFileSync extra, 'utf-8'
@@ -166,9 +142,9 @@ module.exports = class Generator
       catch error
         console.log "[ERROR] Cannot generate extra file #{ extra }: #{ error }"
 
-  # Generate the alphabetical index
+  # Generate the alphabetical index of all classes and modules.
   #
-  generateIndex: ->
+  generateClassAndModuleIndex: ->
     sortedClasses = {}
 
     # Sort in character group
@@ -190,7 +166,7 @@ module.exports = class Generator
 
   # Generates the drop down class list
   #
-  generateLists: ->
+  generateClassAndModuleLists: ->
     classes = []
     modules = []
 
