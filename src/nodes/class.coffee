@@ -144,6 +144,19 @@ module.exports = class Class extends Node
         if @node.parent
           @parentClassName = @node.parent.base.value
 
+          # Inner class parent inherits
+          # the namespace from the outer class parent
+          if @parentClassName is 'this'
+            outer = @findAncestor('Class')
+
+            if outer
+              @parentClassName = outer.parent.base.value
+              for prop in outer.parent.properties
+                @parentClassName += ".#{ prop.name.value }"
+
+            else
+              @className = ''
+
           for prop in @node.parent.properties
             @parentClassName += ".#{ prop.name.value }"
 

@@ -1,0 +1,32 @@
+[
+      {
+        "file": "spec/templates/classes/inner_class.coffee",
+        "class": {
+          "className": "Tower.Model.Relation.HasMany",
+          "name": "HasMany",
+          "namespace": "Tower.Model.Relation",
+          "parent": "Tower.Model.Relation"
+        },
+        "methods": [],
+        "variables": []
+      },
+      {
+        "file": "spec/templates/classes/inner_class.coffee",
+        "class": {
+          "className": "Tower.Model.Relation.HasMany.Scope",
+          "name": "Scope",
+          "namespace": "Tower.Model.Relation.HasMany",
+          "parent": "Tower.Model.Relation.Scope"
+        },
+        "methods": [
+          {
+            "type": "instance",
+            "signature": "- (void) <strong>create</strong>()",
+            "name": "create",
+            "bound": false,
+            "parameters": []
+          }
+        ],
+        "variables": []
+      }
+    ]
