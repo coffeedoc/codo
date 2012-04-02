@@ -77,7 +77,7 @@ Tags can take multiple lines, just indent subsequent lines by two spaces. It's a
 ### Overview
 
 The following table shows the list of all available tags in alphabetical order with its expected options. An option in
-parenthesis is optional and the suqare brackets are part of the Codo tag format and must actually be written. Some tags
+parenthesis is optional and the square brackets are part of the Codo tag format and must actually be written. Some tags
 can be defined multiple times and they can be applied to different contexts, either in the comment for a class, a
 comment for a mixin or in a method comment.
 
@@ -310,7 +310,7 @@ Next mark the target object that includes one or multiple mixins:
 class Example.Animal.Lion
 ```
 
-and you'll see the mixin methods appear as included methods in the lion class documentation.
+and you'll see the mixin methods appear as instance methods in the lion class documentation.
 You can also extend a mixin:
 
 ```CoffeeScript
