@@ -4,13 +4,55 @@ Codo is a [CoffeeScript](http://coffeescript.org/) API documentation generator, 
 Its generated documentation is focused on CoffeeScript class syntax for classical inheritance and not for JavaScript's
 prototypal inheritance.
 
+## Features
+
+* Detects classes, methods, constants, mixins & concerns.
+* Many tags to add semantics to your code.
+* Generates a nice site to browse your code documentation in various ways.
+
 ## Codo in action
 
-You can browse the [Codo documentation](http://netzpirat.github.com/codo), which contains a sample class
-[Example.Animal](http://netzpirat.github.com/codo/classes/Example/Animal.html) that makes use of all available tags.
-In addition, there's a list of
+Annotate your source with Codo tags to add semantic information to your code. It looks like this:
+
+```CoffeeScript
+# Base class for all animals.
+#
+# @example How to subclass an animal
+#   class Lion extends Animal
+#     move: (direction, speed): ->
+#
+class Example.Animal
+
+  # The Answer to the Ultimate Question of Life, the Universe, and Everything
+  @ANSWER = 42
+
+  # Construct a new animal.
+  #
+  # @param [String] name the name of the animal
+  # @param [Date] birthDate when the animal was born
+  #
+  constructor: (@name, @birthDate = new Date()) ->
+
+  # Move the animal.
+  #
+  # @example Move an animal
+  #   new Lion('Simba').move('south', 12)
+  #
+  # @param [Object] options the moving options
+  # @option options [String] direction the moving direction
+  # @option options [Number] speed the speed in mph
+  #
+  move: (options = {}) ->
+```
+
+Then generate the documentation with the `codo` command line tool. You can browse the
+[generated Codo documentation](http://netzpirat.github.com/codo) to get a feeling how you can navigate in various
+ways through your code layers.
+
+In the `Example` namespace you'll find some classes and mixins that makes absolutely no sense, its purpose is only to
+show the many features Code offers. In addition, there's a list of
 [Codo generated documentations](https://github.com/netzpirat/codo/wiki/List-of-codo-generated-documentations)
-in the wiki.
+in the wiki. _Please add your project if you're using Codo. Thanks!_
 
 ## Installation
 
@@ -20,14 +62,24 @@ Codo is available in NPM and can be installed with:
 $ npm install -g codo
 ```
 
+Please have a look at the [CHANGELOG](https://github.com/netzpirat/codo/blob/master/CHANGELOG.md) when upgrading to a
+newer Codo version with `npm update`.
+
 ## Tags
 
-Codo comments are rendered as [GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/)
-and can be tagged to add more structured information to class and method comments.
+You have to annotate your code with Codo tags to give it some meaning to the parser that generates the documentation.
+Each tag starts with the `@` sign followed by the tag name. See the following overview for a minimal description of all
+available tags. Most tags are self-explaining and the one that aren't are described afterwards in more detail.
 
-_Tags can take multiple lines, just indent subsequent lines by two spaces._
+Tags can take multiple lines, just indent subsequent lines by two spaces. It's also possible to use
+[CoffeeScript block comments](http://coffeescript.org/#strings) instead of the normal comments.
 
 ### Overview
+
+The following table shows the list of all available tags in alphabetical order with its expected options. An option in
+parenthesis is optional and the suqare brackets are part of the Codo tag format and must actually be written. Some tags
+can be defined multiple times and they can be applied to different contexts, either in the comment for a class, a
+comment for a mixin or in a method comment.
 
 <table>
   <thead>
@@ -104,6 +156,13 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td>&#10004;</td>
     </tr>
     <tr>
+      <td><strong>@mixin</strong> version</td>
+      <td></td>
+      <td></td>
+      <td>&#10004;</td>
+      <td></td>
+    </tr>
+    <tr>
       <td><strong>@option</strong> option [type] name description</td>
       <td>&#10004;</td>
       <td></td>
@@ -162,97 +221,169 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td>&#10004;</td>
       <td>&#10004;</td>
     </tr>
-    <tr>
-      <td><strong>@mixin</strong> version</td>
-      <td></td>
-      <td></td>
-      <td>&#10004;</td>
-      <td></td>
-    </tr>
   </tbody>
 <table>
 
-### References
+### Parameters
 
-Class/method comments and all tags texts will be parsed for references to other classes/methods and are linked
-automatically. You can use:
-
-* Normal links, e.g. `{http://coffeescript.org/}`
-* Link to a class, e.g. `{Animal.Lion}`
-* Link to an instance method, e.g. `{Animal.Lion#walk}`
-* Link to a class method, e.g. `{Animal.Lion.constructor}`
-
-If you are referring to a method within the same class, you can omit the class name, like `{#walk}`. You can set an
-explicit label for the link by adding the label after the reference, e.g. `{#walk The lion walks}`.
-
-The `@see` tag supports the same linking, just without the curly braces, e.g.
-`@see http://en.wikipedia.org/wiki/Lion The wikipedia page about lions`
-
-### Example
+There are two different format recognized for your parameters, so you can chose your favorite. This one is with the
+parameter after the parameter type:
 
 ```CoffeeScript
-# Base class for all animals.
+# Feed the animal
 #
-# @note This is not used for codo, its purpose is to show
-#   all possible tags within a class.
+# @param [World.Food] food the food to eat
 #
-# @todo Provide more examples
-#
-# @example How to subclass an animal
-#   class Lion extends Animal
-#     move: (direction, speed): ->
-#
-# @abstract Each animal implementation must inherit from {Animal}
-#
-# @author Michael Kessler
-# @deprecated This class is not used anymore
-# @version 0.2.0
-# @since 0.1.0
-#
-class Example.Animal
+feed: (food) ->
+```
 
-  # The Answer to the Ultimate Question of Life, the Universe, and Everything
-  @ANSWER = 42
+And this one with the name before the type:
 
-  # Construct a new animal.
-  #
-  # @todo Clean up
-  # @param [String] name the name of the animal
-  # @param [Date] birthDate when the animal was born
-  #
-  constructor: (@name, @birthDate = new Date()) ->
+```CoffeeScript
+# Feed the animal
+#
+# @param food [World.Food] the food to eat
+#
+feed: (food) ->
+```
 
-  # Move the animal.
-  #
-  # @example Move an animal
-  #   new Lion('Simba').move('south', 12)
-  #
-  # @abstract
-  # @param [Object] options the moving options
-  # @option options [String] direction the moving direction
-  # @option options [Number] speed the speed in mph
-  #
-  move: (options = {}) ->
+### Options
 
-  # Copulate another animal.
-  #
-  # @note Don't take it seriously
-  #
-  # @private
-  # @author Michael Kessler
-  # @param [Animal] animal the partner animal
-  # @return [Boolean] true when success
-  # @deprecated Do not copulate
-  # @version 0.2.0
-  # @since 0.1.0
-  #
-  copulate: (animal) =>
+If you have an object as parameter and you like to defined the accepted properties as options to the method, you can
+use the `@options` tag:
 
-  # Moves all animal into the ark.
+
+```CoffeeScript
+# Feed the animal
+#
+# @param [Object] options the calculation options
+# @option options [Integer] age the age of the animal
+# @option options [Integer] weigth the weight of the animal
+#
+expectationOfLife: (options) ->
+```
+
+The first parameter to the option tag is the parameter name it describes, followed by the parameter type, name and
+description.
+
+### Types
+
+The object types for the `@param`, `@option` and `@return` tags are parsed for known classes or mixins and linked. You
+can also define types for Arrays with:
+
+```CoffeeScript
+#
+# @param [World.Region] region the region of the herd
+# @return [Array<Animals>] the animals in the herd
+#
+getHerdMembers: (regions) ->
+```
+
+### Mixins
+
+It's common practice to mix objects in CoffeeScript to share common logic when inheritance is not suited. You can read
+more about mixins in the
+[The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/03_classes.html).
+
+Simply mark any plain CoffeeScript object with the `@mixin` tag to have a mixin page generated that supports many tags:
+
+```CoffeeScript
+# Speed calculation for animal.
+#
+# @mixin
+# @author Rockstar Ninja
+#
+Example.Animal.Speed =
+
+  # Get the distance the animal will put back in a certain time.
   #
-  # @return [Boolean] true when all in Ark
+  # @param [Integer] time Number of seconds
+  # @return [Integer] The distance in miles
   #
-  @enterArk: ->
+  distance: (time) ->
+```
+
+Next mark the target object that includes one or multiple mixins:
+
+```CoffeeScript
+# @include Example.Animal.Speed
+class Example.Animal.Lion
+```
+
+and you'll see the mixin methods appear as included methods in the lion class documentation.
+You can also extend a mixin:
+
+```CoffeeScript
+# @extend Example.Animal.Speed
+class Example.Animal.Lion
+```
+
+so its methods will show up as class methods.
+
+#### Concerns
+
+A concern is a combination of two mixins, one for instance methods and the other for class methods and it's
+automatically detected when a mixin has both a `ClassMethods` and an `InstanceMethods` property:
+
+```CoffeeScript
+# Speed calculations for animal.
+#
+# @mixin
+# @author Rockstar Ninja
+#
+Example.Animal.Speed =
+
+  InstanceMethods:
+
+    # Get the distance the animal will put back in a certain time.
+    #
+    # @param [Integer] time Number of seconds
+    # @return [Integer] The distance in miles
+    #
+    distance: (time) ->
+
+  ClassMethods:
+
+    # Get the common speed of the animal in MPH.
+    #
+    # @param [Integer] age The age of the animal
+    # @return [Integer] The speed in MPH
+    #
+    speed: (age) ->
+```
+
+You can use `@concern` to include and extend the correspondent properties:
+
+```CoffeeScript
+# @concern Example.Animal.Speed
+class Example.Animal.Lion
+```
+
+## Comment text processing
+
+### GitHub Flavored Markdown
+
+Codo comments and extra files written in [Markdown](http://daringfireball.net/projects/markdown/) syntax are rendered as
+[GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/).
+
+### Automatically link references
+
+Codo comments and all tag texts will be parsed for references to other classes, methods and mixins and are automatically
+linked.
+
+There are several ways of link types supported and all can take an optional label after the link.
+
+* Normal URL links: `{http://coffeescript.org/}` or `{http://coffeescript.org/ Try CoffeeScript}`
+* Link to a class or mixin: `{Animal.Lion}` or `{Animal.Lion The might lion}`
+* Direct link to an instance method: `{Animal.Lion#walk}` or `{Animal.Lion#walk The lion walks}`
+* Direct link to a class method: `{Animal.Lion.constructor}` or `{Animal.Lion.constructor} A new king was born`
+
+If you are referring to a method within the same class, you can omit the class name: `{#walk}`.
+
+The `@see` tag supports the same link types, just without the curly braces:
+
+```CoffeeScript
+@see http://en.wikipedia.org/wiki/Lion The wikipedia page about lions
 ```
 
 ## Generate
@@ -289,6 +420,10 @@ You can define your project defaults by write your command line options to a `.c
 LICENSE
 CHANGELOG.md
 ```
+
+Put each option flag on a separate line, followed by the source directories or files, and optionally any extra file that
+should be included into the documentation separated by a dash (`-`). If your extra file has the extension `.md`, it'll
+be rendered as Markdown.
 
 ## Report issues
 
