@@ -33,6 +33,54 @@ module.exports = class Referencer
     else
       []
 
+  # Get all included mixins in the class hierarchy.
+  #
+  # @param [Class] clazz the class
+  # @return [Object] the mixins
+  #
+  getIncludedMethods: (clazz) ->
+    result = {}
+
+    for mixin in clazz.doc?.includeMixins || []
+      result[mixin] = @resolveMixinMethods mixin
+
+    unless _.isEmpty clazz.getParentClassName()
+      parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
+      result = _.extend {}, @getIncludedMethods(parentClass), result
+
+    result
+
+  # Get all extended mixins in the class hierarchy.
+  #
+  # @param [Class] clazz the class
+  # @return [Object] the mixins
+  #
+  getExtendedMethods: (clazz) ->
+    result = {}
+
+    for mixin in clazz.doc?.extendMixins || []
+      result[mixin] = @resolveMixinMethods mixin
+
+    unless _.isEmpty clazz.getParentClassName()
+      parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
+      result = _.extend {}, @getExtendedMethods(parentClass), result
+
+    result
+
+  # Get a list of all methods from the given mixin name
+  #
+  # @param name [String] the full name of the mixin
+  # @return [Array<Methods>] the mixin methods
+  #
+  resolveMixinMethods: (name) ->
+    mixin = _.find @mixins, (m) -> m.getMixinName() is name
+
+    if mixin
+      mixin.getMethods()
+    else
+      console.log "[WARN] Cannot resolve mixin name #{ name }" unless @options.quiet
+      []
+
   # Get all inherited variables.
   #
   # @param [Class] clazz the parent class

@@ -77,6 +77,8 @@ module.exports = class Generator
         constants: _.map _.filter(clazz.getVariables(), (variable) => variable.isConstant()), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
         subClasses: _.map @referencer.getDirectSubClasses(clazz), (c) -> c.getClassName()
         inheritedMethods: _.groupBy @referencer.getInheritedMethods(clazz), (m) -> m.entity.getClassName()
+        includedMethods: @referencer.getIncludedMethods(clazz)
+        extendedMethods: @referencer.getExtendedMethods(clazz)
         inheritedConstants: _.groupBy @referencer.getInheritedConstants(clazz), (m) -> m.entity.getClassName()
         breadcrumbs: breadcrumbs
       }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"

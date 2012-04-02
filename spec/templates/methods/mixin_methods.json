@@ -12,15 +12,15 @@
     },
     "methods": [
       {
-        "type": "instance",
-        "signature": "- (void) <strong>helper</strong>()",
+        "type": "mixin",
+        "signature": "? (void) <strong>helper</strong>()",
         "name": "helper",
         "bound": false,
         "parameters": []
       },
       {
-        "type": "instance",
-        "signature": "- (void) <strong>another</strong>(a, b)",
+        "type": "mixin",
+        "signature": "? (void) <strong>another</strong>(a, b)",
         "name": "another",
         "bound": false,
         "parameters": [
@@ -35,8 +35,8 @@
         ]
       },
       {
-        "type": "instance",
-        "signature": "- (void) <strong>withDefault</strong>(a = 2, c, d = 'hi', d, e = { a: 2 }, f = new TestClassMethods())",
+        "type": "mixin",
+        "signature": "? (void) <strong>withDefault</strong>(a = 2, c, d = 'hi', d, e = { a: 2 }, f = new TestClassMethods())",
         "name": "withDefault",
         "bound": false,
         "parameters": [
@@ -71,8 +71,8 @@
         ]
       },
       {
-        "type": "instance",
-        "signature": "- (void) <strong>nowWithSpalt</strong>(foo, bar...)",
+        "type": "mixin",
+        "signature": "? (void) <strong>nowWithSpalt</strong>(foo, bar...)",
         "name": "nowWithSpalt",
         "bound": false,
         "parameters": [

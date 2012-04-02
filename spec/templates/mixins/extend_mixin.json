@@ -29,15 +29,15 @@
     },
     "methods": [
       {
-        "type": "instance",
-        "signature": "- (void) <strong>hello</strong>()",
+        "type": "mixin",
+        "signature": "? (void) <strong>hello</strong>()",
         "name": "hello",
         "bound": false,
         "parameters": []
       },
       {
-        "type": "instance",
-        "signature": "- (void) <strong>goodbye</strong>()",
+        "type": "mixin",
+        "signature": "? (void) <strong>goodbye</strong>()",
         "name": "goodbye",
         "bound": false,
         "parameters": []

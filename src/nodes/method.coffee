@@ -36,7 +36,10 @@ module.exports = class Method extends Node
   #
   getType: ->
     unless @type
-      @type = 'instance'
+      if @entity.constructor.name is 'Class'
+        @type = 'instance'
+      else
+        @type = 'mixin'
 
     @type
 
@@ -53,7 +56,13 @@ module.exports = class Method extends Node
   getSignature: ->
     try
       unless @signature
-        @signature = if @getType() is 'instance' then '- ' else '+ '
+        @signature = switch @getType()
+                     when 'class'
+                       '+ '
+                     when 'instance'
+                       '- '
+                     else
+                       '? '
 
         if @getDoc()
           @signature += if @getDoc().returnValue then "(#{ _.str.escapeHTML @getDoc().returnValue.type }) " else "(void) "
@@ -81,7 +90,13 @@ module.exports = class Method extends Node
   getShortSignature: ->
     try
       unless @shortSignature
-        @shortSignature = if @getType() is 'instance' then '#' else '.'
+        @shortSignature = switch @getType()
+                          when 'class'
+                            '.'
+                          when 'instance'
+                            '#'
+                          else
+                            ''
         @shortSignature += @getName()
 
       @shortSignature

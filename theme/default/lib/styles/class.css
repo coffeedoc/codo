@@ -61,10 +61,11 @@
 }
 /* line 67, ../../src/styles/class.scss */
 #content ul.summary .signature {
-  -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
+  -webkit-border-radius: 3px;
   -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
   border-radius: 3px;
   padding: 1px 10px;
   background: #EAEAFF;
@@ -125,10 +126,11 @@
 }
 /* line 128, ../../src/styles/class.scss */
 #content .method_details p.signature {
-  -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
+  -webkit-border-radius: 3px;
   -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
   border-radius: 3px;
   font-size: 1.1em;
   font-weight: normal;
@@ -160,10 +162,11 @@
 }
 /* line 161, ../../src/styles/class.scss */
 #content .note {
-  -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
+  -webkit-border-radius: 3px;
   -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
   border-radius: 3px;
   margin-top: 10px;
   color: #222;
@@ -199,7 +202,7 @@
   border-color: #6689D6;
 }
 /* line 199, ../../src/styles/class.scss */
-#content h3.inherited {
+#content h3.inherited, #content h3.included, #content h3.extended {
   font-style: italic;
   font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
   font-weight: normal;
@@ -210,7 +213,7 @@
   font-size: 13px;
 }
 /* line 210, ../../src/styles/class.scss */
-#content p.inherited {
+#content p.inherited, #content p.included, #content p.extended {
   word-spacing: 5px;
   font-size: 1.2em;
   padding: 0;
@@ -218,7 +221,7 @@
   margin-left: 25px;
 }
 /* line 217, ../../src/styles/class.scss */
-#content p.inherited a {
+#content p.inherited a, #content p.included a, #content p.extended a {
   font-family: monospace;
   font-size: 0.9em;
 }

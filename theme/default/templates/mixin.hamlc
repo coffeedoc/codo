@@ -47,34 +47,14 @@
 
         != @JST['partials/doc']({ doc: @mixinData.doc, type: 'mixin', path: @path, referencer: @referencer })
 
-      - if @constants.length isnt 0
-        %h2 Constant Summary
-
-        %dl.constants
-          - for constant in @constants
-            %dt{ id: "#{ constant.name }-constant" }
-              = constant.name
-              \=
-              != @JST['partials/doc']({ doc: constant.doc, type: 'constant', path: @path, referencer: @referencer })
-            %dd
-              %pre
-                %code.coffee!= constant.value
-
       - if @methods.length isnt 0
         %h2 Method Summary
 
         != @JST['partials/method_summary']({ methods: @methods })
 
-
-      - constructor = @underscore.filter @methods, (m) -> m.name is 'constructor'
-      - if constructor.length isnt 0
-        %h2 Constructor Details
-
-        != @JST['partials/method_list']({ methods: constructor, parent: @ })
-
       - instanceMethods = @underscore.filter @methods, (m) -> m.name isnt 'constructor'
       - if instanceMethods.length isnt 0
-        %h2 Instance Method Details
+        %h2 Method Details
 
         != @JST['partials/method_list']({ methods: instanceMethods, parent: @ })
 

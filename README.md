@@ -76,6 +76,20 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td>&#10004;</td>
     </tr>
     <tr>
+      <td><strong>@extend</strong> mixin</td>
+      <td>&#10004;</td>
+      <td></td>
+      <td>&#10004;</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><strong>@include</strong> mixin</td>
+      <td>&#10004;</td>
+      <td></td>
+      <td>&#10004;</td>
+      <td></td>
+    </tr>
+    <tr>
       <td><strong>@note</strong> message</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
@@ -305,14 +319,14 @@ dynamic programming languages.
 * [JsDoc](https://github.com/micmath/jsdoc) an automatic documentation generator for JavaScript.
 * [Dox](https://github.com/visionmedia/dox) JavaScript documentation generator for node using markdown and jsdoc.
 
+## Author
+
+* [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat), [mksoft.ch](https://mksoft.ch))
+
 ## Contributors
 
 * [Boris Staal](https://github.com/inossidabile) ([@_inossidabile](http://twitter.com/#!/_inossidabile))
 * [Mattijs Hoitink](https://github.com/mattijs)
-
-## Author
-
-* [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat), [mksoft.ch](https://mksoft.ch))
 
 ## License
 

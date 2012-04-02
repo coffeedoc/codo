@@ -196,7 +196,7 @@
     border-color: #6689D6;
   }
 
-  h3.inherited {
+  h3.inherited, h3.included, h3.extended {
     font-style: italic;
     font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
     font-weight: normal;
@@ -207,7 +207,7 @@
     font-size: 13px;
   }
 
-  p.inherited {
+  p.inherited, p.included, p.extended {
     word-spacing: 5px;
     font-size: 1.2em;
     padding: 0;
