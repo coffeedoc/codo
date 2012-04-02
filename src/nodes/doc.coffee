@@ -30,26 +30,26 @@ module.exports = class Doc extends Node
 
           # TODO: @overload
 
-          if returnValue = /^@return\s+\[(.*?)\](\s+(.*))?/.exec line
+          if returnValue = /^@return\s+\[(.*?)\](\s+(.*))?/i.exec line
             @returnValue =
               type: returnValue[1]
               desc: returnValue[3]
 
-          else if param = /^@param\s+([^ ]*)\s+\[(.*?)\](?:\s+(.*))?/.exec line
+          else if param = /^@param\s+([^ ]*)\s+\[(.*?)\](?:\s+(.*))?/i.exec line
             @params or= []
             @params.push
               type: param[2]
               name: param[1]
               desc: param[3] or ''
 
-          else if param = /^@param\s+\[(.*?)\]\s+([^ ]*)(?:\s+(.*))?/.exec line
+          else if param = /^@param\s+\[(.*?)\]\s+([^ ]*)(?:\s+(.*))?/i.exec line
             @params or= []
             @params.push
               type: param[1]
               name: param[2]
               desc: param[3] or ''
 
-          else if option = /^@option\s+([^ ]*)\s+\[(.*?)\]\s+([^ ]*)(?:\s+(.*))?/.exec line
+          else if option = /^@option\s+([^ ]*)\s+\[(.*?)\]\s+([^ ]*)(?:\s+(.*))?/i.exec line
             @paramsOptions or= {}
             @paramsOptions[option[1]] or= []
 
@@ -58,20 +58,20 @@ module.exports = class Doc extends Node
               name: option[3]
               desc: option[4] or ''
 
-          else if see = /^@see\s+([^\s]*)\s*(.*)?/.exec line
+          else if see = /^@see\s+([^\s]*)\s*(.*)?/i.exec line
             @see or= []
             @see.push
               reference: see[1]
               label: see[2]
 
-          else if author = /^@author\s+(.*)/.exec line
+          else if author = /^@author\s+(.*)/i.exec line
             @authors or= []
             @authors.push author[1]
 
-          else if copyright = /^@copyright\s+(.*)/.exec line
+          else if copyright = /^@copyright\s+(.*)/i.exec line
             @copyright = copyright[1]
 
-          else if note = /^@note\s+(.*)/.exec line
+          else if note = /^@note\s+(.*)/i.exec line
             @notes or= []
             @notes.push note[1]
 
@@ -79,7 +79,7 @@ module.exports = class Doc extends Node
             @todos or= []
             @todos.push todo[1]
 
-          else if example = /^@example\s+(.*)/.exec line
+          else if example = /^@example\s+(.*)/i.exec line
             title = example[1]
             code = []
 
@@ -92,22 +92,22 @@ module.exports = class Doc extends Node
                 title: title
                 code: code.join '\n'
 
-          else if abstract = /^@abstract\s?(.*)/.exec line
+          else if abstract = /^@abstract\s?(.*)/i.exec line
             @abstract = abstract[1]
 
           else if /^@private/.exec line
             @private = true
 
-          else if since = /^@since\s+(.*)/.exec line
+          else if since = /^@since\s+(.*)/i.exec line
             @since = since[1]
 
-          else if version = /^@version\s+(.*)/.exec line
+          else if version = /^@version\s+(.*)/i.exec line
             @version = version[1]
 
-          else if deprecated = /^@deprecated\s+(.*)/.exec line
+          else if deprecated = /^@deprecated\s+(.*)/i.exec line
             @deprecated = deprecated[1]
 
-          else if mixin = /^@mixin/.exec line
+          else if mixin = /^@mixin/i.exec line
             @mixin = true
 
           else
