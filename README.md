@@ -78,15 +78,15 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
     <tr>
       <td><strong>@extend</strong> mixin</td>
       <td>&#10004;</td>
-      <td></td>
       <td>&#10004;</td>
+      <td></td>
       <td></td>
     </tr>
     <tr>
       <td><strong>@include</strong> mixin</td>
       <td>&#10004;</td>
-      <td></td>
       <td>&#10004;</td>
+      <td></td>
       <td></td>
     </tr>
     <tr>
