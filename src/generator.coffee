@@ -79,6 +79,7 @@ module.exports = class Generator
         inheritedMethods: _.groupBy @referencer.getInheritedMethods(clazz), (m) -> m.entity.getClassName()
         includedMethods: @referencer.getIncludedMethods(clazz)
         extendedMethods: @referencer.getExtendedMethods(clazz)
+        concernMethods: @referencer.getConcernMethods(clazz)
         inheritedConstants: _.groupBy @referencer.getInheritedConstants(clazz), (m) -> m.entity.getClassName()
         breadcrumbs: breadcrumbs
       }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"

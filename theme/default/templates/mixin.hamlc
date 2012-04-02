@@ -15,6 +15,9 @@
         - if @mixinData.doc?.deprecated || @mixinData.doc?.deprecated is ''
           %span.deprecated.note.title Deprecated
 
+        - if @mixinData.mixin.concern
+          %span.note.concern Concern
+
       %table.box
         %tr
           %td Defined in:
@@ -47,15 +50,35 @@
 
         != @JST['partials/doc']({ doc: @mixinData.doc, type: 'mixin', path: @path, referencer: @referencer })
 
-      - if @methods.length isnt 0
-        %h2 Method Summary
+      - if @mixinData.mixin.concern
 
-        != @JST['partials/method_summary']({ methods: @methods })
+        - classMethods = @underscore.filter @methods, (m) -> m.type is 'class'
+        - if classMethods.length isnt 0
+          %h2 Class Method Summary
+          != @JST['partials/method_summary']({ methods: classMethods })
 
-      - instanceMethods = @underscore.filter @methods, (m) -> m.name isnt 'constructor'
-      - if instanceMethods.length isnt 0
-        %h2 Method Details
+        - instanceMethods = @underscore.filter @methods, (m) -> m.type is 'instance'
+        - if instanceMethods.length isnt 0
+          %h2 Instance Method Summary
+          != @JST['partials/method_summary']({ methods: instanceMethods })
 
-        != @JST['partials/method_list']({ methods: instanceMethods, parent: @ })
+        - if classMethods.length isnt 0
+          %h2 Class Method Details
+          != @JST['partials/method_list']({ methods: classMethods, parent: @ })
+
+        - if instanceMethods.length isnt 0
+          %h2 Instance Method Details
+          != @JST['partials/method_list']({ methods: instanceMethods, parent: @ })
+
+      - else
+        - if @methods.length isnt 0
+          %h2 Method Summary
+
+          != @JST['partials/method_summary']({ methods: @methods })
+
+        - if @methods.length isnt 0
+          %h2 Method Details
+
+          != @JST['partials/method_list']({ methods: @methods, parent: @ })
 
     != @JST['partials/footer'](@)

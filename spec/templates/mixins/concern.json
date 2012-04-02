@@ -2,13 +2,13 @@
   {
     "file": "spec/templates/mixins/concern.coffee",
     "doc": {
-      "comment": "<p>@concern MyConcern\n</p>\n",
-      "summary": "@concern MyConcern"
+      "comment": "<p>@concern Example.Mixin.Concern\n</p>\n",
+      "summary": "@concern Example.Mixin.Concern"
     },
     "class": {
-      "className": "NoIdea",
-      "name": "NoIdea",
-      "namespace": ""
+      "className": "Example.Concern",
+      "name": "Concern",
+      "namespace": "Example"
     },
     "methods": [],
     "variables": []
@@ -20,9 +20,9 @@
       "summary": "This is my concern"
     },
     "mixin": {
-      "mixinName": "MyConcern",
-      "name": "MyConcern",
-      "namespace": "",
+      "mixinName": "Example.Mixins.Concern",
+      "name": "Concern",
+      "namespace": "Example.Mixins",
       "concern": true
     },
     "methods": [

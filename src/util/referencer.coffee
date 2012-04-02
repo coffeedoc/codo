@@ -72,6 +72,25 @@ module.exports = class Referencer
 
     result
 
+  # Get all concerns
+  #
+  # @param [Class] clazz the class
+  # @return [Object] the concerns
+  #
+  getConcernMethods: (clazz) ->
+    result = {}
+
+    for mixin in clazz.doc?.concerns || []
+      result[mixin] = @resolveMixinMethods mixin
+
+    unless _.isEmpty clazz.getParentClassName()
+      parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
+
+      if parentClass
+        result = _.extend {}, @getConcernMethods(parentClass), result
+
+    result
+
   # Get a list of all methods from the given mixin name
   #
   # @param name [String] the full name of the mixin

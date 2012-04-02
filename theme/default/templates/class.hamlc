@@ -37,7 +37,7 @@
                 - if extendMixin is @underscore.last @classData.doc.extends
                   %a{ href: "#{ @path }mixins/#{ extendMixin.replace(/\./g, '/') }.html"}= extendMixin
                 - else
-                  != succeed ',', ->
+                  != succeed ',', =>
                     %a{ href: "#{ @path }mixins/#{ extendMixin.replace(/\./g, '/') }.html"}= extendMixin
 
         - if @classData.doc?.includes
@@ -48,8 +48,19 @@
                 - if includeMixin is @underscore.last @classData.doc.includes
                   %a{ href: "#{ @path }mixins/#{ includeMixin.replace(/\./g, '/') }.html"}= includeMixin
                 - else
-                  != succeed ',', ->
+                  != succeed ',', =>
                     %a{ href: "#{ @path }mixins/#{ includeMixin.replace(/\./g, '/') }.html"}= includeMixin
+
+        - if @classData.doc?.concerns
+          %tr
+            %td Concerns:
+            %td
+              - for concern in @classData.doc.concerns
+                - if concern is @underscore.last @classData.doc.concerns
+                  %a{ href: "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.html"}= concern
+                - else
+                  != succeed ',', =>
+                    %a{ href: "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.html"}= concern
 
       - if @classData.doc?.comment
         %h2 Overview
@@ -63,7 +74,7 @@
             - if child is @underscore.last @subClasses
               %a{ href: "#{ @path }classes/#{ child.replace(/\./g, '/') }.html"}= child
             - else
-              != succeed ',', ->
+              != succeed ',', =>
                 %a{ href: "#{ @path }classes/#{ child.replace(/\./g, '/') }.html"}= child
 
       - if @constants.length isnt 0
@@ -91,7 +102,7 @@
             - if constant is @underscore.last constants
               %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ constant.getName() }-constant"}= constant.getName()
             - else
-              != succeed ',', ->
+              != succeed ',', =>
                 %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ constant.getName() }-constant"}= constant.getName()
 
       - if @classMethods.length isnt 0
@@ -118,7 +129,7 @@
             - if method is @underscore.last methods
               %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= method.getShortSignature()
             - else
-              != succeed ',', ->
+              != succeed ',', =>
                 %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= method.getShortSignature()
 
       - unless @underscore.isEmpty @extendedMethods
@@ -134,7 +145,7 @@
             - if method is @underscore.last methods
               %a{ href: "#{ @path }mixins/#{ mixin.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= ".#{ method.getShortSignature() }"
             - else
-              != succeed ',', ->
+              != succeed ',', =>
                 %a{ href: "#{ @path }mixins/#{ mixin.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= ".#{ method.getShortSignature() }"
 
       - unless @underscore.isEmpty @includedMethods
@@ -150,8 +161,24 @@
             - if method is @underscore.last methods
               %a{ href: "#{ @path }mixins/#{ mixin.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= "##{ method.getShortSignature() }"
             - else
-              != succeed ',', ->
+              != succeed ',', =>
                 %a{ href: "#{ @path }mixins/#{ mixin.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= "##{ method.getShortSignature() }"
+
+      - unless @underscore.isEmpty @concernMethods
+        %h2
+          %small Concern Method Summary
+
+      - for concern, methods of @concernMethods
+        %h3.included
+          Methods mixed in from
+          %a{ href: "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.html"}= concern
+        %p.included
+          - for method in methods
+            - if method is @underscore.last methods
+              %a{ href: "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= "#{ method.getShortSignature() }"
+            - else
+              != succeed ',', =>
+                %a{ href: "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= "#{ method.getShortSignature() }"
 
       - if @classMethods.length isnt 0
         %h2 Class Method Details

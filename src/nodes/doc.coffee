@@ -121,6 +121,10 @@ module.exports = class Doc extends Node
           else if mixin = /^@mixin/i.exec line
             @mixin = true
 
+          else if concern = /^@concern\s+(.*)/i.exec line
+            @concerns or= []
+            @concerns.push concern[1]
+
           else if include = /^@include\s+(.*)/i.exec line
             @includeMixins or= []
             @includeMixins.push include[1]
@@ -148,6 +152,7 @@ module.exports = class Doc extends Node
       json =
         includes: @includeMixins
         extends: @extendMixins
+        concerns: @concerns
         abstract: @abstract
         private: @private
         deprecated: @deprecated
