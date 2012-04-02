@@ -2,8 +2,11 @@
   {
     "file": "spec/templates/mixins/concern.coffee",
     "doc": {
-      "comment": "<p>@concern Example.Mixin.Concern\n</p>\n",
-      "summary": "@concern Example.Mixin.Concern"
+      "concerns": [
+        "Example.Mixin.Concern"
+      ],
+      "comment": "",
+      "summary": ""
     },
     "class": {
       "className": "Example.Concern",
