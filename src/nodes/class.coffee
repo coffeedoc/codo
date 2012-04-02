@@ -155,7 +155,7 @@ module.exports = class Class extends Node
                 @parentClassName += ".#{ prop.name.value }"
 
             else
-              @className = ''
+              @parentClassName = ''
 
           for prop in @node.parent.properties
             @parentClassName += ".#{ prop.name.value }"

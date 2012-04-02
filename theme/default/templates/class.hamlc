@@ -29,34 +29,37 @@
             %td
               %a{ href: "#{ @path }classes/#{ @classData.class.parent.replace(/\./g, '/') }.html"}= @classData.class.parent
 
-        - if @classData.doc?.extends
+        - extendsFrom = @underscore.keys @extendedMethods
+        - unless @underscore.isEmpty extendsFrom
           %tr
             %td Extends:
             %td
-              - for extendMixin in @classData.doc.extends
-                - if extendMixin is @underscore.last @classData.doc.extends
+              - for extendMixin in extendsFrom
+                - if extendMixin is @underscore.last extendsFrom
                   %a{ href: "#{ @path }mixins/#{ extendMixin.replace(/\./g, '/') }.html"}= extendMixin
                 - else
                   != succeed ',', =>
                     %a{ href: "#{ @path }mixins/#{ extendMixin.replace(/\./g, '/') }.html"}= extendMixin
 
-        - if @classData.doc?.includes
+        - includesFrom = @underscore.keys @includedMethods
+        - unless @underscore.isEmpty includesFrom
           %tr
             %td Includes:
             %td
-              - for includeMixin in @classData.doc.includes
-                - if includeMixin is @underscore.last @classData.doc.includes
+              - for includeMixin in includesFrom
+                - if includeMixin is @underscore.last includesFrom
                   %a{ href: "#{ @path }mixins/#{ includeMixin.replace(/\./g, '/') }.html"}= includeMixin
                 - else
                   != succeed ',', =>
                     %a{ href: "#{ @path }mixins/#{ includeMixin.replace(/\./g, '/') }.html"}= includeMixin
 
-        - if @classData.doc?.concerns
+        - concernsFrom = @underscore.keys @concernMethods
+        - unless @underscore.isEmpty concernsFrom
           %tr
             %td Concerns:
             %td
-              - for concern in @classData.doc.concerns
-                - if concern is @underscore.last @classData.doc.concerns
+              - for concern in concernsFrom
+                - if concern is @underscore.last concernsFrom
                   %a{ href: "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.html"}= concern
                 - else
                   != succeed ',', =>
