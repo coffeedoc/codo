@@ -79,8 +79,8 @@ module.exports = class Doc extends Node
             @todos or= []
             @todos.push todo[1]
 
-          else if example = /^@example\s+(.*)/i.exec line
-            title = example[1]
+          else if example = /^@example(?:\s+(.*))?/i.exec line
+            title = example[1] || ''
             code = []
 
             while /^\s{2}.*/.test(lines[0])

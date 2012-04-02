@@ -4,6 +4,9 @@
 #   this carefully
 # @note For internal use only
 #
+# @example
+#   Class.getType('cat')
+#
 # @example Use it in this way
 #   new Class()
 #

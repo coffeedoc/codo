@@ -9,6 +9,10 @@
       "since": "1.0.0",
       "examples": [
         {
+          "title": "",
+          "code": "Class.getType('cat')"
+        },
+        {
           "title": "Use it in this way",
           "code": "new Class()"
         },
@@ -29,7 +33,7 @@
         "Netzpirat",
         "Plasticman"
       ],
-      "comment": "<p>This is a test class with <code>inline.dot</code>. Beware.\n\n\n\n\n\n</p>\n",
+      "comment": "<p>This is a test class with <code>inline.dot</code>. Beware.\n\n\n\n\n\n\n</p>\n",
       "summary": "This is a test class with `inline.dot`."
     },
     "class": {
