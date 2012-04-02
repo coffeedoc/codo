@@ -19,15 +19,37 @@
           %span.private.note.title Private
 
       %table.box
+        %tr
+          %td Defined in:
+          %td= @classData.file
+
         - if @classData.class.parent
           %tr
             %td Inherits:
             %td
               %a{ href: "#{ @path }classes/#{ @classData.class.parent.replace(/\./g, '/') }.html"}= @classData.class.parent
 
-        %tr
-          %td Defined in:
-          %td= @classData.file
+        - if @classData.doc?.extends
+          %tr
+            %td Extends:
+            %td
+              - for extendMixin in @classData.doc.extends
+                - if extendMixin is @underscore.last @classData.doc.extends
+                  %a{ href: "#{ @path }mixins/#{ extendMixin.replace(/\./g, '/') }.html"}= extendMixin
+                - else
+                  != succeed ',', ->
+                    %a{ href: "#{ @path }mixins/#{ extendMixin.replace(/\./g, '/') }.html"}= extendMixin
+
+        - if @classData.doc?.includes
+          %tr
+            %td Includes:
+            %td
+              - for includeMixin in @classData.doc.includes
+                - if includeMixin is @underscore.last @classData.doc.includes
+                  %a{ href: "#{ @path }mixins/#{ includeMixin.replace(/\./g, '/') }.html"}= includeMixin
+                - else
+                  != succeed ',', ->
+                    %a{ href: "#{ @path }mixins/#{ includeMixin.replace(/\./g, '/') }.html"}= includeMixin
 
       - if @classData.doc?.comment
         %h2 Overview

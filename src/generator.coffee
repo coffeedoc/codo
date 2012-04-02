@@ -109,6 +109,8 @@ module.exports = class Generator
       @templater.render 'mixin', {
         path: assetPath
         mixinData: mixin.toJSON()
+        includedIn: _.map _.filter(@parser.classes, (clazz) => _.contains clazz.doc?.includeMixins, mixin.getMixinName()), (c) => c.getClassName()
+        extendedIn: _.map _.filter(@parser.classes, (clazz) => _.contains clazz.doc?.extendMixins, mixin.getMixinName()), (c) => c.getClassName()
         methods: _.map mixin.getMethods(), (m) -> m.toJSON()
         constants: _.map _.filter(mixin.getVariables(), (variable) -> variable.isConstant()), (m) -> m.toJSON()
         breadcrumbs: breadcrumbs

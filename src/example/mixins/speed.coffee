@@ -1,9 +1,8 @@
-#
 # This module adds speed measurements to animals
 #
 # @mixin
 #
-AnimalSpeed =
+Example.Mixins.Speed =
 
   # Get the distance the animal will put back in a certain time.
   #

@@ -20,6 +20,8 @@
 # @see Example.Animal.Lion
 # @see Example.Animal.Lion#move
 # @see Example.Animal.enterArk Enter the Ark
+# @include Example.Mixins.Speed
+# @extend Example.Mixins.Herd
 #
 class Example.Animal
 

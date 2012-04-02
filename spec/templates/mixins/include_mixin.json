@@ -1,0 +1,48 @@
+[
+  {
+    "file": "spec/templates/mixins/include_mixin.coffee",
+    "doc": {
+      "includes": [
+        "Name.Space.MyMixin"
+      ],
+      "comment": "",
+      "summary": ""
+    },
+    "class": {
+      "className": "SomeNamespace.MyClass",
+      "name": "MyClass",
+      "namespace": "SomeNamespace"
+    },
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/templates/mixins/include_mixin.coffee",
+    "doc": {
+      "comment": "",
+      "summary": ""
+    },
+    "mixin": {
+      "mixinName": "Name.Space.MyMixin",
+      "name": "MyMixin",
+      "namespace": "Name.Space"
+    },
+    "methods": [
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>hello</strong>()",
+        "name": "hello",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>goodbye</strong>()",
+        "name": "goodbye",
+        "bound": false,
+        "parameters": []
+      }
+    ],
+    "variables": []
+  }
+]

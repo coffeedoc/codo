@@ -15,9 +15,32 @@
         - if @mixinData.doc?.deprecated || @mixinData.doc?.deprecated is ''
           %span.deprecated.note.title Deprecated
 
-      %dl.box
-        %dt Defined in:
-        %dd= @mixinData.file
+      %table.box
+        %tr
+          %td Defined in:
+          %td= @mixinData.file
+
+        - unless @underscore.isEmpty @extendedIn
+          %tr
+            %td Extended in:
+            %td
+              - for clazz in @extendedIn
+                - if clazz is @underscore.last @extendedIn
+                  %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
+                - else
+                  != succeed ',', ->
+                    %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
+
+        - unless @underscore.isEmpty @includedIn
+          %tr
+            %td Included in:
+            %td
+              - for clazz in @includedIn
+                - if clazz is @underscore.last @includedIn
+                  %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
+                - else
+                  != succeed ',', ->
+                    %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
 
       - if @mixinData.doc?.comment
         %h2 Overview

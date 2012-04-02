@@ -73,13 +73,13 @@ module.exports = class Mixin extends Node
   #
   getMixinName: ->
     try
-      unless @moduleName
+      unless @mixinName
         name = []
         name = [@node.variable.base.value] unless @node.variable.base.value == 'this'
         name.push p.name.value for p in @node.variable.properties
-        @moduleName = name.join('.')
+        @mixinName = name.join('.')
 
-      @moduleName
+      @mixinName
 
     catch error
       console.warn('Get mixin full name error:', @node, error) if @options.verbose
