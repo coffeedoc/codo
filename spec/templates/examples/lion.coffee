@@ -1,8 +1,12 @@
 # A dangerous lion. Take care.
 #
 # @author Simba
+# @see http://en.wikipedia.org/wiki/Lion
 #
 class Example.Animal.Lion extends Animal
+
+  # Maximum speed in MPH
+  @MAX_SPEED = 50
 
   # Move the lion fast
   #
@@ -11,3 +15,10 @@ class Example.Animal.Lion extends Animal
   #
   move: (direction, speed) ->
     super({ diection: direction, speed: speed })
+
+  # Escape at maximum speed.
+  #
+  # @param (see #move)
+  #
+  escape: (direction) ->
+    @move(direction, @MAX_SPEED)

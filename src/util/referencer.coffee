@@ -11,6 +11,7 @@ module.exports = class Referencer
   # @param [Object] options the parser options
   #
   constructor: (@classes, @mixins, @options) ->
+    @resolveParamReferences()
 
   # Get all direct subclasses.
   #
@@ -46,7 +47,9 @@ module.exports = class Referencer
 
     unless _.isEmpty clazz.getParentClassName()
       parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
-      result = _.extend {}, @getIncludedMethods(parentClass), result
+
+      if parentClass
+        result = _.extend {}, @getIncludedMethods(parentClass), result
 
     result
 
@@ -63,7 +66,9 @@ module.exports = class Referencer
 
     unless _.isEmpty clazz.getParentClassName()
       parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
-      result = _.extend {}, @getExtendedMethods(parentClass), result
+
+      if parentClass
+        result = _.extend {}, @getExtendedMethods(parentClass), result
 
     result
 
@@ -110,7 +115,7 @@ module.exports = class Referencer
   # @param [String] path the path prefix
   # @return [String] the processed text
   #
-  linkTypes: (text, path) ->
+  linkTypes: (text = '', path) ->
     for clazz in @classes
       text = text.replace ///^(#{ clazz.getFullName() })$///g, "<a href='#{ path }classes/#{ clazz.getFullName().replace(/\./g, '/') }.html'>$1</a>"
       text = text.replace ///([< ])(#{ clazz.getFullName() })([>, ])///g, "$1<a href='#{ path }classes/#{ clazz.getFullName().replace(/\./g, '/') }.html'>$2</a>$3"
@@ -187,7 +192,7 @@ module.exports = class Referencer
   # @param [String] the text to search
   # @return [String] the text with hyperlinks
   #
-  resolveTextReferences: (text, entity, path) ->
+  resolveTextReferences: (text = '', entity, path) ->
     text.replace /\{([^\}]*)\}/gm, (match) =>
       reference = arguments[1].split(' ')
       see = @resolveSee({ reference: reference[0], label: reference[1] }, entity, path)
@@ -250,7 +255,7 @@ module.exports = class Referencer
             # Link to another class
             if _.isUndefined refMethod
               if _.include(_.map(@classes, (c) -> c.getFullName()), refClass) || _.include(_.map(@mixins, (c) -> c.getFullName()), refClass)
-                see.reference = "#{ path }#{if otherEntity.constructor.name == 'Class' then 'classes' else 'modules'}/#{ refClass.replace(/\./g, '/') }.html"
+                see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ refClass.replace(/\./g, '/') }.html"
                 see.label = ref unless see.label
               else
                 see.label = see.reference
@@ -262,7 +267,7 @@ module.exports = class Referencer
               methods = _.map(_.filter(otherEntity.getMethods(), (m) -> m.getType() is 'class'), (m) -> m.getName())
 
               if _.include methods, refMethod.substring(1)
-                see.reference = "#{ path }#{if otherEntity.constructor.name == 'Class' then 'classes' else 'modules'}/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-class"
+                see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-class"
                 see.label = ref unless see.label
               else
                 see.label = see.reference
@@ -274,7 +279,7 @@ module.exports = class Referencer
               instanceMethods = _.map(_.filter(otherEntity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m.getName())
 
               if _.include instanceMethods, refMethod.substring(1)
-                see.reference = "#{ path }#{if otherEntity.constructor.name == 'Class' then 'classes' else 'modules'}/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-instance"
+                see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-instance"
                 see.label = ref unless see.label
               else
                 see.label = see.reference
@@ -292,3 +297,52 @@ module.exports = class Referencer
           console.log "[WARN] Cannot resolve link to #{ ref } in class #{ entity.getFullName() }" unless @options.quiet
 
     see
+
+  # Resolve parameter references. This gies through all
+  # method parameter and see if a param doc references another
+  # method. If so, copy over the doc meta data.
+  #
+  resolveParamReferences: ->
+    entities = _.union @classes, @mixins
+
+    for entity in entities
+      for method in entity.getMethods()
+        if method.getDoc() && !_.isEmpty method.getDoc().params
+          for param in method.getDoc().params
+            if param.reference
+
+              # Find referenced entity
+              if ref = /([$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)([#.])([$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)/i.test param.reference
+                otherEntity = _.first entities, (e) -> e.getFullName() is ref[1]
+                otherMethodType = if ref[2] is '#' then 'instance' else 'class'
+                otherMethod = ref[3]
+
+              # The referenced entity is on the current entity
+              else
+                otherEntity = entity
+                otherMethodType = if param.reference.substring(0, 1) is '#' then 'instance' else 'class'
+                otherMethod = param.reference.substring(1)
+
+              # Find the referenced method
+              refMethod = _.find otherEntity.getMethods(), (m) -> m.getName() is otherMethod && m.getType() is otherMethodType
+
+              if refMethod
+                # Filter param name
+                if param.name
+                  copyParam = _.find refMethod.getDoc().params, (p) -> p.name is param.name
+
+                  # Replace a single param
+                  if copyParam
+                    method.getDoc().params ||= []
+                    method.getDoc().params = _.reject method.getDoc().params, (p) -> p.name = param.name
+                    method.getDoc().params.push copyParam
+                  else
+                    console.log "[WARN] Parameter #{ param.name } does not exist in #{ param.reference } in class #{ entity.getFullName() }" unless @options.quiet
+
+                else
+                  # Copy all parameters that exist on the given method
+                  names = _.map method.getParameters(), (p) -> p.getName()
+                  method.getDoc().params = _.filter refMethod.getDoc().params, (p) -> _.contains names, p.name
+
+              else
+                console.log "[WARN] Cannot resolve reference tag #{ param.reference } in class #{ entity.getFullName() }" unless @options.quiet

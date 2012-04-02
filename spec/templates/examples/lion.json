@@ -6,7 +6,12 @@
         "Simba"
       ],
       "comment": "<p>A dangerous lion. Take care.\n\n\n</p>\n",
-      "summary": "A dangerous lion."
+      "summary": "A dangerous lion.",
+      "see": [
+        {
+          "reference": "http://en.wikipedia.org/wiki/Lion"
+        }
+      ]
     },
     "class": {
       "className": "Example.Animal.Lion",
@@ -46,8 +51,40 @@
             "splat": false
           }
         ]
+      },
+      {
+        "doc": {
+          "comment": "<p>Escape at maximum speed.\n\n\n</p>\n",
+          "summary": "Escape at maximum speed.",
+          "params": [
+            {
+              "reference": "#move"
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>escape</strong>(direction)",
+        "name": "escape",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "direction",
+            "splat": false
+          }
+        ]
       }
     ],
-    "variables": []
+    "variables": [
+      {
+        "doc": {
+          "comment": "<p>Maximum speed in MPH\n</p>\n",
+          "summary": "Maximum speed in MPH"
+        },
+        "type": "class",
+        "constant": true,
+        "name": "MAX_SPEED",
+        "value": "50"
+      }
+    ]
   }
 ]

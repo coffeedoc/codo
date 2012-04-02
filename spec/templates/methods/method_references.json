@@ -1,0 +1,116 @@
+[
+  {
+    "file": "spec/templates/methods/method_references.coffee",
+    "class": {
+      "className": "User",
+      "name": "User",
+      "namespace": ""
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "params": [
+            {
+              "type": "String",
+              "name": "username",
+              "desc": "the nam of the user to add"
+            },
+            {
+              "type": "Number",
+              "name": "uid",
+              "desc": "the user ID"
+            },
+            {
+              "type": "Number",
+              "name": "gid",
+              "desc": "the group ID"
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>constructor</strong>(username, uid, gid)",
+        "name": "constructor",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "username",
+            "splat": false
+          },
+          {
+            "name": "uid",
+            "splat": false
+          },
+          {
+            "name": "gid",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": []
+  },
+  {
+    "file": "spec/templates/methods/method_references.coffee",
+    "class": {
+      "className": "UserHelper",
+      "name": "UserHelper",
+      "namespace": ""
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "params": [
+            {
+              "reference": "User#constructor"
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>addUser</strong>(username, uid, gid)",
+        "name": "addUser",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "username",
+            "splat": false
+          },
+          {
+            "name": "uid",
+            "splat": false
+          },
+          {
+            "name": "gid",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "params": [
+            {
+              "name": "username",
+              "reference": "User#constructor"
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>addRootUser</strong>(username)",
+        "name": "addRootUser",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "username",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": []
+  }
+]
