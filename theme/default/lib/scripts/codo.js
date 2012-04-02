@@ -46,10 +46,12 @@
     $('body #content.list ul').on('click', 'li', function(event) {
       var link;
       link = $(this).find('a:not(.toggle)').attr('href');
-      if ($('body').hasClass('noframes')) {
-        if (link !== '#') window.parent.location.href = link;
-      } else {
-        if (link !== '#') top.frames['main'].location.href = link;
+      if (link) {
+        if ($('body').hasClass('noframes')) {
+          if (link !== '#') window.parent.location.href = link;
+        } else {
+          if (link !== '#') top.frames['main'].location.href = link;
+        }
       }
       return event.preventDefault();
     });

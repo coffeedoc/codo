@@ -53,10 +53,11 @@ $(document).ready ->
   $('body #content.list ul').on 'click', 'li', (event) ->
     link = $(@).find('a:not(.toggle)').attr('href')
 
-    if $('body').hasClass 'noframes'
-      window.parent.location.href = link unless link is '#'
-    else
-      top.frames['main'].location.href = link unless link is '#'
+    if link
+      if $('body').hasClass 'noframes'
+        window.parent.location.href = link unless link is '#'
+      else
+        top.frames['main'].location.href = link unless link is '#'
 
     event.preventDefault()
 
