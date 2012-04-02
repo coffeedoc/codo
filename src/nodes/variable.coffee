@@ -37,7 +37,7 @@ module.exports = class Variable extends Node
   #
   isConstant: ->
     unless @constant
-      @constant = /[A-Z_-]/.test @getName()
+      @constant = /^[A-Z_-]*$/.test @getName()
 
     @constant
 
