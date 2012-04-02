@@ -1,0 +1,160 @@
+[
+  {
+    "file": "spec/templates/mixins/concern.coffee",
+    "doc": {
+      "comment": "<p>@concern MyConcern\n</p>\n",
+      "summary": "@concern MyConcern"
+    },
+    "class": {
+      "className": "NoIdea",
+      "name": "NoIdea",
+      "namespace": ""
+    },
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/templates/mixins/concern.coffee",
+    "doc": {
+      "comment": "<p>This is my concern\n</p>\n",
+      "summary": "This is my concern"
+    },
+    "mixin": {
+      "mixinName": "MyConcern",
+      "name": "MyConcern",
+      "namespace": "",
+      "concern": true
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "params": [
+            {
+              "type": "String",
+              "name": "a",
+              "desc": "This is the a parameter"
+            },
+            {
+              "type": "String",
+              "name": "b",
+              "desc": "This is the a parameter"
+            },
+            {
+              "type": "String",
+              "name": "c",
+              "desc": "This is the a parameter"
+            }
+          ]
+        },
+        "type": "class",
+        "signature": "+ (void) <strong>a</strong>(a, b, c)",
+        "name": "a",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "a",
+            "splat": false
+          },
+          {
+            "name": "b",
+            "splat": false
+          },
+          {
+            "name": "c",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "params": [
+            {
+              "type": "String",
+              "name": "x",
+              "desc": "This is the x parameter"
+            },
+            {
+              "type": "String",
+              "name": "y",
+              "desc": "This is the y parameter"
+            },
+            {
+              "type": "String",
+              "name": "z",
+              "desc": "This is the z parameter"
+            }
+          ]
+        },
+        "type": "class",
+        "signature": "+ (void) <strong>z</strong>(x, y, z)",
+        "name": "z",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "x",
+            "splat": false
+          },
+          {
+            "name": "y",
+            "splat": false
+          },
+          {
+            "name": "z",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "doc": {
+          "comment": "<p>Say hi\n</p>\n",
+          "summary": "Say hi",
+          "params": [
+            {
+              "type": "String",
+              "name": "to",
+              "desc": "the name"
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>hi</strong>(to)",
+        "name": "hi",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "to",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "doc": {
+          "comment": "<p>Say goodbye\n</p>\n",
+          "summary": "Say goodbye",
+          "params": [
+            {
+              "type": "String",
+              "name": "to",
+              "desc": "the name"
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>goodbye</strong>(to)",
+        "name": "goodbye",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "to",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": []
+  }
+]

@@ -24,33 +24,38 @@ module.exports = class Mixin extends Node
       previousExp = null
 
       for exp in @node.value.base.properties
-        switch exp.constructor.name
-          when 'Assign'
-            doc = previousExp if previousExp?.constructor.name is 'Comment'
 
-            switch exp.value?.constructor.name
-              when 'Code'
-                @methods.push new Method(@, exp, @options, doc)
-              when 'Value'
-                @variables.push new Variable(@, exp, @options, true, doc)
+        # Recognize assigned code on the mixin
+        if exp.constructor.name is 'Assign'
+          doc = previousExp if previousExp?.constructor.name is 'Comment'
 
-            doc = null
+          if exp.value?.constructor.name is 'Code'
+            @methods.push new Method(@, exp, @options, doc)
 
-          when 'Value'
-            previousProp = null
+          # Recognize concerns as inner mixins
+          if exp.value?.constructor.name is 'Value'
+            switch exp.variable.base.value
+              when 'ClassMethods'
+                @classMixin = new Mixin(exp, @filename, @options, doc)
 
-            for prop in exp.base.properties
-              doc = previousProp if previousProp?.constructor.name is 'Comment'
+              when 'InstanceMethods'
+                @instanceMixin = new Mixin(exp, @filename, options, doc)
 
-              switch prop.value?.constructor.name
-                when 'Code'
-                  @methods.push new Method(@, prop, @options, doc)
-                when 'Value'
-                  @variables.push new Variable(@, prop, @options, doc)
-
-              doc = null
-              previousProp = prop
+        doc = null
         previousExp = exp
+
+      if @classMixin? && @instanceMixin?
+        @concern = true
+
+        for method in @classMixin.getMethods()
+          method.type = 'class'
+          @methods.push method
+
+        for method in @instanceMixin.getMethods()
+          method.type = 'instance'
+          @methods.push method
+      else
+        @concern = false
 
     catch error
       console.warn('Create mixin error:', @node, error) if @options.verbose
@@ -144,6 +149,7 @@ module.exports = class Mixin extends Node
         mixinName: @getMixinName()
         name: @getName()
         namespace: @getNamespace()
+        concern: @concern
       methods: []
       variables: []
 

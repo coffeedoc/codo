@@ -25,7 +25,8 @@
     "mixin": {
       "mixinName": "Name.Space.MyMixin",
       "name": "MyMixin",
-      "namespace": "Name.Space"
+      "namespace": "Name.Space",
+      "concern": false
     },
     "methods": [
       {

@@ -31,7 +31,8 @@
     "mixin": {
       "mixinName": "Foo.Bar",
       "name": "Bar",
-      "namespace": "Foo"
+      "namespace": "Foo",
+      "concern": false
     },
     "methods": [],
     "variables": []
