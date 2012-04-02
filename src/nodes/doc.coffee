@@ -107,8 +107,8 @@ module.exports = class Doc extends Node
           else if deprecated = /^@deprecated\s+(.*)/.exec line
             @deprecated = deprecated[1]
 
-          else if module = /^@module/.exec line
-            @module = true
+          else if mixin = /^@mixin/.exec line
+            @mixin = true
 
           else
             comment.push line

@@ -3,11 +3,11 @@
   != @JST['partials/head'](@)
   %body.list
     #content.tree.list
-      %h1.full_list_header Module List
+      %h1.full_list_header Mixin List
 
       %nav
         %a{ target: '_self', href: 'class_list.html' } Classes
-        %a{ target: '_self', href: 'module_list.html' } Modules
+        %a{ target: '_self', href: 'mixin_list.html' } Mixins
         %a{ target: '_self', href: 'method_list.html' } Methods
         %a{ target: '_self', href: 'file_list.html' } Files
 
@@ -15,16 +15,16 @@
         Search:
         %input{ type: 'text' }
 
-      - createLevel = (modules) ->
+      - createLevel = (mixins) ->
         %ul
-          - for module in modules
+          - for mixin in mixins
             %li
-              - if module.href
-                %a{ href: module.href, target: 'main' }= module.name
+              - if mixin.href
+                %a{ href: mixin.href, target: 'main' }= mixin.name
               - else
                 %span
-                  = module.name
+                  = mixin.name
 
-            = createLevel(module.children) if module.children
+            = createLevel(mixin.children) if mixin.children
 
-      = createLevel @modules
+      = createLevel @mixins

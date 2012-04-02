@@ -3,13 +3,13 @@ Method   = require './method'
 Variable = require './variable'
 Doc      = require './doc'
 
-# A CoffeeScript object-module
+# A CoffeeScript mixins
 #
-module.exports = class Module extends Node
+module.exports = class Mixin extends Node
 
-  # Construct a module
+  # Construct a mixin
   #
-  # @param [Object] node the module node
+  # @param [Object] node the mixin node
   # @param [String] the filename
   # @param [Object] options the parser options
   # @param [Object] comment the comment node
@@ -53,25 +53,25 @@ module.exports = class Module extends Node
         previousExp = exp
 
     catch error
-      console.warn('Create module error:', @node, error) if @options.verbose
+      console.warn('Create mixin error:', @node, error) if @options.verbose
 
   # Get the source file name.
   #
-  # @return [String] the filename of the module
+  # @return [String] the filename of the mixin
   #
   getFileName: -> @fileName
 
-  # Get the module doc
+  # Get the mixin doc
   #
-  # @return [Doc] the module doc
+  # @return [Doc] the mixin doc
   #
   getDoc: -> @doc
 
-  # Get the full module name
+  # Get the full mixin name
   #
-  # @return [String] full module name
+  # @return [String] full mixin name
   #
-  getModuleName: ->
+  getMixinName: ->
     try
       unless @moduleName
         name = []
@@ -82,35 +82,35 @@ module.exports = class Module extends Node
       @moduleName
 
     catch error
-      console.warn('Get module full name error:', @node, error) if @options.verbose
+      console.warn('Get mixin full name error:', @node, error) if @options.verbose
 
-  # Alias for {Module#getModuleName}
+  # Alias for {Mixin#getMixinName}
   #
   getFullName: ->
-    @getModuleName()
+    @getMixinName()
 
-  # Get the module name
+  # Get the mixin name
   #
   # @return [String] the name
   #
   getName: ->
     try
       unless @name
-        @name = @getModuleName().split('.').pop()
+        @name = @getMixinName().split('.').pop()
 
       @name
 
     catch error
-      console.warn('Get module name error:', @node, error) if @options.verbose
+      console.warn('Get mixin name error:', @node, error) if @options.verbose
 
-  # Get the module namespace
+  # Get the mixin namespace
   #
   # @return [String] the namespace
   #
   getNamespace: ->
     try
       unless @namespace
-        @namespace = @getModuleName().split('.')
+        @namespace = @getMixinName().split('.')
         @namespace.pop()
 
         @namespace = @namespace.join('.')
@@ -118,7 +118,7 @@ module.exports = class Module extends Node
       @namespace
 
     catch error
-      console.warn('Get module namespace error:', @node, error) if @options.verbose
+      console.warn('Get mixin namespace error:', @node, error) if @options.verbose
 
   # Get all methods.
   #
@@ -140,8 +140,8 @@ module.exports = class Module extends Node
     json =
       file: @getFileName()
       doc: @getDoc().toJSON()
-      module:
-        moduleName: @getModuleName()
+      mixin:
+        mixinName: @getMixinName()
         name: @getName()
         namespace: @getNamespace()
       methods: []

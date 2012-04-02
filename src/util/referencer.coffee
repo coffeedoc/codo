@@ -7,9 +7,10 @@ module.exports = class Referencer
   # Construct a referencer.
   #
   # @param [Array<Classes>] classes all known classes
+  # @param [Array<Classes>] mixins all known mixins
   # @param [Object] options the parser options
   #
-  constructor: (@classes, @modules, @options) ->
+  constructor: (@classes, @mixins, @options) ->
 
   # Get all direct subclasses.
   #
@@ -195,12 +196,12 @@ module.exports = class Referencer
           refClass = match[1]
           refMethod = match[2]
           otherEntity   = _.find @classes, (c) -> c.getFullName() is refClass
-          otherEntity ||= _.find @modules, (c) -> c.getFullName() is refClass
+          otherEntity ||= _.find @mixins, (c) -> c.getFullName() is refClass
 
           if otherEntity
             # Link to another class
             if _.isUndefined refMethod
-              if _.include(_.map(@classes, (c) -> c.getFullName()), refClass) || _.include(_.map(@modules, (c) -> c.getFullName()), refClass)
+              if _.include(_.map(@classes, (c) -> c.getFullName()), refClass) || _.include(_.map(@mixins, (c) -> c.getFullName()), refClass)
                 see.reference = "#{ path }#{if otherEntity.constructor.name == 'Class' then 'classes' else 'modules'}/#{ refClass.replace(/\./g, '/') }.html"
                 see.label = ref unless see.label
               else

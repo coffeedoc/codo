@@ -18,7 +18,7 @@ module.exports = class Generator
   # @param [Object] options the options
   #
   constructor: (@parser, @options) ->
-    @referencer = new Referencer(@parser.classes, @parser.modules, @options)
+    @referencer = new Referencer(@parser.classes, @parser.mixins, @options)
     @templater = new Templater(@options, @referencer)
 
   # Generate the documentation
@@ -28,12 +28,12 @@ module.exports = class Generator
     @generateIndex()
 
     @generateClasses()
-    @generateModules()
+    @generateMixins()
     @generateFiles()
 
-    @generateClassAndModuleIndex()
+    @generateClassAndMixinIndex()
 
-    @generateClassAndModuleLists()
+    @generateClassAndMixinLists()
     @generateMethodList()
     @generateFileList()
 
@@ -81,11 +81,11 @@ module.exports = class Generator
         breadcrumbs: breadcrumbs
       }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
 
-  # Generate the pages for all the modules
+  # Generate the pages for all the mixins
   #
-  generateModules: ->
-    for module in @parser.modules
-      namespaces = _.compact module.getNamespace().split('.')
+  generateMixins: ->
+    for mixin in @parser.mixins
+      namespaces = _.compact mixin.getNamespace().split('.')
       assetPath = '../'
       assetPath += '../' for namespace in namespaces
 
@@ -104,15 +104,15 @@ module.exports = class Generator
           name: namespace
 
       breadcrumbs.push
-        name: module.getName()
+        name: mixin.getName()
 
-      @templater.render 'module', {
+      @templater.render 'mixin', {
         path: assetPath
-        moduleData: module.toJSON()
-        methods: _.map module.getMethods(), (m) -> m.toJSON()
-        constants: _.map _.filter(module.getVariables(), (variable) -> variable.isConstant()), (m) -> m.toJSON()
+        mixinData: mixin.toJSON()
+        methods: _.map mixin.getMethods(), (m) -> m.toJSON()
+        constants: _.map _.filter(mixin.getVariables(), (variable) -> variable.isConstant()), (m) -> m.toJSON()
         breadcrumbs: breadcrumbs
-      }, "modules/#{ module.getFullName().replace(/\./g, '/') }.html"
+      }, "mixins/#{ mixin.getFullName().replace(/\./g, '/') }.html"
 
   # Generates the pages for all the extra files.
   #
@@ -142,20 +142,20 @@ module.exports = class Generator
       catch error
         console.log "[ERROR] Cannot generate extra file #{ extra }: #{ error }"
 
-  # Generate the alphabetical index of all classes and modules.
+  # Generate the alphabetical index of all classes and mixins.
   #
-  generateClassAndModuleIndex: ->
+  generateClassAndMixinIndex: ->
     sortedClasses = {}
 
     # Sort in character group
     for code in [97..122]
       char = String.fromCharCode(code)
       classes = _.filter @parser.classes, (clazz) -> clazz.getName().toLowerCase()[0] is char
-      modules = _.filter @parser.modules, (module) -> module.getName().toLowerCase()[0] is char
-      if classes.length + modules.length > 0
+      mixins = _.filter @parser.mixins, (mixin) -> mixin.getName().toLowerCase()[0] is char
+      if classes.length + mixins.length > 0
         sortedClasses[char] = []
         sortedClasses[char].push x for x in classes unless _.isEmpty classes
-        sortedClasses[char].push x for x in modules unless _.isEmpty modules
+        sortedClasses[char].push x for x in mixins unless _.isEmpty mixins
 
     @templater.render 'index', {
       path: ''
@@ -166,9 +166,9 @@ module.exports = class Generator
 
   # Generates the drop down class list
   #
-  generateClassAndModuleLists: ->
+  generateClassAndMixinLists: ->
     classes = []
-    modules = []
+    mixins = []
 
     traverse = (entity, children, section) ->
       if entity.getNamespace()
@@ -196,18 +196,18 @@ module.exports = class Generator
     for clazz in @parser.classes
       traverse clazz, classes, 'classes'
 
-    for module in @parser.modules
-      traverse module, modules, 'modules'
+    for mixin in @parser.mixins
+      traverse mixin, mixins, 'mixins'
 
     @templater.render 'class_list', {
       path: ''
       classes: classes
     }, 'class_list.html'
 
-    @templater.render 'module_list', {
+    @templater.render 'mixin_list', {
       path: ''
-      modules: modules
-    }, 'module_list.html'
+      mixins: mixins
+    }, 'mixin_list.html'
 
   # Generates the drop down method list
   #
@@ -217,7 +217,7 @@ module.exports = class Generator
       {
         path: ''
         name: method.getName()
-        href: "#{if method.entity.constructor.name == 'Class' then 'classes' else 'modules'}/#{ method.entity.getFullName().replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"
+        href: "#{if method.entity.constructor.name == 'Class' then 'classes' else 'mixins'}/#{ method.entity.getFullName().replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"
         classname: method.entity.getFullName()
         deprecated: method.doc?.deprecated
         type: method.type

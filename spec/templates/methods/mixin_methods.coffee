@@ -1,5 +1,5 @@
 #
-# @module
+# @mixin
 Foo =
 
   helper: ->

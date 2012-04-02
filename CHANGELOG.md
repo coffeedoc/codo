@@ -1,5 +1,6 @@
 # Master
 
+- Rename `@module` to `@mixin` to avoid confusion with Node.js modules. ([@netzpirat][])
 - [#30](https://github.com/netzpirat/codo/issues/30):  Make the frames view the default. ([@netzpirat][])
 - [#35](https://github.com/netzpirat/codo/issues/35):  Links aren't working on Class/Module List dropdown for parent nodes. ([@netzpirat][])
 - [#15](https://github.com/netzpirat/codo/issues/15): Generate a TOC for file contents. ([@netzpirat][])

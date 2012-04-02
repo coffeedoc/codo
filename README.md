@@ -34,9 +34,9 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
     <tr>
       <td><strong>Tag format</strong></td>
       <td><strong>Multiple occurrences</strong></td>
-      <td><strong>Class level</strong></td>
-      <td><strong>Module level</strong></td>
-      <td><strong>Method level</strong></td>
+      <td><strong>Classes</strong></td>
+      <td><strong>Mixins</strong></td>
+      <td><strong>Methods</strong></td>
     </tr>
   </thead>
   <tbody>
@@ -142,7 +142,7 @@ _Tags can take multiple lines, just indent subsequent lines by two spaces._
       <td>&#10004;</td>
     </tr>
     <tr>
-      <td><strong>@module</strong> version</td>
+      <td><strong>@mixin</strong> version</td>
       <td></td>
       <td></td>
       <td>&#10004;</td>

@@ -1,6 +1,6 @@
 [
   {
-    "file": "spec/templates/modules/module_documentation.coffee",
+    "file": "spec/templates/mixins/mixin_documentation.coffee",
     "doc": {
       "abstract": "Each listener implementation must include",
       "private": true,
@@ -28,8 +28,8 @@
       "comment": "<p>This is a test module with <code>inline.dot</code>. Beware.\n\n\n\n\n\n</p>\n",
       "summary": "This is a test module with `inline.dot`."
     },
-    "module": {
-      "moduleName": "Foo.Bar",
+    "mixin": {
+      "mixinName": "Foo.Bar",
       "name": "Bar",
       "namespace": "Foo"
     },

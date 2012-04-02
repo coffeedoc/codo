@@ -1,12 +1,12 @@
 [
   {
-    "file": "spec/templates/methods/module_methods.coffee",
+    "file": "spec/templates/methods/mixin_methods.coffee",
     "doc": {
       "comment": "",
       "summary": ""
     },
-    "module": {
-      "moduleName": "Foo",
+    "mixin": {
+      "mixinName": "Foo",
       "name": "Foo",
       "namespace": ""
     },

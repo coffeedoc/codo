@@ -1,10 +1,10 @@
 fs           = require 'fs'
 _            = require 'underscore'
 _.str        = require 'underscore.string'
-
 CoffeeScript = require 'coffee-script'
+
 Class        = require './nodes/class'
-Module       = require './nodes/module'
+Mixin        = require './nodes/mixin'
 
 {whitespace} = require('./util/text')
 
@@ -20,7 +20,7 @@ module.exports = class Parser
   constructor: (@options) ->
     @files   = []
     @classes = []
-    @modules = []
+    @mixins  = []
 
   # Parse the given CoffeeScript file
   #
@@ -41,7 +41,7 @@ module.exports = class Parser
     # Defines typical conditions for entities we are looking through nodes
     entities =
       clazz: (node) -> node.constructor.name is 'Class'
-      module: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
+      mixin: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
 
     root = CoffeeScript.nodes(@convertComments(content))
     @linkAncestors root
@@ -67,7 +67,7 @@ module.exports = class Parser
               node = @previousNodes[@previousNodes.length-6]
               doc = node if node.constructor.name is 'Comment'
 
-        if entity == 'module'
+        if entity == 'mixin'
           name = [child.variable.base.value]
 
           # If p.name is empty value is going to be assigned to index...
@@ -75,10 +75,10 @@ module.exports = class Parser
 
           # ... and therefore should be just skippped.
           if name.indexOf(undefined) == -1
-            module = new Module(child, file, @options, doc)
+            mixin = new Mixin(child, file, @options, doc)
 
-            if module.doc.module? && (@options.private || !module.doc.private)
-              @modules.push module
+            if mixin.doc.mixin? && (@options.private || !mixin.doc.private)
+              @mixins.push mixin
 
         if entity == 'clazz'
           clazz = new Class(child, file, @options, doc)
@@ -123,7 +123,7 @@ module.exports = class Parser
           if ///
                ( # Class
                  class\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
-               | # Module or assignment
+               | # Mixin or assignment
                  ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff.]*\s+\=
                | # Function
                  [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s+(\(.*\)\s+[-=]>)?
@@ -177,8 +177,8 @@ module.exports = class Parser
     for clazz in @classes
       @variables = _.union @variables, clazz.getVariables()
 
-    for module in @modules
-      @methods = _.union @methods, module.getMethods()
+    for mixin in @mixins
+      @methods = _.union @methods, mixin.getMethods()
 
     @variables
 
@@ -190,7 +190,7 @@ module.exports = class Parser
     classCount     = @classes.length
     noDocClasses   = _.filter(@classes, (clazz) -> _.isUndefined clazz.getDoc()).length
 
-    modulesCount   = @modules.length
+    mixinCount     = @mixins.length
 
     methodCount    = @getAllMethods().length
     noDocMethods   = _.filter(@getAllMethods(), (method) -> _.isUndefined method.getDoc()).length
@@ -201,14 +201,14 @@ module.exports = class Parser
 
     documented = 100 - 100 / (classCount + methodCount + constantCount) * (noDocClasses + noDocMethods + noDocConstants)
 
-    maxCountLength = String(_.max([fileCount, modulesCount, classCount, methodCount, constantCount], (count) -> String(count).length)).length + 6
+    maxCountLength = String(_.max([fileCount, mixinCount, classCount, methodCount, constantCount], (count) -> String(count).length)).length + 6
     maxNoDocLength = String(_.max([noDocClasses, noDocMethods, noDocConstants], (count) -> String(count).length)).length
 
     stats =
       """
       Files:     #{ _.str.pad(fileCount, maxCountLength) }
       Classes:   #{ _.str.pad(classCount, maxCountLength) } (#{ _.str.pad(noDocClasses, maxNoDocLength) } undocumented)
-      Modules:   #{ _.str.pad(modulesCount, maxCountLength) }
+      Mixins:    #{ _.str.pad(mixinCount, maxCountLength) }
       Methods:   #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethods, maxNoDocLength) } undocumented)
       Constants: #{ _.str.pad(constantCount, maxCountLength) } (#{ _.str.pad(noDocConstants, maxNoDocLength) } undocumented)
        #{ _.str.sprintf('%.2f', documented) }% documented
@@ -226,7 +226,7 @@ module.exports = class Parser
     for clazz in @classes
       json.push clazz.toJSON()
 
-    for module in @modules
-      json.push module.toJSON()
+    for mixin in @mixins
+      json.push mixin.toJSON()
 
     json
