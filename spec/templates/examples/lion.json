@@ -17,7 +17,7 @@
       "className": "Example.Animal.Lion",
       "name": "Lion",
       "namespace": "Example.Animal",
-      "parent": "Animal"
+      "parent": "Example.Animal"
     },
     "methods": [
       {

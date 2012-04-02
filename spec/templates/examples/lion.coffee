@@ -3,7 +3,7 @@
 # @author Simba
 # @see http://en.wikipedia.org/wiki/Lion
 #
-class Example.Animal.Lion extends Animal
+class Example.Animal.Lion extends Example.Animal
 
   # Maximum speed in MPH
   @MAX_SPEED = 50
