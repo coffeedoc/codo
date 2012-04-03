@@ -123,7 +123,7 @@ $(document).ready ->
 
       # Go up one list level
       else if depth < level
-        target = ancestors.pop()
+        target = ancestors.pop() for i in [0...level - depth]
         target = $('nav.toc ol:first') unless target
         level = depth
 

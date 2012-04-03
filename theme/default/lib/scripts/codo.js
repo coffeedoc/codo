@@ -87,7 +87,7 @@
       });
     };
     $('#filecontents').each(function() {
-      var ancestors, depth, heading, index, level, list, nav, target, _len, _ref;
+      var ancestors, depth, heading, i, index, level, list, nav, target, _len, _ref, _ref2;
       nav = $('nav.toc');
       target = nav;
       level = 0;
@@ -105,7 +105,9 @@
           target = list;
           level = depth;
         } else if (depth < level) {
-          target = ancestors.pop();
+          for (i = 0, _ref2 = level - depth; 0 <= _ref2 ? i < _ref2 : i > _ref2; 0 <= _ref2 ? i++ : i--) {
+            target = ancestors.pop();
+          }
           if (!target) target = $('nav.toc ol:first');
           level = depth;
         }
