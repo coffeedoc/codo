@@ -1,3 +1,7 @@
+# Master
+
+- Remove tree indention and show namespace of entities in the search result. ([@netzpirat][])
+
 # Version 0.6.0 - April 3, 2012
 
 - Implement `@method` tag.

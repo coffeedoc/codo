@@ -78,32 +78,44 @@ body.frames #content.list #search {
   color: #888;
   white-space: nowrap;
 }
+/* line 94, ../../src/styles/lists.scss */
+#content.list.tree ul li small.namespace {
+  display: none;
+}
+/* line 99, ../../src/styles/lists.scss */
+#content.list.tree ul li.result small.namespace {
+  display: inline;
+}
+/* line 103, ../../src/styles/lists.scss */
+#content.list.tree ul li.result small.parent {
+  display: none;
+}
 
-/* line 97, ../../src/styles/lists.scss */
+/* line 111, ../../src/styles/lists.scss */
 #content.list {
   padding: 0;
   margin: 0;
 }
-/* line 101, ../../src/styles/lists.scss */
+/* line 115, ../../src/styles/lists.scss */
 #content.list h1 {
   padding: 12px 10px;
   padding-bottom: 10px;
   margin: 0;
   font-size: 1.4em;
 }
-/* line 108, ../../src/styles/lists.scss */
+/* line 122, ../../src/styles/lists.scss */
 #content.list a:hover {
   background: transparent;
 }
-/* line 112, ../../src/styles/lists.scss */
+/* line 126, ../../src/styles/lists.scss */
 #content.list nav {
   margin-left: 10px;
 }
-/* line 116, ../../src/styles/lists.scss */
+/* line 130, ../../src/styles/lists.scss */
 #content.list #search {
   color: #888;
 }
-/* line 119, ../../src/styles/lists.scss */
+/* line 133, ../../src/styles/lists.scss */
 #content.list #search input {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -112,27 +124,27 @@ body.frames #content.list #search {
   border-radius: 3px;
   border: 1px solid #BBB;
 }
-/* line 125, ../../src/styles/lists.scss */
+/* line 139, ../../src/styles/lists.scss */
 #content.list a {
   color: #05A;
   cursor: pointer;
   text-decoration: none;
 }
-/* line 131, ../../src/styles/lists.scss */
+/* line 145, ../../src/styles/lists.scss */
 #content.list a:hover {
   text-decoration: underline;
 }
-/* line 135, ../../src/styles/lists.scss */
+/* line 149, ../../src/styles/lists.scss */
 #content.list ul {
   padding: 0;
   list-style: none;
   margin-left: 0;
 }
-/* line 140, ../../src/styles/lists.scss */
+/* line 154, ../../src/styles/lists.scss */
 #content.list ul li[deprecated] {
   text-decoration: line-through;
 }
-/* line 144, ../../src/styles/lists.scss */
+/* line 158, ../../src/styles/lists.scss */
 #content.list ul li {
   padding: 5px;
   padding-left: 12px;
@@ -142,11 +154,11 @@ body.frames #content.list #search {
   color: #888;
   cursor: pointer;
 }
-/* line 154, ../../src/styles/lists.scss */
+/* line 168, ../../src/styles/lists.scss */
 #content.list ul li.stripe {
   background: #F0F0F0;
 }
-/* line 158, ../../src/styles/lists.scss */
+/* line 172, ../../src/styles/lists.scss */
 #content.list ul li:hover {
   background: #ddd;
 }

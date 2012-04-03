@@ -31,12 +31,19 @@
       var search;
       search = $(this).val().toLowerCase();
       if (search.length === 0) {
-        $('#content.list ul li').show();
+        $('#content.list ul li').each(function() {
+          $(this).removeClass('result');
+          $(this).css('padding-left', $(this).data('padding'));
+          return $(this).show();
+        });
       } else {
         $('#content.list ul li').each(function() {
           if ($(this).find('a').text().toLowerCase().indexOf(search) === -1) {
             return $(this).hide();
           } else {
+            $(this).addClass('result');
+            $(this).data('padding', $(this).css('padding-left'));
+            $(this).css('padding-left', 0);
             return $(this).show();
           }
         });

@@ -72,7 +72,9 @@ module.exports = class Class extends Node
   #
   getDoc: -> @doc
 
-  # Alias for {Class#getClassName}
+  # Alias for {#getClassName}
+  #
+  # @param (see #getClassName)
   #
   getFullName: ->
     @getClassName()

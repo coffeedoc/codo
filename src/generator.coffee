@@ -196,6 +196,7 @@ module.exports = class Generator
         name: entity.getName()
         href: "#{section}/#{ entity.getFullName().replace(/\./g, '/') }.html"
         parent: entity.getParentClassName?()
+        namespace: entity.getNamespace()
 
     # Create tree structure
     for clazz in @parser.classes

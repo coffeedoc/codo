@@ -24,6 +24,8 @@
               - else
                 %span
                   = mixin.name
+              %small.namespace
+                = mixin.namespace
 
             = createLevel(mixin.children) if mixin.children
 

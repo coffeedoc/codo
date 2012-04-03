@@ -90,6 +90,20 @@ body.frames {
         color: #888;
         white-space: nowrap;
       }
+
+      small.namespace {
+        display: none;
+      }
+
+      &.result {
+        small.namespace {
+          display: inline;
+        }
+
+        small.parent {
+          display: none;
+        }
+      }
     }
   }
 }

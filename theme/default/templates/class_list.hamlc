@@ -22,9 +22,11 @@
               - if clazz.href
                 %a{ href: clazz.href, target: 'main' }= clazz.name
                 - if clazz.parent
-                  %small
+                  %small.parent
                     <
                     = clazz.parent
+                %small.namespace
+                  = clazz.namespace
               - else
                 %span
                   = clazz.name
