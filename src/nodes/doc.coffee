@@ -30,10 +30,10 @@ module.exports = class Doc extends Node
 
           # TODO: @overload
 
-          if returnValue = /^@return\s+\[(.*?)\](\s+(.*))?/i.exec line
+          if returnValue = /^@return\s+\[(.+?)\](?:\s+(.+))?/i.exec line
             @returnValue =
               type: returnValue[1]
-              desc: returnValue[3]
+              desc: returnValue[2]
 
           else if param = /^@param\s+\(see ((?:[$A-Za-z_\x7f-\uffff][$.\w\x7f-\uffff]*)?[#.][$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)\)/i.exec line
             @params or= []
@@ -46,21 +46,21 @@ module.exports = class Doc extends Node
               name: param[1]
               reference: param[2]
 
-          else if param = /^@param\s+([^ ]*)\s+\[(.*?)\](?:\s+(.*))?/i.exec line
+          else if param = /^@param\s+([^ ]+)\s+\[(.+?)\](?:\s+(.+))?/i.exec line
             @params or= []
             @params.push
               type: param[2]
               name: param[1]
               desc: param[3] or ''
 
-          else if param = /^@param\s+\[(.*?)\]\s+([^ ]*)(?:\s+(.*))?/i.exec line
+          else if param = /^@param\s+\[(.+?)\]\s+([^ ]+)(?:\s+(.+))?/i.exec line
             @params or= []
             @params.push
               type: param[1]
               name: param[2]
               desc: param[3] or ''
 
-          else if option = /^@option\s+([^ ]*)\s+\[(.*?)\]\s+([^ ]*)(?:\s+(.*))?/i.exec line
+          else if option = /^@option\s+([^ ]+)\s+\[(.+?)\]\s+([^ ]+)(?:\s+(.+))?/i.exec line
             @paramsOptions or= {}
             @paramsOptions[option[1]] or= []
 
@@ -69,28 +69,28 @@ module.exports = class Doc extends Node
               name: option[3]
               desc: option[4] or ''
 
-          else if see = /^@see\s+([^\s]*)\s*(.*)?/i.exec line
+          else if see = /^@see\s+([^\s]+)(?:\s+(.+))?/i.exec line
             @see or= []
             @see.push
               reference: see[1]
               label: see[2]
 
-          else if author = /^@author\s+(.*)/i.exec line
+          else if author = /^@author\s+(.+)/i.exec line
             @authors or= []
             @authors.push author[1]
 
-          else if copyright = /^@copyright\s+(.*)/i.exec line
+          else if copyright = /^@copyright\s+(.+)/i.exec line
             @copyright = copyright[1]
 
-          else if note = /^@note\s+(.*)/i.exec line
+          else if note = /^@note\s+(.+)/i.exec line
             @notes or= []
             @notes.push note[1]
 
-          else if todo = /^@todo\s+(.*)/i.exec line
+          else if todo = /^@todo\s+(.+)/i.exec line
             @todos or= []
             @todos.push todo[1]
 
-          else if example = /^@example(?:\s+(.*))?/i.exec line
+          else if example = /^@example(?:\s+(.+))?/i.exec line
             title = example[1] || ''
             code = []
 
@@ -103,16 +103,16 @@ module.exports = class Doc extends Node
                 title: title
                 code: code.join '\n'
 
-          else if abstract = /^@abstract\s?(.*)/i.exec line
-            @abstract = abstract[1]
+          else if abstract = /^@abstract(?:\s+(.+))?/i.exec line
+            @abstract = abstract[1] || ''
 
           else if /^@private/.exec line
             @private = true
 
-          else if since = /^@since\s+(.*)/i.exec line
+          else if since = /^@since\s+(.+)/i.exec line
             @since = since[1]
 
-          else if version = /^@version\s+(.*)/i.exec line
+          else if version = /^@version\s+(.+)/i.exec line
             @version = version[1]
 
           else if deprecated = /^@deprecated\s+(.*)/i.exec line
@@ -121,15 +121,15 @@ module.exports = class Doc extends Node
           else if mixin = /^@mixin/i.exec line
             @mixin = true
 
-          else if concern = /^@concern\s+(.*)/i.exec line
+          else if concern = /^@concern\s+(.+)/i.exec line
             @concerns or= []
             @concerns.push concern[1]
 
-          else if include = /^@include\s+(.*)/i.exec line
+          else if include = /^@include\s+(.+)/i.exec line
             @includeMixins or= []
             @includeMixins.push include[1]
 
-          else if extend = /^@extend\s+(.*)/i.exec line
+          else if extend = /^@extend\s+(.+)/i.exec line
             @extendMixins or= []
             @extendMixins.push extend[1]
 
