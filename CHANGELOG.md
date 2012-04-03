@@ -1,4 +1,4 @@
-# Master
+# Version 0.6.0 - April 3, 2012
 
 - Implement `@method` tag.
 - [#19](https://github.com/netzpirat/codo/issues/19):  Implement `@overload` tag. ([@netzpirat][])
