@@ -37,20 +37,21 @@ $(document).ready ->
   $('#content.list #search input').keyup (event) ->
     search = $(@).val().toLowerCase()
 
-
     if search.length is 0
       $('#content.list ul li').each ->
-        $(@).removeClass 'result'
-        $(@).css 'padding-left', $(@).data 'padding'
+        if $('#content').hasClass 'tree'
+          $(@).removeClass 'result'
+          $(@).css 'padding-left', $(@).data 'padding'
         $(@).show()
     else
       $('#content.list ul li').each ->
         if $(@).find('a').text().toLowerCase().indexOf(search) is -1
           $(@).hide()
         else
-          $(@).addClass 'result'
-          $(@).data 'padding', $(@).css('padding-left')
-          $(@).css 'padding-left', 0
+          if $('#content').hasClass 'tree'
+            $(@).addClass 'result'
+            $(@).data 'padding', $(@).css('padding-left')
+            $(@).css 'padding-left', 0
           $(@).show()
 
     window.createStripes()
