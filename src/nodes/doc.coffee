@@ -154,7 +154,7 @@ module.exports = class Doc extends Node
           @parseTags.call doc, innerComment
 
           @overloads.push
-            signature: signature
+            signature: signature.replace(/([$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)(.+)/, (str, name, params) -> "<strong>#{ name }</strong>#{ params }")
             comment: doc.comment
             summary: doc.summary
             params: doc.params

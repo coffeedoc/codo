@@ -13,7 +13,7 @@
           "summary": "This is a generic Store set method.",
           "overloads": [
             {
-              "signature": "set(key, value)",
+              "signature": "<strong>set</strong>(key, value)",
               "comment": "<p>Sets a value on key</p> ",
               "summary": "Sets a value on key",
               "params": [
@@ -30,7 +30,7 @@
               ]
             },
             {
-              "signature": "set(value)",
+              "signature": "<strong>set</strong>(value)",
               "comment": "<p>Sets a value on the default key <code>:foo</code></p> ",
               "summary": "Sets a value on the default key `:foo`",
               "params": [
