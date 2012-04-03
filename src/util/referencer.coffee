@@ -350,11 +350,17 @@ module.exports = class Referencer
                 if param.name
                   copyParam = _.find refMethod.getDoc().params, (p) -> p.name is param.name
 
-                  # Replace a single param
                   if copyParam
+                    # Replace a single param
                     method.getDoc().params ||= []
                     method.getDoc().params = _.reject method.getDoc().params, (p) -> p.name = param.name
                     method.getDoc().params.push copyParam
+
+                    # Replace a single option param
+                    if _.isObject refMethod.getDoc().paramsOptions
+                      method.getDoc().paramsOptions ||= {}
+                      method.getDoc().paramsOptions[param.name] = refMethod.getDoc().paramsOptions[param.name]
+
                   else
                     console.log "[WARN] Parameter #{ param.name } does not exist in #{ param.reference } in class #{ entity.getFullName() }" unless @options.quiet
 
@@ -362,6 +368,11 @@ module.exports = class Referencer
                   # Copy all parameters that exist on the given method
                   names = _.map method.getParameters(), (p) -> p.getName()
                   method.getDoc().params = _.filter refMethod.getDoc().params, (p) -> _.contains names, p.name
+
+                  # Copy all matching options
+                  if _.isObject refMethod.getDoc().paramsOptions
+                    method.getDoc().paramsOptions ||= {}
+                    method.getDoc().paramsOptions[name] = refMethod.getDoc().paramsOptions[name] for name in names
 
               else
                 console.log "[WARN] Cannot resolve reference tag #{ param.reference } in class #{ entity.getFullName() }" unless @options.quiet
