@@ -33,7 +33,7 @@
         "Netzpirat",
         "Plasticman"
       ],
-      "comment": "<p>This is a test class with <code>inline.dot</code>. Beware.\n\n\n\n\n\n\n</p>\n",
+      "comment": "<p>This is a test class with <code>inline.dot</code>. Beware.</p>",
       "summary": "This is a test class with `inline.dot`."
     },
     "class": {

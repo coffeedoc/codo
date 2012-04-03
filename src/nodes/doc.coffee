@@ -136,9 +136,9 @@ module.exports = class Doc extends Node
           else
             comment.push line
 
-        text = comment.join('\n')
+        text = comment.join('\n').replace /\n+/g, "\n"
         @summary = _.str.clean(/((?:.|\n)*?\.[\s$])/.exec(text)?[1] || text)
-        @comment = marked(text)
+        @comment = marked(text).replace /\n/g, ''
 
     catch error
       console.warn('Create doc error:', @node, error) if @options.verbose

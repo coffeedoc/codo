@@ -19,7 +19,7 @@
   {
     "file": "spec/templates/mixins/concern.coffee",
     "doc": {
-      "comment": "<p>This is my concern\n</p>\n",
+      "comment": "<p>This is my concern</p>",
       "summary": "This is my concern"
     },
     "mixin": {
@@ -113,7 +113,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Say hi\n</p>\n",
+          "comment": "<p>Say hi</p>",
           "summary": "Say hi",
           "params": [
             {
@@ -136,7 +136,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Say goodbye\n</p>\n",
+          "comment": "<p>Say goodbye</p>",
           "summary": "Say goodbye",
           "params": [
             {
