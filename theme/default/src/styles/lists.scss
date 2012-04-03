@@ -96,6 +96,11 @@ body.frames {
       }
 
       &.result {
+
+        a.toggle {
+          visibility: hidden;
+        }
+
         small.namespace {
           display: inline;
         }
