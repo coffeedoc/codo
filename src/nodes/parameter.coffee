@@ -61,7 +61,7 @@ module.exports = class Parameter extends Node
       @node.value?.compile({ indent: '' })
 
     catch error
-      if @node.value?.base.value is 'this'
+      if @node?.value?.base?.value is 'this'
         "@#{ @node.value.properties[0]?.name.compile({ indent: '' }) }"
       else
         console.warn('Get parameter default error:', @node, error) if @options.verbose
