@@ -272,7 +272,7 @@ use the `@options` tag:
 #
 # @param [Object] options the calculation options
 # @option options [Integer] age the age of the animal
-# @option options [Integer] weigth the weight of the animal
+# @option options [Integer] weight the weight of the animal
 #
 expectationOfLife: (options) ->
 ```
@@ -334,7 +334,7 @@ class VirtualMethods
 ```
 
 The `@method` tag must be followed by the method signature that will appear in the documentation, followed
-by any method tag indented by two spaces. The difference to the `@overload` tag beside the differnt context, that
+by any method tag indented by two spaces. The difference to the `@overload` tag beside the different context is that
 the signature should contain either the instance prefix `#` or the class prefix `.`.
 
 ### Mixins
@@ -487,10 +487,10 @@ be rendered as Markdown.
 
 Issues hosted at [GitHub Issues](https://github.com/netzpirat/codo/issues).
 
-The codo specs are template based, so make sure you provide a code snippet that can be added as failing spec to the
+The Codo specs are template based, so make sure you provide a code snippet that can be added as failing spec to the
 project when reporting an issue with parsing your CoffeeScript code.
 
-_You can check if some parsing errors have occured by running codo in verbose mode._
+_You can check if some parsing errors have occurred by running Codo in verbose mode._
 
 ## Development
 
