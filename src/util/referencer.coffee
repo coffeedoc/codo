@@ -317,7 +317,7 @@ module.exports = class Referencer
 
     see
 
-  # Resolve parameter references. This gies through all
+  # Resolve parameter references. This goes through all
   # method parameter and see if a param doc references another
   # method. If so, copy over the doc meta data.
   #
