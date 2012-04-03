@@ -156,6 +156,13 @@ comment for a mixin or in a method comment.
       <td>&#10004;</td>
     </tr>
     <tr>
+      <td><strong>@method</strong> signature<br/>&nbsp;&nbsp;Method tags</td>
+      <td>&#10004;</td>
+      <td>&#10004;</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
       <td><strong>@mixin</strong> version</td>
       <td></td>
       <td></td>
@@ -164,6 +171,13 @@ comment for a mixin or in a method comment.
     </tr>
     <tr>
       <td><strong>@option</strong> option [type] name description</td>
+      <td>&#10004;</td>
+      <td></td>
+      <td></td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
+      <td><strong>@overload</strong> signature<br/>&nbsp;&nbsp;Method tags</td>
       <td>&#10004;</td>
       <td></td>
       <td></td>
@@ -279,9 +293,53 @@ can also define types for Arrays with:
 getHerdMembers: (regions) ->
 ```
 
+### Method overloading
+
+If you allow your method to take different parameters, you can describe the method overloading with the `@overload` tag:
+
+```CoffeeScript
+# This is a generic Store set method.
+#
+# @overload set(key, value)
+#   Sets a value on key
+#   @param [Symbol] key describe key param
+#   @param [Object] value describe value param
+#
+# @overload set(value)
+#   Sets a value on the default key `:foo`
+#   @param [Object] value describe value param
+#   @return [Boolean] true when success
+#
+set: (args...) ->
+```
+
+The `@overload` tag must be followed by the alternative method signature that will appear in the documentation, followed
+by any method tag indented by two spaces.
+
+### Virtual methods
+
+If you copy over functions from other objects without using mixins or concerns, you can add documentation for this
+virtual (or dynamic) method with the `@method` tag:
+
+```CoffeeScript
+# This class has a virtual method, that doesn't
+# exist in the source but appears in the documentation.
+#
+# @method #set(key, value)
+#   Sets a value on key
+#   @param [Symbol] key describe key param
+#   @param [Object] value describe value param
+#
+class VirtualMethods
+```
+
+The `@method` tag must be followed by the method signature that will appear in the documentation, followed
+by any method tag indented by two spaces. The difference to the `@overload` tag beside the differnt context, that
+the signature should contain either the instance prefix `#` or the class prefix `.`.
+
 ### Mixins
 
-It's common practice to mix objects in CoffeeScript to share common logic when inheritance is not suited. You can read
+It's common practice to mix in objects to share common logic when inheritance is not suited. You can read
 more about mixins in the
 [The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/03_classes.html).
 
@@ -359,7 +417,7 @@ You can use `@concern` to include and extend the correspondent properties:
 class Example.Animal.Lion
 ```
 
-## Comment text processing
+## Text processing
 
 ### GitHub Flavored Markdown
 

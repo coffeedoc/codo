@@ -143,7 +143,7 @@
 
     h3 {
       font-size: 1em;
-      margin-bottom: 3;
+      margin-bottom: 3px;
     }
 
     ul {
@@ -154,6 +154,21 @@
       .name {
         font-family: monospace;
         font-weight: bold;
+      }
+    }
+
+    .overloads {
+      h3 {
+        margin-bottom: 0px;
+      }
+
+      .overload {
+        margin-left: 20px;
+
+        p.signature {
+          padding-top: 2px;
+          padding-bottom: 2px;
+        }
       }
     }
   }

@@ -5,39 +5,28 @@ Doc       = require './doc'
 _         = require 'underscore'
 _.str     = require 'underscore.string'
 
-# A CoffeeScript method
+# A virtual method that has been declared by the `@method` tag.
 #
-module.exports = class Method extends Node
+module.exports = class VirtualMethod extends Node
 
-  # Construct a method
+  # Construct a virtual method
   #
   # @param [Class] entity the methods class
-  # @param [Object] node the node
+  # @param [Doc] doc the virtual doc
   # @param [Object] options the parser options
-  # @param [Object] comment the comment node
   #
-  constructor: (@entity, @node, @options, comment) ->
-    try
-      @parameters = []
+  constructor: (@entity, @doc, @options) ->
 
-      @doc = new Doc(comment, @options)
-
-      for param in @node.value.params
-        @parameters.push new Parameter(param, @options)
-
-      @getName()
-
-    catch error
-      console.warn('Create method error:', @node, error) if @options.verbose
-
-  # Get the method type, either `class` or `instance`
+  # Get the method type, either `class`, `instance` or `mixin`.
   #
   # @return [String] the method type
   #
   getType: ->
     unless @type
-      if @entity.constructor.name is 'Class'
+      if @doc.signature.substring(0, 1) is '#'
         @type = 'instance'
+      else if @doc.signature.substring(0, 1) is '.'
+        @type = 'class'
       else
         @type = 'mixin'
 
@@ -73,7 +62,7 @@ module.exports = class Method extends Node
         params = []
 
         for param in @getParameters()
-          params.push param.getSignature()
+          params.push param.name
 
         @signature += params.join(', ')
         @signature += ')'
@@ -111,14 +100,10 @@ module.exports = class Method extends Node
   getName: ->
     try
       unless @name
-        @name = @node.variable.base.value
-
-        for prop in @node.variable.properties
-          @name += ".#{ prop.name.value }"
-
-        if /^this\./.test @name
-          @name = @name.substring(5)
-          @type = 'class'
+        if name = /[.#]?([$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)/i.exec @doc.signature
+          @name = name[1]
+        else
+          @name = 'unknown'
 
       @name
 
@@ -129,7 +114,7 @@ module.exports = class Method extends Node
   #
   # @param [Array<Parameter>] the method parameters
   #
-  getParameters: -> @parameters
+  getParameters: -> @doc.params
 
   # Get the method source in CoffeeScript
   #
@@ -149,14 +134,14 @@ module.exports = class Method extends Node
   #
   toJSON: ->
     json =
-      doc: @getDoc().toJSON()
+      doc: @doc
       type: @getType()
       signature: @getSignature()
       name: @getName()
-      bound: @node.value.bound
+      bound: false
       parameters: []
 
-    for parameter in @getParameters()
-      json.parameters.push parameter.toJSON()
+    #for parameter in @getParameters()
+    #  json.parameters.push parameter.toJSON()
 
     json

@@ -1,5 +1,7 @@
 # Master
 
+- Implement `@method` tag.
+- [#19](https://github.com/netzpirat/codo/issues/19):  Implement `@overload` tag. ([@netzpirat][])
 - Add `@concern` as mixin specialization with defined class and instance methods. ([@netzpirat][])
 - [#17](https://github.com/netzpirat/codo/issues/17):  Implement `@param` reference tags. ([@netzpirat][])
 - [#36](https://github.com/netzpirat/codo/issues/36):  Make the example title optional. ([@netzpirat][])

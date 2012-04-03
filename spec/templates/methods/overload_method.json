@@ -1,0 +1,64 @@
+[
+  {
+    "file": "spec/templates/methods/overload_method.coffee",
+    "class": {
+      "className": "Example.Overload",
+      "name": "Overload",
+      "namespace": "Example"
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "<p>This is a generic Store set method.</p>",
+          "summary": "This is a generic Store set method.",
+          "overloads": [
+            {
+              "signature": "set(key, value)",
+              "comment": "<p>Sets a value on key</p>",
+              "summary": "Sets a value on key",
+              "params": [
+                {
+                  "type": "Symbol",
+                  "name": "key",
+                  "desc": "describe key param"
+                },
+                {
+                  "type": "Object",
+                  "name": "value",
+                  "desc": "describe value param"
+                }
+              ]
+            },
+            {
+              "signature": "set(value)",
+              "comment": "<p>Sets a value on the default key <code>:foo</code></p>",
+              "summary": "Sets a value on the default key `:foo`",
+              "params": [
+                {
+                  "type": "Object",
+                  "name": "value",
+                  "desc": "describe value param"
+                }
+              ],
+              "returnValue": {
+                "type": "Boolean",
+                "desc": "true when success"
+              }
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>set</strong>(args...)",
+        "name": "set",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "args",
+            "splat": true
+          }
+        ]
+      }
+    ],
+    "variables": []
+  }
+]

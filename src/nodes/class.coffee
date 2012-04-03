@@ -1,7 +1,8 @@
-Node      = require './node'
-Method   = require './method'
-Variable = require './variable'
-Doc      = require './doc'
+Node          = require './node'
+Method        = require './method'
+VirtualMethod = require './virtual_method'
+Variable      = require './variable'
+Doc           = require './doc'
 
 # A CoffeeScript class
 #
@@ -20,6 +21,9 @@ module.exports = class Class extends Node
       @variables = []
 
       @doc = new Doc(comment, @options)
+
+      if @doc.methods
+        @methods.push new VirtualMethod(@, method, @options) for method in @doc?.methods
 
       previousExp = null
 

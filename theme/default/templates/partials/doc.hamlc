@@ -42,7 +42,7 @@
             %code.coffee= example.code
 
 .tags
-  - if @type is 'method'
+  - if @type is 'method' or @type is 'overload'
     - if @doc?.params
       %h3 Parameters:
       %ul.param
@@ -93,7 +93,7 @@
           = author
 
   - if @doc?.copyright
-    %h3 Copyright: 
+    %h3 Copyright:
     %ul.copyright
       %li
         = @doc.copyright
@@ -121,3 +121,12 @@
             %a{ href: see.reference }= see.reference
           - else
             = see.label
+
+  - if @doc?.overloads
+    .overloads
+      %h3 Overloads:
+      - for overload in @doc.overloads
+        .overload
+          %p.signature
+            != "#{ if @method.type is 'instance' then '-' else '+' } (#{ if overload.returnValue then overload.returnValue.type else 'void' }) #{ overload.signature }"
+          != @parent.JST['partials/doc']({ doc: overload, type: 'overload', path: @parent.path, referencer: @parent.referencer })
