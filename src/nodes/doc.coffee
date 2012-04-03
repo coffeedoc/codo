@@ -12,10 +12,9 @@ module.exports = class Doc extends Node
   # Construct a documentation
   #
   # @param [Object] node the comment node
-  # @param [Class] clazz the class context
   # @param [Object] options the parser options
   #
-  constructor: (@node, @clazz, @options) ->
+  constructor: (@node, @options) ->
     try
       if @node
         comment = []
