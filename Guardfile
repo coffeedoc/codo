@@ -24,7 +24,7 @@ group :theme do
   end
 
   # Pack assets with Jammit for NPM distribution
-  guard :jammit, :public_root => 'theme/default' do
+  guard :jammit, :hide_success => true, :public_root => 'theme/default' do
     watch(/^theme\/default\/lib\/scripts\/(.*)\.js$/)
     watch(/^theme\/default\/lib\/styles\/(.*)\.css$/)
   end
