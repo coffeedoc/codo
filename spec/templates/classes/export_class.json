@@ -2,7 +2,7 @@
   {
     "file": "spec/templates/classes/export_class.coffee",
     "doc": {
-      "comment": "<p>Yep, this should be assigned to the class</p>",
+      "comment": "<p>Yep, this should be assigned to the class </p> ",
       "summary": "Yep, this should be assigned to the class"
     },
     "class": {

@@ -25,7 +25,7 @@
         "Netzpirat",
         "Supermakaka"
       ],
-      "comment": "<p>This is a test module with <code>inline.dot</code>. Beware.</p>",
+      "comment": "<p>This is a test module with <code>inline.dot</code>. Beware. </p> ",
       "summary": "This is a test module with `inline.dot`."
     },
     "mixin": {
