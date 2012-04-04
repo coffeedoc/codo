@@ -5,6 +5,7 @@ gzip_assets: off
 javascripts:
   codo:
     - theme/default/lib/scripts/jquery.js
+    - theme/default/lib/scripts/keymaster.js
     - theme/default/lib/scripts/codo.js
     - theme/default/lib/scripts/highlight.js
     - theme/default/lib/scripts/languages/*.js

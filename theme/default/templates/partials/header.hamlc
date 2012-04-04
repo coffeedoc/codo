@@ -18,8 +18,40 @@
 
     #search
       %a#class_list_link{ href: "#{ @path }class_list.html" } Classes
-      %a#class_list_link{ href: "#{ @path }mixin_list.html" } Mixins
+      %a#mixin_list_link{ href: "#{ @path }mixin_list.html" } Mixins
       %a#method_list_link{ href: "#{ @path }method_list.html" } Methods
       %a#file_list_link{ href: "#{ @path }file_list.html" } Files
 
   %iframe#search_frame
+
+  #help
+    %p
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    %ul
+      %li
+        %span C
+        Class list
+      %li
+        %span I
+        Mixin list
+      %li
+        %span M
+        Method list
+      %li
+        %span F
+        File list
+    %p
+      You can focus and blur the search input:
+    %ul
+      %li
+        %span S
+        Focus search input
+      %li
+        %span Esc
+        Blur search input
+    %p
+      In frameless mode you can close the list tab:
+    %ul
+      %li
+        %span Esc
+        Close list tab

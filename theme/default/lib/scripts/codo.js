@@ -1,6 +1,7 @@
 (function() {
 
   $(document).ready(function() {
+    var loadSearch;
     if (window.top.frames.main) {
       $('body').addClass('frames');
     } else {
@@ -40,12 +41,14 @@
         });
       } else {
         $('#content.list ul li').each(function() {
+          var padding;
           if ($(this).find('a').text().toLowerCase().indexOf(search) === -1) {
             return $(this).hide();
           } else {
             if ($('#content').hasClass('tree')) {
               $(this).addClass('result');
-              $(this).data('padding', $(this).css('padding-left'));
+              padding = $(this).css('padding-left');
+              if (padding !== '0px') $(this).data('padding', padding);
               $(this).css('padding-left', 0);
             }
             return $(this).show();
@@ -134,7 +137,72 @@
       return $(this).text($('nav.toc').hasClass('inline') ? 'float' : 'left');
     });
     indentTree($('#content.list > ul'), 20);
-    return createStripes();
+    createStripes();
+    loadSearch = function(url, link) {
+      if (parent.frames.list) {
+        if (!/#{ url }$/.test(parent.frames.list.location.href)) {
+          return parent.frames.list.location.href = url;
+        }
+      } else if (parent) {
+        return parent.$("#search #" + link).click();
+      } else {
+        return $("#search #" + link).click();
+      }
+    };
+    key.filter = function(e) {
+      return (event.target || event.srcElement).tagName !== 'INPUT' || e.keyCode === 27;
+    };
+    key('s', function(e) {
+      $('#search input').focus().select();
+      if (parent.frames.list) {
+        parent.frames.list.$('#search input').focus().select();
+      }
+      return e.preventDefault();
+    });
+    key('esc', function() {
+      if (parent.frames.list) {
+        parent.frames.list.$('#search input').blur();
+        return parent.frames.main.$('#help').hide();
+      } else if (parent) {
+        parent.$("#search .active").click();
+        return parent.$('#help').hide();
+      } else {
+        $('#search input').blur();
+        return $('#help').hide();
+      }
+    });
+    key('l', function() {
+      var body;
+      body = $(parent.document.body);
+      if (body.data('toggled')) {
+        parent.document.body.cols = '20%, *';
+        return body.data('toggled', false);
+      } else {
+        parent.document.body.cols = '0, *';
+        return body.data('toggled', true);
+      }
+    });
+    key('c', function() {
+      return loadSearch('class_list.html', 'class_list_link');
+    });
+    key('m', function() {
+      return loadSearch('method_list.html', 'method_list_link');
+    });
+    key('i', function() {
+      return loadSearch('mixin_list.html', 'mixin_list_link');
+    });
+    key('f', function() {
+      return loadSearch('file_list.html', 'file_list_link');
+    });
+    return key('h', function() {
+      if (parent.frames.main) {
+        return parent.frames.main.$('#help').toggle();
+      } else if (parent) {
+        return parent.$('#help').toggle();
+      } else {
+        return $('#help').toggle();
+      }
+    });
   });
 
 }).call(this);

@@ -1,5 +1,6 @@
 # Master
 
+- Add support for keyboard navigation. ([@netzpirat][])
 - Remove tree indention and show namespace of entities in the search result. ([@netzpirat][])
 
 # Version 0.6.0 - April 3, 2012

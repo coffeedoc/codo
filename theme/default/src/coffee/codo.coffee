@@ -50,7 +50,8 @@ $(document).ready ->
         else
           if $('#content').hasClass 'tree'
             $(@).addClass 'result'
-            $(@).data 'padding', $(@).css('padding-left')
+            padding = $(@).css('padding-left')
+            $(@).data 'padding', padding unless padding is '0px'
             $(@).css 'padding-left', 0
           $(@).show()
 
@@ -149,3 +150,63 @@ $(document).ready ->
 
   indentTree $('#content.list > ul'), 20
   createStripes()
+
+  loadSearch = (url, link) ->
+    if parent.frames.list
+      parent.frames.list.location.href = url unless /#{ url }$/.test parent.frames.list.location.href
+    else if parent
+      parent.$("#search ##{ link }").click()
+    else
+      $("#search ##{ link }").click()
+
+  # Allow ESC to blur #search
+  key.filter = (e) -> (event.target || event.srcElement).tagName isnt 'INPUT' || e.keyCode is 27
+
+  # Focus search input
+  key 's', (e) ->
+    $('#search input').focus().select()
+
+    if parent.frames.list
+      parent.frames.list.$('#search input').focus().select()
+
+    e.preventDefault()
+
+  # Unblur the search input
+  key 'esc', ->
+
+    if parent.frames.list
+      parent.frames.list.$('#search input').blur()
+      parent.frames.main.$('#help').hide()
+    else if parent
+      parent.$("#search .active").click()
+      parent.$('#help').hide()
+    else
+      $('#search input').blur()
+      $('#help').hide()
+
+  # Hide list navigation
+  # FIXME: Manually resize the frame confuses the toggle
+  key 'l', ->
+    body = $(parent.document.body)
+
+    if body.data('toggled')
+      parent.document.body.cols = '20%, *'
+      body.data 'toggled', false
+    else
+      parent.document.body.cols = '0, *'
+      body.data 'toggled', true
+
+  # List navigation
+  key 'c', -> loadSearch 'class_list.html', 'class_list_link'
+  key 'm', -> loadSearch 'method_list.html', 'method_list_link'
+  key 'i', -> loadSearch 'mixin_list.html', 'mixin_list_link'
+  key 'f', -> loadSearch 'file_list.html', 'file_list_link'
+
+  # Show help
+  key 'h', ->
+    if parent.frames.main
+      parent.frames.main.$('#help').toggle()
+    else if parent
+      parent.$('#help').toggle()
+    else
+      $('#help').toggle()

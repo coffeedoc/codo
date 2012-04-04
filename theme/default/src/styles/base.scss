@@ -1,3 +1,5 @@
+@import "compass";
+
 body {
   padding: 0 5px;
   font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
@@ -17,6 +19,59 @@ h2 {
   border-bottom: 1px #aaa solid;
   font-size: 1.4em;
   margin: 1.8em 0 0.5em;
+}
+
+#help {
+  @include box-shadow(rgba(0, 0, 0, 0.9) 0px 0px 500px);
+  @include border-radius(10px);
+
+  position: fixed;
+  z-index: 8000;
+
+  left: 0;
+  right: 0;
+  top: 50%;
+
+  width: 500px;
+  height: 380px;
+
+  margin: 0 auto;
+  margin-top: -190px;
+
+  display: none;
+
+  padding: 25px;
+
+  background-color: #fff;
+
+  ul {
+    list-style-type: none;
+
+    margin: 0;
+    padding: 0;
+
+    li {
+      height: 35px;
+
+      span {
+        @include box-shadow(rgba(0, 0, 0, 0.5) 1px 1px 2px);
+        @include border-radius(3px);
+
+        display: block;
+        float: left;
+
+        width: 25px;
+
+        padding: 5px;
+        margin-right: 20px;
+
+        background: #eee;
+        text-align: center;
+      }
+
+      font-weight: bold;
+    }
+  }
 }
 
 #content {
