@@ -13,10 +13,9 @@
     $('#search_frame').on('load', function(event) {
       return $(this).show();
     });
-    $('.frames #content a').click(function(event) {
+    $('.frames #content a').each(function() {
       if (/^https?:\/\//i.test($(this).attr('href'))) {
-        event.preventDefault();
-        return parent.document.location.href = $(this).attr('href');
+        return $(this).attr('target', '_top');
       }
     });
     $('#search input').focus();
