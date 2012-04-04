@@ -483,6 +483,28 @@ Put each option flag on a separate line, followed by the source directories or f
 should be included into the documentation separated by a dash (`-`). If your extra file has the extension `.md`, it'll
 be rendered as Markdown.
 
+## Keyboard navigation
+
+In frame mode you can toggle the list naviation frame on the left side:
+
+* Toggle list view: `L`
+
+You can focus a list in frame mode or toggle a tab in frameless mode:
+
+* Class list: `C`
+* Mixin list: `I`
+* Method list: `M`
+* File list: `F`
+
+You can focus and blur the search input:
+
+* Focus search input: `S`
+* Blur search inputL `Esc`
+
+In frameless mode you can close the list tab:
+
+* Close list tab: `Esc`
+
 ## Report issues
 
 Issues hosted at [GitHub Issues](https://github.com/netzpirat/codo/issues).

@@ -26,6 +26,13 @@
 
   #help
     %p
+      In frame mode you can toggle the list naviation frame on the left side:
+    %ul
+      %li
+        %span L
+        Toggle list view
+
+    %p
       You can focus a list in frame mode or toggle a tab in frameless mode:
     %ul
       %li
@@ -40,6 +47,7 @@
       %li
         %span F
         File list
+
     %p
       You can focus and blur the search input:
     %ul
@@ -49,6 +57,7 @@
       %li
         %span Esc
         Blur search input
+
     %p
       In frameless mode you can close the list tab:
     %ul
