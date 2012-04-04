@@ -1,4 +1,4 @@
-# Master
+# Version 0.6.0 - April 4, 2012
 
 - Show external links in top level document to avoid `X-Frame-Options` blocking. ([@netzpirat][])
 - Add support for keyboard navigation. ([@netzpirat][])
