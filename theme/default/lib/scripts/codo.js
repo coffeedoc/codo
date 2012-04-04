@@ -1,7 +1,9 @@
 (function() {
 
   $(document).ready(function() {
-    var loadSearch;
+    var loadSearch,
+      _this = this;
+    $('#search_frame').hide();
     if (window.top.frames.main) {
       $('body').addClass('frames');
     } else {
@@ -11,7 +13,7 @@
       return hljs.highlightBlock(e, '  ');
     });
     $('#search_frame').on('load', function(event) {
-      return $(this).show();
+      return $(_this).show();
     });
     $('.frames #content a').each(function() {
       if (/^https?:\/\//i.test($(this).attr('href'))) {

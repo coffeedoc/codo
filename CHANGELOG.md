@@ -1,3 +1,7 @@
+# Master
+
+- Don't not show the empty tab search window on start in Firefox. ([@netzpirat][])
+
 # Version 0.6.0 - April 4, 2012
 
 - Show external links in top level document to avoid `X-Frame-Options` blocking. ([@netzpirat][])

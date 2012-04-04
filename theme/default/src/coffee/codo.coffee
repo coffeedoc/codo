@@ -1,5 +1,7 @@
 $(document).ready ->
 
+  $('#search_frame').hide()
+
   # Add frame markers
   #
   if window.top.frames.main
@@ -13,7 +15,7 @@ $(document).ready ->
 
   # Show search box when loaded
   #
-  $('#search_frame').on 'load', (event) -> $(@).show()
+  $('#search_frame').on 'load', (event) => $(@).show()
 
   # Show external links in the main doc to
   # avoid frame blocking by X-Frame-Options.
