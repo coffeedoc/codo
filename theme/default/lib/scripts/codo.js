@@ -13,6 +13,12 @@
     $('#search_frame').on('load', function(event) {
       return $(this).show();
     });
+    $('.frames #content a').click(function(event) {
+      if (/^https?:\/\//i.test($(this).attr('href'))) {
+        event.preventDefault();
+        return parent.document.location.href = $(this).attr('href');
+      }
+    });
     $('#search input').focus();
     $('#search a').click(function(event) {
       var _this = this;

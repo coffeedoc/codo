@@ -15,6 +15,14 @@ $(document).ready ->
   #
   $('#search_frame').on 'load', (event) -> $(@).show()
 
+  # Show external links in the main doc to
+  # avoid frame blocking by X-Frame-Options.
+  #
+  $('.frames #content a').click (event) ->
+    if /^https?:\/\//i.test $(@).attr('href')
+      event.preventDefault()
+      parent.document.location.href = $(@).attr 'href'
+
   # Focus the list search
   #
   $('#search input').focus()

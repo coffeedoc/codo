@@ -1,5 +1,6 @@
 # Master
 
+- Show external links in top level document to avoid `X-Frame-Options` blocking. ([@netzpirat][])
 - Add support for keyboard navigation. ([@netzpirat][])
 - Remove tree indention and show namespace of entities in the search result. ([@netzpirat][])
 
