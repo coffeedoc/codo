@@ -37,6 +37,7 @@ module.exports = class Generator
     @generateMethodList()
     @generateFileList()
 
+    @generateSearchData()
     @copyAssets()
 
   # Generate the frame source.
@@ -262,3 +263,25 @@ module.exports = class Generator
         to = fs.createWriteStream to
         to.once 'open', (fd) -> require('util').pump from, to
 
+  # Write the data used in search into
+  # a JSON file used by the frontend.
+  #
+  generateSearchData: ->
+    search = []
+
+    for clazz in @parser.classes
+      search.push
+        class: clazz.getClassName()
+        methods: _.map(clazz.getMethods(), (m) -> m.getShortSignature())
+
+    for mixin in @parser.mixins
+      search.push
+        mixin: mixin.getMixinName()
+        methods: _.map(mixin.getMethods(), (m) -> m.getShortSignature())
+
+    for file in _.union([@options.readme], @options.extras.sort())
+      search.push
+        file: file
+
+    fs.writeFile "#{ @options.output }/assets/search.json", JSON.stringify(search), (err) ->
+      console.error "[ERROR] Cannot write search data: ", err if err
