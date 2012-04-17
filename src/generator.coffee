@@ -127,10 +127,13 @@ module.exports = class Generator
       try
         content = fs.readFileSync extra, 'utf-8'
         content = marked content if /\.(markdown|md)$/.test extra
+        numSlashes = extra.split('/').length - 1
+        assetPath = ''
+        assetPath += '../' for slash in [0...numSlashes]
         filename = "#{ extra }.html"
 
         @templater.render 'file', {
-          path: ''
+          path: assetPath
           filename: extra,
           content: content
           breadcrumbs: [

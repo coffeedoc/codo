@@ -1,3 +1,7 @@
+# Master
+
+- [#40](https://github.com/netzpirat/codo/issues/40): Fix asset path for extra files in subdirectories. ([@ryan-roemer][])
+
 # Version 0.6.2 - April 4, 2012
 
 - Don't not show the empty tab search window on start in Firefox. ([@netzpirat][])
@@ -70,4 +74,5 @@
 [@inossidabile]: https://github.com/inossidabile
 [@mattijs]: https://github.com/mattijs
 [@netzpirat]: https://github.com/netzpirat
+[@ryan-roemer]: https://github.com/ryan-roemer
 [@Squeegy]: https://github.com/Squeegy
