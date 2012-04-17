@@ -459,6 +459,7 @@ Options:
   -o, --output-dir  The output directory                [default: "./doc"]
   -v, --verbose     Show parsing errors                 [boolean]  [default: false]
   -h, --help        Show the help
+  -s, --server      Start a documentation server
   --private         Show private methods and classes
   --title                                               [default: "CoffeeScript API Documentation"]
 ```

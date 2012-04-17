@@ -35,7 +35,8 @@
     "underscore" : ">= 0.1.0",
     "underscore.string" : ">= 0.1.0",
     "haml-coffee" : ">= 0.6.0",
-    "mkdirp" : ">= 0.1.0"
+    "mkdirp" : ">= 0.1.0",
+    "connect" : ">= 0.1.0"
   },
   "devDependencies" : {
     "jasmine-node" : ">= 1.0.13"

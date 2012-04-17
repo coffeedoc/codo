@@ -1,8 +1,8 @@
-fs        = require('fs')
-util      = require('util')
-findit    = require('findit')
-Parser    = require('./parser')
-Generator = require('./generator')
+fs        = require 'fs'
+util      = require 'util'
+findit    = require 'findit'
+Parser    = require './parser'
+Generator = require './generator'
 
 exports.run = ->
 
@@ -52,6 +52,10 @@ exports.run = ->
       alias     : 'help'
       describe  : 'Show the help'
     )
+    .options('s',
+      alias     : 'server'
+      describe  : 'Start a documentation server'
+    )
     .options('private',
       boolean   : true
       default   : codoopts.private || false
@@ -63,6 +67,12 @@ exports.run = ->
 
   if argv.h
     console.log optimist.help()
+
+  else if argv.s
+    port = 8080
+    connect = require 'connect'
+    connect.createServer(connect.static(argv.o)).listen port
+    console.log 'Codo documentation from %s is available at http://localhost:%d', argv.o, port
 
   else
     options =
