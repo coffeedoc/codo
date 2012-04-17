@@ -69,7 +69,7 @@ exports.run = ->
     console.log optimist.help()
 
   else if argv.s
-    port = 8080
+    port = if argv.s is true then 8080 else argv.s
     connect = require 'connect'
     connect.createServer(connect.static(argv.o)).listen port
     console.log 'Codo documentation from %s is available at http://localhost:%d', argv.o, port
