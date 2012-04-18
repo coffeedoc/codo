@@ -26,7 +26,7 @@
               %ul
                 - for clazz in classes
                   %li
-                    %a{ href: "#{if clazz.constructor.name == 'Class' then 'classes' else 'modules'}/#{ clazz.getFullName().replace(/\./g, '/') }.html"}= clazz.getName()
+                    %a{ href: "#{if clazz.constructor.name == 'Class' then 'classes' else 'mixins'}/#{ clazz.getFullName().replace(/\./g, '/') }.html"}= clazz.getName()
                     - if clazz.getNamespace()
                       %small
                         = surround '(', ')', -> clazz.getNamespace()
