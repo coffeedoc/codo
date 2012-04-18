@@ -138,7 +138,7 @@ module.exports = class Generator
           content: content
           breadcrumbs: [
             {
-              href: 'class_index.html'
+              href: "#{ assetPath }class_index.html"
               name: 'Index'
             }
             {
