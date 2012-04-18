@@ -2,3 +2,4 @@
   %title= @title
   %link{ rel: 'stylesheet', href: "#{ @path }assets/codo.css", type: 'text/css' }
   %script{ src: "#{ @path }assets/codo.js" }
+  %script{ src: "#{ @path }assets/search_data.js" }

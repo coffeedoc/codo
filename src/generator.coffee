@@ -286,5 +286,5 @@ module.exports = class Generator
       search.push
         file: file
 
-    fs.writeFile "#{ @options.output }/assets/search.json", JSON.stringify(search), (err) ->
+    fs.writeFile "#{ @options.output }/assets/search_data.js", 'window.searchData = ' + JSON.stringify(search), (err) ->
       console.error "[ERROR] Cannot write search data: ", err if err
