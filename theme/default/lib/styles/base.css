@@ -23,10 +23,79 @@ h2 {
 }
 
 /* line 24, ../../src/styles/base.scss */
+#commandt {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  position: fixed;
+  z-index: 8000;
+  left: 0;
+  right: 0;
+  top: 25px;
+  width: 500px;
+  height: 45px;
+  margin: 0 auto;
+  display: none;
+  padding: 25px;
+  background-color: #fff;
+}
+/* line 46, ../../src/styles/base.scss */
+#commandt input {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  width: 485px;
+  border: 2px solid #05a;
+  font-size: 20px;
+  padding: 5px;
+}
+/* line 55, ../../src/styles/base.scss */
+#commandt ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 60, ../../src/styles/base.scss */
+#commandt ol li {
+  padding: 3px;
+}
+/* line 63, ../../src/styles/base.scss */
+#commandt ol li a {
+  color: #05a;
+  font-size: 18px;
+  text-decoration: none;
+}
+/* line 68, ../../src/styles/base.scss */
+#commandt ol li a:visited {
+  color: #05a;
+}
+/* line 72, ../../src/styles/base.scss */
+#commandt ol li a:hover {
+  background: #ffffa5;
+}
+/* line 76, ../../src/styles/base.scss */
+#commandt ol li a span {
+  background-color: #ff0;
+}
+/* line 80, ../../src/styles/base.scss */
+#commandt ol li a small {
+  font-size: 14px;
+  padding-left: 10px;
+  color: #888;
+}
+
+/* line 90, ../../src/styles/base.scss */
 #help {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.9) 0px 0px 500px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.9) 0px 0px 500px;
-  box-shadow: rgba(0, 0, 0, 0.9) 0px 0px 500px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
@@ -45,18 +114,18 @@ h2 {
   padding: 25px;
   background-color: #fff;
 }
-/* line 47, ../../src/styles/base.scss */
+/* line 113, ../../src/styles/base.scss */
 #help ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 53, ../../src/styles/base.scss */
+/* line 119, ../../src/styles/base.scss */
 #help ul li {
   height: 35px;
   font-weight: bold;
 }
-/* line 56, ../../src/styles/base.scss */
+/* line 122, ../../src/styles/base.scss */
 #help ul li span {
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 2px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 2px;
@@ -75,33 +144,33 @@ h2 {
   text-align: center;
 }
 
-/* line 78, ../../src/styles/base.scss */
+/* line 144, ../../src/styles/base.scss */
 #content a:link, #content a:visited {
   text-decoration: none;
   color: #05a;
 }
-/* line 83, ../../src/styles/base.scss */
+/* line 149, ../../src/styles/base.scss */
 #content a:hover {
   background: #ffffa5;
 }
-/* line 88, ../../src/styles/base.scss */
+/* line 154, ../../src/styles/base.scss */
 #content #filecontents li {
   line-height: 25px;
 }
-/* line 92, ../../src/styles/base.scss */
+/* line 158, ../../src/styles/base.scss */
 #content #filecontents table {
   padding: 0;
   border-collapse: collapse;
   border-spacing: 0;
 }
-/* line 97, ../../src/styles/base.scss */
+/* line 163, ../../src/styles/base.scss */
 #content #filecontents table tr {
   border-top: 1px solid #CCC;
   background-color: white;
   margin: 0;
   padding: 0;
 }
-/* line 103, ../../src/styles/base.scss */
+/* line 169, ../../src/styles/base.scss */
 #content #filecontents table tr td {
   border: 1px solid #CCC;
   text-align: left;

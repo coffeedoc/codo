@@ -274,17 +274,30 @@ module.exports = class Generator
 
     for clazz in @parser.classes
       search.push
-        class: clazz.getClassName()
-        methods: _.map(clazz.getMethods(), (m) -> m.getShortSignature())
+        t: clazz.getClassName()
+        p: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
+
+      for method in clazz.getMethods()
+        search.push
+          t: method.getShortSignature()
+          h: clazz.getClassName()
+          p: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html##{ method.name }-#{ method.type }"
 
     for mixin in @parser.mixins
       search.push
-        mixin: mixin.getMixinName()
-        methods: _.map(mixin.getMethods(), (m) -> m.getShortSignature())
+        t: mixin.getMixinName()
+        p: "mixins/#{ mixin.getFullName().replace(/\./g, '/') }.html"
+
+      for method in mixin.getMethods()
+        search.push
+          t: method.getShortSignature()
+          p: "mixins/#{ mixin.getFullName().replace(/\./g, '/') }.html##{ method.name }-#{ method.type }"
+          h: mixin.getMixinName()
 
     for file in _.union([@options.readme], @options.extras.sort())
       search.push
-        file: file
+        t: file
+        p: "#{ file }.html"
 
     fs.writeFile "#{ @options.output }/assets/search_data.js", 'window.searchData = ' + JSON.stringify(search), (err) ->
       console.error "[ERROR] Cannot write search data: ", err if err

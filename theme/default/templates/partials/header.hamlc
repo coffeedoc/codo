@@ -1,3 +1,4 @@
+#base{ data: { path: @path }}
 #header
   #menu
     - if @breadcrumbs.length isnt 0
@@ -23,6 +24,10 @@
       %a#file_list_link{ href: "#{ @path }file_list.html" } Files
 
   %iframe#search_frame
+
+  #commandt
+    %input{ type: 'text' }
+    %ol
 
   #help
     %p

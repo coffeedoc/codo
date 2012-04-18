@@ -21,8 +21,74 @@ h2 {
   margin: 1.8em 0 0.5em;
 }
 
+#commandt {
+  @include box-shadow(rgba(0, 0, 0, 0.5) 0px 10px 30px 10px);
+  @include border-radius(10px);
+
+  position: fixed;
+  z-index: 8000;
+
+  left: 0;
+  right: 0;
+  top: 25px;
+
+  width: 500px;
+  height: 45px;
+
+  margin: 0 auto;
+
+  display: none;
+
+  padding: 25px;
+
+  background-color: #fff;
+
+  input {
+    @include border-radius(5px);
+
+    width: 485px;
+    border: 2px solid #05a;
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 3px;
+
+      a {
+        color: #05a;
+        font-size: 18px;
+        text-decoration: none;
+
+        &:visited {
+          color: #05a;
+        }
+
+        &:hover {
+          background: #ffffa5;
+        }
+
+        span {
+          background-color: #ff0;
+        }
+
+        small {
+          font-size: 14px;
+          padding-left: 10px;
+          color: #888;
+        }
+      }
+    }
+  }
+}
+
 #help {
-  @include box-shadow(rgba(0, 0, 0, 0.9) 0px 0px 500px);
+  @include box-shadow(rgba(0, 0, 0, 0.5) 0px 10px 30px 10px);
   @include border-radius(10px);
 
   position: fixed;

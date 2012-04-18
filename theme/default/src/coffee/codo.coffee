@@ -65,6 +65,33 @@ $(document).ready ->
 
     window.createStripes()
 
+  # Command-t style search
+  #
+  $('#commandt input').keyup (event) ->
+    text = $(@).val().toLowerCase()
+    resultList = $('#commandt ol').empty()
+
+    if text
+      path = $('#base').attr 'data-path'
+      results = []
+      searches = [
+        ///(#{ text })///
+        ///#{ _.map(text.split(''), (c) -> "(#{ c })").join('.+?') }///
+        ///(#{ text })///i
+        ///#{ _.map(text.split(''), (c) -> "(#{ c })").join('.+?') }///i
+      ]
+
+      for search in searches
+        for result in _.filter(window.searchData, (data) -> search.test data.t)
+          result.search = search
+          results.push result
+
+      for result in _.unique results
+        match = result.t.replace result.search, (txt) -> "<span>#{ txt }</span>"
+        resultList.prepend $("<li><a href='#{ path }#{ result.p }'>#{ match }</a>#{ if result.h then "<small>(#{ result.h })</small>" else '' }</li>")
+
+    $('#commandt').height(resultList.height() + 45)
+
   # Navigate from a search list
   #
   $('body #content.list ul').on 'click', 'li', (event) ->
@@ -185,12 +212,15 @@ $(document).ready ->
     if parent.frames.list
       parent.frames.list.$('#search input').blur()
       parent.frames.main.$('#help').hide()
+      parent.frames.main.$('#commandt').hide()
     else if parent
       parent.$("#search .active").click()
       parent.$('#help').hide()
+      parent.$('#commandt').hide()
     else
       $('#search input').blur()
       $('#help').hide()
+      $('#commandt').hide()
 
   # Hide list navigation
   # FIXME: Manually resize the frame confuses the toggle
@@ -218,3 +248,15 @@ $(document).ready ->
       parent.$('#help').toggle()
     else
       $('#help').toggle()
+
+  # Command-T :P
+  key 't', (e) ->
+
+    $('#commandt').show()
+    $('#commandt input').focus().select()
+
+    if parent.frames.main
+      parent.frames.main.$('#commandt').show()
+      parent.frames.main.$('#commandt input').focus().select()
+
+    e.preventDefault()
