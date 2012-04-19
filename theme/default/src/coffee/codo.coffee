@@ -1,6 +1,7 @@
 $(document).ready ->
 
   $('#search_frame').hide()
+  window.lastSearch = ''
 
   # Add frame markers
   #
@@ -65,32 +66,50 @@ $(document).ready ->
 
     window.createStripes()
 
-  # Command-t style search
+  # Global fuzzy search
   #
-  $('#commandt input').keyup (event) ->
-    text = $(@).val().toLowerCase()
-    resultList = $('#commandt ol').empty()
+  $('#fuzzySearch input').keyup (event) ->
+    text = $(@).val()
+    resultList = $('#fuzzySearch ol')
 
-    if text
+    if event.keyCode is 13
+      location.href = $('#fuzzySearch ol li.selected a').attr 'href'
+
+    else if event.keyCode is 38
+      items = resultList.children()
+      index = items.index($('#fuzzySearch ol li.selected'))
+      $(items.get(index)).removeClass 'selected'
+      index -= 1
+      index = items.length - 1 if index is -1
+      $(items.get(index)).addClass 'selected'
+
+    else if event.keyCode is 40
+      items = resultList.children()
+      index = items.index($('#fuzzySearch ol li.selected'))
+      $(items.get(index)).removeClass 'selected'
+      index += 1
+      index = 0 if index is items.length
+      $(items.get(index)).addClass 'selected'
+
+    else if text && text isnt lastSearch
+      window.lastSearch = text
+      resultList.empty()
       path = $('#base').attr 'data-path'
-      results = []
-      searches = [
-        ///(#{ text })///
-        ///#{ _.map(text.split(''), (c) -> "(#{ c })").join('.+?') }///
-        ///(#{ text })///i
-        ///#{ _.map(text.split(''), (c) -> "(#{ c })").join('.+?') }///i
-      ]
+      matches = fuzzy text, _.pluck(searchData, 't')
+      highlights = fuzzy text, _.pluck(searchData, 't'), { pre: '<span>', post: '</span>' }
 
-      for search in searches
-        for result in _.filter(window.searchData, (data) -> search.test data.t)
-          result.search = search
-          results.push result
+      for match, index in matches
+        data = _.find(searchData, (d) -> d.t is match)
+        resultList.append $("<li><a href='#{ path }#{ data.p }'>#{ highlights[index] }</a>#{ if data.h then "<small>(#{ data.h })</small>" else '' }</li>")
 
-      for result in _.unique results
-        match = result.t.replace result.search, (txt) -> "<span>#{ txt }</span>"
-        resultList.prepend $("<li><a href='#{ path }#{ result.p }'>#{ match }</a>#{ if result.h then "<small>(#{ result.h })</small>" else '' }</li>")
+      $('#fuzzySearch ol li:first').addClass 'selected'
+      $('#fuzzySearch').height(resultList.height() + 45)
+      $('#fuzzySearch ol li').each (i, el) ->
+        if i % 2 is 0 then $(el).addClass('stripe') else $(el).removeClass('stripe')
 
-    $('#commandt').height(resultList.height() + 45)
+    else if text isnt lastSearch
+      resultList.empty()
+      $('#fuzzySearch').height(45)
 
   # Navigate from a search list
   #
@@ -214,15 +233,15 @@ $(document).ready ->
     if parent.frames.list
       parent.frames.list.$('#search input').blur()
       parent.frames.main.$('#help').hide()
-      parent.frames.main.$('#commandt').hide()
+      parent.frames.main.$('#fuzzySearch').hide()
     else if parent
       parent.$("#search .active").click()
       parent.$('#help').hide()
-      parent.$('#commandt').hide()
+      parent.$('#fuzzySearch').hide()
     else
       $('#search input').blur()
       $('#help').hide()
-      $('#commandt').hide()
+      $('#fuzzySearch').hide()
 
   # Hide list navigation
   # FIXME: Manually resize the frame confuses the toggle
@@ -254,11 +273,11 @@ $(document).ready ->
   # Fuzzy class search
   key '⌃+t', (e) ->
 
-    $('#commandt').toggle()
-    $('#commandt input').focus().select()
+    $('#fuzzySearch').toggle()
+    $('#fuzzySearch input').focus().select()
 
     if parent.frames.main
-      parent.frames.main.$('#commandt').show()
-      parent.frames.main.$('#commandt input').focus().select()
+      parent.frames.main.$('#fuzzySearch').show()
+      parent.frames.main.$('#fuzzySearch input').focus().select()
 
     e.preventDefault()

@@ -3,6 +3,7 @@
   $(document).ready(function() {
     var loadSearch;
     $('#search_frame').hide();
+    window.lastSearch = '';
     if (window.top.frames.main) {
       $('body').addClass('frames');
     } else {
@@ -63,41 +64,55 @@
       }
       return window.createStripes();
     });
-    $('#commandt input').keyup(function(event) {
-      var match, path, result, resultList, results, search, searches, text, _i, _j, _k, _len, _len2, _len3, _ref, _ref2;
-      text = $(this).val().toLowerCase();
-      resultList = $('#commandt ol').empty();
-      if (text) {
+    $('#fuzzySearch input').keyup(function(event) {
+      var data, highlights, index, items, match, matches, path, resultList, text, _len;
+      text = $(this).val();
+      resultList = $('#fuzzySearch ol');
+      if (event.keyCode === 13) {
+        return location.href = $('#fuzzySearch ol li.selected a').attr('href');
+      } else if (event.keyCode === 38) {
+        items = resultList.children();
+        index = items.index($('#fuzzySearch ol li.selected'));
+        $(items.get(index)).removeClass('selected');
+        index -= 1;
+        if (index === -1) index = items.length - 1;
+        return $(items.get(index)).addClass('selected');
+      } else if (event.keyCode === 40) {
+        items = resultList.children();
+        index = items.index($('#fuzzySearch ol li.selected'));
+        $(items.get(index)).removeClass('selected');
+        index += 1;
+        if (index === items.length) index = 0;
+        return $(items.get(index)).addClass('selected');
+      } else if (text && text !== lastSearch) {
+        window.lastSearch = text;
+        resultList.empty();
         path = $('#base').attr('data-path');
-        results = [];
-        searches = [
-          RegExp("(" + text + ")"), RegExp("" + (_.map(text.split(''), function(c) {
-            return "(" + c + ")";
-          }).join('.+?'))), RegExp("(" + text + ")", "i"), RegExp("" + (_.map(text.split(''), function(c) {
-            return "(" + c + ")";
-          }).join('.+?')), "i")
-        ];
-        for (_i = 0, _len = searches.length; _i < _len; _i++) {
-          search = searches[_i];
-          _ref = _.filter(window.searchData, function(data) {
-            return search.test(data.t);
+        matches = fuzzy(text, _.pluck(searchData, 't'));
+        highlights = fuzzy(text, _.pluck(searchData, 't'), {
+          pre: '<span>',
+          post: '</span>'
+        });
+        for (index = 0, _len = matches.length; index < _len; index++) {
+          match = matches[index];
+          data = _.find(searchData, function(d) {
+            return d.t === match;
           });
-          for (_j = 0, _len2 = _ref.length; _j < _len2; _j++) {
-            result = _ref[_j];
-            result.search = search;
-            results.push(result);
+          resultList.append($("<li><a href='" + path + data.p + "'>" + highlights[index] + "</a>" + (data.h ? "<small>(" + data.h + ")</small>" : '') + "</li>"));
+        }
+        $('#fuzzySearch ol li:first').addClass('selected');
+        $('#fuzzySearch').height(resultList.height() + 45);
+        return $('#fuzzySearch ol li').each(function(i, el) {
+          if (i % 2 === 0) {
+            return $(el).addClass('stripe');
+          } else {
+            return $(el).removeClass('stripe');
           }
-        }
-        _ref2 = _.unique(results);
-        for (_k = 0, _len3 = _ref2.length; _k < _len3; _k++) {
-          result = _ref2[_k];
-          match = result.t.replace(result.search, function(txt) {
-            return "<span>" + txt + "</span>";
-          });
-          resultList.prepend($("<li><a href='" + path + result.p + "'>" + match + "</a>" + (result.h ? "<small>(" + result.h + ")</small>" : '') + "</li>"));
-        }
+        });
+      } else if (text !== lastSearch) {
+        resultList.empty();
+        return $('#fuzzySearch').height(45);
       }
-      return $('#commandt').height(resultList.height() + 45);
     });
     $('body #content.list ul').on('click', 'li', function(event) {
       var link;
@@ -207,15 +222,15 @@
       if (parent.frames.list) {
         parent.frames.list.$('#search input').blur();
         parent.frames.main.$('#help').hide();
-        return parent.frames.main.$('#commandt').hide();
+        return parent.frames.main.$('#fuzzySearch').hide();
       } else if (parent) {
         parent.$("#search .active").click();
         parent.$('#help').hide();
-        return parent.$('#commandt').hide();
+        return parent.$('#fuzzySearch').hide();
       } else {
         $('#search input').blur();
         $('#help').hide();
-        return $('#commandt').hide();
+        return $('#fuzzySearch').hide();
       }
     });
     key('⌃+l', function() {
@@ -251,11 +266,11 @@
       }
     });
     return key('⌃+t', function(e) {
-      $('#commandt').toggle();
-      $('#commandt input').focus().select();
+      $('#fuzzySearch').toggle();
+      $('#fuzzySearch input').focus().select();
       if (parent.frames.main) {
-        parent.frames.main.$('#commandt').show();
-        parent.frames.main.$('#commandt input').focus().select();
+        parent.frames.main.$('#fuzzySearch').show();
+        parent.frames.main.$('#fuzzySearch input').focus().select();
       }
       return e.preventDefault();
     });

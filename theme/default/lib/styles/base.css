@@ -28,7 +28,7 @@ h2 {
 }
 
 /* line 28, ../../src/styles/base.scss */
-#commandt {
+#fuzzySearch {
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
@@ -50,7 +50,7 @@ h2 {
   background-color: #fff;
 }
 /* line 50, ../../src/styles/base.scss */
-#commandt input {
+#fuzzySearch input {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -62,41 +62,65 @@ h2 {
   padding: 5px;
 }
 /* line 59, ../../src/styles/base.scss */
-#commandt ol {
+#fuzzySearch ol {
   list-style-type: none;
   margin: 10px 0 0 0;
   padding: 0;
 }
 /* line 64, ../../src/styles/base.scss */
-#commandt ol li {
+#fuzzySearch ol li {
   padding: 3px;
 }
 /* line 67, ../../src/styles/base.scss */
-#commandt ol li a {
+#fuzzySearch ol li.stripe {
+  background: #F0F0F0;
+}
+/* line 71, ../../src/styles/base.scss */
+#fuzzySearch ol li.selected {
+  background: #05a;
+}
+/* line 74, ../../src/styles/base.scss */
+#fuzzySearch ol li.selected a {
+  color: #fff;
+}
+/* line 77, ../../src/styles/base.scss */
+#fuzzySearch ol li.selected a:visited {
+  color: #fff;
+}
+/* line 81, ../../src/styles/base.scss */
+#fuzzySearch ol li.selected a:hover {
+  color: #05a;
+}
+/* line 85, ../../src/styles/base.scss */
+#fuzzySearch ol li.selected a span {
+  color: #05a;
+}
+/* line 91, ../../src/styles/base.scss */
+#fuzzySearch ol li a {
   color: #05a;
   font-size: 18px;
   text-decoration: none;
 }
-/* line 72, ../../src/styles/base.scss */
-#commandt ol li a:visited {
+/* line 96, ../../src/styles/base.scss */
+#fuzzySearch ol li a:visited {
   color: #05a;
 }
-/* line 76, ../../src/styles/base.scss */
-#commandt ol li a:hover {
+/* line 100, ../../src/styles/base.scss */
+#fuzzySearch ol li a:hover {
   background: #ffffa5;
 }
-/* line 80, ../../src/styles/base.scss */
-#commandt ol li a span {
+/* line 104, ../../src/styles/base.scss */
+#fuzzySearch ol li a span {
   background-color: #ff0;
 }
-/* line 85, ../../src/styles/base.scss */
-#commandt ol li small {
+/* line 109, ../../src/styles/base.scss */
+#fuzzySearch ol li small {
   font-size: 14px;
   padding-left: 10px;
   color: #888;
 }
 
-/* line 94, ../../src/styles/base.scss */
+/* line 118, ../../src/styles/base.scss */
 #help {
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
@@ -119,18 +143,18 @@ h2 {
   padding: 25px;
   background-color: #fff;
 }
-/* line 117, ../../src/styles/base.scss */
+/* line 141, ../../src/styles/base.scss */
 #help ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 123, ../../src/styles/base.scss */
+/* line 147, ../../src/styles/base.scss */
 #help ul li {
   height: 35px;
   font-weight: bold;
 }
-/* line 126, ../../src/styles/base.scss */
+/* line 150, ../../src/styles/base.scss */
 #help ul li span {
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 2px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 2px;
@@ -149,33 +173,33 @@ h2 {
   text-align: center;
 }
 
-/* line 148, ../../src/styles/base.scss */
+/* line 172, ../../src/styles/base.scss */
 #content a:link, #content a:visited {
   text-decoration: none;
   color: #05a;
 }
-/* line 153, ../../src/styles/base.scss */
+/* line 177, ../../src/styles/base.scss */
 #content a:hover {
   background: #ffffa5;
 }
-/* line 158, ../../src/styles/base.scss */
+/* line 182, ../../src/styles/base.scss */
 #content #filecontents li {
   line-height: 25px;
 }
-/* line 162, ../../src/styles/base.scss */
+/* line 186, ../../src/styles/base.scss */
 #content #filecontents table {
   padding: 0;
   border-collapse: collapse;
   border-spacing: 0;
 }
-/* line 167, ../../src/styles/base.scss */
+/* line 191, ../../src/styles/base.scss */
 #content #filecontents table tr {
   border-top: 1px solid #CCC;
   background-color: white;
   margin: 0;
   padding: 0;
 }
-/* line 173, ../../src/styles/base.scss */
+/* line 197, ../../src/styles/base.scss */
 #content #filecontents table tr td {
   border: 1px solid #CCC;
   text-align: left;

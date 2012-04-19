@@ -25,7 +25,7 @@
 
   %iframe#search_frame
 
-  #commandt
+  #fuzzySearch
     %input{ type: 'text' }
     %ol
 
@@ -34,37 +34,37 @@
       Quickly fuzzy find classes, mixins, methods, file:
     %ul
       %li
-        %span Ctrl-t
+        %span Ctrl-T
         Open fuzzy finder dialog
 
     %p
       In frame mode you can toggle the list naviation frame on the left side:
     %ul
       %li
-        %span Ctrl-l
+        %span Ctrl-L
         Toggle list view
 
     %p
       You can focus a list in frame mode or toggle a tab in frameless mode:
     %ul
       %li
-        %span Ctrl-c
+        %span Ctrl-C
         Class list
       %li
-        %span Ctrl-i
+        %span Ctrl-I
         Mixin list
       %li
-        %span Ctrl-i
+        %span Ctrl-M
         Method list
       %li
-        %span Ctrl-f
+        %span Ctrl-F
         File list
 
     %p
       You can focus and blur the search input:
     %ul
       %li
-        %span Ctrl-s
+        %span Ctrl-S
         Focus search input
       %li
         %span Esc

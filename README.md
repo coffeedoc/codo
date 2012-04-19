@@ -486,20 +486,24 @@ be rendered as Markdown.
 
 ## Keyboard navigation
 
+You can quickly search and jump through the documentation by using the fuzzy finder dialgo:
+
+* Open fuzzy finder dialog: `Ctrl-T`
+
 In frame mode you can toggle the list naviation frame on the left side:
 
-* Toggle list view: `L`
+* Toggle list view: `Ctrl-L`
 
 You can focus a list in frame mode or toggle a tab in frameless mode:
 
-* Class list: `C`
-* Mixin list: `I`
-* Method list: `M`
-* File list: `F`
+* Class list: `Ctrl-C`
+* Mixin list: `Ctrl-I`
+* Method list: `Ctrl-M`
+* File list: `Ctrl-F`
 
 You can focus and blur the search input:
 
-* Focus search input: `S`
+* Focus search input: `Ctrl-S`
 * Blur search inputL `Esc`
 
 In frameless mode you can close the list tab:

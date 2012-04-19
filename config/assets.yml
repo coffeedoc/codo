@@ -8,6 +8,7 @@ javascripts:
     - theme/default/lib/scripts/keymaster.js
     - theme/default/lib/scripts/underscore.js
     - theme/default/lib/scripts/codo.js
+    - theme/default/lib/scripts/fuzzy.js
     - theme/default/lib/scripts/highlight.js
     - theme/default/lib/scripts/languages/*.js
 

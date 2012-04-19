@@ -1,5 +1,6 @@
 # Master
 
+- [#38](https://github.com/netzpirat/codo/issues/38): Add a global fuzzy search. ([@netzpirat][])
 - [#37](https://github.com/netzpirat/codo/issues/37): Start a local server. ([@netzpirat][])
 - [#40](https://github.com/netzpirat/codo/issues/40): Fix asset path for extra files in subdirectories. ([@ryan-roemer][])
 

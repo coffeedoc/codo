@@ -25,7 +25,7 @@ h2 {
   display: none;
 }
 
-#commandt {
+#fuzzySearch {
   @include box-shadow(rgba(0, 0, 0, 0.5) 0px 10px 30px 10px);
   @include border-radius(10px);
 
@@ -63,6 +63,30 @@ h2 {
 
     li {
       padding: 3px;
+
+      &.stripe {
+        background: #F0F0F0;
+      }
+
+      &.selected {
+        background: #05a;
+
+        a {
+          color: #fff;
+
+          &:visited {
+            color: #fff;
+          }
+
+          &:hover {
+            color: #05a;
+          }
+
+          span {
+            color: #05a;
+          }
+        }
+      }
 
       a {
         color: #05a;
