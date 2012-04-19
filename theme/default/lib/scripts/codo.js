@@ -88,10 +88,13 @@
         window.lastSearch = text;
         resultList.empty();
         path = $('#base').attr('data-path');
-        matches = fuzzy(text, _.pluck(searchData, 't'));
+        matches = fuzzy(text, _.pluck(searchData, 't'), {
+          limit: 25
+        });
         highlights = fuzzy(text, _.pluck(searchData, 't'), {
           pre: '<span>',
-          post: '</span>'
+          post: '</span>',
+          limit: 25
         });
         for (index = 0, _len = matches.length; index < _len; index++) {
           match = matches[index];

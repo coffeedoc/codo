@@ -95,8 +95,8 @@ $(document).ready ->
       window.lastSearch = text
       resultList.empty()
       path = $('#base').attr 'data-path'
-      matches = fuzzy text, _.pluck(searchData, 't')
-      highlights = fuzzy text, _.pluck(searchData, 't'), { pre: '<span>', post: '</span>' }
+      matches = fuzzy text, _.pluck(searchData, 't'), { limit: 25 }
+      highlights = fuzzy text, _.pluck(searchData, 't'), { pre: '<span>', post: '</span>', limit: 25 }
 
       for match, index in matches
         data = _.find(searchData, (d) -> d.t is match)
