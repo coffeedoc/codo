@@ -23,6 +23,11 @@ h2 {
 }
 
 /* line 24, ../../src/styles/base.scss */
+#base {
+  display: none;
+}
+
+/* line 28, ../../src/styles/base.scss */
 #commandt {
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
@@ -44,7 +49,7 @@ h2 {
   padding: 25px;
   background-color: #fff;
 }
-/* line 46, ../../src/styles/base.scss */
+/* line 50, ../../src/styles/base.scss */
 #commandt input {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -56,42 +61,42 @@ h2 {
   font-size: 20px;
   padding: 5px;
 }
-/* line 55, ../../src/styles/base.scss */
+/* line 59, ../../src/styles/base.scss */
 #commandt ol {
   list-style-type: none;
-  margin: 0;
+  margin: 10px 0 0 0;
   padding: 0;
 }
-/* line 60, ../../src/styles/base.scss */
+/* line 64, ../../src/styles/base.scss */
 #commandt ol li {
   padding: 3px;
 }
-/* line 63, ../../src/styles/base.scss */
+/* line 67, ../../src/styles/base.scss */
 #commandt ol li a {
   color: #05a;
   font-size: 18px;
   text-decoration: none;
 }
-/* line 68, ../../src/styles/base.scss */
+/* line 72, ../../src/styles/base.scss */
 #commandt ol li a:visited {
   color: #05a;
 }
-/* line 72, ../../src/styles/base.scss */
+/* line 76, ../../src/styles/base.scss */
 #commandt ol li a:hover {
   background: #ffffa5;
 }
-/* line 76, ../../src/styles/base.scss */
+/* line 80, ../../src/styles/base.scss */
 #commandt ol li a span {
   background-color: #ff0;
 }
-/* line 80, ../../src/styles/base.scss */
-#commandt ol li a small {
+/* line 85, ../../src/styles/base.scss */
+#commandt ol li small {
   font-size: 14px;
   padding-left: 10px;
   color: #888;
 }
 
-/* line 90, ../../src/styles/base.scss */
+/* line 94, ../../src/styles/base.scss */
 #help {
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 30px 10px;
@@ -107,25 +112,25 @@ h2 {
   right: 0;
   top: 50%;
   width: 500px;
-  height: 450px;
+  height: 525px;
   margin: 0 auto;
-  margin-top: -225px;
+  margin-top: -262px;
   display: none;
   padding: 25px;
   background-color: #fff;
 }
-/* line 113, ../../src/styles/base.scss */
+/* line 117, ../../src/styles/base.scss */
 #help ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 119, ../../src/styles/base.scss */
+/* line 123, ../../src/styles/base.scss */
 #help ul li {
   height: 35px;
   font-weight: bold;
 }
-/* line 122, ../../src/styles/base.scss */
+/* line 126, ../../src/styles/base.scss */
 #help ul li span {
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 2px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 2px;
@@ -137,40 +142,40 @@ h2 {
   border-radius: 3px;
   display: block;
   float: left;
-  width: 25px;
+  width: 50px;
   padding: 5px;
   margin-right: 20px;
   background: #eee;
   text-align: center;
 }
 
-/* line 144, ../../src/styles/base.scss */
+/* line 148, ../../src/styles/base.scss */
 #content a:link, #content a:visited {
   text-decoration: none;
   color: #05a;
 }
-/* line 149, ../../src/styles/base.scss */
+/* line 153, ../../src/styles/base.scss */
 #content a:hover {
   background: #ffffa5;
 }
-/* line 154, ../../src/styles/base.scss */
+/* line 158, ../../src/styles/base.scss */
 #content #filecontents li {
   line-height: 25px;
 }
-/* line 158, ../../src/styles/base.scss */
+/* line 162, ../../src/styles/base.scss */
 #content #filecontents table {
   padding: 0;
   border-collapse: collapse;
   border-spacing: 0;
 }
-/* line 163, ../../src/styles/base.scss */
+/* line 167, ../../src/styles/base.scss */
 #content #filecontents table tr {
   border-top: 1px solid #CCC;
   background-color: white;
   margin: 0;
   padding: 0;
 }
-/* line 169, ../../src/styles/base.scss */
+/* line 173, ../../src/styles/base.scss */
 #content #filecontents table tr td {
   border: 1px solid #CCC;
   text-align: left;

@@ -15,7 +15,7 @@ $(document).ready ->
 
   # Show search box when loaded
   #
-  $('#search_frame').on 'load', (event) => $(@).show()
+  $('#search_frame').on 'load', (event) -> $('#search_frame').show()
 
   # Show external links in the main doc to
   # avoid frame blocking by X-Frame-Options.
@@ -195,7 +195,9 @@ $(document).ready ->
       $("#search ##{ link }").click()
 
   # Allow ESC to blur #search
-  key.filter = (e) -> (event.target || event.srcElement).tagName isnt 'INPUT' || e.keyCode is 27
+  key.filter = (e) ->
+    tagname = (event.target || event.srcElement).tagName
+    tagname isnt 'INPUT' || e.keyCode is 27 || e.ctrlKey is true
 
   # Focus search input
   key 's', (e) ->
@@ -224,7 +226,7 @@ $(document).ready ->
 
   # Hide list navigation
   # FIXME: Manually resize the frame confuses the toggle
-  key 'l', ->
+  key '⌃+l', ->
     body = $(parent.document.body)
 
     if body.data('toggled')
@@ -235,13 +237,13 @@ $(document).ready ->
       body.data 'toggled', true
 
   # List navigation
-  key 'c', -> loadSearch 'class_list.html', 'class_list_link'
-  key 'm', -> loadSearch 'method_list.html', 'method_list_link'
-  key 'i', -> loadSearch 'mixin_list.html', 'mixin_list_link'
-  key 'f', -> loadSearch 'file_list.html', 'file_list_link'
+  key '⌃+c', -> loadSearch 'class_list.html', 'class_list_link'
+  key '⌃+m', -> loadSearch 'method_list.html', 'method_list_link'
+  key '⌃+i', -> loadSearch 'mixin_list.html', 'mixin_list_link'
+  key '⌃+f', -> loadSearch 'file_list.html', 'file_list_link'
 
   # Show help
-  key 'h', ->
+  key '⌃+h', ->
     if parent.frames.main
       parent.frames.main.$('#help').toggle()
     else if parent
@@ -249,10 +251,10 @@ $(document).ready ->
     else
       $('#help').toggle()
 
-  # Command-T :P
-  key 't', (e) ->
+  # Fuzzy class search
+  key '⌃+t', (e) ->
 
-    $('#commandt').show()
+    $('#commandt').toggle()
     $('#commandt input').focus().select()
 
     if parent.frames.main

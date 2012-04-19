@@ -21,6 +21,10 @@ h2 {
   margin: 1.8em 0 0.5em;
 }
 
+#base {
+  display: none;
+}
+
 #commandt {
   @include box-shadow(rgba(0, 0, 0, 0.5) 0px 10px 30px 10px);
   @include border-radius(10px);
@@ -54,7 +58,7 @@ h2 {
 
   ol {
     list-style-type: none;
-    margin: 0;
+    margin: 10px 0 0 0;
     padding: 0;
 
     li {
@@ -76,12 +80,12 @@ h2 {
         span {
           background-color: #ff0;
         }
+      }
 
-        small {
-          font-size: 14px;
-          padding-left: 10px;
-          color: #888;
-        }
+      small {
+        font-size: 14px;
+        padding-left: 10px;
+        color: #888;
       }
     }
   }
@@ -99,10 +103,10 @@ h2 {
   top: 50%;
 
   width: 500px;
-  height: 450px;
+  height: 525px;
 
   margin: 0 auto;
-  margin-top: -225px;
+  margin-top: -262px;
 
   display: none;
 
@@ -126,7 +130,7 @@ h2 {
         display: block;
         float: left;
 
-        width: 25px;
+        width: 50px;
 
         padding: 5px;
         margin-right: 20px;

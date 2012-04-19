@@ -31,33 +31,40 @@
 
   #help
     %p
+      Quickly fuzzy find classes, mixins, methods, file:
+    %ul
+      %li
+        %span Ctrl-t
+        Open fuzzy finder dialog
+
+    %p
       In frame mode you can toggle the list naviation frame on the left side:
     %ul
       %li
-        %span L
+        %span Ctrl-l
         Toggle list view
 
     %p
       You can focus a list in frame mode or toggle a tab in frameless mode:
     %ul
       %li
-        %span C
+        %span Ctrl-c
         Class list
       %li
-        %span I
+        %span Ctrl-i
         Mixin list
       %li
-        %span M
+        %span Ctrl-i
         Method list
       %li
-        %span F
+        %span Ctrl-f
         File list
 
     %p
       You can focus and blur the search input:
     %ul
       %li
-        %span S
+        %span Ctrl-s
         Focus search input
       %li
         %span Esc

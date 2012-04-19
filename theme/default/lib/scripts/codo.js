@@ -1,8 +1,7 @@
 (function() {
 
   $(document).ready(function() {
-    var loadSearch,
-      _this = this;
+    var loadSearch;
     $('#search_frame').hide();
     if (window.top.frames.main) {
       $('body').addClass('frames');
@@ -13,7 +12,7 @@
       return hljs.highlightBlock(e, '  ');
     });
     $('#search_frame').on('load', function(event) {
-      return $(_this).show();
+      return $('#search_frame').show();
     });
     $('.frames #content a').each(function() {
       if (/^https?:\/\//i.test($(this).attr('href'))) {
@@ -193,7 +192,9 @@
       }
     };
     key.filter = function(e) {
-      return (event.target || event.srcElement).tagName !== 'INPUT' || e.keyCode === 27;
+      var tagname;
+      tagname = (event.target || event.srcElement).tagName;
+      return tagname !== 'INPUT' || e.keyCode === 27 || e.ctrlKey === true;
     };
     key('s', function(e) {
       $('#search input').focus().select();
@@ -217,7 +218,7 @@
         return $('#commandt').hide();
       }
     });
-    key('l', function() {
+    key('⌃+l', function() {
       var body;
       body = $(parent.document.body);
       if (body.data('toggled')) {
@@ -228,19 +229,19 @@
         return body.data('toggled', true);
       }
     });
-    key('c', function() {
+    key('⌃+c', function() {
       return loadSearch('class_list.html', 'class_list_link');
     });
-    key('m', function() {
+    key('⌃+m', function() {
       return loadSearch('method_list.html', 'method_list_link');
     });
-    key('i', function() {
+    key('⌃+i', function() {
       return loadSearch('mixin_list.html', 'mixin_list_link');
     });
-    key('f', function() {
+    key('⌃+f', function() {
       return loadSearch('file_list.html', 'file_list_link');
     });
-    key('h', function() {
+    key('⌃+h', function() {
       if (parent.frames.main) {
         return parent.frames.main.$('#help').toggle();
       } else if (parent) {
@@ -249,8 +250,8 @@
         return $('#help').toggle();
       }
     });
-    return key('t', function(e) {
-      $('#commandt').show();
+    return key('⌃+t', function(e) {
+      $('#commandt').toggle();
       $('#commandt input').focus().select();
       if (parent.frames.main) {
         parent.frames.main.$('#commandt').show();
