@@ -538,6 +538,7 @@ Pull requests are very welcome! Please try to follow these simple rules if appli
 that compiles to JavaScript and makes me enjoy JavaScript development.
 - [Loren Segal](https://github.com/lsegal) for creating YARD and giving me the perfect documentation syntax for
 dynamic programming languages.
+- [Stratus Editor](https://github.com/stratuseditor) for open sourcing their [fuzzy filter](https://github.com/stratuseditor/fuzzy-filter).
 
 ## Alternatives
 
