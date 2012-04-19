@@ -1,4 +1,4 @@
-# Master
+# Version 0.7.0 - April 19, 2012
 
 - [#38](https://github.com/netzpirat/codo/issues/38): Add a global fuzzy search. ([@netzpirat][])
 - [#37](https://github.com/netzpirat/codo/issues/37): Start a local server. ([@netzpirat][])
