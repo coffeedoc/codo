@@ -62,7 +62,13 @@ hljs.LANGUAGES.xml = function(){
         },
         {
           className: 'tag',
-          begin: '<style', end: '>',
+          /*
+          The lookahead pattern (?=...) ensures that 'begin' only matches
+          '<style' as a single word, followed by a whitespace or an
+          ending braket. The '$' is needed for the lexem to be recognized
+          by hljs.subMode() that tests lexems outside the stream.
+          */
+          begin: '<style(?=\\s|>|$)', end: '>',
           keywords: {'title': {'style': 1}},
           contains: [TAG_INTERNALS],
           starts: {
@@ -73,7 +79,8 @@ hljs.LANGUAGES.xml = function(){
         },
         {
           className: 'tag',
-          begin: '<script', end: '>',
+          // See the comment in the <style tag about the lookahead pattern
+          begin: '<script(?=\\s|>|$)', end: '>',
           keywords: {'title': {'script': 1}},
           contains: [TAG_INTERNALS],
           starts: {
