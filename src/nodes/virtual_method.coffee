@@ -114,7 +114,7 @@ module.exports = class VirtualMethod extends Node
   #
   # @param [Array<Parameter>] the method parameters
   #
-  getParameters: -> @doc.params
+  getParameters: -> @doc.params or []
 
   # Get the method source in CoffeeScript
   #
