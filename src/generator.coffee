@@ -299,5 +299,11 @@ module.exports = class Generator
         t: file
         p: "#{ file }.html"
 
-    fs.writeFile "#{ @options.output }/assets/search_data.js", 'window.searchData = ' + JSON.stringify(search), (err) ->
-      console.error "[ERROR] Cannot write search data: ", err if err
+    destinationFolder = "#{ @options.output }/assets"
+
+    mkdirp destinationFolder, (err) ->
+      if err
+        console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
+      else
+        fs.writeFile "#{ destinationFolder }/search_data.js", 'window.searchData = ' + JSON.stringify(search), (err) ->
+          console.error "[ERROR] Cannot write search data: ", err if err
