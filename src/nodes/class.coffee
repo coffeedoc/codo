@@ -107,7 +107,7 @@ module.exports = class Class extends Node
       @className
 
     catch error
-      console.warn('Get class classname error:', @node, error) if @options.verbose
+      console.warn("Get class classname error at #{@fileName}:", @node, error) if @options.verbose
 
   # Get the class name
   #
@@ -138,7 +138,7 @@ module.exports = class Class extends Node
       @namespace
 
     catch error
-      console.warn('Get class namespace error:', @node, error) if @options.verbose
+      console.warn("Get class namespace error at #{@fileName}:", @node, error) if @options.verbose
 
   # Get the full parent class name
   #
@@ -169,7 +169,7 @@ module.exports = class Class extends Node
       @parentClassName
 
     catch error
-      console.warn('Get class parent classname error:', @node, error) if @options.verbose
+      console.warn("Get class parent classname error at #{@fileName}:", @node, error) if @options.verbose
 
   # Get all methods.
   #
