@@ -121,7 +121,7 @@ module.exports = class Class extends Node
       @name
 
     catch error
-      console.warn('Get class name error:', @node, error) if @options.verbose
+      console.warn("Get class name error at #{@fileName}:", @node, error) if @options.verbose
 
   # Get the class namespace
   #
