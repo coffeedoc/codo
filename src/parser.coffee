@@ -40,7 +40,7 @@ module.exports = class Parser
 
     # Defines typical conditions for entities we are looking through nodes
     entities =
-      clazz: (node) -> node.constructor.name is 'Class'
+      clazz: (node) -> node.constructor.name is 'Class' && node.variable?.base?.value?
       mixin: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
 
     root = CoffeeScript.nodes(@convertComments(content))
