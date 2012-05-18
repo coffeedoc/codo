@@ -236,7 +236,7 @@ module.exports = class Referencer
 
     # Link to direct class methods
     if /^\./.test(ref)
-      methods = _.map(_.filter(entity.getMethods(), (m) -> m.getType() is 'class'), (m) -> m.getName())
+      methods = _.map(_.filter(entity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
 
       if _.include methods, ref.substring(1)
         see.reference = "#{ path }#{if entity.constructor.name == 'Class' then 'classes' else 'modules'}/#{ entity.getFullName().replace(/\./g, '/') }.html##{ ref.substring(1) }-class"
@@ -283,7 +283,7 @@ module.exports = class Referencer
 
             # Link to other class class methods
             else if /^\./.test(refMethod)
-              methods = _.map(_.filter(otherEntity.getMethods(), (m) -> m.getType() is 'class'), (m) -> m.getName())
+              methods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
 
               if _.include methods, refMethod.substring(1)
                 see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-class"
@@ -295,7 +295,7 @@ module.exports = class Referencer
 
             # Link to other class instance methods
             else if /^\#/.test(refMethod)
-              instanceMethods = _.map(_.filter(otherEntity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m.getName())
+              instanceMethods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['instance', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
 
               if _.include instanceMethods, refMethod.substring(1)
                 see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-instance"
@@ -333,17 +333,17 @@ module.exports = class Referencer
               # Find referenced entity
               if ref = /([$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)([#.])([$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)/i.test param.reference
                 otherEntity = _.first entities, (e) -> e.getFullName() is ref[1]
-                otherMethodType = if ref[2] is '#' then 'instance' else 'class'
+                otherMethodType = if ref[2] is '#' then ['instance'] else ['class', 'mixin']
                 otherMethod = ref[3]
 
               # The referenced entity is on the current entity
               else
                 otherEntity = entity
-                otherMethodType = if param.reference.substring(0, 1) is '#' then 'instance' else 'class'
+                otherMethodType = if param.reference.substring(0, 1) is '#' then ['instance', 'mixin'] else ['class', 'mixin']
                 otherMethod = param.reference.substring(1)
 
               # Find the referenced method
-              refMethod = _.find otherEntity.getMethods(), (m) -> m.getName() is otherMethod && m.getType() is otherMethodType
+              refMethod = _.find otherEntity.getMethods(), (m) -> m.getName() is otherMethod && _.indexOf(otherMethodType, m.getType()) >= 0
 
               if refMethod
                 # Filter param name
