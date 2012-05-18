@@ -1,5 +1,6 @@
-# Version 0.7.1
+# Version 0.7.1 - May 18, 2012
 
+- [#43](https://github.com/netzpirat/codo/issues/43): Allow mixins' methods referencing. ([@inossidabile][])
 - [#42](https://github.com/netzpirat/codo/issues/42): Empty name classes lead to failures. ([@inossidabile][])
 
 # Version 0.7.0 - April 19, 2012
