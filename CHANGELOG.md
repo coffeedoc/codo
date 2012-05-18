@@ -1,3 +1,7 @@
+# Version 0.7.1
+
+- [#42](https://github.com/netzpirat/codo/issues/42): Empty name classes lead to failures. ([@inossidabile][])
+
 # Version 0.7.0 - April 19, 2012
 
 - [#38](https://github.com/netzpirat/codo/issues/38): Add a global fuzzy search. ([@netzpirat][])
