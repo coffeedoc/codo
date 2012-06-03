@@ -43,7 +43,11 @@ module.exports = class Parser
       clazz: (node) -> node.constructor.name is 'Class' && node.variable?.base?.value?
       mixin: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
 
-    root = CoffeeScript.nodes(@convertComments(content))
+    # skip the comment conversion if we are in cautious mode
+    if not @options.cautious
+      content = @convertComments(content)
+    root = CoffeeScript.nodes(content)
+
     @linkAncestors root
 
     root.traverseChildren true, (child) =>
