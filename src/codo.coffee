@@ -52,6 +52,11 @@ exports.run = ->
       alias     : 'help'
       describe  : 'Show the help'
     )
+    .options('cautious',
+      describe  : 'Don\'t attempt to parse singleline comments'
+      boolean   : true
+      default   : codoopts.cautious || false
+    )
     .options('s',
       alias     : 'server'
       describe  : 'Start a documentation server'
@@ -84,6 +89,7 @@ exports.run = ->
       quiet: argv.q
       private: argv.private
       verbose: argv.v
+      cautious: argv.cautious
 
     extra = false
 
