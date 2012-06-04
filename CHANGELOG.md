@@ -1,4 +1,4 @@
-# Master
+# Version 0.8.0 - June 4, 2012
 
 - Ensure that block style comments won't be touched. ([@netzpirat][])
 - [#44](https://github.com/netzpirat/codo/issues/44): Enable users to diable singleline comment support ([@skabbes][])
