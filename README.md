@@ -488,7 +488,7 @@ be rendered as Markdown.
 
 ## Keyboard navigation
 
-You can quickly search and jump through the documentation by using the fuzzy finder dialgo:
+You can quickly search and jump through the documentation by using the fuzzy finder dialog:
 
 * Open fuzzy finder dialog: `Ctrl-T`
 
@@ -506,7 +506,7 @@ You can focus a list in frame mode or toggle a tab in frameless mode:
 You can focus and blur the search input:
 
 * Focus search input: `Ctrl-S`
-* Blur search inputL `Esc`
+* Blur search input: `Esc`
 
 In frameless mode you can close the list tab:
 
