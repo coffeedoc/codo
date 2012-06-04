@@ -107,12 +107,13 @@ module.exports = class Parser
     indentComment = 0
 
     for line in content.split('\n')
-      if commentLine = /^(\s*#)\s?(\s*.*)/.exec line
+      commentLine = /^(\s*#)\s?(\s*.*)/.exec(line)
+      if commentLine and commentLine[2].substring(0, 2) isnt '##'
         show = true
 
         if inComment
           comment.push commentLine[2]
-        else
+        else if commentLine[2].substring(0, 2) isnt '##'
           inComment = true
           indentComment =  commentLine[1].length - 1
 
