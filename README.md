@@ -72,7 +72,8 @@ Each tag starts with the `@` sign followed by the tag name. See the following ov
 available tags. Most tags are self-explaining and the one that aren't are described afterwards in more detail.
 
 Tags can take multiple lines, just indent subsequent lines by two spaces. It's also possible to use
-[CoffeeScript block comments](http://coffeescript.org/#strings) instead of the normal comments.
+[CoffeeScript block comments](http://coffeescript.org/#strings) instead of the normal comments. If you solely use
+block comments, you may want to use the `--cautious` flag to disable the internal comment conversion.
 
 ### Overview
 
@@ -459,6 +460,7 @@ Options:
   -o, --output-dir  The output directory                [default: "./doc"]
   -v, --verbose     Show parsing errors                 [boolean]  [default: false]
   -h, --help        Show the help
+  --cautious        Don't attempt to parse singleline comments  [boolean]  [default: false]
   -s, --server      Start a documentation server
   --private         Show private methods and classes
   --title                                               [default: "CoffeeScript API Documentation"]

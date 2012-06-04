@@ -1,3 +1,7 @@
+# Master
+
+- [#44](https://github.com/netzpirat/codo/issues/44): Enable users to diable singleline comment support ([@skabbes][])
+
 # Version 0.7.1 - May 18, 2012
 
 - [#43](https://github.com/netzpirat/codo/issues/43): Allow mixins' methods referencing. ([@inossidabile][])
@@ -82,4 +86,5 @@
 [@mattijs]: https://github.com/mattijs
 [@netzpirat]: https://github.com/netzpirat
 [@ryan-roemer]: https://github.com/ryan-roemer
+[@skabbes]: https://github.com/skabbes
 [@Squeegy]: https://github.com/Squeegy
