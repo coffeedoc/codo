@@ -113,7 +113,7 @@ module.exports = class Parser
 
         if inComment
           comment.push commentLine[2]
-        else if commentLine[2].substring(0, 2) isnt '##'
+        else
           inComment = true
           indentComment =  commentLine[1].length - 1
 
