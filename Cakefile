@@ -24,6 +24,7 @@ test = (cb) ->
     matches = stdout.match msg || stderr.match msg
     cb new Error('Tests failed') if matches[3] != '0'
     log matches[0]
+    cb err
 
 task 'test', 'Run all tests', -> test onerror
 
@@ -31,21 +32,29 @@ generateGHPages = (cb) ->
   cloneGHPages = (cb) ->
     log "Clone gh-pages"
     exec 'git clone git@github.com:netzpirat/codo.git -b gh-pages /tmp/codoc', (err, stdout, stderr) ->
+      onerror err
       log stdout
       cb err
 
   generateDocs = (cb) ->
     log "Generacte codo documentation"
     exec './bin/codo -o /tmp/codoc', (err, stdout, stderr) ->
+      onerror err
       log stdout
       cb err
 
   pushDocs = (cb) ->
     log "Push site"
-    exec 'cd /tmp/codoc && git add * . && git commit -am "Update to docs to latest version." && git push origin master', (err, stdout, stderr) -> cb err
+    exec 'cd /tmp/codoc && git add * . && git commit -am "Update to docs to latest version." && git push origin gh-pages', (err, stdout, stderr) ->
+      onerror err
+      log stdout
+      cb err
 
   cleanUp = (cb) ->
-    exec 'rm -rf /tmp/codoc', (err, stdout, stderr) -> log "Done."
+    exec 'rm -rf /tmp/codoc', (err, stdout, stderr) ->
+      onerror err
+      log "Done."
+      cb err
 
   series [
     cloneGHPages
