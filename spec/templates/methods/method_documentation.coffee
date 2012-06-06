@@ -28,7 +28,7 @@ class App.TestMethodDocumentation extends App.Doc
   # @option options [Array<Tasks>] tasks The tasks to do
   # @return [Boolean] When successful executed
   #
-  doWithoutSpace: (it, again, options)->
+  doWithoutSpace:(it, again, options)->
 
   # Do it!
   #
