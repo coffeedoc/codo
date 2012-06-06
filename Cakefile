@@ -45,7 +45,7 @@ generateGHPages = (cb) ->
 
   pushDocs = (cb) ->
     log "Push site"
-    exec 'cd /tmp/codoc && git add * . && git commit -am "Update to docs to latest version." && git push origin gh-pages', (err, stdout, stderr) ->
+    exec 'cd /tmp/codoc && git add * . && git commit -am "Update docs to latest version." && git push origin gh-pages', (err, stdout, stderr) ->
       onerror err
       log stdout
       cb err
