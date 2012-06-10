@@ -112,10 +112,12 @@ exports.run = ->
             try
               parser.parseFile filename
             catch error
+              throw error if options.verbose
               console.log "Cannot parse file #{ filename }: #{ error.message }"
 
       new Generator(parser, options).generate()
       parser.showResult() unless options.quiet
 
     catch error
+      throw error if options.verbose
       console.log "Cannot generate documentation: #{ error.message }"
