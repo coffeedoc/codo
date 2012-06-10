@@ -1,3 +1,11 @@
+# Version 0.8.2 - June 10, 2012
+
+- Make file access Windows compatible. ([@netzpirat][])
+
+# Version 0.8.1 - June 5, 2012
+
+- [#45](https://github.com/netzpirat/codo/issues/45): Parser ignores comments for functions w/ params & no whitespace. ([@inossidabile][])
+
 # Version 0.8.0 - June 4, 2012
 
 - Ensure that block style comments won't be touched. ([@netzpirat][])
