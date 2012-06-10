@@ -46,7 +46,12 @@ module.exports = class Parser
     # skip the comment conversion if we are in cautious mode
     if not @options.cautious
       content = @convertComments(content)
-    root = CoffeeScript.nodes(content)
+
+    try
+      root = CoffeeScript.nodes(content)
+    catch error
+      console.log('Parsed CoffeeScript source:\n%s', content) if @options.debug
+      throw error
 
     @linkAncestors root
 

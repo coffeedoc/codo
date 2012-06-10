@@ -48,6 +48,12 @@ exports.run = ->
       boolean   : true
       default   : codoopts.verbose || codoopts.v  || false
     )
+    .options('d',
+      alias     : 'debug'
+      describe  : 'Show stacktraces and converted CoffeeScript source'
+      boolean   : true
+      default   : codoopts.debug || codoopts.d  || false
+    )
     .options('h',
       alias     : 'help'
       describe  : 'Show the help'
@@ -112,12 +118,12 @@ exports.run = ->
             try
               parser.parseFile filename
             catch error
-              throw error if options.verbose
+              throw error if options.debug
               console.log "Cannot parse file #{ filename }: #{ error.message }"
 
       new Generator(parser, options).generate()
       parser.showResult() unless options.quiet
 
     catch error
-      throw error if options.verbose
+      throw error if options.debug
       console.log "Cannot generate documentation: #{ error.message }"
