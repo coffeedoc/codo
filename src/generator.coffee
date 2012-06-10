@@ -248,8 +248,8 @@ module.exports = class Generator
   # Copy the styles and scripts.
   #
   copyAssets: ->
-    @copy "#{ __dirname }/../theme/default/assets/codo.css", "#{ @options.output }/assets/codo.css"
-    @copy "#{ __dirname }/../theme/default/assets/codo.js", "#{ @options.output }/assets/codo.js"
+    @copy path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.css'), path.join(@options.output, 'assets', 'codo.css')
+    @copy path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.js'), path.join(@options.output, 'assets', 'codo.js')
 
   # Copy a file
   #
@@ -299,11 +299,12 @@ module.exports = class Generator
         t: file
         p: "#{ file }.html"
 
-    destinationFolder = "#{ @options.output }/assets"
+    destinationFolder = path.join(@options.output, 'assets')
 
     mkdirp destinationFolder, (err) ->
       if err
         console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
       else
-        fs.writeFile "#{ destinationFolder }/search_data.js", 'window.searchData = ' + JSON.stringify(search), (err) ->
+        destinationFile = path.join destinationFolder, 'search_data.js'
+        fs.writeFile destinationFile, 'window.searchData = ' + JSON.stringify(search), (err) ->
           console.error "[ERROR] Cannot write search data: ", err if err

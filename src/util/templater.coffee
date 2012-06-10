@@ -19,15 +19,15 @@ module.exports = class Templater
     @JST = []
 
     @globalContext =
-      codoVersion: 'v' + JSON.parse(fs.readFileSync("#{ __dirname }/../../package.json", 'utf-8'))['version']
+      codoVersion: 'v' + JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'package.json'), 'utf-8'))['version']
       generationDate: new Date().toString()
       JST: @JST
       underscore: _
       title: @options.title
       referencer: @referencer
 
-    for filename in findit.sync "#{ __dirname }/../../theme/default/templates"
-      if match = /theme\/default\/templates\/(.+).hamlc$/.exec filename
+    for filename in findit.sync path.join(__dirname, '..', '..', 'theme', 'default', 'templates')
+      if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename
         @JST[match[1]] = hamlc.compile(fs.readFileSync(filename, 'utf-8'))
 
   # Render the given template with the context and the
