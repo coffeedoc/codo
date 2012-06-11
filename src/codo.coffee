@@ -1,6 +1,6 @@
 fs        = require 'fs'
 util      = require 'util'
-findit    = require 'findit'
+walkdir   = require 'walkdir'
 Parser    = require './parser'
 Generator = require './generator'
 
@@ -114,7 +114,7 @@ exports.run = ->
       parser = new Parser(options)
 
       for input in options.inputs
-        for filename in findit.sync input
+        for filename in walkdir.sync input
           if filename.match /\.coffee$/
             try
               parser.parseFile filename

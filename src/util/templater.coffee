@@ -1,9 +1,9 @@
-fs     = require 'fs'
-path   = require 'path'
-mkdirp = require 'mkdirp'
-_      = require 'underscore'
-findit = require('findit')
-hamlc  = require('haml-coffee')
+fs      = require 'fs'
+path    = require 'path'
+mkdirp  = require 'mkdirp'
+_       = require 'underscore'
+walkdir = require 'walkdir'
+hamlc   = require 'haml-coffee'
 
 # Haml Coffee template compiler.
 #
@@ -26,7 +26,7 @@ module.exports = class Templater
       title: @options.title
       referencer: @referencer
 
-    for filename in findit.sync path.join(__dirname, '..', '..', 'theme', 'default', 'templates')
+    for filename in walkdir.sync path.join(__dirname, '..', '..', 'theme', 'default', 'templates')
       if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename
         @JST[match[1]] = hamlc.compile(fs.readFileSync(filename, 'utf-8'))
 
