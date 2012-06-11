@@ -1,6 +1,6 @@
-fs     = require 'fs'
-findit = require('findit')
-Parser = require('../lib/parser')
+fs      = require 'fs'
+walkdir = require 'walkdir'
+Parser  = require '../lib/parser'
 
 beforeEach ->
   @addMatchers
@@ -8,7 +8,7 @@ beforeEach ->
       @message = -> @actual.report
       @actual.generated is expected
 
-for filename in findit.sync './spec/templates'
+for filename in walkdir.sync './spec/templates'
   if filename.match /\.coffee$/
     source = fs.readFileSync filename, 'utf8'
     expected = JSON.stringify(JSON.parse(fs.readFileSync filename.replace(/\.coffee$/, '.json'), 'utf8'), null, 2)
@@ -28,6 +28,7 @@ for filename in findit.sync './spec/templates'
             github: ''
           })
 
+          filename = filename.substring process.cwd().length + 1
           tokens = parser.parseContent source, filename
           generated = JSON.stringify(parser.toJSON(), null, 2)
 

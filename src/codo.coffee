@@ -1,5 +1,6 @@
 fs        = require 'fs'
 util      = require 'util'
+path      = require 'path'
 walkdir   = require 'walkdir'
 Parser    = require './parser'
 Generator = require './generator'
@@ -117,7 +118,7 @@ exports.run = ->
         for filename in walkdir.sync input
           if filename.match /\.coffee$/
             try
-              parser.parseFile filename
+              parser.parseFile filename.substring process.cwd().length + 1
             catch error
               throw error if options.debug
               console.log "Cannot parse file #{ filename }: #{ error.message }"
