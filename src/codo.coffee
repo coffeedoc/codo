@@ -95,6 +95,7 @@ exports.run = ->
       quiet: argv.q
       private: argv.private
       verbose: argv.v
+      debug: argv.d
       cautious: argv.cautious
 
     extra = false
