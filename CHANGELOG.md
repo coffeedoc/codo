@@ -1,3 +1,7 @@
+# Version 0.9.0 - June 12, 2012
+
+- Make file paths relative. ([@netzpirat][])
+
 # Version 0.8.3 - June 11, 2012
 
 - Use walkdir instead of findit for Windows compatibility. ([@netzpirat][])
