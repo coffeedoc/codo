@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'ruby_gntp'
+gem 'growl'
 gem 'coolline'
 
 gem 'guard'
