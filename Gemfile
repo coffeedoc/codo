@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'ruby_gntp'
+gem 'coolline'
 
 gem 'guard'
 gem 'listen', '0.4.2'
