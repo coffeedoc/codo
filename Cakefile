@@ -6,10 +6,10 @@ fs       = require 'fs'
 
 process.env['PATH'] = "node_modules/.bin:#{ process.env['PATH'] }"
 
-bold  = '\033[0;1m'
-red   = '\033[0;31m'
-green = '\033[0;32m'
-reset = '\033[0m'
+bold  = '\x1b[0;1m'
+red   = '\x1b[0;31m'
+green = '\x1b[0;32m'
+reset = '\x1b[0m'
 
 log = (message, color = green) -> console.log "#{ color }#{ message }#{ reset }"
 
@@ -73,12 +73,12 @@ publish = (cb) ->
       cb err
 
   tagVersion = (cb) ->
-    fs.readFile 'package.json', 'utf8', (err, package) ->
+    fs.readFile 'package.json', 'utf8', (err, p) ->
       onerror err
-      package = JSON.parse package
-      throw new Exception 'Invalid package.json' if !package.version
-      log "Tagging v#{ package.version }"
-      exec "git tag v#{ package.version }", (err, stdout, stderr) ->
+      p = JSON.parse p
+      throw new Exception 'Invalid package.json' if !p.version
+      log "Tagging v#{ p.version }"
+      exec "git tag v#{ p.version }", (err, stdout, stderr) ->
         log stdout
         cb err
 
