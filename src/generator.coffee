@@ -264,7 +264,7 @@ module.exports = class Generator
       else
         from = fs.createReadStream from
         to = fs.createWriteStream to
-        to.once 'open', (fd) -> require('util').pump from, to
+        from.pipe to
 
   # Write the data used in search into
   # a JSON file used by the frontend.
