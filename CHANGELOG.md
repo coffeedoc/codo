@@ -1,3 +1,11 @@
+# Master
+
+- Add programmatic interface to Codo to retreive generated files, scripts and styles. ([@netzpirat][])
+
+# Version 0.9.1 - June 12, 2012
+
+- [#49](https://github.com/netzpirat/codo/issues/49): Make compatible with Windows 7. ([@netzpirat][])
+
 # Version 0.9.0 - June 12, 2012
 
 - Make file paths relative. ([@netzpirat][])
