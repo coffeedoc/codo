@@ -21,10 +21,18 @@ module.exports = class Generator
     @referencer = new Referencer(@parser.classes, @parser.mixins, @options)
     @templater = new Templater(@options, @referencer)
 
-  # Generate the documentation
+  # Generate the documentation. Without callback, the documentation
+  # is written to the file system, with callback, the file content
+  # will be passed to the callback.
   #
+  # With a provided file generation callback, the assets will not be copied,
+  # use {Codo.script} and {Codo.style} to get them.
   #
-  generate: ->
+  # @param [Function] file the optional file generation callback
+  #
+  generate: (file) ->
+    @templater.redirect(file) if file
+
     @generateIndex()
 
     @generateClasses()
@@ -37,8 +45,8 @@ module.exports = class Generator
     @generateMethodList()
     @generateFileList()
 
-    @generateSearchData()
-    @copyAssets()
+    @generateSearchData file
+    @copyAssets() unless file
 
   # Generate the frame source.
   #
@@ -269,7 +277,9 @@ module.exports = class Generator
   # Write the data used in search into
   # a JSON file used by the frontend.
   #
-  generateSearchData: ->
+  # @param [Function] file the file callback
+  #
+  generateSearchData: (file) ->
     search = []
 
     for clazz in @parser.classes
@@ -294,17 +304,23 @@ module.exports = class Generator
           p: "mixins/#{ mixin.getFullName().replace(/\./g, '/') }.html##{ method.name }-#{ method.type }"
           h: mixin.getMixinName()
 
-    for file in _.union([@options.readme], @options.extras.sort())
+    for f in _.union([@options.readme], @options.extras.sort())
       search.push
-        t: file
-        p: "#{ file }.html"
+        t: f
+        p: "#{ f }.html"
 
-    destinationFolder = path.join(@options.output, 'assets')
+    # Callback the search data
+    if file
+      file 'assets/search_data.js', 'window.searchData = ' + JSON.stringify(search)
 
-    mkdirp destinationFolder, (err) ->
-      if err
-        console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
-      else
-        destinationFile = path.join destinationFolder, 'search_data.js'
-        fs.writeFile destinationFile, 'window.searchData = ' + JSON.stringify(search), (err) ->
-          console.error "[ERROR] Cannot write search data: ", err if err
+    # Write the content to a file
+    else
+      destinationFolder = path.join(@options.output, 'assets')
+
+      mkdirp destinationFolder, (err) ->
+        if err
+          console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
+        else
+          destinationFile = path.join destinationFolder, 'search_data.js'
+          fs.writeFile destinationFile, 'window.searchData = ' + JSON.stringify(search), (err) ->
+            console.error "[ERROR] Cannot write search data: ", err if err

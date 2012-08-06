@@ -30,6 +30,12 @@ module.exports = class Templater
       if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename
         @JST[match[1]] = hamlc.compile(fs.readFileSync(filename, 'utf-8'))
 
+  # Redirect template generation to a callback.
+  #
+  # @param [Function] file the file callback function
+  #
+  redirect: (file) -> @file = file
+
   # Render the given template with the context and the
   # global context object merged as template data. Writes
   # the file as the output filename.
@@ -42,12 +48,19 @@ module.exports = class Templater
     html = @JST[template](_.extend(@globalContext, context))
 
     unless _.isEmpty filename
-      file = path.join @options.output, filename
-      dir  = path.dirname(file)
-      mkdirp dir, (err) ->
-        if err
-          console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
-        else
-          fs.writeFile file, html
+
+      # Callback generated content
+      if @file
+        @file(filename, html)
+
+      # Write to file system
+      else
+        file = path.join @options.output, filename
+        dir  = path.dirname(file)
+        mkdirp dir, (err) ->
+          if err
+            console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
+          else
+            fs.writeFile file, html
 
     html
