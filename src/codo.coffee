@@ -171,11 +171,11 @@ module.exports = class Codo
   # @return [String] the script content
   #
   @script: ->
-    fs.readFileSync path.join(__dirname, 'theme', 'default', 'assets', 'codo.js')
+    @codoScript or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.js'), 'utf-8'
 
   # Get the Codo style content that is used in the webinterface
   #
   # @return [String] the style content
   #
   @style: ->
-    fs.readFileSync path.join(__dirname, 'theme', 'default', 'assets', 'codo.css')
+    @codoStyle or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.css'), 'utf-8'
