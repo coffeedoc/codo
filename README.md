@@ -9,6 +9,7 @@ prototypal inheritance.
 * Detects classes, methods, constants, mixins & concerns.
 * Many tags to add semantics to your code.
 * Generates a nice site to browse your code documentation in various ways.
+* Documentation generation and hosting as a service on [CoffeeDoc.info](http://coffeedoc.info).
 
 ## Codo in action
 
@@ -45,14 +46,12 @@ class Example.Animal
   move: (options = {}) ->
 ```
 
-Then generate the documentation with the `codo` command line tool. You can browse the
-[generated Codo documentation](http://netzpirat.github.com/codo) to get a feeling how you can navigate in various
+Then generate the documentation with the `codo` command line tool. You can browse some
+generated Codo documentation on [CoffeeDoc.info](http://coffeedoc.info) to get a feeling how you can navigate in various
 ways through your code layers.
 
 In the `Example` namespace you'll find some classes and mixins that makes absolutely no sense, its purpose is only to
-show the many features Code offers. In addition, there's a list of
-[Codo generated documentations](https://github.com/netzpirat/codo/wiki/List-of-codo-generated-documentations)
-in the wiki. _Please add your project if you're using Codo. Thanks!_
+show the many features Code offers.
 
 ## Installation
 
