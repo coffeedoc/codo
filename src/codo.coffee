@@ -38,8 +38,10 @@ module.exports = class Codo
   #
   # @param [Function] done the documentation done callback
   # @param [Function] file the new file callback
+  # @param [String] analytics the Google analytics tracking code
+  # @param [String] homepage the homepage in the breadcrumbs
   #
-  @run: (done, file) ->
+  @run: (done, file, analytics = false, homepage = false) ->
 
     codoopts =
       _ : []
@@ -76,6 +78,11 @@ module.exports = class Codo
         alias     : 'output-dir'
         describe  : 'The output directory'
         default   : codoopts['output-dir'] || codoopts.o || './doc'
+      )
+      .options('a',
+        alias     : 'analytics'
+        describe  : 'The Google analytics ID'
+        default   : codoopts.analytics || codoopts.a || false
       )
       .options('v',
         alias     : 'verbose'
@@ -132,6 +139,8 @@ module.exports = class Codo
         verbose: argv.v
         debug: argv.d
         cautious: argv.cautious
+        homepage: homepage
+        analytics: analytics || argv.a
 
       extra = false
 

@@ -25,6 +25,7 @@ module.exports = class Templater
       underscore: _
       title: @options.title
       referencer: @referencer
+      analytics: @options.analytics
 
     for filename in walkdir.sync path.join(__dirname, '..', '..', 'theme', 'default', 'templates')
       if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename

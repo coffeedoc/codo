@@ -1,6 +1,8 @@
 # Master
 
-- Add programmatic interface to Codo to retreive generated files, scripts and styles. ([@netzpirat][])
+- Add option to add Google Analytics tracking code to the docs. ([@netzpirat][])
+- Add API to get generated files, scripts and styles. ([@netzpirat][])
+- Add API to set the breadcrumbs homepage on all pages. ([@netzpirat][])
 
 # Version 0.9.1 - June 12, 2012
 

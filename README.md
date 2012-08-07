@@ -455,14 +455,16 @@ $ codo --help
 Usage: codo [options] [source_files [- extra_files]]
 
 Options:
-  -r, --readme      The readme file used                [default: "README.md"]
-  -q, --quiet       Show no warnings                    [boolean]  [default: false]
-  -o, --output-dir  The output directory                [default: "./doc"]
-  -v, --verbose     Show parsing errors                 [boolean]  [default: false]
+  -r, --readme      The readme file used                                [default: "README.md"]
+  -q, --quiet       Show no warnings                                    [boolean]  [default: false]
+  -o, --output-dir  The output directory                                [default: "./doc"]
+  -a, --analytics   The Google analytics ID                             [default: false]
+  -v, --verbose     Show parsing errors                                 [boolean]  [default: false]
+  -d, --debug       Show stacktraces and converted CoffeeScript source  [boolean]  [default: false]
   -h, --help        Show the help
-  --cautious        Don't attempt to parse singleline comments  [boolean]  [default: false]
+  --cautious        Don't attempt to parse singleline comments          [boolean]  [default: false]
   -s, --server      Start a documentation server
-  --private         Show private methods and classes
+  --private         Show private methods                                [boolean]  [default: true]
   --title                                               [default: "CoffeeScript API Documentation"]
 ```
 

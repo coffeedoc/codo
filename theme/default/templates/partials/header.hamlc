@@ -5,7 +5,10 @@
       - current = @breadcrumbs.pop()
       - for breadcrumb in @breadcrumbs
         - if breadcrumb.href
-          %a{ href: breadcrumb.href, title: breadcrumb.name }= breadcrumb.name
+          - if breadcrumb.target
+            %a{ href: breadcrumb.href, title: breadcrumb.name, target: breadcrumb.target }= breadcrumb.name
+          - else
+            %a{ href: breadcrumb.href, title: breadcrumb.name }= breadcrumb.name
         - else
           %span.title= breadcrumb.name
         &raquo;

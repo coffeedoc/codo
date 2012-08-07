@@ -68,6 +68,8 @@ module.exports = class Generator
         }
       ]
 
+      breadcrumbs.unshift(@options.homepage) if @options.homepage
+
       combined = []
       for namespace in namespaces
         combined.push namespace
@@ -108,6 +110,8 @@ module.exports = class Generator
         }
       ]
 
+      breadcrumbs.unshift(@options.homepage) if @options.homepage
+
       combined = []
       for namespace in namespaces
         combined.push namespace
@@ -140,20 +144,24 @@ module.exports = class Generator
         assetPath += '../' for slash in [0...numSlashes]
         filename = "#{ extra }.html"
 
+        breadcrumbs = [
+          {
+            href: "#{ assetPath }class_index.html"
+            name: 'Index'
+          }
+          {
+            href: "File: #{ filename }"
+            name: extra
+          }
+        ]
+
+        breadcrumbs.unshift(@options.homepage) if @options.homepage
+
         @templater.render 'file', {
           path: assetPath
           filename: extra,
           content: content
-          breadcrumbs: [
-            {
-              href: "#{ assetPath }class_index.html"
-              name: 'Index'
-            }
-            {
-              href: "File: #{ filename }"
-              name: extra
-            }
-          ]
+          breadcrumbs: breadcrumbs
         }, filename
 
       catch error
