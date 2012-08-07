@@ -1,3 +1,7 @@
+# Master
+
+- Remove debug statement.  ([@netzpirat][])
+
 # Version 1.0.0 - August 7, 2012
 
 - Add option to add Google Analytics tracking code to the docs. ([@netzpirat][])
