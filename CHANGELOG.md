@@ -1,4 +1,4 @@
-# Master
+# Version 1.0.1 - August 7, 2012
 
 - Remove debug statement.  ([@netzpirat][])
 
