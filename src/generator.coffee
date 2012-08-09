@@ -51,7 +51,8 @@ module.exports = class Generator
   # Generate the frame source.
   #
   generateIndex: ->
-    @templater.render 'frames', { index: @options.readme, path: '' }, 'index.html'
+    index = @options.readme || 'class_index'
+    @templater.render 'frames', { index: index, path: '' }, 'index.html'
 
   # Generates the pages for all the classes.
   #
