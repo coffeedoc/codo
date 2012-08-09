@@ -2,6 +2,9 @@ fs        = require 'fs'
 util      = require 'util'
 path      = require 'path'
 walkdir   = require 'walkdir'
+Async     = require 'async'
+_         = require 'underscore'
+
 Parser    = require './parser'
 Generator = require './generator'
 
@@ -48,132 +51,145 @@ module.exports = class Codo
 
     # Read .codoopts project defaults
     try
-      configs = fs.readFileSync '.codoopts', 'utf8'
+      if fs.existsSync '.codoopts'
+        configs = fs.readFileSync '.codoopts', 'utf8'
 
-      for config in configs.split('\n')
-        # Key value configs
-        if option = /^-{1,2}([\w-]+)\s+(['"])?(.*?)\2?$/.exec config
-          codoopts[option[1]] = option[3]
-        # Boolean configs
-        else if bool = /^-{1,2}([\w-]+)\s*$/.exec config
-          codoopts[bool[1]] = true
-        # Argv configs
-        else if config isnt ''
-          codoopts._.push config
+        for config in configs.split('\n')
+          # Key value configs
+          if option = /^-{1,2}([\w-]+)\s+(['"])?(.*?)\2?$/.exec config
+            codoopts[option[1]] = option[3]
+          # Boolean configs
+          else if bool = /^-{1,2}([\w-]+)\s*$/.exec config
+            codoopts[bool[1]] = true
+          # Argv configs
+          else if config isnt ''
+            codoopts._.push config
 
-    optimist = require('optimist')
-      .usage('Usage: $0 [options] [source_files [- extra_files]]')
-      .options('r',
-        alias     : 'readme'
-        describe  : 'The readme file used'
-        default   : codoopts.readme || codoopts.r || 'README.md'
-      )
-      .options('q',
-        alias     : 'quiet'
-        describe  : 'Show no warnings'
-        boolean   : true
-        default   : codoopts.quiet || false
-      )
-      .options('o',
-        alias     : 'output-dir'
-        describe  : 'The output directory'
-        default   : codoopts['output-dir'] || codoopts.o || './doc'
-      )
-      .options('a',
-        alias     : 'analytics'
-        describe  : 'The Google analytics ID'
-        default   : codoopts.analytics || codoopts.a || false
-      )
-      .options('v',
-        alias     : 'verbose'
-        describe  : 'Show parsing errors'
-        boolean   : true
-        default   : codoopts.verbose || codoopts.v  || false
-      )
-      .options('d',
-        alias     : 'debug'
-        describe  : 'Show stacktraces and converted CoffeeScript source'
-        boolean   : true
-        default   : codoopts.debug || codoopts.d  || false
-      )
-      .options('h',
-        alias     : 'help'
-        describe  : 'Show the help'
-      )
-      .options('cautious',
-        describe  : 'Don\'t attempt to parse singleline comments'
-        boolean   : true
-        default   : codoopts.cautious || false
-      )
-      .options('s',
-        alias     : 'server'
-        describe  : 'Start a documentation server'
-      )
-      .options('private',
-        boolean   : true
-        default   : codoopts.private || false
-        describe  : 'Show private methods'
-      )
-      .default('title', codoopts.title || 'CoffeeScript API Documentation')
 
-    argv = optimist.argv
+      Async.parallel {
+        inputs:  @detectSources
+        readme:  @detectReadme
+        extras:  @detectExtras
+      },
+      (err, defaults) ->
 
-    if argv.h
-      console.log optimist.help()
+        optimist = require('optimist')
+          .usage("""
+          Usage:   $0 [options] [source_files [- extra_files]]
+          Default: $0 [options] #{ defaults.inputs.join ' ' } - #{ defaults.extras.join ' ' }
+          """)
+          .options('r',
+            alias     : 'readme'
+            describe  : 'The readme file used'
+            default   : codoopts.readme || codoopts.r || defaults.readme
+          )
+          .options('q',
+            alias     : 'quiet'
+            describe  : 'Show no warnings'
+            boolean   : true
+            default   : codoopts.quiet || false
+          )
+          .options('o',
+            alias     : 'output-dir'
+            describe  : 'The output directory'
+            default   : codoopts['output-dir'] || codoopts.o || './doc'
+          )
+          .options('a',
+            alias     : 'analytics'
+            describe  : 'The Google analytics ID'
+            default   : codoopts.analytics || codoopts.a || false
+          )
+          .options('v',
+            alias     : 'verbose'
+            describe  : 'Show parsing errors'
+            boolean   : true
+            default   : codoopts.verbose || codoopts.v  || false
+          )
+          .options('d',
+            alias     : 'debug'
+            describe  : 'Show stacktraces and converted CoffeeScript source'
+            boolean   : true
+            default   : codoopts.debug || codoopts.d  || false
+          )
+          .options('h',
+            alias     : 'help'
+            describe  : 'Show the help'
+          )
+          .options('cautious',
+            describe  : 'Don\'t attempt to parse singleline comments'
+            boolean   : true
+            default   : codoopts.cautious || false
+          )
+          .options('s',
+            alias     : 'server'
+            describe  : 'Start a documentation server'
+          )
+          .options('private',
+            boolean   : true
+            default   : codoopts.private || false
+            describe  : 'Show private methods'
+          )
+          .default('title', codoopts.title || 'CoffeeScript API Documentation')
 
-    else if argv.s
-      port = if argv.s is true then 8080 else argv.s
-      connect = require 'connect'
-      connect.createServer(connect.static(argv.o)).listen port
-      console.log 'Codo documentation from %s is available at http://localhost:%d', argv.o, port
+        argv = optimist.argv
 
-    else
-      options =
-        inputs: []
-        output: argv.o
-        extras: []
-        readme: argv.r
-        title: argv.title
-        quiet: argv.q
-        private: argv.private
-        verbose: argv.v
-        debug: argv.d
-        cautious: argv.cautious
-        homepage: homepage
-        analytics: analytics || argv.a
+        if argv.h
+          console.log optimist.help()
 
-      extra = false
+        else if argv.s
+          port = if argv.s is true then 8080 else argv.s
+          connect = require 'connect'
+          connect.createServer(connect.static(argv.o)).listen port
+          console.log 'Codo documentation from %s is available at http://localhost:%d', argv.o, port
 
-      args = if argv._.length isnt 0 then argv._ else codoopts._
-
-      for arg in args
-        if arg is '-'
-          extra = true
         else
-          if extra then options.extras.push(arg) else options.inputs.push(arg)
+          options =
+            inputs: []
+            output: argv.o
+            extras: []
+            readme: argv.r
+            title: argv.title
+            quiet: argv.q
+            private: argv.private
+            verbose: argv.v
+            debug: argv.d
+            cautious: argv.cautious
+            homepage: homepage
+            analytics: analytics || argv.a
 
-      options.inputs.push './src' if options.inputs.length is 0
+          extra = false
 
-      try
-        parser = new Parser(options)
+          args = if argv._.length isnt 0 then argv._ else codoopts._
 
-        for input in options.inputs
-          for filename in walkdir.sync input
-            if filename.match /\.coffee$/
-              try
-                parser.parseFile filename.substring process.cwd().length + 1
-              catch error
-                throw error if options.debug
-                console.log "Cannot parse file #{ filename }: #{ error.message }"
+          for arg in args
+            if arg is '-'
+              extra = true
+            else
+              if extra then options.extras.push(arg) else options.inputs.push(arg)
 
-        new Generator(parser, options).generate(file)
-        parser.showResult() unless options.quiet
-        done() if done
+          options.inputs = defaults.inputs if options.inputs.length is 0
+          options.extras = defaults.extras if options.extras.length is 0
 
-      catch error
-        done(error) if done
-        throw error if options.debug
-        console.log "Cannot generate documentation: #{ error.message }"
+          parser = new Parser(options)
+
+          for input in options.inputs
+            if fs.existsSync input
+              for filename in walkdir.sync input
+                if filename.match /\.coffee$/
+                  try
+                    parser.parseFile filename.substring process.cwd().length + 1
+                  catch error
+                    throw error if options.debug
+                    console.log "Cannot parse file #{ filename }: #{ error.message }"
+
+          new Generator(parser, options).generate(file)
+          parser.showResult() unless options.quiet
+          done() if done
+
+    catch error
+      done(error) if done
+      console.log "Cannot generate documentation: #{ error.message }"
+      throw error
 
   # Get the Codo script content that is used in the webinterface
   #
@@ -188,3 +204,36 @@ module.exports = class Codo
   #
   @style: ->
     @codoStyle or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.css'), 'utf-8'
+
+  # Find the source directories.
+  #
+  @detectSources: (done) ->
+    Async.filter [
+      'src'
+      'lib'
+      'app'
+    ], fs.exists, (results) -> done null, results
+
+  # Find the project README.
+  #
+  @detectReadme: (done) ->
+    Async.filter [
+      'README.md'
+      'README'
+      'readme.md'
+      'readme'
+    ], fs.exists, (results) -> done null, _.first results
+
+  # Find extra project files.
+  #
+  @detectExtras: (done) ->
+    Async.filter [
+      'CHANGELOG'
+      'CHANGELOG.md'
+      'AUTHORS'
+      'AUTHORS.md'
+      'LICENSE'
+      'LICENSE.md'
+      'LICENSE.MIT'
+      'LICENSE.GPL'
+    ], fs.exists, (results) -> done null, results

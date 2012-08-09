@@ -1,3 +1,7 @@
+# Master
+
+- Detect optimal projects defaults for source dirs, extra files and the readme.
+
 # Version 1.0.1 - August 7, 2012
 
 - Remove debug statement.  ([@netzpirat][])
