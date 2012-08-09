@@ -1,7 +1,4 @@
 group :codo do
-  # CoffeeScript for the codo library
-  guard :coffeescript, :input => 'src', :output => 'lib'
-
   # Run Jasmine specs
   guard :shell do
     jasmine_node = File.expand_path '../node_modules/jasmine-node/bin/jasmine-node', __FILE__

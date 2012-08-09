@@ -19,11 +19,11 @@
     "node" : ">=0.4.0"
   },
   "directories" : {
-    "lib" : "./lib",
+    "lib" : "./src",
     "theme/default/assets" : "./theme/default/assets",
     "theme/default/templates" : "./theme/default/templates"
   },
-  "main" : "./lib/codo",
+  "main" : "./src/codo",
   "bin" : {
     "codo" : "./bin/codo"
   },
