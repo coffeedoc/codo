@@ -1,6 +1,6 @@
 fs      = require 'fs'
 walkdir = require 'walkdir'
-Parser  = require '../lib/parser'
+Parser  = require '../src/parser'
 
 beforeEach ->
   @addMatchers
