@@ -170,7 +170,7 @@ module.exports = class Codo
               if extra then options.extras.push(arg) else options.inputs.push(arg)
 
           options.inputs = defaults.inputs if options.inputs.length is 0
-          options.extras = defaults.extras || [] if options.extras.length is 0
+          options.extras = defaults.extras if options.extras.length is 0
 
           parser = new Parser(options)
 
@@ -214,7 +214,9 @@ module.exports = class Codo
       'src'
       'lib'
       'app'
-    ], fs.exists, (results) -> done null, results
+    ], fs.exists, (results) ->
+      results.push '.' if results.length is 0
+      done null, results
 
   # Find the project README.
   #
@@ -224,7 +226,7 @@ module.exports = class Codo
       'README'
       'readme.md'
       'readme'
-    ], fs.exists, (results) -> done null, _.first results
+    ], fs.exists, (results) -> done null, _.first(results) || ''
 
   # Find extra project files.
   #
