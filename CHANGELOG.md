@@ -1,4 +1,4 @@
-# Master
+# Version 1.1.1 - August 10, 2012
 
 - [#50](https://github.com/netzpirat/codo/issues/50): Fix `@option` within `@overload` section.
 
