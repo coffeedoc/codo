@@ -73,10 +73,12 @@ module.exports = class Codo
       },
       (err, defaults) ->
 
+        extraUsage = if defaults.extras.length is 0 then '' else  "- #{ defaults.extras.join ' ' }"
+
         optimist = require('optimist')
           .usage("""
           Usage:   $0 [options] [source_files [- extra_files]]
-          Default: $0 [options] #{ defaults.inputs.join ' ' } - #{ defaults.extras.join ' ' }
+          Default: $0 [options] #{ defaults.inputs.join ' ' } #{ extraUsage }
           """)
           .options('r',
             alias     : 'readme'
@@ -168,7 +170,7 @@ module.exports = class Codo
               if extra then options.extras.push(arg) else options.inputs.push(arg)
 
           options.inputs = defaults.inputs if options.inputs.length is 0
-          options.extras = defaults.extras if options.extras.length is 0
+          options.extras = defaults.extras || [] if options.extras.length is 0
 
           parser = new Parser(options)
 

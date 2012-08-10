@@ -138,32 +138,33 @@ module.exports = class Generator
   generateFiles: ->
     for extra in _.union [@options.readme], @options.extras
       try
-        content = fs.readFileSync extra, 'utf-8'
-        content = marked content if /\.(markdown|md)$/.test extra
-        numSlashes = extra.split('/').length - 1
-        assetPath = ''
-        assetPath += '../' for slash in [0...numSlashes]
-        filename = "#{ extra }.html"
+        if fs.existsSync extra
+          content = fs.readFileSync extra, 'utf-8'
+          content = marked content if /\.(markdown|md)$/.test extra
+          numSlashes = extra.split('/').length - 1
+          assetPath = ''
+          assetPath += '../' for slash in [0...numSlashes]
+          filename = "#{ extra }.html"
 
-        breadcrumbs = [
-          {
-            href: "#{ assetPath }class_index.html"
-            name: 'Index'
-          }
-          {
-            href: "File: #{ filename }"
-            name: extra
-          }
-        ]
+          breadcrumbs = [
+            {
+              href: "#{ assetPath }class_index.html"
+              name: 'Index'
+            }
+            {
+              href: "File: #{ filename }"
+              name: extra
+            }
+          ]
 
-        breadcrumbs.unshift(@options.homepage) if @options.homepage
+          breadcrumbs.unshift(@options.homepage) if @options.homepage
 
-        @templater.render 'file', {
-          path: assetPath
-          filename: extra,
-          content: content
-          breadcrumbs: breadcrumbs
-        }, filename
+          @templater.render 'file', {
+            path: assetPath
+            filename: extra,
+            content: content
+            breadcrumbs: breadcrumbs
+          }, filename
 
       catch error
         console.log "[ERROR] Cannot generate extra file #{ extra }: #{ error }"
