@@ -42,6 +42,11 @@ module.exports = class Doc extends Node
           type: returnValue[1]
           desc: returnValue[2]
 
+      else if returnValue = /^@return\s+(.+)/i.exec line
+        @returnValue =
+          type: '?'
+          desc: returnValue[1]
+
       else if param = /^@param\s+\(see ((?:[$A-Za-z_\x7f-\uffff][$.\w\x7f-\uffff]*)?[#.][$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)\)/i.exec line
         @params or= []
         @params.push

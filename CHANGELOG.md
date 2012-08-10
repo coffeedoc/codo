@@ -1,5 +1,6 @@
 # Master
 
+- Detect `@return` tags without specified result type.
 - [#51](https://github.com/netzpirat/codo/issues/51): Fix comment processing for methods without parameters.
 
 # Version 1.1.1 - August 10, 2012
