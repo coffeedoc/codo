@@ -1,3 +1,7 @@
+# Master
+
+- [#50](https://github.com/netzpirat/codo/issues/50): Fix `@option` within `@overload` section.
+
 # Version 1.1.0 - August 10, 2012
 
 - Detect optimal projects defaults for source dirs, extra files and the readme.

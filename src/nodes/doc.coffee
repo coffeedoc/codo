@@ -158,7 +158,7 @@ module.exports = class Doc extends Node
             comment: doc.comment
             summary: doc.summary
             params: doc.params
-            options: doc.options
+            options: doc.paramsOptions
             returnValue: doc.returnValue
 
       else if method = /^@method\s+(.+)/i.exec line

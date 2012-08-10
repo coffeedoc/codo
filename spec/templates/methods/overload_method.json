@@ -26,8 +26,22 @@
                   "type": "Object",
                   "name": "value",
                   "desc": "describe value param"
+                },
+                {
+                  "type": "Object",
+                  "name": "options",
+                  "desc": "the options"
                 }
-              ]
+              ],
+              "options": {
+                "options": [
+                  {
+                    "type": "String",
+                    "name": "test",
+                    "desc": "the test option"
+                  }
+                ]
+              }
             },
             {
               "signature": "<strong>set</strong>(value)",
