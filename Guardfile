@@ -6,9 +6,9 @@ group :codo do
   end
 
   # Generate codo doc
-  guard :shell do
-    watch(%r{src|theme}) { `./bin/codo` }
-  end
+  #guard :shell do
+  #  watch(%r{src|theme}) { `./bin/codo` }
+  #end
 end
 
 group :theme do

@@ -10,6 +10,17 @@
     "methods": [
       {
         "doc": {
+          "comment": "<p>Should be overloaded to change fetch limit. </p> <p>@return Number of items per fetch </p> ",
+          "summary": "Should be overloaded to change fetch limit."
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>fetchLimit</strong>()",
+        "name": "fetchLimit",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "doc": {
           "private": true,
           "comment": "<p>Do it! </p> ",
           "summary": "Do it!",
