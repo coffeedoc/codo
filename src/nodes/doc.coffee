@@ -69,7 +69,7 @@ module.exports = class Doc extends Node
         while /^\s{2}\w+/.test(lines[0])
           line += lines.shift().substring(1)
 
-      if returnValue = /^@return\s+\[(.+?)\](?:\s+(.+))?/i.exec line
+      if returnValue = /^@return\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @returnValue =
           type: returnValue[1]
           desc: returnValue[2]
@@ -90,21 +90,21 @@ module.exports = class Doc extends Node
           name: param[1]
           reference: param[2]
 
-      else if param = /^@param\s+([^ ]+)\s+\[(.+?)\](?:\s+(.+))?/i.exec line
+      else if param = /^@param\s+([^ ]+)\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @params or= []
         @params.push
           type: param[2]
           name: param[1]
           desc: param[3] or ''
 
-      else if param = /^@param\s+\[(.+?)\]\s+([^ ]+)(?:\s+(.+))?/i.exec line
+      else if param = /^@param\s+[\[\{](.+?)[\]\}]\s+([^ ]+)(?:\s+(.+))?/i.exec line
         @params or= []
         @params.push
           type: param[1]
           name: param[2]
           desc: param[3] or ''
 
-      else if option = /^@option\s+([^ ]+)\s+\[(.+?)\]\s+([^ ]+)(?:\s+(.+))?/i.exec line
+      else if option = /^@option\s+([^ ]+)\s+[\[\{](.+?)[\]\}]\s+([^ ]+)(?:\s+(.+))?/i.exec line
         @paramsOptions or= {}
         @paramsOptions[option[1]] or= []
 

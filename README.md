@@ -70,9 +70,7 @@ You have to annotate your code with Codo tags to give it some meaning to the par
 Each tag starts with the `@` sign followed by the tag name. See the following overview for a minimal description of all
 available tags. Most tags are self-explaining and the one that aren't are described afterwards in more detail.
 
-Tags can take multiple lines, just indent subsequent lines by two spaces. It's also possible to use
-[CoffeeScript block comments](http://coffeescript.org/#strings) instead of the normal comments. If you solely use
-block comments, you may want to use the `--cautious` flag to disable the internal comment conversion.
+Tags can take multiple lines, just indent subsequent lines by two spaces.
 
 ### Overview
 
@@ -237,6 +235,41 @@ comment for a mixin or in a method comment.
     </tr>
   </tbody>
 <table>
+
+### Alternative syntax
+
+You can also use curly braces instead of square brackets if you prefer:
+
+```CoffeeScript
+# Move the animal.
+#
+# @example Move an animal
+#   new Lion('Simba').move('south', 12)
+#
+# @param {Object} options the moving options
+# @option options {String} direction the moving direction
+# @option options {Number} speed the speed in mph
+#
+move: (options = {}) ->
+```
+
+It's also possible to use [CoffeeScript block comments](http://coffeescript.org/#strings) instead of the normal
+comments. If you solely use block comments, you may want to use the `--cautious` flag to disable the internal comment
+conversion.
+
+```CoffeeScript
+###
+Move the animal.
+
+@example Move an animal
+  new Lion('Simba').move('south', 12)
+
+@param [Object] options the moving options
+@option options [String] direction the moving direction
+@option options [Number] speed the speed in mph
+###
+move: (options = {}) ->
+```
 
 ### Parameters
 

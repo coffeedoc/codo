@@ -1,0 +1,187 @@
+[
+  {
+    "file": "spec/templates/methods/curly_method_documentation.coffee",
+    "class": {
+      "className": "App.TestMethodDocumentation",
+      "name": "TestMethodDocumentation",
+      "namespace": "App",
+      "parent": "App.Doc"
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "<p>Should be overloaded to change fetch limit. </p> ",
+          "summary": "Should be overloaded to change fetch limit.",
+          "returnValue": {
+            "type": "?",
+            "desc": "Number of items per fetch"
+          }
+        },
+        "type": "instance",
+        "signature": "- (?) <strong>fetchLimit</strong>()",
+        "name": "fetchLimit",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "doc": {
+          "private": true,
+          "comment": "<p>Do it! </p> ",
+          "summary": "Do it!",
+          "params": [
+            {
+              "type": "String",
+              "name": "it",
+              "desc": "The thing to do"
+            },
+            {
+              "type": "Boolean",
+              "name": "again",
+              "desc": "Do it again"
+            },
+            {
+              "type": "Object",
+              "name": "options",
+              "desc": "The do options"
+            }
+          ],
+          "options": {
+            "options": [
+              {
+                "type": "String",
+                "name": "speed",
+                "desc": "The speed"
+              },
+              {
+                "type": "Number",
+                "name": "repeat",
+                "desc": "How wany time to repeat"
+              },
+              {
+                "type": "Array<Tasks>",
+                "name": "tasks",
+                "desc": "The tasks to do"
+              }
+            ]
+          },
+          "see": [
+            {
+              "reference": "#undo",
+              "label": "for more information"
+            }
+          ],
+          "returnValue": {
+            "type": "Boolean",
+            "desc": "When successful executed"
+          }
+        },
+        "type": "instance",
+        "signature": "- (Boolean) <strong>do</strong>(it, again, options)",
+        "name": "do",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "it",
+            "splat": false
+          },
+          {
+            "name": "again",
+            "splat": false
+          },
+          {
+            "name": "options",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "doc": {
+          "private": true,
+          "comment": "<p>Do it! </p> ",
+          "summary": "Do it!",
+          "params": [
+            {
+              "type": "String",
+              "name": "it",
+              "desc": "The thing to do"
+            },
+            {
+              "type": "Boolean",
+              "name": "again",
+              "desc": "Do it again"
+            },
+            {
+              "type": "Object",
+              "name": "options",
+              "desc": "The do options"
+            }
+          ],
+          "options": {
+            "options": [
+              {
+                "type": "String",
+                "name": "speed",
+                "desc": "The speed"
+              },
+              {
+                "type": "Number",
+                "name": "repeat",
+                "desc": "How wany time to repeat"
+              },
+              {
+                "type": "Array<Tasks>",
+                "name": "tasks",
+                "desc": "The tasks to do"
+              }
+            ]
+          },
+          "see": [
+            {
+              "reference": "#undo",
+              "label": "for more information"
+            }
+          ],
+          "returnValue": {
+            "type": "Boolean",
+            "desc": "When successful executed"
+          }
+        },
+        "type": "instance",
+        "signature": "- (Boolean) <strong>doWithoutSpace</strong>(it, again, options)",
+        "name": "doWithoutSpace",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "it",
+            "splat": false
+          },
+          {
+            "name": "again",
+            "splat": false
+          },
+          {
+            "name": "options",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "type": "class",
+        "signature": "+ (void) <strong>lets_do_it</strong>(it, options)",
+        "name": "lets_do_it",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "it",
+            "splat": false
+          },
+          {
+            "name": "options",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": []
+  }
+]
