@@ -1,3 +1,8 @@
+# Master
+
+- Allow Codo tag syntax with curly braces instead of square brackets.
+- [#52](https://github.com/netzpirat/codo/issues/52): Fix indented block comment parsing.
+
 # Version 1.1.2 - August 10, 2012
 
 - Detect `@return` tags without specified result type.
