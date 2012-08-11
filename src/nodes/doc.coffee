@@ -17,10 +17,36 @@ module.exports = class Doc extends Node
   constructor: (@node, @options) ->
     try
       if @node
-        @parseTags @node.comment.split '\n'
+        @parseTags @leftTrimBlock(@node.comment.split('\n'))
 
     catch error
       console.warn('Create doc error:', @node, error) if @options.verbose
+
+  # Detect whitespace on the left and removes
+  # the minimum whitespace ammount.
+  #
+  # @param [Array<String>] lines the comment lines
+  # @return [Array<String>] lines left trimmed lines
+  #
+  leftTrimBlock: (lines) ->
+    # Detect minimal left trim amount
+    trimMap = _.map lines, (line) ->
+      if line.length is 0
+        undefined
+      else
+        line.length - _.str.ltrim(line).length
+
+    minimalTrim = _.min _.without(trimMap, undefined)
+
+    # If we have a common amount of left trim
+    if minimalTrim > 0 and minimalTrim < Infinity
+
+      # Trim same amount of left space on each line
+      lines = for line in lines
+        line = line.substring(minimalTrim, line.length)
+        line
+
+    lines
 
   # Parse the given lines and adds the result
   # to the result object.
