@@ -222,8 +222,10 @@ module.exports = class Codo
   #
   @detectReadme: (done) ->
     Async.filter [
+      'README.markdown'
       'README.md'
       'README'
+      'readme.markdown'
       'readme.md'
       'readme'
     ], fs.exists, (results) -> done null, _.first(results) || ''
@@ -232,12 +234,14 @@ module.exports = class Codo
   #
   @detectExtras: (done) ->
     Async.filter [
-      'CHANGELOG'
+      'CHANGELOG.markdown'
       'CHANGELOG.md'
       'AUTHORS'
       'AUTHORS.md'
+      'AUTHORS.markdown'
       'LICENSE'
       'LICENSE.md'
+      'LICENSE.markdown'
       'LICENSE.MIT'
       'LICENSE.GPL'
     ], fs.exists, (results) -> done null, results
