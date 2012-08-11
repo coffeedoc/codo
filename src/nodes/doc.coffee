@@ -25,6 +25,12 @@ module.exports = class Doc extends Node
   # Detect whitespace on the left and removes
   # the minimum whitespace ammount.
   #
+  # @example left trim all lines
+  #   leftTrimBlock(['', '  Escape at maximum speed.', '', '  @param (see #move)', '  '])
+  #   => ['', 'Escape at maximum speed.', '', '@param (see #move)', '']
+  #
+  # This will keep indention for examples intact.
+  #
   # @param [Array<String>] lines the comment lines
   # @return [Array<String>] lines left trimmed lines
   #
