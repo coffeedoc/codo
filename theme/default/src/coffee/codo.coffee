@@ -16,7 +16,10 @@ $(document).ready ->
 
   # Show search box when loaded
   #
-  $('#search_frame').on 'load', (event) -> $('#search_frame').show()
+  $('#search_frame').on 'load', (event) ->
+    if $(@).attr 'src'
+      $('#search_frame').show()
+
 
   # Show external links in the main doc to
   # avoid frame blocking by X-Frame-Options.

@@ -13,7 +13,9 @@
       return hljs.highlightBlock(e, '  ');
     });
     $('#search_frame').on('load', function(event) {
-      return $('#search_frame').show();
+      if ($(this).attr('src')) {
+        return $('#search_frame').show();
+      }
     });
     $('.frames #content a').each(function() {
       if (/^https?:\/\//i.test($(this).attr('href'))) {
@@ -55,7 +57,9 @@
             if ($('#content').hasClass('tree')) {
               $(this).addClass('result');
               padding = $(this).css('padding-left');
-              if (padding !== '0px') $(this).data('padding', padding);
+              if (padding !== '0px') {
+                $(this).data('padding', padding);
+              }
               $(this).css('padding-left', 0);
             }
             return $(this).show();
@@ -65,7 +69,7 @@
       return window.createStripes();
     });
     $('#fuzzySearch input').keyup(function(event) {
-      var data, highlights, index, items, match, matches, path, resultList, text, _len;
+      var data, highlights, index, items, match, matches, path, resultList, text, _i, _len;
       text = $(this).val();
       resultList = $('#fuzzySearch ol');
       if (event.keyCode === 13) {
@@ -75,14 +79,18 @@
         index = items.index($('#fuzzySearch ol li.selected'));
         $(items.get(index)).removeClass('selected');
         index -= 1;
-        if (index === -1) index = items.length - 1;
+        if (index === -1) {
+          index = items.length - 1;
+        }
         return $(items.get(index)).addClass('selected');
       } else if (event.keyCode === 40) {
         items = resultList.children();
         index = items.index($('#fuzzySearch ol li.selected'));
         $(items.get(index)).removeClass('selected');
         index += 1;
-        if (index === items.length) index = 0;
+        if (index === items.length) {
+          index = 0;
+        }
         return $(items.get(index)).addClass('selected');
       } else if (text && text !== lastSearch) {
         window.lastSearch = text;
@@ -96,7 +104,7 @@
           post: '</span>',
           limit: 25
         });
-        for (index = 0, _len = matches.length; index < _len; index++) {
+        for (index = _i = 0, _len = matches.length; _i < _len; index = ++_i) {
           match = matches[index];
           data = _.find(searchData, function(d) {
             return d.t === match;
@@ -122,9 +130,13 @@
       link = $(this).find('a:not(.toggle)').attr('href');
       if (link) {
         if ($('body').hasClass('noframes')) {
-          if (link !== '#') window.parent.location.href = link;
+          if (link !== '#') {
+            window.parent.location.href = link;
+          }
         } else {
-          if (link !== '#') top.frames['main'].location.href = link;
+          if (link !== '#') {
+            top.frames['main'].location.href = link;
+          }
         }
       }
       return event.preventDefault();
@@ -161,13 +173,13 @@
       });
     };
     $('#filecontents').each(function() {
-      var ancestors, depth, heading, i, index, level, list, nav, target, _len, _ref, _ref2;
+      var ancestors, depth, heading, i, index, level, list, nav, target, _i, _j, _len, _ref, _ref1;
       nav = $('nav.toc');
       target = nav;
       level = 0;
       ancestors = [];
       _ref = $('h2,h3,h4,h5,h6', this);
-      for (index = 0, _len = _ref.length; index < _len; index++) {
+      for (index = _i = 0, _len = _ref.length; _i < _len; index = ++_i) {
         heading = _ref[index];
         heading = $(heading);
         heading.before($("<a name='toc_" + index + "'></a>"));
@@ -179,15 +191,19 @@
           target = list;
           level = depth;
         } else if (depth < level) {
-          for (i = 0, _ref2 = level - depth; 0 <= _ref2 ? i < _ref2 : i > _ref2; 0 <= _ref2 ? i++ : i--) {
+          for (i = _j = 0, _ref1 = level - depth; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
             target = ancestors.pop();
           }
-          if (!target) target = $('nav.toc ol:first');
+          if (!target) {
+            target = $('nav.toc ol:first');
+          }
           level = depth;
         }
         target.append($("<li><a href='#toc_" + index + "'>" + (heading.text()) + "</a></li>"));
       }
-      if ($('ol', nav).length === 0) return nav.hide();
+      if ($('ol', nav).length === 0) {
+        return nav.hide();
+      }
     });
     $('a.hide_toc').click(function() {
       return $('nav.toc').toggleClass('hidden');
