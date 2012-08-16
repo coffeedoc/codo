@@ -218,7 +218,7 @@ $(document).ready ->
 
   # Allow ESC to blur #search
   key.filter = (e) ->
-    tagname = (event.target || event.srcElement).tagName
+    tagname = (e.target || e.srcElement).tagName
     tagname isnt 'INPUT' || e.keyCode is 27 || e.ctrlKey is true
 
   # Focus search input
