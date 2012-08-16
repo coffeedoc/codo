@@ -234,7 +234,7 @@ comment for a mixin or in a method comment.
       <td>&#10004;</td>
     </tr>
   </tbody>
-<table>
+</table>
 
 ### Alternative syntax
 
