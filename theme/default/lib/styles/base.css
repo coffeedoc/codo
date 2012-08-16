@@ -183,23 +183,27 @@ h2 {
   background: #ffffa5;
 }
 /* line 182, ../../src/styles/base.scss */
+#content #filecontents img {
+  border: 0;
+}
+/* line 186, ../../src/styles/base.scss */
 #content #filecontents li {
   line-height: 25px;
 }
-/* line 186, ../../src/styles/base.scss */
+/* line 190, ../../src/styles/base.scss */
 #content #filecontents table {
   padding: 0;
   border-collapse: collapse;
   border-spacing: 0;
 }
-/* line 191, ../../src/styles/base.scss */
+/* line 195, ../../src/styles/base.scss */
 #content #filecontents table tr {
   border-top: 1px solid #CCC;
   background-color: white;
   margin: 0;
   padding: 0;
 }
-/* line 197, ../../src/styles/base.scss */
+/* line 201, ../../src/styles/base.scss */
 #content #filecontents table tr td {
   border: 1px solid #CCC;
   text-align: left;

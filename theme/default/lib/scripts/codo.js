@@ -227,7 +227,7 @@
     };
     key.filter = function(e) {
       var tagname;
-      tagname = (event.target || event.srcElement).tagName;
+      tagname = (e.target || e.srcElement).tagName;
       return tagname !== 'INPUT' || e.keyCode === 27 || e.ctrlKey === true;
     };
     key('s', function(e) {
