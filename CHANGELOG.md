@@ -1,3 +1,8 @@
+# Version 1.2.1 - August 16, 2012
+
+- [#39](https://github.com/netzpirat/codo/issues/39): Test alternative browsers.
+- [#53](https://github.com/netzpirat/codo/issues/53): Large blank iframe shows up on Codo in Firefox.
+
 # Version 1.2.0 - August 12, 2012
 
 - Allow Codo tag syntax with curly braces instead of square brackets.
