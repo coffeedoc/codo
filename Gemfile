@@ -1,10 +1,10 @@
 source :rubygems
 
-gem 'growl'
+gem 'terminal-notifier-guard'
 gem 'coolline'
 
 gem 'guard'
-gem 'listen', '0.4.2'
+gem 'listen'
 gem 'guard-coffeescript'
 gem 'guard-shell'
 gem 'guard-compass'
