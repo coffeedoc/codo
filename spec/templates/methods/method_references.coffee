@@ -1,5 +1,5 @@
 class User
-  # @param [String] username the nam of the user to add
+  # @param [String] username the name of the user to add
   # @param [Number] uid the user ID
   # @param [Number] gid the group ID
   constructor: (username, uid, gid) ->

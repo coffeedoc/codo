@@ -15,7 +15,7 @@
             {
               "type": "String",
               "name": "username",
-              "desc": "the nam of the user to add"
+              "desc": "the name of the user to add"
             },
             {
               "type": "Number",
