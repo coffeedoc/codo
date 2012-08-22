@@ -1,3 +1,7 @@
+# Master
+
+- [#55](https://github.com/netzpirat/codo/issues/55): Markdown Headings in Codo comments fixed.
+
 # Version 1.2.1 - August 16, 2012
 
 - [#39](https://github.com/netzpirat/codo/issues/39): Test alternative browsers.

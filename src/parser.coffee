@@ -106,48 +106,53 @@ module.exports = class Parser
   # @param [String] content the CoffeeScript file content
   #
   convertComments: (content) ->
-    result        = []
-    comment       = []
-    inComment     = false
-    indentComment = 0
+    result         = []
+    comment        = []
+    inComment      = false
+    inBlockComment = false
+    indentComment  = 0
 
     for line in content.split('\n')
-      commentLine = /^(\s*#)\s?(\s*.*)/.exec(line)
-      if commentLine and commentLine[2].substring(0, 2) isnt '##'
-        show = true
-
-        if inComment
-          comment.push commentLine[2]
-        else
-          inComment = true
-          indentComment =  commentLine[1].length - 1
-
-          comment.push whitespace(indentComment) + '###'
-          comment.push commentLine[2]
-      else
-        if inComment
-          inComment = false
-          comment.push whitespace(indentComment) + '###'
-
-          # Push here comments only before certain lines
-          if ///
-               ( # Class
-                 class\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
-               | # Mixin or assignment
-                 ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff.]*\s+\=
-               | # Function
-                 [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s*(\(.*\)\s*)?[-=]>
-               | # Function
-                 @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
-               | # Constant
-                 @[$A-Z_][A-Z_]*)
-             ///.exec line
-
-              result.push c for c in comment
-
-          comment = []
-
+    
+      blockComment = /^\s*#{3}/.exec(line)
+      if blockComment || inBlockComment
+        inBlockComment = !inBlockComment if blockComment
         result.push line
+      else
+        commentLine = /^(\s*#)\s?(\s*.*)/.exec(line)
+        if commentLine
+          if inComment
+            comment.push commentLine[2]?.replace /#/g, "\u0091#"
+          else
+            inComment = true
+            indentComment =  commentLine[1].length - 1
+  
+            comment.push whitespace(indentComment) + '###'
+            comment.push commentLine[2]?.replace /#/g, "\u0091#"
+        else
+          if inComment
+            inComment = false
+            comment.push whitespace(indentComment) + '###'
+  
+            # Push here comments only before certain lines
+            if ///
+                 ( # Class
+                   class\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
+                 | # Mixin or assignment
+                   ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff.]*\s+\=
+                 | # Function
+                   [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s*(\(.*\)\s*)?[-=]>
+                 | # Function
+                   @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
+                 | # Constant
+                   @[$A-Z_][A-Z_]*)
+               ///.exec line
+  
+              result.push c for c in comment
+  
+            comment = []
+  
+          result.push line
 
     result.join('\n')
 

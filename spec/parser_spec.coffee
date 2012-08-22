@@ -29,22 +29,31 @@ for filename in walkdir.sync './spec/templates'
           })
 
           filename = filename.substring process.cwd().length + 1
-          tokens = parser.parseContent source, filename
-          generated = JSON.stringify(parser.toJSON(), null, 2)
 
-          report = "\n-------------------- CoffeeScript ----------------------\n"
-          report += source
-          report += "\n------------- Preprocessed CoffeeScript-----------------\n"
-          report += parser.convertComments(source)
-          report += "\n----------------------- Nodes --------------------------"
-          report += tokens.toString()
-          report += "\n-------------------- Parsed JSON ------------------------\n"
-          report += generated
-          report += "\n------------------- Expected JSON ---------------------\n"
-          report += expected
-          report += "\n-------------------------------------------------------\n"
+          try
+            tokens = parser.parseContent source, filename
+            generated = JSON.stringify(parser.toJSON(), null, 2)
+  
+            report = "\n-------------------- CoffeeScript ----------------------\n"
+            report += source
+            report += "\n------------- Preprocessed CoffeeScript-----------------\n"
+            report += parser.convertComments(source)
+            report += "\n----------------------- Nodes --------------------------"
+            report += tokens.toString()
+            report += "\n-------------------- Parsed JSON ------------------------\n"
+            report += generated
+            report += "\n------------------- Expected JSON ---------------------\n"
+            report += expected
+            report += "\n-------------------------------------------------------\n"
 
-          expect({
-            generated: generated
-            report: report.split('\n').join('\n    ')
-          }).toBeCompiledTo(expected)
+            expect({
+              generated: generated
+              report: report.split('\n').join('\n    ')
+            }).toBeCompiledTo(expected)
+
+          catch e
+            expect({
+              generated: generated
+              report: "#{ filename }: #{ e.message }\n\n #{ source }"
+            }).toBeCompiledTo(expected)
+

@@ -17,7 +17,7 @@ module.exports = class Doc extends Node
   constructor: (@node, @options) ->
     try
       if @node
-        @parseTags @leftTrimBlock(@node.comment.split('\n'))
+        @parseTags @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
 
     catch error
       console.warn('Create doc error:', @node, error) if @options.verbose
@@ -233,8 +233,11 @@ module.exports = class Doc extends Node
         comment.push line
 
     text = comment.join('\n')
-    @summary = _.str.clean(/((?:.|\n)*?\.[\s$])/.exec(text)?[1] || text)
     @comment = marked(text).replace /\n+/g, ' '
+
+    sentence = /((?:.|\n)*?[.#][\s$])/.exec(text)
+    sentence = sentence[1].replace(/\s*#\s*$/, '') if sentence
+    @summary = _.str.clean(sentence || text)
 
   # Get a JSON representation of the object
   #
