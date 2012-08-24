@@ -1,4 +1,5 @@
 %head
+  %meta{ charset: 'UTF-8' }
   %title= @title
   %link{ rel: 'stylesheet', href: "#{ @path }assets/codo.css", type: 'text/css' }
   %script{ src: "#{ @path }assets/codo.js" }
