@@ -1,5 +1,9 @@
 # Master
 
+- [#56](https://github.com/netzpirat/codo/pull/56): Mark the document as UTF-8. ([@alappe][])
+
+# Version 1.2.2 - August 23, 2012
+
 - [#55](https://github.com/netzpirat/codo/issues/55): Markdown Headings in Codo comments fixed.
 
 # Version 1.2.1 - August 16, 2012
@@ -139,6 +143,7 @@
 
 - Initial release to reserve the NPM name. ([@netzpirat][])
 
+[@alappe]: https://github.com/alappe
 [@dnagir]: https://github.com/dnagir
 [@inossidabile]: https://github.com/inossidabile
 [@mattijs]: https://github.com/mattijs
