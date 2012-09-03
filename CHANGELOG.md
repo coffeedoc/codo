@@ -1,3 +1,7 @@
+# Master
+
+- [#58](https://github.com/netzpirat/codo/pull/58): Narrow constant regexp for comment conversion.
+
 # Version 1.2.3 - August 24, 2012
 
 - [#56](https://github.com/netzpirat/codo/pull/56): Mark the document as UTF-8. ([@alappe][])

@@ -113,7 +113,7 @@ module.exports = class Parser
     indentComment  = 0
 
     for line in content.split('\n')
-    
+
       blockComment = /^\s*#{3}/.exec(line)
       if blockComment || inBlockComment
         inBlockComment = !inBlockComment if blockComment
@@ -126,14 +126,14 @@ module.exports = class Parser
           else
             inComment = true
             indentComment =  commentLine[1].length - 1
-  
+
             comment.push whitespace(indentComment) + '###'
             comment.push commentLine[2]?.replace /#/g, "\u0091#"
         else
           if inComment
             inComment = false
             comment.push whitespace(indentComment) + '###'
-  
+
             # Push here comments only before certain lines
             if ///
                  ( # Class
@@ -145,13 +145,13 @@ module.exports = class Parser
                  | # Function
                    @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
                  | # Constant
-                   @[$A-Z_][A-Z_]*)
+                   ^\s*@[$A-Z_][A-Z_]*)
                ///.exec line
-  
+
               result.push c for c in comment
-  
+
             comment = []
-  
+
           result.push line
 
     result.join('\n')
