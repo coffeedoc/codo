@@ -54,7 +54,19 @@ module.exports = class Generator
   #
   generateIndex: ->
     index = @options.readme || 'class_index'
-    @templater.render 'frames', { index: index, path: '' }, 'index.html'
+
+    list = if @parser.classes.length isnt 0
+             'class_list'
+           else if @parser.files.length isnt 0
+             'file_list'
+           else if @parser.mixins.length isnt 0
+             'mixin_list'
+           else if @parser.getAllMethods().length isnt 0
+             'method_list'
+           else
+             'extra_list'
+
+    @templater.render 'frames', { list: list, index: index, path: '' }, 'index.html'
 
   # Generates the pages for all the classes.
   #
