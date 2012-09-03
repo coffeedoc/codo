@@ -21,10 +21,16 @@
             %a.noframes{ href: '#' }> no frames
 
     #search
-      %a#class_list_link{ href: "#{ @path }class_list.html" } Classes
-      %a#mixin_list_link{ href: "#{ @path }mixin_list.html" } Mixins
-      %a#method_list_link{ href: "#{ @path }method_list.html" } Methods
-      %a#file_list_link{ href: "#{ @path }file_list.html" } Files
+      - if @classCount isnt 0
+        %a#class_list_link{ href: "#{ @path }class_list.html" } Classes
+      - if @mixinCount isnt 0
+        %a#mixin_list_link{ href: "#{ @path }mixin_list.html" } Mixins
+      - if @fileCount isnt 0
+        %a#file_list_link{ href: "#{ @path }file_list.html" } Files
+      - if @methodCount isnt 0
+        %a#method_list_link{ href: "#{ @path }method_list.html" } Methods
+      - if @extraCount isnt 0
+        %a#extra_list_link{ href: "#{ @path }extra_list.html" } Extras
 
   %iframe#search_frame
 
@@ -57,11 +63,14 @@
         %span Ctrl-I
         Mixin list
       %li
+        %span Ctrl-F
+        File list
+      %li
         %span Ctrl-M
         Method list
       %li
-        %span Ctrl-F
-        File list
+        %span Ctrl-E
+        Extras list
 
     %p
       You can focus and blur the search input:

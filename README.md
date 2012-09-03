@@ -538,8 +538,9 @@ You can focus a list in frame mode or toggle a tab in frameless mode:
 
 * Class list: `Ctrl-C`
 * Mixin list: `Ctrl-I`
-* Method list: `Ctrl-M`
 * File list: `Ctrl-F`
+* Method list: `Ctrl-M`
+* Extras list: `Ctrl-E`
 
 You can focus and blur the search input:
 

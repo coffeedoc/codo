@@ -19,7 +19,7 @@ module.exports = class Generator
   #
   constructor: (@parser, @options) ->
     @referencer = new Referencer(@parser.classes, @parser.mixins, @options)
-    @templater = new Templater(@options, @referencer)
+    @templater = new Templater(@options, @referencer, @parser)
 
   # Generate the documentation. Without callback, the documentation
   # is written to the file system, with callback, the file content

@@ -186,6 +186,9 @@ module.exports = class Parser
       for clazz in @classes
         @methods = _.union @methods, clazz.getMethods()
 
+      for mixin in @mixins
+        @methods = _.union @methods, mixin.getMethods()
+
     @methods
 
   # Get all parsed variables

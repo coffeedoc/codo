@@ -5,12 +5,7 @@
     #content.list
       %h1.full_list_header Method List
 
-      %nav
-        %a{ target: '_self', href: 'class_list.html' } Classes
-        %a{ target: '_self', href: 'mixin_list.html' } Mixins
-        %a{ target: '_self', href: 'method_list.html' } Methods
-        %a{ target: '_self', href: 'file_list.html' } Files
-        %a{ target: '_self', href: 'extra_list.html' } Extras
+      != @JST['partials/list_nav'](@)
 
       #search
         Search:

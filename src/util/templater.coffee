@@ -14,8 +14,9 @@ module.exports = class Templater
   #
   # @param [Object] options the options
   # @param [Referencer] referencer the link type referencer
+  # @param [Parser] parser the codo parser
   #
-  constructor: (@options, @referencer) ->
+  constructor: (@options, @referencer, @parser) ->
     @JST = []
 
     @globalContext =
@@ -26,6 +27,11 @@ module.exports = class Templater
       title: @options.title
       referencer: @referencer
       analytics: @options.analytics
+      fileCount: @parser.files.length
+      classCount: @parser.classes.length
+      mixinCount: @parser.mixins.length
+      methodCount: @parser.getAllMethods().length
+      extraCount: _.union([@options.readme], @options.extras).length
 
     for filename in walkdir.sync path.join(__dirname, '..', '..', 'theme', 'default', 'templates')
       if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename

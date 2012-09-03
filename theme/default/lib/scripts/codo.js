@@ -275,6 +275,9 @@
     key('⌃+f', function() {
       return loadSearch('file_list.html', 'file_list_link');
     });
+    key('⌃+e', function() {
+      return loadSearch('extra_list.html', 'extra_list_link');
+    });
     key('⌃+h', function() {
       if (parent.frames.main) {
         return parent.frames.main.$('#help').toggle();
