@@ -1,5 +1,6 @@
 # Master
 
+- Show only tabs/list that aren't empty and detect the best initial view.
 - Allow non-class methods and constants to be documented.
 - [#58](https://github.com/netzpirat/codo/pull/58): Narrow constant regexp for comment conversion.
 
