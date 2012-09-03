@@ -1,5 +1,6 @@
 # Master
 
+- Allow non-class methods and constants to be documented.
 - [#58](https://github.com/netzpirat/codo/pull/58): Narrow constant regexp for comment conversion.
 
 # Version 1.2.3 - August 24, 2012

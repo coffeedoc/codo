@@ -38,12 +38,14 @@ module.exports = class Generator
     @generateClasses()
     @generateMixins()
     @generateFiles()
+    @generateExtras()
 
-    @generateClassAndMixinIndex()
+    @generateClassMixinFileExtraIndex()
 
     @generateClassAndMixinLists()
     @generateMethodList()
     @generateFileList()
+    @generateExtraList()
 
     @generateSearchData file
     @copyAssets() unless file
@@ -133,9 +135,47 @@ module.exports = class Generator
         breadcrumbs: breadcrumbs
       }, "mixins/#{ mixin.getFullName().replace(/\./g, '/') }.html"
 
-  # Generates the pages for all the extra files.
+  # Generate the pages for all the (non-class) files that contains methods
   #
   generateFiles: ->
+    for file in @parser.files
+      p = _.compact file.getPath().split('/')
+      assetPath = '../'
+      assetPath += '../' for segment in p
+
+      breadcrumbs = [
+        {
+        href: "#{ assetPath }class_index.html"
+        name: 'Index'
+        }
+      ]
+
+      breadcrumbs.unshift(@options.homepage) if @options.homepage
+
+      combined = []
+      for segment in p
+        combined.push segment
+        breadcrumbs.push
+          href: @referencer.getLink combined.join('.'), assetPath
+          name: segment
+
+      breadcrumbs.push
+        name: file.getFileName()
+
+      @templater.render 'file', {
+        path: assetPath
+        filename: file.getFileName()
+        filepath: file.getPath()
+        classname: file.getClassName()
+        methods: _.map file.getMethods(), (m) => @referencer.resolveDoc(m.toJSON(), file, assetPath)
+        constants: _.map _.filter(file.getVariables(), (variable) => variable.isConstant()), (m) => @referencer.resolveDoc(m.toJSON(), file, assetPath)
+        breadcrumbs: breadcrumbs
+      }, "files/#{ file.getFullName() }.html"
+
+  #
+  # Generates the pages for all the extra files.
+  #
+  generateExtras: ->
     for extra in _.union [@options.readme], @options.extras
       try
         if fs.existsSync extra
@@ -159,7 +199,7 @@ module.exports = class Generator
 
           breadcrumbs.unshift(@options.homepage) if @options.homepage
 
-          @templater.render 'file', {
+          @templater.render 'extra', {
             path: assetPath
             filename: extra,
             content: content
@@ -171,23 +211,32 @@ module.exports = class Generator
 
   # Generate the alphabetical index of all classes and mixins.
   #
-  generateClassAndMixinIndex: ->
+  generateClassMixinFileExtraIndex: ->
     sortedClasses = {}
+    sortedFiles = {}
 
     # Sort in character group
     for code in [97..122]
       char = String.fromCharCode(code)
+
       classes = _.filter @parser.classes, (clazz) -> clazz.getName().toLowerCase()[0] is char
-      mixins = _.filter @parser.mixins, (mixin) -> mixin.getName().toLowerCase()[0] is char
+      mixins  = _.filter @parser.mixins,  (mixin) -> mixin.getName().toLowerCase()[0] is char
+      files   = _.filter @parser.files,   (file)  -> file.getFileName().toLowerCase()[0] is char
+
       if classes.length + mixins.length > 0
         sortedClasses[char] = []
         sortedClasses[char].push x for x in classes unless _.isEmpty classes
         sortedClasses[char].push x for x in mixins unless _.isEmpty mixins
 
+      if files.length > 0
+        sortedFiles[char] = []
+        sortedFiles[char].push x for x in files
+
     @templater.render 'index', {
       path: ''
       classes: sortedClasses
-      files: _.union [@options.readme], @options.extras.sort()
+      files: sortedFiles
+      extras: _.union [@options.readme], @options.extras.sort()
       breadcrumbs: []
     }, 'class_index.html'
 
@@ -242,10 +291,17 @@ module.exports = class Generator
   generateMethodList: ->
     nonconstructors = _.filter @parser.getAllMethods(), (m) -> m.getName() isnt 'constructor'
     methods = _.map nonconstructors, (method) ->
+      href = switch method.entity.constructor.name
+               when 'Class'
+                 "classes/#{ method.entity.getFullName().replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"
+               when 'Mixin'
+                 "mixins/#{ method.entity.getFullName().replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"
+               when 'File'
+                 "files/#{ method.entity.getFullName() }.html##{ method.getName() }-#{ method.getType() }"
       {
         path: ''
         name: method.getName()
-        href: "#{if method.entity.constructor.name == 'Class' then 'classes' else 'mixins'}/#{ method.entity.getFullName().replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"
+        href: href
         classname: method.entity.getFullName()
         deprecated: method.doc?.deprecated
         type: method.type
@@ -258,10 +314,46 @@ module.exports = class Generator
   # Generates the drop down file list
   #
   generateFileList: ->
+    files = []
+
+    traverse = (entity, children) ->
+      if entity.getPath()
+        segments = entity.getPath().split('/')
+
+        # Create all namespaces
+        while segment = segments.shift()
+          child = _.find children, (c) -> c.name is segment
+
+          unless child
+            child =
+              name: segment
+            children.push child
+
+          child.children or= []
+          children = child.children
+
+      # Create a new class
+      children.push
+        name: entity.getFileName()
+        href: "files/#{ entity.getFullName() }.html"
+        path: entity.getPath()
+
+    # Create tree structure
+    for file in @parser.files
+      traverse file, files
+
     @templater.render 'file_list', {
       path: ''
-      files: _.union [@options.readme], @options.extras.sort()
+      files: files
     }, 'file_list.html'
+
+  # Generates the drop down extra list
+  #
+  generateExtraList: ->
+    @templater.render 'extra_list', {
+      path: ''
+      extras: _.union [@options.readme], @options.extras.sort()
+    }, 'extra_list.html'
 
   # Copy the styles and scripts.
   #
@@ -313,6 +405,17 @@ module.exports = class Generator
           t: method.getShortSignature()
           p: "mixins/#{ mixin.getFullName().replace(/\./g, '/') }.html##{ method.name }-#{ method.type }"
           h: mixin.getMixinName()
+
+    for f in @parser.files
+      search.push
+        t: f.getFileName()
+        p: "files/#{ f.getFullName() }.html"
+
+      for method in f.getMethods()
+        search.push
+          t: method.getShortSignature()
+          p: "files/#{ f.getFullName() }.html##{ method.name }-#{ method.type }"
+          h: f.getFileName()
 
     for f in _.union([@options.readme], @options.extras.sort())
       search.push

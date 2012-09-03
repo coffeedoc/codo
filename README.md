@@ -1,8 +1,7 @@
 # Codo [![Build Status](https://secure.travis-ci.org/netzpirat/codo.png)](http://travis-ci.org/netzpirat/codo)
 
 Codo is a [CoffeeScript](http://coffeescript.org/) API documentation generator, similar to [YARD](http://yardoc.org/).
-Its generated documentation is focused on CoffeeScript class syntax for classical inheritance and not for JavaScript's
-prototypal inheritance.
+Its generated documentation is focused on CoffeeScript class syntax for classical inheritance.
 
 ## Features
 
@@ -449,6 +448,11 @@ You can use `@concern` to include and extend the correspondent properties:
 # @concern Example.Animal.Speed
 class Example.Animal.Lion
 ```
+
+### Non-class methods and variables
+
+You can also document your non-class, top level functions and constants within a file. As soon Codo detects these types
+within a file, it will be added to the file list and you can browse your file methods and constants.
 
 ## Text processing
 

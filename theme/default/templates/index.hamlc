@@ -10,25 +10,42 @@
       #listing
         %h1.alphaindex Alphabetic Index
 
-        %h2 File Listing
+        %h2 Extra File Listing
 
-        %ul#files
-          - for file in @files
-            %li
-              %a{ href: file + '.html', title: file, }= file
+        - if @extras.length isnt 0
+          %ul#files
+            - for extra in @extras
+              %li
+                %a{ href: extra + '.html', title: extra }= extra
 
-        %h2 Namespace Listing A-Z
+        - if @classes.length isnt 0
+          %h2 Class Listing A-Z
 
-        #index
-          - for char, classes of @classes
-            %ul
-              %li.letter= char
+          .index
+            - for char, classes of @classes
               %ul
-                - for clazz in classes
-                  %li
-                    %a{ href: "#{if clazz.constructor.name == 'Class' then 'classes' else 'mixins'}/#{ clazz.getFullName().replace(/\./g, '/') }.html"}= clazz.getName()
-                    - if clazz.getNamespace()
-                      %small
-                        = surround '(', ')', -> clazz.getNamespace()
+                %li.letter= char
+                %ul
+                  - for clazz in classes
+                    %li
+                      %a{ href: "#{if clazz.constructor.name == 'Class' then 'classes' else 'mixins'}/#{ clazz.getFullName().replace(/\./g, '/') }.html"}= clazz.getName()
+                      - if clazz.getNamespace()
+                        %small
+                          = surround '(', ')', -> clazz.getNamespace()
+
+        - if @files.length isnt 0
+          %h2 File Listing A-Z
+
+          .index
+            - for char, files of @files
+              %ul
+                %li.letter= char
+                %ul
+                  - for file in files
+                    %li
+                      %a{ href: "files/#{ file.getFullName() }.html" }= file.getFileName()
+                      - if file.getPath()
+                        %small
+                          = surround '(', ')', -> file.getPath()
 
     != @JST['partials/footer'](@)

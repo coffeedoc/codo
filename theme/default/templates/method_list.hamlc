@@ -10,6 +10,7 @@
         %a{ target: '_self', href: 'mixin_list.html' } Mixins
         %a{ target: '_self', href: 'method_list.html' } Methods
         %a{ target: '_self', href: 'file_list.html' } Files
+        %a{ target: '_self', href: 'extra_list.html' } Extras
 
       #search
         Search:

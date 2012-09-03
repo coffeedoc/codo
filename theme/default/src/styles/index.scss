@@ -29,7 +29,7 @@
   }
 }
 
-#index {
+.index {
   @include column-count(3);
   @include column-width(33%);
 

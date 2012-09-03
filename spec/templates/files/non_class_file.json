@@ -1,0 +1,43 @@
+[
+    {
+        "file": "non_class_file.coffee",
+        "path": "spec/templates/files",
+        "methods": [
+            {
+                "doc": {
+                    "comment": "<p>Says hello to a person </p> ",
+                    "summary": "Says hello to a person",
+                    "params": [
+                        {
+                            "type": "String",
+                            "name": "name",
+                            "desc": "the name of the persion"
+                        }
+                    ]
+                },
+                "type": "file",
+                "signature": "? (void) <strong>hello</strong>(name)",
+                "name": "hello",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "name",
+                        "splat": false
+                    }
+                ]
+            }
+        ],
+        "variables": [
+            {
+                "doc": {
+                    "comment": "<p>The greeting </p> ",
+                    "summary": "The greeting"
+                },
+                "type": "class",
+                "constant": true,
+                "name": "GREETING",
+                "value": "'Hay'"
+            }
+        ]
+    }
+]

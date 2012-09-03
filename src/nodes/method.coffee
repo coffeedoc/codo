@@ -36,10 +36,13 @@ module.exports = class Method extends Node
   #
   getType: ->
     unless @type
-      if @entity.constructor.name is 'Class'
-        @type = 'instance'
-      else
-        @type = 'mixin'
+      switch @entity.constructor.name
+        when 'Class'
+          @type = 'instance'
+        when 'Mixin'
+          @type = 'mixin'
+        when 'File'
+          @type = 'file'
 
     @type
 

@@ -32,18 +32,20 @@
 }
 
 /* line 32, ../../src/styles/index.scss */
-#index {
+.index {
   -webkit-column-count: 3;
   -moz-column-count: 3;
+  -ms-column-count: 3;
   -o-column-count: 3;
   column-count: 3;
   -webkit-column-width: 33%;
   -moz-column-width: 33%;
+  -ms-column-width: 33%;
   -o-column-width: 33%;
   column-width: 33%;
 }
 /* line 36, ../../src/styles/index.scss */
-#index > ul {
+.index > ul {
   margin: 0;
   padding: 0;
   padding-bottom: 10px;
@@ -51,19 +53,19 @@
   list-style: none;
 }
 /* line 44, ../../src/styles/index.scss */
-#index > ul > li.letter {
+.index > ul > li.letter {
   -webkit-column-break-after: avoid;
   font-size: 1.4em;
   padding-bottom: 10px;
   text-transform: uppercase;
 }
 /* line 52, ../../src/styles/index.scss */
-#index > ul > ul {
+.index > ul > ul {
   margin: 0;
   padding-left: 20px;
 }
 /* line 56, ../../src/styles/index.scss */
-#index > ul > ul small {
+.index > ul > ul small {
   color: #666;
   font-size: 0.7em;
 }

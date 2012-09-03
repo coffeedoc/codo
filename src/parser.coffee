@@ -3,6 +3,7 @@ _            = require 'underscore'
 _.str        = require 'underscore.string'
 CoffeeScript = require 'coffee-script'
 
+File         = require './nodes/file'
 Class        = require './nodes/class'
 Mixin        = require './nodes/mixin'
 
@@ -28,7 +29,6 @@ module.exports = class Parser
   #
   parseFile: (file) ->
     @parseContent fs.readFileSync(file, 'utf8'), file
-    @files.push file
 
   # Parse the given CoffeeScript content
   #
@@ -52,6 +52,10 @@ module.exports = class Parser
     catch error
       console.log('Parsed CoffeeScript source:\n%s', content) if @options.debug
       throw error
+
+    # Find top-level methods and constants that aren't within a class
+    fileClass = new File(root, file, @options)
+    @files.push(fileClass) unless fileClass.isEmpty()
 
     @linkAncestors root
 
@@ -176,6 +180,9 @@ module.exports = class Parser
     unless @methods
       @methods = []
 
+      for file in @files
+        @methods = _.union @methods, file.getMethods()
+
       for clazz in @classes
         @methods = _.union @methods, clazz.getMethods()
 
@@ -188,6 +195,9 @@ module.exports = class Parser
   getAllVariables: ->
     unless @variables
       @variables = []
+
+    for file in @files
+      @variables = _.union @variables, file.getVariables()
 
     for clazz in @classes
       @variables = _.union @variables, clazz.getVariables()
@@ -238,6 +248,9 @@ module.exports = class Parser
   #
   toJSON: ->
     json = []
+
+    for file in @files
+      json.push file.toJSON()
 
     for clazz in @classes
       json.push clazz.toJSON()

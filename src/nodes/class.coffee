@@ -27,7 +27,7 @@ module.exports = class Class extends Node
 
       previousExp = null
 
-      for exp in @node.body.expressions
+      for exp in @node.body?.expressions || @node.expressions
         switch exp.constructor.name
 
           when 'Assign'
@@ -74,7 +74,7 @@ module.exports = class Class extends Node
 
   # Alias for {#getClassName}
   #
-  # @param (see #getClassName)
+  # @return [String] the full class name
   #
   getFullName: ->
     @getClassName()

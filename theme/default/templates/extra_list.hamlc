@@ -2,7 +2,7 @@
 %html
   != @JST['partials/head'](@)
   %body.list
-    #content.tree.list
+    #content.list
       %h1.full_list_header File List
 
       %nav
@@ -16,18 +16,7 @@
         Search:
         %input{ type: 'text' }
 
-      - createLevel = (files) ->
-        %ul
-          - for file in files
-            %li
-              - if file.href
-                %a{ href: file.href, target: 'main' }= file.name
-                %small.namespace
-                  = file.path
-              - else
-                %span
-                  = file.name
-
-            = createLevel(file.children) if file.children
-
-      = createLevel @files
+      %ul
+        - for extra in @extras
+          %li
+            %a{ href: extra + '.html', target: 'main', title: extra, }= extra
