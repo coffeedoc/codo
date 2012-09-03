@@ -1,4 +1,4 @@
-# Master
+# Version 1.3.0 - September 3, 2012
 
 - Show only tabs/list that aren't empty and detect the best initial view.
 - Allow non-class methods and constants to be documented.
