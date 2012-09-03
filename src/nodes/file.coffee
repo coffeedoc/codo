@@ -42,7 +42,9 @@ module.exports = class File extends Class
   # @return [String] the file path
   #
   getPath: ->
-    Path.dirname @getFullName()
+    path = Path.dirname @getFullName()
+    path = '' if path is '.'
+    path
 
   # Test if the file doesn't contain any top-level
   # methods and variables.
