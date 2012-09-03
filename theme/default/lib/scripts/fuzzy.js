@@ -3,15 +3,25 @@
 
   window.fuzzy = function(pattern, items, options) {
     var addMatch, after, appendMatch, before, doHighlight, flags, hasTextBeforeSeparator, ignorecase, ignorespace, inner, isMatch, item, len, limit, matches, parts, post, postPart, postSep, postSepRegex, pre, prePart, preParts, preSep, preSepRegex, prependMatch, separate, separator, _i, _len;
-    if (options == null) options = {};
+    if (options == null) {
+      options = {};
+    }
     pre = options.pre, post = options.post, limit = options.limit, separator = options.separator, ignorecase = options.ignorecase, ignorespace = options.ignorespace, separate = options.separate;
-    if (ignorecase == null) ignorecase = true;
-    if (ignorespace == null) ignorespace = true;
-    if (separate == null) separate = false;
+    if (ignorecase == null) {
+      ignorecase = true;
+    }
+    if (ignorespace == null) {
+      ignorespace = true;
+    }
+    if (separate == null) {
+      separate = false;
+    }
     if (separate && !separator) {
       throw new Error("You must pass a separator when options.separate is true.");
     }
-    if (ignorespace) pattern = pattern.replace(/\s/g, "");
+    if (ignorespace) {
+      pattern = pattern.replace(/\s/g, "");
+    }
     matches = [];
     flags = (ignorecase && "i") || "";
     doHighlight = pre && post;
@@ -49,7 +59,9 @@
     postSepRegex = new RegExp("^.*?" + (makePattern(postPart)) + ".*$", flags);
     for (_i = 0, _len = items.length; _i < _len; _i++) {
       item = items[_i];
-      if (matches.length === limit) break;
+      if (matches.length === limit) {
+        break;
+      }
       hasTextBeforeSeparator = separator && !!~item.indexOf(separator);
       if (!hasTextBeforeSeparator && item.indexOf(pattern) === 0) {
         if (doHighlight) {
@@ -70,7 +82,9 @@
       }
       isMatch = !preSepRegex || preSepRegex.test(preSep);
       isMatch && (isMatch = !postSepRegex || postSepRegex.test(postSep));
-      if (!isMatch) continue;
+      if (!isMatch) {
+        continue;
+      }
       if (doHighlight) {
         after = surroundMatch(postSep, postPart, pre, post, ignorecase);
         if (hasTextBeforeSeparator) {

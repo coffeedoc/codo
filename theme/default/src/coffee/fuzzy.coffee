@@ -152,6 +152,7 @@ window.fuzzy = (pattern, items, options={}) ->
   return matches
 
 
+
 # Internal:
 #
 # Returns a String to be turned into a RegExp.
@@ -159,6 +160,7 @@ makePattern = (pattern) ->
   chars = pattern.split ""
   regex = []
   for c in chars
+    c = if c is "\\" then "\\\\" else c
     regex.push "([#{ c }])"
   return regex.join "[^/]*?"
 
