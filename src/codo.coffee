@@ -51,7 +51,7 @@ module.exports = class Codo
 
     # Read .codoopts project defaults
     try
-      if fs.existsSync '.codoopts'
+      if (fs.existsSync || path.existsSync)('.codoopts')
         configs = fs.readFileSync '.codoopts', 'utf8'
 
         for config in configs.split('\n')
@@ -175,7 +175,7 @@ module.exports = class Codo
           parser = new Parser(options)
 
           for input in options.inputs
-            if fs.existsSync input
+            if (fs.existsSync || path.existsSync)(input)
               for filename in walkdir.sync input
                 if filename.match /\._?coffee$/
                   try
@@ -214,7 +214,7 @@ module.exports = class Codo
       'src'
       'lib'
       'app'
-    ], fs.exists, (results) ->
+    ], (fs.exists || path.exists), (results) ->
       results.push '.' if results.length is 0
       done null, results
 
@@ -228,7 +228,7 @@ module.exports = class Codo
       'readme.markdown'
       'readme.md'
       'readme'
-    ], fs.exists, (results) -> done null, _.first(results) || ''
+    ], (fs.exists || path.exists), (results) -> done null, _.first(results) || ''
 
   # Find extra project files.
   #
@@ -244,4 +244,4 @@ module.exports = class Codo
       'LICENSE.markdown'
       'LICENSE.MIT'
       'LICENSE.GPL'
-    ], fs.exists, (results) -> done null, results
+    ], (fs.exists || path.exists), (results) -> done null, results

@@ -1,5 +1,6 @@
 # Master
 
+- [#59](https://github.com/netzpirat/codo/pull/59): Fix Node < 0.8 compatibility.
 - [#60](https://github.com/netzpirat/codo/pull/60): Add Streamline support by also parse `._coffee` files.
 
 # Version 1.3.0 - September 3, 2012

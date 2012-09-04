@@ -190,7 +190,7 @@ module.exports = class Generator
   generateExtras: ->
     for extra in _.union [@options.readme], @options.extras
       try
-        if fs.existsSync extra
+        if (fs.existsSync || path.existsSync)(extra)
           content = fs.readFileSync extra, 'utf-8'
           content = marked content if /\.(markdown|md)$/.test extra
           numSlashes = extra.split('/').length - 1
