@@ -1,3 +1,7 @@
+# Master
+
+- [#60](https://github.com/netzpirat/codo/pull/60): Add Streamline support by also parse `._coffee` files.
+
 # Version 1.3.0 - September 3, 2012
 
 - Show only tabs/list that aren't empty and detect the best initial view.

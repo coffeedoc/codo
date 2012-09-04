@@ -177,7 +177,7 @@ module.exports = class Codo
           for input in options.inputs
             if fs.existsSync input
               for filename in walkdir.sync input
-                if filename.match /\.coffee$/
+                if filename.match /\._?coffee$/
                   try
                     parser.parseFile filename.substring process.cwd().length + 1
                   catch error
