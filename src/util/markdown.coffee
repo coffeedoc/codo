@@ -18,6 +18,8 @@ module.exports = class Markdown
   # @param [Boolean] limit if elements should be limited
   #
   @convert: (markdown, limit = false, allowed = Markdown.limitedTags) ->
+    return if markdown is undefined
+
     html = marked(markdown)
 
     # Cleanup newlines

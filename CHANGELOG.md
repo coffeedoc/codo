@@ -1,3 +1,8 @@
+# Master
+
+- Improve GitHub Falvored Markdown compatibility
+- Allow limited Markdown in `@return`, `@param`, `@option`, `@see`, `@author`, `@copyright`, `@note`, `@todo`, `@since`, `@version` and `@deprecated` tags.
+
 # Version 1.3.1 - September 4, 2012
 
 - [#59](https://github.com/netzpirat/codo/pull/59): Fix Node < 0.8 compatibility.

@@ -90,25 +90,25 @@
     %ul.author
       - for author in @doc.authors
         %li
-          = author
+          != author
 
   - if @doc?.copyright
     %h3 Copyright:
     %ul.copyright
       %li
-        = @doc.copyright
+        != @doc.copyright
 
   - if @doc?.since
     %h3 Since:
     %ul.since
       %li
-        = @doc?.since
+        != @doc?.since
 
   - if @doc?.version
     %h3 Version:
     %ul.version
       %li
-        = @doc?.version
+        != @doc?.version
 
   - if @doc?.see
     %h3 See also:
@@ -116,11 +116,11 @@
       - for see in @doc.see
         %li
           - if see.reference && see.label
-            %a{ href: see.reference }= see.label
+            %a{ href: see.reference }!= see.label
           - else if see.reference
             %a{ href: see.reference }= see.reference
           - else
-            = see.label
+            != see.label
 
   - if @doc?.overloads
     .overloads

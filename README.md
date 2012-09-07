@@ -458,8 +458,12 @@ within a file, it will be added to the file list and you can browse your file me
 
 ### GitHub Flavored Markdown
 
-Codo comments and extra files written in [Markdown](http://daringfireball.net/projects/markdown/) syntax are rendered as
+Codo class, mixin and method documentation and extra files written in
+[Markdown](http://daringfireball.net/projects/markdown/) syntax are rendered as full
 [GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/).
+
+The `@return`, `@param`, `@option`, `@see`, `@author`, `@copyright`, `@note`, `@todo`, `@since`, `@version` and
+`@deprecated` tags rendered with a limited Markdown syntax, which means that only inline elements will be returned.
 
 ### Automatically link references
 

@@ -2,6 +2,21 @@
     {
         "file": "spec/templates/classes/class_description_markdown.coffee",
         "doc": {
+            "abstract": "<em>Template methods</em> must be implemented",
+            "deprecated": "<strong>nobody</strong> uses this",
+            "version": "<em>1.1.0</em>",
+            "since": "<strong>1.0.0</strong>",
+            "todos": [
+                "Allow <strong>markdown</strong> in todos"
+            ],
+            "notes": [
+                "Also notes have <em>now</em> <del>Markdown</del>"
+            ],
+            "authors": [
+                "Mickey",
+                "<strong>Donald</strong>"
+            ],
+            "copyright": "<em>No Copyright</em>",
             "comment": "<p>Codo - the CoffeeScript API documentation generator</p><h1>Header 1</h1><p>This is a paragraph.</p><h2>Header 2</h2><p>This is a paragraph.</p><h3>Header 3</h3><p>This is a paragraph.</p><h4>Header 4</h4><p>This is a paragraph.</p><h5>Header 5</h5><p>This is a paragraph.</p><h6>Header 6</h6><p>This is a paragraph.</p>",
             "summary": "Codo - the CoffeeScript API documentation generator"
         },
@@ -10,7 +25,77 @@
             "name": "TestMarkdownDocumentation",
             "namespace": ""
         },
-        "methods": [],
+        "methods": [
+            {
+                "doc": {
+                    "comment": "",
+                    "summary": "",
+                    "params": [
+                        {
+                            "type": "Hash",
+                            "name": "a",
+                            "desc": "this <em>must</em> be supplied"
+                        }
+                    ],
+                    "options": {
+                        "a": [
+                            {
+                                "type": "String",
+                                "name": "prop",
+                                "desc": "this is the <strong>URL</strong>"
+                            }
+                        ]
+                    },
+                    "see": [
+                        {
+                            "reference": "#another",
+                            "label": "for <em>more</em> information"
+                        }
+                    ],
+                    "returnValue": {
+                        "type": "String",
+                        "desc": "something <strong>very</strong> important"
+                    }
+                },
+                "type": "instance",
+                "signature": "- (String) <strong>test</strong>(a)",
+                "name": "test",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "a",
+                        "splat": false
+                    }
+                ]
+            },
+            {
+                "doc": {
+                    "comment": "",
+                    "summary": "",
+                    "params": [
+                        {
+                            "type": "String",
+                            "name": "a",
+                            "desc": "this <em>must</em> be supplied"
+                        }
+                    ],
+                    "returnValue": {
+                        "type": "?",
+                        "desc": "A <em>very</em> nice thing"
+                    }
+                },
+                "type": "instance",
+                "signature": "- (?) <strong>another</strong>(a)",
+                "name": "another",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "a",
+                        "splat": false
+                    }
+                ]
+            }
+        ],
         "variables": []
     }
 ]

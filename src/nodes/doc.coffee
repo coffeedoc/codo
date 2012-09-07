@@ -73,12 +73,12 @@ module.exports = class Doc extends Node
       if returnValue = /^@return\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @returnValue =
           type: returnValue[1]
-          desc: returnValue[2]
+          desc: Markdown.convert(returnValue[2], true)
 
       else if returnValue = /^@return\s+(.+)/i.exec line
         @returnValue =
           type: '?'
-          desc: returnValue[1]
+          desc: Markdown.convert(returnValue[1], true)
 
       else if param = /^@param\s+\(see ((?:[$A-Za-z_\x7f-\uffff][$.\w\x7f-\uffff]*)?[#.][$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)\)/i.exec line
         @params or= []
@@ -96,14 +96,14 @@ module.exports = class Doc extends Node
         @params.push
           type: param[2]
           name: param[1]
-          desc: param[3] or ''
+          desc: Markdown.convert(param[3] || '', true)
 
       else if param = /^@param\s+[\[\{](.+?)[\]\}]\s+([^ ]+)(?:\s+(.+))?/i.exec line
         @params or= []
         @params.push
           type: param[1]
           name: param[2]
-          desc: param[3] or ''
+          desc: Markdown.convert(param[3] || '', true)
 
       else if option = /^@option\s+([^ ]+)\s+[\[\{](.+?)[\]\}]\s+([^ ]+)(?:\s+(.+))?/i.exec line
         @paramsOptions or= {}
@@ -112,28 +112,28 @@ module.exports = class Doc extends Node
         @paramsOptions[option[1]].push
           type: option[2]
           name: option[3]
-          desc: option[4] or ''
+          desc: Markdown.convert(option[4] || '', true)
 
       else if see = /^@see\s+([^\s]+)(?:\s+(.+))?/i.exec line
         @see or= []
         @see.push
           reference: see[1]
-          label: see[2]
+          label: Markdown.convert(see[2], true)
 
       else if author = /^@author\s+(.+)/i.exec line
         @authors or= []
-        @authors.push author[1]
+        @authors.push Markdown.convert(author[1], true)
 
       else if copyright = /^@copyright\s+(.+)/i.exec line
-        @copyright = copyright[1]
+        @copyright = Markdown.convert(copyright[1], true)
 
       else if note = /^@note\s+(.+)/i.exec line
         @notes or= []
-        @notes.push note[1]
+        @notes.push Markdown.convert(note[1], true)
 
       else if todo = /^@todo\s+(.+)/i.exec line
         @todos or= []
-        @todos.push todo[1]
+        @todos.push Markdown.convert(todo[1], true)
 
       else if example = /^@example(?:\s+(.+))?/i.exec line
         title = example[1] || ''
@@ -149,19 +149,19 @@ module.exports = class Doc extends Node
             code: code.join '\n'
 
       else if abstract = /^@abstract(?:\s+(.+))?/i.exec line
-        @abstract = abstract[1] || ''
+        @abstract = Markdown.convert(abstract[1] || '', true)
 
       else if /^@private/.exec line
         @private = true
 
       else if since = /^@since\s+(.+)/i.exec line
-        @since = since[1]
+        @since = Markdown.convert(since[1], true)
 
       else if version = /^@version\s+(.+)/i.exec line
-        @version = version[1]
+        @version = Markdown.convert(version[1], true)
 
       else if deprecated = /^@deprecated\s+(.*)/i.exec line
-        @deprecated = deprecated[1]
+        @deprecated = Markdown.convert(deprecated[1], true)
 
       else if mixin = /^@mixin/i.exec line
         @mixin = true
