@@ -17,8 +17,8 @@
                     "summary": "This should not be swallowed"
                 },
                 "type": "instance",
-                "signature": "- (void) <strong>hehe</strong>()",
-                "name": "hehe",
+                "signature": "- (void) <strong>test</strong>()",
+                "name": "test",
                 "bound": false,
                 "parameters": []
             }
