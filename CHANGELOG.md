@@ -1,9 +1,10 @@
 # Master
 
-- Improve GitHub Falvored Markdown compatibility
-- [#63](https://github.com/netzpirat/codo/issues/63):Allow limited Markdown in `@return`, `@param`, `@option`, `@see`, `@author`, `@copyright`, `@note`, `@todo`, `@since`, `@version` and `@deprecated` tags.
-- [#62](https://github.com/netzpirat/codo/issues/62): Do not search for references within code blocks (escape {} by surround with backticks).
+- [#64](https://github.com/netzpirat/codo/pull/64): Fix comment preprocessing by detect block comments that start and ends on the same line.
 - [#57](https://github.com/netzpirat/codo/pull/57): Fix detection of standalone methods.
+- [#62](https://github.com/netzpirat/codo/issues/62): Do not search for references within code blocks (escape {} by surround with backticks).
+- [#63](https://github.com/netzpirat/codo/issues/63):Allow limited Markdown in `@return`, `@param`, `@option`, `@see`, `@author`, `@copyright`, `@note`, `@todo`, `@since`, `@version` and `@deprecated` tags.
+- Improve GitHub Falvored Markdown compatibility
 
 # Version 1.3.1 - September 4, 2012
 

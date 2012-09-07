@@ -121,7 +121,8 @@ module.exports = class Parser
 
     for line in content.split('\n')
 
-      blockComment = /^\s*#{3}/.exec(line)
+      blockComment = /^\s*#{3}/.exec(line) && !/^\s*#{3}.+#{3}/.exec(line)
+
       if blockComment || inBlockComment
         inBlockComment = !inBlockComment if blockComment
         result.push line
