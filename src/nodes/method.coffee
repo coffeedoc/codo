@@ -123,6 +123,14 @@ module.exports = class Method extends Node
           @name = @name.substring(5)
           @type = 'class'
 
+        if /^module.exports\./.test @name
+          @name = @name.substring(15)
+          @type = 'class'
+
+        if /^exports\./.test @name
+          @name = @name.substring(8)
+          @type = 'class'
+
       @name
 
     catch error

@@ -1,5 +1,8 @@
-Path  = require 'path'
-Class = require './class'
+Path     = require 'path'
+Class    = require './class'
+Method   = require './method'
+Variable = require './variable'
+Doc      = require './doc'
 
 # The file class is a `fake` class that wraps the
 # file body to capture top-level assigned methods.
@@ -13,7 +16,43 @@ module.exports = class File extends Class
   # @param [Object] options the parser options
   #
   constructor: (@node, @fileName, @options) ->
-    super @node, @fileName, @options
+    try
+      @methods = []
+      @variables = []
+
+      previousExp = null
+
+      for exp in @node.expressions
+        switch exp.constructor.name
+
+          when 'Assign'
+            doc = previousExp if previousExp?.constructor.name is 'Comment'
+
+            switch exp.value?.constructor.name
+              when 'Code'
+                @methods.push(new Method(@, exp, @options, doc))
+              when 'Value'
+                if exp.value.base.value
+                  @variables.push new Variable(@, exp, @options, true, doc)
+
+            doc = null
+
+          when 'Value'
+            previousProp = null
+
+            for prop in exp.base.properties
+              doc = previousProp if previousProp?.constructor.name is 'Comment'
+
+              if prop.value?.constructor.name is 'Code'
+                @methods.push new Method(@, prop, @options, doc)
+
+              doc = null
+              previousProp = prop
+        previousExp = exp
+
+    catch error
+      console.warn('File class error:', @node, error) if @options.verbose
+
 
   # Get the full file name with path
   #
@@ -52,7 +91,7 @@ module.exports = class File extends Class
   # @return [Boolean] true if empty
   #
   isEmpty: ->
-    @getMethods().length is 0 and @getVariables.length is 0
+    @getMethods().length is 0 and @getVariables().length is 0
 
   # Get a JSON representation of the object
   #

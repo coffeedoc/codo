@@ -25,6 +25,52 @@
                         "splat": false
                     }
                 ]
+            },
+            {
+                "doc": {
+                    "comment": "<p>Says bye to a person</p>",
+                    "summary": "Says bye to a person",
+                    "params": [
+                        {
+                            "type": "String",
+                            "name": "name",
+                            "desc": "the name of the persion"
+                        }
+                    ]
+                },
+                "type": "file",
+                "signature": "? (void) <strong>bye</strong>(name)",
+                "name": "bye",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "name",
+                        "splat": false
+                    }
+                ]
+            },
+            {
+                "doc": {
+                    "comment": "<p>Say hi to a person</p>",
+                    "summary": "Say hi to a person",
+                    "params": [
+                        {
+                            "type": "String",
+                            "name": "name",
+                            "desc": "the name of the persion"
+                        }
+                    ]
+                },
+                "type": "class",
+                "signature": "+ (void) <strong>sayHi</strong>(hi)",
+                "name": "sayHi",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "hi",
+                        "splat": false
+                    }
+                ]
             }
         ],
         "variables": [

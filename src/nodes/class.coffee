@@ -27,7 +27,7 @@ module.exports = class Class extends Node
 
       previousExp = null
 
-      for exp in @node.body?.expressions || @node.expressions
+      for exp in @node.body.expressions
         switch exp.constructor.name
 
           when 'Assign'

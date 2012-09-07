@@ -3,6 +3,7 @@
 - Improve GitHub Falvored Markdown compatibility
 - [#63](https://github.com/netzpirat/codo/issues/63):Allow limited Markdown in `@return`, `@param`, `@option`, `@see`, `@author`, `@copyright`, `@note`, `@todo`, `@since`, `@version` and `@deprecated` tags.
 - [#62](https://github.com/netzpirat/codo/issues/62): Do not search for references within code blocks (escape {} by surround with backticks).
+- [#57](https://github.com/netzpirat/codo/pull/57): Fix detection of standalone methods.
 
 # Version 1.3.1 - September 4, 2012
 
