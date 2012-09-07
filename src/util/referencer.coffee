@@ -212,7 +212,11 @@ module.exports = class Referencer
   # @return [String] the text with hyperlinks
   #
   resolveTextReferences: (text = '', entity, path) ->
-    text.replace /\{([^\}]*)\}/gm, (match) =>
+    # Make curly braces within code blocks undetectable
+    text = text.replace /<code>.+?<\/code>/mg, (match) -> match.replace(/{/mg, "\u0091").replace(/}/mg, "\u0092")
+
+    # Search for references and replace them
+    text = text.replace /\{([^\}]*)\}/gm, (match) =>
       reference = arguments[1].split(' ')
       see = @resolveSee({ reference: reference[0], label: reference[1] }, entity, path)
 
@@ -220,6 +224,9 @@ module.exports = class Referencer
         "<a href='#{ see.reference }'>#{ see.label }</a>"
       else
         match
+
+    # Restore curly braces within code blocks
+    text = text.replace /<code>.+?<\/code>/, (match) -> match.replace(/\u0091/mg, '{').replace(/\u0092/mg, '}')
 
   # Resolves a @see link.
   #
@@ -305,10 +312,11 @@ module.exports = class Referencer
                 see.reference = undefined
                 console.log "[WARN] Cannot resolve link to #{ refMethod } of class #{ otherEntity.getFullName() } in class #{ entity.getFullName() }" unless @options.quiet
 
-           else
-             see.label = see.reference
-             see.reference = undefined
-             console.log "[WARN] Cannot find referenced class #{ refClass } in class #{ entity.getFullName() }" unless @options.quiet
+          else
+            console.log see
+            see.label = see.reference
+            see.reference = undefined
+            console.log "[WARN] Cannot find referenced class #{ refClass } in class #{ entity.getFullName() }" unless @options.quiet
 
         else
           see.label = see.reference
