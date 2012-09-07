@@ -8,7 +8,8 @@
           "parent": "Tower.Model.Relation"
         },
         "methods": [],
-        "variables": []
+        "variables": [],
+        "properties": []
       },
       {
         "file": "spec/templates/classes/inner_class.coffee",
@@ -27,6 +28,7 @@
             "parameters": []
           }
         ],
-        "variables": []
+        "variables": [],
+        "properties": []
       }
     ]

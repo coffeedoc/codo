@@ -100,6 +100,7 @@ module.exports = class Generator
         classData: @referencer.resolveDoc(clazz.toJSON(), clazz, assetPath)
         classMethods: _.map _.filter(clazz.getMethods(), (method) => method.type is 'class'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
         instanceMethods: _.map _.filter(clazz.getMethods(), (method) => method.type is 'instance'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
+        properties: clazz.properties
         constants: _.map _.filter(clazz.getVariables(), (variable) => variable.isConstant()), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
         subClasses: _.map @referencer.getDirectSubClasses(clazz), (c) -> c.getClassName()
         inheritedMethods: _.groupBy @referencer.getInheritedMethods(clazz), (m) -> m.entity.getClassName()
@@ -107,6 +108,7 @@ module.exports = class Generator
         extendedMethods: @referencer.getExtendedMethods(clazz)
         concernMethods: @referencer.getConcernMethods(clazz)
         inheritedConstants: _.groupBy @referencer.getInheritedConstants(clazz), (m) -> m.entity.getClassName()
+        inheritedProperties: _.groupBy @referencer.getInheritedProperties(clazz), (m) -> m.entity.getClassName()
         breadcrumbs: breadcrumbs
       }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
 

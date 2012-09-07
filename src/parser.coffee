@@ -81,7 +81,7 @@ module.exports = class Parser
             # The class is exported `module.exports = class Class`, take the comment before `module`
             if previous.value is 'exports'
               node = @previousNodes[@previousNodes.length-6]
-              doc = node if node.constructor.name is 'Comment'
+              doc = node if node?.constructor.name is 'Comment'
 
         if entity == 'mixin'
           name = [child.variable.base.value]

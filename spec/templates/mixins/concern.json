@@ -14,7 +14,8 @@
       "namespace": "Example"
     },
     "methods": [],
-    "variables": []
+    "variables": [],
+    "properties": []
   },
   {
     "file": "spec/templates/mixins/concern.coffee",

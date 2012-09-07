@@ -126,6 +126,19 @@ module.exports = class Referencer
   getInheritedConstants: (clazz) ->
     _.filter @getInheritedVariables(clazz), (v) -> v.isConstant()
 
+  # Get all inherited properties.
+  #
+  # @param [Class] clazz the parent class
+  # @return [Array<Properties>] the properties
+  #
+  getInheritedProperties: (clazz) ->
+    unless _.isEmpty clazz.getParentClassName()
+      parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
+      if parentClass then _.union(parentClass.properties, @getInheritedProperties(parentClass)) else []
+
+    else
+      []
+
   # Create browsable links for known entities.
   #
   # @see #getLink

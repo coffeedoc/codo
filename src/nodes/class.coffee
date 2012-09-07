@@ -2,7 +2,9 @@ Node          = require './node'
 Method        = require './method'
 VirtualMethod = require './virtual_method'
 Variable      = require './variable'
+Property      = require './property'
 Doc           = require './doc'
+_             = require 'underscore'
 
 # A CoffeeScript class
 #
@@ -19,6 +21,7 @@ module.exports = class Class extends Node
     try
       @methods = []
       @variables = []
+      @properties = []
 
       @doc = new Doc(comment, @options)
 
@@ -32,6 +35,7 @@ module.exports = class Class extends Node
 
           when 'Assign'
             doc = previousExp if previousExp?.constructor.name is 'Comment'
+            doc or= swallowedDoc
 
             switch exp.value?.constructor.name
               when 'Code'
@@ -46,6 +50,7 @@ module.exports = class Class extends Node
 
             for prop in exp.base.properties
               doc = previousProp if previousProp?.constructor.name is 'Comment'
+              doc or= swallowedDoc
 
               switch prop.value?.constructor.name
                 when 'Code'
@@ -55,6 +60,53 @@ module.exports = class Class extends Node
 
               doc = null
               previousProp = prop
+
+          when 'Call'
+            doc = previousExp if previousExp?.constructor.name is 'Comment'
+            doc or= swallowedDoc
+
+            type = exp.variable?.base?.value
+            name = exp.args[0]?.base?.properties[0]?.variable?.base?.value
+
+            # This is a workaround for a strange CoffeeScript bug:
+            # Given the following snippet:
+            #
+            # class Test
+            #   # Doc a
+            #   set name: ->
+            #
+            #   # Doc B
+            #   set another: ->
+            #
+            # This will be converted to:
+            #
+            # class Test
+            #   ###
+            #   Doc A
+            #   ###
+            #   set name: ->
+            #
+            #   ###
+            #   Doc B
+            #   ###
+            #   set another: ->
+            #
+            # BUT, Doc B is now a sibling property of the previous `set name: ->` setter!
+            #
+            swallowedDoc = exp.args[0]?.base?.properties[1]
+
+            if name && (type is 'set' or type is 'get')
+              property = _.find(@properties, (p) -> p.name is name)
+
+              unless property
+                property = new Property(@, exp, name, doc)
+                @properties.push property
+
+              property.setter = true if type is 'set'
+              property.getter = true if type is 'get'
+
+              doc = null
+
         previousExp = exp
 
     catch error
@@ -202,11 +254,15 @@ module.exports = class Class extends Node
         parent: @getParentClassName()
       methods: []
       variables: []
+      properties: []
 
     for method in @getMethods()
       json.methods.push method.toJSON()
 
     for variable in @getVariables()
       json.variables.push variable.toJSON()
+
+    for property in @properties
+      json.properties.push property.toJSON()
 
     json

@@ -1,0 +1,48 @@
+[
+    {
+        "file": "spec/templates/properties/properties.coffee",
+        "doc": {
+            "comment": "<p>Property test class. It&#39;s almost the most difficult<br />part to come up with stupid examples.</p>",
+            "summary": "Property test class."
+        },
+        "class": {
+            "className": "Person",
+            "name": "Person",
+            "namespace": ""
+        },
+        "methods": [
+            {
+                "doc": {
+                    "comment": "<p>This should not be swallowed</p>",
+                    "summary": "This should not be swallowed"
+                },
+                "type": "instance",
+                "signature": "- (void) <strong>hehe</strong>()",
+                "name": "hehe",
+                "bound": false,
+                "parameters": []
+            }
+        ],
+        "variables": [],
+        "properties": [
+            {
+                "name": "name",
+                "comment": "The persons name",
+                "setter": true,
+                "getter": true
+            },
+            {
+                "name": "born",
+                "comment": "The persons relationship status",
+                "setter": false,
+                "getter": true
+            },
+            {
+                "name": "confession",
+                "comment": "The persons confession",
+                "setter": true,
+                "getter": false
+            }
+        ]
+    }
+]

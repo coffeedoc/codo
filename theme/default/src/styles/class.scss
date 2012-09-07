@@ -96,7 +96,7 @@
     }
   }
 
-  dl.constants {
+  dl.constants, dl.properties {
     margin-left: 40px;
 
     dt {
@@ -188,6 +188,17 @@
   .deprecated {
     background: #FFE5E5;
     border-color: #E9DADA;
+  }
+
+  .readonly {
+    background: #FFE5E5;
+    border-color: #E9DADA;
+
+    font-size: .85em;
+    font-weight: normal;
+    font-family: monospace;
+    padding: 2px 3px;
+    display: inline;
   }
 
   .bound {

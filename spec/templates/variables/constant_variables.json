@@ -24,6 +24,7 @@
         "name": "ANOTHER_CONST",
         "value": "['a', 'b']"
       }
-    ]
+    ],
+    "properties": []
   }
 ]

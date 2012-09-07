@@ -14,7 +14,8 @@
       "namespace": "SomeNamespace"
     },
     "methods": [],
-    "variables": []
+    "variables": [],
+    "properties": []
   },
   {
     "file": "spec/templates/mixins/include_mixin.coffee",

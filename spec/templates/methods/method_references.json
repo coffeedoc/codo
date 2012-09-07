@@ -49,7 +49,8 @@
         ]
       }
     ],
-    "variables": []
+    "variables": [],
+    "properties": []
   },
   {
     "file": "spec/templates/methods/method_references.coffee",
@@ -111,6 +112,7 @@
         ]
       }
     ],
-    "variables": []
+    "variables": [],
+    "properties": []
   }
 ]

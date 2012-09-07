@@ -80,6 +80,34 @@
               != succeed ',', =>
                 %a{ href: "#{ @path }classes/#{ child.replace(/\./g, '/') }.html"}= child
 
+      - if @properties.length isnt 0
+        %h2 Property Summary
+
+        %dl.properties
+          - for property in @properties
+            %dt{ id: "#{ property.name }-property" }
+              = property.name
+              - unless property.setter
+                %span.readonly.note.title Readonly
+            %dd
+              = property.comment
+
+      - for parent, properties of @inheritedProperties
+        - if @properties.length is 0
+          %h2 Property Summary
+
+        %h3.inherited
+          Properties inherited from
+          %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html"}= parent
+        %p.inherited
+          - for property in properties
+            - if property is @underscore.last properties
+              %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ property.name }-property"}= property.name
+            - else
+              != succeed ',', =>
+                %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ property.name }-property"}= property.name
+
+
       - if @constants.length isnt 0
         %h2 Constant Summary
 

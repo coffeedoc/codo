@@ -175,6 +175,7 @@
                 "name": "ANSWER",
                 "value": "42"
             }
-        ]
+        ],
+        "properties": []
     }
 ]

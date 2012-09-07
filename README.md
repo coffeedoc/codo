@@ -325,6 +325,26 @@ can also define types for Arrays with:
 getHerdMembers: (regions) ->
 ```
 
+### Properties
+
+Codo detects the given property pattern:
+
+```CoffeeScript
+class Person
+
+  get = (props) => @::__defineGetter__ name, getter for name, getter of props
+  set = (props) => @::__defineSetter__ name, setter for name, setter of props
+
+  # The persons name
+  get name: -> @_name
+  set name: (@_name) ->
+
+  # The persons age
+  get age: -> @_age
+```
+
+If you follow this convention, they will be shown in the generated documentation.
+
 ### Method overloading
 
 If you allow your method to take different parameters, you can describe the method overloading with the `@overload` tag:
