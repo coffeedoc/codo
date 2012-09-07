@@ -467,8 +467,9 @@ The `@return`, `@param`, `@option`, `@see`, `@author`, `@copyright`, `@note`, `@
 
 ### Automatically link references
 
-Codo comments and all tag texts will be parsed for references to other classes, methods and mixins and are automatically
-linked.
+Codo comments and all tag texts will be parsed for references to other classes, methods and mixins, and are automatically
+linked. The reference searching will not take place within code blocks, thus you can avoid reference searching errors
+by surround your code block that contains curly braces with backticks.
 
 There are several ways of link types supported and all can take an optional label after the link.
 
