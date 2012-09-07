@@ -23,12 +23,15 @@ module.exports = class Parser
     @classes = []
     @mixins  = []
 
+    @fileCount = 0
+
   # Parse the given CoffeeScript file
   #
   # @param [String] file the CoffeeScript file name
   #
   parseFile: (file) ->
     @parseContent fs.readFileSync(file, 'utf8'), file
+    @fileCount += 1
 
   # Parse the given CoffeeScript content
   #
@@ -235,11 +238,12 @@ module.exports = class Parser
 
     stats =
       """
-      Files:     #{ _.str.pad(fileCount, maxCountLength) }
-      Classes:   #{ _.str.pad(classCount, maxCountLength) } (#{ _.str.pad(noDocClasses, maxNoDocLength) } undocumented)
-      Mixins:    #{ _.str.pad(mixinCount, maxCountLength) }
-      Methods:   #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethods, maxNoDocLength) } undocumented)
-      Constants: #{ _.str.pad(constantCount, maxCountLength) } (#{ _.str.pad(noDocConstants, maxNoDocLength) } undocumented)
+      Parsed files:    #{ _.str.pad(@fileCount, maxCountLength) }
+      Classes:         #{ _.str.pad(classCount, maxCountLength) } (#{ _.str.pad(noDocClasses, maxNoDocLength) } undocumented)
+      Mixins:          #{ _.str.pad(mixinCount, maxCountLength) }
+      Non-Class files: #{ _.str.pad(fileCount, maxCountLength) }
+      Methods:         #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethods, maxNoDocLength) } undocumented)
+      Constants:       #{ _.str.pad(constantCount, maxCountLength) } (#{ _.str.pad(noDocConstants, maxNoDocLength) } undocumented)
        #{ _.str.sprintf('%.2f', documented) }% documented
       """
 
