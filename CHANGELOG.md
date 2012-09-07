@@ -1,4 +1,4 @@
-# Master
+# Version 1.4.0 - September 7, 2012
 
 - [#64](https://github.com/netzpirat/codo/issues/64): Fix broken overload rendering.
 - [#61](https://github.com/netzpirat/codo/issues/61): Detect Properties.
