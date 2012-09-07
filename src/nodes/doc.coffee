@@ -71,7 +71,6 @@ module.exports = class Doc extends Node
           line += lines.shift().substring(1)
 
       if property = /^@property\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
-        @properties or= []
         @property = property[1]
         lines.push property[2]
 
