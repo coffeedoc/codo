@@ -1,48 +1,48 @@
 [
-  {
-    "file": "spec/templates/classes/class_documentation.coffee",
-    "doc": {
-      "abstract": "Each listener implementation must inherit",
-      "private": true,
-      "deprecated": "Use other class which is thread safe",
-      "version": "1.0.2",
-      "since": "1.0.0",
-      "examples": [
-        {
-          "title": "",
-          "code": "Class.getType('cat')"
+    {
+        "file": "spec/templates/classes/class_documentation.coffee",
+        "doc": {
+            "abstract": "Each listener implementation must inherit",
+            "private": true,
+            "deprecated": "Use other class which is thread safe",
+            "version": "1.0.2",
+            "since": "1.0.0",
+            "examples": [
+                {
+                    "title": "",
+                    "code": "Class.getType('cat')"
+                },
+                {
+                    "title": "Use it in this way",
+                    "code": "new Class()"
+                },
+                {
+                    "title": "Alternatively also this is possible",
+                    "code": "cl = Class.for(obj)\ncl.execute()"
+                }
+            ],
+            "todos": [
+                "Clean up socket handler",
+                "Refactor property factory"
+            ],
+            "notes": [
+                "Please use this carefully",
+                "For internal use only"
+            ],
+            "authors": [
+                "Netzpirat",
+                "Plasticman"
+            ],
+            "comment": "<p>This is a test class with <code>inline.dot</code>. Beware.</p>",
+            "summary": "This is a test class with <code>inline.dot</code>."
         },
-        {
-          "title": "Use it in this way",
-          "code": "new Class()"
+        "class": {
+            "className": "TestClassDocumentation",
+            "name": "TestClassDocumentation",
+            "namespace": ""
         },
-        {
-          "title": "Alternatively also this is possible",
-          "code": "cl = Class.for(obj)\ncl.execute()"
-        }
-      ],
-      "todos": [
-        "Clean up socket handler",
-        "Refactor property factory"
-      ],
-      "notes": [
-        "Please use this carefully",
-        "For internal use only"
-      ],
-      "authors": [
-        "Netzpirat",
-        "Plasticman"
-      ],
-      "comment": "<p>This is a test class with <code>inline.dot</code>. Beware.</p>",
-      "summary": "This is a test class with `inline.dot`."
-    },
-    "class": {
-      "className": "TestClassDocumentation",
-      "name": "TestClassDocumentation",
-      "namespace": ""
-    },
-    "methods": [],
-    "variables": [],
-    "properties": []
-  }
+        "methods": [],
+        "variables": [],
+        "properties": []
+    }
 ]

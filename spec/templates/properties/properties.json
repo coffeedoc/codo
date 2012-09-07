@@ -26,30 +26,66 @@
         "variables": [],
         "properties": [
             {
-                "name": "name",
+                "name": "firstname",
+                "signature": "(String) <strong>firstname</strong>",
                 "setter": true,
                 "getter": true,
                 "doc": {
-                    "comment": "<p>The persons name</p>",
-                    "summary": "The persons name"
+                    "comment": "<p>The first name</p>",
+                    "summary": "The first name",
+                    "property": "String"
                 }
             },
             {
-                "name": "born",
+                "name": "lastname",
+                "signature": "(?) <strong>lastname</strong>",
+                "setter": true,
+                "getter": true,
+                "doc": {
+                    "comment": "<p>The last name</p>",
+                    "summary": "The last name"
+                }
+            },
+            {
+                "name": "birth",
+                "signature": "(Date) <strong>birth</strong>",
                 "setter": false,
                 "getter": true,
                 "doc": {
-                    "comment": "<p>The persons relationship status</p>",
-                    "summary": "The persons relationship status"
+                    "comment": "<p>The day of birth</p>",
+                    "summary": "The day of birth",
+                    "property": "Date"
+                }
+            },
+            {
+                "name": "twitter",
+                "signature": "(?) <strong>twitter</strong>",
+                "setter": false,
+                "getter": true,
+                "doc": {
+                    "comment": "<p>The twitter handle</p>",
+                    "summary": "The twitter handle"
                 }
             },
             {
                 "name": "confession",
+                "signature": "(String) <strong>confession</strong>",
                 "setter": true,
                 "getter": false,
                 "doc": {
-                    "comment": "<p>The persons confession</p>",
-                    "summary": "The persons confession"
+                    "comment": "<p>The confession</p>",
+                    "summary": "The confession",
+                    "property": "String"
+                }
+            },
+            {
+                "name": "email",
+                "signature": "(?) <strong>email</strong>",
+                "setter": true,
+                "getter": false,
+                "doc": {
+                    "comment": "<p>The email address offer</p>",
+                    "summary": "The email address offer"
                 }
             }
         ]
