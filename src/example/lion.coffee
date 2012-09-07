@@ -8,7 +8,7 @@ class Example.Animal.Lion extends Example.Animal
   # Maximum speed in MPH
   @MAX_SPEED = 50
 
-  # The Animal name
+  # @property [Array<String>] The received awards
   get awards: -> @_awards
   set awards: (@_awards) ->
 

@@ -36,7 +36,7 @@
     }
   }
 
-  h1 .note, li .note {
+  h1 .note, li .note, .properties .note {
     font-weight: normal;
     padding: 3px 5px;
     position: relative;
@@ -54,7 +54,12 @@
     font-size: 0.9em;
   }
 
-  ul.summary {
+  .properties .note {
+    top: 0px;
+    font-size: 0.85em;
+  }
+
+  ul.summary, .properties {
     list-style: none;
     font-family: monospace;
     font-size: 1em;
@@ -68,6 +73,7 @@
       @include border-radius(3px);
 
       padding: 1px 10px;
+      color: #05A;
       background: #EAEAFF;
       border: 1px solid #DFDFE5;
 
@@ -96,11 +102,16 @@
     }
   }
 
+  dl.constants {
+    dt {
+      font-weight: bold;
+    }
+  }
+
   dl.constants, dl.properties {
     margin-left: 40px;
 
     dt {
-      font-weight: bold;
       font-size: 1.1em;
       margin-bottom: 5px;
 
@@ -190,15 +201,14 @@
     border-color: #E9DADA;
   }
 
+  .writeonly {
+    background: #d3ff97;
+    border-color: #c3eb8b;
+  }
+
   .readonly {
     background: #FFE5E5;
     border-color: #E9DADA;
-
-    font-size: .85em;
-    font-weight: normal;
-    font-family: monospace;
-    padding: 2px 3px;
-    display: inline;
   }
 
   .bound {

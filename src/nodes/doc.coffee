@@ -70,7 +70,12 @@ module.exports = class Doc extends Node
         while /^\s{2}\w+/.test(lines[0])
           line += lines.shift().substring(1)
 
-      if returnValue = /^@return\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
+      if property = /^@property\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
+        @properties or= []
+        @property = property[1]
+        lines.push property[2]
+
+      else if returnValue = /^@return\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @returnValue =
           type: returnValue[1]
           desc: Markdown.convert(returnValue[2], true)
@@ -238,7 +243,7 @@ module.exports = class Doc extends Node
 
     sentence = /((?:.|\n)*?[.#][\s$])/.exec(text)
     sentence = sentence[1].replace(/\s*#\s*$/, '') if sentence
-    @summary = _.str.clean(sentence || text)
+    @summary = Markdown.convert(_.str.clean(sentence || text), true)
 
   # Get a JSON representation of the object
   #
@@ -268,5 +273,6 @@ module.exports = class Doc extends Node
         returnValue: @returnValue
         overloads: @overloads
         methods: @methods
+        property: @property
 
       json

@@ -86,11 +86,14 @@
         %dl.properties
           - for property in @properties
             %dt{ id: "#{ property.name }-property" }
-              = property.name
+              %span.signature
+                != property.signature
               - unless property.setter
                 %span.readonly.note.title Readonly
-            %dd
-              = property.comment
+              - unless property.getter
+                %span.writeonly.note.title Writeonly
+            %dd.desc
+              != property.doc.comment
 
       - for parent, properties of @inheritedProperties
         - if @properties.length is 0

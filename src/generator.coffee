@@ -100,7 +100,7 @@ module.exports = class Generator
         classData: @referencer.resolveDoc(clazz.toJSON(), clazz, assetPath)
         classMethods: _.map _.filter(clazz.getMethods(), (method) => method.type is 'class'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
         instanceMethods: _.map _.filter(clazz.getMethods(), (method) => method.type is 'instance'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
-        properties: clazz.properties
+        properties: _.map clazz.properties, (p) => @referencer.resolveDoc(p.toJSON(), clazz, assetPath)
         constants: _.map _.filter(clazz.getVariables(), (variable) => variable.isConstant()), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
         subClasses: _.map @referencer.getDirectSubClasses(clazz), (c) -> c.getClassName()
         inheritedMethods: _.groupBy @referencer.getInheritedMethods(clazz), (m) -> m.entity.getClassName()

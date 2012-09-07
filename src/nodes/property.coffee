@@ -1,5 +1,8 @@
-Node = require './node'
-Markdown = require '../util/markdown'
+Node      = require './node'
+Doc       = require './doc'
+
+_         = require 'underscore'
+_.str     = require 'underscore.string'
 
 # A class property that is defined by custom property set/get methods.
 #
@@ -18,13 +21,34 @@ module.exports = class Property extends Node
   #
   # @param [Class] entity the methods class
   # @param [Object] node the class node
+  # @param [Object] options the parser options
   # @param [String] name the name of the property
-  # @param [
+  # @param [Object] comment the comment node
   #
-  constructor: (@entity, @node, @name, @doc) ->
+  constructor: (@entity, @node, @options, @name, comment) ->
+    @doc = new Doc(comment, @options)
+
     @setter  = false
     @getter  = false
-    @comment = Markdown.convert(@doc?.comment, true)
+
+  # Get the property signature.
+  #
+  # @return [String] the signature
+  #
+  getSignature: ->
+    try
+      unless @signature
+        @signature = ''
+
+        if @doc
+          @signature += if @doc.property then "(#{ _.str.escapeHTML @doc.property }) " else "(?) "
+
+        @signature += "<strong>#{ @name }</strong>"
+
+      @signature
+
+    catch error
+      console.warn('Get property signature error:', @node, error) if @options.verbose
 
   # Get a JSON representation of the object
   #
@@ -33,7 +57,8 @@ module.exports = class Property extends Node
   toJSON: ->
     {
       name: @name
-      comment: @comment
+      signature: @getSignature()
       setter: @setter
       getter: @getter
+      doc: @doc
     }

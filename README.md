@@ -198,6 +198,13 @@ comment for a mixin or in a method comment.
       <td>&#10004;</td>
     </tr>
     <tr>
+      <td><strong>@property</strong> [type] description</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
       <td><strong>@return</strong> [type] description</td>
       <td></td>
       <td></td>
@@ -335,7 +342,7 @@ class Person
   get = (props) => @::__defineGetter__ name, getter for name, getter of props
   set = (props) => @::__defineSetter__ name, setter for name, setter of props
 
-  # The persons name
+  # @property [String] The person name
   get name: -> @_name
   set name: (@_name) ->
 
@@ -343,7 +350,8 @@ class Person
   get age: -> @_age
 ```
 
-If you follow this convention, they will be shown in the generated documentation.
+If you follow this convention, they will be shown in the generated documentation. You can use the `@property` tag to
+declare a return value.
 
 ### Method overloading
 

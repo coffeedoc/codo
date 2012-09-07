@@ -99,7 +99,7 @@ module.exports = class Class extends Node
               property = _.find(@properties, (p) -> p.name is name)
 
               unless property
-                property = new Property(@, exp, name, doc)
+                property = new Property(@, exp, @options, name, doc)
                 @properties.push property
 
               property.setter = true if type is 'set'
@@ -137,7 +137,7 @@ module.exports = class Class extends Node
   #
   getClassName: ->
     try
-      unless @className
+      unless @className || !@node.variable
         @className = @node.variable.base.value
 
         # Inner class definition inherits

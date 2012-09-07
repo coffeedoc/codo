@@ -27,21 +27,30 @@
         "properties": [
             {
                 "name": "name",
-                "comment": "The persons name",
                 "setter": true,
-                "getter": true
+                "getter": true,
+                "doc": {
+                    "comment": "<p>The persons name</p>",
+                    "summary": "The persons name"
+                }
             },
             {
                 "name": "born",
-                "comment": "The persons relationship status",
                 "setter": false,
-                "getter": true
+                "getter": true,
+                "doc": {
+                    "comment": "<p>The persons relationship status</p>",
+                    "summary": "The persons relationship status"
+                }
             },
             {
                 "name": "confession",
-                "comment": "The persons confession",
                 "setter": true,
-                "getter": false
+                "getter": false,
+                "doc": {
+                    "comment": "<p>The persons confession</p>",
+                    "summary": "The persons confession"
+                }
             }
         ]
     }

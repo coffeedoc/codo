@@ -31,7 +31,7 @@
   padding-right: 10px;
 }
 /* line 39, ../../src/styles/class.scss */
-#content h1 .note, #content li .note {
+#content h1 .note, #content li .note, #content .properties .note {
   font-weight: normal;
   padding: 3px 5px;
   position: relative;
@@ -49,81 +49,90 @@
   font-size: 0.9em;
 }
 /* line 57, ../../src/styles/class.scss */
-#content ul.summary {
+#content .properties .note {
+  top: 0px;
+  font-size: 0.85em;
+}
+/* line 62, ../../src/styles/class.scss */
+#content ul.summary, #content .properties {
   list-style: none;
   font-family: monospace;
   font-size: 1em;
   line-height: 1.5em;
 }
-/* line 63, ../../src/styles/class.scss */
-#content ul.summary li {
+/* line 68, ../../src/styles/class.scss */
+#content ul.summary li, #content .properties li {
   margin-bottom: 5px;
 }
-/* line 67, ../../src/styles/class.scss */
-#content ul.summary .signature {
+/* line 72, ../../src/styles/class.scss */
+#content ul.summary .signature, #content .properties .signature {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
   padding: 1px 10px;
+  color: #05A;
   background: #EAEAFF;
   border: 1px solid #DFDFE5;
 }
-/* line 74, ../../src/styles/class.scss */
-#content ul.summary .signature a:hover {
+/* line 80, ../../src/styles/class.scss */
+#content ul.summary .signature a:hover, #content .properties .signature a:hover {
   background: transparent;
 }
-/* line 79, ../../src/styles/class.scss */
-#content ul.summary li[deprecated] .signature {
+/* line 85, ../../src/styles/class.scss */
+#content ul.summary li[deprecated] .signature, #content .properties li[deprecated] .signature {
   text-decoration: line-through;
 }
-/* line 83, ../../src/styles/class.scss */
-#content ul.summary .signature + .note.title {
+/* line 89, ../../src/styles/class.scss */
+#content ul.summary .signature + .note.title, #content .properties .signature + .note.title {
   margin-left: 7px;
 }
-/* line 87, ../../src/styles/class.scss */
-#content ul.summary .desc {
+/* line 93, ../../src/styles/class.scss */
+#content ul.summary .desc, #content .properties .desc {
   margin-left: 32px;
   display: block;
   font-family: sans-serif;
 }
-/* line 92, ../../src/styles/class.scss */
-#content ul.summary .desc p {
+/* line 98, ../../src/styles/class.scss */
+#content ul.summary .desc p, #content .properties .desc p {
   padding: 0;
   margin: 0;
 }
-/* line 99, ../../src/styles/class.scss */
+/* line 106, ../../src/styles/class.scss */
+#content dl.constants dt {
+  font-weight: bold;
+}
+/* line 111, ../../src/styles/class.scss */
 #content dl.constants, #content dl.properties {
   margin-left: 40px;
 }
-/* line 102, ../../src/styles/class.scss */
+/* line 114, ../../src/styles/class.scss */
 #content dl.constants dt, #content dl.properties dt {
-  font-weight: bold;
   font-size: 1.1em;
   margin-bottom: 5px;
 }
-/* line 107, ../../src/styles/class.scss */
+/* line 118, ../../src/styles/class.scss */
 #content dl.constants dt .docstring, #content dl.properties dt .docstring {
   margin-left: 32px;
   font-size: 0.9em;
   font-weight: normal;
 }
-/* line 114, ../../src/styles/class.scss */
+/* line 125, ../../src/styles/class.scss */
 #content dl.constants dd, #content dl.properties dd {
   margin-bottom: 18px;
 }
-/* line 119, ../../src/styles/class.scss */
+/* line 130, ../../src/styles/class.scss */
 #content .method_details {
   border-top: 1px dotted #AAA;
   margin-top: 15px;
   padding-top: 0;
 }
-/* line 124, ../../src/styles/class.scss */
+/* line 135, ../../src/styles/class.scss */
 #content .method_details:first-child {
   border: none;
 }
-/* line 128, ../../src/styles/class.scss */
+/* line 139, ../../src/styles/class.scss */
 #content .method_details p.signature {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -138,40 +147,40 @@
   background: #E5E8FF;
   border: 1px solid #D8D8E5;
 }
-/* line 141, ../../src/styles/class.scss */
+/* line 152, ../../src/styles/class.scss */
 #content .tags {
   font-size: 13px;
 }
-/* line 144, ../../src/styles/class.scss */
+/* line 155, ../../src/styles/class.scss */
 #content .tags h3 {
   font-size: 1em;
   margin-bottom: 3px;
 }
-/* line 149, ../../src/styles/class.scss */
+/* line 160, ../../src/styles/class.scss */
 #content .tags ul {
   margin-top: 0px;
   padding-left: 30px;
   list-style: square;
 }
-/* line 154, ../../src/styles/class.scss */
+/* line 165, ../../src/styles/class.scss */
 #content .tags ul .name {
   font-family: monospace;
   font-weight: bold;
 }
-/* line 161, ../../src/styles/class.scss */
+/* line 172, ../../src/styles/class.scss */
 #content .tags .overloads h3 {
   margin-bottom: 0px;
 }
-/* line 165, ../../src/styles/class.scss */
+/* line 176, ../../src/styles/class.scss */
 #content .tags .overloads .overload {
   margin-left: 20px;
 }
-/* line 168, ../../src/styles/class.scss */
+/* line 179, ../../src/styles/class.scss */
 #content .tags .overloads .overload p.signature {
   padding-top: 2px;
   padding-bottom: 2px;
 }
-/* line 176, ../../src/styles/class.scss */
+/* line 187, ../../src/styles/class.scss */
 #content .note {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -185,43 +194,43 @@
   padding: 7px 10px;
   display: block;
 }
-/* line 188, ../../src/styles/class.scss */
+/* line 199, ../../src/styles/class.scss */
 #content .deprecated {
   background: #FFE5E5;
   border-color: #E9DADA;
 }
-/* line 193, ../../src/styles/class.scss */
-#content .readonly {
-  background: #FFE5E5;
-  border-color: #E9DADA;
-  font-size: .85em;
-  font-weight: normal;
-  font-family: monospace;
-  padding: 2px 3px;
-  display: inline;
-}
 /* line 204, ../../src/styles/class.scss */
-#content .bound {
+#content .writeonly {
   background: #d3ff97;
   border-color: #c3eb8b;
 }
 /* line 209, ../../src/styles/class.scss */
+#content .readonly {
+  background: #FFE5E5;
+  border-color: #E9DADA;
+}
+/* line 214, ../../src/styles/class.scss */
+#content .bound {
+  background: #d3ff97;
+  border-color: #c3eb8b;
+}
+/* line 219, ../../src/styles/class.scss */
 #content .todo {
   background: #FFFFC5;
   border-color: #ECECAA;
 }
-/* line 214, ../../src/styles/class.scss */
+/* line 224, ../../src/styles/class.scss */
 #content .private {
   background: #D5D5D5;
   border-color: #C5C5C5;
 }
-/* line 219, ../../src/styles/class.scss */
+/* line 229, ../../src/styles/class.scss */
 #content .constructor {
   color: white;
   background: #6A98D6;
   border-color: #6689D6;
 }
-/* line 225, ../../src/styles/class.scss */
+/* line 235, ../../src/styles/class.scss */
 #content h3.inherited, #content h3.included, #content h3.extended {
   font-style: italic;
   font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
@@ -232,7 +241,7 @@
   margin-bottom: 3px;
   font-size: 13px;
 }
-/* line 236, ../../src/styles/class.scss */
+/* line 246, ../../src/styles/class.scss */
 #content p.inherited, #content p.included, #content p.extended {
   word-spacing: 5px;
   font-size: 1.2em;
@@ -240,7 +249,7 @@
   margin: 0;
   margin-left: 25px;
 }
-/* line 243, ../../src/styles/class.scss */
+/* line 253, ../../src/styles/class.scss */
 #content p.inherited a, #content p.included a, #content p.extended a {
   font-family: monospace;
   font-size: 0.9em;

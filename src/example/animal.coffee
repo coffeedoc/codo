@@ -32,11 +32,11 @@ class Example.Animal
   # The Answer to the Ultimate Question of Life, the Universe, and Everything
   @ANSWER = 42
 
-  # The Animal name
+  # @property [String] The Animal name
   get name: -> @_name || 'unknown'
   set name: (@_name) ->
 
-  # The Animal color
+  # @property [String] The Animal color
   get color: -> @_color
 
   # Construct a new animal.
