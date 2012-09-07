@@ -4,7 +4,7 @@
       %p.signature{ id: "#{ method.name }-#{ method.type }" }
         - if method.doc?.overloads
           - for overload in method.doc?.overloads
-            != "#{ if method.type is 'instance' then '-' else '+' } (#{ if overload.returnValue then overload.returnValue.type else 'void' }) #{ overload.signature }"
+            != "#{ if method.type is 'instance' then '-' else '+' } (#{ if overload.returnValue then @str.escapeHTML(overload.returnValue.type) else 'void' }) #{ overload.signature }"
             %br
         - else
           != method.signature
@@ -13,4 +13,4 @@
         - if method.doc?.private
           (private)
 
-      != @parent.JST['partials/doc']({ doc: method.doc, type: 'method', method: method, parent: @parent, path: @parent.path, referencer: @parent.referencer })
+      != @parent.JST['partials/doc']({ doc: method.doc, type: 'method', method: method, str: @str, parent: @parent, path: @parent.path, referencer: @parent.referencer })

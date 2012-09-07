@@ -79,12 +79,14 @@
       %ul.return
         %li
           %span.type
+          - if @doc.returnValue.desc
             (
               %tt>!= @referencer.linkTypes @doc.returnValue.type, @path
             )
-          - if @doc.returnValue.desc
             &mdash;
             %span.desc!= @doc.returnValue.desc
+          - else
+            %tt>!= @referencer.linkTypes @doc.returnValue.type, @path
 
   - if @doc?.authors
     %h3 Author:
@@ -129,5 +131,5 @@
       - for overload in @doc.overloads
         .overload
           %p.signature
-            != "#{ if @method.type is 'instance' then '-' else '+' } (#{ if overload.returnValue then overload.returnValue.type else 'void' }) #{ overload.signature }"
+            != "#{ if @method.type is 'instance' then '-' else '+' } (#{ if overload.returnValue then @str.escapeHTML(overload.returnValue.type) else 'void' }) #{ overload.signature }"
           != @parent.JST['partials/doc']({ doc: overload, type: 'overload', path: @parent.path, referencer: @parent.referencer })

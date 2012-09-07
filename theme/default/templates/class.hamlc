@@ -217,18 +217,18 @@
       - if @classMethods.length isnt 0
         %h2 Class Method Details
 
-        != @JST['partials/method_list']({ methods: @classMethods, parent: @ })
+        != @JST['partials/method_list']({ str: @str, methods: @classMethods, parent: @ })
 
       - constructor = @underscore.filter @instanceMethods, (m) -> m.name is 'constructor'
       - if constructor.length isnt 0
         %h2 Constructor Details
 
-        != @JST['partials/method_list']({ methods: constructor, parent: @ })
+        != @JST['partials/method_list']({ str: @str, methods: constructor, parent: @ })
 
       - instanceMethods = @underscore.filter @instanceMethods, (m) -> m.name isnt 'constructor'
       - if instanceMethods.length isnt 0
         %h2 Instance Method Details
 
-        != @JST['partials/method_list']({ methods: instanceMethods, parent: @ })
+        != @JST['partials/method_list']({ str: @str, methods: instanceMethods, parent: @ })
 
     != @JST['partials/footer'](@)

@@ -2,6 +2,7 @@ fs      = require 'fs'
 path    = require 'path'
 mkdirp  = require 'mkdirp'
 _       = require 'underscore'
+_.str   = require 'underscore.string'
 walkdir = require 'walkdir'
 hamlc   = require 'haml-coffee'
 
@@ -24,6 +25,7 @@ module.exports = class Templater
       generationDate: new Date().toString()
       JST: @JST
       underscore: _
+      str: _.str
       title: @options.title
       referencer: @referencer
       analytics: @options.analytics
