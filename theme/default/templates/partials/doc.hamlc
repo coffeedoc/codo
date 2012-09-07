@@ -82,8 +82,9 @@
             (
               %tt>!= @referencer.linkTypes @doc.returnValue.type, @path
             )
-          &mdash;
-          %span.desc!= @doc.returnValue.desc
+          - if @doc.returnValue.desc
+            &mdash;
+            %span.desc!= @doc.returnValue.desc
 
   - if @doc?.authors
     %h3 Author:
