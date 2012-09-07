@@ -2,12 +2,12 @@
   {
     "file": "spec/templates/methods/dynamic_methods.coffee",
     "doc": {
-      "comment": "<p>This class has virtual methods, which doesn&#39;t exist in the source but appears in the documentation. </p> ",
+      "comment": "<p>This class has virtual methods, which doesn&#39;t<br />exist in the source but appears in the documentation.</p>",
       "summary": "This class has virtual methods, which doesn't exist in the source but appears in the documentation.",
       "methods": [
         {
           "signature": "#set(key, value)",
-          "comment": "<p>Sets a value</p> ",
+          "comment": "<p>Sets a value</p>",
           "summary": "Sets a value",
           "params": [
             {
@@ -24,7 +24,7 @@
         },
         {
           "signature": "#get(key)",
-          "comment": "<p>Gets a value</p> ",
+          "comment": "<p>Gets a value</p>",
           "summary": "Gets a value",
           "params": [
             {
@@ -49,7 +49,7 @@
       {
         "doc": {
           "signature": "#set(key, value)",
-          "comment": "<p>Sets a value</p> ",
+          "comment": "<p>Sets a value</p>",
           "summary": "Sets a value",
           "params": [
             {
@@ -73,7 +73,7 @@
       {
         "doc": {
           "signature": "#get(key)",
-          "comment": "<p>Gets a value</p> ",
+          "comment": "<p>Gets a value</p>",
           "summary": "Gets a value",
           "params": [
             {

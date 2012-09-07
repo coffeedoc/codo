@@ -5,7 +5,7 @@
       "authors": [
         "Simba"
       ],
-      "comment": "<p>A dangerous lion. Take care. </p> ",
+      "comment": "<p>A dangerous lion. Take care.</p>",
       "summary": "A dangerous lion.",
       "see": [
         {
@@ -22,7 +22,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Move the lion fast </p> ",
+          "comment": "<p>Move the lion fast</p>",
           "summary": "Move the lion fast",
           "params": [
             {
@@ -54,7 +54,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Escape at maximum speed. </p> ",
+          "comment": "<p>Escape at maximum speed.</p>",
           "summary": "Escape at maximum speed.",
           "params": [
             {
@@ -77,7 +77,7 @@
     "variables": [
       {
         "doc": {
-          "comment": "<p>Maximum speed in MPH </p> ",
+          "comment": "<p>Maximum speed in MPH</p>",
           "summary": "Maximum speed in MPH"
         },
         "type": "class",

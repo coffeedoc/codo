@@ -9,12 +9,12 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>This is a generic Store set method. </p> ",
+          "comment": "<p>This is a generic Store set method.</p>",
           "summary": "This is a generic Store set method.",
           "overloads": [
             {
               "signature": "<strong>set</strong>(key, value)",
-              "comment": "<p>Sets a value on key</p> ",
+              "comment": "<p>Sets a value on key</p>",
               "summary": "Sets a value on key",
               "params": [
                 {
@@ -45,7 +45,7 @@
             },
             {
               "signature": "<strong>set</strong>(value)",
-              "comment": "<p>Sets a value on the default key <code>:foo</code></p> ",
+              "comment": "<p>Sets a value on the default key <code>:foo</code></p>",
               "summary": "Sets a value on the default key `:foo`",
               "params": [
                 {

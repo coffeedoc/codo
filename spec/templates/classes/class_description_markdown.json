@@ -2,7 +2,7 @@
     {
         "file": "spec/templates/classes/class_description_markdown.coffee",
         "doc": {
-            "comment": "<p>Codo - the CoffeeScript API documentation generator </p> <h1>Header 1</h1> <p>This is a paragraph. </p> <h2>Header 2</h2> <p>This is a paragraph. </p> <h3>Header 3</h3> <p>This is a paragraph. </p> <h4>Header 4</h4> <p>This is a paragraph. </p> <h5>Header 5</h5> <p>This is a paragraph. </p> <h6>Header 6</h6> <p>This is a paragraph. </p> ",
+            "comment": "<p>Codo - the CoffeeScript API documentation generator</p><h1>Header 1</h1><p>This is a paragraph.</p><h2>Header 2</h2><p>This is a paragraph.</p><h3>Header 3</h3><p>This is a paragraph.</p><h4>Header 4</h4><p>This is a paragraph.</p><h5>Header 5</h5><p>This is a paragraph.</p><h6>Header 6</h6><p>This is a paragraph.</p>",
             "summary": "Codo - the CoffeeScript API documentation generator"
         },
         "class": {

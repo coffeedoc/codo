@@ -1,11 +1,11 @@
 fs         = require 'fs'
 path       = require 'path'
-marked     = require 'marked'
 mkdirp     = require 'mkdirp'
 _          = require 'underscore'
 
 Templater  = require './util/templater'
 Referencer = require './util/referencer'
+Markdown   = require './util/markdown'
 
 # The documentation generator uses the parser JSON
 # to generate the final codo documentation.
@@ -192,7 +192,7 @@ module.exports = class Generator
       try
         if (fs.existsSync || path.existsSync)(extra)
           content = fs.readFileSync extra, 'utf-8'
-          content = marked content if /\.(markdown|md)$/.test extra
+          content = Markdown.convert(content) if /\.(markdown|md)$/.test extra
           numSlashes = extra.split('/').length - 1
           assetPath = ''
           assetPath += '../' for slash in [0...numSlashes]

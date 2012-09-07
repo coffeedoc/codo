@@ -10,7 +10,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Should be overloaded to change fetch limit. </p> ",
+          "comment": "<p>Should be overloaded to change fetch limit.</p>",
           "summary": "Should be overloaded to change fetch limit.",
           "returnValue": {
             "type": "?",
@@ -26,7 +26,7 @@
       {
         "doc": {
           "private": true,
-          "comment": "<p>Do it! </p> ",
+          "comment": "<p>Do it!</p>",
           "summary": "Do it!",
           "params": [
             {
@@ -97,7 +97,7 @@
       {
         "doc": {
           "private": true,
-          "comment": "<p>Do it! </p> ",
+          "comment": "<p>Do it!</p>",
           "summary": "Do it!",
           "params": [
             {

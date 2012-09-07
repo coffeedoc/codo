@@ -5,7 +5,7 @@
         "methods": [
             {
                 "doc": {
-                    "comment": "<p>Says hello to a person </p> ",
+                    "comment": "<p>Says hello to a person</p>",
                     "summary": "Says hello to a person",
                     "params": [
                         {
@@ -30,7 +30,7 @@
         "variables": [
             {
                 "doc": {
-                    "comment": "<p>The greeting </p> ",
+                    "comment": "<p>The greeting</p>",
                     "summary": "The greeting"
                 },
                 "type": "class",

@@ -1,4 +1,5 @@
 Node      = require './node'
+Markdown  = require '../util/markdown'
 
 marked = require 'marked'
 _      = require 'underscore'
@@ -233,7 +234,7 @@ module.exports = class Doc extends Node
         comment.push line
 
     text = comment.join('\n')
-    @comment = marked(text).replace /\n+/g, ' '
+    @comment = Markdown.convert(text)
 
     sentence = /((?:.|\n)*?[.#][\s$])/.exec(text)
     sentence = sentence[1].replace(/\s*#\s*$/, '') if sentence
