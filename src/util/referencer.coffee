@@ -148,9 +148,11 @@ module.exports = class Referencer
   # @return [String] the processed text
   #
   linkTypes: (text = '', path) ->
+    text = _.str.escapeHTML text
+
     for clazz in @classes
       text = text.replace ///^(#{ clazz.getFullName() })$///g, "<a href='#{ path }classes/#{ clazz.getFullName().replace(/\./g, '/') }.html'>$1</a>"
-      text = text.replace ///([< ])(#{ clazz.getFullName() })([>, ])///g, "$1<a href='#{ path }classes/#{ clazz.getFullName().replace(/\./g, '/') }.html'>$2</a>$3"
+      text = text.replace ///(&lt;|[ ])(#{ clazz.getFullName() })(&gt;|[, ])///g, "$1<a href='#{ path }classes/#{ clazz.getFullName().replace(/\./g, '/') }.html'>$2</a>$3"
 
     text
 
