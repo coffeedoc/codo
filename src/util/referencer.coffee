@@ -241,7 +241,7 @@ module.exports = class Referencer
         match
 
     # Restore curly braces within code blocks
-    text = text.replace /<code>.+?<\/code>/, (match) -> match.replace(/\u0091/mg, '{').replace(/\u0092/mg, '}')
+    text = text.replace /<code>.+?<\/code>/mg, (match) -> match.replace(/\u0091/mg, '{').replace(/\u0092/mg, '}')
 
   # Resolves a @see link.
   #
