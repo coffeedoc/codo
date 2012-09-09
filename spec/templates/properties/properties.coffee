@@ -3,6 +3,9 @@
 #
 module.exports = class Person
 
+  # @property [Array<String>] the nicknames
+  nicknames: []
+
   # Language helpers
   get = (props) => @::__defineGetter__ name, getter for name, getter of props
   set = (props) => @::__defineSetter__ name, setter for name, setter of props

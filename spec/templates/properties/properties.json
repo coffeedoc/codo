@@ -26,6 +26,17 @@
         "variables": [],
         "properties": [
             {
+                "name": "nicknames",
+                "signature": "(Array&lt;String&gt;) <strong>nicknames</strong>",
+                "setter": true,
+                "getter": true,
+                "doc": {
+                    "comment": "<p>the nicknames</p>",
+                    "summary": "the nicknames",
+                    "property": "Array<String>"
+                }
+            },
+            {
                 "name": "firstname",
                 "signature": "(String) <strong>firstname</strong>",
                 "setter": true,

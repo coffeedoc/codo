@@ -15,8 +15,8 @@ module.exports = class Variable extends Node
   #
   constructor: (@entity, @node, @options, @classType = false, comment = null) ->
     try
-      @getName()
       @doc = new Doc(comment, @options)
+      @getName()
 
     catch error
       console.warn('Create variable error:', @node, error) if @options.verbose

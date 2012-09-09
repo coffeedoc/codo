@@ -334,7 +334,16 @@ getHerdMembers: (regions) ->
 
 ### Properties
 
-Codo detects the given property pattern:
+You can mark an instance variable as property of the class by using the `@property` tag like:
+
+```CoffeeScript
+class Person
+
+  # @property [Array<String>] the nicknames
+  nicknames: []
+```
+
+In addition, the following properties pattern is detected:
 
 ```CoffeeScript
 class Person
@@ -350,8 +359,8 @@ class Person
   get age: -> @_age
 ```
 
-If you follow this convention, they will be shown in the generated documentation. You can use the `@property` tag to
-declare a return value.
+If you follow this convention, they will be shown in the generated documentation with its read/write status shown. To
+specify type of the property, use the `@property` tag.
 
 ### Method overloading
 

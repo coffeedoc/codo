@@ -56,7 +56,15 @@ module.exports = class Class extends Node
                 when 'Code'
                   @methods.push new Method(@, prop, @options, doc)
                 when 'Value'
-                  @variables.push new Variable(@, prop, @options, doc)
+                  variable =  new Variable(@, prop, @options, false, doc)
+
+                  if variable.doc?.property
+                    property = new Property(@, prop, @options, variable.getName(), doc)
+                    property.setter = true
+                    property.getter = true
+                    @properties.push property
+                  else
+                    @variables.push variable
 
               doc = null
               previousProp = prop
