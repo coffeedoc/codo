@@ -22,11 +22,15 @@ module.exports = class Markdown
 
     html = marked(markdown)
 
-    # Cleanup newlines
+    # Convert newlines before inline tags to spaces
+    html = html.replace /(a|abbr|acronym|b|big|cite|code|del|em|i|ins|sub|sup|span|small|strike|strong|q|tt|u)>\n+/mg, '$1> '
+    html = html.replace /\n+<(a|abbr|acronym|b|big|cite|code|del|em|i|ins|sub|sup|span|small|strike|strong|q|tt|u)/mg, ' <$1'
+
+    # Remove all other newlines around a tag
     html = html.replace />\n+/mg, '>'
     html = html.replace /\n+</mg, '<'
 
-    # Convert newlines, but not within code blocks
+    # Convert newlines not around a tag to line breaks, but not within code blocks
     html = html.replace /\n/mg, '<br />'
     html = html.replace /<pre>(.+?)<\/pre>/mg, (match) -> match.replace /<br \/>/mg, "\n"
 

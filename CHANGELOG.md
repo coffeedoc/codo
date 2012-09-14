@@ -1,8 +1,11 @@
+# Master
+
+- [#65](https://github.com/netzpirat/codo/issues/65): Fix GitHub Flavored Markdown rendering around inline tags.
+
 # Version 1.4.1 - September 8, 2012
 
 - [#61](https://github.com/netzpirat/codo/issues/61): Allow instance variables to be marked as properties.
 - [#62](https://github.com/netzpirat/codo/issues/62): Fix curly brace escaping when searching references.
-
 
 # Version 1.4.0 - September 7, 2012
 
