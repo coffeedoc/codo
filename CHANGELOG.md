@@ -1,5 +1,6 @@
 # Master
 
+- [#69](https://github.com/netzpirat/codo/issues/69): Fix link parsing within a reference.
 - [#65](https://github.com/netzpirat/codo/issues/65): Fix GitHub Flavored Markdown rendering around inline tags.
 
 # Version 1.4.1 - September 8, 2012
