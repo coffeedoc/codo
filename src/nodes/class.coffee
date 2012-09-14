@@ -74,7 +74,7 @@ module.exports = class Class extends Node
             doc or= swallowedDoc
 
             type = exp.variable?.base?.value
-            name = exp.args[0]?.base?.properties[0]?.variable?.base?.value
+            name = exp.args?[0]?.base?.properties?[0]?.variable?.base?.value
 
             # This is a workaround for a strange CoffeeScript bug:
             # Given the following snippet:
@@ -101,7 +101,7 @@ module.exports = class Class extends Node
             #
             # BUT, Doc B is now a sibling property of the previous `set name: ->` setter!
             #
-            swallowedDoc = exp.args[0]?.base?.properties[1]
+            swallowedDoc = exp.args?[0]?.base?.properties?[1]
 
             if name && (type is 'set' or type is 'get')
               property = _.find(@properties, (p) -> p.name is name)
