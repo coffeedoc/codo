@@ -67,7 +67,7 @@ module.exports = class Doc extends Node
 
       # Look ahead
       unless /^@example|@overload|@method/.exec line
-        while /^\s{2}\w+/.test(lines[0])
+        while /^\s{2}\S+/.test(lines[0])
           line += lines.shift().substring(1)
 
       if property = /^@property\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line

@@ -18,7 +18,8 @@ module.exports = class Person
   get lastname: -> @_lastname
   set lastname: (@_lastname) ->
 
-  # @property [Date] The day of birth
+  # @property [Date] The day
+  #   (of birth)
   get birth: -> @_birth
 
   # The twitter handle

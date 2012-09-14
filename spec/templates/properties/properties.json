@@ -63,8 +63,8 @@
                 "setter": false,
                 "getter": true,
                 "doc": {
-                    "comment": "<p>The day of birth</p>",
-                    "summary": "The day of birth",
+                    "comment": "<p>The day (of birth)</p>",
+                    "summary": "The day (of birth)",
                     "property": "Date"
                 }
             },
