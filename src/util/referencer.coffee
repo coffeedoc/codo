@@ -330,7 +330,6 @@ module.exports = class Referencer
                 console.log "[WARN] Cannot resolve link to #{ refMethod } of class #{ otherEntity.getFullName() } in class #{ entity.getFullName() }" unless @options.quiet
 
           else
-            console.log see
             see.label = see.reference
             see.reference = undefined
             console.log "[WARN] Cannot find referenced class #{ refClass } in class #{ entity.getFullName() }" unless @options.quiet
