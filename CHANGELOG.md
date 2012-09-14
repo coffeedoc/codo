@@ -1,5 +1,6 @@
 # Master
 
+- [#67](https://github.com/netzpirat/codo/issues/67): Input a file instead of a directory.
 - [#70](https://github.com/netzpirat/codo/issues/70): Ensure deep property access doesn't stop class processing.
 - [#69](https://github.com/netzpirat/codo/issues/69): Fix link parsing within a reference.
 - [#65](https://github.com/netzpirat/codo/issues/65): Fix GitHub Flavored Markdown rendering around inline tags.
