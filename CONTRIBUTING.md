@@ -34,6 +34,7 @@ features can be added.
 Planned tasks for Codo 2:
 
 * Use CoffeeScript Redux for parsing.
+* Remove the comment conversion and add comments to the CoffeeScript Redux parser instead.
 * Switch from class to function focused approach.
 * Abstract token detection into a tree walker.
 * Separate structural analysis from the generator and referencer.
