@@ -161,7 +161,9 @@ module.exports = class Codo
 
           extra = false
 
-          args = if argv._.length isnt 0 then argv._ else codoopts._
+          # ignore params if codo has not been started directly
+          args = if argv._.length isnt 0 and /.+codo$/.test(process.argv[1]) then argv._ else codoopts._
+
 
           for arg in args
             if arg is '-'
