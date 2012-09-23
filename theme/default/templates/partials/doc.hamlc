@@ -131,5 +131,5 @@
       - for overload in @doc.overloads
         .overload
           %p.signature
-            != "#{ if @method.type is 'instance' then '-' else '+' } (#{ if overload.returnValue then @str.escapeHTML(overload.returnValue.type) else 'void' }) #{ overload.signature }"
+            != "#{ if @method.type is 'instance' then '-' else '+' } (#{ if overload.returnValue then @str.escapeHTML(overload.returnValue.type) else if @doc?.returnValue then @str.escapeHTML(@doc.returnValue.type) else 'void' }) #{ overload.signature }"
           != @parent.JST['partials/doc']({ doc: overload, type: 'overload', path: @parent.path, referencer: @parent.referencer })
