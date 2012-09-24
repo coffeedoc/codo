@@ -1,4 +1,8 @@
-# Master
+# Version 1.4.3 - September 24, 2012
+
+- [#74](https://github.com/netzpirat/codo/issues/74): Use the method return when not set within a method overload. ([@PaulLeCam][])
+
+# Version 1.4.2 - September 14, 2012
 
 - [#71](https://github.com/netzpirat/codo/issues/71): Fix tag look ahead with non word characters.
 - [#67](https://github.com/netzpirat/codo/issues/67): Input a file instead of a directory.
@@ -182,6 +186,7 @@
 [@inossidabile]: https://github.com/inossidabile
 [@mattijs]: https://github.com/mattijs
 [@netzpirat]: https://github.com/netzpirat
+[@PaulLeCam]: https://github.com/PaulLeCam
 [@ryan-roemer]: https://github.com/ryan-roemer
 [@skabbes]: https://github.com/skabbes
 [@Squeegy]: https://github.com/Squeegy
