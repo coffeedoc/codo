@@ -1,3 +1,7 @@
+# Version 1.4.4 - September 26, 2012
+
+- [#75](https://github.com/netzpirat/codo/pull/75): Ignore command line params if codo has not been started directly. ([@vizio360][])
+
 # Version 1.4.3 - September 24, 2012
 
 - [#74](https://github.com/netzpirat/codo/issues/74): Use the method return when not set within a method overload. ([@PaulLeCam][])
@@ -190,3 +194,4 @@
 [@ryan-roemer]: https://github.com/ryan-roemer
 [@skabbes]: https://github.com/skabbes
 [@Squeegy]: https://github.com/Squeegy
+[@vizio360]: https://github.com/vizio360
