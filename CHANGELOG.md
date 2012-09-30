@@ -1,4 +1,4 @@
-# Master
+# Version 1.5.1 - September 30, 2012
 
 - Fix Node 0.6 compatibility.
 
