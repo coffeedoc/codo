@@ -7,7 +7,7 @@ class Example.Overload
   #   @param [Symbol] key describe key param
   #   @param [Object] value describe value param
   #   @param [Object] options the options
-  #   @option options [String] test the test option
+  #   @option options test [String] the test option
   #
   # @overload set(value)
   #   Sets a value on the default key `:foo`

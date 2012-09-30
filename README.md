@@ -286,6 +286,8 @@ parameter after the parameter type:
 # Feed the animal
 #
 # @param [World.Food] food the food to eat
+# @param [Object] options the feeding options
+# @option options [String] time the time to feed
 #
 feed: (food) ->
 ```
@@ -296,6 +298,8 @@ And this one with the name before the type:
 # Feed the animal
 #
 # @param food [World.Food] the food to eat
+# @param options [Object] the feeding options
+# @option options time [String] the time to feed
 #
 feed: (food) ->
 ```

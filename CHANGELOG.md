@@ -1,3 +1,7 @@
+# Master
+
+- [#78](https://github.com/netzpirat/codo/pull/78): Allow the name before the type for the `@option` tag.
+
 # Version 1.4.4 - September 26, 2012
 
 - [#75](https://github.com/netzpirat/codo/pull/75): Ignore command line params if codo has not been started directly. ([@vizio360][])

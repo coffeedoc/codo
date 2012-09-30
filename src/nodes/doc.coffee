@@ -118,6 +118,15 @@ module.exports = class Doc extends Node
           name: option[3]
           desc: Markdown.convert(option[4] || '', true)
 
+      else if option = /^@option\s+([^ ]+)\s+([^ ]+)\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
+        @paramsOptions or= {}
+        @paramsOptions[option[1]] or= []
+
+        @paramsOptions[option[1]].push
+          type: option[3]
+          name: option[2]
+          desc: Markdown.convert(option[4] || '', true)
+
       else if see = /^@see\s+([^\s]+)(?:\s+(.+))?/i.exec line
         @see or= []
         @see.push
