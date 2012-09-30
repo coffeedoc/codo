@@ -216,6 +216,10 @@ module.exports = class Referencer
       if data.doc.returnValue?.desc
         data.doc.returnValue.desc = @resolveTextReferences(data.doc.returnValue.desc, entity, path)
 
+      if data.doc.throwValue
+        for throws, index in data.doc.throwValue
+          data.doc.throwValue[index].desc = @resolveTextReferences(throws.desc, entity, path)
+
     data
 
   # Search a text to find see links wrapped in curly braces.
