@@ -164,7 +164,7 @@ module.exports = class Doc extends Node
         title = example[1] || ''
         code = []
 
-        while /^\s{2}.*/.test(lines[0])
+        while /^\s{2}.*/.test(lines[0]) or (/^$/.test(lines[0]) and /^\s{2}.*/.test(lines[1]))
           code.push lines.shift().substring(2)
 
         if code.length isnt 0

@@ -1,0 +1,31 @@
+[
+    {
+        "file": "spec/templates/methods/method_example.coffee",
+        "class": {
+            "className": "TestExample",
+            "name": "TestExample",
+            "namespace": ""
+        },
+        "methods": [
+            {
+                "doc": {
+                    "examples": [
+                        {
+                            "title": "Run generation",
+                            "code": "codo = require 'codo'\n\nfile = (filename, content) ->\n  console.log \"New file %s with content %s\", filename, content\n\ndone = (err) ->\n  if err\n    console.log \"Cannot generate documentation:\", err\n  else\n    console.log \"Documentation generated\"\n\ncodo.run file, done\n"
+                        }
+                    ],
+                    "comment": "",
+                    "summary": ""
+                },
+                "type": "instance",
+                "signature": "- (void) <strong>run</strong>()",
+                "name": "run",
+                "bound": false,
+                "parameters": []
+            }
+        ],
+        "variables": [],
+        "properties": []
+    }
+]
