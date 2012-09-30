@@ -2,7 +2,7 @@
     {
         "file": "spec/templates/properties/properties.coffee",
         "doc": {
-            "comment": "<p>Property test class. It&#39;s almost the most difficult<br />part to come up with stupid examples.</p>",
+            "comment": "<p>Property test class. It&#39;s almost the most difficult\npart to come up with stupid examples.</p>",
             "summary": "Property test class."
         },
         "class": {

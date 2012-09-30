@@ -1,5 +1,6 @@
 # Master
 
+- [#65](https://github.com/netzpirat/codo/pull/65): Fix markdown spacing and line wrapping.
 - [#77](https://github.com/netzpirat/codo/pull/77): Allow multiple types for simple "overload" cases.
 - [#66](https://github.com/netzpirat/codo/pull/66): Add a link to the project README on top of the breadcrumb list.
 - [#76](https://github.com/netzpirat/codo/pull/76): Add a `@throw` tag to define raised exceptions.

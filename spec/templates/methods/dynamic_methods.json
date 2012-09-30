@@ -2,7 +2,7 @@
     {
         "file": "spec/templates/methods/dynamic_methods.coffee",
         "doc": {
-            "comment": "<p>This class has virtual methods, which doesn&#39;t<br />exist in the source but appears in the documentation.</p>",
+            "comment": "<p>This class has virtual methods, which doesn&#39;t\nexist in the source but appears in the documentation.</p>",
             "summary": "This class has virtual methods, which doesn&#39;t exist in the source but appears in the documentation.",
             "methods": [
                 {

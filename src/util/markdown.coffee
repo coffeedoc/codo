@@ -12,7 +12,7 @@ module.exports = class Markdown
 
   # Convert markdown to Html. If the param `limit`
   # is true, then all unwanted elements are stripped from the
-  # result.
+  # result and also all existing newlines.
   #
   # @param [String] markdown the markdown markup
   # @param [Boolean] limit if elements should be limited
@@ -22,19 +22,12 @@ module.exports = class Markdown
 
     html = marked(markdown)
 
-    # Convert newlines before inline tags to spaces
-    html = html.replace /(a|abbr|acronym|b|big|cite|code|del|em|i|ins|sub|sup|span|small|strike|strong|q|tt|u)>\n+/mg, '$1> '
-    html = html.replace /\n+<(a|abbr|acronym|b|big|cite|code|del|em|i|ins|sub|sup|span|small|strike|strong|q|tt|u)/mg, ' <$1'
+    if limit
+      html = html.replace(/\n/, '')
+      html = Markdown.limit(html, allowed)
 
-    # Remove all other newlines around a tag
-    html = html.replace />\n+/mg, '>'
-    html = html.replace /\n+</mg, '<'
-
-    # Convert newlines not around a tag to line breaks, but not within code blocks
-    html = html.replace /\n/mg, '<br />'
-    html = html.replace /<pre>(.+?)<\/pre>/mg, (match) -> match.replace /<br \/>/mg, "\n"
-
-    html = Markdown.limit(html, allowed) if limit
+    # Remove newlines around open and closing paragraph tags
+    html = html.replace /(?:\n+)?<(\/?p)>(?:\n+)?/mg, '<$1>'
 
     html
 
