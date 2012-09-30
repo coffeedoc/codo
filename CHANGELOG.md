@@ -1,4 +1,4 @@
-# Master
+# Version 1.5.0 - September 30, 2012
 
 - [#65](https://github.com/netzpirat/codo/pull/65): Fix markdown spacing and line wrapping.
 - [#77](https://github.com/netzpirat/codo/pull/77): Allow multiple types for simple "overload" cases.
