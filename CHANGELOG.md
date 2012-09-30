@@ -1,3 +1,7 @@
+# Master
+
+- Fix Node 0.6 compatibility.
+
 # Version 1.5.0 - September 30, 2012
 
 - [#65](https://github.com/netzpirat/codo/pull/65): Fix markdown spacing and line wrapping.

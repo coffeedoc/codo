@@ -269,7 +269,7 @@ module.exports = class Codo
   # or get the current working directory name.
   #
   @detectName: (done) ->
-    if fs.exists 'package.json'
+    if (fs.exists || path.exists)('package.json')
       name = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['name']
     else
       name = path.basename(path.join(__dirname, '..'))
