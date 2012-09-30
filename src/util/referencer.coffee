@@ -233,8 +233,8 @@ module.exports = class Referencer
     # Search for references and replace them
     text = text.replace /\{([^\}]*)\}/gm, (match, link) =>
       # Remove the markdown generated autolinks
-      link = link.replace(/<.+?>/, '').split(' ')
-      
+      link = link.replace(/<.+?>/g, '').split(' ')
+
       see = @resolveSee({ reference: link[0], label: link[1] }, entity, path)
 
       if see.reference

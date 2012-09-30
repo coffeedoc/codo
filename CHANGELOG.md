@@ -1,5 +1,6 @@
 # Master
 
+- [#69](https://github.com/netzpirat/codo/pull/69): Fix link parsing within a reference.
 - [#78](https://github.com/netzpirat/codo/pull/78): Allow the name before the type for the `@option` tag.
 
 # Version 1.4.4 - September 26, 2012
