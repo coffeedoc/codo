@@ -74,6 +74,21 @@
                 &mdash;
                 %span.desc!= option.desc
 
+    - if @doc?.throwValue
+      %h3 Throws:
+      %ul.throw
+        - for throws in @doc.throwValue
+          %li
+            %span.type
+            - if throws.desc
+              (
+                %tt>!= @referencer.linkTypes throws.type, @path
+              )
+              &mdash;
+              %span.desc!= throws.desc
+            - else
+              %tt>!= @referencer.linkTypes throws.type, @path
+
     - if @doc?.returnValue
       %h3 Returns:
       %ul.return

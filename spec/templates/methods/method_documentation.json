@@ -73,7 +73,13 @@
           "returnValue": {
             "type": "Boolean",
             "desc": "When successful executed"
-          }
+          },
+          "throwValue": [
+            {
+              "type": "TypeError",
+              "desc": "when it can&#39;t be done"
+            }
+          ]
         },
         "type": "instance",
         "signature": "- (Boolean) <strong>do</strong>(it, again, options)",

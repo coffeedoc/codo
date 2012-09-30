@@ -226,6 +226,13 @@ comment for a mixin or in a method comment.
       <td>&#10004;</td>
     </tr>
     <tr>
+      <td><strong>@throw</strong> message</td>
+      <td>&#10004;</td>
+      <td></td>
+      <td></td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
       <td><strong>@todo</strong> message</td>
       <td>&#10004;</td>
       <td>&#10004;</td>

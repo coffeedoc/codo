@@ -23,6 +23,7 @@ class Example.Animal.Lion extends Example.Animal
   # Escape at maximum speed.
   #
   # @param (see #move)
+  # @throw [EscapeError] when escaping isn't possible
   #
   escape: (direction) ->
     @move(direction, @MAX_SPEED)

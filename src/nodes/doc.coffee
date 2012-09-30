@@ -84,6 +84,18 @@ module.exports = class Doc extends Node
           type: '?'
           desc: Markdown.convert(returnValue[1], true)
 
+      else if throwValue = /^@throw\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
+        @throwValue or= []
+        @throwValue.push
+          type: throwValue[1]
+          desc: Markdown.convert(throwValue[2], true)
+
+      else if throwValue = /^@throw\s+(.+)/i.exec line
+        @throwValue or= []
+        @throwValue.push
+          type: '?'
+          desc: Markdown.convert(throwValue[1], true)
+
       else if param = /^@param\s+\(see ((?:[$A-Za-z_\x7f-\uffff][$.\w\x7f-\uffff]*)?[#.][$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)\)/i.exec line
         @params or= []
         @params.push
@@ -279,6 +291,7 @@ module.exports = class Doc extends Node
         options: @paramsOptions
         see: @see
         returnValue: @returnValue
+        throwValue: @throwValue
         overloads: @overloads
         methods: @methods
         property: @property

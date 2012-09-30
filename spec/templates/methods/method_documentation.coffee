@@ -18,6 +18,7 @@ class App.TestMethodDocumentation extends App.Doc
   # @option options [Number] repeat How wany time to repeat
   # @option options [Array<Tasks>] tasks The tasks to do
   # @return [Boolean] When successful executed
+  # @throw [TypeError] when it can't be done
   #
   do: (it, again, options) ->
 
