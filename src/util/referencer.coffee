@@ -148,6 +148,22 @@ module.exports = class Referencer
   # @return [String] the processed text
   #
   linkTypes: (text = '', path) ->
+    text = text.split ','
+
+    text = for t in text
+      @linkType(t.trim(), path)
+
+    text.join(', ')
+
+  # Create browsable links a known entity.
+  #
+  # @see #getLink
+  #
+  # @param [String] text the text to parse.
+  # @param [String] path the path prefix
+  # @return [String] the processed text
+  #
+  linkType: (text = '', path) ->
     text = _.str.escapeHTML text
 
     for clazz in @classes

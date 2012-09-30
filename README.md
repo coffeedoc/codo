@@ -311,6 +311,19 @@ And this one with the name before the type:
 feed: (food) ->
 ```
 
+The parameter type can contain multiple comma separated types:
+
+```CoffeeScript
+# Feed the animal
+#
+# @param [String, Char] input
+# @return [Integer, Float] output
+#
+do: (input) ->
+```
+
+Each known type will be automatically linked.
+
 ### Options
 
 If you have an object as parameter and you like to defined the accepted properties as options to the method, you can
