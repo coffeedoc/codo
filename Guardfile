@@ -4,7 +4,7 @@ notification :terminal_notifier
 group :codo do
   # CoffeeScript for the codo library
   guard :coffeescript, input: 'src', output: 'lib', noop: true
-  
+
   # Run Jasmine specs
   guard :shell do
     jasmine_node = File.expand_path('../node_modules/jasmine-node/bin/jasmine-node', __FILE__)
@@ -12,9 +12,9 @@ group :codo do
   end
 
   # Generate codo doc
-  #guard :shell do
-  #  watch(%r{src|theme}) { `./bin/codo` }
-  #end
+  guard :shell do
+    watch(%r{src|theme}) { `./bin/codo` }
+  end
 end
 
 group :theme do
