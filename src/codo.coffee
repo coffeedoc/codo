@@ -70,6 +70,7 @@ module.exports = class Codo
         inputs:  @detectSources
         readme:  @detectReadme
         extras:  @detectExtras
+        name:    @detectName
       },
       (err, defaults) ->
 
@@ -84,6 +85,11 @@ module.exports = class Codo
             alias     : 'readme'
             describe  : 'The readme file used'
             default   : codoopts.readme || codoopts.r || defaults.readme
+          )
+          .options('n',
+            alias     : 'name'
+            describe  : 'The project name used'
+            default   : codoopts.name || codoopts.n || defaults.name
           )
           .options('q',
             alias     : 'quiet'
@@ -149,6 +155,7 @@ module.exports = class Codo
             inputs: []
             output: argv.o
             extras: []
+            name: argv.n
             readme: argv.r
             title: argv.title
             quiet: argv.q
@@ -257,3 +264,14 @@ module.exports = class Codo
       'LICENSE.MIT'
       'LICENSE.GPL'
     ], (fs.exists || path.exists), (results) -> done null, results
+
+  # Find the project name by either parse `package.json`
+  # or get the current working directory name.
+  #
+  @detectName: (done) ->
+    if fs.exists 'package.json'
+      name = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['name']
+    else
+      name = path.basename(path.join(__dirname, '..'))
+
+    done null, name.charAt(0).toUpperCase() + name.slice(1)

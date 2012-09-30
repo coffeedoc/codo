@@ -1,5 +1,6 @@
 # Master
 
+- [#66](https://github.com/netzpirat/codo/pull/66): Add a link to the project README on top of the breadcrumb list.
 - [#76](https://github.com/netzpirat/codo/pull/76): Add a `@throw` tag to define raised exceptions.
 - [#69](https://github.com/netzpirat/codo/pull/69): Fix link parsing within a reference.
 - [#78](https://github.com/netzpirat/codo/pull/78): Allow the name before the type for the `@option` tag.

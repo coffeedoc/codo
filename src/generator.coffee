@@ -83,6 +83,7 @@ module.exports = class Generator
         }
       ]
 
+      breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.html", name: @options.name }) if @options.readme
       breadcrumbs.unshift(@options.homepage) if @options.homepage
 
       combined = []
@@ -127,6 +128,7 @@ module.exports = class Generator
         }
       ]
 
+      breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.html", name: @options.name }) if @options.readme
       breadcrumbs.unshift(@options.homepage) if @options.homepage
 
       combined = []
@@ -164,6 +166,7 @@ module.exports = class Generator
         }
       ]
 
+      breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.html", name: @options.name }) if @options.readme
       breadcrumbs.unshift(@options.homepage) if @options.homepage
 
       combined = []
@@ -211,6 +214,7 @@ module.exports = class Generator
             }
           ]
 
+          breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.html", name: @options.name }) if @options.readme
           breadcrumbs.unshift(@options.homepage) if @options.homepage
 
           @templater.render 'extra', {

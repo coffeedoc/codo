@@ -545,6 +545,7 @@ Usage: codo [options] [source_files [- extra_files]]
 
 Options:
   -r, --readme      The readme file used                                [default: "README.md"]
+  -n, --name        The project name used                               [default: "Codo"]
   -q, --quiet       Show no warnings                                    [boolean]  [default: false]
   -o, --output-dir  The output directory                                [default: "./doc"]
   -a, --analytics   The Google analytics ID                             [default: false]
@@ -557,11 +558,15 @@ Options:
   --title                                               [default: "CoffeeScript API Documentation"]
 ```
 
+Codo wants to be smart and tries to detect the best default settings for the sources, the readme, the extra files and
+the project name, so the above defaults may be different on your project.
+
 ### Project defaults
 
 You can define your project defaults by write your command line options to a `.codoopts` file:
 
 ```bash
+--name       "Codo"
 --readme     README.md
 --title      "Codo Documentation"
 --private
