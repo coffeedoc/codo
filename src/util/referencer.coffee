@@ -155,7 +155,7 @@ module.exports = class Referencer
 
     text.join(', ')
 
-  # Create browsable links a known entity.
+  # Create browsable links to a known entity.
   #
   # @see #getLink
   #
@@ -254,8 +254,10 @@ module.exports = class Referencer
     text = text.replace /\{([^\}]*)\}/gm, (match, link) =>
       # Remove the markdown generated autolinks
       link = link.replace(/<.+?>/g, '').split(' ')
+      href = link.shift()
+      label = link.join(' ')
 
-      see = @resolveSee({ reference: link[0], label: link[1] }, entity, path)
+      see = @resolveSee({ reference: href, label: label }, entity, path)
 
       if see.reference
         "<a href='#{ see.reference }'>#{ see.label }</a>"
