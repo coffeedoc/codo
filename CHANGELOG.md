@@ -1,5 +1,6 @@
 # Master
 
+- [#82](https://github.com/netzpirat/codo/pull/82): Fix reserved method name parsing.
 - [#83](https://github.com/netzpirat/codo/pull/83): Fix detecting the default project name.
 - [#69](https://github.com/netzpirat/codo/pull/69): Fix link parsing for link text with a space.
 

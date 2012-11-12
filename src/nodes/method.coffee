@@ -131,6 +131,13 @@ module.exports = class Method extends Node
           @name = @name.substring(8)
           @type = 'class'
 
+        # Reserved names will result in a name like { '0': 'd', '1': 'e', '2': 'l', '3': 'e', '4': 't', '5': 'e' }
+        if _.isObject(@name) && @name.reserved is true
+          name = @name
+          delete name.reserved
+          @name = ''
+          @name += c for p, c of name
+
       @name
 
     catch error
