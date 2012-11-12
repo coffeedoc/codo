@@ -1,3 +1,8 @@
+# Master
+
+- [#83](https://github.com/netzpirat/codo/pull/83): Fix detecting the default project name.
+- [#69](https://github.com/netzpirat/codo/pull/69): Fix link parsing for link text with a space.
+
 # Version 1.5.1 - September 30, 2012
 
 - Fix Node 0.6 compatibility.
