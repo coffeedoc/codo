@@ -272,6 +272,6 @@ module.exports = class Codo
     if (fs.exists || path.exists)('package.json')
       name = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['name']
     else
-      name = path.basename(path.join(__dirname, '..'))
+      name = path.basename(process.cwd())
 
     done null, name.charAt(0).toUpperCase() + name.slice(1)
