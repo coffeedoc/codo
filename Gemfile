@@ -8,6 +8,6 @@ gem 'guard-compass'
 gem 'guard-jammit'
 gem 'guard-livereload'
 
-gem 'terminal-notifier-guard'
+gem 'ruby_gntp'
 gem 'coolline'
 gem 'rb-fsevent'

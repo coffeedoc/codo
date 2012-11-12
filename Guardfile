@@ -1,5 +1,4 @@
-interactor :coolline
-notification :terminal_notifier
+notification :gntp
 
 group :codo do
   # CoffeeScript for the codo library
