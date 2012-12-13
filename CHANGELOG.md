@@ -1,3 +1,7 @@
+# Master
+
+- [#86](https://github.com/netzpirat/codo/pull/86): Fix documentation coverage percentage.
+
 # Version 1.5.2 - November 12, 2012
 
 - [#82](https://github.com/netzpirat/codo/pull/82): Fix reserved method name parsing.

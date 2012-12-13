@@ -222,16 +222,16 @@ module.exports = class Parser
     fileCount      = @files.length
 
     classCount     = @classes.length
-    noDocClasses   = _.filter(@classes, (clazz) -> _.isUndefined clazz.getDoc()).length
+    noDocClasses   = _.filter(@classes, (clazz) -> !clazz.getDoc().hasComment()).length
 
     mixinCount     = @mixins.length
 
     methodCount    = @getAllMethods().length
-    noDocMethods   = _.filter(@getAllMethods(), (method) -> _.isUndefined method.getDoc()).length
+    noDocMethods   = _.filter(@getAllMethods(), (method) -> !method.getDoc().hasComment()).length
 
     constants      = _.filter(@getAllVariables(), (variable) -> variable.isConstant())
     constantCount  = constants.length
-    noDocConstants = _.filter(constants, (constant) -> _.isUndefined constant.getDoc()).length
+    noDocConstants = _.filter(constants, (constant) -> !constant.getDoc().hasComment()).length
 
     documented   = 100 - 100 / (classCount + methodCount + constantCount) * (noDocClasses + noDocMethods + noDocConstants)
     documented ||= 100

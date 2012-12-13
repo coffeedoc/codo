@@ -23,6 +23,13 @@ module.exports = class Doc extends Node
     catch error
       console.warn('Create doc error:', @node, error) if @options.verbose
 
+  # Determines if the current doc has some comments
+  #
+  # @return [Boolean] the comment status
+  #
+  hasComment: ->
+    @node && @node.comment
+
   # Detect whitespace on the left and removes
   # the minimum whitespace ammount.
   #
