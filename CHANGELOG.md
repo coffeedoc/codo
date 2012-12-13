@@ -1,4 +1,4 @@
-# Master
+# Version 1.5.3 - December 13, 2012
 
 - [#86](https://github.com/netzpirat/codo/pull/86): Fix documentation coverage percentage.
 
