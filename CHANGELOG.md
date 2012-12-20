@@ -1,3 +1,7 @@
+# Version 1.5.5
+
+- [#88](https://github.com/netzpirat/codo/issues/88): Virtual methods allowed to use parameters options
+
 # Version 1.5.4 - December 20, 2012
 
 - [#87](https://github.com/netzpirat/codo/issues/87): Virtual methods made to not affect (nor break) coverage percent.

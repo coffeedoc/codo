@@ -5,6 +5,9 @@
 #   Sets a value
 #   @param [String] key describe key param
 #   @param [Object] value describe value param
+#   @option value [String] string
+#   @option value [Integer] number
+#   @option value [Object] whatever
 #
 # @method #get(key)
 #   Gets a value

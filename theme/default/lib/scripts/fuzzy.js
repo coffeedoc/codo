@@ -106,6 +106,7 @@
     regex = [];
     for (_i = 0, _len = chars.length; _i < _len; _i++) {
       c = chars[_i];
+      c = c === "\\" ? "\\\\" : c;
       regex.push("([" + c + "])");
     }
     return regex.join("[^/]*?");

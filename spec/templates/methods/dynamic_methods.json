@@ -1,100 +1,138 @@
 [
-    {
-        "file": "spec/templates/methods/dynamic_methods.coffee",
-        "doc": {
-            "comment": "<p>This class has virtual methods, which doesn&#39;t\nexist in the source but appears in the documentation.</p>",
-            "summary": "This class has virtual methods, which doesn&#39;t exist in the source but appears in the documentation.",
-            "methods": [
-                {
-                    "signature": "#set(key, value)",
-                    "comment": "<p>Sets a value</p>",
-                    "summary": "Sets a value",
-                    "params": [
-                        {
-                            "type": "String",
-                            "name": "key",
-                            "desc": "describe key param"
-                        },
-                        {
-                            "type": "Object",
-                            "name": "value",
-                            "desc": "describe value param"
-                        }
-                    ]
-                },
-                {
-                    "signature": "#get(key)",
-                    "comment": "<p>Gets a value</p>",
-                    "summary": "Gets a value",
-                    "params": [
-                        {
-                            "type": "String",
-                            "name": "key",
-                            "desc": "describe key param"
-                        }
-                    ],
-                    "returnValue": {
-                        "type": "Object",
-                        "desc": "describe value param"
-                    }
-                }
-            ]
-        },
-        "class": {
-            "className": "Example.Methods.Virtual",
-            "name": "Virtual",
-            "namespace": "Example.Methods"
-        },
-        "methods": [
+  {
+    "file": "spec/templates/methods/dynamic_methods.coffee",
+    "doc": {
+      "comment": "<p>This class has virtual methods, which doesn&#39;t\nexist in the source but appears in the documentation.</p>",
+      "summary": "This class has virtual methods, which doesn&#39;t exist in the source but appears in the documentation.",
+      "methods": [
+        {
+          "signature": "#set(key, value)",
+          "comment": "<p>Sets a value</p>",
+          "summary": "Sets a value",
+          "params": [
             {
-                "doc": {
-                    "signature": "#set(key, value)",
-                    "comment": "<p>Sets a value</p>",
-                    "summary": "Sets a value",
-                    "params": [
-                        {
-                            "type": "String",
-                            "name": "key",
-                            "desc": "describe key param"
-                        },
-                        {
-                            "type": "Object",
-                            "name": "value",
-                            "desc": "describe value param"
-                        }
-                    ]
-                },
-                "type": "instance",
-                "signature": "- (void) <strong>set</strong>(key, value)",
-                "name": "set",
-                "bound": false,
-                "parameters": []
+              "type": "String",
+              "name": "key",
+              "desc": "describe key param"
             },
             {
-                "doc": {
-                    "signature": "#get(key)",
-                    "comment": "<p>Gets a value</p>",
-                    "summary": "Gets a value",
-                    "params": [
-                        {
-                            "type": "String",
-                            "name": "key",
-                            "desc": "describe key param"
-                        }
-                    ],
-                    "returnValue": {
-                        "type": "Object",
-                        "desc": "describe value param"
-                    }
-                },
-                "type": "instance",
-                "signature": "- (Object) <strong>get</strong>(key)",
-                "name": "get",
-                "bound": false,
-                "parameters": []
+              "type": "Object",
+              "name": "value",
+              "desc": "describe value param"
             }
-        ],
-        "variables": [],
-        "properties": []
-    }
+          ],
+          "options": {
+            "value": [
+              {
+                "type": "String",
+                "name": "string",
+                "desc": ""
+              },
+              {
+                "type": "Integer",
+                "name": "number",
+                "desc": ""
+              },
+              {
+                "type": "Object",
+                "name": "whatever",
+                "desc": ""
+              }
+            ]
+          }
+        },
+        {
+          "signature": "#get(key)",
+          "comment": "<p>Gets a value</p>",
+          "summary": "Gets a value",
+          "params": [
+            {
+              "type": "String",
+              "name": "key",
+              "desc": "describe key param"
+            }
+          ],
+          "returnValue": {
+            "type": "Object",
+            "desc": "describe value param"
+          }
+        }
+      ]
+    },
+    "class": {
+      "className": "Example.Methods.Virtual",
+      "name": "Virtual",
+      "namespace": "Example.Methods"
+    },
+    "methods": [
+      {
+        "doc": {
+          "signature": "#set(key, value)",
+          "comment": "<p>Sets a value</p>",
+          "summary": "Sets a value",
+          "params": [
+            {
+              "type": "String",
+              "name": "key",
+              "desc": "describe key param"
+            },
+            {
+              "type": "Object",
+              "name": "value",
+              "desc": "describe value param"
+            }
+          ],
+          "options": {
+            "value": [
+              {
+                "type": "String",
+                "name": "string",
+                "desc": ""
+              },
+              {
+                "type": "Integer",
+                "name": "number",
+                "desc": ""
+              },
+              {
+                "type": "Object",
+                "name": "whatever",
+                "desc": ""
+              }
+            ]
+          }
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>set</strong>(key, value)",
+        "name": "set",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "doc": {
+          "signature": "#get(key)",
+          "comment": "<p>Gets a value</p>",
+          "summary": "Gets a value",
+          "params": [
+            {
+              "type": "String",
+              "name": "key",
+              "desc": "describe key param"
+            }
+          ],
+          "returnValue": {
+            "type": "Object",
+            "desc": "describe value param"
+          }
+        },
+        "type": "instance",
+        "signature": "- (Object) <strong>get</strong>(key)",
+        "name": "get",
+        "bound": false,
+        "parameters": []
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
 ]

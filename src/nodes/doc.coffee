@@ -249,7 +249,7 @@ module.exports = class Doc extends Node
             comment: doc.comment
             summary: doc.summary
             params: doc.params
-            options: doc.options
+            options: doc.paramsOptions
             private: doc.private
             abstract: doc.abstract
             deprecated: doc.deprecated
