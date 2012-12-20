@@ -261,6 +261,7 @@ module.exports = class Doc extends Node
             todos: doc.todos
             examples: doc.examples
             authors: doc.authors
+            hasComment: -> true
 
       else
         comment.push line
