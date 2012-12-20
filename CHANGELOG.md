@@ -1,3 +1,7 @@
+# Version 1.5.4 - December 20, 2012
+
+- [#87](https://github.com/netzpirat/codo/issues/87): Virtual methods made to not affect (nor break) coverage percent.
+
 # Version 1.5.3 - December 13, 2012
 
 - [#86](https://github.com/netzpirat/codo/pull/86): Fix documentation coverage percentage.

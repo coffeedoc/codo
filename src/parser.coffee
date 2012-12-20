@@ -3,9 +3,10 @@ _            = require 'underscore'
 _.str        = require 'underscore.string'
 CoffeeScript = require 'coffee-script'
 
-File         = require './nodes/file'
-Class        = require './nodes/class'
-Mixin        = require './nodes/mixin'
+File          = require './nodes/file'
+Class         = require './nodes/class'
+Mixin         = require './nodes/mixin'
+VirtualMethod = require './nodes/virtual_method'
 
 {whitespace} = require('./util/text')
 
@@ -226,8 +227,9 @@ module.exports = class Parser
 
     mixinCount     = @mixins.length
 
-    methodCount    = @getAllMethods().length
-    noDocMethods   = _.filter(@getAllMethods(), (method) -> !method.getDoc().hasComment()).length
+    methodsToCount = _.filter(@getAllMethods(), (method) -> method not instanceof VirtualMethod)
+    methodCount    = methodsToCount.length
+    noDocMethods   = _.filter(methodsToCount, (method) -> !method.getDoc().hasComment()).length
 
     constants      = _.filter(@getAllVariables(), (variable) -> variable.isConstant())
     constantCount  = constants.length
