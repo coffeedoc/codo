@@ -1,11 +1,11 @@
 # Codo Changelog
 
-## Master
+## Version 1.5.6 - February 19, 2013
 
 - [#90](https://github.com/netzpirat/codo/issues/90): Fix class name for global bound classes.
 - Do not escape attributes to avoid escaped link slashes.
 
-### Version 1.5.5
+### Version 1.5.5 - December 20, 2012
 
 - [#88](https://github.com/netzpirat/codo/issues/88): Virtual methods allowed to use parameters options
 
