@@ -2,6 +2,7 @@
 
 ## Master
 
+- [#90](https://github.com/netzpirat/codo/issues/90): Fix class name for global bound classes.
 - Do not escape attributes to avoid escaped link slashes.
 
 ### Version 1.5.5

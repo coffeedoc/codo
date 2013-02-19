@@ -1,0 +1,13 @@
+[
+  {
+    "file": "spec/templates/classes/global_class.coffee",
+    "class": {
+      "className": "GlobalTestClass",
+      "name": "GlobalTestClass",
+      "namespace": ""
+    },
+    "methods": [],
+    "variables": [],
+    "properties": []
+  }
+]

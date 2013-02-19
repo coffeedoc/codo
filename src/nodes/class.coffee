@@ -162,7 +162,9 @@ module.exports = class Class extends Node
             @className = ''
 
         for prop in @node.variable.properties
-          @className += ".#{ prop.name.value }"
+          if prop.name.value
+            @className += '.' if @className.length > 0
+            @className += prop.name.value
 
       @className
 
