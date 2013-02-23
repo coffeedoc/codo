@@ -426,7 +426,7 @@ virtual (or dynamic) method with the `@method` tag:
 class VirtualMethods
 ```
 
-The `@method` tag must be followed by the method signature that will appear in the documentation, followed
+The `@method` tag must be followed by the class signature that will appear in the documentation, followed
 by any method tag indented by two spaces. The difference to the `@overload` tag beside the different context is that
 the signature should contain either the instance prefix `#` or the class prefix `.`.
 
