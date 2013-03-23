@@ -131,13 +131,13 @@ module.exports = class Parser
         commentLine = /^(\s*#)\s?(\s*.*)/.exec(line)
         if commentLine
           if inComment
-            comment.push commentLine[2]?.replace /#/g, "\u0091#"
+            comment.push whitespace(indentComment) + commentLine[2]?.replace /#/g, "\u0091#"
           else
             inComment = true
             indentComment =  commentLine[1].length - 1
 
             comment.push whitespace(indentComment) + '###'
-            comment.push commentLine[2]?.replace /#/g, "\u0091#"
+            comment.push whitespace(indentComment) + commentLine[2]?.replace /#/g, "\u0091#"
         else
           if inComment
             inComment = false
