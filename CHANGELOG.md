@@ -1,5 +1,10 @@
 # Codo Changelog
 
+## Master
+
+- [#95](https://github.com/netzpirat/codo/issues/95): Allow objects to be documented as objects.
+- [#96](https://github.com/netzpirat/codo/issues/96): Fix multi line tags.
+
 ## Version 1.5.6 - February 19, 2013
 
 - [#90](https://github.com/netzpirat/codo/issues/90): Fix class name for global bound classes.
