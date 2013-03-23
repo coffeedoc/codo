@@ -6,6 +6,11 @@ module.exports = class Person
   # @property [Array<String>] the nicknames
   nicknames: []
 
+  # @property [Object] The entity's position
+  position:
+    x: 0
+    y: 0
+
   # Language helpers
   get = (props) => @::__defineGetter__ name, getter for name, getter of props
   set = (props) => @::__defineSetter__ name, setter for name, setter of props

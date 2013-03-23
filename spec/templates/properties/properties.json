@@ -37,6 +37,17 @@
                 }
             },
             {
+                "name": "position",
+                "signature": "(Object) <strong>position</strong>",
+                "setter": true,
+                "getter": true,
+                "doc": {
+                    "comment": "<p>The entity&#39;s position</p>",
+                    "summary": "The entity&#39;s position",
+                    "property": "Object"
+                }
+            },
+            {
                 "name": "firstname",
                 "signature": "(String) <strong>firstname</strong>",
                 "setter": true,

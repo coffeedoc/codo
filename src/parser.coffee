@@ -156,7 +156,7 @@ module.exports = class Parser
                  | # Constant
                    ^\s*@[$A-Z_][A-Z_]*)
                  | # Properties
-                   ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*:\s*\S+
+                   ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*:
                ///.exec line
 
               result.push c for c in comment
