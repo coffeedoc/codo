@@ -29,7 +29,11 @@ module.exports = class Referencer
   getInheritedMethods: (clazz) ->
     unless _.isEmpty clazz.getParentClassName()
       parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
-      if parentClass then _.union(parentClass.getMethods(), @getInheritedMethods(parentClass)) else []
+
+      if parentClass and parentClass isnt clazz
+        _.union(parentClass.getMethods(), @getInheritedMethods(parentClass))
+      else
+        []
 
     else
       []
@@ -48,7 +52,7 @@ module.exports = class Referencer
     unless _.isEmpty clazz.getParentClassName()
       parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
 
-      if parentClass
+      if parentClass and parentClass isnt clazz
         result = _.extend {}, @getIncludedMethods(parentClass), result
 
     result
@@ -67,7 +71,7 @@ module.exports = class Referencer
     unless _.isEmpty clazz.getParentClassName()
       parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
 
-      if parentClass
+      if parentClass and parentClass isnt clazz
         result = _.extend {}, @getExtendedMethods(parentClass), result
 
     result
@@ -86,7 +90,7 @@ module.exports = class Referencer
     unless _.isEmpty clazz.getParentClassName()
       parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
 
-      if parentClass
+      if parentClass and parentClass isnt clazz
         result = _.extend {}, @getConcernMethods(parentClass), result
 
     result
@@ -113,7 +117,11 @@ module.exports = class Referencer
   getInheritedVariables: (clazz) ->
     unless _.isEmpty clazz.getParentClassName()
       parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
-      if parentClass then _.union(parentClass.getVariables(), @getInheritedVariables(parentClass)) else []
+
+      if parentClass and parentClass isnt clazz
+        _.union(parentClass.getVariables(), @getInheritedVariables(parentClass))
+      else
+        []
 
     else
       []
@@ -134,7 +142,11 @@ module.exports = class Referencer
   getInheritedProperties: (clazz) ->
     unless _.isEmpty clazz.getParentClassName()
       parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
-      if parentClass then _.union(parentClass.properties, @getInheritedProperties(parentClass)) else []
+
+      if parentClass and parentClass isnt clazz
+        _.union(parentClass.properties, @getInheritedProperties(parentClass))
+      else
+        []
 
     else
       []

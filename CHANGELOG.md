@@ -2,6 +2,7 @@
 
 ## Master
 
+- [#93](https://github.com/netzpirat/codo/issues/93): Fix classes that extends themselves.
 - [#95](https://github.com/netzpirat/codo/issues/95): Allow objects to be documented as objects.
 - [#96](https://github.com/netzpirat/codo/issues/96): Fix multi line tags.
 
