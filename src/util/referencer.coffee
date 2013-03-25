@@ -312,9 +312,16 @@ module.exports = class Referencer
         see.reference = "#{ path }classes/#{ entity.getFullName().replace(/\./g, '/') }.html##{ ref.substring(1) }-instance"
         see.label = ref unless see.label
       else
-        see.label = see.reference
-        see.reference = undefined
-        console.log "[WARN] Cannot resolve link to #{ ref } in class #{ entity.getFullName() }" unless @options.quiet
+        # Try to resolve to a property
+        properties = _.map entity.properties, (p) -> p.name
+
+        if _.include properties, ref.substring(1)
+          see.reference = "#{ path }#{if entity.constructor.name == 'Class' then 'classes' else 'modules'}/#{ entity.getFullName().replace(/\./g, '/') }.html##{ ref.substring(1) }-property"
+          see.label = ref unless see.label
+        else
+          see.label = see.reference
+          see.reference = undefined
+          console.log "[WARN] Cannot resolve link to #{ ref } in class #{ entity.getFullName() }" unless @options.quiet
 
     # Link to other objects
     else
@@ -359,9 +366,16 @@ module.exports = class Referencer
                 see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-instance"
                 see.label = ref unless see.label
               else
-                see.label = see.reference
-                see.reference = undefined
-                console.log "[WARN] Cannot resolve link to #{ refMethod } of class #{ otherEntity.getFullName() } in class #{ entity.getFullName() }" unless @options.quiet
+                # Try to resolve to a property
+                properties = _.map otherEntity.properties, (p) -> p.name
+
+                if _.include properties, ref.substring(1)
+                  see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-property"
+                  see.label = ref unless see.label
+                else
+                  see.label = see.reference
+                  see.reference = undefined
+                  console.log "[WARN] Cannot resolve link to #{ refMethod } of class #{ otherEntity.getFullName() } in class #{ entity.getFullName() }" unless @options.quiet
 
           else
             see.label = see.reference
