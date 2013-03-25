@@ -1,6 +1,6 @@
 # Codo Changelog
 
-## Master
+## Version 1.6.0 - March 25, 2013
 
 - Detect project name from Git config when hosted on GitHub.
 - [#97](https://github.com/netzpirat/codo/issues/97): Allow `@see` to reference properties.
