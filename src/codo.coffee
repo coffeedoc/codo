@@ -271,6 +271,9 @@ module.exports = class Codo
   @detectName: (done) ->
     if (fs.exists || path.exists)('package.json')
       name = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['name']
+    else if (fs.exists || path.exists)(path.join('.git', 'config'))
+      gitconfig = fs.readFileSync(path.join(__dirname, '.git', 'config'), 'utf-8')
+      name = /github\.com[:/][^/]+\/(.*)\.git/.exec(gitconfig)?[1]
     else
       name = path.basename(process.cwd())
 

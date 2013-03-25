@@ -2,6 +2,7 @@
 
 ## Master
 
+- Detect project name from Git config when hosted on GitHub.
 - [#97](https://github.com/netzpirat/codo/issues/97): Allow `@see` to reference properties.
 - [#93](https://github.com/netzpirat/codo/issues/93): Fix classes that extends themselves.
 - [#95](https://github.com/netzpirat/codo/issues/95): Allow objects to be documented as objects.
