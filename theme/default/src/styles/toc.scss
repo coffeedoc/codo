@@ -4,7 +4,7 @@ nav.toc {
   @include box-shadow(#bbb -2px 2px 6px);
 
   overflow: hidden;
-  position: absolute;
+  float: right;
 
   z-index: 500;
   right: 0px;
@@ -46,6 +46,7 @@ nav.toc.inline {
   @include box-shadow(#fff 0px 0px 0px);
 
   position: relative;
+  float: none;
 
   padding: 0;
   margin: 5px 0 0 0;
