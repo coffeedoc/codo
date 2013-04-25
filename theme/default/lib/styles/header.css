@@ -39,7 +39,7 @@
   list-style-type: none;
   margin: 4px !important;
 }
-/* line 5, ../../../../../../.rvm/gems/ruby-1.9.3-p125/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/typography/lists/_inline-list.scss */
+/* line 5, ../../../../../../.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/lists/_inline-list.scss */
 #header nav ul, #header nav ul li {
   margin: 0px;
   padding: 0px;
@@ -61,13 +61,9 @@
   box-shadow: #dddddd -1px 1px 3px;
   -moz-border-radius-bottomleft: 3px;
   -webkit-border-bottom-left-radius: 3px;
-  -ms-border-bottom-left-radius: 3px;
-  -o-border-bottom-left-radius: 3px;
   border-bottom-left-radius: 3px;
   -moz-border-radius-bottomright: 3px;
   -webkit-border-bottom-right-radius: 3px;
-  -ms-border-bottom-right-radius: 3px;
-  -o-border-bottom-right-radius: 3px;
   border-bottom-right-radius: 3px;
   display: block;
   float: left;
@@ -87,13 +83,9 @@
 #header #search a.active {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
-  -ms-border-top-left-radius: 5px;
-  -o-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
-  -ms-border-top-right-radius: 5px;
-  -o-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
   padding-bottom: 20px;
   color: #fff;

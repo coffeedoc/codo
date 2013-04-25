@@ -1,10 +1,10 @@
-/* line 3, ../../src/styles/toc.scss */
+/* line 4, ../../src/styles/toc.scss */
 nav.toc {
   -webkit-box-shadow: #bbbbbb -2px 2px 6px;
   -moz-box-shadow: #bbbbbb -2px 2px 6px;
   box-shadow: #bbbbbb -2px 2px 6px;
   overflow: hidden;
-  position: absolute;
+  float: right;
   z-index: 500;
   right: 0px;
   max-width: 300px;
@@ -15,47 +15,48 @@ nav.toc {
   background: white;
   border: 1px solid #DDD;
 }
-/* line 22, ../../src/styles/toc.scss */
+/* line 23, ../../src/styles/toc.scss */
 nav.toc p.title {
   margin-top: 5px;
 }
-/* line 26, ../../src/styles/toc.scss */
+/* line 27, ../../src/styles/toc.scss */
 nav.toc ol {
   padding-left: 1.8em;
 }
-/* line 30, ../../src/styles/toc.scss */
+/* line 31, ../../src/styles/toc.scss */
 nav.toc li {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-/* line 35, ../../src/styles/toc.scss */
+/* line 36, ../../src/styles/toc.scss */
 nav.toc > ol > li {
   font-size: 1.1em;
   font-weight: bold;
 }
-/* line 40, ../../src/styles/toc.scss */
+/* line 41, ../../src/styles/toc.scss */
 nav.toc ol > ol {
   font-size: 0.9em;
 }
 
-/* line 45, ../../src/styles/toc.scss */
+/* line 46, ../../src/styles/toc.scss */
 nav.toc.inline {
   -webkit-box-shadow: white 0px 0px 0px;
   -moz-box-shadow: white 0px 0px 0px;
   box-shadow: white 0px 0px 0px;
   position: relative;
+  float: none;
   padding: 0;
   margin: 5px 0 0 0;
   border: 0px;
 }
-/* line 55, ../../src/styles/toc.scss */
+/* line 57, ../../src/styles/toc.scss */
 nav.toc.inline.hidden {
   background: none;
   padding: 0;
   text-align: left;
 }
 
-/* line 62, ../../src/styles/toc.scss */
+/* line 64, ../../src/styles/toc.scss */
 nav.toc.hidden {
   height: 26px;
   width: 140px;
@@ -63,7 +64,7 @@ nav.toc.hidden {
   background: #F6F6F6;
   text-align: center;
 }
-/* line 71, ../../src/styles/toc.scss */
+/* line 73, ../../src/styles/toc.scss */
 nav.toc.hidden p.title small {
   display: none;
 }
