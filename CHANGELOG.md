@@ -1,5 +1,9 @@
 # Codo Changelog
 
+## Master
+
+- [#101](https://github.com/netzpirat/codo/issues/101): Wrap text around table of contents. ([@wulftone][])
+
 ## Version 1.6.0 - March 25, 2013
 
 - Detect project name from Git config when hosted on GitHub.
@@ -241,3 +245,4 @@
 [@skabbes]: https://github.com/skabbes
 [@Squeegy]: https://github.com/Squeegy
 [@vizio360]: https://github.com/vizio360
+[@wulftone]: https://github.com/wulftone
