@@ -1,6 +1,6 @@
 # Codo Changelog
 
-## Master
+## Version 1.6.2 - Mai 13, 2013
 
 - [#104](https://github.com/netzpirat/codo/issues/104): Ensure proper partial names on Windows.
 
