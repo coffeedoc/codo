@@ -1,5 +1,9 @@
 # Codo Changelog
 
+## Master
+
+- [#104](https://github.com/netzpirat/codo/issues/104): Ensure proper partial names on Windows.
+
 ## Version 1.6.1 - April 25, 2013
 
 - [#101](https://github.com/netzpirat/codo/issues/101): Wrap text around table of contents. ([@wulftone][])
