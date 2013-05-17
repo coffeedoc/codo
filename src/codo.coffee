@@ -137,6 +137,11 @@ module.exports = class Codo
             default   : codoopts.private || false
             describe  : 'Show private methods'
           )
+          .options('closure',
+            boolean   : true
+            default   : codoopts.closure || false
+            describe  : 'Try to parse closure-like block comments'
+          )
           .default('title', codoopts.title || 'CoffeeScript API Documentation')
 
         argv = optimist.argv
@@ -163,6 +168,7 @@ module.exports = class Codo
             verbose: argv.v
             debug: argv.d
             cautious: argv.cautious
+            closure: argv.closure
             homepage: homepage
             analytics: analytics || argv.a
 

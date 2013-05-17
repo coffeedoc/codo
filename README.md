@@ -566,6 +566,7 @@ Options:
   -d, --debug       Show stacktraces and converted CoffeeScript source  [boolean]  [default: false]
   -h, --help        Show the help
   --cautious        Don't attempt to parse singleline comments          [boolean]  [default: false]
+  --closure         Try to parse "google closure like" block comments   [boolean]  [default: false]
   -s, --server      Start a documentation server
   --private         Show private methods                                [boolean]  [default: true]
   --title                                               [default: "CoffeeScript API Documentation"]
