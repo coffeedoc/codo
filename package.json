@@ -1,18 +1,19 @@
 {
-  "name" : "codo",
-  "description" : "A CoffeeScript documentation generator.",
+  "name" : "codo-closure",
+  "description" : "A CoffeeScript documentation generator with closure syntax support.",
   "keywords" : ["coffeescript", "doc"],
   "author" : "Michael Kessler <michi@netzpiraten.ch>",
   "maintainers" : [
     {
-      "name" : "Michael Kessler"
+      "name" : "Michael Kessler",
+      "name" : "Petr Stefan"
     }
   ],
   "version" : "1.7.0",
   "licenses" : [
     {
       "type" : "MIT",
-      "url" : "http://github.com/netzpirat/codo/raw/master/LICENSE"
+      "url" : "https://github.com/stefi023/codo/raw/master/LICENSE"
     }
   ],
   "engines" : {
@@ -42,13 +43,13 @@
   "devDependencies" : {
     "jasmine-node" : ">= 1.0.13"
   },
-  "homepage" : "https://github.com/netzpirat/codo",
+  "homepage" : "https://github.com/stefi023/codo",
   "repository" : {
     "type" : "git",
-    "url" : "git://github.com/netzpirat/codo.git"
+    "url" : "git://github.com/stefi023/codo.git"
   },
   "bugs" : {
-    "url" : "https://github.com/netzpirat/codo/issues"
+    "url" : "https://github.com/stefi023/codo/issues"
   },
   "scripts" : {
     "test" : "jasmine-node --coffee spec"
