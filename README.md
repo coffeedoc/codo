@@ -284,6 +284,9 @@ Move the animal.
 move: (options = {}) ->
 ```
 
+If you want to compile your JavaScript with Google Closure and make use of the special block comments with an asterisk,
+you want to use the `--closure` flag so that Codo ignores the asterisk.
+
 ### Parameters
 
 There are two different format recognized for your parameters, so you can chose your favorite. This one is with the
