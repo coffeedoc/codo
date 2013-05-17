@@ -125,6 +125,7 @@ module.exports = class Parser
       blockComment = /^\s*#{3}/.exec(line) && !/^\s*#{3}.+#{3}/.exec(line)
 
       if blockComment || inBlockComment
+        line = line.replace /#{3}\*/, "###" if @options.closure
         inBlockComment = !inBlockComment if blockComment
         result.push line
       else
