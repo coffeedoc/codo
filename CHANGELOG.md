@@ -1,5 +1,9 @@
 # Codo Changelog
 
+## Master
+
+- [#105](https://github.com/netzpirat/codo/issues/105): Add support for closure like block comments. ([@stefi023][])
+
 ## Version 1.6.2 - Mai 13, 2013
 
 - [#104](https://github.com/netzpirat/codo/issues/104): Ensure proper partial names on Windows.
@@ -247,6 +251,7 @@
 [@PaulLeCam]: https://github.com/PaulLeCam
 [@ryan-roemer]: https://github.com/ryan-roemer
 [@skabbes]: https://github.com/skabbes
+[@stefi023]: https://github.com/stefi023
 [@Squeegy]: https://github.com/Squeegy
 [@vizio360]: https://github.com/vizio360
 [@wulftone]: https://github.com/wulftone
