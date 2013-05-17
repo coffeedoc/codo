@@ -1,6 +1,6 @@
 # Codo Changelog
 
-## Master
+## Version 1.7.0 - Mai 17, 2013
 
 - [#105](https://github.com/netzpirat/codo/issues/105): Add support for closure like block comments. ([@stefi023][])
 
