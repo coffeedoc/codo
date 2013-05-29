@@ -160,7 +160,7 @@ comment for a mixin or in a method comment.
       <td></td>
     </tr>
     <tr>
-      <td><strong>@mixin</strong> version</td>
+      <td><strong>@mixin</strong></td>
       <td></td>
       <td></td>
       <td>&#10004;</td>
