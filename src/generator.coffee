@@ -288,12 +288,20 @@ module.exports = class Generator
           child.children or= []
           children = child.children
 
-      # Create a new class
-      children.push
-        name: entity.getName()
-        href: "#{section}/#{ entity.getFullName().replace(/\./g, '/') }.html"
-        parent: entity.getParentClassName?()
-        namespace: entity.getNamespace()
+      # Determine if we should push OR update entries
+      entry = _.find children, (c) -> c.name is entity.getName()
+      #If there is an existing entry update it
+      if entry?
+        entry.parent = entity.getParentClassName?()
+        entry.namespace = entity.getNamespace()
+        entry.href = "#{section}/#{ entity.getFullName().replace(/\./g, '/') }.html"
+      else # Otherwise push our new entry onto the array
+        children.push
+          name: entity.getName()
+          href: "#{section}/#{ entity.getFullName().replace(/\./g, '/') }.html"
+          parent: entity.getParentClassName?()
+          namespace: entity.getNamespace()
+
 
     # Create tree structure
     for clazz in @parser.classes
