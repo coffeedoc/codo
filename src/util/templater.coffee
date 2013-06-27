@@ -1,5 +1,6 @@
 fs      = require 'fs'
 path    = require 'path'
+mkdirp  = require 'mkdirp'
 _       = require 'underscore'
 _.str   = require 'underscore.string'
 walkdir = require 'walkdir'
@@ -15,9 +16,8 @@ module.exports = class Templater
   # @param [Object] options the options
   # @param [Referencer] referencer the link type referencer
   # @param [Parser] parser the codo parser
-  # @param [Writer] writer the file writer
   #
-  constructor: (@options, @referencer, @parser, @writer) ->
+  constructor: (@options, @referencer, @parser) ->
     @JST = []
 
     @globalContext =
@@ -39,6 +39,12 @@ module.exports = class Templater
       if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename
         @JST[match[1].replace(/[\\]/g, '/')] = hamlc.compile(fs.readFileSync(filename, 'utf-8'), { escapeAttributes: false })
 
+  # Redirect template generation to a callback.
+  #
+  # @param [Function] file the file callback function
+  #
+  redirect: (file) -> @file = file
+
   # Render the given template with the context and the
   # global context object merged as template data. Writes
   # the file as the output filename.
@@ -51,6 +57,19 @@ module.exports = class Templater
     html = @JST[template](_.extend(@globalContext, context))
 
     unless _.isEmpty filename
-      @writer.output html, filename
+
+      # Callback generated content
+      if @file
+        @file(filename, html)
+
+      # Write to file system
+      else
+        file = path.join @options.output, filename
+        dir  = path.dirname(file)
+        mkdirp dir, (err) ->
+          if err
+            console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
+          else
+            fs.writeFile file, html
 
     html
