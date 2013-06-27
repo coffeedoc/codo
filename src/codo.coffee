@@ -7,6 +7,7 @@ _         = require 'underscore'
 
 Parser    = require './parser'
 Generator = require './generator'
+Theme     = require './util/theme'
 
 # Codo - the CoffeeScript API documentation generator
 #
@@ -209,7 +210,7 @@ module.exports = class Codo
                     throw error if options.debug
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
 
-          new Generator(parser, options).generate(file)
+          new Generator(parser, Codo.theme(), options).generate(file)
           parser.showResult() unless options.quiet
           done() if done
 
@@ -223,14 +224,21 @@ module.exports = class Codo
   # @return [String] the script content
   #
   @script: ->
-    @codoScript or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.js'), 'utf-8'
+    @theme().javaScript()
 
   # Get the Codo style content that is used in the webinterface
   #
   # @return [String] the style content
   #
   @style: ->
-    @codoStyle or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.css'), 'utf-8'
+    @theme().styleSheet()
+
+  # Get the current theme used to render the documentation.
+  #
+  # @return [Theme] the theme used to render the documentation
+  #
+  @theme: ->
+    @codoTheme or= new Theme path.join(__dirname, '..', 'theme', 'default')
 
   # Find the source directories.
   #
