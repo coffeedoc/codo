@@ -677,6 +677,16 @@ dynamic programming languages.
 * [JsDoc](https://github.com/micmath/jsdoc) an automatic documentation generator for JavaScript.
 * [Dox](https://github.com/visionmedia/dox) JavaScript documentation generator for node using markdown and jsdoc.
 
+#### Open Commit Bit
+
+Guard has an open commit bit policy: Anyone with an accepted pull request gets added as a repository collaborator.
+Please try to follow these simple rules:
+
+* Commit directly onto the master branch only for typos, improvements to the readme and documentation (please add
+  `[ci skip]` to the commit message).
+* Create a feature branch and open a pull-request early for any new features to get feedback.
+* Make sure you adhere to the general pull request rules above.
+
 ## Author
 
 * [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat), [mksoft.ch](https://mksoft.ch))
@@ -690,7 +700,7 @@ dynamic programming languages.
 
 (The MIT License)
 
-Copyright (c) 2012 Michael Kessler
+Copyright (c) 2012-2013 Michael Kessler
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
