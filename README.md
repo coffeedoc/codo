@@ -679,7 +679,7 @@ dynamic programming languages.
 
 #### Open Commit Bit
 
-Guard has an open commit bit policy: Anyone with an accepted pull request gets added as a repository collaborator.
+Codo has an open commit bit policy: Anyone with an accepted pull request gets added as a repository collaborator.
 Please try to follow these simple rules:
 
 * Commit directly onto the master branch only for typos, improvements to the readme and documentation (please add
