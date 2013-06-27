@@ -1,5 +1,9 @@
 # Codo Changelog
 
+## Master
+
+- [#114](https://github.com/netzpirat/codo/issues/114): Fix bug in class hierarchy generation. ([@Myztiq][])
+
 ## Version 1.7.0 - Mai 17, 2013
 
 - [#105](https://github.com/netzpirat/codo/issues/105): Add support for closure like block comments. ([@stefi023][])
@@ -247,6 +251,7 @@
 [@dnagir]: https://github.com/dnagir
 [@inossidabile]: https://github.com/inossidabile
 [@mattijs]: https://github.com/mattijs
+[@Myztiq]: https://github.com/Myztiq
 [@netzpirat]: https://github.com/netzpirat
 [@PaulLeCam]: https://github.com/PaulLeCam
 [@ryan-roemer]: https://github.com/ryan-roemer
