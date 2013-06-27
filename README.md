@@ -687,14 +687,14 @@ Please try to follow these simple rules:
 * Create a feature branch and open a pull-request early for any new features to get feedback.
 * Make sure you adhere to the general pull request rules above.
 
-## Author
+## Core Team
 
+* [Boris Staal](https://github.com/inossidabile) ([@_inossidabile](http://twitter.com/#!/_inossidabile))
 * [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat), [mksoft.ch](https://mksoft.ch))
 
 ## Contributors
 
-* [Boris Staal](https://github.com/inossidabile) ([@_inossidabile](http://twitter.com/#!/_inossidabile))
-* [Mattijs Hoitink](https://github.com/mattijs)
+https://github.com/netzpirat/codo/contributors
 
 ## License
 
