@@ -28,7 +28,7 @@
     "codo" : "./bin/codo"
   },
   "dependencies" : {
-    "coffee-script" : ">= 1.2.0",
+    "coffee-script" : ">= 1.6.0",
     "walkdir" : ">= 0.0.2",
     "optimist" : ">= 0.3.0",
     "marked": ">= 0.1.9",
