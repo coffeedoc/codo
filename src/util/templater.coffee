@@ -3,7 +3,6 @@ path    = require 'path'
 mkdirp  = require 'mkdirp'
 _       = require 'underscore'
 _.str   = require 'underscore.string'
-walkdir = require 'walkdir'
 hamlc   = require 'haml-coffee'
 
 # Haml Coffee template compiler.
@@ -16,8 +15,9 @@ module.exports = class Templater
   # @param [Object] options the options
   # @param [Referencer] referencer the link type referencer
   # @param [Parser] parser the codo parser
+  # @param [Theme] theme the theme
   #
-  constructor: (@options, @referencer, @parser) ->
+  constructor: (@options, @referencer, @parser, @theme) ->
     @JST = []
 
     @globalContext =
@@ -35,9 +35,14 @@ module.exports = class Templater
       methodCount: @parser.getAllMethods().length
       extraCount: _.union([@options.readme], @options.extras).length
 
-    for filename in walkdir.sync path.join(__dirname, '..', '..', 'theme', 'default', 'templates')
-      if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename
-        @JST[match[1].replace(/[\\]/g, '/')] = hamlc.compile(fs.readFileSync(filename, 'utf-8'), { escapeAttributes: false })
+    for template in @theme.templates()
+      source = @theme.templateSource(template)
+      type = @theme.templateType(template)
+      @JST[template] = switch type
+        when 'hamlc'
+          hamlc.compile(source, { escapeAttributes: false })
+        else
+          throw new Error("Unimplemented template type #{type}")
 
   # Redirect template generation to a callback.
   #
