@@ -1,2 +1,4 @@
-#!/usr/bin/env coffee
-require('./../src/codo').run()
+#!/usr/bin/env node
+
+require('coffee-script');
+require('./../src/codo').run();
