@@ -15,11 +15,12 @@ module.exports = class Generator
   # Construct a generator
   #
   # @param [Parser] parser the parser
+  # @param [Theme] theme the theme
   # @param [Object] options the options
   #
-  constructor: (@parser, @options) ->
+  constructor: (@parser, @theme, @options) ->
     @referencer = new Referencer(@parser.classes, @parser.mixins, @options)
-    @templater = new Templater(@options, @referencer, @parser)
+    @templater = new Templater(@options, @referencer, @parser, @theme)
 
   # Generate the documentation. Without callback, the documentation
   # is written to the file system, with callback, the file content
@@ -392,8 +393,8 @@ module.exports = class Generator
   # Copy the styles and scripts.
   #
   copyAssets: ->
-    @copy path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.css'), path.join(@options.output, 'assets', 'codo.css')
-    @copy path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.js'), path.join(@options.output, 'assets', 'codo.js')
+    for asset in @theme.assets()
+      @copy path.join(@theme.assetPath, asset), path.join(@options.output, 'assets', asset)
 
   # Copy a file
   #
