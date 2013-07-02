@@ -1,0 +1,8 @@
+---
+<% for method in @methods: %>
+- name: <%- JSON.stringify method.name %>
+  deprecated: <%- !!method.deprecated %>
+  type: <%- JSON.stringify method.type %>
+  href: <%- JSON.stringify method.href %>
+  class: <%- JSON.stringify method.classname %>
+<% end %>

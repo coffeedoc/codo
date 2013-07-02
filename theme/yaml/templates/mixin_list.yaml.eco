@@ -1,0 +1,14 @@
+---
+<% [i, mixin_list] = [0, (mixin for mixin in @mixins)] %>
+<% for mixin in @mixins: %>
+- name: <%- JSON.stringify mixin.name %>
+  namespace: <%- JSON.stringify mixin.namespace %>
+  href: <%- JSON.stringify mixin.href %>
+  children:
+  <% for child in mixin.children: %>
+  - name: <%- JSON.stringify child.name %>
+    namespace: <%- JSON.stringify child.namespace %>
+    <% mixin_list.push child %>
+  <% end %>
+<% end %>
+
