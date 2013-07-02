@@ -44,8 +44,9 @@ module.exports = class Codo
   # @param [Function] file the new file callback
   # @param [String] analytics the Google analytics tracking code
   # @param [String] homepage the homepage in the breadcrumbs
+  # @param [String] theme the name of the theme used to render the docs
   #
-  @run: (done, file, analytics = false, homepage = false) ->
+  @run: (done, file, analytics = false, homepage = false, theme = false) ->
 
     codoopts =
       _ : []
@@ -103,6 +104,11 @@ module.exports = class Codo
             describe  : 'The output directory'
             default   : codoopts['output-dir'] || codoopts.o || './doc'
           )
+          .options('t',
+            alias     : 'theme'
+            describe  : 'The theme used to render the docs'
+            default   : codoopts.theme || codoopts.t || 'default'
+          )
           .options('a',
             alias     : 'analytics'
             describe  : 'The Google analytics ID'
@@ -155,7 +161,7 @@ module.exports = class Codo
           .options('x',
             alias : 'extension'
             describe : 'alternate file extensions to consider (can supply several)'
-            default  : codoopts.extensions || codoopts.x 
+            default  : codoopts.extensions || codoopts.x
           )
           .default('title', codoopts.title || 'CoffeeScript API Documentation')
 
@@ -190,6 +196,7 @@ module.exports = class Codo
             homepage: homepage
             analytics: analytics || argv.a
             undocumented: argv.u
+            theme: theme || argv.t
 
           extra = false
 
@@ -229,6 +236,10 @@ module.exports = class Codo
                   catch error
                     throw error if options.debug
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
+
+          Codo.codoTheme = Theme.build options.theme, options
+          if Codo.codoTheme is null
+            throw new Error("Could not load theme #{options.theme}")
 
           new Generator(parser, Codo.theme(), options).generate(file)
           parser.showResult() unless options.quiet
@@ -317,7 +328,7 @@ module.exports = class Codo
 # default /\._?coffee/ plus whatever else the user has provided
 # on the command line with the -x argument
 #
-# @param [Array<string> or string] arg the argument passed back from 
+# @param [Array<string> or string] arg the argument passed back from
 #   optimist
 # @return [string] the regex to use when matching filenames
 makeExtensionRegex = (arg) ->
@@ -326,3 +337,5 @@ makeExtensionRegex = (arg) ->
   else if (typeof arg) is 'string' then extensions.push arg
   "\\._?(#{extensions.join('|')})"
 
+# Export the Theme base class, so custom themes can extend it.
+Codo.Theme = Theme
