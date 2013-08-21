@@ -1,7 +1,8 @@
 # Codo Changelog
 
-## Master
+## Version 1.7.1 - Aug 21, 2013
 
+- [#121](https://github.com/netzpirat/codo/issues/121): Allow more filename extensions (eg .coffee.erb) [@Zorbash][])
 - [#114](https://github.com/netzpirat/codo/issues/114): Fix bug in class hierarchy generation. ([@Myztiq][])
 
 ## Version 1.7.0 - Mai 17, 2013
@@ -260,3 +261,4 @@
 [@Squeegy]: https://github.com/Squeegy
 [@vizio360]: https://github.com/vizio360
 [@wulftone]: https://github.com/wulftone
+[@Zorbash]: https://github.com/Zorbash
