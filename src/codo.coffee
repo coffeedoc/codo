@@ -196,14 +196,14 @@ module.exports = class Codo
 
               if stats.isDirectory()
                 for filename in walkdir.sync input
-                  if filename.match /\._?coffee$/
+                  if filename.match /\._?coffee/
                     try
                       parser.parseFile filename.substring process.cwd().length + 1
                     catch error
                       throw error if options.debug
                       console.log "Cannot parse file #{ filename }: #{ error.message }"
               else
-                if input.match /\._?coffee$/
+                if input.match /\._?coffee/
                   try
                     parser.parseFile input
                   catch error
