@@ -1,5 +1,9 @@
 # Codo Changelog
 
+## Master
+
+- [#122](https://github.com/netzpirat/codo/issues/122): Add command to print the current version. [@Zorbash][])
+
 ## Version 1.7.1 - Aug 21, 2013
 
 - [#121](https://github.com/netzpirat/codo/issues/121): Allow more filename extensions (eg .coffee.erb) [@Zorbash][])
