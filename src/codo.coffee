@@ -114,6 +114,9 @@ module.exports = class Codo
             boolean   : true
             default   : codoopts.verbose || codoopts.v  || false
           )
+          .options('version',
+            describe  : 'Show version'
+          )
           .options('d',
             alias     : 'debug'
             describe  : 'Show stacktraces and converted CoffeeScript source'
@@ -155,6 +158,9 @@ module.exports = class Codo
           connect = require 'connect'
           connect.createServer(connect.static(argv.o)).listen port
           console.log 'Codo documentation from %s is available at http://localhost:%d', argv.o, port
+
+        else if argv.version
+          console.log Codo.version()
 
         else
           options =
