@@ -566,6 +566,7 @@ Options:
   -o, --output-dir  The output directory                                [default: "./doc"]
   -a, --analytics   The Google analytics ID                             [default: false]
   -v, --verbose     Show parsing errors                                 [boolean]  [default: false]
+  --version         Show version
   -d, --debug       Show stacktraces and converted CoffeeScript source  [boolean]  [default: false]
   -h, --help        Show the help
   --cautious        Don't attempt to parse singleline comments          [boolean]  [default: false]
