@@ -9,7 +9,7 @@
         "methods": [
             {
                 "doc": {
-                    "comment": "<p>This is a generic Store set method.</p>",
+                    "comment": "<p>This is a generic Store set method.</p><p>This should be more description for the method itself, and overload\nshouldn&#39;t have messed it up.</p>",
                     "summary": "This is a generic Store set method.",
                     "overloads": [
                         {
