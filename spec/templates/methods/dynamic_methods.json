@@ -2,7 +2,7 @@
   {
     "file": "spec/templates/methods/dynamic_methods.coffee",
     "doc": {
-      "comment": "<p>This class has virtual methods, which doesn&#39;t\nexist in the source but appears in the documentation.</p>",
+      "comment": "<p>This class has virtual methods, which doesn&#39;t\nexist in the source but appears in the documentation.</p><p>This line should be part of the class description, and the method declaration\nshouldn&#39;t have messed it up.</p>",
       "summary": "This class has virtual methods, which doesn&#39;t exist in the source but appears in the documentation.",
       "methods": [
         {
@@ -56,6 +56,24 @@
             "type": "Object",
             "desc": "describe value param"
           }
+        },
+        {
+          "signature": "#delete(key)",
+          "comment": "<p>Deletes a key from the data.</p><p>Another line</p>",
+          "summary": "Deletes a key from the data.",
+          "params": [
+            {
+              "type": "String",
+              "name": "key",
+              "desc": "describe key param"
+            }
+          ],
+          "examples": [
+            {
+              "title": "Delete a key.",
+              "code": "emv = new Example.Methods.Virtual\nemv.set 'foo', 'bar'\nval = emv.get 'foo'\n\n# now, proclaim you're done with foo.\nemv.delete 'foo'"
+            }
+          ]
         }
       ]
     },
@@ -130,7 +148,31 @@
         "name": "get",
         "bound": false,
         "parameters": []
-      }
+      },
+      {
+        "doc": {
+          "signature": "#delete(key)",
+          "comment": "<p>Deletes a key from the data.</p><p>Another line</p>",
+          "summary": "Deletes a key from the data.",
+          "params": [
+            {
+              "type": "String",
+              "name": "key",
+              "desc": "describe key param"
+            }
+          ],
+          "examples": [
+            {
+              "title": "Delete a key.",
+              "code": "emv = new Example.Methods.Virtual\nemv.set 'foo', 'bar'\nval = emv.get 'foo'\n\n# now, proclaim you're done with foo.\nemv.delete 'foo'"
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>delete</strong>(key)",
+        "name": "delete",
+        "bound": false,
+        "parameters": []      }
     ],
     "variables": [],
     "properties": []

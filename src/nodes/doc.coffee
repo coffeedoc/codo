@@ -214,7 +214,7 @@ module.exports = class Doc extends Node
         signature = overload[1]
         innerComment = []
 
-        while /^\s{2}.*/.test(lines[0])
+        while /^\s{2}.*/.test(lines[0]) or /^\s*$/.test(lines[0])
           innerComment.push lines.shift().substring(2)
 
         if innerComment.length isnt 0
@@ -235,7 +235,7 @@ module.exports = class Doc extends Node
         signature = method[1]
         innerComment = []
 
-        while /^\s{2}.*/.test(lines[0])
+        while /^\s{2}.*/.test(lines[0]) or /^\s*$/.test(lines[0])
           innerComment.push lines.shift().substring(2)
 
         if innerComment.length isnt 0

@@ -14,4 +14,22 @@
 #   @param [String] key describe key param
 #   @return [Object] describe value param
 #
+# @method #delete(key)
+#   Deletes a key from the data.
+#
+#   Another line
+#
+#   @param [String] key describe key param
+#
+#   @example Delete a key.
+#     emv = new Example.Methods.Virtual
+#     emv.set 'foo', 'bar'
+#     val = emv.get 'foo'
+#
+#     # now, proclaim you're done with foo.
+#     emv.delete 'foo'
+#
+# This line should be part of the class description, and the method declaration
+# shouldn't have messed it up.
+#
 class Example.Methods.Virtual
