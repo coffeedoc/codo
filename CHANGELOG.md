@@ -2,7 +2,7 @@
 
 ## Master
 
-- [](): Allow blank lines in @overload and @method [@pthrasher][])
+- [#124](https://github.com/netzpirat/codo/issues/124): Allow blank lines in @overload and @method [@pthrasher][])
 - [#122](https://github.com/netzpirat/codo/issues/122): Add command to print the current version. [@Zorbash][])
 
 ## Version 1.7.1 - Aug 21, 2013
