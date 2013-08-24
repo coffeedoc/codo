@@ -260,6 +260,7 @@
 [@Myztiq]: https://github.com/Myztiq
 [@netzpirat]: https://github.com/netzpirat
 [@PaulLeCam]: https://github.com/PaulLeCam
+[@pthrasher]: https://github.com/pthrasher
 [@ryan-roemer]: https://github.com/ryan-roemer
 [@skabbes]: https://github.com/skabbes
 [@stefi023]: https://github.com/stefi023
