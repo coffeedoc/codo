@@ -1,6 +1,6 @@
 # Codo Changelog
 
-## Master
+## Version 1.7.2 - Aug 24, 2013
 
 - [#124](https://github.com/netzpirat/codo/issues/124): Allow blank lines in @overload and @method [@pthrasher][])
 - [#122](https://github.com/netzpirat/codo/issues/122): Add command to print the current version. [@Zorbash][])
