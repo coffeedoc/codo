@@ -1,0 +1,22 @@
+---
+extras:
+<% for extra in @extras: %>
+  - <%- JSON.stringify extra %>
+<% end %>
+classes:
+<% for char, classSet of @classes: %>
+  <% for clazz in classSet: %>
+  - name: <%- JSON.stringify clazz.getName() %>
+    namespace: <%- JSON.stringify clazz.getNamespace() %>
+    constructor: <%- JSON.stringify clazz.constructor.name %>
+    href: "<%- if clazz.constructor.name == 'Class' then 'classes' else 'mixins' %>/<%- clazz.getFullName().replace(/\./g, '/') %>.yaml"
+  <% end %>
+<% end %>
+files:
+<% for char, fileSet of @files: %>
+  <% for file in fileSet: %>
+  - name: <%- JSON.stringify file.getFullName() %>
+    href: <%- JSON.stringify "files/#{ file.getFullName() }.json" %>
+    path: <%- JSON.stringify file.getPath() %>
+  <% end %>
+<% end %>

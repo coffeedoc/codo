@@ -1,0 +1,101 @@
+<% indent = (spaces, string) -> string.replace(/^/gm, "\n" + (new Array(spaces + 1).join(' '))) %>
+  deprecated: <%- !!@doc.deprecated %>
+  abstract: <%- !!@doc.abstract %>
+  summary: <%- JSON.stringify @doc.summary %>
+  comment: <%- JSON.stringify @doc.comment %>
+  <% if @doc.todos: %>
+  todos:
+    <% for todo in @doc.todos: %>
+    - <%- JSON.stringify todo %>
+    <% end %>
+  <% end %>
+  <% if @doc.notes: %>
+  notes:
+    <% for note in @doc.notes: %>
+    - <%- JSON.stringify note %>
+    <% end %>
+  <% end %>
+  <% if @doc.examples: %>
+  examples:
+    <% for example in @doc.examples: %>
+    - title: <%- JSON.stringify example.title %>
+      code: <%- JSON.stringify example.code %>
+    <% end %>
+  <% end %>
+
+  <% if @doc.params: %>
+  params:
+    <% for param in @doc.params: %>
+    - name: <%- JSON.stringify param.name %>
+      type: <%- JSON.stringify param.type %>
+      typeLink: <%- JSON.stringify @referencer.linkTypes(param.type, @path) %>
+      <% if param.desc: %>
+      desc: <%- JSON.stringify param.desc %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if @doc.options and (@type is 'method' or @type is 'overload'): %>
+  options:
+    <% for hash, options of @doc.options: %>
+    - hash: <%- JSON.stringify hash %>
+      options:
+      <% for option in options: %>
+        - name: <%- JSON.stringify option.name %>
+          type: <%- JSON.stringify option.type %>
+          typeLink: <%- JSON.stringify @referencer.linkTypes(option.type, @path) %>
+          desc: <%- JSON.stringify option.desc %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if @doc.throwValue: %>
+  throws:
+    <% for throws in @doc.throwValue: %>
+    - type: <%- JSON.stringify throws.type %>
+      typeLink: <%- JSON.stringify @referencer.linkTypes(throws.type, @path) %>
+      desc: <%- JSON.stringify throws.desc %>
+    <% end %>
+  <% end %>
+
+  <% if @doc.returnValue: %>
+  returns:
+    type: <%- JSON.stringify @doc.returnValue.type %>
+    typeLink: <%- JSON.stringify @referencer.linkTypes(@doc.returnValue.type, @path) %>
+    desc: <%- JSON.stringify @doc.returnValue.desc %>
+  <% end %>
+
+  <% if @doc.authors: %>
+  authors:
+    <% for author in @doc.authors: %>
+    - <%- JSON.stringify author %>
+    <% end %>
+  <% end %>
+
+  <% if @doc.copyright: %>
+  copyright: <%- JSON.stringify @doc.copyright %>
+  <% end %>
+
+  <% if @doc.since: %>
+  since: <%- JSON.stringify @doc.since %>
+  <% end %>
+
+  <% if @doc.version: %>
+  version: <%- JSON.stringify @doc.version %>
+  <% end %>
+
+  <% if @doc.see: %>
+  see:
+    <% for see in @doc.see: %>
+    - label: <%- JSON.stringify see.label %>
+      reference: <%- JSON.stringify see.reference %>
+    <% end %>
+  <% end %>
+
+  <% if @doc.overloads: %>
+  overloads:
+    <% for overload in @doc.overloads: %>
+    -
+<%- indent 4, @parent.JST['partials/doc']( doc: overload, type: 'overload', path: @parent.path, referencer: @parent.referencer) %>
+    <% end %>
+  <% end %>

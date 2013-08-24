@@ -67,11 +67,13 @@ module.exports = class Generator
            else
              'extra_list'
 
-    @templater.render 'frames', { list: list, index: index, path: '' }, 'index.html'
+    @templater.render 'frames', { list: list, index: index, path: '' }, 'index'
 
   # Generates the pages for all the classes.
   #
   generateClasses: ->
+    indexOutputType = @theme.templateOutput('index')
+    fileOutputType = @theme.templateOutput('file')
     for clazz in @parser.classes
       namespaces = _.compact clazz.getNamespace().split('.')
       assetPath = '../'
@@ -79,12 +81,12 @@ module.exports = class Generator
 
       breadcrumbs = [
         {
-          href: "#{ assetPath }class_index.html"
+          href: "#{ assetPath }class_index.#{ indexOutputType }"
           name: 'Index'
         }
       ]
 
-      breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.html", name: @options.name }) if @options.readme
+      breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.#{ fileOutputType }", name: @options.name }) if @options.readme
       breadcrumbs.unshift(@options.homepage) if @options.homepage
 
       combined = []
@@ -112,11 +114,13 @@ module.exports = class Generator
         inheritedConstants: _.groupBy @referencer.getInheritedConstants(clazz), (m) -> m.entity.getClassName()
         inheritedProperties: _.groupBy @referencer.getInheritedProperties(clazz), (m) -> m.entity.getClassName()
         breadcrumbs: breadcrumbs
-      }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
+      }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }"
 
   # Generate the pages for all the mixins
   #
   generateMixins: ->
+    indexOutputType = @theme.templateOutput('index')
+    fileOutputType = @theme.templateOutput('file')
     for mixin in @parser.mixins
       namespaces = _.compact mixin.getNamespace().split('.')
       assetPath = '../'
@@ -124,12 +128,12 @@ module.exports = class Generator
 
       breadcrumbs = [
         {
-          href: "#{ assetPath }class_index.html"
+          href: "#{ assetPath }class_index.#{ indexOutputType }"
           name: 'Index'
         }
       ]
 
-      breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.html", name: @options.name }) if @options.readme
+      breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.#{ fileOutputType }", name: @options.name }) if @options.readme
       breadcrumbs.unshift(@options.homepage) if @options.homepage
 
       combined = []
@@ -158,11 +162,13 @@ module.exports = class Generator
         methods: _.map mixin.getMethods(), (m) -> m.toJSON()
         constants: _.map _.filter(mixin.getVariables(), (variable) -> variable.isConstant()), (m) -> m.toJSON()
         breadcrumbs: breadcrumbs
-      }, "mixins/#{ mixin.getFullName().replace(/\./g, '/') }.html"
+      }, "mixins/#{ mixin.getFullName().replace(/\./g, '/') }"
 
   # Generate the pages for all the (non-class) files that contains methods
   #
   generateFiles: ->
+    indexOutputType = @theme.templateOutput('index')
+    fileOutputType = @theme.templateOutput('file')
     for file in @parser.files
       p = _.compact file.getPath().split('/')
       assetPath = '../'
@@ -170,12 +176,12 @@ module.exports = class Generator
 
       breadcrumbs = [
         {
-        href: "#{ assetPath }class_index.html"
+        href: "#{ assetPath }class_index.#{ indexOutputType }"
         name: 'Index'
         }
       ]
 
-      breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.html", name: @options.name }) if @options.readme
+      breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.#{ fileOutputType }", name: @options.name }) if @options.readme
       breadcrumbs.unshift(@options.homepage) if @options.homepage
 
       combined = []
@@ -196,12 +202,15 @@ module.exports = class Generator
         methods: _.map file.getMethods(), (m) => @referencer.resolveDoc(m.toJSON(), file, assetPath)
         constants: _.map _.filter(file.getVariables(), (variable) => variable.isConstant()), (m) => @referencer.resolveDoc(m.toJSON(), file, assetPath)
         breadcrumbs: breadcrumbs
-      }, "files/#{ file.getFullName() }.html"
+      }, "files/#{ file.getFullName() }"
 
   #
   # Generates the pages for all the extra files.
   #
   generateExtras: ->
+    indexOutputType = @theme.templateOutput('index')
+    fileOutputType = @theme.templateOutput('file')
+    extraOutputType = @theme.templateOutput('extra')
     for extra in _.union [@options.readme], @options.extras
       try
         if (fs.existsSync || path.existsSync)(extra)
@@ -210,11 +219,11 @@ module.exports = class Generator
           numSlashes = extra.split('/').length - 1
           assetPath = ''
           assetPath += '../' for slash in [0...numSlashes]
-          filename = "#{ extra }.html"
+          filename = "#{ extra }.#{ extraOutputType }"
 
           breadcrumbs = [
             {
-              href: "#{ assetPath }class_index.html"
+              href: "#{ assetPath }class_index.#{ indexOutputType }"
               name: 'Index'
             }
             {
@@ -223,7 +232,7 @@ module.exports = class Generator
             }
           ]
 
-          breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.html", name: @options.name }) if @options.readme
+          breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.#{ fileOutputType }", name: @options.name }) if @options.readme
           breadcrumbs.unshift(@options.homepage) if @options.homepage
 
           @templater.render 'extra', {
@@ -231,7 +240,7 @@ module.exports = class Generator
             filename: extra,
             content: content
             breadcrumbs: breadcrumbs
-          }, filename
+          }, extra
 
       catch error
         console.log "[ERROR] Cannot generate extra file #{ extra }: #{ error }"
@@ -265,15 +274,17 @@ module.exports = class Generator
       files: sortedFiles
       extras: _.union [@options.readme], @options.extras.sort()
       breadcrumbs: []
-    }, 'class_index.html'
+    }, 'class_index'
 
   # Generates the drop down class list
   #
   generateClassAndMixinLists: ->
     classes = []
     mixins = []
+    classOutputType = @theme.templateOutput 'class'
+    mixinOutputType = @theme.templateOutput 'mixin'
 
-    traverse = (entity, children, section) ->
+    traverse = (entity, children, section, outputType) ->
       if entity.getNamespace()
         namespaces = entity.getNamespace().split('.')
 
@@ -295,44 +306,46 @@ module.exports = class Generator
       if entry?
         entry.parent = entity.getParentClassName?()
         entry.namespace = entity.getNamespace()
-        entry.href = "#{section}/#{ entity.getFullName().replace(/\./g, '/') }.html"
+        entry.href = "#{section}/#{ entity.getFullName().replace(/\./g, '/') }.#{ outputType }"
       else # Otherwise push our new entry onto the array
         children.push
           name: entity.getName()
-          href: "#{section}/#{ entity.getFullName().replace(/\./g, '/') }.html"
+          href: "#{section}/#{ entity.getFullName().replace(/\./g, '/') }.#{ outputType }"
           parent: entity.getParentClassName?()
           namespace: entity.getNamespace()
 
-
     # Create tree structure
     for clazz in @parser.classes
-      traverse clazz, classes, 'classes'
+      traverse clazz, classes, 'classes', classOutputType
 
     for mixin in @parser.mixins
-      traverse mixin, mixins, 'mixins'
+      traverse mixin, mixins, 'mixins', mixinOutputType
 
     @templater.render 'class_list', {
       path: ''
       classes: classes
-    }, 'class_list.html'
+    }, 'class_list'
 
     @templater.render 'mixin_list', {
       path: ''
       mixins: mixins
-    }, 'mixin_list.html'
+    }, 'mixin_list'
 
   # Generates the drop down method list
   #
   generateMethodList: ->
+    classOutputType = @theme.templateOutput 'class'
+    mixinOutputType = @theme.templateOutput 'mixin'
+    fileOutputType = @theme.templateOutput 'file'
     nonconstructors = _.filter @parser.getAllMethods(), (m) -> m.getName() isnt 'constructor'
     methods = _.map nonconstructors, (method) ->
       href = switch method.entity.constructor.name
                when 'Class'
-                 "classes/#{ method.entity.getFullName().replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"
+                 "classes/#{ method.entity.getFullName().replace(/\./g, '/') }.#{ classOutputType }##{ method.getName() }-#{ method.getType() }"
                when 'Mixin'
-                 "mixins/#{ method.entity.getFullName().replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"
+                 "mixins/#{ method.entity.getFullName().replace(/\./g, '/') }.#{ mixinOutputType }##{ method.getName() }-#{ method.getType() }"
                when 'File'
-                 "files/#{ method.entity.getFullName() }.html##{ method.getName() }-#{ method.getType() }"
+                 "files/#{ method.entity.getFullName() }.#{ mixinOutputType }##{ method.getName() }-#{ method.getType() }"
       {
         path: ''
         name: method.getName()
@@ -344,14 +357,14 @@ module.exports = class Generator
 
     @templater.render 'method_list', {
       methods: _.sortBy methods, (method) -> method.name
-    }, 'method_list.html'
+    }, 'method_list'
 
   # Generates the drop down file list
   #
   generateFileList: ->
     files = []
 
-    traverse = (entity, children) ->
+    traverse = (entity, children, outputType) ->
       if entity.getPath()
         segments = entity.getPath().split('/')
 
@@ -370,17 +383,17 @@ module.exports = class Generator
       # Create a new class
       children.push
         name: entity.getFileName()
-        href: "files/#{ entity.getFullName() }.html"
+        href: "files/#{ entity.getFullName() }.#{ outputType }"
         path: entity.getPath()
 
     # Create tree structure
     for file in @parser.files
-      traverse file, files
+      traverse file, files, @theme.templateOutput('file')
 
     @templater.render 'file_list', {
       path: ''
       files: files
-    }, 'file_list.html'
+    }, 'file_list'
 
   # Generates the drop down extra list
   #
@@ -388,7 +401,7 @@ module.exports = class Generator
     @templater.render 'extra_list', {
       path: ''
       extras: _.union [@options.readme], @options.extras.sort()
-    }, 'extra_list.html'
+    }, 'extra_list'
 
   # Copy the styles and scripts.
   #
@@ -419,43 +432,53 @@ module.exports = class Generator
   generateSearchData: (file) ->
     search = []
 
+    outputType = @theme.templateOutput 'class'
     for clazz in @parser.classes
+      fileName = clazz.getClassName().replace(/\./g, '/')
       search.push
         t: clazz.getClassName()
-        p: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
+        p: "classes/#{ fileName }.#{ outputType }"
 
       for method in clazz.getMethods()
         search.push
           t: method.getShortSignature()
           h: clazz.getClassName()
-          p: "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html##{ method.name }-#{ method.type }"
+          p: "classes/#{ fileName }.#{ outputType }##{ method.name }-#{ method.type }"
 
+    outputType = @theme.templateOutput 'mixin'
     for mixin in @parser.mixins
+      fileName = mixin.getFullName().replace(/\./g, '/')
       search.push
         t: mixin.getMixinName()
-        p: "mixins/#{ mixin.getFullName().replace(/\./g, '/') }.html"
+        p: "mixins/#{ fileName }.#{ outputType }"
 
       for method in mixin.getMethods()
         search.push
           t: method.getShortSignature()
-          p: "mixins/#{ mixin.getFullName().replace(/\./g, '/') }.html##{ method.name }-#{ method.type }"
+          p: "mixins/#{ fileName }.#{ outputType }##{ method.name }-#{ method.type }"
           h: mixin.getMixinName()
 
+    outputType = @theme.templateOutput 'mixin'
     for f in @parser.files
       search.push
         t: f.getFileName()
-        p: "files/#{ f.getFullName() }.html"
+        p: "files/#{ f.getFullName() }.#{ outputType }"
 
       for method in f.getMethods()
         search.push
           t: method.getShortSignature()
-          p: "files/#{ f.getFullName() }.html##{ method.name }-#{ method.type }"
+          p: "files/#{ f.getFullName() }.#{ outputType }##{ method.name }-#{ method.type }"
           h: f.getFileName()
 
-    for f in _.union([@options.readme], @options.extras.sort())
+    search.push
+      t: @options.readme
+      p: "#{ @options.readme }.#{ @theme.templateOutput 'file' }"
+
+    outputType = @theme.templateOutput 'file'
+    for f in @options.extras.sort()
       search.push
         t: f
-        p: "#{ f }.html"
+        p: "#{ f }.#{ outputType }"
 
     # Callback the search data
     if file

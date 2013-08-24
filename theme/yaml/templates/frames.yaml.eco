@@ -1,0 +1,3 @@
+---
+list: <%= JSON.stringify @list %>
+main: <%= JSON.stringify @index %>

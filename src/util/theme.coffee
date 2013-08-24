@@ -23,6 +23,9 @@ module.exports = class Theme
   templates: ->
     @templateNames
 
+  templatePath: (template) ->
+    @paths[template]
+
   # The uncompiled source code for a template.
   #
   # @param [String] template the name of the template
@@ -38,6 +41,15 @@ module.exports = class Theme
   #
   templateType: (template) ->
     @types[template]
+
+  # The output extension for a template.
+  #
+  # @param [String] template the name of the template
+  # @return [String] the extension for files output using the template (e.g.
+  #   "html")
+  #
+  templateOutput: (template) ->
+    @outputs[template]
 
   # The names of the assets in this theme.
   #
@@ -70,21 +82,30 @@ module.exports = class Theme
   loadTemplates: ->
     @sources = {}
     @types = {}
+    @paths = {}
+    @outputs = {}
     @templateNames = []
 
     templatesPath = path.join(@root, 'templates')
     for filePath in walkdir.sync(templatesPath)
       continue unless @isThemeFile(filePath)
-      fileName = path.basename(filePath)
-      templatePath = path.relative(templatesPath, filePath)
-      console.log templatePath
-      if templatePath.lastIndexOf('.') isnt -1
-        template = templatePath.substring 0, templatePath.lastIndexOf('.')
-      else
-        template = templatePath
+      template = path.relative(templatesPath, filePath)
+      templateType = 'hamlc'
+      outputType = 'html'
+      # Extract the template type.
+      typeIndex = template.lastIndexOf('.')
+      if typeIndex isnt -1
+        templateType = template.substring typeIndex + 1
+        template = template.substring 0, typeIndex
+      # Extract the output type.
+      outputIndex = template.lastIndexOf('.')
+      if outputIndex isnt -1
+        outputType = template.substring outputIndex + 1
+        template = template.substring 0, outputIndex
       @templateNames.push(template)
-      nameSegments = fileName.split('.')
-      @types[template] = nameSegments[nameSegments.length - 1]
+      @paths[template] = filePath
+      @types[template] = templateType
+      @outputs[template] = outputType
       @sources[template] = fs.readFileSync(filePath, 'utf-8')
     return
 

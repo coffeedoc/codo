@@ -1,0 +1,150 @@
+---
+<% indent = (spaces, string) -> string.replace(/^/gm, "\n" + (new Array(spaces + 1).join(' '))) %>
+name: <%- JSON.stringify @classData.class.className %>
+file: <%- JSON.stringify @classData.file %>
+
+<% if @classData.doc: %>
+abstract: <%- !!(@classData.doc.abstract || @classData.doc.abstract is '') %>
+deprecated: <%- !!(@classData.doc.deprecated || @classData.doc.deprecated is '') %>
+private: <%- !!(@classData.doc.private || @classData.doc.private is '') %>
+<% end %>
+
+<% if @classData.parent: %>
+parent:
+  name: <%- JSON.stringify @classData.class.parent %>
+  href: <%- JSON.stringify "#{ @path }classes/#{ @classData.class.parent.replace(/\./g, '/') }.yaml" %>
+<% end %>
+
+extends:
+<% for extendMixin, _ of @extendedMethods: %>
+  - name: <%- JSON.stringify extendMixin %>
+    href: <%- JSON.stringify "#{ @path }mixins/#{ extendMixin.replace(/\./g, '/') }.yaml" %>
+<% end %>
+
+includes:
+<% for includeMixin, _ of @includedMethods: %>
+  - name: <%- JSON.stringify includeMixin %>
+    href: <%- JSON.stringify "#{ @path }mixins/#{ includeMixin.replace(/\./g, '/') }.yaml" %>
+<% end %>
+
+concerns:
+<% for concern, _ of @concernMethods: %>
+  - name: <%- JSON.stringify concern %>
+    href: <%- JSON.stringify "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.yaml" %>
+<% end %>
+
+<% if @classData.doc: %>
+doc:
+<%- @JST['partials/doc']( doc: @classData.doc, type: 'class', path: @path, referencer: @referencer, parent: @ ) %>
+<% end %>
+
+<% if @subClasses.length isnt 0: %>
+subclasses:
+  <% for child in @subClasses: %>
+  - name: <%- JSON.stringify child %>
+    href: <%- JSON.stringify  "#{ @path }classes/#{ child.replace(/\./g, '/') }.yaml" %>
+  <% end %>
+<% end %>
+
+<% if @properties.length isnt 0: %>
+properties:
+  <% for property in @properties: %>
+  - name: <%- JSON.stringify property.name %>
+    signature: <%- JSON.stringify property.signature %>
+    setter: <%- !!property.setter %>
+    getter: <%- !!property.getter %>
+    comment: <%- JSON.stringify property.doc.comment %>
+    doc:
+<%- indent 4, @JST['partials/doc']( doc: property.doc, type: 'property', path: @path, referencer: @referencer, parent: @ ) %>
+  <% end %>
+<% end %>
+
+inheritedProperties:
+<% for parent, properties of @inheritedProperties: %>
+- parent:
+    name: <%- JSON.stringify parent %>
+    href: <%- JSON.stringify "#{ @path }classes/#{ parent.replace(/\./g, '/') }.yaml" %>
+  properties:
+  <% for property in properties: %>
+    - name: <%- JSON.stringify property.name %>
+      href: <%- JSON.stringify "#{ @path }classes/#{ parent.replace(/\./g, '/') }.yaml##{ property.name }-property" %>
+  <% end %>
+<% end %>
+
+<% if @constants.length isnt 0: %>
+constants:
+  <% for constant in @constants: %>
+  - name: <%- JSON.stringify constant.name %>
+    value: <%- JSON.stringify constant.value %>
+    doc:
+<%- indent 4, @JST['partials/doc']( doc: constant.doc, type: 'constant', path: @path, referencer: @referencer, parent: @ ) %>
+  <% end %>
+<% end %>
+
+inheritedConstants:
+<% for parent, constants of @inheritedConstants: %>
+  - parent:
+      name: <%- JSON.stringify parent %>
+      href: <%- JSON.stringify "#{ @path }classes/#{ parent.replace(/\./g, '/') }.yaml" %>
+    constants:
+    <% for constant in constants: %>
+      - name: <%- JSON.stringify constant.getName() %>
+        href: <%- JSON.stringify "#{ @path }classes/#{ parent.replace(/\./g, '/') }.yaml##{ constant.getName() }-constant" %>
+    <% end %>
+<% end %>
+
+<% if @classMethods.length isnt 0: %>
+classMethods:
+<%- @JST['partials/method_list']( methods: @classMethods, parent: @ ) %>
+<% end %>
+<% if @instanceMethods.length isnt 0: %>
+instanceMethods:
+<%- @JST['partials/method_list']( methods: @instanceMethods, parent: @ ) %>
+<% end %>
+
+inheritedMethods:
+<% for parent, methods of @inheritedMethods: %>
+- parent:
+    name: <%- JSON.stringify parent %>
+    href: <%- JSON.stringify "#{ @path }classes/#{ parent.replace(/\./g, '/') }.yaml" %>
+  methods:
+  <% for method in methods: %>
+  - name: <%- JSON.stringify method.getName() %>
+    type: <%- JSON.stringify method.getType() %>
+    shortSignature: <%- JSON.stringify method.getShortSignature() %>
+    signature: <%- JSON.stringify method.getSignature() %>
+    href: <%- JSON.stringify "#{ @path }classes/#{ parent.replace(/\./g, '/') }.yaml##{ method.getName() }-#{ method.getType() }" %>
+  <% end %>
+<% end %>
+
+includedMethods:
+<% for mixin, methods of @includedMethods: %>
+  - parent:
+      name: <%- JSON.stringify mixin %>
+      href: <%- JSON.stringify "#{ @path }classes/#{ mixin.replace(/\./g, '/') }.yaml" %>
+    methods:
+    <% for method in methods: %>
+      - name: <%- JSON.stringify method.getName() %>
+        type: <%- JSON.stringify method.getType() %>
+        shortSignature: <%- JSON.stringify method.getShortSignature() %>
+        signature: <%- JSON.stringify method.getSignature() %>
+        href: <%- JSON.stringify "#{ @path }classes/#{ mixin.replace(/\./g, '/') }.yaml##{ method.getName() }-#{ method.getType() }" %>
+    <% end %>
+<% end %>
+
+concernMethods:
+<% for concern, methods of @concernMethods: %>
+  - parent:
+      name: <%- JSON.stringify concern %>
+      href: <%- JSON.stringify "#{ @path }classes/#{ concern.replace(/\./g, '/') }.yaml" %>
+    methods:
+    <% for method in methods: %>
+      - name: <%- JSON.stringify method.getName() %>
+        type: <%- JSON.stringify method.getType() %>
+        shortSignature: <%- JSON.stringify method.getShortSignature() %>
+        signature: <%- JSON.stringify method.getSignature() %>
+        href: <%- JSON.stringify "#{ @path }classes/#{ concern.replace(/\./g, '/') }.yaml##{ method.getName() }-#{ method.getType() }" %>
+    <% end %>
+<% end %>
+
+

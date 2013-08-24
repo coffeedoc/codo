@@ -1,0 +1,20 @@
+---
+<% [i, class_queue] = [0, (clazz for clazz in @classes)] %>
+<% while i < class_queue.length: %>
+<% [clazz, i] = [class_queue[i], i + 1] %>
+- name: <%- JSON.stringify clazz.name %>
+  namespace: <%- JSON.stringify clazz.namespace %>
+<% if clazz.href: %>
+  href: <%- JSON.stringify clazz.href %>
+<% end %>
+<% if clazz.parent: %>
+  parent: <%- JSON.stringify clazz.parent %>
+<% end %>
+<% if clazz.children: %>
+  children:
+  <% for child in clazz.children: %>
+    - <%- JSON.stringify child.name %>
+    <% class_queue.push child %>
+  <% end %>
+<% end %>
+<% end %>

@@ -1,0 +1,28 @@
+<% indent = (spaces, string) -> string.replace(/^/gm, "\n" + (new Array(spaces + 1).join(' '))) %>
+<% for method in @methods: %>
+  - name: <%- JSON.stringify method.name %>
+    type: <%- JSON.stringify method.type %>
+    summary: <%- JSON.stringify method.summary %>
+    signature: <%- JSON.stringify method.signature %>
+    bound: <%- !!method.bound %>
+    private: <%- !!method.private %>
+
+    <% if method.doc?.overloads: %>
+    overloads:
+      <% for overload in method.doc?.overloads: %>
+      - type: <%- JSON.stringify method.type %>
+        signature: <%- JSON.stringify overload.signature %>
+        <% if overload.returnValue: %>
+        returnValue: <%- JSON.stringify overload.returnValue %>
+        <% else if method.doc?.returnValue: %>
+        returnValue: <%- JSON.stringify method.doc.returnValue.type %>
+        <% else: %>
+        returnValue: "void"
+        <% end %>
+      <% end %>
+    <% end %>
+
+<% if method.doc: %>
+<%- indent 2, @parent.JST['partials/doc'](doc: method.doc, type: 'method', str: @str, parent: @parent, path: @parent.path, referencer: @parent.referencer) %>
+<% end %>
+<% end %>

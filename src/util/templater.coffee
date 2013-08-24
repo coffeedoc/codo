@@ -4,6 +4,7 @@ mkdirp  = require 'mkdirp'
 _       = require 'underscore'
 _.str   = require 'underscore.string'
 hamlc   = require 'haml-coffee'
+eco     = require 'eco'
 
 # Haml Coffee template compiler.
 #
@@ -38,11 +39,16 @@ module.exports = class Templater
     for template in @theme.templates()
       source = @theme.templateSource(template)
       type = @theme.templateType(template)
-      @JST[template] = switch type
-        when 'hamlc'
-          hamlc.compile(source, { escapeAttributes: false })
-        else
-          throw new Error("Unimplemented template type #{type}")
+      try
+        @JST[template] = switch type
+          when 'hamlc'
+            hamlc.compile(source, escapeAttributes: false)
+          when 'eco'
+            eco.compile(source)
+          else
+            throw new Error("Unimplemented template type #{type}")
+      catch e
+        throw new Error("Error parsing theme template #{template}: #{e}")
 
   # Redirect template generation to a callback.
   #
@@ -56,16 +62,16 @@ module.exports = class Templater
   #
   # @param [String] template the template name
   # @param [Object] context the context object
-  # @param [String] filename the output file name
+  # @param [String] filename the output file name, minus the extension
   #
   render: (template, context = {}, filename = '') ->
-    html = @JST[template](_.extend(@globalContext, context))
+    content = @JST[template](_.extend(@globalContext, context))
+    filename = "#{ filename }.#{ @theme.templateOutput(template) }"
 
     unless _.isEmpty filename
-
       # Callback generated content
       if @file
-        @file(filename, html)
+        @file(filename, content)
 
       # Write to file system
       else
@@ -75,6 +81,6 @@ module.exports = class Templater
           if err
             console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
           else
-            fs.writeFile file, html
+            fs.writeFile file, content
 
-    html
+    content
