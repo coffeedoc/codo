@@ -1,6 +1,6 @@
-fs         = require 'fs'
-path       = require 'path'
-walkdir    = require 'walkdir'
+fs      = require 'fs'
+path    = require 'path'
+walkdir = require 'walkdir'
 
 # The theme knows where all the templates and assets are.
 #
@@ -73,20 +73,21 @@ module.exports = class Theme
     @templateNames = []
 
     templatesPath = path.join(@root, 'templates')
+
     for filePath in walkdir.sync(templatesPath)
       continue unless @isThemeFile(filePath)
+
       fileName = path.basename(filePath)
       templatePath = path.relative(templatesPath, filePath)
-      console.log templatePath
       if templatePath.lastIndexOf('.') isnt -1
         template = templatePath.substring 0, templatePath.lastIndexOf('.')
       else
         template = templatePath
+
       @templateNames.push(template)
       nameSegments = fileName.split('.')
       @types[template] = nameSegments[nameSegments.length - 1]
       @sources[template] = fs.readFileSync(filePath, 'utf-8')
-    return
 
   # Caches the static assets in this theme.
   #
@@ -95,12 +96,13 @@ module.exports = class Theme
   loadAssets: ->
     @assetSources = {}
     @assetNames = []
+
     for filePath in walkdir.sync(@assetPath)
       continue unless @isThemeFile(filePath)
+
       asset = path.relative(@assetPath, filePath)
       @assetNames.push(asset)
       @assetSources[asset] = fs.readFileSync(filePath, 'utf-8')
-    return
 
   # Checks if a path represents a file that is part of the theme.
   #
@@ -108,7 +110,4 @@ module.exports = class Theme
   # @return [Boolean] true if the path points to a theme file
   #
   isThemeFile: (filePath) ->
-    return false if path.basename(filePath)[0] == '.'
-    return false if fs.statSync(filePath).isDirectory()
-
-    true
+    !(path.basename(filePath)[0] == '.') && !fs.statSync(filePath).isDirectory()
