@@ -146,6 +146,12 @@ module.exports = class Codo
             default   : codoopts.closure || false
             describe  : 'Try to parse closure-like block comments'
           )
+          .options('u',
+            boolean   : true
+            describe  : 'List undocumented objects'
+            alias     : 'list-undoc'
+            default   : false
+          )
           .default('title', codoopts.title || 'CoffeeScript API Documentation')
 
         argv = optimist.argv
@@ -178,6 +184,7 @@ module.exports = class Codo
             closure: argv.closure
             homepage: homepage
             analytics: analytics || argv.a
+            undocumented: argv.u
 
           extra = false
 

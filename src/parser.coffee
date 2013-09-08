@@ -224,34 +224,55 @@ module.exports = class Parser
     fileCount      = @files.length
 
     classCount     = @classes.length
-    noDocClasses   = _.filter(@classes, (clazz) -> !clazz.getDoc().hasComment()).length
+    noDocClasses   = _.filter @classes, (clazz) -> !clazz.getDoc().hasComment()
+    noDocClassesCount = noDocClasses.length
 
     mixinCount     = @mixins.length
 
-    methodsToCount = _.filter(@getAllMethods(), (method) -> method not instanceof VirtualMethod)
+    methodsToCount = _.filter @getAllMethods(), (method) -> method not instanceof VirtualMethod
     methodCount    = methodsToCount.length
-    noDocMethods   = _.filter(methodsToCount, (method) -> !method.getDoc().hasComment()).length
+    noDocMethods   = _.filter methodsToCount, (method) -> !method.getDoc().hasComment()
+    noDocMethodsCount = noDocMethods.length
 
-    constants      = _.filter(@getAllVariables(), (variable) -> variable.isConstant())
+    constants      = _.filter @getAllVariables(), (variable) -> variable.isConstant()
     constantCount  = constants.length
-    noDocConstants = _.filter(constants, (constant) -> !constant.getDoc().hasComment()).length
+    noDocConstants = _.filter constants, (constant) -> !constant.getDoc().hasComment()
+    noDocConstantsCount = noDocConstants.length
 
-    documented   = 100 - 100 / (classCount + methodCount + constantCount) * (noDocClasses + noDocMethods + noDocConstants)
+    documented   = 100 - 100 / (classCount + methodCount + constantCount) * (noDocClassesCount + noDocMethodsCount + noDocConstantsCount)
     documented ||= 100
 
     maxCountLength = String(_.max([fileCount, mixinCount, classCount, methodCount, constantCount], (count) -> String(count).length)).length + 6
-    maxNoDocLength = String(_.max([noDocClasses, noDocMethods, noDocConstants], (count) -> String(count).length)).length
+    maxNoDocLength = String(_.max([noDocClassesCount, noDocMethodsCount, noDocConstantsCount], (count) -> String(count).length)).length
 
     stats =
       """
       Parsed files:    #{ _.str.pad(@fileCount, maxCountLength) }
-      Classes:         #{ _.str.pad(classCount, maxCountLength) } (#{ _.str.pad(noDocClasses, maxNoDocLength) } undocumented)
+      Classes:         #{ _.str.pad(classCount, maxCountLength) } (#{ _.str.pad(noDocClassesCount, maxNoDocLength) } undocumented)
       Mixins:          #{ _.str.pad(mixinCount, maxCountLength) }
       Non-Class files: #{ _.str.pad(fileCount, maxCountLength) }
-      Methods:         #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethods, maxNoDocLength) } undocumented)
-      Constants:       #{ _.str.pad(constantCount, maxCountLength) } (#{ _.str.pad(noDocConstants, maxNoDocLength) } undocumented)
+      Methods:         #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethodsCount, maxNoDocLength) } undocumented)
+      Constants:       #{ _.str.pad(constantCount, maxCountLength) } (#{ _.str.pad(noDocConstantsCount, maxNoDocLength) } undocumented)
        #{ _.str.sprintf('%.2f', documented) }% documented
       """
+
+    if @options.undocumented
+      stats += "\n\nUndocumented Objects:"
+
+      if noDocClassesCount > 0
+        stats += "\n\n  Classes:"
+        for c in noDocClasses
+          stats += "\n    #{c.className}: #{c.fileName}"
+
+      if noDocMethodsCount > 0
+        stats += "\n\n  Methods:"
+        for m in noDocMethods
+          stats += "\n    #{m.name} of #{m.entity.className}: #{m.entity.fileName}"
+
+      if noDocConstantsCount > 0
+        stats += "\n\n  Constants:"
+        for c in noDocConstants
+          stats += "\n    #{c.name} of #{c.entity.className}: #{c.entity.fileName}"
 
     console.log stats
 
