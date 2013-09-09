@@ -1,6 +1,6 @@
 # Codo Changelog
 
-## Master
+## Version 1.8.0 - Sep 9, 2013
 
 - [#127](https://github.com/netzpirat/codo/issues/127): Add option to show details of undocumented stuff ([@Mirceam94][]))
 
