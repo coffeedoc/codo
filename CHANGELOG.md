@@ -1,9 +1,13 @@
 # Codo Changelog
 
+## Master
+
+- [#127](https://github.com/netzpirat/codo/issues/127): Add option to show details of undocumented stuff ([@Mirceam94][]))
+
 ## Version 1.7.2 - Aug 24, 2013
 
-- [#124](https://github.com/netzpirat/codo/issues/124): Allow blank lines in @overload and @method [@pthrasher][])
-- [#122](https://github.com/netzpirat/codo/issues/122): Add command to print the current version. [@Zorbash][])
+- [#124](https://github.com/netzpirat/codo/issues/124): Allow blank lines in @overload and @method ([@pthrasher][])
+- [#122](https://github.com/netzpirat/codo/issues/122): Add command to print the current version. ([@Zorbash][])
 
 ## Version 1.7.1 - Aug 21, 2013
 
@@ -257,6 +261,7 @@
 [@dnagir]: https://github.com/dnagir
 [@inossidabile]: https://github.com/inossidabile
 [@mattijs]: https://github.com/mattijs
+[@Mirceam94]: https://github.com/Mirceam94
 [@Myztiq]: https://github.com/Myztiq
 [@netzpirat]: https://github.com/netzpirat
 [@PaulLeCam]: https://github.com/PaulLeCam
