@@ -1,5 +1,9 @@
 # Codo Changelog
 
+## Master
+
+- [#128](https://github.com/netzpirat/codo/issues/128): Replace windows file separator for template files. ([@robi-wan][]))
+
 ## Version 1.8.0 - Sep 9, 2013
 
 - [#127](https://github.com/netzpirat/codo/issues/127): Add option to show details of undocumented stuff ([@Mirceam94][]))
@@ -266,6 +270,7 @@
 [@netzpirat]: https://github.com/netzpirat
 [@PaulLeCam]: https://github.com/PaulLeCam
 [@pthrasher]: https://github.com/pthrasher
+[@robi-wan]: https://github.com/robi-wan
 [@ryan-roemer]: https://github.com/ryan-roemer
 [@skabbes]: https://github.com/skabbes
 [@stefi023]: https://github.com/stefi023
