@@ -1,4 +1,5 @@
 fs      = require 'fs'
+os      = require 'os'
 path    = require 'path'
 mkdirp  = require 'mkdirp'
 _       = require 'underscore'
@@ -8,6 +9,8 @@ hamlc   = require 'haml-coffee'
 # Haml Coffee template compiler.
 #
 module.exports = class Templater
+
+  isWin = os.platform().match(/^win/)
 
   # Construct the templater. Reads all templates and constructs
   # the global template context.
@@ -36,6 +39,7 @@ module.exports = class Templater
       extraCount: _.union([@options.readme], @options.extras).length
 
     for template in @theme.templates()
+      template = template.replace('\\','/') if isWin
       source = @theme.templateSource(template)
       type = @theme.templateType(template)
       @JST[template] = switch type
