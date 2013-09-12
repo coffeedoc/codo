@@ -84,6 +84,7 @@ module.exports = class Theme
       else
         template = templatePath
 
+      template = template.split(path.sep).join('/')
       @templateNames.push(template)
       nameSegments = fileName.split('.')
       @types[template] = nameSegments[nameSegments.length - 1]
