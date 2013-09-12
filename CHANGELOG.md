@@ -1,5 +1,9 @@
 # Codo Changelog
 
+## Master
+
+- [#129](https://github.com/netzpirat/codo/issues/129): Normalize theme template names. ([@pwnall][]))
+
 ## Version 1.8.1 - Sep 12, 2013
 
 - [#128](https://github.com/netzpirat/codo/issues/128): Replace windows file separator for template files. ([@robi-wan][]))
