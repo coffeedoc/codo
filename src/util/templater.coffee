@@ -39,9 +39,9 @@ module.exports = class Templater
       extraCount: _.union([@options.readme], @options.extras).length
 
     for template in @theme.templates()
-      template = template.replace('\\','/') if isWin
       source = @theme.templateSource(template)
       type = @theme.templateType(template)
+      template = template.replace('\\','/') if isWin
       @JST[template] = switch type
         when 'hamlc'
           hamlc.compile(source, { escapeAttributes: false })
