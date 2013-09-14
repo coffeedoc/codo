@@ -154,7 +154,7 @@ module.exports = class Codo
           )
           .options('x',
             alias : 'extension'
-            describe : 'alternate file extensions to consider (like .iced)'
+            describe : 'alternate file extensions to consider (can supply several)'
             default  : codoopts.extensions || codoopts.x 
           )
           .default('title', codoopts.title || 'CoffeeScript API Documentation')
