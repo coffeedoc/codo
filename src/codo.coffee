@@ -160,7 +160,6 @@ module.exports = class Codo
           .default('title', codoopts.title || 'CoffeeScript API Documentation')
 
         argv = optimist.argv
-        console.log argv
 
         if argv.h
           console.log optimist.help()
