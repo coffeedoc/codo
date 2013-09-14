@@ -154,7 +154,8 @@ module.exports = class Codo
           )
           .options('x',
             alias : 'extension'
-            describe : 'alternate extensions to consider (like iced)'
+            describe : 'alternate file extensions to consider (like .iced)'
+            default  : codoopts.extensions || codoopts.x 
           )
           .default('title', codoopts.title || 'CoffeeScript API Documentation')
 
@@ -316,9 +317,13 @@ module.exports = class Codo
 # Make a regex for finding files by extension.  Consider the
 # default /\._?coffee/ plus whatever else the user has provided
 # on the command line with the -x argument
+#
+# @param [Array<String> or string] arg the argument passed back from 
+#   optimist
+# @return [string] the regex to use when matching filenames
 makeExtensionRegex = (arg) ->
   extensions = [ "coffee" ]
   if Array.isArray(arg) then extensions.push arg...
-  else extensions.push arg
+  else if (typeof arg) is 'string' then extensions.push arg
   "\\._?(#{extensions.join('|')})"
 
