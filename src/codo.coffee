@@ -318,7 +318,7 @@ module.exports = class Codo
 # default /\._?coffee/ plus whatever else the user has provided
 # on the command line with the -x argument
 #
-# @param [Array<String> or string] arg the argument passed back from 
+# @param [Array<string> or string] arg the argument passed back from 
 #   optimist
 # @return [string] the regex to use when matching filenames
 makeExtensionRegex = (arg) ->
