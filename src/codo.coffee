@@ -152,9 +152,14 @@ module.exports = class Codo
             alias     : 'list-undoc'
             default   : false
           )
+          .options('x',
+            alias : 'extension'
+            describe : 'alternate extensions to consider (like iced)'
+          )
           .default('title', codoopts.title || 'CoffeeScript API Documentation')
 
         argv = optimist.argv
+        console.log argv
 
         if argv.h
           console.log optimist.help()
@@ -203,20 +208,22 @@ module.exports = class Codo
 
           parser = new Parser(options)
 
+          extensionRegex = makeExtensionRegex argv.x
+
           for input in options.inputs
             if (fs.existsSync || path.existsSync)(input)
               stats = fs.lstatSync input
 
               if stats.isDirectory()
                 for filename in walkdir.sync input
-                  if filename.match /\._?coffee/
+                  if filename.match extensionRegex
                     try
                       parser.parseFile filename.substring process.cwd().length + 1
                     catch error
                       throw error if options.debug
                       console.log "Cannot parse file #{ filename }: #{ error.message }"
               else
-                if input.match /\._?coffee/
+                if input.match extensionRegex
                   try
                     parser.parseFile input
                   catch error
@@ -305,3 +312,13 @@ module.exports = class Codo
       name = path.basename(process.cwd())
 
     done null, name.charAt(0).toUpperCase() + name.slice(1)
+
+# Make a regex for finding files by extension.  Consider the
+# default /\._?coffee/ plus whatever else the user has provided
+# on the command line with the -x argument
+makeExtensionRegex = (arg) ->
+  extensions = [ "coffee" ]
+  if Array.isArray(arg) then extensions.push arg...
+  else extensions.push arg
+  "\\._?(#{extensions.join('|')})"
+
