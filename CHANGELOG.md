@@ -2,6 +2,7 @@
 
 ## Master
 
+- [#131](https://github.com/netzpirat/codo/issues/131): Add `extension` option. ([@maxtaco][]))
 - [#129](https://github.com/netzpirat/codo/issues/129): Normalize theme template names. ([@pwnall][]))
 
 ## Version 1.8.1 - Sep 12, 2013
@@ -269,6 +270,7 @@
 [@dnagir]: https://github.com/dnagir
 [@inossidabile]: https://github.com/inossidabile
 [@mattijs]: https://github.com/mattijs
+[@maxtaco]: https://github.com/maxtaco
 [@Mirceam94]: https://github.com/Mirceam94
 [@Myztiq]: https://github.com/Myztiq
 [@netzpirat]: https://github.com/netzpirat
