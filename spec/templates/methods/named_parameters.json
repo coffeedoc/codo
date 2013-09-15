@@ -1,0 +1,65 @@
+[
+  {
+    "file": "spec/templates/methods/named_parameters.coffee",
+    "class": {
+      "className": "TestNamedParameters",
+      "name": "TestNamedParameters",
+      "namespace": ""
+   },
+   "methods": [
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>constructor</strong>({cat, dog, eel}, fish, gorilla = 400, hog...)",
+        "name": "constructor",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "{cat, dog, eel}",
+            "splat": false
+          },
+          {
+            "name": "fish",
+            "splat": false
+          },
+          {
+            "name": "gorilla",
+            "default" : "400",
+            "splat": false
+          },
+          { 
+            "name" : "hog",
+            "splat" : true
+          }
+        ]
+     },
+     {
+       "type": "instance",
+       "signature": "- (void) <strong>burp</strong>({a, b, c}, e = 20, {f, g, h}, i = 10)",
+       "name": "burp",
+       "bound": false,
+       "parameters": [
+          {
+            "name": "{a, b, c}",
+            "splat": false
+          },
+          {
+            "name": "e",
+            "default": "20",
+            "splat": false
+          },
+          {
+            "name": "{f, g, h}",
+            "splat": false
+          },
+          {
+            "name": "i",
+            "default": "10",
+            "splat": false
+          }
+        ]
+      }
+   ],
+   "variables": [],
+   "properties": []
+  }
+]
