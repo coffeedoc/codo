@@ -37,10 +37,21 @@ module.exports = class Parameter extends Node
   #
   getName: ->
     try
-      unless @name
 
+      unless @name
         # Normal attribute `do: (it) ->`
         @name = @node.name.value
+
+        # Named parameters a la python:
+        #  `make_fac : ({numerator, divisor}) ->`
+        # Also works for class constructors:
+        #  `constructor : ( { @name, @key, opts }) ->
+        unless @name
+          if (o = @node.name.objects)?
+            vars = for v in o
+              if v.base.value is 'this' then v.properties[0].name.value
+              else v.base.value
+            @name = "{#{vars.join ', '}}"
 
         unless @name
           if @node.name.properties
