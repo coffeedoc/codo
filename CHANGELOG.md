@@ -1,6 +1,6 @@
 # Codo Changelog
 
-## Master
+## Version 1.9.0 - Sep 16, 2013
 
 - [#132](https://github.com/netzpirat/codo/issues/132): Support for named parameters. ([@maxtaco][]))
 - [#131](https://github.com/netzpirat/codo/issues/131): Add `extension` option. ([@maxtaco][]))
