@@ -325,7 +325,20 @@ The parameter type can contain multiple comma separated types:
 do: (input) ->
 ```
 
-Each known type will be automatically linked.
+Each known type will be automatically linked. Also named parameters are recognized:
+
+```CoffeeScript
+class Classmate
+
+  # @param {string} name Full name (first + last)
+  # @param {string} phone Phone number
+  # @param {obj} picture JPG of the person
+  constructor : ( {@name, @phone, picture} ) ->
+
+  # @param {string} reason Why I'm no longer friends
+  # param {Date} revisit_decision_on When to reconsider
+  unfriend : ( {reason, revisit_decision_on} ) ->
+```
 
 ### Options
 
