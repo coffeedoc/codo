@@ -1,5 +1,9 @@
 # Codo Changelog
 
+## Master
+
+- [#135](https://github.com/netzpirat/codo/issues/135): Fix README when path starts with `./`.
+
 ## Version 1.9.0 - Sep 16, 2013
 
 - [#132](https://github.com/netzpirat/codo/issues/132): Support for named parameters. ([@maxtaco][]))

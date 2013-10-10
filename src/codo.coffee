@@ -155,7 +155,7 @@ module.exports = class Codo
           .options('x',
             alias : 'extension'
             describe : 'alternate file extensions to consider (can supply several)'
-            default  : codoopts.extensions || codoopts.x 
+            default  : codoopts.extensions || codoopts.x
           )
           .default('title', codoopts.title || 'CoffeeScript API Documentation')
 
@@ -179,7 +179,7 @@ module.exports = class Codo
             output: argv.o
             extras: []
             name: argv.n
-            readme: argv.r
+            readme: if /^\.\//.test(argv.r) then argv.r.substring(2) else argv.r
             title: argv.title
             quiet: argv.q
             private: argv.private
@@ -317,7 +317,7 @@ module.exports = class Codo
 # default /\._?coffee/ plus whatever else the user has provided
 # on the command line with the -x argument
 #
-# @param [Array<string> or string] arg the argument passed back from 
+# @param [Array<string> or string] arg the argument passed back from
 #   optimist
 # @return [string] the regex to use when matching filenames
 makeExtensionRegex = (arg) ->
