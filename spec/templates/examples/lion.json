@@ -1,0 +1,91 @@
+[
+  {
+    "file": "spec/templates/examples/lion.coffee",
+    "doc": {
+      "authors": [
+        "Simba"
+      ],
+      "comment": "<p>A dangerous lion. Take care.</p>",
+      "summary": "A dangerous lion.",
+      "see": [
+        {
+          "reference": "http://en.wikipedia.org/wiki/Lion"
+        }
+      ]
+    },
+    "class": {
+      "className": "Example.Animal.Lion",
+      "name": "Lion",
+      "namespace": "Example.Animal",
+      "parent": "Example.Animal"
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "<p>Move the lion fast</p>",
+          "summary": "Move the lion fast",
+          "params": [
+            {
+              "type": "String",
+              "name": "direction",
+              "desc": "the moving direction"
+            },
+            {
+              "type": "Number",
+              "name": "speed",
+              "desc": "the moving speed"
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>move</strong>(direction, speed)",
+        "name": "move",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "direction",
+            "splat": false
+          },
+          {
+            "name": "speed",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "doc": {
+          "comment": "<p>Escape at maximum speed.</p>",
+          "summary": "Escape at maximum speed.",
+          "params": [
+            {
+              "reference": "#move"
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "- (void) <strong>escape</strong>(direction)",
+        "name": "escape",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "direction",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": [
+      {
+        "doc": {
+          "comment": "<p>Maximum speed in MPH</p>",
+          "summary": "Maximum speed in MPH"
+        },
+        "type": "class",
+        "constant": true,
+        "name": "MAX_SPEED",
+        "value": "50"
+      }
+    ],
+    "properties": []
+  }
+]

@@ -1,0 +1,181 @@
+[
+    {
+        "file": "spec/templates/examples/block_comments/animal.coffee",
+        "doc": {
+            "abstract": "Each animal implementation must inherit from {Animal}",
+            "deprecated": "This class is not used anymore",
+            "version": "0.2.0",
+            "since": "0.1.0",
+            "examples": [
+                {
+                    "title": "How to subclass an animal",
+                    "code": "class Lion extends Animal\n  move: (direction, speed): ->"
+                }
+            ],
+            "todos": [
+                "Provide more examples"
+            ],
+            "notes": [
+                "This is not used for codo, its purpose is to show all possible tags within a class."
+            ],
+            "authors": [
+                "Michael Kessler"
+            ],
+            "comment": "<p>Base class for all animals.</p>",
+            "summary": "Base class for all animals."
+        },
+        "class": {
+            "className": "Example.Animal",
+            "name": "Animal",
+            "namespace": "Example"
+        },
+        "methods": [
+            {
+                "doc": {
+                    "todos": [
+                        "Clean up"
+                    ],
+                    "comment": "<p>Construct a new animal.</p>",
+                    "summary": "Construct a new animal.",
+                    "params": [
+                        {
+                            "type": "String",
+                            "name": "name",
+                            "desc": "the name of the animal"
+                        },
+                        {
+                            "type": "Date",
+                            "name": "birthDate",
+                            "desc": "when the animal was born"
+                        }
+                    ]
+                },
+                "type": "instance",
+                "signature": "- (void) <strong>constructor</strong>(name, birthDate = new Date())",
+                "name": "constructor",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "name",
+                        "splat": false
+                    },
+                    {
+                        "name": "birthDate",
+                        "default": "new Date()",
+                        "splat": false
+                    }
+                ]
+            },
+            {
+                "doc": {
+                    "abstract": "",
+                    "examples": [
+                        {
+                            "title": "Move an animal",
+                            "code": "new Lion('Simba').move('south', 12)"
+                        }
+                    ],
+                    "comment": "<p>Move the animal.</p>",
+                    "summary": "Move the animal.",
+                    "params": [
+                        {
+                            "type": "Object",
+                            "name": "options",
+                            "desc": "the moving options"
+                        }
+                    ],
+                    "options": {
+                        "options": [
+                            {
+                                "type": "String",
+                                "name": "direction",
+                                "desc": "the moving direction"
+                            },
+                            {
+                                "type": "Number",
+                                "name": "speed",
+                                "desc": "the speed in mph"
+                            }
+                        ]
+                    }
+                },
+                "type": "instance",
+                "signature": "- (void) <strong>move</strong>(options = {})",
+                "name": "move",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "options",
+                        "default": "{}",
+                        "splat": false
+                    }
+                ]
+            },
+            {
+                "doc": {
+                    "private": true,
+                    "deprecated": "Do not copulate",
+                    "version": "0.2.0",
+                    "since": "0.1.0",
+                    "notes": [
+                        "Don&#39;t take it seriously"
+                    ],
+                    "authors": [
+                        "Michael Kessler"
+                    ],
+                    "comment": "<p>Copulate another animal.</p>",
+                    "summary": "Copulate another animal.",
+                    "params": [
+                        {
+                            "type": "Animal",
+                            "name": "animal",
+                            "desc": "the partner animal"
+                        }
+                    ],
+                    "returnValue": {
+                        "type": "Boolean",
+                        "desc": "true when success"
+                    }
+                },
+                "type": "instance",
+                "signature": "- (Boolean) <strong>copulate</strong>(animal)",
+                "name": "copulate",
+                "bound": true,
+                "parameters": [
+                    {
+                        "name": "animal",
+                        "splat": false
+                    }
+                ]
+            },
+            {
+                "doc": {
+                    "comment": "<p>Moves all animal into the ark.</p>",
+                    "summary": "Moves all animal into the ark.",
+                    "returnValue": {
+                        "type": "Boolean",
+                        "desc": "true when all in Ark"
+                    }
+                },
+                "type": "class",
+                "signature": "+ (Boolean) <strong>enterArk</strong>()",
+                "name": "enterArk",
+                "bound": false,
+                "parameters": []
+            }
+        ],
+        "variables": [
+            {
+                "doc": {
+                    "comment": "<p>The Answer to the Ultimate Question of Life, the Universe, and Everything</p>",
+                    "summary": "The Answer to the Ultimate Question of Life, the Universe, and Everything"
+                },
+                "type": "class",
+                "constant": true,
+                "name": "ANSWER",
+                "value": "42"
+            }
+        ],
+        "properties": []
+    }
+]

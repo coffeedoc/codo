@@ -1,0 +1,427 @@
+[
+  {
+    "file": "spec/templates/mixins/concern.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/templates/mixins/concern.coffee",
+    "name": "Example.Mixins.Concern",
+    "concern": true,
+    "documentation": {
+      "comment": "<p>This is my concern</p>",
+      "summary": "This is my concern"
+    },
+    "methods": [],
+    "classMethods": [
+      {
+        "file": "spec/templates/mixins/concern.coffee",
+        "name": "a",
+        "documentation": {
+          "comment": "",
+          "summary": "",
+          "params": [
+            {
+              "type": "String",
+              "name": "a",
+              "desc": "This is the a parameter"
+            },
+            {
+              "type": "String",
+              "name": "b",
+              "desc": "This is the a parameter"
+            },
+            {
+              "type": "String",
+              "name": "c",
+              "desc": "This is the a parameter"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "a",
+            "splat": false
+          },
+          {
+            "name": "b",
+            "splat": false
+          },
+          {
+            "name": "c",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "file": "spec/templates/mixins/concern.coffee",
+        "name": "z",
+        "documentation": {
+          "comment": "",
+          "summary": "",
+          "params": [
+            {
+              "type": "String",
+              "name": "x",
+              "desc": "This is the x parameter"
+            },
+            {
+              "type": "String",
+              "name": "y",
+              "desc": "This is the y parameter"
+            },
+            {
+              "type": "String",
+              "name": "z",
+              "desc": "This is the z parameter"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "x",
+            "splat": false
+          },
+          {
+            "name": "y",
+            "splat": false
+          },
+          {
+            "name": "z",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "instanceMethods": [
+      {
+        "file": "spec/templates/mixins/concern.coffee",
+        "name": "hi",
+        "documentation": {
+          "comment": "<p>Say hi</p>",
+          "summary": "Say hi",
+          "params": [
+            {
+              "type": "String",
+              "name": "to",
+              "desc": "the name"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "to",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "file": "spec/templates/mixins/concern.coffee",
+        "name": "goodbye",
+        "documentation": {
+          "comment": "<p>Say goodbye</p>",
+          "summary": "Say goodbye",
+          "params": [
+            {
+              "type": "String",
+              "name": "to",
+              "desc": "the name"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "to",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": []
+  },
+  {
+    "file": "spec/templates/mixins/concern.coffee",
+    "name": "ClassMethods",
+    "constant": false,
+    "value": "{\n  /*\n  @param [String] a This is the a parameter\n  @param [String] b This is the a parameter\n  @param [String] c This is the a parameter\n  */\n\n  a: function(a, b, c) {},\n  /*\n  @param [String] x This is the x parameter\n  @param [String] y This is the y parameter\n  @param [String] z This is the z parameter\n  */\n\n  z: function(x, y, z) {}\n}"
+  },
+  {
+    "file": "spec/templates/mixins/concern.coffee",
+    "name": "a",
+    "documentation": {
+      "comment": "",
+      "summary": "",
+      "params": [
+        {
+          "type": "String",
+          "name": "a",
+          "desc": "This is the a parameter"
+        },
+        {
+          "type": "String",
+          "name": "b",
+          "desc": "This is the a parameter"
+        },
+        {
+          "type": "String",
+          "name": "c",
+          "desc": "This is the a parameter"
+        }
+      ]
+    },
+    "parameters": [
+      {
+        "name": "a",
+        "splat": false
+      },
+      {
+        "name": "b",
+        "splat": false
+      },
+      {
+        "name": "c",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/templates/mixins/concern.coffee",
+    "name": "z",
+    "documentation": {
+      "comment": "",
+      "summary": "",
+      "params": [
+        {
+          "type": "String",
+          "name": "x",
+          "desc": "This is the x parameter"
+        },
+        {
+          "type": "String",
+          "name": "y",
+          "desc": "This is the y parameter"
+        },
+        {
+          "type": "String",
+          "name": "z",
+          "desc": "This is the z parameter"
+        }
+      ]
+    },
+    "parameters": [
+      {
+        "name": "x",
+        "splat": false
+      },
+      {
+        "name": "y",
+        "splat": false
+      },
+      {
+        "name": "z",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/templates/mixins/concern.coffee",
+    "name": "InstanceMethods",
+    "constant": false,
+    "value": "{\n  /*\n  Say hi\n  @param [String] to the name\n  */\n\n  hi: function(to) {},\n  /*\n  Say goodbye\n  @param [String] to the name\n  */\n\n  goodbye: function(to) {}\n}"
+  },
+  {
+    "file": "spec/templates/mixins/concern.coffee",
+    "name": "hi",
+    "documentation": {
+      "comment": "<p>Say hi</p>",
+      "summary": "Say hi",
+      "params": [
+        {
+          "type": "String",
+          "name": "to",
+          "desc": "the name"
+        }
+      ]
+    },
+    "parameters": [
+      {
+        "name": "to",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/templates/mixins/concern.coffee",
+    "name": "goodbye",
+    "documentation": {
+      "comment": "<p>Say goodbye</p>",
+      "summary": "Say goodbye",
+      "params": [
+        {
+          "type": "String",
+          "name": "to",
+          "desc": "the name"
+        }
+      ]
+    },
+    "parameters": [
+      {
+        "name": "to",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/templates/mixins/concern.coffee",
+    "documentation": {
+      "comment": "",
+      "summary": "",
+      "concerns": [
+        "Example.Mixins.Concern"
+      ]
+    },
+    "name": "Example.Concern",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": [
+      {
+        "file": "spec/templates/mixins/concern.coffee",
+        "name": "Example.Mixins.Concern",
+        "concern": true,
+        "documentation": {
+          "comment": "<p>This is my concern</p>",
+          "summary": "This is my concern"
+        },
+        "methods": [],
+        "classMethods": [
+          {
+            "file": "spec/templates/mixins/concern.coffee",
+            "name": "a",
+            "documentation": {
+              "comment": "",
+              "summary": "",
+              "params": [
+                {
+                  "type": "String",
+                  "name": "a",
+                  "desc": "This is the a parameter"
+                },
+                {
+                  "type": "String",
+                  "name": "b",
+                  "desc": "This is the a parameter"
+                },
+                {
+                  "type": "String",
+                  "name": "c",
+                  "desc": "This is the a parameter"
+                }
+              ]
+            },
+            "parameters": [
+              {
+                "name": "a",
+                "splat": false
+              },
+              {
+                "name": "b",
+                "splat": false
+              },
+              {
+                "name": "c",
+                "splat": false
+              }
+            ]
+          },
+          {
+            "file": "spec/templates/mixins/concern.coffee",
+            "name": "z",
+            "documentation": {
+              "comment": "",
+              "summary": "",
+              "params": [
+                {
+                  "type": "String",
+                  "name": "x",
+                  "desc": "This is the x parameter"
+                },
+                {
+                  "type": "String",
+                  "name": "y",
+                  "desc": "This is the y parameter"
+                },
+                {
+                  "type": "String",
+                  "name": "z",
+                  "desc": "This is the z parameter"
+                }
+              ]
+            },
+            "parameters": [
+              {
+                "name": "x",
+                "splat": false
+              },
+              {
+                "name": "y",
+                "splat": false
+              },
+              {
+                "name": "z",
+                "splat": false
+              }
+            ]
+          }
+        ],
+        "instanceMethods": [
+          {
+            "file": "spec/templates/mixins/concern.coffee",
+            "name": "hi",
+            "documentation": {
+              "comment": "<p>Say hi</p>",
+              "summary": "Say hi",
+              "params": [
+                {
+                  "type": "String",
+                  "name": "to",
+                  "desc": "the name"
+                }
+              ]
+            },
+            "parameters": [
+              {
+                "name": "to",
+                "splat": false
+              }
+            ]
+          },
+          {
+            "file": "spec/templates/mixins/concern.coffee",
+            "name": "goodbye",
+            "documentation": {
+              "comment": "<p>Say goodbye</p>",
+              "summary": "Say goodbye",
+              "params": [
+                {
+                  "type": "String",
+                  "name": "to",
+                  "desc": "the name"
+                }
+              ]
+            },
+            "parameters": [
+              {
+                "name": "to",
+                "splat": false
+              }
+            ]
+          }
+        ],
+        "variables": []
+      }
+    ]
+  }
+]

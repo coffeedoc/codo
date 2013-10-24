@@ -1,0 +1,158 @@
+[
+  {
+    "file": "spec/templates/mixins/mixin_methods.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/templates/mixins/mixin_methods.coffee",
+    "name": "Foo",
+    "documentation": {
+      "comment": "",
+      "summary": ""
+    },
+    "methods": [
+      {
+        "file": "spec/templates/mixins/mixin_methods.coffee",
+        "name": "helper",
+        "parameters": []
+      },
+      {
+        "file": "spec/templates/mixins/mixin_methods.coffee",
+        "name": "another",
+        "parameters": [
+          {
+            "name": "a",
+            "splat": false
+          },
+          {
+            "name": "b",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "file": "spec/templates/mixins/mixin_methods.coffee",
+        "name": "withDefault",
+        "parameters": [
+          {
+            "name": "a",
+            "splat": false,
+            "default": "2"
+          },
+          {
+            "name": "c",
+            "splat": false
+          },
+          {
+            "name": "d",
+            "splat": false,
+            "default": "'hi'"
+          },
+          {
+            "name": "d",
+            "splat": false
+          },
+          {
+            "name": "e",
+            "splat": false,
+            "default": "{\n  a: 2\n}"
+          },
+          {
+            "name": "f",
+            "splat": false,
+            "default": "new TestClassMethods()"
+          }
+        ]
+      },
+      {
+        "file": "spec/templates/mixins/mixin_methods.coffee",
+        "name": "nowWithSpalt",
+        "parameters": [
+          {
+            "name": "foo",
+            "splat": false
+          },
+          {
+            "name": "bar",
+            "splat": true
+          }
+        ]
+      }
+    ],
+    "variables": []
+  },
+  {
+    "file": "spec/templates/mixins/mixin_methods.coffee",
+    "name": "helper",
+    "parameters": []
+  },
+  {
+    "file": "spec/templates/mixins/mixin_methods.coffee",
+    "name": "another",
+    "parameters": [
+      {
+        "name": "a",
+        "splat": false
+      },
+      {
+        "name": "b",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/templates/mixins/mixin_methods.coffee",
+    "name": "withDefault",
+    "parameters": [
+      {
+        "name": "a",
+        "splat": false,
+        "default": "2"
+      },
+      {
+        "name": "c",
+        "splat": false
+      },
+      {
+        "name": "d",
+        "splat": false,
+        "default": "'hi'"
+      },
+      {
+        "name": "d",
+        "splat": false
+      },
+      {
+        "name": "e",
+        "splat": false,
+        "default": "{\n  a: 2\n}"
+      },
+      {
+        "name": "f",
+        "splat": false,
+        "default": "new TestClassMethods()"
+      }
+    ]
+  },
+  {
+    "file": "spec/templates/mixins/mixin_methods.coffee",
+    "name": "a",
+    "constant": false,
+    "value": "2"
+  },
+  {
+    "file": "spec/templates/mixins/mixin_methods.coffee",
+    "name": "nowWithSpalt",
+    "parameters": [
+      {
+        "name": "foo",
+        "splat": false
+      },
+      {
+        "name": "bar",
+        "splat": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,155 @@
+[
+  {
+    "file": "spec/templates/files/non_class_file.coffee",
+    "methods": [
+      {
+        "file": "spec/templates/files/non_class_file.coffee",
+        "name": "hello",
+        "documentation": {
+          "comment": "<p>Says hello to a person</p>",
+          "summary": "Says hello to a person",
+          "params": [
+            {
+              "type": "String",
+              "name": "name",
+              "desc": "the name of the persion"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "file": "spec/templates/files/non_class_file.coffee",
+        "name": "bye",
+        "documentation": {
+          "comment": "<p>Says bye to a person</p>",
+          "summary": "Says bye to a person",
+          "params": [
+            {
+              "type": "String",
+              "name": "name",
+              "desc": "the name of the persion"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "file": "spec/templates/files/non_class_file.coffee",
+        "name": "sayHi",
+        "documentation": {
+          "comment": "<p>Say hi to a person</p>",
+          "summary": "Say hi to a person",
+          "params": [
+            {
+              "type": "String",
+              "name": "name",
+              "desc": "the name of the persion"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "hi",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": [
+      {
+        "file": "spec/templates/files/non_class_file.coffee",
+        "name": "GREETING",
+        "constant": true,
+        "value": "'Hay'",
+        "documentation": {
+          "comment": "<p>The greeting</p>",
+          "summary": "The greeting"
+        }
+      }
+    ]
+  },
+  {
+    "file": "spec/templates/files/non_class_file.coffee",
+    "name": "GREETING",
+    "constant": true,
+    "value": "'Hay'",
+    "documentation": {
+      "comment": "<p>The greeting</p>",
+      "summary": "The greeting"
+    }
+  },
+  {
+    "file": "spec/templates/files/non_class_file.coffee",
+    "name": "hello",
+    "documentation": {
+      "comment": "<p>Says hello to a person</p>",
+      "summary": "Says hello to a person",
+      "params": [
+        {
+          "type": "String",
+          "name": "name",
+          "desc": "the name of the persion"
+        }
+      ]
+    },
+    "parameters": [
+      {
+        "name": "name",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/templates/files/non_class_file.coffee",
+    "name": "bye",
+    "documentation": {
+      "comment": "<p>Says bye to a person</p>",
+      "summary": "Says bye to a person",
+      "params": [
+        {
+          "type": "String",
+          "name": "name",
+          "desc": "the name of the persion"
+        }
+      ]
+    },
+    "parameters": [
+      {
+        "name": "name",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/templates/files/non_class_file.coffee",
+    "name": "sayHi",
+    "documentation": {
+      "comment": "<p>Say hi to a person</p>",
+      "summary": "Say hi to a person",
+      "params": [
+        {
+          "type": "String",
+          "name": "name",
+          "desc": "the name of the persion"
+        }
+      ]
+    },
+    "parameters": [
+      {
+        "name": "hi",
+        "splat": false
+      }
+    ]
+  }
+]

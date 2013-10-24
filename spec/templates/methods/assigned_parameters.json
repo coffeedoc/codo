@@ -1,0 +1,40 @@
+[
+  {
+    "file": "spec/templates/methods/assigned_parameters.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/templates/methods/assigned_parameters.coffee",
+    "name": "TestAssignedParameters",
+    "methods": [
+      {
+        "file": "spec/templates/methods/assigned_parameters.coffee",
+        "name": "help",
+        "type": "dynamic",
+        "parameters": [
+          {
+            "name": "me",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  },
+  {
+    "file": "spec/templates/methods/assigned_parameters.coffee",
+    "name": "help",
+    "type": "dynamic",
+    "parameters": [
+      {
+        "name": "me",
+        "splat": false
+      }
+    ]
+  }
+]
