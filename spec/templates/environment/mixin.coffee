@@ -1,0 +1,6 @@
+#
+# @mixin
+#
+LookAndFeel =
+  look: ->
+  feel: ->

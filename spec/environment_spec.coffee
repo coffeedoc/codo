@@ -60,10 +60,19 @@ describe 'Environment', ->
           expect(filename.substring process.cwd().length + 1)
             .toTraverseTo(filename.replace(/\.coffee$/, '.json'))
 
-
   describe 'Method', ->
     for filename in walkdir.sync './spec/templates/methods' when filename.match /\.coffee$/
       do (filename) ->
         it "parses #{filename}", ->
           expect(filename.substring process.cwd().length + 1)
             .toTraverseTo(filename.replace(/\.coffee$/, '.json'))
+
+  describe 'Environment', ->
+    it 'handles multiple files', ->
+      environment = Environment.read [
+        'spec/templates/environment/class.coffee',
+        'spec/templates/environment/mixin.coffee'
+      ]
+
+      actual = JSON.stringify(environment.toJSON(), null, 2)
+      expect(FS.readFileSync('spec/templates/environment/result.json', 'utf8')).toEqual actual

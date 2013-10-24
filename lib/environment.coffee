@@ -2,7 +2,15 @@ Traverser = require './traverser'
 
 module.exports = class Environment
 
-  constructor: (options) ->
+  @read: (files, options={}) ->
+    files       = [files] unless Array.isArray(files)
+    environment = new @(options)
+
+    environment.read(file) for file in files
+    environment.linkify()
+    environment
+
+  constructor: (options={}) ->
     for option, value of options
       @[option] = value if options.hasOwnProperty(option)
 
