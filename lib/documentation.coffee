@@ -206,7 +206,7 @@ module.exports = class Documentation
     sentence = sentence[1].replace(/\s*#\s*$/, '') if sentence
     @summary = Markdown.convert(_.str.clean(sentence || text), true)
 
-  toJSON: ->
+  inspect: ->
     {
       comment: @comment
       summary: @summary

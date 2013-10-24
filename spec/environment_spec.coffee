@@ -10,7 +10,7 @@ beforeEach ->
 
       environment.linkify()
 
-      actual   = JSON.stringify(environment.toJSON(), null, 2)
+      actual   = JSON.stringify(environment.inspect(), null, 2)
       expected = FS.readFileSync(expected, 'utf8')
 
       @message = ->
@@ -74,5 +74,5 @@ describe 'Environment', ->
         'spec/templates/environment/mixin.coffee'
       ]
 
-      actual = JSON.stringify(environment.toJSON(), null, 2)
+      actual = JSON.stringify(environment.inspect(), null, 2)
       expect(FS.readFileSync('spec/templates/environment/result.json', 'utf8')).toEqual actual

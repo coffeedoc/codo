@@ -18,9 +18,9 @@ module.exports = class File extends require('../entity')
           if entity instanceof Variable 
             @variables.push entity
 
-  toJSON: ->
+  inspect: ->
     {
       file:          @path
-      methods:       @methods
-      variables:     @variables
+      methods:       @methods.map (x) -> x.inspect()
+      variables:     @variables.map (x) -> x.inspect()
     }

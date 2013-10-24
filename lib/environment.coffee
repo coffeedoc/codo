@@ -37,5 +37,5 @@ module.exports = class Environment
   linkify: ->
     entity.linkify() for entity in @entities
 
-  toJSON: ->
-    @entities.map (entity) -> entity.toJSON()
+  inspect: ->
+    @entities.map (entity) -> entity.inspect()

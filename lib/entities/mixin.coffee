@@ -54,15 +54,15 @@ module.exports = class Mixin extends require('../entity')
           #   foo: ->
           container.push entity if entity instanceof Method    
 
-  toJSON: ->
+  inspect: ->
     {
       file:            @file.path
       name:            @name
       concern:         @concern
-      documentation:   @documentation?.toJSON()
+      documentation:   @documentation?.inspect()
       selfish:         @selfish
-      methods:         @methods.map (x) -> x.toJSON()
-      classMethods:    @classMethods?.map (x) -> x.toJSON()
-      instanceMethods: @instanceMethods?.map (x) -> x.toJSON()
-      variables:       @variables.map (x) -> x.toJSON()
+      methods:         @methods.map (x) -> x.inspect()
+      classMethods:    @classMethods?.map (x) -> x.inspect()
+      instanceMethods: @instanceMethods?.map (x) -> x.inspect()
+      variables:       @variables.map (x) -> x.inspect()
     }

@@ -17,13 +17,13 @@ module.exports = class Variable extends Entity
 
     @documentation = @node.documentation
 
-  toJSON: ->
+  inspect: ->
     {
       file:          @file.path
       name:          @name
       constant:      @constant
       value:         @value
-      documentation: @documentation?.toJSON()
+      documentation: @documentation?.inspect()
       selfish:       @selfish
       type:          @type
     }

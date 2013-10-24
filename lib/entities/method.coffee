@@ -24,14 +24,14 @@ module.exports = class Method extends require('../entity')
     @parameters = @node.value.params.map (node) ->
       new Parameter(node)
 
-  toJSON: ->
+  inspect: ->
     {
       file:          @file.path
       name:          @name
-      documentation: @documentation?.toJSON()
+      documentation: @documentation?.inspect()
       selfish:       @selfish
       type:          @type
-      parameters:    @parameters.map (x) -> x.toJSON()
+      parameters:    @parameters.map (x) -> x.inspect()
     }
 
 
@@ -75,7 +75,7 @@ class Parameter
 
         "@#{value}"
 
-  toJSON: ->
+  inspect: ->
     {
       name: @name
       splat: @splat

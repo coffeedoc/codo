@@ -30,11 +30,11 @@ module.exports = class Property extends require('../entity')
     for attribute in ['documentation', 'getter', 'setter']
       property[attribute] = @[attribute] = property[attribute] || @[attribute]
 
-  toJSON: ->
+  inspect: ->
     {
       file:          @file.path
       name:          @name
       getter:        @getter
       setter:        @setter
-      documentation: @documentation?.toJSON()
+      documentation: @documentation?.inspect()
     }

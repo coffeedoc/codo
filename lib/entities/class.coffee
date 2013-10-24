@@ -131,18 +131,18 @@ module.exports = class Class extends require('../entity')
       for entry in @documentation.concerns
         @concerns.push(@environment.find(Mixin, entry) || entry)
 
-  toJSON: ->
+  inspect: ->
     {
       file:          @file.path
-      documentation: @documentation?.toJSON()
+      documentation: @documentation?.inspect()
       selfish:       @selfish
       name:          @name
-      container:     @container?.toJSON()
-      parent:        @parent?.toJSON?() || @parent
-      methods:       @methods.map (x) -> x.toJSON()
-      variables:     @variables.map (x) -> x.toJSON()
-      properties:    @properties.map (x) -> x.toJSON()
-      includes:      @includes.map (x) -> x.toJSON?() || x
-      extends:       @extends.map (x) -> x.toJSON?() || x
-      concerns:      @concerns.map (x) -> x.toJSON?() || x
+      container:     @container?.inspect()
+      parent:        @parent?.inspect?() || @parent
+      methods:       @methods.map (x) -> x.inspect()
+      variables:     @variables.map (x) -> x.inspect()
+      properties:    @properties.map (x) -> x.inspect()
+      includes:      @includes.map (x) -> x.inspect?() || x
+      extends:       @extends.map (x) -> x.inspect?() || x
+      concerns:      @concerns.map (x) -> x.inspect?() || x
     }

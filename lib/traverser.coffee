@@ -196,5 +196,5 @@ module.exports = class Traverser
       a.push ' '
     a.join ''
 
-  toJSON: ->
-    @environment.toJSON()
+  inspect: ->
+    @environment.inspect()
