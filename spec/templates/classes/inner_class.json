@@ -30,7 +30,50 @@
       "extends": [],
       "concerns": []
     },
-    "parent": "Tower.Model.Relation.HasMany.Scope",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  },
+  {
+    "file": "spec/templates/classes/inner_class.coffee",
+    "selfish": true,
+    "name": "Tower.Model.Relation.HasMany.Scope2",
+    "container": {
+      "file": "spec/templates/classes/inner_class.coffee",
+      "name": "Tower.Model.Relation.HasMany",
+      "parent": "Tower.Model.Relation",
+      "methods": [],
+      "variables": [],
+      "properties": [],
+      "includes": [],
+      "extends": [],
+      "concerns": []
+    },
+    "parent": {
+      "file": "spec/templates/classes/inner_class.coffee",
+      "selfish": true,
+      "name": "Tower.Model.Relation.HasMany.Scope",
+      "container": {
+        "file": "spec/templates/classes/inner_class.coffee",
+        "name": "Tower.Model.Relation.HasMany",
+        "parent": "Tower.Model.Relation",
+        "methods": [],
+        "variables": [],
+        "properties": [],
+        "includes": [],
+        "extends": [],
+        "concerns": []
+      },
+      "methods": [],
+      "variables": [],
+      "properties": [],
+      "includes": [],
+      "extends": [],
+      "concerns": []
+    },
     "methods": [],
     "variables": [],
     "properties": [],

@@ -66,6 +66,7 @@ module.exports = class Class extends require('../entity')
       if node.constructor.name == 'Call' && node.entities?
         @linkifyCall(node)
 
+    @linkifyParent()
     @linkifyMixins()
 
   linkifyAssign: (node) ->
@@ -113,6 +114,10 @@ module.exports = class Class extends require('../entity')
 
         @properties.push(entity) unless found
 
+  linkifyParent: ->
+    if @parent
+      @parent = @environment.find(Class, @parent) || @parent
+
   linkifyMixins: ->
     if @documentation?.includes?
       for entry in @documentation.includes
@@ -133,7 +138,7 @@ module.exports = class Class extends require('../entity')
       selfish:       @selfish
       name:          @name
       container:     @container?.toJSON()
-      parent:        @parent
+      parent:        @parent?.toJSON?() || @parent
       methods:       @methods.map (x) -> x.toJSON()
       variables:     @variables.map (x) -> x.toJSON()
       properties:    @properties.map (x) -> x.toJSON()
