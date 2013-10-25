@@ -683,16 +683,6 @@ dynamic programming languages.
 * [JsDoc](https://github.com/micmath/jsdoc) an automatic documentation generator for JavaScript.
 * [Dox](https://github.com/visionmedia/dox) JavaScript documentation generator for node using markdown and jsdoc.
 
-#### Open Commit Bit
-
-Codo has an open commit bit policy: Anyone with an accepted pull request gets added as a repository collaborator.
-Please try to follow these simple rules:
-
-* Commit directly onto the master branch only for typos, improvements to the readme and documentation (please add
-  `[ci skip]` to the commit message).
-* Create a feature branch and open a pull-request early for any new features to get feedback.
-* Make sure you adhere to the general pull request rules above.
-
 ## Core Team
 
 * [Boris Staal](https://github.com/inossidabile) ([@_inossidabile](http://twitter.com/#!/_inossidabile))
