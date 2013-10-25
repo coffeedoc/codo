@@ -1,0 +1,18 @@
+[
+  {
+    "file": "spec/_templates/classes/global_class.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/classes/global_class.coffee",
+    "selfish": true,
+    "name": "GlobalTestClass",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  }
+]

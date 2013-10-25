@@ -1,3 +1,5 @@
+Parameter = require '../meta/parameter'
+
 module.exports = class Method extends require('../entity')
 
   @looksLike: (node) ->
@@ -22,7 +24,7 @@ module.exports = class Method extends require('../entity')
     @documentation = @node.documentation
 
     @parameters = @node.value.params.map (node) ->
-      new Parameter(node)
+      Parameter.fromNode(node)
 
   inspect: ->
     {
@@ -32,52 +34,4 @@ module.exports = class Method extends require('../entity')
       selfish:       @selfish
       type:          @type
       parameters:    @parameters.map (x) -> x.inspect()
-    }
-
-
-class Parameter
-  constructor: (@node) ->
-    @name = @fetchName()
-    @splat = !!@node.splat
-    @default = @fetchDefault()
-
-  fetchName: ->
-    # Normal attribute `do: (it) ->`
-    name = @node.name.value
-
-    # Named parameters a la python:
-    #  `make_fac : ({numerator, divisor}) ->`
-    # Also works for class constructors:
-    #  `constructor : ( { @name, @key, opts }) ->
-    unless name
-      if (o = @node.name.objects)?
-        vars = for v in o
-          if v.base.value is 'this' then v.properties[0].name.value
-          else v.base.value
-        name = "{#{vars.join ', '}}"
-
-    # Assigned attributes `do: (@it) ->`
-    unless name
-      if @node.name.properties
-        name = @node.name.properties[0]?.name.value
-
-    name
-
-  fetchDefault: ->
-    try
-      @node.value?.compile
-        indent: ''
-
-    catch error
-      if @node?.value?.base?.value is 'this'
-        value = @node.value.properties[0]?.name.compile
-          indent: ''
-
-        "@#{value}"
-
-  inspect: ->
-    {
-      name: @name
-      splat: @splat
-      default: @default
     }

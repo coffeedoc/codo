@@ -27,21 +27,21 @@ beforeEach ->
 describe 'Environment', ->
 
   describe 'Class', ->
-    for filename in walkdir.sync './spec/templates/classes' when filename.match /\.coffee$/
+    for filename in walkdir.sync './spec/_templates/classes' when filename.match /\.coffee$/
       do (filename) ->
         it "parses #{filename}", ->
           expect(filename.substring process.cwd().length + 1)
             .toTraverseTo(filename.replace(/\.coffee$/, '.json'))
 
   describe 'Variable', ->
-    for filename in walkdir.sync './spec/templates/variables' when filename.match /\.coffee$/
+    for filename in walkdir.sync './spec/_templates/variables' when filename.match /\.coffee$/
       do (filename) ->
         it "parses #{filename}", ->
           expect(filename.substring process.cwd().length + 1)
             .toTraverseTo(filename.replace(/\.coffee$/, '.json'))
 
   describe 'Property', ->
-    for filename in walkdir.sync './spec/templates/properties' when filename.match /\.coffee$/
+    for filename in walkdir.sync './spec/_templates/properties' when filename.match /\.coffee$/
       do (filename) ->
         it "parses #{filename}", ->
           expect(filename.substring process.cwd().length + 1)
@@ -49,19 +49,19 @@ describe 'Environment', ->
 
   describe 'File', ->
     it 'parses non-class file', ->
-      expect('spec/templates/files/non_class_file.coffee').toTraverseTo(
-        'spec/templates/files/non_class_file.json'
+      expect('spec/_templates/files/non_class_file.coffee').toTraverseTo(
+        'spec/_templates/files/non_class_file.json'
       )
 
   describe 'Mixin', ->
-    for filename in walkdir.sync './spec/templates/mixins' when filename.match /\.coffee$/
+    for filename in walkdir.sync './spec/_templates/mixins' when filename.match /\.coffee$/
       do (filename) ->
         it "parses #{filename}", ->
           expect(filename.substring process.cwd().length + 1)
             .toTraverseTo(filename.replace(/\.coffee$/, '.json'))
 
   describe 'Method', ->
-    for filename in walkdir.sync './spec/templates/methods' when filename.match /\.coffee$/
+    for filename in walkdir.sync './spec/_templates/methods' when filename.match /\.coffee$/
       do (filename) ->
         it "parses #{filename}", ->
           expect(filename.substring process.cwd().length + 1)
@@ -70,9 +70,9 @@ describe 'Environment', ->
   describe 'Environment', ->
     it 'handles multiple files', ->
       environment = Environment.read [
-        'spec/templates/environment/class.coffee',
-        'spec/templates/environment/mixin.coffee'
+        'spec/_templates/environment/class.coffee',
+        'spec/_templates/environment/mixin.coffee'
       ]
 
       actual = JSON.stringify(environment.inspect(), null, 2)
-      expect(FS.readFileSync('spec/templates/environment/result.json', 'utf8')).toEqual actual
+      expect(FS.readFileSync('spec/_templates/environment/result.json', 'utf8')).toEqual actual

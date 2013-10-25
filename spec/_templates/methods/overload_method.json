@@ -1,0 +1,146 @@
+[
+  {
+    "file": "spec/_templates/methods/overload_method.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/methods/overload_method.coffee",
+    "name": "Example.Overload",
+    "methods": [
+      {
+        "file": "spec/_templates/methods/overload_method.coffee",
+        "name": "set",
+        "documentation": {
+          "comment": "This is a generic Store set method.\n\nThis should be more description for the method itself, and overload\nshouldn't have messed it up.",
+          "summary": "This is a generic Store set method.",
+          "overloads": [
+            {
+              "signature": "set(key, value)",
+              "comment": "Sets a value on key",
+              "summary": "Sets a value on key",
+              "params": [
+                {
+                  "type": "Symbol",
+                  "name": "key",
+                  "description": "describe key param"
+                },
+                {
+                  "type": "Object",
+                  "name": "value",
+                  "description": "describe value param"
+                },
+                {
+                  "type": "Object",
+                  "name": "options",
+                  "description": "the options"
+                }
+              ],
+              "options": {
+                "options": [
+                  {
+                    "type": "String",
+                    "name": "test",
+                    "description": "the test option"
+                  }
+                ]
+              }
+            },
+            {
+              "signature": "set(value)",
+              "comment": "Sets a value on the default key `:foo`",
+              "summary": "Sets a value on the default key `:foo`",
+              "params": [
+                {
+                  "type": "Object",
+                  "name": "value",
+                  "description": "describe value param"
+                }
+              ],
+              "returns": {
+                "type": "Boolean",
+                "description": "true when success"
+              }
+            }
+          ]
+        },
+        "type": "dynamic",
+        "parameters": [
+          {
+            "name": "args",
+            "splat": true
+          }
+        ]
+      }
+    ],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  },
+  {
+    "file": "spec/_templates/methods/overload_method.coffee",
+    "name": "set",
+    "documentation": {
+      "comment": "This is a generic Store set method.\n\nThis should be more description for the method itself, and overload\nshouldn't have messed it up.",
+      "summary": "This is a generic Store set method.",
+      "overloads": [
+        {
+          "signature": "set(key, value)",
+          "comment": "Sets a value on key",
+          "summary": "Sets a value on key",
+          "params": [
+            {
+              "type": "Symbol",
+              "name": "key",
+              "description": "describe key param"
+            },
+            {
+              "type": "Object",
+              "name": "value",
+              "description": "describe value param"
+            },
+            {
+              "type": "Object",
+              "name": "options",
+              "description": "the options"
+            }
+          ],
+          "options": {
+            "options": [
+              {
+                "type": "String",
+                "name": "test",
+                "description": "the test option"
+              }
+            ]
+          }
+        },
+        {
+          "signature": "set(value)",
+          "comment": "Sets a value on the default key `:foo`",
+          "summary": "Sets a value on the default key `:foo`",
+          "params": [
+            {
+              "type": "Object",
+              "name": "value",
+              "description": "describe value param"
+            }
+          ],
+          "returns": {
+            "type": "Boolean",
+            "description": "true when success"
+          }
+        }
+      ]
+    },
+    "type": "dynamic",
+    "parameters": [
+      {
+        "name": "args",
+        "splat": true
+      }
+    ]
+  }
+]

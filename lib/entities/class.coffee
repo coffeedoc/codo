@@ -1,7 +1,8 @@
-Method   = require './method'
-Variable = require './variable'
-Property = require './property'
-Mixin    = require './mixin'
+Method     = require './method'
+Variable   = require './variable'
+Property   = require './property'
+Mixin      = require './mixin'
+MetaMethod = require '../meta/method'
 
 module.exports = class Class extends require('../entity')
 
@@ -55,6 +56,8 @@ module.exports = class Class extends require('../entity')
     name.join('.')
 
   linkify: ->
+    super
+
     for node in @node.body.expressions
 
       if node.constructor.name == 'Assign' && node.entities?
@@ -130,6 +133,27 @@ module.exports = class Class extends require('../entity')
     if @documentation?.concerns?
       for entry in @documentation.concerns
         @concerns.push(@environment.find(Mixin, entry) || entry)
+
+  effectiveMethods: ->
+    methods = []
+
+    for method in @methods
+      methods.push(MetaMethod.fromMethodEntity method)
+
+    if @documentation.methods
+      for method in @documentation.methods
+        methods.push(MetaMethod.fromDocumentationMethod method)
+
+    for inclusion in @includes
+      methods = methods.concat inclusion.effectiveInclusionMethods()
+
+    for extension in @extends
+      methods = methods.concat extension.effectiveExtensionMethods()
+
+    for concern in @concerns
+      methods = methods.concat concern.effectiveConcernMethods()
+
+    methods
 
   inspect: ->
     {

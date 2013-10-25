@@ -1,0 +1,50 @@
+[
+  {
+    "file": "spec/_templates/methods/method_example.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/methods/method_example.coffee",
+    "name": "TestExample",
+    "methods": [
+      {
+        "file": "spec/_templates/methods/method_example.coffee",
+        "name": "run",
+        "documentation": {
+          "comment": "",
+          "summary": "",
+          "examples": [
+            {
+              "title": "Run generation",
+              "code": "codo = require 'codo'\n\nfile = (filename, content) ->\n  console.log \"New file %s with content %s\", filename, content\n\ndone = (err) ->\n  if err\n    console.log \"Cannot generate documentation:\", err\n  else\n    console.log \"Documentation generated\"\n\ncodo.run file, done"
+            }
+          ]
+        },
+        "type": "dynamic",
+        "parameters": []
+      }
+    ],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  },
+  {
+    "file": "spec/_templates/methods/method_example.coffee",
+    "name": "run",
+    "documentation": {
+      "comment": "",
+      "summary": "",
+      "examples": [
+        {
+          "title": "Run generation",
+          "code": "codo = require 'codo'\n\nfile = (filename, content) ->\n  console.log \"New file %s with content %s\", filename, content\n\ndone = (err) ->\n  if err\n    console.log \"Cannot generate documentation:\", err\n  else\n    console.log \"Documentation generated\"\n\ncodo.run file, done"
+        }
+      ]
+    },
+    "type": "dynamic",
+    "parameters": []
+  }
+]

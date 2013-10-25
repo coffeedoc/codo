@@ -1,0 +1,21 @@
+[
+  {
+    "file": "spec/_templates/classes/export_class.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/classes/export_class.coffee",
+    "documentation": {
+      "comment": "Yep, this should be assigned to the class",
+      "summary": "Yep, this should be assigned to the class"
+    },
+    "name": "TestExportClass",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  }
+]

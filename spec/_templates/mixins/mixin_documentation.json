@@ -1,0 +1,40 @@
+[
+  {
+    "file": "spec/_templates/mixins/mixin_documentation.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/mixins/mixin_documentation.coffee",
+    "name": "Foo.Bar",
+    "documentation": {
+      "comment": "This is a test module with `inline.dot`. Beware.",
+      "summary": "This is a test module with `inline.dot`.",
+      "notes": [
+        "Please use this carefully",
+        "For internal use only"
+      ],
+      "abstract": "Each listener implementation must include",
+      "private": true,
+      "deprecated": "Use other module which is thread safe",
+      "version": "1.0.2",
+      "since": "1.0.0",
+      "authors": [
+        "Netzpirat",
+        "Supermakaka"
+      ],
+      "todos": [
+        "Clean up socket handler",
+        "Refactor property factory"
+      ],
+      "examples": [
+        {
+          "title": "Use it in this way",
+          "code": "class Rumba\n  @include Foo.Bar"
+        }
+      ]
+    },
+    "methods": [],
+    "variables": []
+  }
+]

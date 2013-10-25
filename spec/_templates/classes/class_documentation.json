@@ -1,0 +1,52 @@
+[
+  {
+    "file": "spec/_templates/classes/class_documentation.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/classes/class_documentation.coffee",
+    "documentation": {
+      "comment": "This is a test class with `inline.dot`. Beware.",
+      "summary": "This is a test class with `inline.dot`.",
+      "notes": [
+        "Please use this carefully",
+        "For internal use only"
+      ],
+      "abstract": "Each listener implementation must inherit",
+      "private": true,
+      "deprecated": "Use other class which is thread safe",
+      "version": "1.0.2",
+      "since": "1.0.0",
+      "authors": [
+        "Netzpirat",
+        "Plasticman"
+      ],
+      "todos": [
+        "Clean up socket handler",
+        "Refactor property factory"
+      ],
+      "examples": [
+        {
+          "title": "",
+          "code": "Class.getType('cat')"
+        },
+        {
+          "title": "Use it in this way",
+          "code": "new Class()"
+        },
+        {
+          "title": "Alternatively also this is possible",
+          "code": "cl = Class.for(obj)\ncl.execute()"
+        }
+      ]
+    },
+    "name": "TestClassDocumentation",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  }
+]

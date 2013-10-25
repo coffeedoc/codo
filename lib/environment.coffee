@@ -29,6 +29,11 @@ module.exports = class Environment
   read: (file) ->
     Traverser.read(file, @)
 
+  all: (Entity, haystack = []) ->
+    for entity in @entities
+      haystack.push(entity) if entity instanceof Entity
+    haystack
+
   find: (Entity, name) ->
     for entity in @entities
       if entity instanceof Entity && entity.name == name

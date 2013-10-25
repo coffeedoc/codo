@@ -1,0 +1,206 @@
+[
+  {
+    "file": "spec/_templates/methods/class_methods.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/methods/class_methods.coffee",
+    "name": "TestClassMethods",
+    "methods": [
+      {
+        "file": "spec/_templates/methods/class_methods.coffee",
+        "name": "helper",
+        "selfish": true,
+        "type": "static",
+        "parameters": []
+      },
+      {
+        "file": "spec/_templates/methods/class_methods.coffee",
+        "name": "another",
+        "selfish": true,
+        "type": "static",
+        "parameters": [
+          {
+            "name": "a",
+            "splat": false
+          },
+          {
+            "name": "b",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "file": "spec/_templates/methods/class_methods.coffee",
+        "name": "withDefault",
+        "selfish": true,
+        "type": "static",
+        "parameters": [
+          {
+            "name": "a",
+            "splat": false,
+            "default": "2"
+          },
+          {
+            "name": "c",
+            "splat": false
+          },
+          {
+            "name": "d",
+            "splat": false,
+            "default": "'hi'"
+          },
+          {
+            "name": "d",
+            "splat": false
+          },
+          {
+            "name": "e",
+            "splat": false,
+            "default": "{\n  a: 2\n}"
+          },
+          {
+            "name": "f",
+            "splat": false,
+            "default": "new TestClassMethods()"
+          }
+        ]
+      },
+      {
+        "file": "spec/_templates/methods/class_methods.coffee",
+        "name": "nowWithSpalt",
+        "selfish": true,
+        "type": "static",
+        "parameters": [
+          {
+            "name": "foo",
+            "splat": false
+          },
+          {
+            "name": "bar",
+            "splat": true
+          }
+        ]
+      },
+      {
+        "file": "spec/_templates/methods/class_methods.coffee",
+        "name": "andSoDoesThis",
+        "selfish": true,
+        "type": "static",
+        "parameters": [
+          {
+            "name": "foo",
+            "splat": false
+          },
+          {
+            "name": "bar",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  },
+  {
+    "file": "spec/_templates/methods/class_methods.coffee",
+    "name": "helper",
+    "selfish": true,
+    "type": "static",
+    "parameters": []
+  },
+  {
+    "file": "spec/_templates/methods/class_methods.coffee",
+    "name": "another",
+    "selfish": true,
+    "type": "static",
+    "parameters": [
+      {
+        "name": "a",
+        "splat": false
+      },
+      {
+        "name": "b",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/methods/class_methods.coffee",
+    "name": "withDefault",
+    "selfish": true,
+    "type": "static",
+    "parameters": [
+      {
+        "name": "a",
+        "splat": false,
+        "default": "2"
+      },
+      {
+        "name": "c",
+        "splat": false
+      },
+      {
+        "name": "d",
+        "splat": false,
+        "default": "'hi'"
+      },
+      {
+        "name": "d",
+        "splat": false
+      },
+      {
+        "name": "e",
+        "splat": false,
+        "default": "{\n  a: 2\n}"
+      },
+      {
+        "name": "f",
+        "splat": false,
+        "default": "new TestClassMethods()"
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/methods/class_methods.coffee",
+    "name": "a",
+    "constant": false,
+    "value": "2"
+  },
+  {
+    "file": "spec/_templates/methods/class_methods.coffee",
+    "name": "nowWithSpalt",
+    "selfish": true,
+    "type": "static",
+    "parameters": [
+      {
+        "name": "foo",
+        "splat": false
+      },
+      {
+        "name": "bar",
+        "splat": true
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/methods/class_methods.coffee",
+    "name": "andSoDoesThis",
+    "selfish": true,
+    "type": "static",
+    "parameters": [
+      {
+        "name": "foo",
+        "splat": false
+      },
+      {
+        "name": "bar",
+        "splat": false
+      }
+    ]
+  }
+]

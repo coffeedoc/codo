@@ -1,0 +1,78 @@
+[
+  {
+    "file": "spec/_templates/variables/class_variables.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/variables/class_variables.coffee",
+    "name": "TestClassVariables",
+    "methods": [],
+    "variables": [
+      {
+        "file": "spec/_templates/variables/class_variables.coffee",
+        "name": "test",
+        "constant": false,
+        "value": "'Hi'",
+        "selfish": true,
+        "type": "static"
+      },
+      {
+        "file": "spec/_templates/variables/class_variables.coffee",
+        "name": "another",
+        "constant": false,
+        "value": "['a', 'b']",
+        "selfish": true,
+        "type": "static"
+      },
+      {
+        "file": "spec/_templates/variables/class_variables.coffee",
+        "name": "more",
+        "constant": false,
+        "value": "{\n  a: 1,\n  b: 2\n}",
+        "selfish": true,
+        "type": "static"
+      }
+    ],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  },
+  {
+    "file": "spec/_templates/variables/class_variables.coffee",
+    "name": "test",
+    "constant": false,
+    "value": "'Hi'",
+    "selfish": true,
+    "type": "static"
+  },
+  {
+    "file": "spec/_templates/variables/class_variables.coffee",
+    "name": "another",
+    "constant": false,
+    "value": "['a', 'b']",
+    "selfish": true,
+    "type": "static"
+  },
+  {
+    "file": "spec/_templates/variables/class_variables.coffee",
+    "name": "more",
+    "constant": false,
+    "value": "{\n  a: 1,\n  b: 2\n}",
+    "selfish": true,
+    "type": "static"
+  },
+  {
+    "file": "spec/_templates/variables/class_variables.coffee",
+    "name": "a",
+    "constant": false,
+    "value": "1"
+  },
+  {
+    "file": "spec/_templates/variables/class_variables.coffee",
+    "name": "b",
+    "constant": false,
+    "value": "2"
+  }
+]

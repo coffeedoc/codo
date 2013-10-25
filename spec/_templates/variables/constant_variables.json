@@ -1,0 +1,58 @@
+[
+  {
+    "file": "spec/_templates/variables/constant_variables.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/variables/constant_variables.coffee",
+    "name": "TestContstantVariables",
+    "methods": [],
+    "variables": [
+      {
+        "file": "spec/_templates/variables/constant_variables.coffee",
+        "name": "TEST",
+        "constant": true,
+        "value": "'Hi'",
+        "documentation": {
+          "comment": "Modify it here",
+          "summary": "Modify it here"
+        },
+        "selfish": true,
+        "type": "static"
+      },
+      {
+        "file": "spec/_templates/variables/constant_variables.coffee",
+        "name": "ANOTHER_CONST",
+        "constant": true,
+        "value": "['a', 'b']",
+        "selfish": true,
+        "type": "static"
+      }
+    ],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  },
+  {
+    "file": "spec/_templates/variables/constant_variables.coffee",
+    "name": "TEST",
+    "constant": true,
+    "value": "'Hi'",
+    "documentation": {
+      "comment": "Modify it here",
+      "summary": "Modify it here"
+    },
+    "selfish": true,
+    "type": "static"
+  },
+  {
+    "file": "spec/_templates/variables/constant_variables.coffee",
+    "name": "ANOTHER_CONST",
+    "constant": true,
+    "value": "['a', 'b']",
+    "selfish": true,
+    "type": "static"
+  }
+]

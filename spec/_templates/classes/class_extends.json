@@ -1,0 +1,18 @@
+[
+  {
+    "file": "spec/_templates/classes/class_extends.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/classes/class_extends.coffee",
+    "name": "NS.Clazz",
+    "parent": "Another.Clazz",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  }
+]

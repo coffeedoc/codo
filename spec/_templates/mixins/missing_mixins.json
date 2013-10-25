@@ -1,0 +1,31 @@
+[
+  {
+    "file": "spec/_templates/mixins/missing_mixins.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/mixins/missing_mixins.coffee",
+    "documentation": {
+      "comment": "",
+      "summary": "",
+      "includes": [
+        "Name.Space.MyMixin"
+      ],
+      "extends": [
+        "Name.Space.MyMixin"
+      ]
+    },
+    "name": "SomeNamespace.MyClass",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [
+      "Name.Space.MyMixin"
+    ],
+    "extends": [
+      "Name.Space.MyMixin"
+    ],
+    "concerns": []
+  }
+]

@@ -1,5 +1,6 @@
-Method   = require './method'
-Variable = require './variable'
+Method     = require './method'
+Variable   = require './variable'
+MetaMethod = require '../meta/method'
 
 module.exports = class Mixin extends require('../entity')
 
@@ -33,6 +34,8 @@ module.exports = class Mixin extends require('../entity')
       @instanceMethods = []
 
   linkify: ->
+    super
+
     @grabMethods @methods, @node
 
     if @concern
@@ -52,7 +55,36 @@ module.exports = class Mixin extends require('../entity')
         for entity in property.entities
           # Foo =
           #   foo: ->
-          container.push entity if entity instanceof Method    
+          container.push entity if entity instanceof Method
+
+  effectiveMethods: (type) ->
+    methods = []
+
+    for method in @methods
+      methods.push(MetaMethod.fromMethodEntity method, type: type)
+
+    if @documentation.methods
+      for method in @documentation.methods
+        methods.push(MetaMethod.fromDocumentationMethod method, type: type)
+
+    methods
+
+  effectiveInclusionMethods: ->
+    @effectiveMethods('dynamic')
+
+  effectiveExtensionMethods: ->
+    @effectiveMethods('static')
+
+  effectiveConcernMethods: ->
+    methods = []
+
+    for method in @classMethods
+      methods.push(MetaMethod.fromMethodEntity method, type: 'static')
+
+    for method in @instanceMethods
+      methods.push(MetaMethod.fromMethodEntity method, type: 'dynamic')
+
+    methods
 
   inspect: ->
     {

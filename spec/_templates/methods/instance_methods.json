@@ -1,0 +1,169 @@
+[
+  {
+    "file": "spec/_templates/methods/instance_methods.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/methods/instance_methods.coffee",
+    "name": "TestInstanceMethods",
+    "methods": [
+      {
+        "file": "spec/_templates/methods/instance_methods.coffee",
+        "name": "helper",
+        "type": "dynamic",
+        "parameters": []
+      },
+      {
+        "file": "spec/_templates/methods/instance_methods.coffee",
+        "name": "another",
+        "type": "dynamic",
+        "parameters": [
+          {
+            "name": "param",
+            "splat": false
+          },
+          {
+            "name": "obj",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "file": "spec/_templates/methods/instance_methods.coffee",
+        "name": "anotherWithValues",
+        "type": "dynamic",
+        "parameters": [
+          {
+            "name": "param",
+            "splat": false,
+            "default": "123"
+          },
+          {
+            "name": "obj",
+            "splat": false,
+            "default": "{\n  a: 1\n}"
+          },
+          {
+            "name": "yup",
+            "splat": false
+          },
+          {
+            "name": "comp",
+            "splat": false,
+            "default": "new TestInstanceMethods()"
+          }
+        ]
+      },
+      {
+        "file": "spec/_templates/methods/instance_methods.coffee",
+        "name": "nowWithSpalt",
+        "type": "dynamic",
+        "parameters": [
+          {
+            "name": "foo",
+            "splat": false
+          },
+          {
+            "name": "bar",
+            "splat": true
+          }
+        ]
+      },
+      {
+        "file": "spec/_templates/methods/instance_methods.coffee",
+        "name": "bound",
+        "type": "dynamic",
+        "parameters": []
+      }
+    ],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  },
+  {
+    "file": "spec/_templates/methods/instance_methods.coffee",
+    "name": "helper",
+    "type": "dynamic",
+    "parameters": []
+  },
+  {
+    "file": "spec/_templates/methods/instance_methods.coffee",
+    "name": "another",
+    "type": "dynamic",
+    "parameters": [
+      {
+        "name": "param",
+        "splat": false
+      },
+      {
+        "name": "obj",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/methods/instance_methods.coffee",
+    "name": "anotherWithValues",
+    "type": "dynamic",
+    "parameters": [
+      {
+        "name": "param",
+        "splat": false,
+        "default": "123"
+      },
+      {
+        "name": "obj",
+        "splat": false,
+        "default": "{\n  a: 1\n}"
+      },
+      {
+        "name": "yup",
+        "splat": false
+      },
+      {
+        "name": "comp",
+        "splat": false,
+        "default": "new TestInstanceMethods()"
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/methods/instance_methods.coffee",
+    "name": "a",
+    "constant": false,
+    "value": "1"
+  },
+  {
+    "file": "spec/_templates/methods/instance_methods.coffee",
+    "name": "nowWithSpalt",
+    "type": "dynamic",
+    "parameters": [
+      {
+        "name": "foo",
+        "splat": false
+      },
+      {
+        "name": "bar",
+        "splat": true
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/methods/instance_methods.coffee",
+    "name": "bound",
+    "type": "dynamic",
+    "parameters": []
+  },
+  {
+    "file": "spec/_templates/methods/instance_methods.coffee",
+    "name": "internalToClassClosure",
+    "documentation": {
+      "comment": "This is not exposed to the outside world.",
+      "summary": "This is not exposed to the outside world."
+    },
+    "parameters": []
+  }
+]

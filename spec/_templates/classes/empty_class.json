@@ -1,0 +1,17 @@
+[
+  {
+    "file": "spec/_templates/classes/empty_class.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/classes/empty_class.coffee",
+    "name": "A",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  }
+]

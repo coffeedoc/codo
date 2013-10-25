@@ -1,0 +1,36 @@
+[
+  {
+    "file": "spec/_templates/classes/class_description_markdown.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/classes/class_description_markdown.coffee",
+    "documentation": {
+      "comment": "Codo - the CoffeeScript API documentation generator\n\n# Header 1\n\nThis is a paragraph.\n\n## Header 2\n\nThis is a paragraph.\n\n### Header 3\n\nThis is a paragraph.\n\n#### Header 4\n\nThis is a paragraph.\n\n##### Header 5\n\nThis is a paragraph.\n\n###### Header 6\n\nThis is a paragraph.",
+      "summary": "Codo - the CoffeeScript API documentation generator",
+      "notes": [
+        "Also notes have _now_ <del>Markdown</del>"
+      ],
+      "abstract": "_Template methods_ must be implemented",
+      "deprecated": "**nobody** uses this",
+      "version": "_1.1.0_",
+      "since": "**1.0.0**",
+      "authors": [
+        "Mickey",
+        "**Donald**"
+      ],
+      "copyright": "_No Copyright_",
+      "todos": [
+        "Allow **markdown** in todos"
+      ]
+    },
+    "name": "TestMarkdownDocumentation",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  }
+]

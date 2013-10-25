@@ -1,0 +1,330 @@
+[
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "documentation": {
+      "comment": "Property test class. It's almost the most difficult\npart to come up with stupid examples.",
+      "summary": "Property test class."
+    },
+    "name": "Person",
+    "methods": [
+      {
+        "file": "spec/_templates/properties/properties.coffee",
+        "name": "test",
+        "documentation": {
+          "comment": "This should not be swallowed",
+          "summary": "This should not be swallowed"
+        },
+        "type": "dynamic",
+        "parameters": []
+      }
+    ],
+    "variables": [],
+    "properties": [
+      {
+        "file": "spec/_templates/properties/properties.coffee",
+        "name": "nicknames",
+        "getter": true,
+        "setter": true,
+        "documentation": {
+          "comment": "the nicknames",
+          "summary": "the nicknames",
+          "property": "Array<String>"
+        }
+      },
+      {
+        "file": "spec/_templates/properties/properties.coffee",
+        "name": "position",
+        "getter": true,
+        "setter": true,
+        "documentation": {
+          "comment": "The entity's position",
+          "summary": "The entity's position",
+          "property": "Object"
+        }
+      },
+      {
+        "file": "spec/_templates/properties/properties.coffee",
+        "name": "firstname",
+        "getter": true,
+        "setter": true,
+        "documentation": {
+          "comment": "The first name",
+          "summary": "The first name",
+          "property": "String"
+        }
+      },
+      {
+        "file": "spec/_templates/properties/properties.coffee",
+        "name": "lastname",
+        "getter": true,
+        "setter": true,
+        "documentation": {
+          "comment": "The last name",
+          "summary": "The last name"
+        }
+      },
+      {
+        "file": "spec/_templates/properties/properties.coffee",
+        "name": "birth",
+        "getter": true,
+        "setter": false,
+        "documentation": {
+          "comment": "The day (of birth)",
+          "summary": "The day (of birth)",
+          "property": "Date"
+        }
+      },
+      {
+        "file": "spec/_templates/properties/properties.coffee",
+        "name": "twitter",
+        "getter": true,
+        "setter": false,
+        "documentation": {
+          "comment": "The twitter handle",
+          "summary": "The twitter handle"
+        }
+      },
+      {
+        "file": "spec/_templates/properties/properties.coffee",
+        "name": "confession",
+        "getter": false,
+        "setter": true,
+        "documentation": {
+          "comment": "The confession",
+          "summary": "The confession",
+          "property": "String"
+        }
+      },
+      {
+        "file": "spec/_templates/properties/properties.coffee",
+        "name": "email",
+        "getter": false,
+        "setter": true,
+        "documentation": {
+          "comment": "The email address offer",
+          "summary": "The email address offer"
+        }
+      }
+    ],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "nicknames",
+    "getter": true,
+    "setter": true,
+    "documentation": {
+      "comment": "the nicknames",
+      "summary": "the nicknames",
+      "property": "Array<String>"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "position",
+    "getter": true,
+    "setter": true,
+    "documentation": {
+      "comment": "The entity's position",
+      "summary": "The entity's position",
+      "property": "Object"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "x",
+    "constant": false,
+    "value": "0"
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "y",
+    "constant": false,
+    "value": "0"
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "get",
+    "documentation": {
+      "comment": "Language helpers",
+      "summary": "Language helpers"
+    },
+    "parameters": [
+      {
+        "name": "props",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "set",
+    "parameters": [
+      {
+        "name": "props",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "firstname",
+    "getter": true,
+    "setter": true,
+    "documentation": {
+      "comment": "The first name",
+      "summary": "The first name",
+      "property": "String"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "firstname",
+    "parameters": []
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "firstname",
+    "getter": true,
+    "setter": true,
+    "documentation": {
+      "comment": "The first name",
+      "summary": "The first name",
+      "property": "String"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "firstname",
+    "parameters": [
+      {
+        "name": "_firstname",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "lastname",
+    "getter": true,
+    "setter": true,
+    "documentation": {
+      "comment": "The last name",
+      "summary": "The last name"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "lastname",
+    "parameters": []
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "lastname",
+    "getter": true,
+    "setter": true,
+    "documentation": {
+      "comment": "The last name",
+      "summary": "The last name"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "lastname",
+    "parameters": [
+      {
+        "name": "_lastname",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "birth",
+    "getter": true,
+    "setter": false,
+    "documentation": {
+      "comment": "The day (of birth)",
+      "summary": "The day (of birth)",
+      "property": "Date"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "birth",
+    "parameters": []
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "twitter",
+    "getter": true,
+    "setter": false,
+    "documentation": {
+      "comment": "The twitter handle",
+      "summary": "The twitter handle"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "twitter",
+    "parameters": []
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "confession",
+    "getter": false,
+    "setter": true,
+    "documentation": {
+      "comment": "The confession",
+      "summary": "The confession",
+      "property": "String"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "confession",
+    "parameters": [
+      {
+        "name": "_confession",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "email",
+    "getter": false,
+    "setter": true,
+    "documentation": {
+      "comment": "The email address offer",
+      "summary": "The email address offer"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "email",
+    "parameters": [
+      {
+        "name": "_email",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "test",
+    "documentation": {
+      "comment": "This should not be swallowed",
+      "summary": "This should not be swallowed"
+    },
+    "type": "dynamic",
+    "parameters": []
+  }
+]

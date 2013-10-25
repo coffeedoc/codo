@@ -8,6 +8,8 @@ module.exports = class File extends require('../entity')
     @variables = []
 
   linkify: ->
+    super
+
     for node in @node.expressions
 
       if node.constructor.name == 'Assign' && node.entities?

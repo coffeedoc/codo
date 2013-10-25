@@ -1,0 +1,17 @@
+[
+  {
+    "file": "spec/_templates/classes/simple_class.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/classes/simple_class.coffee",
+    "name": "MyTestClass",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  }
+]

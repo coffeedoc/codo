@@ -1,7 +1,3 @@
-Markdown  = require './markdown'
-_         = require 'underscore'
-_.str     = require 'underscore.string'
-
 module.exports = class Documentation
 
   constructor: (comment) ->
@@ -29,38 +25,38 @@ module.exports = class Documentation
       else if returns = /^@return\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @returns =
           type: returns[1]
-          desc: Markdown.convert(returns[2], true)
+          description: returns[2]
 
       else if returns = /^@return\s+(.+)/i.exec line
         @returns =
           type: '?'
-          desc: Markdown.convert(returns[1], true)
+          description: returns[1]
 
       else if throws = /^@throw\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @throws or= []
         @throws.push
           type: throws[1]
-          desc: Markdown.convert(throws[2], true)
+          description: throws[2]
 
       else if throws = /^@throw\s+(.+)/i.exec line
         @throws or= []
         @throws.push
           type: '?'
-          desc: Markdown.convert(throws[1], true)
+          description: throws[1]
 
       else if param = /^@param\s+([^ ]+)\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @params or= []
         @params.push
           type: param[2]
           name: param[1]
-          desc: Markdown.convert(param[3] || '', true)
+          description: param[3]
 
       else if param = /^@param\s+[\[\{](.+?)[\]\}]\s+([^ ]+)(?:\s+(.+))?/i.exec line
         @params or= []
         @params.push
           type: param[1]
           name: param[2]
-          desc: Markdown.convert(param[3] || '', true)
+          description: param[3]
 
       else if option = /^@option\s+([^ ]+)\s+[\[\{](.+?)[\]\}]\s+([^ ]+)(?:\s+(.+))?/i.exec line
         @paramsOptions or= {}
@@ -69,7 +65,7 @@ module.exports = class Documentation
         @paramsOptions[option[1]].push
           type: option[2]
           name: option[3]
-          desc: Markdown.convert(option[4] || '', true)
+          description: option[4]
 
       else if option = /^@option\s+([^ ]+)\s+([^ ]+)\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @paramsOptions or= {}
@@ -78,28 +74,28 @@ module.exports = class Documentation
         @paramsOptions[option[1]].push
           type: option[3]
           name: option[2]
-          desc: Markdown.convert(option[4] || '', true)
+          description: option[4]
 
       else if see = /^@see\s+([^\s]+)(?:\s+(.+))?/i.exec line
         @see or= []
         @see.push
           reference: see[1]
-          label: Markdown.convert(see[2], true)
+          label: see[2]
 
       else if author = /^@author\s+(.+)/i.exec line
         @authors or= []
-        @authors.push Markdown.convert(author[1], true)
+        @authors.push author[1]
 
       else if copyright = /^@copyright\s+(.+)/i.exec line
-        @copyright = Markdown.convert(copyright[1], true)
+        @copyright = copyright[1]
 
       else if note = /^@note\s+(.+)/i.exec line
         @notes or= []
-        @notes.push Markdown.convert(note[1], true)
+        @notes.push note[1]
 
       else if todo = /^@todo\s+(.+)/i.exec line
         @todos or= []
-        @todos.push Markdown.convert(todo[1], true)
+        @todos.push todo[1]
 
       else if example = /^@example(?:\s+(.+))?/i.exec line
         title = example[1] || ''
@@ -115,19 +111,19 @@ module.exports = class Documentation
             code: code.join '\n'
 
       else if abstract = /^@abstract(?:\s+(.+))?/i.exec line
-        @abstract = Markdown.convert(abstract[1] || '', true)
+        @abstract = abstract[1]
 
       else if /^@private/.exec line
         @private = true
 
       else if since = /^@since\s+(.+)/i.exec line
-        @since = Markdown.convert(since[1], true)
+        @since = since[1]
 
       else if version = /^@version\s+(.+)/i.exec line
-        @version = Markdown.convert(version[1], true)
+        @version = version[1]
 
       else if deprecated = /^@deprecated\s+(.*)/i.exec line
-        @deprecated = Markdown.convert(deprecated[1], true)
+        @deprecated = deprecated[1]
 
       else if mixin = /^@mixin/i.exec line
         @mixin = true
@@ -158,9 +154,9 @@ module.exports = class Documentation
           @parseTags.call doc, innerComment
 
           @overloads.push
-            signature: signature.replace(/([$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)(.+)/, (str, name, params) -> "<strong>#{ name }</strong>#{ params }")
-            comment: doc.comment
-            summary: doc.summary
+            signature: signature
+            comment: doc.comment.trim()
+            summary: doc.summary.trim()
             params: doc.params
             options: doc.paramsOptions
             returns: doc.returns
@@ -200,11 +196,13 @@ module.exports = class Documentation
         comment.push line
 
     text = comment.join('\n')
-    @comment = Markdown.convert(text)
+    @comment = text.trim()
 
     sentence = /((?:.|\n)*?[.#][\s$])/.exec(text)
     sentence = sentence[1].replace(/\s*#\s*$/, '') if sentence
-    @summary = Markdown.convert(_.str.clean(sentence || text), true)
+    @summary = (sentence || text || '').trim()
+
+  linkify: ->
 
   inspect: ->
     {

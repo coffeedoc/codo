@@ -1,0 +1,17 @@
+[
+  {
+    "file": "spec/_templates/classes/namespaced_class.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/classes/namespaced_class.coffee",
+    "name": "Some.Namespace.MyClass",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  }
+]
