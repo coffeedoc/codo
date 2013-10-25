@@ -664,17 +664,9 @@ Pull requests are very welcome! Please try to follow these simple rules if appli
 
 ## Features freeze
 
-Codo has initially started as simple experiment to document the CoffeeScript class system and has quickly evolved to a
-general documentation generator that supports many best practices that aren't part of CoffeeScript. Since every code
-combination needs to be explicit detected and converted into an internal representation, it's a huge effort to support
-everything that is possible with CoffeeScript. I've already implemented many features that I don't need for myself, and
-since CoffeeScript is so damn flexible and powerful, many needs aren't covered yet.
+Codo is at the moment [being rewritten from scratch](https://github.com/netzpirat/codo/tree/codo2). We are accepting feature requests but don't expect it happen fast.
 
-**Since I have many other OSS projects I'd like to maintain and also enjoy my family in real life, I'm unable to add new
-features to Codo for now. If you like to have a new feature in Codo, you need to implement it on your own and if you
-open a pull-request, I'll happily assist you to find your way through the code base.**
-
-Thanks for understanding.
+Besides new maintainable codebase the newer version is going to feature full-stack themes, better support for virtual methods and more predictable documentation blocks parsing.
 
 ## Acknowledgment
 
