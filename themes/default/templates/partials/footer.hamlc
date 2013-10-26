@@ -1,0 +1,13 @@
+#footer
+  Generated on
+  = @generationDate
+  by
+  %a{ href: 'https://github.com/netzpirat/codo', title: 'CoffeeScript API documentation generator' } Codo
+  = @codoVersion
+  = surround '(Node.js ', ').', -> process.version
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+  &#10034;
+  %a{ href: 'http://twitter.com/#!/netzpirat'} @netzpirat
+  &#10034;
+  %a{ href: 'https://mksoft.ch'} mksoft.ch

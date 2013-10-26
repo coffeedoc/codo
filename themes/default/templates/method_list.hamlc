@@ -1,0 +1,20 @@
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body.list
+    #content.list
+      %h1.full_list_header Method List
+
+      != @JST['partials/list_nav'](@)
+
+      #search
+        Search:
+        %input{ type: 'text' }
+
+      %ul
+        - for method in @methods
+          %li{ deprecated: if method.deprecated then true else false }
+            %a{ href: method.href, target: 'main', title: method.name }
+              = "#{ if method.type is 'instance' then '#' else '.' }#{ method.name }"
+            %small
+              = surround '(', ')', -> method.classname

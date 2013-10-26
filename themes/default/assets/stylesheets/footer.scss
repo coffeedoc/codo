@@ -1,0 +1,19 @@
+#footer {
+  margin-top: 15px;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 7px 0;
+
+  font-size: 12px;
+  color: #999;
+
+  a:link, a:visited {
+    color: #999;
+    text-decoration: none;
+    border-bottom: 1px dotted #bbd;
+  }
+
+  a:hover {
+    color: #05a;
+  }
+}

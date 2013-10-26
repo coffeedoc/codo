@@ -1,0 +1,150 @@
+- show_description = false
+- show_description ||= @doc?[field] for field in ['comment', 'todos', 'notes', 'examples']
+
+- if show_description
+  .docstring
+
+    - if @doc?.deprecated || @doc?.deprecated is ''
+      .note.deprecated
+        %strong Deprecated.
+        != @doc.deprecated
+
+    - if @doc?.abstract || @doc?.abstract is ''
+      .note.abstract
+        %strong
+          This
+          = @type
+          is abstract.
+        != @doc.abstract
+
+    - if @doc?.todos
+      - for todo in @doc?.todos
+        .note.todo
+          %strong TODO:
+          != todo
+
+    - if @doc?.notes
+      - for note in @doc?.notes
+        .note
+          %strong Note:
+          != note
+
+    != @doc.comment
+
+    - if @doc?.examples
+      .examples
+        %h3 Examples:
+
+        - for example in @doc?.examples
+          %h4
+            != example.title
+          %pre
+            %code.coffee= example.code
+
+.tags
+  - if @type is 'method' or @type is 'overload'
+    - if @doc?.params
+      %h3 Parameters:
+      %ul.param
+        - for param in @doc.params
+          %li
+            %span.name= param.name
+            %span.type
+              (
+                %tt>!= @referencer.linkTypes param.type, @path
+              )
+            - if param.desc
+              &mdash;
+              %span.desc!= param.desc
+
+    - if @doc?.options
+      - for hash, options of @doc.options
+        %h3
+          Options Hash:
+          = surround '(', '):', -> hash
+        %ul.options
+          - for option in options
+            %li
+              %span.name= option.name
+              %span.type
+                (
+                  %tt>!= @referencer.linkTypes option.type, @path
+                )
+              - if option.desc
+                &mdash;
+                %span.desc!= option.desc
+
+    - if @doc?.throwValue
+      %h3 Throws:
+      %ul.throw
+        - for throws in @doc.throwValue
+          %li
+            %span.type
+            - if throws.desc
+              (
+                %tt>!= @referencer.linkTypes throws.type, @path
+              )
+              &mdash;
+              %span.desc!= throws.desc
+            - else
+              %tt>!= @referencer.linkTypes throws.type, @path
+
+    - if @doc?.returnValue
+      %h3 Returns:
+      %ul.return
+        %li
+          %span.type
+          - if @doc.returnValue.desc
+            (
+              %tt>!= @referencer.linkTypes @doc.returnValue.type, @path
+            )
+            &mdash;
+            %span.desc!= @doc.returnValue.desc
+          - else
+            %tt>!= @referencer.linkTypes @doc.returnValue.type, @path
+
+  - if @doc?.authors
+    %h3 Author:
+    %ul.author
+      - for author in @doc.authors
+        %li
+          != author
+
+  - if @doc?.copyright
+    %h3 Copyright:
+    %ul.copyright
+      %li
+        != @doc.copyright
+
+  - if @doc?.since
+    %h3 Since:
+    %ul.since
+      %li
+        != @doc?.since
+
+  - if @doc?.version
+    %h3 Version:
+    %ul.version
+      %li
+        != @doc?.version
+
+  - if @doc?.see
+    %h3 See also:
+    %ul.see
+      - for see in @doc.see
+        %li
+          - if see.reference && see.label
+            %a{ href: see.reference }!= see.label
+          - else if see.reference
+            %a{ href: see.reference }= see.reference
+          - else
+            != see.label
+
+  - if @doc?.overloads
+    .overloads
+      %h3 Overloads:
+      - for overload in @doc.overloads
+        .overload
+          %p.signature
+            != "#{ if @method.type is 'instance' then '-' else '+' } (#{ if overload.returnValue then @str.escapeHTML(overload.returnValue.type) else if @doc?.returnValue then @str.escapeHTML(@doc.returnValue.type) else 'void' }) #{ overload.signature }"
+          != @parent.JST['partials/doc']({ doc: overload, type: 'overload', path: @parent.path, referencer: @parent.referencer })

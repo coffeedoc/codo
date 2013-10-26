@@ -1,0 +1,234 @@
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body
+    != @JST['partials/header'](@)
+
+    #content
+      %h1
+        Class:
+        = @classData.class.className
+
+        - if @classData.doc?.abstract || @classData.doc?.abstract is ''
+          %span.note.title Abstract
+
+        - if @classData.doc?.deprecated || @classData.doc?.deprecated is ''
+          %span.deprecated.note.title Deprecated
+
+        - if @classData.doc?.private || @classData.doc?.private is ''
+          %span.private.note.title Private
+
+      %table.box
+        %tr
+          %td Defined in:
+          %td= @classData.file
+
+        - if @classData.class.parent
+          %tr
+            %td Inherits:
+            %td
+              %a{ href: "#{ @path }classes/#{ @classData.class.parent.replace(/\./g, '/') }.html"}= @classData.class.parent
+
+        - extendsFrom = @underscore.keys @extendedMethods
+        - unless @underscore.isEmpty extendsFrom
+          %tr
+            %td Extends:
+            %td
+              - for extendMixin in extendsFrom
+                - if extendMixin is @underscore.last extendsFrom
+                  %a{ href: "#{ @path }mixins/#{ extendMixin.replace(/\./g, '/') }.html"}= extendMixin
+                - else
+                  != succeed ',', =>
+                    %a{ href: "#{ @path }mixins/#{ extendMixin.replace(/\./g, '/') }.html"}= extendMixin
+
+        - includesFrom = @underscore.keys @includedMethods
+        - unless @underscore.isEmpty includesFrom
+          %tr
+            %td Includes:
+            %td
+              - for includeMixin in includesFrom
+                - if includeMixin is @underscore.last includesFrom
+                  %a{ href: "#{ @path }mixins/#{ includeMixin.replace(/\./g, '/') }.html"}= includeMixin
+                - else
+                  != succeed ',', =>
+                    %a{ href: "#{ @path }mixins/#{ includeMixin.replace(/\./g, '/') }.html"}= includeMixin
+
+        - concernsFrom = @underscore.keys @concernMethods
+        - unless @underscore.isEmpty concernsFrom
+          %tr
+            %td Concerns:
+            %td
+              - for concern in concernsFrom
+                - if concern is @underscore.last concernsFrom
+                  %a{ href: "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.html"}= concern
+                - else
+                  != succeed ',', =>
+                    %a{ href: "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.html"}= concern
+
+      - if @classData.doc?.comment
+        %h2 Overview
+
+        != @JST['partials/doc']({ doc: @classData.doc, type: 'class', path: @path, referencer: @referencer })
+
+      - if @subClasses.length isnt 0
+        %h2 Direct Known Subclasses
+        %p.children
+          - for child in @subClasses
+            - if child is @underscore.last @subClasses
+              %a{ href: "#{ @path }classes/#{ child.replace(/\./g, '/') }.html"}= child
+            - else
+              != succeed ',', =>
+                %a{ href: "#{ @path }classes/#{ child.replace(/\./g, '/') }.html"}= child
+
+      - if @properties.length isnt 0
+        %h2 Property Summary
+
+        %dl.properties
+          - for property in @properties
+            %dt{ id: "#{ property.name }-property" }
+              %span.signature
+                != property.signature
+              - unless property.setter
+                %span.readonly.note.title Readonly
+              - unless property.getter
+                %span.writeonly.note.title Writeonly
+            %dd.desc
+              != property.doc.comment
+
+      - for parent, properties of @inheritedProperties
+        - if @properties.length is 0
+          %h2 Property Summary
+
+        %h3.inherited
+          Properties inherited from
+          %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html"}= parent
+        %p.inherited
+          - for property in properties
+            - if property is @underscore.last properties
+              %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ property.name }-property"}= property.name
+            - else
+              != succeed ',', =>
+                %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ property.name }-property"}= property.name
+
+
+      - if @constants.length isnt 0
+        %h2 Constant Summary
+
+        %dl.constants
+          - for constant in @constants
+            %dt{ id: "#{ constant.name }-constant" }
+              = constant.name
+              \=
+              != @JST['partials/doc']({ doc: constant.doc, type: 'constant', path: @path, referencer: @referencer })
+            %dd
+              %pre
+                %code.coffee!= constant.value
+
+      - for parent, constants of @inheritedConstants
+        - if @constants.length is 0
+          %h2 Constant Summary
+
+        %h3.inherited
+          Constants inherited from
+          %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html"}= parent
+        %p.inherited
+          - for constant in constants
+            - if constant is @underscore.last constants
+              %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ constant.getName() }-constant"}= constant.getName()
+            - else
+              != succeed ',', =>
+                %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ constant.getName() }-constant"}= constant.getName()
+
+      - if @classMethods.length isnt 0
+        %h2 Class Method Summary
+
+        != @JST['partials/method_summary']({ methods: @classMethods })
+
+      - if @instanceMethods.length isnt 0
+        %h2 Instance Method Summary
+
+        != @JST['partials/method_summary']({ methods: @instanceMethods })
+
+      - unless @underscore.isEmpty @inheritedMethods
+        %h2
+          %small Inherited Method Summary
+
+      - for parent, methods of @inheritedMethods
+
+        %h3.inherited
+          Methods inherited from
+          %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html"}= parent
+        %p.inherited
+          - for method in methods
+            - if method is @underscore.last methods
+              %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= method.getShortSignature()
+            - else
+              != succeed ',', =>
+                %a{ href: "#{ @path }classes/#{ parent.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= method.getShortSignature()
+
+      - unless @underscore.isEmpty @extendedMethods
+        %h2
+          %small Extended Method Summary
+
+      - for mixin, methods of @extendedMethods
+        %h3.extended
+          Methods extended from
+          %a{ href: "#{ @path }mixins/#{ mixin.replace(/\./g, '/') }.html"}= mixin
+        %p.extended
+          - for method in methods
+            - if method is @underscore.last methods
+              %a{ href: "#{ @path }mixins/#{ mixin.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= ".#{ method.getShortSignature() }"
+            - else
+              != succeed ',', =>
+                %a{ href: "#{ @path }mixins/#{ mixin.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= ".#{ method.getShortSignature() }"
+
+      - unless @underscore.isEmpty @includedMethods
+        %h2
+          %small Included Method Summary
+
+      - for mixin, methods of @includedMethods
+        %h3.included
+          Methods included from
+          %a{ href: "#{ @path }mixins/#{ mixin.replace(/\./g, '/') }.html"}= mixin
+        %p.included
+          - for method in methods
+            - if method is @underscore.last methods
+              %a{ href: "#{ @path }mixins/#{ mixin.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= "##{ method.getShortSignature() }"
+            - else
+              != succeed ',', =>
+                %a{ href: "#{ @path }mixins/#{ mixin.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= "##{ method.getShortSignature() }"
+
+      - unless @underscore.isEmpty @concernMethods
+        %h2
+          %small Concern Method Summary
+
+      - for concern, methods of @concernMethods
+        %h3.included
+          Methods mixed in from
+          %a{ href: "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.html"}= concern
+        %p.included
+          - for method in methods
+            - if method is @underscore.last methods
+              %a{ href: "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= "#{ method.getShortSignature() }"
+            - else
+              != succeed ',', =>
+                %a{ href: "#{ @path }mixins/#{ concern.replace(/\./g, '/') }.html##{ method.getName() }-#{ method.getType() }"}= "#{ method.getShortSignature() }"
+
+      - if @classMethods.length isnt 0
+        %h2 Class Method Details
+
+        != @JST['partials/method_list']({ str: @str, methods: @classMethods, parent: @ })
+
+      - constructor = @underscore.filter @instanceMethods, (m) -> m.name is 'constructor'
+      - if constructor.length isnt 0
+        %h2 Constructor Details
+
+        != @JST['partials/method_list']({ str: @str, methods: constructor, parent: @ })
+
+      - instanceMethods = @underscore.filter @instanceMethods, (m) -> m.name isnt 'constructor'
+      - if instanceMethods.length isnt 0
+        %h2 Instance Method Details
+
+        != @JST['partials/method_list']({ str: @str, methods: instanceMethods, parent: @ })
+
+    != @JST['partials/footer'](@)

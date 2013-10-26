@@ -1,0 +1,127 @@
+@import "compass";
+
+#menu {
+  font-size: 1.3em;
+  color: #bbb;
+  top: -5px;
+  position: relative;
+
+  .title, a {
+    font-size: 0.7em;
+  }
+
+  .title a {
+    font-size: 1em;
+  }
+
+  .title {
+    color: #555;
+  }
+
+  a:link, a:visited {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px dotted #bbd;
+  }
+
+  a:hover {
+    color: #05a;
+  }
+}
+
+#header {
+  nav {
+    float: right;
+
+    color: #000;
+    font-size: 0.7em;
+
+    ul {
+      @include inline-list;
+      margin: 4px !important;
+    }
+
+    a {
+      font-size: 1em;
+    }
+  }
+
+  #search {
+    float: right;
+    margin-top: -3px;
+
+    a:link, a:visited {
+      @include box-shadow(#ddd -1px 1px 3px);
+      @include border-bottom-left-radius(3px);
+      @include border-bottom-right-radius(3px);
+
+      display: block;
+      float: left;
+
+      margin-right: 4px;
+      padding: 8px 10px;
+
+      color: #05a;
+      background: #eaf0ff;
+
+      text-decoration: none;
+      border: 1px solid #d8d8e5;
+    }
+
+    a:hover {
+      background: #f5faff;
+      color: #06b;
+    }
+
+    a.active {
+      @include border-top-left-radius(5px);
+      @include border-top-right-radius(5px);
+
+      padding-bottom: 20px;
+
+      color: #fff;
+      background: #568;
+
+      border: 1px solid #457;
+    }
+
+    a.inactive {
+      color: #999;
+    }
+  }
+}
+
+body.frames #header {
+  li.frames {
+    display: none;
+  }
+
+  #search {
+    display: none;
+  }
+}
+
+body.noframes #header li.noframes {
+  display: none;
+}
+
+#search_frame {
+  @include box-shadow(#aaa -7px 5px 25px);
+
+  display: none;
+  position: absolute;
+  overflow-y: scroll;
+
+  z-index: 9999;
+
+  top: 36px;
+  right: 18px;
+
+  width: 500px;
+  height: 80%;
+
+  background: white;
+  border: 1px solid #999;
+  border-collapse: collapse;
+}
+

@@ -1,0 +1,75 @@
+@import "compass";
+
+nav.toc {
+  @include box-shadow(#bbb -2px 2px 6px);
+
+  overflow: hidden;
+  float: right;
+
+  z-index: 500;
+  right: 0px;
+  max-width: 300px;
+
+  padding: 20px;
+  padding-right: 30px;
+
+  margin-left: 20px;
+  margin-bottom: 20px;
+
+  background: white;
+  border: 1px solid #DDD;
+
+  p.title {
+    margin-top: 5px;
+  }
+
+  ol {
+    padding-left: 1.8em;
+  }
+
+  li {
+    font-size: 1.1em;
+    line-height: 1.7em;
+  }
+
+  > ol > li {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  ol > ol {
+    font-size: 0.9em;
+  }
+}
+
+nav.toc.inline {
+  @include box-shadow(#fff 0px 0px 0px);
+
+  position: relative;
+  float: none;
+
+  padding: 0;
+  margin: 5px 0 0 0;
+
+  border: 0px;
+
+  &.hidden {
+    background: none;
+    padding: 0;
+    text-align: left;
+  }
+}
+
+nav.toc.hidden {
+  height: 26px;
+  width: 140px;
+
+  padding: 5px;
+  background: #F6F6F6;
+
+  text-align: center;
+
+  p.title small {
+    display: none;
+  }
+}

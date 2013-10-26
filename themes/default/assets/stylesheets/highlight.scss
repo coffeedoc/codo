@@ -1,0 +1,51 @@
+@import "compass";
+
+pre {
+  @include border-radius(3px);
+  @include box-shadow(rgba(0, 0, 0, 0.1) 1px 1px 2px);
+
+  padding: 0;
+  margin-top: 4px;
+
+  border: 1px solid #EAEAEA;
+  background-color: #F8F8F8;
+
+  font-family: monospace;
+
+  &.code {
+    word-wrap: break-word;
+  }
+
+  code {
+    border: 0;
+    white-space: pre;
+    overflow: hidden;
+    word-wrap: break-word;
+  }
+}
+
+
+code {
+  @include border-radius(3px);
+  margin: 0 2px;
+  padding: 0px 5px;
+  white-space: nowrap;
+  border: 1px solid #EAEAEA;
+  background-color: #F8F8F8;
+}
+
+pre > code {
+  white-space: wrap;
+}
+
+.docstring {
+  p > code, li > code {
+    @include border-radius(3px);
+
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: nowrap;
+    border: 1px solid #EAEAEA;
+    background-color: #F8F8F8;
+  }
+}

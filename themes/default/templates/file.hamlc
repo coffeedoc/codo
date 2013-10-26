@@ -1,0 +1,40 @@
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body
+    != @JST['partials/header'](@)
+
+    #content
+      %h1
+        File:
+        = @filename
+
+      %table.box
+        %tr
+          %td Defined in:
+          %td= @filepath
+
+      - if @constants.length isnt 0
+        %h2 Constant Summary
+
+        %dl.constants
+          - for constant in @constants
+            %dt{ id: "#{ constant.name }-constant" }
+              = constant.name
+              \=
+              != @JST['partials/doc']({ doc: constant.doc, type: 'constant', path: @path, referencer: @referencer })
+            %dd
+              %pre
+                %code.coffee!= constant.value
+
+      - if @methods.length isnt 0
+        %h2 Method Summary
+
+        != @JST['partials/method_summary']({ methods: @methods })
+
+      - if @methods.length isnt 0
+        %h2 Method Details
+
+        != @JST['partials/method_list']({ methods: @methods, parent: @ })
+
+    != @JST['partials/footer'](@)

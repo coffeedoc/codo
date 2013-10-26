@@ -1,0 +1,11 @@
+%nav
+  - if @classCount isnt 0
+    %a{ target: '_self', href: 'class_list.html' } Classes
+  - if @mixinCount isnt 0
+    %a{ target: '_self', href: 'mixin_list.html' } Mixins
+  - if @fileCount isnt 0
+    %a{ target: '_self', href: 'file_list.html' } Files
+  - if @methodCount isnt 0
+    %a{ target: '_self', href: 'method_list.html' } Methods
+  - if @extraCount isnt 0
+    %a{ target: '_self', href: 'extra_list.html' } Extras

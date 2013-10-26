@@ -1,6 +1,6 @@
 FS          = require 'fs'
 walkdir     = require 'walkdir'
-Environment = require '../lib/environment'
+Environment = require '../../lib/environment'
 
 beforeEach ->
   @addMatchers

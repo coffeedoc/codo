@@ -1,0 +1,90 @@
+#base{ data: { path: @path }}
+#header
+  #menu
+    - if @breadcrumbs.length isnt 0
+      - current = @breadcrumbs.pop()
+      - for breadcrumb in @breadcrumbs
+        - if breadcrumb.href
+          - if breadcrumb.target
+            %a{ href: breadcrumb.href, title: breadcrumb.name, target: breadcrumb.target }= breadcrumb.name
+          - else
+            %a{ href: breadcrumb.href, title: breadcrumb.name }= breadcrumb.name
+        - else
+          %span.title= breadcrumb.name
+        &raquo;
+      %span.title= current.name
+
+    %nav
+      %ul
+        %li.noframes
+          != surround '(', ')', ->
+            %a.noframes{ href: '#' }> no frames
+
+    #search
+      - if @classCount isnt 0
+        %a#class_list_link{ href: "#{ @path }class_list.html" } Classes
+      - if @mixinCount isnt 0
+        %a#mixin_list_link{ href: "#{ @path }mixin_list.html" } Mixins
+      - if @fileCount isnt 0
+        %a#file_list_link{ href: "#{ @path }file_list.html" } Files
+      - if @methodCount isnt 0
+        %a#method_list_link{ href: "#{ @path }method_list.html" } Methods
+      - if @extraCount isnt 0
+        %a#extra_list_link{ href: "#{ @path }extra_list.html" } Extras
+
+  %iframe#search_frame
+
+  #fuzzySearch
+    %input{ type: 'text' }
+    %ol
+
+  #help
+    %p
+      Quickly fuzzy find classes, mixins, methods, file:
+    %ul
+      %li
+        %span Ctrl-T
+        Open fuzzy finder dialog
+
+    %p
+      In frame mode you can toggle the list naviation frame on the left side:
+    %ul
+      %li
+        %span Ctrl-L
+        Toggle list view
+
+    %p
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    %ul
+      %li
+        %span Ctrl-C
+        Class list
+      %li
+        %span Ctrl-I
+        Mixin list
+      %li
+        %span Ctrl-F
+        File list
+      %li
+        %span Ctrl-M
+        Method list
+      %li
+        %span Ctrl-E
+        Extras list
+
+    %p
+      You can focus and blur the search input:
+    %ul
+      %li
+        %span Ctrl-S
+        Focus search input
+      %li
+        %span Esc
+        Blur search input
+
+    %p
+      In frameless mode you can close the list tab:
+    %ul
+      %li
+        %span Esc
+        Close list tab

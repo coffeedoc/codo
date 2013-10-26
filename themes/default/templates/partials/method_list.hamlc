@@ -1,0 +1,16 @@
+.methods
+  - for method in @methods
+    .method_details
+      %p.signature{ id: "#{ method.name }-#{ method.type }" }
+        - if method.doc?.overloads
+          - for overload in method.doc?.overloads
+            != "#{ if method.type is 'instance' then '-' else '+' } (#{ if overload.returnValue then @str.escapeHTML(overload.returnValue.type) else if method.doc?.returnValue then @str.escapeHTML(method.doc.returnValue.type) else 'void' }) #{ overload.signature }"
+            %br
+        - else
+          != method.signature
+        - if method.bound
+          (bound)
+        - if method.doc?.private
+          (private)
+
+      != @parent.JST['partials/doc']({ doc: method.doc, type: 'method', method: method, str: @str, parent: @parent, path: @parent.path, referencer: @parent.referencer })

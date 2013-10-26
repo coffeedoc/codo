@@ -1,5 +1,5 @@
-Environment = require '../../lib/environment'
-Method = require '../../lib/meta/method'
+Environment = require '../../../lib/environment'
+Method = require '../../../lib/meta/method'
 
 describe 'Method', ->
 

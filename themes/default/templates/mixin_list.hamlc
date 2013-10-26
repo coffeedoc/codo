@@ -1,0 +1,28 @@
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body.list
+    #content.tree.list
+      %h1.full_list_header Mixin List
+
+      != @JST['partials/list_nav'](@)
+
+      #search
+        Search:
+        %input{ type: 'text' }
+
+      - createLevel = (mixins) ->
+        %ul
+          - for mixin in mixins
+            %li
+              - if mixin.href
+                %a{ href: mixin.href, target: 'main' }= mixin.name
+              - else
+                %span
+                  = mixin.name
+              %small.namespace
+                = mixin.namespace
+
+            = createLevel(mixin.children) if mixin.children
+
+      = createLevel @mixins

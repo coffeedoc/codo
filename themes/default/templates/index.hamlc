@@ -1,0 +1,51 @@
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body
+    != @JST['partials/header'](@)
+
+    #content
+      %h1.noborder.title= @title
+
+      #listing
+        %h1.alphaindex Alphabetic Index
+
+        %h2 Extra File Listing
+
+        - if @extras.length isnt 0
+          %ul#files
+            - for extra in @extras
+              %li
+                %a{ href: extra + '.html', title: extra }= extra
+
+        - if @classes.length isnt 0
+          %h2 Class Listing A-Z
+
+          .index
+            - for char, classes of @classes
+              %ul
+                %li.letter= char
+                %ul
+                  - for clazz in classes
+                    %li
+                      %a{ href: "#{if clazz.constructor.name == 'Class' then 'classes' else 'mixins'}/#{ clazz.getFullName().replace(/\./g, '/') }.html"}= clazz.getName()
+                      - if clazz.getNamespace()
+                        %small
+                          = surround '(', ')', -> clazz.getNamespace()
+
+        - if @files.length isnt 0
+          %h2 File Listing A-Z
+
+          .index
+            - for char, files of @files
+              %ul
+                %li.letter= char
+                %ul
+                  - for file in files
+                    %li
+                      %a{ href: "files/#{ file.getFullName() }.html" }= file.getFileName()
+                      - if file.getPath()
+                        %small
+                          = surround '(', ')', -> file.getPath()
+
+    != @JST['partials/footer'](@)

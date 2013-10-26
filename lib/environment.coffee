@@ -1,3 +1,5 @@
+FS        = require 'fs'
+Path      = require 'path'
 Traverser = require './traverser'
 
 module.exports = class Environment
@@ -14,17 +16,24 @@ module.exports = class Environment
     for option, value of options
       @[option] = value if options.hasOwnProperty(option)
 
-    @verbose ?= false
-    @debug   ?= false
-    @needles ?= []
+    @version = JSON.parse(
+      FS.readFileSync(Path.join(__dirname, '..', 'package.json'), 'utf-8')
+    )['version']
 
+    @verbose     ?= false
+    @debug       ?= false
+    @destination ?= 'doc'
+    @registerNeedles()
+
+    @entities = []
+
+  registerNeedles: ->
+    @needles ?= []
     @needles.push require('./entities/class')
     @needles.push require('./entities/method')
     @needles.push require('./entities/variable')
     @needles.push require('./entities/property')
     @needles.push require('./entities/mixin')
-
-    @entities = []
 
   read: (file) ->
     Traverser.read(file, @)

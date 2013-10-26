@@ -1,0 +1,6 @@
+!!!
+%html
+  != @JST['partials/head'](@)
+  %frameset{ cols: '20%, *' }
+    %frame{ name: 'list', src: "#{ @list }.html" }
+    %frame{ name: 'main', src: "#{ @index }.html" }

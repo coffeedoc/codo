@@ -1,0 +1,17 @@
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body.list
+    #content.list
+      %h1.full_list_header File List
+
+      != @JST['partials/list_nav'](@)
+
+      #search
+        Search:
+        %input{ type: 'text' }
+
+      %ul
+        - for extra in @extras
+          %li
+            %a{ href: extra + '.html', target: 'main', title: extra, }= extra

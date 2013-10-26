@@ -1,59 +1,64 @@
 {
-  "name" : "codo",
-  "description" : "A CoffeeScript documentation generator.",
-  "keywords" : ["coffeescript", "doc"],
-  "author" : "Michael Kessler <michi@netzpiraten.ch>",
-  "maintainers" : [
+  "name": "codo",
+  "description": "A CoffeeScript documentation generator.",
+  "keywords": [
+    "coffeescript",
+    "doc"
+  ],
+  "author": "Michael Kessler <michi@netzpiraten.ch>",
+  "maintainers": [
     {
-      "name" : "Michael Kessler"
+      "name": "Michael Kessler"
     },
     {
-      "name" : "Boris Staal"
+      "name": "Boris Staal"
     }
   ],
-  "version" : "2.0.0-alpha.1",
-  "licenses" : [
+  "version": "2.0.0-alpha.1",
+  "licenses": [
     {
-      "type" : "MIT",
-      "url" : "http://github.com/netzpirat/codo/raw/master/LICENSE"
+      "type": "MIT",
+      "url": "http://github.com/netzpirat/codo/raw/master/LICENSE"
     }
   ],
-  "engines" : {
-    "node" : ">=0.4.0"
+  "engines": {
+    "node": ">=0.4.0"
   },
-  "directories" : {
-    "lib" : "./src",
-    "theme/default/assets" : "./theme/default/assets",
-    "theme/default/templates" : "./theme/default/templates"
+  "directories": {
+    "lib": "./src",
+    "theme/default/assets": "./theme/default/assets",
+    "theme/default/templates": "./theme/default/templates"
   },
-  "main" : "./lib/index.js",
-  "bin" : {
-    "codo" : "./bin/codo"
+  "main": "./lib/index.js",
+  "bin": {
+    "codo": "./bin/codo"
   },
-  "dependencies" : {
-    "coffee-script" : ">= 1.6.0",
-    "walkdir" : ">= 0.0.2",
-    "optimist" : ">= 0.3.0",
+  "dependencies": {
+    "coffee-script": ">= 1.6.0",
+    "walkdir": ">= 0.0.2",
+    "optimist": ">= 0.3.0",
     "marked": ">= 0.1.9",
-    "underscore" : ">= 0.1.0",
-    "underscore.string" : ">= 0.1.0",
-    "haml-coffee" : ">= 0.6.0",
-    "mkdirp" : ">= 0.1.0",
-    "connect" : ">= 0.1.0",
-    "async": ">= 0.1.22"
+    "underscore": ">= 0.1.0",
+    "underscore.string": ">= 0.1.0",
+    "haml-coffee": ">= 0.6.0",
+    "mkdirp": ">= 0.1.0",
+    "connect": ">= 0.1.0",
+    "async": ">= 0.1.22",
+    "mincer": "~0.5.11"
   },
-  "devDependencies" : {
-    "jasmine-node" : ">= 1.0.13"
+  "devDependencies": {
+    "jasmine-node": ">= 1.0.13",
+    "rimraf": "~2.2.2"
   },
-  "homepage" : "https://github.com/netzpirat/codo",
-  "repository" : {
-    "type" : "git",
-    "url" : "git://github.com/netzpirat/codo.git"
+  "homepage": "https://github.com/netzpirat/codo",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/netzpirat/codo.git"
   },
-  "bugs" : {
-    "url" : "https://github.com/netzpirat/codo/issues"
+  "bugs": {
+    "url": "https://github.com/netzpirat/codo/issues"
   },
-  "scripts" : {
-    "test" : "jasmine-node --coffee spec"
+  "scripts": {
+    "test": "jasmine-node --coffee spec"
   }
 }

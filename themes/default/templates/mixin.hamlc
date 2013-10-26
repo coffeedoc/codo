@@ -1,0 +1,84 @@
+!!!
+%html
+  != @JST['partials/head'](@)
+  %body
+    != @JST['partials/header'](@)
+
+    #content
+      %h1
+        Mixin:
+        = @mixinData.mixin.mixinName
+
+        - if @mixinData.doc?.abstract || @mixinData.doc?.abstract is ''
+          %span.note.title Abstract
+
+        - if @mixinData.doc?.deprecated || @mixinData.doc?.deprecated is ''
+          %span.deprecated.note.title Deprecated
+
+        - if @mixinData.mixin.concern
+          %span.note.concern Concern
+
+      %table.box
+        %tr
+          %td Defined in:
+          %td= @mixinData.file
+
+        - unless @underscore.isEmpty @extendedIn
+          %tr
+            %td Extended in:
+            %td
+              - for clazz in @extendedIn
+                - if clazz is @underscore.last @extendedIn
+                  %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
+                - else
+                  != succeed ',', ->
+                    %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
+
+        - unless @underscore.isEmpty @includedIn
+          %tr
+            %td Included in:
+            %td
+              - for clazz in @includedIn
+                - if clazz is @underscore.last @includedIn
+                  %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
+                - else
+                  != succeed ',', ->
+                    %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
+
+      - if @mixinData.doc?.comment
+        %h2 Overview
+
+        != @JST['partials/doc']({ doc: @mixinData.doc, type: 'mixin', path: @path, referencer: @referencer })
+
+      - if @mixinData.mixin.concern
+
+        - classMethods = @underscore.filter @methods, (m) -> m.type is 'class'
+        - if classMethods.length isnt 0
+          %h2 Class Method Summary
+          != @JST['partials/method_summary']({ methods: classMethods })
+
+        - instanceMethods = @underscore.filter @methods, (m) -> m.type is 'instance'
+        - if instanceMethods.length isnt 0
+          %h2 Instance Method Summary
+          != @JST['partials/method_summary']({ methods: instanceMethods })
+
+        - if classMethods.length isnt 0
+          %h2 Class Method Details
+          != @JST['partials/method_list']({ methods: classMethods, parent: @ })
+
+        - if instanceMethods.length isnt 0
+          %h2 Instance Method Details
+          != @JST['partials/method_list']({ methods: instanceMethods, parent: @ })
+
+      - else
+        - if @methods.length isnt 0
+          %h2 Method Summary
+
+          != @JST['partials/method_summary']({ methods: @methods })
+
+        - if @methods.length isnt 0
+          %h2 Method Details
+
+          != @JST['partials/method_list']({ methods: @methods, parent: @ })
+
+    != @JST['partials/footer'](@)
