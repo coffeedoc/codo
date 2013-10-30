@@ -19,7 +19,8 @@ module.exports = class Method extends require('../entity')
     if @name[0] == 'exports'
       @name = @name.slice(1)
 
-    @name = @name.join('.')
+    @name  = @name.join('.')
+    @bound = @node.value.bound
 
     @documentation = @node.documentation
 
@@ -30,8 +31,9 @@ module.exports = class Method extends require('../entity')
     {
       file:          @file.path
       name:          @name
+      bound:         @bound
       documentation: @documentation?.inspect()
       selfish:       @selfish
-      type:          @type
+      kind:          @kind
       parameters:    @parameters.map (x) -> x.inspect()
     }

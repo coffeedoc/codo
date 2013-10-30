@@ -1,0 +1,151 @@
+- if @documentation
+
+  - show_description = false
+  - show_description ||= @documentation[field] for field in ['comment', 'todos', 'notes', 'examples']
+
+  - if show_description
+    .docstring
+
+      - if @documentation.deprecated?
+        .note.deprecated
+          %strong Deprecated.
+          != @documentation.deprecated
+
+      - if @documentation.abstract?
+        .note.abstract
+          %strong
+            This
+            = @kind
+            is abstract.
+          != @documentation.abstract
+
+      - if @documentation.todos
+        - for todo in @documentation.todos
+          .note.todo
+            %strong TODO:
+            != todo
+
+      - if @documentation.notes
+        - for note in @documentation.notes
+          .note
+            %strong Note:
+            != note
+
+      != @documentation.comment
+
+      - if @documentation.examples
+        .examples
+          %h3 Examples:
+
+          - for example in @documentation.examples
+            %h4
+              != example.title
+            %pre
+              %code.coffee= example.code
+
+  .tags
+    - if @documentation.params
+      %h3 Parameters:
+      %ul.param
+        - for param in @documentation.params
+          %li
+            %span.name= param.name
+            %span.type
+              (
+                %tt>!= param.type
+              )
+            - if param.desc
+              &mdash;
+              %span.desc!= param.desc
+
+    - if @documentation.options
+      - for hash, options of @documentation.options
+        %h3
+          Options Hash:
+          = surround '(', '):', -> hash
+        %ul.options
+          - for option in options
+            %li
+              %span.name= option.name
+              %span.type
+                (
+                  %tt>!= option.type
+                )
+              - if option.desc
+                &mdash;
+                %span.desc!= option.desc
+
+    - if @documentation.throwValue
+      %h3 Throws:
+      %ul.throw
+        - for throws in @documentation.throwValue
+          %li
+            %span.type
+            - if throws.desc
+              (
+                %tt>!= throws.type
+              )
+              &mdash;
+              %span.desc!= throws.desc
+            - else
+              %tt>!= throws.type
+
+    - if @documentation.returnValue
+      %h3 Returns:
+      %ul.return
+        %li
+          %span.type
+          - if @documentation.returnValue.desc
+            (
+              %tt>!= @documentation.returnValue.type
+            )
+            &mdash;
+            %span.desc!= @documentation.returnValue.desc
+          - else
+            %tt>!= @documentation.returnValue.type
+
+    - if @documentation.authors
+      %h3 Author:
+      %ul.author
+        - for author in @documentation.authors
+          %li
+            != author
+
+    - if @documentation.copyright
+      %h3 Copyright:
+      %ul.copyright
+        %li
+          != @documentation.copyright
+
+    - if @documentation.since
+      %h3 Since:
+      %ul.since
+        %li
+          != @documentation.since
+
+    - if @documentation.version
+      %h3 Version:
+      %ul.version
+        %li
+          != @documentation.version
+
+    - if @documentation.see
+      %h3 See also:
+      %ul.see
+        - for see in @documentation.see
+          %li
+            - if see.reference && see.label
+              %a{ href: see.reference }!= see.label
+            - else if see.reference
+              %a{ href: see.reference }= see.reference
+            - else
+              != see.label
+
+    - if @documentation.overloads && @entity?.effectiveOverloads?
+      .overloads
+        %h3 Overloads:
+        - for overload in @entity.effectiveOverloads()
+          .overload
+            %p.signature
+              != @render 'partials/method_signature', method: overload
+            != @render('partials/documentation', documentation: overload.documentation, type: 'overload')

@@ -1,32 +1,33 @@
 !!!
 %html
-  != @JST['partials/head'](@)
+  != @render 'layout/header'
   %body.list
     #content.tree.list
       %h1.full_list_header Class List
 
-      != @JST['partials/list_nav'](@)
+      != @render 'partials/list_nav'
 
       #search
         Search:
         %input{ type: 'text' }
 
-      - createLevel = (classes) ->
+      - createLevel = (tree) =>
         %ul
-          - for clazz in classes
+          - for entry in tree
             %li
-              - if clazz.href
-                %a{ href: clazz.href, target: 'main' }= clazz.name
-                - if clazz.parent
+              - if entry.entity
+                %a{href: @pathFor('class', entry.entity, @path), target: 'main'}
+                  = entry.entity.basename
+                - if entry.entity.parent
                   %small.parent
                     <
-                    = clazz.parent
+                    = entry.entity.parent.name
                 %small.namespace
-                  = clazz.namespace
+                  = entry.entity.namespace
               - else
                 %span
-                  = clazz.name
+                  = entry.name
 
-            = createLevel(clazz.children) if clazz.children
+            = createLevel(entry.children) if entry.children.length > 0
 
-      = createLevel @classes
+      = createLevel @tree

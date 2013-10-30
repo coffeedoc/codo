@@ -1,29 +1,29 @@
 %ul.summary
   - for method in @methods
-    %li{ deprecated: if method.doc?.deprecated then true else false }
+    %li{deprecated: if method.documentation?.deprecated then true else false}
 
       %span.signature
-        %a{ href: "##{ method.name }-#{ method.type }" }
-          != method.signature
+        %a{href: "##{method.name}-#{method.kind}"}
+          != @render 'partials/method_signature', method: method
 
-      - if method.name is 'constructor'
+      - if method.name == 'constructor'
         %span.constructor.note.title Constructor
 
       - if method.bound
         %span.bound.note.title Bound
 
-      - if method.doc?.private
+      - if method.documentation?.private
         %span.private.note.title Private
 
-      - if method.doc?.abstract || method.doc?.abstract is ''
+      - if method.documentation?.abstract
         %span.abstract.note.title Abstract
 
-      - if method.doc?.deprecated || method.doc?.deprecated is ''
+      - if method.documentation?.deprecated
         %span.deprecated.note.title Deprecated
 
       %span.desc
-        - if method.doc?.deprecated || method.doc?.deprecated is ''
+        - if method.documentation?.deprecated
           %strong Deprecated.
-          != method.doc?.deprecated
+          != method.documentation?.deprecated
         - else
-          != method.doc?.summary
+          != method.documentation?.summary

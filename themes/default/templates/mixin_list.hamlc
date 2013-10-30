@@ -1,28 +1,33 @@
 !!!
 %html
-  != @JST['partials/head'](@)
+  != @render 'layout/header'
   %body.list
     #content.tree.list
       %h1.full_list_header Mixin List
 
-      != @JST['partials/list_nav'](@)
+      != @render 'partials/list_nav'
 
       #search
         Search:
         %input{ type: 'text' }
 
-      - createLevel = (mixins) ->
+      - createLevel = (tree) =>
         %ul
-          - for mixin in mixins
+          - for entry in tree
             %li
-              - if mixin.href
-                %a{ href: mixin.href, target: 'main' }= mixin.name
+              - if entry.entity
+                %a{href: @pathFor('mixin', entry.entity, @path), target: 'main'}
+                  = entry.entity.basename
+                - if entry.entity.parent
+                  %small.parent
+                    <
+                    = entry.entity.parent.name
+                %small.namespace
+                  = entry.entity.namespace
               - else
                 %span
-                  = mixin.name
-              %small.namespace
-                = mixin.namespace
+                  = entry.name
 
-            = createLevel(mixin.children) if mixin.children
+            = createLevel(entry.children) if entry.children.length > 0
 
-      = createLevel @mixins
+      = createLevel @tree

@@ -1,40 +1,53 @@
 !!!
 %html
-  != @JST['partials/head'](@)
+  != @render 'layout/header'
   %body
-    != @JST['partials/header'](@)
+    != @render 'layout/intro'
 
     #content
       %h1
         File:
-        = @filename
+        = @entity.basename
 
       %table.box
         %tr
           %td Defined in:
-          %td= @filepath
+          %td= @entity.dirname
+        - if @entity.classes.length > 0
+          %tr
+            %td
+              Classes:
+            %td
+              - for klass in @entity.classes
+                %a{href: @pathFor('class', klass, @path)}
+                  = klass.name
+        - if @entity.mixins.length > 0
+          %tr
+            %td
+              Mixins:
+            %td
+              - for mixin in @entity.mixins
+                %a{href: @pathFor('mixin', mixin, @path)}
+                  = mixin.name
 
-      - if @constants.length isnt 0
-        %h2 Constant Summary
+      - if @entity.variables.length > 0
+        %h2 Variables Summary
 
         %dl.constants
-          - for constant in @constants
-            %dt{ id: "#{ constant.name }-constant" }
-              = constant.name
+          - for variable in @entity.variables
+            %dt{ id: "#{variable.name}-variable" }
+              = variable.name
               \=
-              != @JST['partials/doc']({ doc: constant.doc, type: 'constant', path: @path, referencer: @referencer })
+              != @render 'partials/documentation', documentation: variable.documentation, kind: 'variable'
             %dd
               %pre
-                %code.coffee!= constant.value
+                %code.coffee= variable.value
 
-      - if @methods.length isnt 0
+      - if @entity.effectiveMethods().length > 0
         %h2 Method Summary
+        != @render 'partials/method_summary', methods: @entity.effectiveMethods()
 
-        != @JST['partials/method_summary']({ methods: @methods })
-
-      - if @methods.length isnt 0
         %h2 Method Details
+        != @render 'partials/method_list', methods: @entity.effectiveMethods()
 
-        != @JST['partials/method_list']({ methods: @methods, parent: @ })
-
-    != @JST['partials/footer'](@)
+    != @render 'layout/footer'

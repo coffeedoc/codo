@@ -2,28 +2,34 @@ FS      = require 'fs'
 Path    = require 'path'
 mkdirp  = require 'mkdirp'
 _       = require 'underscore'
-_.str   = require 'underscore.string'
 hamlc   = require 'haml-coffee'
 walkdir = require 'walkdir'
 Mincer  = require 'mincer'
+Nib     = require 'nib'
 
 module.exports = class Templater
 
   sourceOf: (subject) ->
     Path.join(__dirname, '..', subject)
 
-  constructor: (@environment) ->
-    @JST = []
+  constructor: (@destination) ->
+    Mincer.StylusEngine.configure (stylus) => stylus.use Nib()
+    Mincer.CoffeeEngine.configure bare: false
 
-    @globalContext =
-      JST:         @JST
-      environment: @environment
+    @JST = []
 
     templates = @sourceOf('templates')
 
     for template in walkdir.sync(templates)
       unless FS.lstatSync(template).isDirectory()
-        @JST[Path.relative(templates, template)] = hamlc.compile FS.readFileSync(template, 'utf8'),
+        relative = Path.relative(templates, template)
+        dirname  = Path.dirname(relative)
+        basename = Path.basename(template, '.hamlc')
+
+        keyword = basename
+        keyword = dirname + '/' + basename unless dirname == '.'
+
+        @JST[keyword] = hamlc.compile FS.readFileSync(template, 'utf8'),
           escapeAttributes: false
 
   compileAsset: (from, to=false) ->
@@ -31,7 +37,7 @@ module.exports = class Templater
     mincer.appendPath @sourceOf('assets')
 
     asset = mincer.findAsset(from)
-    file  = Path.join(@environment.destination, to || from)
+    file  = Path.join(@destination, to || from)
     dir   = Path.dirname(file)
 
     mkdirp dir, (err) ->
@@ -49,11 +55,11 @@ module.exports = class Templater
   # @param [String] filename the output file name
   #
   render: (template, context = {}, filename = '') ->
-    html = @JST[template](_.extend(@globalContext, context))
+    html = @JST[template](context)
 
     if filename.length > 0
 
-      file = Path.join @environment.destination, filename
+      file = Path.join @destination, filename
       dir  = Path.dirname(file)
 
       mkdirp dir, (err) ->

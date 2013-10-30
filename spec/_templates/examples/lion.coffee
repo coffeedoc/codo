@@ -2,6 +2,8 @@
 #
 # @author Simba
 # @see http://en.wikipedia.org/wiki/Lion
+# @include Example.AngryAnimal
+# @extend MissingMixin
 #
 class Example.Animal.Lion extends Example.Animal
 

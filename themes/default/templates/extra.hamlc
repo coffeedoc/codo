@@ -1,18 +1,18 @@
 !!!
 %html
-  != @JST['partials/head'](@)
+  != @render 'layout/header'
   %body
-    != @JST['partials/header'](@)
+    != @render 'layout/intro', breadcrumbs: @breadcrumbs
 
     #content
       %nav.toc
         %p.title
-          %a.hide_toc{ href: '#' }
+          %a.hide_toc{href: '#'}
             %strong Table of Contents
           %small
             != surround '(', ')', ->
-              %a.float_toc{ href: '#'}> left
+              %a.float_toc{href: '#'}> left
       #filecontents
         != @content
 
-    != @JST['partials/footer'](@)
+    != @render 'layout/footer'

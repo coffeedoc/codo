@@ -15,13 +15,18 @@ module.exports = class Class extends require('../entity')
     @parent        = @fetchParent(@node.parent) if @node.parent
     @documentation = @node.documentation
 
-    @name       = @fetchName(@node.variable, @selfish, @container)
-    @methods    = []
-    @variables  = []
-    @properties = []
-    @includes   = []
-    @extends    = []
-    @concerns   = []
+    @name        = @fetchName(@node.variable, @selfish, @container)
+    @methods     = []
+    @variables   = []
+    @properties  = []
+    @includes    = []
+    @extends     = []
+    @concerns    = []
+    @descendants = []
+
+    name = @name.split('.')
+    @basename  = name.pop()
+    @namespace = name.join('.')
 
     @
 
@@ -77,13 +82,13 @@ module.exports = class Class extends require('../entity')
       # class Foo
       #   @foo = ->            
       if entity instanceof Method
-        entity.type = 'static'
+        entity.kind = 'static'
         @methods.push entity
 
       # class Foo
       #   @foo = 'test'
       if entity instanceof Variable 
-        entity.type = 'static'
+        entity.kind = 'static'
         @variables.push entity
 
   linkifyValue: (node) ->
@@ -93,13 +98,13 @@ module.exports = class Class extends require('../entity')
         #   @foo: ->
         #   foo: ->
         if entity instanceof Method
-          entity.type = if entity.selfish then 'static' else 'dynamic'
+          entity.kind = if entity.selfish then 'static' else 'dynamic'
           @methods.push entity
 
         # class Foo
         #   foo: 'test'
         if entity instanceof Variable 
-          entity.type = if entity.selfish then 'static' else 'dynamic'
+          entity.kind = if entity.selfish then 'static' else 'dynamic'
           @variables.push entity
 
         if entity instanceof Property
@@ -120,40 +125,61 @@ module.exports = class Class extends require('../entity')
   linkifyParent: ->
     if @parent
       @parent = @environment.find(Class, @parent) || @parent
+      @parent.descendants?.push(@)
 
   linkifyMixins: ->
     if @documentation?.includes?
       for entry in @documentation.includes
-        @includes.push(@environment.find(Mixin, entry) || entry)
+        mixin = @environment.find(Mixin, entry) || entry
+        @includes.push(mixin)
+        mixin.inclusions?.push(@)
 
     if @documentation?.extends?
       for entry in @documentation.extends
-        @extends.push(@environment.find(Mixin, entry) || entry)
+        mixin = @environment.find(Mixin, entry) || entry
+        @extends.push(mixin)
+        mixin.extensions?.push(@)
 
     if @documentation?.concerns?
       for entry in @documentation.concerns
-        @concerns.push(@environment.find(Mixin, entry) || entry)
+        mixin = @environment.find(Mixin, entry) || entry
+        @concerns.push(mixin)
+        mixin.concerns?.push(@)
 
   effectiveMethods: ->
-    methods = []
+    return @_effectiveMethods if @_effectiveMethods?
+
+    @_effectiveMethods = []
 
     for method in @methods
-      methods.push(MetaMethod.fromMethodEntity method)
+      @_effectiveMethods.push(MetaMethod.fromMethodEntity method)
 
-    if @documentation.methods
+    if @documentation?.methods
       for method in @documentation.methods
-        methods.push(MetaMethod.fromDocumentationMethod method)
+        @_effectiveMethods.push(MetaMethod.fromDocumentationMethod method)
 
-    for inclusion in @includes
-      methods = methods.concat inclusion.effectiveInclusionMethods()
+    @_effectiveMethods
 
-    for extension in @extends
-      methods = methods.concat extension.effectiveExtensionMethods()
+  inherited: (getter) ->
+    return [] unless @parent
 
-    for concern in @concerns
-      methods = methods.concat concern.effectiveConcernMethods()
+    found   = {}
+    entries = getter()
 
-    methods
+    entries.filter (entry) ->
+      found[entry.name] = true unless found[entry.name]
+
+  inheritedMethods: ->
+    @_inheritedMethods ||= @inherited =>
+      @parent.effectiveMethods().concat(@parent.inheritedMethods())
+
+  inheritedVariables: ->
+    @_inheritedVariables ||= @inherited =>
+      @parent.variables.concat(@parent.inheritedVariables())
+
+  inheritedProperties: ->
+    @_inheritedProperties ||= @inherited =>
+      @parent.properties.concat(@parent.inheritedProperties())
 
   inspect: ->
     {

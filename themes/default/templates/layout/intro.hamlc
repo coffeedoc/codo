@@ -1,41 +1,48 @@
-#base{ data: { path: @path }}
+#base{data: {path: @path}}
 #header
   #menu
-    - if @breadcrumbs.length isnt 0
+    - if @breadcrumbs?.length > 0
       - current = @breadcrumbs.pop()
       - for breadcrumb in @breadcrumbs
         - if breadcrumb.href
-          - if breadcrumb.target
-            %a{ href: breadcrumb.href, title: breadcrumb.name, target: breadcrumb.target }= breadcrumb.name
-          - else
-            %a{ href: breadcrumb.href, title: breadcrumb.name }= breadcrumb.name
+          %a{href: "#{@path}#{breadcrumb.href}", title: breadcrumb.title}
+            = breadcrumb.title
         - else
-          %span.title= breadcrumb.name
+          %span.title= breadcrumb.title
         &raquo;
-      %span.title= current.name
+      %span.title= current.title
 
     %nav
       %ul
         %li.noframes
           != surround '(', ')', ->
-            %a.noframes{ href: '#' }> no frames
+            %a.noframes{href: '#'}> no frames
 
     #search
-      - if @classCount isnt 0
-        %a#class_list_link{ href: "#{ @path }class_list.html" } Classes
-      - if @mixinCount isnt 0
-        %a#mixin_list_link{ href: "#{ @path }mixin_list.html" } Mixins
-      - if @fileCount isnt 0
-        %a#file_list_link{ href: "#{ @path }file_list.html" } Files
-      - if @methodCount isnt 0
-        %a#method_list_link{ href: "#{ @path }method_list.html" } Methods
-      - if @extraCount isnt 0
-        %a#extra_list_link{ href: "#{ @path }extra_list.html" } Extras
+      - if @environment.allClasses().length > 0
+        %a#class_list_link{href: "#{@path}class_list.html"}
+          Classes
+
+      - if @environment.allMixins().length > 0
+        %a#mixin_list_link{href: "#{@path}mixin_list.html"}
+          Mixins
+
+      - if @environment.allFiles().length > 0
+        %a#file_list_link{href: "#{@path}file_list.html"}
+          Files
+
+      - if @environment.allMethods().length > 0
+        %a#method_list_link{href: "#{@path}method_list.html"}
+          Methods
+
+      - if @environment.allExtras().length > 0
+        %a#extra_list_link{href: "#{@path}extra_list.html"}
+          Extras
 
   %iframe#search_frame
 
   #fuzzySearch
-    %input{ type: 'text' }
+    %input{type: 'text'}
     %ol
 
   #help

@@ -24,6 +24,9 @@ module.exports = class Mixin extends require('../entity')
     @documentation = @node.documentation
     @methods       = []
     @variables     = []
+    @inclusions    = []
+    @extensions    = []
+    @concerns      = []
 
     for property in @node.value.base.properties
       # Recognize assigned code on the mixin
@@ -32,6 +35,10 @@ module.exports = class Mixin extends require('../entity')
     if @concern
       @classMethods = []
       @instanceMethods = []
+
+    name = @name.split('.')
+    @basename  = name.pop()
+    @namespace = name.join('.')
 
   linkify: ->
     super
@@ -57,34 +64,46 @@ module.exports = class Mixin extends require('../entity')
           #   foo: ->
           container.push entity if entity instanceof Method
 
-  effectiveMethods: (type) ->
-    methods = []
+  aggregateEffectiveMethods: (kind) ->
+    methods   = []
+    overrides = {}
+
+    overrides.kind = kind if kind?
 
     for method in @methods
-      methods.push(MetaMethod.fromMethodEntity method, type: type)
+      methods.push(MetaMethod.fromMethodEntity method, overrides)
 
     if @documentation.methods
       for method in @documentation.methods
-        methods.push(MetaMethod.fromDocumentationMethod method, type: type)
+        methods.push(MetaMethod.fromDocumentationMethod method, overrides)
 
     methods
+
+  effectiveMethods: ->
+    @_effectiveMethods ||= @aggregateEffectiveMethods()
 
   effectiveInclusionMethods: ->
-    @effectiveMethods('dynamic')
+    @_effectiveInclusionMethods ||= @aggregateEffectiveMethods('dynamic')
 
   effectiveExtensionMethods: ->
-    @effectiveMethods('static')
+    @_effectiveExtensionMethods ||= @aggregateEffectiveMethods('static')
 
   effectiveConcernMethods: ->
-    methods = []
+    return @_effectiveConcernMethods if @_effectiveConcernMethods?
+
+    @_effectiveConcernMethods = []
 
     for method in @classMethods
-      methods.push(MetaMethod.fromMethodEntity method, type: 'static')
+      @_effectiveConcernMethods.push(MetaMethod.fromMethodEntity method, kind: 'static')
 
     for method in @instanceMethods
-      methods.push(MetaMethod.fromMethodEntity method, type: 'dynamic')
+      @_effectiveConcernMethods.push(MetaMethod.fromMethodEntity method, kind: 'dynamic')
 
-    methods
+    if @documentation.methods
+      for method in @documentation.methods
+        @_effectiveConcernMethods.push(MetaMethod.fromDocumentationMethod method)
+
+    @_effectiveConcernMethods
 
   inspect: ->
     {

@@ -1,84 +1,82 @@
 !!!
 %html
-  != @JST['partials/head'](@)
+  != @render 'layout/header'
   %body
-    != @JST['partials/header'](@)
+    != @render 'layout/intro'
 
     #content
       %h1
         Mixin:
-        = @mixinData.mixin.mixinName
+        = @entity.name
 
-        - if @mixinData.doc?.abstract || @mixinData.doc?.abstract is ''
+        - if @entity.documentation?.abstract
           %span.note.title Abstract
 
-        - if @mixinData.doc?.deprecated || @mixinData.doc?.deprecated is ''
+        - if @entity.documentation?.deprecated
           %span.deprecated.note.title Deprecated
 
-        - if @mixinData.mixin.concern
+        - if @entity.concern
           %span.note.concern Concern
 
       %table.box
         %tr
           %td Defined in:
-          %td= @mixinData.file
+          %td= @entity.file.path
 
-        - unless @underscore.isEmpty @extendedIn
+        - if @entity.extensions.length > 0
           %tr
             %td Extended in:
             %td
-              - for clazz in @extendedIn
-                - if clazz is @underscore.last @extendedIn
-                  %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
-                - else
-                  != succeed ',', ->
-                    %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
+              - for klass in @entity.extensions
+                %a{href: @pathFor('class', klass, @path)}= klass.name
 
-        - unless @underscore.isEmpty @includedIn
+        - if @entity.inclusions.length > 0
           %tr
             %td Included in:
             %td
-              - for clazz in @includedIn
-                - if clazz is @underscore.last @includedIn
-                  %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
-                - else
-                  != succeed ',', ->
-                    %a{ href: "#{ @path }classes/#{ clazz.replace(/\./g, '/') }.html"}= clazz
+              - for klass in @entity.inclusions
+                %a{href: @pathFor('class', klass, @path)}= klass.name
 
-      - if @mixinData.doc?.comment
+        - if @entity.concerns.length > 0
+          %tr
+            %td Concerned in:
+            %td
+              - for klass in @entity.concerns
+                %a{href: @pathFor('class', klass, @path)}= klass.name
+
+
+      - if @entity.documentation?.comment
         %h2 Overview
 
-        != @JST['partials/doc']({ doc: @mixinData.doc, type: 'mixin', path: @path, referencer: @referencer })
+        != @render 'partials/documentation', documentation: @entity.documentation, kind: 'mixin'
 
-      - if @mixinData.mixin.concern
+      - if @entity.concern
 
-        - classMethods = @underscore.filter @methods, (m) -> m.type is 'class'
-        - if classMethods.length isnt 0
+        - staticMethods  = @entity.effectiveConcernMethods().filter (m) -> m.kind == 'static'
+        - dynamicMethods = @entity.effectiveConcernMethods().filter (m) -> m.kind == 'dynamic'
+
+        - if staticMethods.length > 0
           %h2 Class Method Summary
-          != @JST['partials/method_summary']({ methods: classMethods })
+          != @render 'partials/method_summary', methods: staticMethods
 
-        - instanceMethods = @underscore.filter @methods, (m) -> m.type is 'instance'
-        - if instanceMethods.length isnt 0
+        - if dynamicMethods.length > 0
           %h2 Instance Method Summary
-          != @JST['partials/method_summary']({ methods: instanceMethods })
+          != @render 'partials/method_summary', methods: dynamicMethods
 
-        - if classMethods.length isnt 0
+        - if staticMethods.length > 0
           %h2 Class Method Details
-          != @JST['partials/method_list']({ methods: classMethods, parent: @ })
+          != @render 'partials/method_list', methods: staticMethods
 
-        - if instanceMethods.length isnt 0
+        - if dynamicMethods.length > 0
           %h2 Instance Method Details
-          != @JST['partials/method_list']({ methods: instanceMethods, parent: @ })
+          != @render 'partials/method_list', methods: dynamicMethods
 
       - else
-        - if @methods.length isnt 0
+        - if @entity.effectiveMethods().length > 0
           %h2 Method Summary
+          != @render 'partials/method_summary', methods: @entity.effectiveMethods()
 
-          != @JST['partials/method_summary']({ methods: @methods })
-
-        - if @methods.length isnt 0
           %h2 Method Details
+          != @render 'partials/method_list', methods: @entity.effectiveMethods()
 
-          != @JST['partials/method_list']({ methods: @methods, parent: @ })
-
-    != @JST['partials/footer'](@)
+    != @render 'layout/footer'

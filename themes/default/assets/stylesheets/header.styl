@@ -1,5 +1,3 @@
-@import "compass";
-
 #menu {
   font-size: 1.3em;
   color: #bbb;
@@ -37,7 +35,12 @@
     font-size: 0.7em;
 
     ul {
-      @include inline-list;
+      list-style-type: none;
+      &, & li {
+        margin: 0px;
+        padding: 0px;
+        display: inline;
+      }
       margin: 4px !important;
     }
 
@@ -51,9 +54,9 @@
     margin-top: -3px;
 
     a:link, a:visited {
-      @include box-shadow(#ddd -1px 1px 3px);
-      @include border-bottom-left-radius(3px);
-      @include border-bottom-right-radius(3px);
+      box-shadow: #ddd -1px 1px 3px;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
 
       display: block;
       float: left;
@@ -74,8 +77,8 @@
     }
 
     a.active {
-      @include border-top-left-radius(5px);
-      @include border-top-right-radius(5px);
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
 
       padding-bottom: 20px;
 
@@ -106,7 +109,7 @@ body.noframes #header li.noframes {
 }
 
 #search_frame {
-  @include box-shadow(#aaa -7px 5px 25px);
+  box-shadow: #aaa -7px 5px 25px;
 
   display: none;
   position: absolute;

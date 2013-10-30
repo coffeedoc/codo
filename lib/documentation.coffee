@@ -33,34 +33,34 @@ module.exports = class Documentation
           description: returns[1]
 
       else if throws = /^@throw\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
-        @throws or= []
+        @throws ?= []
         @throws.push
           type: throws[1]
           description: throws[2]
 
       else if throws = /^@throw\s+(.+)/i.exec line
-        @throws or= []
+        @throws ?= []
         @throws.push
           type: '?'
           description: throws[1]
 
       else if param = /^@param\s+([^ ]+)\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
-        @params or= []
+        @params ?= []
         @params.push
           type: param[2]
           name: param[1]
           description: param[3]
 
       else if param = /^@param\s+[\[\{](.+?)[\]\}]\s+([^ ]+)(?:\s+(.+))?/i.exec line
-        @params or= []
+        @params ?= []
         @params.push
           type: param[1]
           name: param[2]
           description: param[3]
 
       else if option = /^@option\s+([^ ]+)\s+[\[\{](.+?)[\]\}]\s+([^ ]+)(?:\s+(.+))?/i.exec line
-        @paramsOptions or= {}
-        @paramsOptions[option[1]] or= []
+        @paramsOptions ?= {}
+        @paramsOptions[option[1]] ?= []
 
         @paramsOptions[option[1]].push
           type: option[2]
@@ -68,8 +68,8 @@ module.exports = class Documentation
           description: option[4]
 
       else if option = /^@option\s+([^ ]+)\s+([^ ]+)\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
-        @paramsOptions or= {}
-        @paramsOptions[option[1]] or= []
+        @paramsOptions ?= {}
+        @paramsOptions[option[1]] ?= []
 
         @paramsOptions[option[1]].push
           type: option[3]
@@ -77,25 +77,25 @@ module.exports = class Documentation
           description: option[4]
 
       else if see = /^@see\s+([^\s]+)(?:\s+(.+))?/i.exec line
-        @see or= []
+        @see ?= []
         @see.push
           reference: see[1]
           label: see[2]
 
       else if author = /^@author\s+(.+)/i.exec line
-        @authors or= []
-        @authors.push author[1]
+        @authors ?= []
+        @authors.push author[1] || ''
 
       else if copyright = /^@copyright\s+(.+)/i.exec line
-        @copyright = copyright[1]
+        @copyright = copyright[1] || ''
 
       else if note = /^@note\s+(.+)/i.exec line
-        @notes or= []
-        @notes.push note[1]
+        @notes ?= []
+        @notes.push note[1] || ''
 
       else if todo = /^@todo\s+(.+)/i.exec line
-        @todos or= []
-        @todos.push todo[1]
+        @todos ?= []
+        @todos.push todo[1] || ''
 
       else if example = /^@example(?:\s+(.+))?/i.exec line
         title = example[1] || ''
@@ -105,39 +105,39 @@ module.exports = class Documentation
           code.push lines.shift().substring(2)
 
         if code.length isnt 0
-          @examples or= []
+          @examples ?= []
           @examples.push
             title: title
             code: code.join '\n'
 
       else if abstract = /^@abstract(?:\s+(.+))?/i.exec line
-        @abstract = abstract[1]
+        @abstract = abstract[1] || ''
 
       else if /^@private/.exec line
         @private = true
 
       else if since = /^@since\s+(.+)/i.exec line
-        @since = since[1]
+        @since = since[1] || ''
 
       else if version = /^@version\s+(.+)/i.exec line
-        @version = version[1]
+        @version = version[1] || ''
 
       else if deprecated = /^@deprecated\s+(.*)/i.exec line
-        @deprecated = deprecated[1]
+        @deprecated = deprecated[1] || ''
 
       else if mixin = /^@mixin/i.exec line
         @mixin = true
 
       else if concern = /^@concern\s+(.+)/i.exec line
-        @concerns or= []
+        @concerns ?= []
         @concerns.push concern[1]
 
       else if include = /^@include\s+(.+)/i.exec line
-        @includes or= []
+        @includes ?= []
         @includes.push include[1]
 
       else if extend = /^@extend\s+(.+)/i.exec line
-        @extends or= []
+        @extends ?= []
         @extends.push extend[1]
 
       else if overload = /^@overload\s+(.+)/i.exec line
@@ -148,18 +148,14 @@ module.exports = class Documentation
           innerComment.push lines.shift().substring(2)
 
         if innerComment.length isnt 0
-          @overloads or= []
+          @overloads ?= []
 
           doc = {}
           @parseTags.call doc, innerComment
 
           @overloads.push
             signature: signature
-            comment: doc.comment.trim()
-            summary: doc.summary.trim()
-            params: doc.params
-            options: doc.paramsOptions
-            returns: doc.returns
+            documentation: doc
 
       else if method = /^@method\s+(.+)/i.exec line
         signature = method[1]
@@ -169,29 +165,14 @@ module.exports = class Documentation
           innerComment.push lines.shift().substring(2)
 
         if innerComment.length isnt 0
-          @methods or= []
+          @methods ?= []
 
           doc = {}
           @parseTags.call doc, innerComment
 
           @methods.push
             signature: signature
-            comment: doc.comment
-            summary: doc.summary
-            params: doc.params
-            options: doc.paramsOptions
-            private: doc.private
-            abstract: doc.abstract
-            deprecated: doc.deprecated
-            version: doc.version
-            since: doc.since
-            see: doc.see
-            returns: doc.returns
-            notes: doc.notes
-            todos: doc.todos
-            examples: doc.examples
-            authors: doc.authors
-
+            documentation: doc
       else
         comment.push line
 
@@ -201,8 +182,6 @@ module.exports = class Documentation
     sentence = /((?:.|\n)*?[.#][\s$])/.exec(text)
     sentence = sentence[1].replace(/\s*#\s*$/, '') if sentence
     @summary = (sentence || text || '').trim()
-
-  linkify: ->
 
   inspect: ->
     {

@@ -44,7 +44,9 @@
     "mkdirp": ">= 0.1.0",
     "connect": ">= 0.1.0",
     "async": ">= 0.1.22",
-    "mincer": "~0.5.11"
+    "mincer": "~0.5.11",
+    "stylus": "~0.38.0",
+    "nib": "~1.0.0"
   },
   "devDependencies": {
     "jasmine-node": ">= 1.0.13",

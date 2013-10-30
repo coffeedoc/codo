@@ -9,13 +9,15 @@ module.exports = class Method
   @fromMethodEntity: (entity, overrides={}) ->
     options =
       name: entity.name
-      type: entity.type
+      kind: entity.kind || ''
+      bound: entity.bound
       parameters: entity.parameters.map (x) -> x.toString()
+      documentation: entity.documentation
 
     new @(@override options, overrides)
 
   @fromDocumentationMethod: (entry, overrides={}) ->
-    type = switch entry.signature[0]
+    kind = switch entry.signature[0]
       when '#'
         'dynamic'
       when '.'
@@ -23,10 +25,50 @@ module.exports = class Method
 
     options =
       name: entry.signature.replace /^.([^\(]+)\(.+/, '$1'
-      type: type
+      kind: kind || ''
       parameters: Parameter.fromSignature(entry.signature).map (x) -> x.toString()
+      documentation: entry.documentation
 
     new @(@override options, overrides)
 
   constructor: (options={}) ->
     @constructor.override @, options
+
+  effectiveOverloads: ->
+    return @_effectiveOverloads if @_effectiveOverloads?
+
+    @_effectiveOverloads = []
+
+    if @documentation?.overloads
+      for overload in @documentation.overloads
+        @_effectiveOverloads.push(Method.fromDocumentationMethod overload)
+    else
+      @_effectiveOverloads.push(@)
+
+    @_effectiveOverloads
+
+  kindSignature: ->
+    switch @kind
+      when 'dynamic'
+        '#'
+      when 'static'
+        '.'
+      else
+        '~'
+
+  shortSignature: ->
+    @kindSignature() + @name
+
+  typeSignature: ->
+    '('+(@documentation?.returns || 'void')+')'
+
+  paramsSignature: ->
+    '('+@parameters.join(', ')+')'
+
+  inspect: ->
+    {
+      name: @name,
+      kind: @kind,
+      bound: @bound,
+      parameters: @parameters
+    }

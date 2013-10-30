@@ -1,0 +1,73 @@
+!!!
+%html
+  != @render 'layout/header'
+  %body
+    != @render 'layout/intro'
+
+    #content
+      %h1.noborder.title= @title
+
+      #listing
+        %h1.alphaindex Alphabetical Index
+
+        %h2 Extra File Listing
+
+        - if @environment.allExtras().length > 0
+          %ul#files
+            - for extra in @environment.allExtras()
+              %li
+                %a{href: @pathFor('extra', extra, @path), title: extra}
+                  = extra
+
+        - if @environment.allClasses().length > 0
+          %h2 Class Listing A-Z
+
+          .index
+            - for char, classes of @classes
+              %ul
+                %li.letter= char
+                %ul
+                  - for klass in classes
+                    %li
+                      %a{href: @pathFor('class', klass, @path)}
+                        = klass.basename
+
+                      - if klass.namespace
+                        %small
+                          = surround '(', ')', -> klass.namespace
+
+        - if @environment.allMixins().length > 0
+          %h2 Mixins Listing A-Z
+
+          .index
+            - for char, mixins of @mixins
+              %ul
+                %li.letter= char
+                %ul
+                  - for mixin in mixins
+                    %li
+                      %a{href: @pathFor('mixin', mixin, @path)}
+                        = mixin.basename
+
+                      - if mixin.namespace
+                        %small
+                          = surround '(', ')', -> mixin.namespace
+
+        - if @environment.allFiles().length > 0
+          %h2 File Listing A-Z
+
+          .index
+            - for char, files of @files
+              %ul
+                %li.letter= char
+                %ul
+                  - for file in files
+                    %li
+                      %a{href: @pathFor('file', file, @path)}
+                        = file.basename
+
+                      - if file.dirname
+                        %small
+                          = surround '(', ')', -> file.dirname
+
+    != @render 'layout/footer'

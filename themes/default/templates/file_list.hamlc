@@ -1,28 +1,29 @@
 !!!
 %html
-  != @JST['partials/head'](@)
+  != @render 'layout/header'
   %body.list
     #content.tree.list
       %h1.full_list_header File List
 
-      != @JST['partials/list_nav'](@)
+      != @render 'partials/list_nav'
 
       #search
         Search:
         %input{ type: 'text' }
 
-      - createLevel = (files) ->
+      - createLevel = (tree) =>
         %ul
-          - for file in files
+          - for entry in tree
             %li
-              - if file.href
-                %a{ href: file.href, target: 'main' }= file.name
+              - if entry.entity
+                %a{href: @pathFor('file', entry.entity, @path), target: 'main'}
+                  = entry.entity.basename
                 %small.namespace
-                  = file.path
+                  = entry.entity.dirname
               - else
                 %span
-                  = file.name
+                  = entry.name
 
-            = createLevel(file.children) if file.children
+            = createLevel(entry.children) if entry.children.length > 0
 
-      = createLevel @files
+      = createLevel @tree

@@ -1,14 +1,14 @@
 %head
-  %meta{ charset: 'UTF-8' }
-  %title= @title
-  %link{ rel: 'stylesheet', href: "#{ @path }assets/codo.css", type: 'text/css' }
-  %script{ src: "#{ @path }assets/codo.js" }
-  %script{ src: "#{ @path }assets/search_data.js" }
+  %meta{charset: 'UTF-8'}
+  %title= @options.title
 
-  - if @analytics
+  %script{src: "#{@path}javascript/application.js"}
+  %link{rel: 'stylesheet', href: "#{@path}stylesheets/application.css", type: 'text/css'}
+
+  - if @options.analytics
     :javascript
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', '#{ @analytics }']);
+      _gaq.push(['_setAccount', '#{@analytics}']);
       _gaq.push(['_trackPageview']);
 
       (function() {

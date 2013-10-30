@@ -1,0 +1,4 @@
+= @method.kindSignature()
+= @method.typeSignature()
+%b= @method.name
+%span>= @method.paramsSignature()

@@ -6,7 +6,7 @@ beforeEach ->
   @addMatchers
     toTraverseTo: (expected) ->
       environment = new Environment
-      parser      = environment.read(@actual)
+      parser      = environment.readCoffee(@actual)
 
       environment.linkify()
 
@@ -25,6 +25,22 @@ beforeEach ->
       expected == actual
 
 describe 'Environment', ->
+
+  describe 'Extras', ->
+    beforeEach -> @environment = new Environment
+
+    it 'reads plain text', ->
+      @environment.readExtra 'spec/_templates/extras/README'
+      expect(@environment.extras).toEqual({
+        'spec/_templates/extras/README': 'This is a test README'
+      })
+
+    it 'reads markdown', ->
+      @environment.readExtra 'spec/_templates/extras/README.md', true
+      expect(@environment.extras).toEqual({
+        'spec/_templates/extras/README.md': "<h1>This is a test README</h1>\n"
+      })
+      expect(@environment.readme).toEqual 'spec/_templates/extras/README.md'
 
   describe 'Class', ->
     for filename in walkdir.sync './spec/_templates/classes' when filename.match /\.coffee$/

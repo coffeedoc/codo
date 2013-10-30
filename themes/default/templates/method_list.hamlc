@@ -1,20 +1,20 @@
 !!!
 %html
-  != @JST['partials/head'](@)
+  != @render 'layout/header'
   %body.list
     #content.list
       %h1.full_list_header Method List
 
-      != @JST['partials/list_nav'](@)
+      != @render 'partials/list_nav'
 
       #search
         Search:
         %input{ type: 'text' }
 
       %ul
-        - for method in @methods
-          %li{ deprecated: if method.deprecated then true else false }
-            %a{ href: method.href, target: 'main', title: method.name }
-              = "#{ if method.type is 'instance' then '#' else '.' }#{ method.name }"
+        - for method in @environment.allMethods()
+          %li{deprecated: if method.documentation?.deprecated then true else false}
+            %a{href: "#{@pathFor(method.owner, undefined, @path)}##{method.entity.name}-#{method.entity.kind}", target: 'main', title: method.entity.name}
+              = method.entity.shortSignature()              
             %small
-              = surround '(', ')', -> method.classname
+              = surround '(', ')', -> method.owner.name

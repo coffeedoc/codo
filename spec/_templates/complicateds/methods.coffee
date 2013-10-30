@@ -6,6 +6,7 @@
 #   Sets a value
 #
 class Class
+  z: ->
 
 # @mixin
 Mixin =
@@ -18,3 +19,9 @@ Concern =
 
   InstanceMethods:
     cd: ->
+
+class Subclass extends Class
+  x: ->
+
+class Subsubclass extends Subclass
+  y: ->

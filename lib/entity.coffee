@@ -6,7 +6,6 @@ module.exports = class Entity
     true
 
   linkify: ->
-    @documentation?.linkify()
 
   fetchName: ->
     name = [@node.variable.base.value]
