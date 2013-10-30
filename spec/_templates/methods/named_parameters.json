@@ -11,7 +11,8 @@
       {
         "file": "spec/_templates/methods/named_parameters.coffee",
         "name": "constructor",
-        "type": "dynamic",
+        "bound": false,
+        "kind": "dynamic",
         "parameters": [
           {
             "name": "{cat, dog, eel}",
@@ -35,7 +36,8 @@
       {
         "file": "spec/_templates/methods/named_parameters.coffee",
         "name": "burp",
-        "type": "dynamic",
+        "bound": false,
+        "kind": "dynamic",
         "parameters": [
           {
             "name": "{a, b, c}",
@@ -67,7 +69,8 @@
   {
     "file": "spec/_templates/methods/named_parameters.coffee",
     "name": "constructor",
-    "type": "dynamic",
+    "bound": false,
+    "kind": "dynamic",
     "parameters": [
       {
         "name": "{cat, dog, eel}",
@@ -91,7 +94,8 @@
   {
     "file": "spec/_templates/methods/named_parameters.coffee",
     "name": "burp",
-    "type": "dynamic",
+    "bound": false,
+    "kind": "dynamic",
     "parameters": [
       {
         "name": "{a, b, c}",

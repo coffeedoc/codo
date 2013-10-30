@@ -5,6 +5,7 @@
       {
         "file": "spec/_templates/files/non_class_file.coffee",
         "name": "hello",
+        "bound": false,
         "documentation": {
           "comment": "Says hello to a person",
           "summary": "Says hello to a person",
@@ -26,6 +27,7 @@
       {
         "file": "spec/_templates/files/non_class_file.coffee",
         "name": "bye",
+        "bound": false,
         "documentation": {
           "comment": "Says bye to a person",
           "summary": "Says bye to a person",
@@ -47,6 +49,7 @@
       {
         "file": "spec/_templates/files/non_class_file.coffee",
         "name": "sayHi",
+        "bound": false,
         "documentation": {
           "comment": "Say hi to a person",
           "summary": "Say hi to a person",
@@ -92,6 +95,7 @@
   {
     "file": "spec/_templates/files/non_class_file.coffee",
     "name": "hello",
+    "bound": false,
     "documentation": {
       "comment": "Says hello to a person",
       "summary": "Says hello to a person",
@@ -113,6 +117,7 @@
   {
     "file": "spec/_templates/files/non_class_file.coffee",
     "name": "bye",
+    "bound": false,
     "documentation": {
       "comment": "Says bye to a person",
       "summary": "Says bye to a person",
@@ -134,6 +139,7 @@
   {
     "file": "spec/_templates/files/non_class_file.coffee",
     "name": "sayHi",
+    "bound": false,
     "documentation": {
       "comment": "Say hi to a person",
       "summary": "Say hi to a person",

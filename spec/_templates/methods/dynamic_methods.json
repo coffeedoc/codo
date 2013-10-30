@@ -12,70 +12,76 @@
       "methods": [
         {
           "signature": "#set(key, value)",
-          "comment": "Sets a value",
-          "summary": "Sets a value",
-          "params": [
-            {
-              "type": "String",
-              "name": "key",
-              "description": "describe key param"
-            },
-            {
-              "type": "Object",
-              "name": "value",
-              "description": "describe value param"
-            }
-          ],
-          "options": {
-            "value": [
+          "documentation": {
+            "params": [
               {
                 "type": "String",
-                "name": "string"
-              },
-              {
-                "type": "Integer",
-                "name": "number"
+                "name": "key",
+                "description": "describe key param"
               },
               {
                 "type": "Object",
-                "name": "whatever"
+                "name": "value",
+                "description": "describe value param"
               }
-            ]
+            ],
+            "paramsOptions": {
+              "value": [
+                {
+                  "type": "String",
+                  "name": "string"
+                },
+                {
+                  "type": "Integer",
+                  "name": "number"
+                },
+                {
+                  "type": "Object",
+                  "name": "whatever"
+                }
+              ]
+            },
+            "comment": "Sets a value",
+            "summary": "Sets a value"
           }
         },
         {
           "signature": ".get(key)",
-          "comment": "Gets a value",
-          "summary": "Gets a value",
-          "params": [
-            {
-              "type": "String",
-              "name": "key",
-              "description": "describe key param"
-            }
-          ],
-          "returns": {
-            "type": "Object",
-            "description": "describe value param"
+          "documentation": {
+            "params": [
+              {
+                "type": "String",
+                "name": "key",
+                "description": "describe key param"
+              }
+            ],
+            "returns": {
+              "type": "Object",
+              "description": "describe value param"
+            },
+            "comment": "Gets a value",
+            "summary": "Gets a value"
           }
         },
         {
           "signature": "#delete({key, passion}, foo='bar')",
-          "comment": "Deletes a key from the data.\n\nAnother line",
-          "summary": "Deletes a key from the data.",
-          "params": [
-            {
-              "type": "String",
-              "name": "key",
-              "description": "describe key param"
-            }
-          ],
-          "examples": [
-            {
-              "title": "Delete a key.",
-              "code": "emv = new Example.Methods.Virtual\nemv.set 'foo', 'bar'\nval = emv.get 'foo'\n\n# now, proclaim you're done with foo.\nemv.delete 'foo'"
-            }
-          ]
+          "documentation": {
+            "params": [
+              {
+                "type": "String",
+                "name": "key",
+                "description": "describe key param"
+              }
+            ],
+            "examples": [
+              {
+                "title": "Delete a key.",
+                "code": "emv = new Example.Methods.Virtual\nemv.set 'foo', 'bar'\nval = emv.get 'foo'\n\n# now, proclaim you're done with foo.\nemv.delete 'foo'"
+              }
+            ],
+            "comment": "Deletes a key from the data.\n\nAnother line",
+            "summary": "Deletes a key from the data."
+          }
         }
       ]
     },

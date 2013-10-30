@@ -7,13 +7,16 @@ describe 'Mixin', ->
 
     it 'get listed for inclusion', ->
       environment = Environment.read('spec/_templates/mixins/mixin_methods.coffee')
-      expect(environment.entities[1].effectiveInclusionMethods()).toEqual(
+      methods     = environment.entities[1].effectiveInclusionMethods().map (m) -> m.inspect()
+
+      expect(methods).toEqual(
         [
-          { name: 'helper', type: 'dynamic', parameters: [] },
-          { name: 'another', type: 'dynamic', parameters: [ 'a', 'b' ] },
+          { name: 'helper', kind: 'dynamic', bound: false, parameters: [] },
+          { name: 'another', kind: 'dynamic', bound: false, parameters: [ 'a', 'b' ] },
           {
             name: 'withDefault',
-            type: 'dynamic',
+            kind: 'dynamic',
+            bound: false,
             parameters: [
               'a = 2',
               'c',
@@ -25,22 +28,26 @@ describe 'Mixin', ->
           },
           {
             name: 'nowWithSpalt',
-            type: 'dynamic',
+            kind: 'dynamic',
+            bound: false,
             parameters: [ 'foo', 'bar...' ]
           },
-          { name: 'set', type: 'dynamic', parameters: [ 'key', 'value' ] }
+          { name: 'set', kind: 'dynamic', parameters: [ 'key', 'value' ] }
         ]
       )
 
     it 'get listed for extension', ->
       environment = Environment.read('spec/_templates/mixins/mixin_methods.coffee')
-      expect(environment.entities[1].effectiveExtensionMethods()).toEqual(
+      methods     = environment.entities[1].effectiveExtensionMethods().map (m) -> m.inspect()
+
+      expect(methods).toEqual(
         [
-          { name: 'helper', type: 'static', parameters: [] },
-          { name: 'another', type: 'static', parameters: [ 'a', 'b' ] },
+          { name: 'helper', kind: 'static', bound: false, parameters: [] },
+          { name: 'another', kind: 'static', bound: false, parameters: [ 'a', 'b' ] },
           {
             name: 'withDefault',
-            type: 'static',
+            kind: 'static',
+            bound: false,
             parameters: [
               'a = 2',
               'c',
@@ -52,19 +59,22 @@ describe 'Mixin', ->
           },
           {
             name: 'nowWithSpalt',
-            type: 'static',
+            kind: 'static',
+            bound: false,
             parameters: [ 'foo', 'bar...' ]
           },
-          { name: 'set', type: 'static', parameters: [ 'key', 'value' ] }
+          { name: 'set', kind: 'static', parameters: [ 'key', 'value' ] }
         ]
       )
 
     it 'get listed for concern', ->
       environment = Environment.read('spec/_templates/mixins/concern.coffee')
-      expect(environment.entities[1].effectiveConcernMethods()).toEqual(
+      methods     = environment.entities[1].effectiveConcernMethods().map (m) -> m.inspect()
+
+      expect(methods).toEqual(
         [
-          { name: 'a', type: 'static', parameters: [ 'a', 'b', 'c' ] },
-          { name: 'z', type: 'static', parameters: [ 'x', 'y', 'z' ] },
-          { name: 'hi', type: 'dynamic', parameters: [ 'to' ] },
-          { name: 'goodbye', type: 'dynamic', parameters: [ 'to' ] } ]
+          { name: 'a', kind: 'static', bound: false, parameters: [ 'a', 'b', 'c' ] },
+          { name: 'z', kind: 'static', bound: false, parameters: [ 'x', 'y', 'z' ] },
+          { name: 'hi', kind: 'dynamic', bound: false, parameters: [ 'to' ] },
+          { name: 'goodbye', kind: 'dynamic', bound: false, parameters: [ 'to' ] } ]
       )

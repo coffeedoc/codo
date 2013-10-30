@@ -22,4 +22,3 @@ describe 'Theme', ->
     environment.linkify()
 
     Theme.compile(environment)
-    console.log @destination

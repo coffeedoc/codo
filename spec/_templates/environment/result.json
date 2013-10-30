@@ -29,11 +29,13 @@
           {
             "file": "spec/_templates/environment/mixin.coffee",
             "name": "look",
+            "bound": false,
             "parameters": []
           },
           {
             "file": "spec/_templates/environment/mixin.coffee",
             "name": "feel",
+            "bound": false,
             "parameters": []
           }
         ],
@@ -59,11 +61,13 @@
       {
         "file": "spec/_templates/environment/mixin.coffee",
         "name": "look",
+        "bound": false,
         "parameters": []
       },
       {
         "file": "spec/_templates/environment/mixin.coffee",
         "name": "feel",
+        "bound": false,
         "parameters": []
       }
     ],
@@ -72,11 +76,13 @@
   {
     "file": "spec/_templates/environment/mixin.coffee",
     "name": "look",
+    "bound": false,
     "parameters": []
   },
   {
     "file": "spec/_templates/environment/mixin.coffee",
     "name": "feel",
+    "bound": false,
     "parameters": []
   }
 ]

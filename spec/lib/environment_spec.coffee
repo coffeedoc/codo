@@ -38,7 +38,7 @@ describe 'Environment', ->
     it 'reads markdown', ->
       @environment.readExtra 'spec/_templates/extras/README.md', true
       expect(@environment.extras).toEqual({
-        'spec/_templates/extras/README.md': "<h1>This is a test README</h1>\n"
+        'spec/_templates/extras/README.md': "<h1>This is a test README</h1><p>We even have some content here. <a href=\"http://github.com\">With links!</a></p><h2>And nested menus</h2><p>And even more content</p><h3>Actually...</h3><p>I feel terribly sick writing this. It&#39;s like talking to myself.</p>"
       })
       expect(@environment.readme).toEqual 'spec/_templates/extras/README.md'
 

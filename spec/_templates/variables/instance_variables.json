@@ -13,22 +13,19 @@
         "file": "spec/_templates/variables/instance_variables.coffee",
         "name": "test",
         "constant": false,
-        "value": "'Hi'",
-        "type": "dynamic"
+        "value": "'Hi'"
       },
       {
         "file": "spec/_templates/variables/instance_variables.coffee",
         "name": "another",
         "constant": false,
-        "value": "['a', 'b']",
-        "type": "dynamic"
+        "value": "['a', 'b']"
       },
       {
         "file": "spec/_templates/variables/instance_variables.coffee",
         "name": "more",
         "constant": false,
-        "value": "{\n  a: 1,\n  b: 2\n}",
-        "type": "dynamic"
+        "value": "{\n  a: 1,\n  b: 2\n}"
       }
     ],
     "properties": [],
@@ -40,22 +37,19 @@
     "file": "spec/_templates/variables/instance_variables.coffee",
     "name": "test",
     "constant": false,
-    "value": "'Hi'",
-    "type": "dynamic"
+    "value": "'Hi'"
   },
   {
     "file": "spec/_templates/variables/instance_variables.coffee",
     "name": "another",
     "constant": false,
-    "value": "['a', 'b']",
-    "type": "dynamic"
+    "value": "['a', 'b']"
   },
   {
     "file": "spec/_templates/variables/instance_variables.coffee",
     "name": "more",
     "constant": false,
-    "value": "{\n  a: 1,\n  b: 2\n}",
-    "type": "dynamic"
+    "value": "{\n  a: 1,\n  b: 2\n}"
   },
   {
     "file": "spec/_templates/variables/instance_variables.coffee",

@@ -15,11 +15,13 @@
       {
         "file": "spec/_templates/mixins/include_mixin.coffee",
         "name": "hello",
+        "bound": false,
         "parameters": []
       },
       {
         "file": "spec/_templates/mixins/include_mixin.coffee",
         "name": "goodbye",
+        "bound": false,
         "parameters": []
       }
     ],
@@ -28,11 +30,13 @@
   {
     "file": "spec/_templates/mixins/include_mixin.coffee",
     "name": "hello",
+    "bound": false,
     "parameters": []
   },
   {
     "file": "spec/_templates/mixins/include_mixin.coffee",
     "name": "goodbye",
+    "bound": false,
     "parameters": []
   },
   {
@@ -60,11 +64,13 @@
           {
             "file": "spec/_templates/mixins/include_mixin.coffee",
             "name": "hello",
+            "bound": false,
             "parameters": []
           },
           {
             "file": "spec/_templates/mixins/include_mixin.coffee",
             "name": "goodbye",
+            "bound": false,
             "parameters": []
           }
         ],

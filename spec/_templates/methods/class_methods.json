@@ -11,15 +11,17 @@
       {
         "file": "spec/_templates/methods/class_methods.coffee",
         "name": "helper",
+        "bound": false,
         "selfish": true,
-        "type": "static",
+        "kind": "static",
         "parameters": []
       },
       {
         "file": "spec/_templates/methods/class_methods.coffee",
         "name": "another",
+        "bound": false,
         "selfish": true,
-        "type": "static",
+        "kind": "static",
         "parameters": [
           {
             "name": "a",
@@ -34,8 +36,9 @@
       {
         "file": "spec/_templates/methods/class_methods.coffee",
         "name": "withDefault",
+        "bound": false,
         "selfish": true,
-        "type": "static",
+        "kind": "static",
         "parameters": [
           {
             "name": "a",
@@ -70,8 +73,9 @@
       {
         "file": "spec/_templates/methods/class_methods.coffee",
         "name": "nowWithSpalt",
+        "bound": false,
         "selfish": true,
-        "type": "static",
+        "kind": "static",
         "parameters": [
           {
             "name": "foo",
@@ -86,8 +90,9 @@
       {
         "file": "spec/_templates/methods/class_methods.coffee",
         "name": "andSoDoesThis",
+        "bound": false,
         "selfish": true,
-        "type": "static",
+        "kind": "static",
         "parameters": [
           {
             "name": "foo",
@@ -109,15 +114,17 @@
   {
     "file": "spec/_templates/methods/class_methods.coffee",
     "name": "helper",
+    "bound": false,
     "selfish": true,
-    "type": "static",
+    "kind": "static",
     "parameters": []
   },
   {
     "file": "spec/_templates/methods/class_methods.coffee",
     "name": "another",
+    "bound": false,
     "selfish": true,
-    "type": "static",
+    "kind": "static",
     "parameters": [
       {
         "name": "a",
@@ -132,8 +139,9 @@
   {
     "file": "spec/_templates/methods/class_methods.coffee",
     "name": "withDefault",
+    "bound": false,
     "selfish": true,
-    "type": "static",
+    "kind": "static",
     "parameters": [
       {
         "name": "a",
@@ -174,8 +182,9 @@
   {
     "file": "spec/_templates/methods/class_methods.coffee",
     "name": "nowWithSpalt",
+    "bound": false,
     "selfish": true,
-    "type": "static",
+    "kind": "static",
     "parameters": [
       {
         "name": "foo",
@@ -190,8 +199,9 @@
   {
     "file": "spec/_templates/methods/class_methods.coffee",
     "name": "andSoDoesThis",
+    "bound": false,
     "selfish": true,
-    "type": "static",
+    "kind": "static",
     "parameters": [
       {
         "name": "foo",

@@ -15,11 +15,12 @@
       {
         "file": "spec/_templates/properties/properties.coffee",
         "name": "test",
+        "bound": false,
         "documentation": {
           "comment": "This should not be swallowed",
           "summary": "This should not be swallowed"
         },
-        "type": "dynamic",
+        "kind": "dynamic",
         "parameters": []
       }
     ],
@@ -152,6 +153,7 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "get",
+    "bound": true,
     "documentation": {
       "comment": "Language helpers",
       "summary": "Language helpers"
@@ -166,6 +168,7 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "set",
+    "bound": true,
     "parameters": [
       {
         "name": "props",
@@ -187,6 +190,7 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "firstname",
+    "bound": false,
     "parameters": []
   },
   {
@@ -203,6 +207,7 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "firstname",
+    "bound": false,
     "parameters": [
       {
         "name": "_firstname",
@@ -223,6 +228,7 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "lastname",
+    "bound": false,
     "parameters": []
   },
   {
@@ -238,6 +244,7 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "lastname",
+    "bound": false,
     "parameters": [
       {
         "name": "_lastname",
@@ -259,6 +266,7 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "birth",
+    "bound": false,
     "parameters": []
   },
   {
@@ -274,6 +282,7 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "twitter",
+    "bound": false,
     "parameters": []
   },
   {
@@ -290,6 +299,7 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "confession",
+    "bound": false,
     "parameters": [
       {
         "name": "_confession",
@@ -310,6 +320,7 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "email",
+    "bound": false,
     "parameters": [
       {
         "name": "_email",
@@ -320,11 +331,12 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "test",
+    "bound": false,
     "documentation": {
       "comment": "This should not be swallowed",
       "summary": "This should not be swallowed"
     },
-    "type": "dynamic",
+    "kind": "dynamic",
     "parameters": []
   }
 ]

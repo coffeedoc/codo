@@ -12,6 +12,7 @@
       {
         "file": "spec/_templates/methods/method_documentation.coffee",
         "name": "fetchLimit",
+        "bound": false,
         "documentation": {
           "comment": "Should be overloaded to change fetch limit.",
           "summary": "Should be overloaded to change fetch limit.",
@@ -20,12 +21,13 @@
             "description": "Number of items per fetch"
           }
         },
-        "type": "dynamic",
+        "kind": "dynamic",
         "parameters": []
       },
       {
         "file": "spec/_templates/methods/method_documentation.coffee",
         "name": "do",
+        "bound": false,
         "documentation": {
           "comment": "Do it!",
           "summary": "Do it!",
@@ -64,7 +66,7 @@
             }
           ]
         },
-        "type": "dynamic",
+        "kind": "dynamic",
         "parameters": [
           {
             "name": "it",
@@ -83,6 +85,7 @@
       {
         "file": "spec/_templates/methods/method_documentation.coffee",
         "name": "doWithoutSpace",
+        "bound": false,
         "documentation": {
           "comment": "Do it!",
           "summary": "Do it!",
@@ -115,7 +118,7 @@
             "description": "When successful executed"
           }
         },
-        "type": "dynamic",
+        "kind": "dynamic",
         "parameters": [
           {
             "name": "it",
@@ -134,6 +137,7 @@
       {
         "file": "spec/_templates/methods/method_documentation.coffee",
         "name": "lets_do_it",
+        "bound": false,
         "documentation": {
           "comment": "Do it!",
           "summary": "Do it!",
@@ -162,7 +166,7 @@
           }
         },
         "selfish": true,
-        "type": "static",
+        "kind": "static",
         "parameters": [
           {
             "name": "it",
@@ -184,6 +188,7 @@
   {
     "file": "spec/_templates/methods/method_documentation.coffee",
     "name": "fetchLimit",
+    "bound": false,
     "documentation": {
       "comment": "Should be overloaded to change fetch limit.",
       "summary": "Should be overloaded to change fetch limit.",
@@ -192,12 +197,13 @@
         "description": "Number of items per fetch"
       }
     },
-    "type": "dynamic",
+    "kind": "dynamic",
     "parameters": []
   },
   {
     "file": "spec/_templates/methods/method_documentation.coffee",
     "name": "do",
+    "bound": false,
     "documentation": {
       "comment": "Do it!",
       "summary": "Do it!",
@@ -236,7 +242,7 @@
         }
       ]
     },
-    "type": "dynamic",
+    "kind": "dynamic",
     "parameters": [
       {
         "name": "it",
@@ -255,6 +261,7 @@
   {
     "file": "spec/_templates/methods/method_documentation.coffee",
     "name": "doWithoutSpace",
+    "bound": false,
     "documentation": {
       "comment": "Do it!",
       "summary": "Do it!",
@@ -287,7 +294,7 @@
         "description": "When successful executed"
       }
     },
-    "type": "dynamic",
+    "kind": "dynamic",
     "parameters": [
       {
         "name": "it",
@@ -306,6 +313,7 @@
   {
     "file": "spec/_templates/methods/method_documentation.coffee",
     "name": "lets_do_it",
+    "bound": false,
     "documentation": {
       "comment": "Do it!",
       "summary": "Do it!",
@@ -334,7 +342,7 @@
       }
     },
     "selfish": true,
-    "type": "static",
+    "kind": "static",
     "parameters": [
       {
         "name": "it",

@@ -17,6 +17,7 @@
       {
         "file": "spec/_templates/mixins/concern.coffee",
         "name": "a",
+        "bound": false,
         "documentation": {
           "comment": "",
           "summary": "",
@@ -56,6 +57,7 @@
       {
         "file": "spec/_templates/mixins/concern.coffee",
         "name": "z",
+        "bound": false,
         "documentation": {
           "comment": "",
           "summary": "",
@@ -97,6 +99,7 @@
       {
         "file": "spec/_templates/mixins/concern.coffee",
         "name": "hi",
+        "bound": false,
         "documentation": {
           "comment": "Say hi",
           "summary": "Say hi",
@@ -118,6 +121,7 @@
       {
         "file": "spec/_templates/mixins/concern.coffee",
         "name": "goodbye",
+        "bound": false,
         "documentation": {
           "comment": "Say goodbye",
           "summary": "Say goodbye",
@@ -148,6 +152,7 @@
   {
     "file": "spec/_templates/mixins/concern.coffee",
     "name": "a",
+    "bound": false,
     "documentation": {
       "comment": "",
       "summary": "",
@@ -187,6 +192,7 @@
   {
     "file": "spec/_templates/mixins/concern.coffee",
     "name": "z",
+    "bound": false,
     "documentation": {
       "comment": "",
       "summary": "",
@@ -232,6 +238,7 @@
   {
     "file": "spec/_templates/mixins/concern.coffee",
     "name": "hi",
+    "bound": false,
     "documentation": {
       "comment": "Say hi",
       "summary": "Say hi",
@@ -253,6 +260,7 @@
   {
     "file": "spec/_templates/mixins/concern.coffee",
     "name": "goodbye",
+    "bound": false,
     "documentation": {
       "comment": "Say goodbye",
       "summary": "Say goodbye",
@@ -300,6 +308,7 @@
           {
             "file": "spec/_templates/mixins/concern.coffee",
             "name": "a",
+            "bound": false,
             "documentation": {
               "comment": "",
               "summary": "",
@@ -339,6 +348,7 @@
           {
             "file": "spec/_templates/mixins/concern.coffee",
             "name": "z",
+            "bound": false,
             "documentation": {
               "comment": "",
               "summary": "",
@@ -380,6 +390,7 @@
           {
             "file": "spec/_templates/mixins/concern.coffee",
             "name": "hi",
+            "bound": false,
             "documentation": {
               "comment": "Say hi",
               "summary": "Say hi",
@@ -401,6 +412,7 @@
           {
             "file": "spec/_templates/mixins/concern.coffee",
             "name": "goodbye",
+            "bound": false,
             "documentation": {
               "comment": "Say goodbye",
               "summary": "Say goodbye",

@@ -13,35 +13,37 @@
       "methods": [
         {
           "signature": "#set(key, value)",
-          "comment": "Sets a value",
-          "summary": "Sets a value",
-          "params": [
-            {
-              "type": "String",
-              "name": "key",
-              "description": "describe key param"
-            },
-            {
-              "type": "Object",
-              "name": "value",
-              "description": "describe value param"
-            }
-          ],
-          "options": {
-            "value": [
+          "documentation": {
+            "params": [
               {
                 "type": "String",
-                "name": "string"
-              },
-              {
-                "type": "Integer",
-                "name": "number"
+                "name": "key",
+                "description": "describe key param"
               },
               {
                 "type": "Object",
-                "name": "whatever"
+                "name": "value",
+                "description": "describe value param"
               }
-            ]
+            ],
+            "paramsOptions": {
+              "value": [
+                {
+                  "type": "String",
+                  "name": "string"
+                },
+                {
+                  "type": "Integer",
+                  "name": "number"
+                },
+                {
+                  "type": "Object",
+                  "name": "whatever"
+                }
+              ]
+            },
+            "comment": "Sets a value",
+            "summary": "Sets a value"
           }
         }
       ]
@@ -50,11 +52,13 @@
       {
         "file": "spec/_templates/mixins/mixin_methods.coffee",
         "name": "helper",
+        "bound": false,
         "parameters": []
       },
       {
         "file": "spec/_templates/mixins/mixin_methods.coffee",
         "name": "another",
+        "bound": false,
         "parameters": [
           {
             "name": "a",
@@ -69,6 +73,7 @@
       {
         "file": "spec/_templates/mixins/mixin_methods.coffee",
         "name": "withDefault",
+        "bound": false,
         "parameters": [
           {
             "name": "a",
@@ -103,6 +108,7 @@
       {
         "file": "spec/_templates/mixins/mixin_methods.coffee",
         "name": "nowWithSpalt",
+        "bound": false,
         "parameters": [
           {
             "name": "foo",
@@ -120,11 +126,13 @@
   {
     "file": "spec/_templates/mixins/mixin_methods.coffee",
     "name": "helper",
+    "bound": false,
     "parameters": []
   },
   {
     "file": "spec/_templates/mixins/mixin_methods.coffee",
     "name": "another",
+    "bound": false,
     "parameters": [
       {
         "name": "a",
@@ -139,6 +147,7 @@
   {
     "file": "spec/_templates/mixins/mixin_methods.coffee",
     "name": "withDefault",
+    "bound": false,
     "parameters": [
       {
         "name": "a",
@@ -179,6 +188,7 @@
   {
     "file": "spec/_templates/mixins/mixin_methods.coffee",
     "name": "nowWithSpalt",
+    "bound": false,
     "parameters": [
       {
         "name": "foo",

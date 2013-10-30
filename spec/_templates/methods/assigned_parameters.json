@@ -11,7 +11,8 @@
       {
         "file": "spec/_templates/methods/assigned_parameters.coffee",
         "name": "help",
-        "type": "dynamic",
+        "bound": false,
+        "kind": "dynamic",
         "parameters": [
           {
             "name": "me",
@@ -29,7 +30,8 @@
   {
     "file": "spec/_templates/methods/assigned_parameters.coffee",
     "name": "help",
-    "type": "dynamic",
+    "bound": false,
+    "kind": "dynamic",
     "parameters": [
       {
         "name": "me",

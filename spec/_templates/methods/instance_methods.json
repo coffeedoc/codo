@@ -11,13 +11,15 @@
       {
         "file": "spec/_templates/methods/instance_methods.coffee",
         "name": "helper",
-        "type": "dynamic",
+        "bound": false,
+        "kind": "dynamic",
         "parameters": []
       },
       {
         "file": "spec/_templates/methods/instance_methods.coffee",
         "name": "another",
-        "type": "dynamic",
+        "bound": false,
+        "kind": "dynamic",
         "parameters": [
           {
             "name": "param",
@@ -32,7 +34,8 @@
       {
         "file": "spec/_templates/methods/instance_methods.coffee",
         "name": "anotherWithValues",
-        "type": "dynamic",
+        "bound": false,
+        "kind": "dynamic",
         "parameters": [
           {
             "name": "param",
@@ -58,7 +61,8 @@
       {
         "file": "spec/_templates/methods/instance_methods.coffee",
         "name": "nowWithSpalt",
-        "type": "dynamic",
+        "bound": false,
+        "kind": "dynamic",
         "parameters": [
           {
             "name": "foo",
@@ -73,7 +77,8 @@
       {
         "file": "spec/_templates/methods/instance_methods.coffee",
         "name": "bound",
-        "type": "dynamic",
+        "bound": true,
+        "kind": "dynamic",
         "parameters": []
       }
     ],
@@ -86,13 +91,15 @@
   {
     "file": "spec/_templates/methods/instance_methods.coffee",
     "name": "helper",
-    "type": "dynamic",
+    "bound": false,
+    "kind": "dynamic",
     "parameters": []
   },
   {
     "file": "spec/_templates/methods/instance_methods.coffee",
     "name": "another",
-    "type": "dynamic",
+    "bound": false,
+    "kind": "dynamic",
     "parameters": [
       {
         "name": "param",
@@ -107,7 +114,8 @@
   {
     "file": "spec/_templates/methods/instance_methods.coffee",
     "name": "anotherWithValues",
-    "type": "dynamic",
+    "bound": false,
+    "kind": "dynamic",
     "parameters": [
       {
         "name": "param",
@@ -139,7 +147,8 @@
   {
     "file": "spec/_templates/methods/instance_methods.coffee",
     "name": "nowWithSpalt",
-    "type": "dynamic",
+    "bound": false,
+    "kind": "dynamic",
     "parameters": [
       {
         "name": "foo",
@@ -154,12 +163,14 @@
   {
     "file": "spec/_templates/methods/instance_methods.coffee",
     "name": "bound",
-    "type": "dynamic",
+    "bound": true,
+    "kind": "dynamic",
     "parameters": []
   },
   {
     "file": "spec/_templates/methods/instance_methods.coffee",
     "name": "internalToClassClosure",
+    "bound": false,
     "documentation": {
       "comment": "This is not exposed to the outside world.",
       "summary": "This is not exposed to the outside world."
