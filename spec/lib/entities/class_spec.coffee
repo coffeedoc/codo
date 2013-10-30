@@ -34,7 +34,8 @@ describe 'Class', ->
           file: 'spec/_templates/complicateds/variables.coffee',
           name: 'z',
           constant: false,
-          value: "'456'"
+          value: "'456'",
+          kind: 'dynamic'
         }
       ]
     )

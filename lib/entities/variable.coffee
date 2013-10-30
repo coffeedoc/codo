@@ -25,5 +25,5 @@ module.exports = class Variable extends Entity
       value:         @value
       documentation: @documentation?.inspect()
       selfish:       @selfish
-      type:          @type
+      kind:          @kind
     }

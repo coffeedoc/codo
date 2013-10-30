@@ -18,14 +18,16 @@
           "comment": "Modify it here",
           "summary": "Modify it here"
         },
-        "selfish": true
+        "selfish": true,
+        "kind": "static"
       },
       {
         "file": "spec/_templates/variables/constant_variables.coffee",
         "name": "ANOTHER_CONST",
         "constant": true,
         "value": "['a', 'b']",
-        "selfish": true
+        "selfish": true,
+        "kind": "static"
       }
     ],
     "properties": [],
@@ -42,13 +44,15 @@
       "comment": "Modify it here",
       "summary": "Modify it here"
     },
-    "selfish": true
+    "selfish": true,
+    "kind": "static"
   },
   {
     "file": "spec/_templates/variables/constant_variables.coffee",
     "name": "ANOTHER_CONST",
     "constant": true,
     "value": "['a', 'b']",
-    "selfish": true
+    "selfish": true,
+    "kind": "static"
   }
 ]
