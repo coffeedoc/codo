@@ -22,8 +22,11 @@ File          = require './entities/file'
 #
 module.exports = class Traverser
 
-  @read: (file, environment) ->
-    new @(file, FS.readFileSync(file, 'utf8'), environment)
+  @read: (file, environment, convertComments=true) ->
+    content = FS.readFileSync(file, 'utf8')
+    content = @convertComments(content) if convertComments
+
+    new @(file, content, environment)
 
   # Attach each parent to its children, so we are able
   # to traverse the ancestor parse tree. Since the
@@ -39,47 +42,6 @@ module.exports = class Traverser
 
     node
 
-  constructor: (@path, content, @environment) ->
-    @environment ?= new Environment
-    @content      = @convertComments(content)
-    @history      = []
-    @root         = @constructor.linkAncestors(CoffeeScript.nodes @content)
-    @file         = @prepare(@root, @path, File)
-
-    @root.traverseChildren true, (node) =>
-      for Entity in @environment.needles when Entity.looksLike(node)
-        @prepare(node, @file, Entity)
-
-      @history.push node
-
-  prepare: (node, file, Entity) ->
-    node.entities ?= []
-
-    unless node.documentation?
-      # Find actual comment node
-      previous = @history[@history.length-1]
-
-      switch previous?.constructor.name
-        # A comment is preveding the entity declaration
-        when 'Comment'
-          doc = previous
-
-        when 'Literal'
-          # The node is exported `module.exports = ...`, take the comment before `module`
-          if previous.value is 'exports'
-            previous = @history[@history.length-6]
-            doc = previous if previous?.constructor.name is 'Comment'
-
-      if doc?.comment?
-        node.documentation = new Documentation(@leftTrimBlock doc.comment)
-
-    if Entity.is(node)
-      entity = new Entity @environment, file, node
-      node.entities.push(entity)
-      @environment.entities.push(entity)
-
-      entity
-
   # Convert the comments to block comments,
   # so they appear in the nodes.
   #
@@ -88,7 +50,7 @@ module.exports = class Traverser
   #
   # @param [String] content the CoffeeScript file content
   #
-  convertComments: (content) ->
+  @convertComments: (content) ->
     result         = []
     comment        = []
     inComment      = false
@@ -143,6 +105,57 @@ module.exports = class Traverser
 
     result.join('\n')
 
+  # Whitespace helper function
+  #
+  # @param [Number] n the number of spaces
+  # @return [String] the space string
+  #
+  @whitespace: (n) ->
+    a = []
+    while a.length < n
+      a.push ' '
+    a.join ''
+
+  constructor: (@path, @content, @environment) ->
+    @environment ?= new Environment
+    @history      = []
+    @root         = @constructor.linkAncestors(CoffeeScript.nodes @content)
+    @file         = @prepare(@root, @path, File)
+
+    @root.traverseChildren true, (node) =>
+      for Entity in @environment.needles when Entity.looksLike(node)
+        @prepare(node, @file, Entity)
+
+      @history.push node
+
+  prepare: (node, file, Entity) ->
+    node.entities ?= []
+
+    unless node.documentation?
+      # Find actual comment node
+      previous = @history[@history.length-1]
+
+      switch previous?.constructor.name
+        # A comment is preveding the entity declaration
+        when 'Comment'
+          doc = previous
+
+        when 'Literal'
+          # The node is exported `module.exports = ...`, take the comment before `module`
+          if previous.value is 'exports'
+            previous = @history[@history.length-6]
+            doc = previous if previous?.constructor.name is 'Comment'
+
+      if doc?.comment?
+        node.documentation = new Documentation(@leftTrimBlock doc.comment)
+
+    if Entity.is(node)
+      entity = new Entity @environment, file, node
+      node.entities.push(entity)
+      @environment.entities.push(entity)
+
+      entity
+
   # Detect whitespace on the left and removes
   # the minimum whitespace ammount.
   #
@@ -184,17 +197,6 @@ module.exports = class Traverser
     lines = lines.slice(0, -1) while lines[lines.length-1].length == 0
 
     lines
-
-  # Whitespace helper function
-  #
-  # @param [Number] n the number of spaces
-  # @return [String] the space string
-  #
-  whitespace: (n) ->
-    a = []
-    while a.length < n
-      a.push ' '
-    a.join ''
 
   inspect: ->
     @environment.inspect()

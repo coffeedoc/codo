@@ -11,6 +11,11 @@ Mixin     = require '../../../lib/entities/mixin'
 
 module.exports = class Theme
 
+  @options: ->
+    [
+      {name: 'a', alias: 'analytics', describe: 'The Google analytics ID', default: false}
+    ]
+
   @compile: (environment, options={}) ->
     theme = new @(environment, options)
     theme.compile()

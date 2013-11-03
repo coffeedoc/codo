@@ -1,0 +1,9 @@
+{
+  "name": "example",
+  "description": "The best ever project about lines and wildness!",
+  "keywords": [
+    "coffeescript",
+    "doc"
+  ],
+  "version": "0.1.0"
+}

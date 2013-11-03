@@ -10,14 +10,16 @@ describe 'Theme', ->
     rimraf.sync @destination
 
   it 'generates', ->
+    console.log @destination
+
     environment = new Environment destination: @destination
 
-    environment.readExtra 'spec/_templates/extras/README'
-    environment.readExtra 'spec/_templates/extras/README.md', true
+    environment.readExtra 'spec/_templates/example/CHANGELOG'
+    environment.readExtra 'spec/_templates/example/README.md', true
 
-    environment.readCoffee 'spec/_templates/examples/animal.coffee'
-    environment.readCoffee 'spec/_templates/examples/lion.coffee'
-    environment.readCoffee 'spec/_templates/examples/angry_animal.coffee'
+    environment.readCoffee 'spec/_templates/example/src/animal.coffee'
+    environment.readCoffee 'spec/_templates/example/src/lion.coffee'
+    environment.readCoffee 'spec/_templates/example/src/angry_animal.coffee'
 
     environment.linkify()
 

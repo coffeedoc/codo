@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var location = require('path').join(
+  __dirname, '..', 'lib', 'command'
+)
+
+require('coffee-script');
+require(location)();

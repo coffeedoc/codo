@@ -46,7 +46,8 @@
     "async": ">= 0.1.22",
     "mincer": "~0.5.11",
     "stylus": "~0.38.0",
-    "nib": "~1.0.0"
+    "nib": "~1.0.0",
+    "winston": "~0.7.2"
   },
   "devDependencies": {
     "jasmine-node": ">= 1.0.13",

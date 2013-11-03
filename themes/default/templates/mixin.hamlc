@@ -21,7 +21,7 @@
       %table.box
         %tr
           %td Defined in:
-          %td= @entity.file.path
+          %td= @entity.file.name
 
         - if @entity.extensions.length > 0
           %tr

@@ -8,9 +8,9 @@ MetaMethod = require '../meta/method'
 module.exports = class File extends require('../entity')
 
   constructor: (@environment, @path, @node) ->
-    @name      = @path
-    @basename  = Path.basename(@path)
-    @dirname   = Path.dirname(@path)
+    @name      = Path.relative(@environment.basedir, @path)
+    @basename  = Path.basename(@name)
+    @dirname   = Path.dirname(@name)
     @methods   = []
     @variables = []
     @mixins    = []
@@ -37,7 +37,7 @@ module.exports = class File extends require('../entity')
 
   inspect: ->
     {
-      file:          @path
+      file:          @name
       methods:       @methods.map (x) -> x.inspect()
       variables:     @variables.map (x) -> x.inspect()
     }

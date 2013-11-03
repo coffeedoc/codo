@@ -9,6 +9,8 @@ Method    = require './entities/method'
 Variable  = require './entities/variable'
 Property  = require './entities/property'
 Mixin     = require './entities/mixin'
+walkdir   = require 'walkdir'
+Winston   = require 'winston'
 
 module.exports = class Environment
 
@@ -28,10 +30,13 @@ module.exports = class Environment
       FS.readFileSync(Path.join(__dirname, '..', 'package.json'), 'utf-8')
     )['version']
 
-    @name        ?= 'Unknown Name'
+    @name        ?= 'Unknown Project'
     @verbose     ?= false
     @debug       ?= false
+    @cautios     ?= false
+    @quiet       ?= false
     @destination ?= 'doc'
+    @basedir     ?= process.cwd()
     @extras       = {}
     @registerNeedles()
 
@@ -46,14 +51,26 @@ module.exports = class Environment
     @needles.push Mixin
 
   readCoffee: (file) ->
-    Traverser.read(file, @)
+    try
+      Traverser.read(file, @, !@cautios)
+    catch error
+      throw error if @debug
+      Winston.error("Cannot parse Coffee file #{file}: #{error.message}") unless @quiet
 
   readExtra: (file, readme = false) ->
-    content = FS.readFileSync file, 'utf-8'
-    content = Markdown.convert(content) if /\.(markdown|md)$/.test file
+    try
+      content = FS.readFileSync file, 'utf-8'
 
-    @extras[file] = content
-    @readme = file if readme
+      content = if /\.(markdown|md)$/.test file
+        Markdown.convert(content)
+      else
+        content.replace(/\n/g, '<br/>')
+
+      @extras[Path.relative @basedir, file] = content
+      @readme = file if readme
+    catch error
+      throw error if @debug
+      Winston.error("Cannot parse Extra file #{file}: #{error.message}") unless @quiet
 
   all: (Entity, haystack = []) ->
     for entity in @entities
