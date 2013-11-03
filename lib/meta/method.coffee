@@ -1,6 +1,7 @@
 Parameter = require './parameter'
+Meta      = require '../_meta'
 
-module.exports = class Method
+module.exports = class Meta.Method
 
   @override: (options, overrides) ->
     options[key] = value for key, value of overrides

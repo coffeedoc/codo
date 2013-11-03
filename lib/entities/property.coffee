@@ -1,4 +1,6 @@
-module.exports = class Property extends require('../entity')
+Entities = require '../_entities'
+
+module.exports = class Entities.Property extends require('../entity')
 
   @looksLike: (node) ->
     (node.constructor.name == 'Assign' && node.value?.constructor.name == 'Value') ||

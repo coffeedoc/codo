@@ -1,8 +1,9 @@
 Method     = require './method'
 Variable   = require './variable'
 MetaMethod = require '../meta/method'
+Entities   = require '../_entities'
 
-module.exports = class Mixin extends require('../entity')
+module.exports = class Entities.Mixin extends require('../entity')
 
   @looksLike: (node) ->
     node.constructor.name == 'Assign' && node.value?.base?.properties?

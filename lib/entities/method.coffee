@@ -1,6 +1,7 @@
 Parameter = require '../meta/parameter'
+Entities  = require '../_entities'
 
-module.exports = class Method extends require('../entity')
+module.exports = class Entities.Method extends require('../entity')
 
   @looksLike: (node) ->
     node.constructor.name == 'Assign' && node.value?.constructor.name == 'Code'

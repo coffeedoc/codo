@@ -1,6 +1,7 @@
-Entity = require '../entity'
+Entity   = require '../entity'
+Entities = require '../_entities'
 
-module.exports = class Variable extends Entity
+module.exports = class Entities.Variable extends Entity
 
   @looksLike: (node) ->
     node.constructor.name == 'Assign' && node.value?.constructor.name == 'Value'

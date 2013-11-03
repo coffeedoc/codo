@@ -1,6 +1,7 @@
 CoffeeScript = require 'coffee-script'
+Meta         = require '../_meta'
 
-module.exports = class Parameter
+module.exports = class Meta.Parameter
 
   @fromNode: (node) ->
     new @ @fetchName(node), !!node.splat, @fetchDefault(node)

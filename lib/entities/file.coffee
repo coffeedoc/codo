@@ -4,8 +4,9 @@ Variable   = require './variable'
 Mixin      = require './mixin'
 Class      = require './class'
 MetaMethod = require '../meta/method'
+Entities   = require '../_entities'
 
-module.exports = class File extends require('../entity')
+module.exports = class Entities.File extends require('../entity')
 
   constructor: (@environment, @path, @node) ->
     @name      = Path.relative(@environment.basedir, @path)

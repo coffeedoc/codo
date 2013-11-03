@@ -3,8 +3,9 @@ Variable   = require './variable'
 Property   = require './property'
 Mixin      = require './mixin'
 MetaMethod = require '../meta/method'
+Entities   = require '../_entities'
 
-module.exports = class Class extends require('../entity')
+module.exports = class Entities.Class extends require('../entity')
 
   @looksLike: (node) ->
     node.constructor.name is 'Class' && node.variable?.base?.value?
