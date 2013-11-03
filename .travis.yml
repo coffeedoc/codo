@@ -5,6 +5,7 @@ node_js:
 branches:
   only:
     - master
+    - 1.x
 notifications:
   recipients:
     - michi@netzpiraten.ch
