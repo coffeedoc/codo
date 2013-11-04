@@ -1,6 +1,7 @@
 Codo     = require './codo'
 Optimist = require 'optimist'
 Theme    = require '../themes/default/lib/theme'
+Table    = require 'cli-table'
 
 module.exports = class Command
   options: [
@@ -65,5 +66,59 @@ module.exports = class Command
     else
       @generate()
 
+  collectStats: (environment) ->
+    sections =
+      Classes:
+        total: environment.allClasses().length
+        undocumented: environment.allClasses().filter((e) -> !e.documentation?).map (x) ->
+          [x.name, x.file.path]
+
+      Mixins:
+        total: environment.allMixins().length
+        undocumented: environment.allMixins().filter((e) -> !e.documentation?).map (x) ->
+          [x.name, x.file.path]
+
+      Methods:
+        total: environment.allMethods().length
+        undocumented: environment.allMethods().filter((e) -> !e.entity.documentation?).map (x) ->
+          ["#{x.entity.name} (#{x.owner.name})", x.owner.file.path]
+
+    sections
+
   generate: ->
-    @theme.compile(Codo.parseProject(process.cwd(), @options))
+    environment = Codo.parseProject(process.cwd(), @options)
+    sections    = @collectStats(environment)
+
+    @theme.compile(environment)
+
+    if @options.undocumented
+      for section, data of sections when data.undocumented.length != 0
+        table = new Table
+          head: [section, 'Path']
+
+        table.push(entry) for entry in data.undocumented
+        console.log table.toString()
+        console.log ''
+    else
+      overall      = 0
+      undocumented = 0
+
+      for section, data of sections
+        overall      += data.total
+        undocumented += data.undocumented.length
+
+      table = new Table
+        head: ['', 'Total', 'Undocumented']
+
+      table.push(
+        ['Files', environment.allFiles().length, ''],
+        ['Extras', environment.allExtras().length, ''],
+        ['Classes', sections['Classes'].total, sections['Classes'].undocumented.length],
+        ['Mixins', sections['Mixins'].total, sections['Mixins'].undocumented.length],
+        ['Methods', sections['Methods'].total, sections['Methods'].undocumented.length]
+      )
+
+      console.log table.toString()
+      console.log ""
+      console.log "  Totally documented: #{(100 - 100/overall*undocumented).toFixed(2)}%"
+      console.log ""
