@@ -10,8 +10,6 @@ describe 'Theme', ->
     rimraf.sync @destination
 
   it 'generates', ->
-    console.log @destination
-
     environment = new Environment destination: @destination
 
     environment.readExtra 'spec/_templates/example/CHANGELOG'

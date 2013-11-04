@@ -1,4 +1,6 @@
-module.exports = class TreeBuilder
+Theme = require './_theme'
+
+module.exports = class Theme.TreeBuilder
 
   @build: (collection, resolver) ->
     (new @ collection, resolver).tree
@@ -11,7 +13,7 @@ module.exports = class TreeBuilder
         storage      = @tree
         [name, path] = @resolver(entry)
 
-        for segment in path
+        for segment in path when segment.length > 0
           storage = @situate(storage, segment)
 
         @situate(storage, name, entry)

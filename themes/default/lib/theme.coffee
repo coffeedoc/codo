@@ -8,21 +8,22 @@ Method    = require '../../../lib/entities/method'
 Variable  = require '../../../lib/entities/variable'
 Property  = require '../../../lib/entities/property'
 Mixin     = require '../../../lib/entities/mixin'
+Theme     = require './_theme'
 
-module.exports = class Theme
+module.exports = class Theme.Theme
 
-  @options: ->
-    [
-      {name: 'a', alias: 'analytics', describe: 'The Google analytics ID', default: false}
-    ]
+  options: [
+    {name: 'private', alias: 'p', describe: 'Show privates', boolean: true, default: false}
+    {name: 'analytics', alias: 'a', describe: 'The Google analytics ID', default: false}
+    {name: 'title', alias: 't', describe: 'HTML Title', default: 'CoffeeScript API Documentation'}
+  ]
 
-  @compile: (environment, options={}) ->
-    theme = new @(environment, options)
+  @compile: (environment) ->
+    theme = new @(environment)
     theme.compile()
 
-  constructor: (@environment, @options) ->
-    @options.title ||= 'CoffeeScript API Documentation'
-    @templater = new Templater(@environment.destination)
+  constructor: (@environment) ->
+    @templater = new Templater(@environment.options.destination)
 
   compile: ->
     @templater.compileAsset('javascript/application.js')
@@ -92,8 +93,8 @@ module.exports = class Theme
 
     if @environment.readme
       breadcrumbs.push
-        href:  @pathFor('extra', @environment.readme)
-        title: @environment.name
+        href:  @pathFor('extra', @environment.options.readme)
+        title: @environment.options.name
 
     breadcrumbs.push(href: 'alphabetical_index.html', title: 'Index')
 
@@ -112,7 +113,6 @@ module.exports = class Theme
   render: (source, destination, context={}) ->
     globalContext =
       environment: @environment
-      options:     @options
       path:        @calculatePath(destination)
       pathFor:     @pathFor
       render:      (template, context={}) =>

@@ -6,8 +6,9 @@ hamlc   = require 'haml-coffee'
 walkdir = require 'walkdir'
 Mincer  = require 'mincer'
 Nib     = require 'nib'
+Theme   = require './_theme'
 
-module.exports = class Templater
+module.exports = class Theme.Templater
 
   sourceOf: (subject) ->
     Path.join(__dirname, '..', subject)

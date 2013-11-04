@@ -34,8 +34,8 @@ module.exports = class Entities.Class extends require('../entity')
   # Determines if the class definition at given node is using @assignation
   # and if in such case this class is nested into another one
   determineContainment: (node) ->
-    if node.base.value == 'this'
-      selfish   = true                     # class @Foo
+    if node.base?.value == 'this'
+      selfish   = true                   # class @Foo
       container = @lookup(Class, node)   # class Foo \n class @Bar
 
     [selfish, container]
@@ -53,10 +53,11 @@ module.exports = class Entities.Class extends require('../entity')
 
     # Take the actual name of assignation unless
     # we are prefixed with `@`
-    name.push source.base.value unless selfish
+    name.push source.base.value if !selfish && source.base?
 
     # Get the rest of actual assignation path
-    name.push prop.name.value for prop in source.properties
+    if source.properties
+      name.push prop.name.value for prop in source.properties when prop.name?
 
     # Here comes the magic!
     name.join('.')
@@ -162,7 +163,7 @@ module.exports = class Entities.Class extends require('../entity')
     @_effectiveMethods
 
   inherited: (getter) ->
-    return [] unless @parent
+    return [] if !@parent || !@parent.name?
 
     found   = {}
     entries = getter()

@@ -22,28 +22,24 @@ module.exports = class Environment
     environment.linkify()
     environment
 
-  constructor: (options={}) ->
-    for option, value of options
-      @[option] = value if options.hasOwnProperty(option)
-
+  constructor: (@options={}) ->
     @version = JSON.parse(
       FS.readFileSync(Path.join(__dirname, '..', 'package.json'), 'utf-8')
     )['version']
 
-    @name        ?= 'Unknown Project'
-    @verbose     ?= false
-    @debug       ?= false
-    @cautios     ?= false
-    @quiet       ?= false
-    @destination ?= 'doc'
-    @basedir     ?= process.cwd()
-    @extras       = {}
-    @registerNeedles()
+    @options.name        ?= 'Unknown Project'
+    @options.verbose     ?= false
+    @options.debug       ?= false
+    @options.cautios     ?= false
+    @options.quiet       ?= false
+    @options.closure     ?= false
+    @options.destination ?= 'doc'
+    @options.basedir     ?= process.cwd()
 
+    @extras   = {}
+    @needles  = []
     @entities = []
 
-  registerNeedles: ->
-    @needles ?= []
     @needles.push Class
     @needles.push Method
     @needles.push Variable
@@ -51,13 +47,17 @@ module.exports = class Environment
     @needles.push Mixin
 
   readCoffee: (file) ->
+    Winston.info("Parsing Codo file #{file}") if @options.verbose
+
     try
-      Traverser.read(file, @, !@cautios)
+      Traverser.read(file, @)
     catch error
-      throw error if @debug
-      Winston.error("Cannot parse Coffee file #{file}: #{error.message}") unless @quiet
+      throw error if @options.debug
+      Winston.error("Cannot parse Coffee file #{file}: #{error.message}") unless @options.quiet
 
   readExtra: (file, readme = false) ->
+    Winston.info("Parsing Extra file #{file}") if @options.verbose
+
     try
       content = FS.readFileSync file, 'utf-8'
 
@@ -66,11 +66,11 @@ module.exports = class Environment
       else
         content.replace(/\n/g, '<br/>')
 
-      @extras[Path.relative @basedir, file] = content
-      @readme = file if readme
+      @extras[Path.relative @options.basedir, file] = content
+      @options.readme = file if readme
     catch error
-      throw error if @debug
-      Winston.error("Cannot parse Extra file #{file}: #{error.message}") unless @quiet
+      throw error if @options.debug
+      Winston.error("Cannot parse Extra file #{file}: #{error.message}") unless @options.quiet
 
   all: (Entity, haystack = []) ->
     for entity in @entities

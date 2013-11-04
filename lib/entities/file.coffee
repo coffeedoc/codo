@@ -9,7 +9,7 @@ Entities   = require '../_entities'
 module.exports = class Entities.File extends require('../entity')
 
   constructor: (@environment, @path, @node) ->
-    @name      = Path.relative(@environment.basedir, @path)
+    @name      = Path.relative(@environment.options.basedir, @path)
     @basename  = Path.basename(@name)
     @dirname   = Path.dirname(@name)
     @methods   = []

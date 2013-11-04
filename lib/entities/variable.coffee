@@ -4,7 +4,7 @@ Entities = require '../_entities'
 module.exports = class Entities.Variable extends Entity
 
   @looksLike: (node) ->
-    node.constructor.name == 'Assign' && node.value?.constructor.name == 'Value'
+    node.constructor.name == 'Assign' && node.value?.constructor.name == 'Value' && node.variable?.base?.value?
 
   @is: (node) ->
     !node.documentation?.property && !node.documentation?.mixin
@@ -13,8 +13,10 @@ module.exports = class Entities.Variable extends Entity
     [@name, @selfish] = @fetchName()
 
     @constant = /^[A-Z_-]*$/.test @name
-    @value    = @node.value.base.compile
-      indent: ''
+
+    try
+      @value = @node.value.base.compile
+        indent: ''
 
     @documentation = @node.documentation
 

@@ -40,7 +40,7 @@ describe 'Environment', ->
       expect(@environment.extras).toEqual({
         'spec/_templates/extras/README.md': "<h1 id=\"this-is-a-test-readme\">This is a test README</h1><p>We even have some content here. <a href=\"http://github.com\">With links!</a></p><h2 id=\"and-nested-menus\">And nested menus</h2><p>And even more content</p><h3 id=\"actually-\">Actually...</h3><p>I feel terribly sick writing this. It&#39;s like talking to myself.</p>"
       })
-      expect(@environment.readme).toEqual 'spec/_templates/extras/README.md'
+      expect(@environment.options.readme).toEqual 'spec/_templates/extras/README.md'
 
   describe 'Class', ->
     for filename in walkdir.sync './spec/_templates/classes' when filename.match /\.coffee$/

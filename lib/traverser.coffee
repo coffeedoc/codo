@@ -22,9 +22,9 @@ File          = require './entities/file'
 #
 module.exports = class Traverser
 
-  @read: (file, environment, convertComments=true) ->
+  @read: (file, environment) ->
     content = FS.readFileSync(file, 'utf8')
-    content = @convertComments(content) if convertComments
+    content = @convertComments(content, environment.options.closure) unless environment.options.cautios
 
     new @(file, content, environment)
 
@@ -50,7 +50,7 @@ module.exports = class Traverser
   #
   # @param [String] content the CoffeeScript file content
   #
-  @convertComments: (content) ->
+  @convertComments: (content, closure=false) ->
     result         = []
     comment        = []
     inComment      = false
@@ -62,7 +62,7 @@ module.exports = class Traverser
       blockComment = /^\s*#{3}/.exec(line) && !/^\s*#{3}.+#{3}/.exec(line)
 
       if blockComment || inBlockComment
-        line = line.replace /#{3}\*/, "###" if @options.closure
+        line = line.replace /#{3}\*/, "###" if closure
         inBlockComment = !inBlockComment if blockComment
         result.push line
       else

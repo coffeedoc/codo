@@ -1,11 +1,11 @@
 %head
   %meta{charset: 'UTF-8'}
-  %title= @options.title
+  %title= @environment.options.title
 
   %script{src: "#{@path}javascript/application.js"}
   %link{rel: 'stylesheet', href: "#{@path}stylesheets/application.css", type: 'text/css'}
 
-  - if @options.analytics
+  - if @environment.options.analytics
     :javascript
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', '#{@analytics}']);

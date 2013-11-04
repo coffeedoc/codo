@@ -27,7 +27,10 @@
           %tr
             %td Inherits:
             %td
-              %a{href: @pathFor('class', @entity.parent, @path)}= @entity.parent.name
+              - if @entity.parent.name?
+                %a{href: @pathFor('class', @entity.parent, @path)}= @entity.parent.name
+              - else
+                @entity.parent
 
         - if @entity.extends.length > 0
           %tr
@@ -55,7 +58,7 @@
             %td
               - for concern, i in @entity.concerns
                 - if concern.name?
-                  %a{href: @pathFor('mixin', concer, @path)}= concern.name
+                  %a{href: @pathFor('mixin', concern, @path)}= concern.name
                 - else
                   = concern
 

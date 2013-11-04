@@ -13,21 +13,19 @@ module.exports = Codo =
     )['version']
 
   parseProject: (path, options={}) ->
-    environment = new @Environment
-      name:        options.name || @detectName(path)
-      readme:      options.readme || @detectReadme(path)
-      destination: options.destination
-      verbose:     options.verbose
-      debug:       options.debug
-      basedir:     path
+    options.name    ||= @detectName(path)
+    options.readme  ||= @detectReadme(path)
+    options.basedir ||= path
 
-    for extra in (options.extras || []).concat(@detectExtras path)
+    environment = new @Environment(options)
+
+    for extra in (options.extras || @detectExtras(path))
       environment.readExtra(Path.join path, extra)
 
-    for input in (options.inputs || []).concat(path)
+    for input in (options.inputs || [path])
       if FS.existsSync(input)
         if FS.lstatSync(input).isDirectory()
-          for filename in walkdir.sync(input) when filename.match(/\._?coffee/)
+          for filename in walkdir.sync(input) when filename.match(/\._?coffee$/)
             environment.readCoffee(filename)
         else
           environment.readCoffee(Path.resolve input)
@@ -37,10 +35,9 @@ module.exports = Codo =
     environment.linkify()
     environment
 
-  detectDefaults: (path, overrides={}) ->
-    if overrides._?.length == 0
-      assignArguments = true
-      overrides._     = []
+  detectDefaults: (path) ->
+    results =
+      _: []
 
     try
       if FS.existsSync(Path.join path, '.codoopts')
@@ -49,13 +46,18 @@ module.exports = Codo =
         for config in configs.split('\n')
           # Key value configs
           if option = /^-{1,2}([\w-]+)\s+(['"])?(.*?)\2?$/.exec config
-            overrides[option[1]] ?= option[3]
+            results[option[1]] = option[3]
+
           # Boolean configs
           else if bool = /^-{1,2}([\w-]+)\s*$/.exec config
-            overrides[bool[1]] ?= true
+            results[bool[1]] = true
+
           # Argv configs
           else if config != ''
-            overrides._.push(config) if assignArguments
+            results._.push(config)
+
+      results
+
     catch error
       Winston.error("Cannot parse .codoopts file: #{error.message}") unless @quiet
 

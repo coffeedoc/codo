@@ -7,4 +7,4 @@ var location = require('path').join(
 )
 
 require('coffee-script');
-require(location)();
+require(location).run();

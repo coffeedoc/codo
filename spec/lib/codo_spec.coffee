@@ -14,4 +14,4 @@ describe 'Codo', ->
       'CHANGELOG', 'README.md'
     ]
 
-    expect(environment.readme).toEqual 'README.md'
+    expect(environment.options.readme).toEqual 'README.md'
