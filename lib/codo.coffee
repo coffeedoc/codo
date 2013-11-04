@@ -66,8 +66,6 @@ module.exports = Codo =
   # or get the current working directory name.
   #
   detectName: (path) ->
-    path = Path.join(path, 'package.json')
-
     if FS.existsSync(Path.join path, 'package.json')
       name = JSON.parse(FS.readFileSync Path.join(path, 'package.json'), 'utf-8')['name']
 

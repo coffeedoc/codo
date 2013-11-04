@@ -91,7 +91,7 @@ module.exports = class Theme.Theme
     entries     = [entries] unless Array.isArray(entries)
     breadcrumbs = []
 
-    if @environment.readme
+    if @environment.options.readme
       breadcrumbs.push
         href:  @pathFor('extra', @environment.options.readme)
         title: @environment.options.name
@@ -165,8 +165,8 @@ module.exports = class Theme.Theme
       else
         'extra_list.html'
 
-    main = if @environment.readme
-      @pathFor('extra', @environment.readme)
+    main = if @environment.options.readme
+      @pathFor('extra', @environment.options.readme)
     else
       'alphabetical_index.html'
 
