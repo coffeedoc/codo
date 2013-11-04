@@ -51,7 +51,7 @@ module.exports = class Command
   constructor: ->
     defaults = Codo.detectDefaults(process.cwd())
 
-    optimist = Optimist.usage("Usage:   $0 [options] [source_files [- extra_files]]")
+    optimist = Optimist.usage('Usage:   $0 [options] [source_files [- extra_files]]')
     @extendOptimist(optimist, defaults, @options)
 
     @theme = @lookupTheme(optimist.argv.theme)
@@ -119,6 +119,6 @@ module.exports = class Command
       )
 
       console.log table.toString()
-      console.log ""
+      console.log ''
       console.log "  Totally documented: #{(100 - 100/overall*undocumented).toFixed(2)}%"
-      console.log ""
+      console.log ''
