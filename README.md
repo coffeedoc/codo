@@ -56,11 +56,9 @@ class Example.Animal
 ```
 
 Then generate the documentation with the `codo` command line tool. You can browse some
-generated Codo documentation on [CoffeeDoc.info](http://coffeedoc.info) to get a feeling how you can navigate in various
-ways through your code layers.
+generated Codo documentation on [CoffeeDoc.info](http://coffeedoc.info) to get a feeling how you can navigate in various ways through your code layers.
 
-In the `Example` namespace you'll find some classes and mixins that makes absolutely no sense, its purpose is only to
-show the many features Code offers.
+In the `Example` namespace you'll find some classes and mixins that makes absolutely no sense, its purpose is only to show the many features Code offers.
 
 ## Installation
 
@@ -70,23 +68,17 @@ Codo is available in NPM and can be installed with:
 $ npm install -g codo
 ```
 
-Please have a look at the [CHANGELOG](https://github.com/netzpirat/codo/blob/master/CHANGELOG.md) when upgrading to a
-newer Codo version with `npm update`.
+Please have a look at the [CHANGELOG](https://github.com/netzpirat/codo/blob/master/CHANGELOG.md) when upgrading to a newer Codo version with `npm update`.
 
 ## Tags
 
-You have to annotate your code with Codo tags to give it some meaning to the parser that generates the documentation.
-Each tag starts with the `@` sign followed by the tag name. See the following overview for a minimal description of all
-available tags. Most tags are self-explaining and the one that aren't are described afterwards in more detail.
+You have to annotate your code with Codo tags to give it some meaning to the parser that generates the documentation. Each tag starts with the `@` sign followed by the tag name. See the following overview for a minimal description of all available tags. Most tags are self-explaining and the one that aren't are described afterwards in more detail.
 
 Tags can take multiple lines, just indent subsequent lines by two spaces.
 
 ### Overview
 
-The following table shows the list of all available tags in alphabetical order with its expected options. An option in
-parenthesis is optional and the square brackets are part of the Codo tag format and must actually be written. Some tags
-can be defined multiple times and they can be applied to different contexts, either in the comment for a class, a
-comment for a mixin or in a method comment.
+The following table shows the list of all available tags in alphabetical order with its expected options. An option in parenthesis is optional and the square brackets are part of the Codo tag format and must actually be written. Some tags can be defined multiple times and they can be applied to different contexts, either in the comment for a class, a comment for a mixin or in a method comment.
 
 <table>
   <thead>
@@ -277,8 +269,7 @@ move: (options = {}) ->
 ```
 
 It's also possible to use [CoffeeScript block comments](http://coffeescript.org/#strings) instead of the normal
-comments. If you solely use block comments, you may want to use the `--cautious` flag to disable the internal comment
-conversion.
+comments. If you solely use block comments, you may want to use the `--cautious` flag to disable the internal comment conversion.
 
 ```CoffeeScript
 ###
@@ -294,8 +285,7 @@ Move the animal.
 move: (options = {}) ->
 ```
 
-If you want to compile your JavaScript with Google Closure and make use of the special block comments with an asterisk,
-you want to use the `--closure` flag so that Codo ignores the asterisk.
+If you want to compile your JavaScript with Google Closure and make use of the special block comments with an asterisk, you want to use the `--closure` flag so that Codo ignores the asterisk.
 
 ### Parameters
 
@@ -352,8 +342,7 @@ class Classmate
 
 ### Options
 
-If you have an object as parameter and you like to defined the accepted properties as options to the method, you can
-use the `@options` tag:
+If you have an object as parameter and you like to defined the accepted properties as options to the method, you can use the `@options` tag:
 
 
 ```CoffeeScript
@@ -371,8 +360,7 @@ description.
 
 ### Types
 
-The object types for the `@param`, `@option` and `@return` tags are parsed for known classes or mixins and linked. You
-can also define types for Arrays with:
+The object types for the `@param`, `@option` and `@return` tags are parsed for known classes or mixins and linked. You can also define types for Arrays with:
 
 ```CoffeeScript
 #
@@ -409,8 +397,7 @@ class Person
   get age: -> @_age
 ```
 
-If you follow this convention, they will be shown in the generated documentation with its read/write status shown. To
-specify type of the property, use the `@property` tag.
+If you follow this convention, they will be shown in the generated documentation with its read/write status shown. To specify type of the property, use the `@property` tag.
 
 ### Method overloading
 
@@ -432,8 +419,7 @@ If you allow your method to take different parameters, you can describe the meth
 set: (args...) ->
 ```
 
-The `@overload` tag must be followed by the alternative method signature that will appear in the documentation, followed
-by any method tag indented by two spaces.
+The `@overload` tag must be followed by the alternative method signature that will appear in the documentation, followed by any method tag indented by two spaces.
 
 ### Virtual methods
 
@@ -453,14 +439,12 @@ class VirtualMethods
 ```
 
 The `@method` tag must be followed by the method signature that will appear in the documentation, followed
-by any method tag indented by two spaces. The difference to the `@overload` tag beside the different context is that
-the signature should contain either the instance prefix `#` or the class prefix `.`.
+by any method tag indented by two spaces. The difference to the `@overload` tag beside the different context is that the signature should contain either the instance prefix `#` or the class prefix `.`.
 
 ### Mixins
 
 It's common practice to mix in objects to share common logic when inheritance is not suited. You can read
-more about mixins in the
-[The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/03_classes.html).
+more about mixins in the [The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/03_classes.html).
 
 Simply mark any plain CoffeeScript object with the `@mixin` tag to have a mixin page generated that supports many tags:
 
@@ -487,8 +471,7 @@ Next mark the target object that includes one or multiple mixins:
 class Example.Animal.Lion
 ```
 
-and you'll see the mixin methods appear as instance methods in the lion class documentation.
-You can also extend a mixin:
+and you'll see the mixin methods appear as instance methods in the lion class documentation. You can also extend a mixin:
 
 ```CoffeeScript
 # @extend Example.Animal.Speed
@@ -499,8 +482,7 @@ so its methods will show up as class methods.
 
 #### Concerns
 
-A concern is a combination of two mixins, one for instance methods and the other for class methods and it's
-automatically detected when a mixin has both a `ClassMethods` and an `InstanceMethods` property:
+A concern is a combination of two mixins, one for instance methods and the other for class methods and it's automatically detected when a mixin has both a `ClassMethods` and an `InstanceMethods` property:
 
 ```CoffeeScript
 # Speed calculations for animal.
@@ -538,8 +520,7 @@ class Example.Animal.Lion
 
 ### Non-class methods and variables
 
-You can also document your non-class, top level functions and constants within a file. As soon Codo detects these types
-within a file, it will be added to the file list and you can browse your file methods and constants.
+You can also document your non-class, top level functions and constants within a file. As soon Codo detects these types within a file, it will be added to the file list and you can browse your file methods and constants.
 
 ## Text processing
 
@@ -554,9 +535,7 @@ The `@return`, `@param`, `@option`, `@see`, `@author`, `@copyright`, `@note`, `@
 
 ### Automatically link references
 
-Codo comments and all tag texts will be parsed for references to other classes, methods and mixins, and are automatically
-linked. The reference searching will not take place within code blocks, thus you can avoid reference searching errors
-by surround your code block that contains curly braces with backticks.
+Codo comments and all tag texts will be parsed for references to other classes, methods and mixins, and are automatically linked. The reference searching will not take place within code blocks, thus you can avoid reference searching errors by surround your code block that contains curly braces with backticks.
 
 There are several ways of link types supported and all can take an optional label after the link.
 
@@ -575,32 +554,29 @@ The `@see` tag supports the same link types, just without the curly braces:
 
 ## Generate
 
-After the installation you will have a `codo` binary that can be used to generate the documentation recursively for all
-CoffeeScript files within a directory.
+After the installation you will have a `codo` binary that can be used to generate the documentation recursively for all CoffeeScript files within a directory.
 
 ```bash
 $ codo --help
 Usage: codo [options] [source_files [- extra_files]]
 
 Options:
-  -r, --readme      The readme file used                                [default: "README.md"]
-  -n, --name        The project name used                               [default: "Codo"]
-  -q, --quiet       Show no warnings                                    [boolean]  [default: false]
-  -o, --output-dir  The output directory                                [default: "./doc"]
-  -a, --analytics   The Google analytics ID                             [default: false]
-  -v, --verbose     Show parsing errors                                 [boolean]  [default: false]
-  --version         Show version
-  -d, --debug       Show stacktraces and converted CoffeeScript source  [boolean]  [default: false]
-  -h, --help        Show the help
-  --cautious        Don't attempt to parse singleline comments          [boolean]  [default: false]
-  --closure         Try to parse "google closure like" block comments   [boolean]  [default: false]
-  -s, --server      Start a documentation server
-  --private         Show private methods                                [boolean]  [default: true]
-  --title                                               [default: "CoffeeScript API Documentation"]
+  --help, -h          Show this help                          
+  --version           Show version                            
+  --destination, -o   The output directory                      [default: "./doc"]
+  --theme             The theme to be used                      [default: "default"]
+  --name, -n          The project name used                   
+  --readme, -r        The readme file used                    
+  --quiet, -q         Supress warnings                          [default: false]
+  --verbose, -v       Show parsing errors                       [default: false]
+  --undocumented, -u  List undocumented objects                 [default: false]
+  --closure           Try to parse closure-like block comments  [default: false]
+  --private, -p       Show privates                             [default: false]
+  --analytics, -a     The Google analytics ID                   [default: false]
+  --title, -t         HTML Title                                [default: "Codo Documentation"]
 ```
 
-Codo wants to be smart and tries to detect the best default settings for the sources, the readme, the extra files and
-the project name, so the above defaults may be different on your project.
+Codo wants to be smart and tries to detect the best default settings for the sources, the readme, the extra files and the project name, so the above defaults may be different on your project.
 
 ### Project defaults
 
@@ -612,16 +588,14 @@ You can define your project defaults by write your command line options to a `.c
 --title      "Codo Documentation"
 --private
 --quiet
---output-dir ./doc
+--destination ./doc
 ./src
 -
 LICENSE
 CHANGELOG.md
 ```
 
-Put each option flag on a separate line, followed by the source directories or files, and optionally any extra file that
-should be included into the documentation separated by a dash (`-`). If your extra file has the extension `.md`, it'll
-be rendered as Markdown.
+Put each option flag on a separate line, followed by the source directories or files, and optionally any extra file that should be included into the documentation separated by a dash (`-`). If your extra file has the extension `.md`, it'll be rendered as Markdown.
 
 ## Keyboard navigation
 
@@ -655,9 +629,7 @@ In frameless mode you can close the list tab:
 Issues hosted at [GitHub Issues](https://github.com/netzpirat/codo/issues).
 
 The Codo specs are template based, so make sure you provide a code snippet that can be added as failing spec to the
-project when reporting an issue with parsing your CoffeeScript code.
-
-_You can check if some parsing errors have occurred by running Codo in verbose mode._
+project when reporting an issue with parsing your CoffeeScript code. The other thing that might be useful is the actual exception happening (run with `-d`).
 
 ## Development
 
@@ -672,14 +644,6 @@ Pull requests are very welcome! Please try to follow these simple rules if appli
 * Update the CHANGELOG for noteworthy changes.
 * Please **do not change** the version number.
 
-## Acknowledgment
-
-- [Jeremy Ashkenas](https://github.com/jashkenas) for [CoffeeScript](http://coffeescript.org/), that mighty language
-that compiles to JavaScript and makes me enjoy JavaScript development.
-- [Loren Segal](https://github.com/lsegal) for creating YARD and giving me the perfect documentation syntax for
-dynamic programming languages.
-- [Stratus Editor](https://github.com/stratuseditor) for open sourcing their [fuzzy filter](https://github.com/stratuseditor/fuzzy-filter).
-
 ## Alternatives
 
 * [Docco](http://jashkenas.github.com/docco/) is a quick-and-dirty, literate-programming-style documentation generator.
@@ -692,15 +656,19 @@ dynamic programming languages.
 * [Boris Staal](https://github.com/inossidabile) ([@_inossidabile](http://twitter.com/#!/_inossidabile))
 * [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat), [mksoft.ch](https://mksoft.ch))
 
-## Contributors
+## Acknowledgment
 
-https://github.com/netzpirat/codo/contributors
+- [Jeremy Ashkenas](https://github.com/jashkenas) for [CoffeeScript](http://coffeescript.org/), that mighty language
+that compiles to JavaScript and makes me enjoy JavaScript development.
+- [Loren Segal](https://github.com/lsegal) for creating YARD and giving me the perfect documentation syntax for
+dynamic programming languages.
+- [Stratus Editor](https://github.com/stratuseditor) for open sourcing their [fuzzy filter](https://github.com/stratuseditor/fuzzy-filter).
 
 ## License
 
 (The MIT License)
 
-Copyright (c) 2012-2013 Michael Kessler
+Copyright (c) 2012-2013 Michael Kessler, Boris Staal
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
