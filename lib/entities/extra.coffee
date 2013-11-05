@@ -12,7 +12,7 @@ module.exports = class Entities.Extra
     @parsed = if /\.(markdown|md)$/.test @path
       Markdown.convert(@content)
     else
-      @content.replace(/\n/g, '<br/>')
+      "<p>"+@content.replace(/\n/g, '<br/>')+"</p>"
 
   linkify: ->
 
