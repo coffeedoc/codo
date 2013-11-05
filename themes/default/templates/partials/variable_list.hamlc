@@ -1,0 +1,10 @@
+- if @variables? && @variables.length > 0
+  %dl.constants
+    - for variable in @variables
+      %dt{ id: "#{variable.name}-variable" }
+        = variable.name
+        \=
+        != @render 'partials/documentation', documentation: variable.documentation, kind: 'variable'
+      %dd
+        %pre
+          %code.coffeescript= variable.value

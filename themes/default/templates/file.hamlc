@@ -32,16 +32,7 @@
 
       - if @entity.variables.length > 0
         %h2 Variables Summary
-
-        %dl.constants
-          - for variable in @entity.variables
-            %dt{ id: "#{variable.name}-variable" }
-              = variable.name
-              \=
-              != @render 'partials/documentation', documentation: variable.documentation, kind: 'variable'
-            %dd
-              %pre
-                %code.coffee= variable.value
+        != @render 'partials/variable_list', variables: @entity.variables
 
       - if @entity.effectiveMethods().length > 0
         %h2 Method Summary

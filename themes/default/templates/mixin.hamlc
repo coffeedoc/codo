@@ -45,7 +45,7 @@
                 %a{href: @pathFor('class', klass, @path)}= klass.name
 
 
-      - if @entity.documentation?.comment
+      - if @entity.documentation?
         %h2 Overview
 
         != @render 'partials/documentation', documentation: @entity.documentation, kind: 'mixin'

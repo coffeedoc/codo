@@ -2,15 +2,8 @@ Path        = require 'path'
 Templater   = require './templater'
 TreeBuilder = require './tree_builder'
 
-Theme    = require './_theme'
-Codo     = require '../../../lib/codo'
-File     = Codo.Entities.File
-Class    = Codo.Entities.Class
-Method   = Codo.Entities.Method
-Variable = Codo.Entities.Variable
-Property = Codo.Entities.Property
-Mixin    = Codo.Entities.Mixin
-Extra    = Codo.Entities.Extra
+Theme = require './_theme'
+Codo  = require '../../../lib/codo'
 
 module.exports = class Theme.Theme
 
@@ -46,16 +39,19 @@ module.exports = class Theme.Theme
   pathFor: (kind, entity, prefix='') ->
     unless entity?
       entity = kind
-      kind = 'class' if entity instanceof Class
-      kind = 'mixin' if entity instanceof Mixin
-      kind = 'file'  if entity instanceof File
-      kind = 'extra' if entity instanceof Extra
+      kind = 'class' if entity instanceof Codo.Entities.Class
+      kind = 'mixin' if entity instanceof Codo.Entities.Mixin
+      kind = 'file'  if entity instanceof Codo.Entities.File
+      kind = 'extra' if entity instanceof Codo.Entities.Extra
 
     switch kind
       when 'file', 'extra'
         prefix + kind + '/' + entity.name + '.html'
       when 'class', 'mixin'
         prefix + kind + '/' + entity.name.replace(/\./, '/') + '.html'
+
+  activate: (text, limit=false) ->
+    Codo.Markdown.convert(text, limit)
 
   generateBreadcrumbs: (entries = []) ->
     entries     = [entries] unless Array.isArray(entries)
@@ -85,6 +81,7 @@ module.exports = class Theme.Theme
       environment: @environment
       path:        @calculatePath(destination)
       pathFor:     @pathFor
+      activate:    @activate
       render:      (template, context={}) =>
         context[key] = value for key, value of globalContext
         @templater.render template, context

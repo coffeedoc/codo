@@ -4,6 +4,7 @@ walkdir     = require 'walkdir'
 Winston     = require 'winston'
 
 Environment = require './environment'
+Markdown    = require './markdown'
 File        = require './entities/file'
 Class       = require './entities/class'
 Method      = require './entities/method'
@@ -15,6 +16,8 @@ Extra       = require './entities/extra'
 
 module.exports = Codo =
   Environment: Environment
+
+  Markdown: Markdown
 
   Entities:
     File: File
