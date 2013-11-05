@@ -27,14 +27,14 @@ module.exports = class Environment
       FS.readFileSync(Path.join(__dirname, '..', 'package.json'), 'utf-8')
     )['version']
 
-    @options.name        ?= 'Unknown Project'
-    @options.verbose     ?= false
-    @options.debug       ?= false
-    @options.cautios     ?= false
-    @options.quiet       ?= false
-    @options.closure     ?= false
-    @options.destination ?= 'doc'
-    @options.basedir     ?= process.cwd()
+    @options.name    ?= 'Unknown Project'
+    @options.verbose ?= false
+    @options.debug   ?= false
+    @options.cautios ?= false
+    @options.quiet   ?= false
+    @options.closure ?= false
+    @options.output  ?= 'doc'
+    @options.basedir ?= process.cwd()
 
     @extras   = {}
     @needles  = []

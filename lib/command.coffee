@@ -7,7 +7,7 @@ module.exports = class Command
   options: [
     {name: 'help', alias: 'h', describe: 'Show this help'}
     {name: 'version', describe: 'Show version'}
-    {name: 'destination', alias: 'o', describe: 'The output directory', default: './doc'}
+    {name: 'output', alias: 'o', describe: 'The output directory', default: './doc'}
     {name: 'theme', describe: 'The theme to be used', default: 'default'}
     {name: 'name', alias: 'n', describe: 'The project name used'}
     {name: 'readme', alias: 'r', describe: 'The readme file used'}

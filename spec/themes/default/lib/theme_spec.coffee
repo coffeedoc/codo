@@ -6,11 +6,11 @@ rimraf      = require 'rimraf'
 
 describe 'Theme', ->
   beforeEach ->
-    @destination = Path.join OS.tmpdir(), 'codo_theme_spec'
-    rimraf.sync @destination
+    @output = Path.join OS.tmpdir(), 'codo_theme_spec'
+    rimraf.sync @output
 
   it 'generates', ->
-    environment = new Environment destination: @destination
+    environment = new Environment output: @output
 
     environment.readExtra 'spec/_templates/example/CHANGELOG'
     environment.readExtra 'spec/_templates/example/README.md', true

@@ -23,7 +23,7 @@ module.exports = class Theme.Theme
     theme.compile()
 
   constructor: (@environment) ->
-    @templater = new Templater(@environment.options.destination)
+    @templater = new Templater(@environment.options.output)
 
   compile: ->
     @templater.compileAsset('javascript/application.js')
