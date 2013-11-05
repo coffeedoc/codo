@@ -61,7 +61,7 @@ module.exports = class Meta.Method
     @kindSignature() + @name
 
   typeSignature: ->
-    '('+(@documentation?.returns || 'void')+')'
+    '('+(@documentation?.returns?.type || 'void')+')'
 
   paramsSignature: ->
     '('+@parameters.join(', ')+')'

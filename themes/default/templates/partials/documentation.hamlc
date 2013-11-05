@@ -75,10 +75,10 @@
                 &mdash;
                 %span.desc!= @activate option.desc, true
 
-    - if @documentation.throwValue
+    - if @documentation.throws
       %h3 Throws:
       %ul.throw
-        - for throws in @documentation.throwValue
+        - for throws in @documentation.throws
           %li
             %span.type
             - if throws.desc
@@ -90,19 +90,19 @@
             - else
               %tt>= throws.type
 
-    - if @documentation.returnValue
+    - if @documentation.returns
       %h3 Returns:
       %ul.return
         %li
           %span.type
-          - if @documentation.returnValue.desc
+          - if @documentation.returns.desc
             (
-              %tt>= @documentation.returnValue.type
+              %tt>= @documentation.returns.type
             )
             &mdash;
-            %span.desc!= @activate @documentation.returnValue.desc, true
+            %span.desc!= @activate @documentation.returns.desc, true
           - else
-            %tt>= @documentation.returnValue.type
+            %tt>= @documentation.returns.type
 
     - if @documentation.authors
       %h3 Author:
