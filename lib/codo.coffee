@@ -40,6 +40,9 @@ module.exports = Codo =
     for extra in (options.extras || @detectExtras(path))
       environment.readExtra(Path.join path, extra)
 
+    if environment.options.readme && !environment.findReadme()
+      environment.readExtra(Path.join path, environment.options.readme)
+
     for input in (options.inputs || [path])
       if FS.existsSync(input)
         if FS.lstatSync(input).isDirectory()

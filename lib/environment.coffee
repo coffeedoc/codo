@@ -93,7 +93,7 @@ module.exports = class Environment
         return entity
 
   findReadme: ->
-    @find Extra, @options.readme
+    @find Extra, Path.relative(@options.basedir, @options.readme)
 
   linkify: ->
     entity.linkify() for entity in @entities
