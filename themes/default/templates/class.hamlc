@@ -83,7 +83,12 @@
             - for property in @entity.properties
               %dt{ id: "#{property.name}-property" }
                 %span.signature
-                  != property.signature
+                  - if property.documentation?.property
+                    = "(#{property.documentation.property})"
+                  - else
+                    (?)
+                  %b
+                    = property.name
                 - unless property.setter
                   %span.readonly.note.title Readonly
                 - unless property.getter
