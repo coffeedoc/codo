@@ -1,10 +1,9 @@
 #footer
 
   Generated on #{new Date().toString()} by
-  %a{href: 'https://github.com/netzpirat/codo', title: 'CoffeeScript API documentation generator'}
+  %a{href: 'https://github.com/coffeescript/codo', title: 'CoffeeScript API documentation generator'}
     Codo
   = @environment.version
-  = surround '(Node.js ', ').', -> process.version
 
   &#10034;
 

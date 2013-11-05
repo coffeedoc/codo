@@ -3,7 +3,7 @@
 module.exports = class Entity
 
   @is: (node) ->
-    true
+    !node.documentation?.nodoc
 
   linkify: ->
 

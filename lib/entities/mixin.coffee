@@ -9,7 +9,7 @@ module.exports = class Entities.Mixin extends require('../entity')
     node.constructor.name == 'Assign' && node.value?.base?.properties?
 
   @is: (node) ->
-    node.documentation?.mixin
+    node.documentation?.mixin && super(node)
 
   @isConcernSection: (node) ->
     node.constructor.name == 'Assign' &&

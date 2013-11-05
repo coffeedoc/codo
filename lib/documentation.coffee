@@ -18,6 +18,9 @@ module.exports = class Documentation
         while /^\s{2}\S+/.test(lines[0])
           line += lines.shift().substring(1)
 
+      if property = /^@nodoc/i.exec line
+        @nodoc = true
+
       if property = /^@property\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @property = property[1]
         lines.push property[2]

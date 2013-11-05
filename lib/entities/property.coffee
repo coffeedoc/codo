@@ -11,7 +11,7 @@ module.exports = class Entities.Property extends require('../entity')
     )
 
   @is: (node) ->
-    node.constructor.name == 'Call' || node.documentation?.property
+    (node.constructor.name == 'Call' || node.documentation?.property) && super(node)
 
   constructor: (@environment, @file, @node) ->
     if @node.constructor.name != 'Call'

@@ -7,7 +7,7 @@ module.exports = class Entities.Variable extends Entity
     node.constructor.name == 'Assign' && node.value?.constructor.name == 'Value' && node.variable?.base?.value?
 
   @is: (node) ->
-    !node.documentation?.property && !node.documentation?.mixin
+    !node.documentation?.property && !node.documentation?.mixin && super(node)
 
   constructor: (@environment, @file, @node) ->
     [@name, @selfish] = @fetchName()
