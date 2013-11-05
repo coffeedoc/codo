@@ -2,7 +2,7 @@
 %html
   != @render 'layout/header'
   %body
-    != @render 'layout/intro'
+    != @render 'layout/intro', breadcrumbs: @breadcrumbs
 
     #content
       %h1

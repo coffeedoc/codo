@@ -10,7 +10,7 @@ describe 'Codo', ->
       'src/angry_animal.coffee', 'src/animal.coffee', 'src/lion.coffee' 
     ]
 
-    expect(environment.allExtras()).toEqual [
+    expect(environment.allExtras().map (e) -> e.name).toEqual [
       'CHANGELOG', 'README.md'
     ]
 

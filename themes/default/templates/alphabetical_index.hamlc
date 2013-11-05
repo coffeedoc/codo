@@ -16,8 +16,8 @@
           %ul#files
             - for extra in @environment.allExtras()
               %li
-                %a{href: @pathFor('extra', extra, @path), title: extra}
-                  = extra
+                %a{href: @pathFor('extra', extra, @path), title: extra.name}
+                  = extra.name
 
         - if @environment.allClasses().length > 0
           %h2 Class Listing A-Z

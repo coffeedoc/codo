@@ -13,6 +13,6 @@
             != surround '(', ')', ->
               %a.float_toc{href: '#'}> left
       #filecontents
-        != @content
+        != @entity.parsed
 
     != @render 'layout/footer'

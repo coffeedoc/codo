@@ -2,13 +2,15 @@ Path        = require 'path'
 Templater   = require './templater'
 TreeBuilder = require './tree_builder'
 
-File      = require '../../../lib/entities/file'
-Class     = require '../../../lib/entities/class'
-Method    = require '../../../lib/entities/method'
-Variable  = require '../../../lib/entities/variable'
-Property  = require '../../../lib/entities/property'
-Mixin     = require '../../../lib/entities/mixin'
-Theme     = require './_theme'
+Theme    = require './_theme'
+Codo     = require '../../../lib/codo'
+File     = Codo.Entities.File
+Class    = Codo.Entities.Class
+Method   = Codo.Entities.Method
+Variable = Codo.Entities.Variable
+Property = Codo.Entities.Property
+Mixin    = Codo.Entities.Mixin
+Extra    = Codo.Entities.Extra
 
 module.exports = class Theme.Theme
 
@@ -30,59 +32,27 @@ module.exports = class Theme.Theme
     @templater.compileAsset('stylesheets/application.css')
 
     @renderAlphabeticalIndex()
-
-    @render 'class_list', 'class_list.html',
-      tree: TreeBuilder.build @environment.allClasses(), (klass) ->
-        [klass.basename, klass.namespace.split('.')]
-
-    @render 'mixin_list', 'mixin_list.html',
-      tree: TreeBuilder.build @environment.allMixins(), (klass) ->
-        [klass.basename, klass.namespace.split('.')]
-
-    @render 'file_list', 'file_list.html',
-      tree: TreeBuilder.build @environment.allFiles(), (file) ->
-        [file.basename, file.dirname.split('/')]
-
-    @render 'extra_list', 'extra_list.html',
-      tree: TreeBuilder.build @environment.allExtras(), (extra) ->
-        result = extra.split('/')
-        [result.pop(), result]
-
-    for file in @environment.allFiles()
-      @render 'file', @pathFor('file', file), entity: file
-
-    for klass in @environment.allClasses()
-      @render 'class', @pathFor('class', klass), entity: klass
-
-    for mixin in @environment.allMixins()
-      @render 'mixin', @pathFor('mixin', mixin), entity: mixin
-
-
     @render 'method_list', 'method_list.html'
 
-    for extra, content of @environment.extras
-      @render 'extra', @pathFor('extra', extra),
-        content: content
-        breadcrumbs: @generateBreadcrumbs(extra.split '/')
-
+    @renderClasses()
+    @renderMixins()
+    @renderFiles()
+    @renderExtras()
     @renderIndex()
 
   #
   # HELPERS
   #
-
   pathFor: (kind, entity, prefix='') ->
     unless entity?
       entity = kind
       kind = 'class' if entity instanceof Class
       kind = 'mixin' if entity instanceof Mixin
       kind = 'file'  if entity instanceof File
-      kind = 'extra' unless entity
+      kind = 'extra' if entity instanceof Extra
 
     switch kind
-      when 'extra'
-        prefix + kind + '/' + entity + '.html'
-      when 'file'
+      when 'file', 'extra'
         prefix + kind + '/' + entity.name + '.html'
       when 'class', 'mixin'
         prefix + kind + '/' + entity.name.replace(/\./, '/') + '.html'
@@ -93,7 +63,7 @@ module.exports = class Theme.Theme
 
     if @environment.options.readme
       breadcrumbs.push
-        href:  @pathFor('extra', @environment.options.readme)
+        href:  @pathFor('extra', @environment.findReadme())
         title: @environment.options.name
 
     breadcrumbs.push(href: 'alphabetical_index.html', title: 'Index')
@@ -160,16 +130,57 @@ module.exports = class Theme.Theme
         'file_list.html'
       else if @environment.allMixins().length > 0
         'mixin_list.html'
-      else if @environment.allMethods().length > 0
-        'method_list.html'
-      else
+      else if @environment.allExtras().length > 0
         'extra_list.html'
+      else
+        'method_list.html'
 
     main = if @environment.options.readme
-      @pathFor('extra', @environment.options.readme)
+      @pathFor('extra', @environment.findReadme())
     else
       'alphabetical_index.html'
 
     @render 'frames', 'index.html',
       list: list
       main: main
+
+  renderClasses: ->
+    @render 'class_list', 'class_list.html',
+      tree: TreeBuilder.build @environment.allClasses(), (klass) ->
+        [klass.basename, klass.namespace.split('.')]
+
+    for klass in @environment.allClasses()
+      @render 'class', @pathFor('class', klass),
+        entity: klass,
+        breadcrumbs: @generateBreadcrumbs(klass.name.split '.')
+
+  renderMixins: ->
+    @render 'mixin_list', 'mixin_list.html',
+      tree: TreeBuilder.build @environment.allMixins(), (klass) ->
+        [klass.basename, klass.namespace.split('.')]
+
+    for mixin in @environment.allMixins()
+      @render 'mixin', @pathFor('mixin', mixin),
+        entity: mixin
+        breadcrumbs: @generateBreadcrumbs(mixin.name.split '.')
+
+  renderFiles: ->
+    @render 'file_list', 'file_list.html',
+      tree: TreeBuilder.build @environment.allFiles(), (file) ->
+        [file.basename, file.dirname.split('/')]
+
+    for file in @environment.allFiles()
+      @render 'file', @pathFor('file', file),
+        entity: file,
+        breadcrumbs: @generateBreadcrumbs(file.name.split '/')
+
+  renderExtras: ->
+    @render 'extra_list', 'extra_list.html',
+      tree: TreeBuilder.build @environment.allExtras(), (extra) ->
+        result = extra.name.split('/')
+        [result.pop(), result]
+
+    for extra in @environment.allExtras()
+      @render 'extra', @pathFor('extra', extra),
+        entity: extra
+        breadcrumbs: @generateBreadcrumbs(extra.name.split '/')

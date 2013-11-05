@@ -1,3 +1,5 @@
+//= require ./highlight
+
 /*
 Language: CoffeeScript
 Author: Dmytrii Nagirniak <dnagir@gmail.com>

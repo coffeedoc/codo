@@ -8,7 +8,7 @@ module.exports = class Entities.Method extends require('../entity')
 
   constructor: (@environment, @file, @node) ->
     @name = [node.variable.base.value]
-    @name.push prop.name.value for prop in @node.variable.properties
+    @name.push prop.name.value for prop in @node.variable.properties when prop.name?
 
     if @name[0] == 'this'
       @selfish = true

@@ -18,7 +18,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/netzpirat/codo/raw/master/LICENSE"
+      "url": "http://github.com/coffeedoc/codo/raw/master/LICENSE.md"
     }
   ],
   "engines": {
@@ -29,7 +29,7 @@
     "theme/default/assets": "./theme/default/assets",
     "theme/default/templates": "./theme/default/templates"
   },
-  "main": "./lib/index.js",
+  "main": "./lib/codo.coffee",
   "bin": {
     "codo": "./bin/codo"
   },
@@ -54,13 +54,13 @@
     "jasmine-node": ">= 1.0.13",
     "rimraf": "~2.2.2"
   },
-  "homepage": "https://github.com/netzpirat/codo",
+  "homepage": "https://github.com/coffeedoc/codo",
   "repository": {
     "type": "git",
-    "url": "git://github.com/netzpirat/codo.git"
+    "url": "git://github.com/coffeedoc/codo.git"
   },
   "bugs": {
-    "url": "https://github.com/netzpirat/codo/issues"
+    "url": "https://github.com/coffeedoc/codo/issues"
   },
   "scripts": {
     "test": "jasmine-node --coffee spec"

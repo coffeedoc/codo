@@ -1,7 +1,6 @@
 FS        = require 'fs'
 Path      = require 'path'
 Traverser = require './traverser'
-Markdown  = require './markdown'
 
 File      = require './entities/file'
 Class     = require './entities/class'
@@ -9,6 +8,7 @@ Method    = require './entities/method'
 Variable  = require './entities/variable'
 Property  = require './entities/property'
 Mixin     = require './entities/mixin'
+Extra     = require './entities/extra'
 walkdir   = require 'walkdir'
 Winston   = require 'winston'
 
@@ -36,7 +36,6 @@ module.exports = class Environment
     @options.output  ?= 'doc'
     @options.basedir ?= process.cwd()
 
-    @extras   = {}
     @needles  = []
     @entities = []
 
@@ -55,19 +54,11 @@ module.exports = class Environment
       throw error if @options.debug
       Winston.error("Cannot parse Coffee file #{file}: #{error.message}") unless @options.quiet
 
-  readExtra: (file, readme = false) ->
+  readExtra: (file) ->
     Winston.info("Parsing Extra file #{file}") if @options.verbose
 
     try
-      content = FS.readFileSync file, 'utf-8'
-
-      content = if /\.(markdown|md)$/.test file
-        Markdown.convert(content)
-      else
-        content.replace(/\n/g, '<br/>')
-
-      @extras[Path.relative @options.basedir, file] = content
-      @options.readme = file if readme
+      @entities.push(new Extra @, file)
     catch error
       throw error if @options.debug
       Winston.error("Cannot parse Extra file #{file}: #{error.message}") unless @options.quiet
@@ -80,7 +71,7 @@ module.exports = class Environment
   allFiles:   -> @_allFiles   ||= @all(File)
   allClasses: -> @_allClasses ||= @all(Class)
   allMixins:  -> @_allMixins  ||= @all(Mixin)
-  allExtras:  -> @_allExtras  ||= Object.keys(@extras)
+  allExtras:  -> @_allExtras  ||= @all(Extra)
   allMethods: ->
     return @_allMethods if @_allMethods?
 
@@ -96,11 +87,13 @@ module.exports = class Environment
       return 1  if a.entity.name > b.entity.name
       return 0
 
-
   find: (Entity, name) ->
     for entity in @entities
       if entity instanceof Entity && entity.name == name
         return entity
+
+  findReadme: ->
+    @find Extra, @options.readme
 
   linkify: ->
     entity.linkify() for entity in @entities
