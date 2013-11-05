@@ -38,6 +38,7 @@ module.exports = class Environment
 
     @needles  = []
     @entities = []
+    @parsed   = {}
 
     @needles.push Class
     @needles.push Method
@@ -46,6 +47,7 @@ module.exports = class Environment
     @needles.push Mixin
 
   readCoffee: (file) ->
+    return if @parsed[file]
     Winston.info("Parsing Codo file #{file}") if @options.verbose
 
     try
@@ -53,8 +55,11 @@ module.exports = class Environment
     catch error
       throw error if @options.debug
       Winston.error("Cannot parse Coffee file #{file}: #{error.message}") unless @options.quiet
+    finally
+      @parsed[file] = true
 
   readExtra: (file) ->
+    return if @parsed[file]
     Winston.info("Parsing Extra file #{file}") if @options.verbose
 
     try
@@ -62,6 +67,8 @@ module.exports = class Environment
     catch error
       throw error if @options.debug
       Winston.error("Cannot parse Extra file #{file}: #{error.message}") unless @options.quiet
+    finally
+      @parsed[file] = true
 
   all: (Entity, haystack = []) ->
     for entity in @entities

@@ -11,7 +11,7 @@ describe 'Codo', ->
     ]
 
     expect(environment.allExtras().map (e) -> e.name).toEqual [
-      'CHANGELOG', 'README.md'
+      'README.md', 'CHANGELOG'
     ]
 
     expect(environment.options.readme).toEqual 'README.md'
