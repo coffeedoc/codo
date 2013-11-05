@@ -1,3 +1,4 @@
+Path     = require 'path'
 Codo     = require './codo'
 Optimist = require 'optimist'
 Theme    = require '../themes/default/lib/theme'
@@ -30,7 +31,17 @@ module.exports = class Command
         default: defaults[option.name] || defaults[option.alias] || option.default
 
   lookupTheme: (name) ->
-    @theme = Theme if name == 'default'
+    if name == 'default'
+      @theme = Theme 
+    else
+      try
+        @theme = require "codo-theme-#{name}"
+      catch
+        try
+          @theme = require Path.resolve("node_modules/codo-theme-#{name}")
+        catch
+          console.log "Error loading theme #{name}: are you sure you have codo-theme-#{name} package installed?"
+          process.exit()
 
   prepareOptions: (optimist, defaults) ->
     options = optimist.argv
