@@ -33,7 +33,7 @@ describe 'Environment', ->
       @environment.readExtra 'spec/_templates/extras/README'
       expect(@environment.allExtras().map (e) -> e.inspect()).toEqual([{
         path: 'spec/_templates/extras/README',
-        parsed: 'This is a test README'
+        parsed: '<p>This is a test README</p>'
       }])
 
     it 'reads markdown', ->
