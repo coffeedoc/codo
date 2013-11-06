@@ -1,4 +1,5 @@
 strftime    = require 'strftime'
+FS          = require 'fs'
 Path        = require 'path'
 Templater   = require './templater'
 TreeBuilder = require './tree_builder'
@@ -34,6 +35,7 @@ module.exports = class Theme.Theme
     @renderFiles()
     @renderExtras()
     @renderIndex()
+    @renderFuzzySearchData()
 
   #
   # HELPERS
@@ -206,3 +208,28 @@ module.exports = class Theme.Theme
       @render 'extra', @pathFor('extra', extra),
         entity: extra
         breadcrumbs: @generateBreadcrumbs(extra.name.split '/')
+
+  renderFuzzySearchData: ->
+    search = []
+    everything = [
+      @environment.allClasses(),
+      @environment.allMixins(),
+      @environment.allFiles(),
+      @environment.allExtras()
+    ]
+
+    for basics in everything
+      for basic in basics
+        search.push
+          t: basic.name
+          p: @pathFor(basic)
+
+    for method in @environment.allMethods()
+      search.push
+        t: "#{method.owner.name}#{method.entity.shortSignature()}"
+        p: @pathFor(method)
+
+    content = 'window.searchData = ' + JSON.stringify(search)
+    output  = Path.join(@environment.options.output, 'javascript', 'search.js')
+
+    FS.writeFileSync output, content

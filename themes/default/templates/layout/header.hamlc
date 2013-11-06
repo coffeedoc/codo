@@ -3,6 +3,7 @@
   %title= @environment.options.title
 
   %script{src: "#{@path}javascript/application.js"}
+  %script{src: "#{@path}javascript/search.js"}
   %link{rel: 'stylesheet', href: "#{@path}stylesheets/application.css", type: 'text/css'}
 
   - if @environment.options.analytics

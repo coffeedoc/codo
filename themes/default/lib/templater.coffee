@@ -41,11 +41,8 @@ module.exports = class Theme.Templater
     file  = Path.join(@destination, to || from)
     dir   = Path.dirname(file)
 
-    mkdirp dir, (err) ->
-      if err
-        console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
-      else
-        FS.writeFileSync(file, asset.buffer)
+    mkdirp.sync(dir)
+    FS.writeFileSync(file, asset.buffer)
 
   # Render the given template with the context and the
   # global context object merged as template data. Writes
@@ -59,14 +56,10 @@ module.exports = class Theme.Templater
     html = @JST[template](context)
 
     if filename.length > 0
-
       file = Path.join @destination, filename
       dir  = Path.dirname(file)
 
-      mkdirp dir, (err) ->
-        if err
-          console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
-        else
-          FS.writeFileSync(file, html)
+      mkdirp.sync(dir)
+      FS.writeFileSync(file, html)
 
     html

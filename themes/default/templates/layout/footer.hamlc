@@ -7,7 +7,7 @@
 
   &#10034;
 
-  Press Ctrl-h to see the keyboard shortcuts
+  Press H to see the keyboard shortcuts
 
   &#10034;
 
@@ -20,3 +20,49 @@
   &#10034;
 
   %a{href: 'https://mksoft.ch', target: '_parent'} mksoft.ch
+
+%iframe#search_frame
+
+#fuzzySearch
+  %input{type: 'text'}
+  %ol
+
+#help
+  %p
+    Quickly fuzzy find classes, mixins, methods, file:
+  %ul
+    %li
+      %span T
+      Open fuzzy finder dialog
+
+  %p
+    Control the navigation frame:
+  %ul
+    %li
+      %span L
+      Toggle list view
+    %li
+      %span C
+      Show class list
+    %li
+      %span I
+      Show mixin list
+    %li
+      %span F
+      Show file list
+    %li
+      %span M
+      Show method list
+    %li
+      %span E
+      Show extras list
+
+  %p
+    You can focus and blur the search input:
+  %ul
+    %li
+      %span S
+      Focus search input
+    %li
+      %span Esc
+      Blur search input
