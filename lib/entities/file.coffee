@@ -26,7 +26,7 @@ module.exports = class Entities.File extends require('../entity')
       if node.entities?
         for entity in node.entities
           if entity instanceof Method
-            @methods.push entity
+            @methods.push(entity) if entity.name.length > 0
           if entity instanceof Variable
             @variables.push entity
           if entity instanceof Mixin
