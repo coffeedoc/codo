@@ -15,9 +15,8 @@ describe 'Theme', ->
     environment.readExtra 'spec/_templates/example/CHANGELOG'
     environment.readExtra 'spec/_templates/example/README.md', true
 
-    environment.readCoffee 'spec/_templates/example/src/animal.coffee'
-    environment.readCoffee 'spec/_templates/example/src/lion.coffee'
-    environment.readCoffee 'spec/_templates/example/src/angry_animal.coffee'
+    environment.readCoffee 'spec/_templates/example/src/over_documented_class.coffee'
+    environment.readCoffee 'spec/_templates/example/src/over_documented_mixin.coffee'
 
     environment.linkify()
 

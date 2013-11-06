@@ -81,12 +81,12 @@
         - for throws in @documentation.throws
           %li
             %span.type
-            - if throws.desc
+            - if throws.description
               (
                 %tt>= throws.type
               )
               &mdash;
-              %span.desc!= @activate throws.desc, @path, true
+              %span.desc!= @activate throws.description, @path, true
             - else
               %tt>= throws.type
 
@@ -95,12 +95,12 @@
       %ul.return
         %li
           %span.type
-          - if @documentation.returns.desc
+          - if @documentation.returns.description
             (
               %tt>= @documentation.returns.type
             )
             &mdash;
-            %span.desc!= @activate @documentation.returns.desc, @path, true
+            %span.desc!= @activate @documentation.returns.description, @path, true
           - else
             %tt>= @documentation.returns.type
 

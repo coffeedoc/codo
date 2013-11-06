@@ -125,8 +125,8 @@ module.exports = class Documentation
       else if version = /^@version\s+(.+)/i.exec line
         @version = version[1] || ''
 
-      else if deprecated = /^@deprecated\s+(.*)/i.exec line
-        @deprecated = deprecated[1] || ''
+      else if deprecated = /^@deprecated(\s+)?(.*)/i.exec line
+        @deprecated = deprecated[2] || ''
 
       else if mixin = /^@mixin/i.exec line
         @mixin = true
