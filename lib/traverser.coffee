@@ -152,7 +152,7 @@ module.exports = class Traverser
     if Entity.is(node)
       entity = new Entity @environment, file, node
       node.entities.push(entity)
-      @environment.entities.push(entity)
+      @environment.registerEntity(entity)
 
       entity
 

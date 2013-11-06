@@ -135,9 +135,9 @@
         - for see in @documentation.see
           %li
             - if see.reference && see.label
-              %a{ href: see.reference }= see.label
+              %a{href: @reference(see.reference, @path)}= see.label
             - else if see.reference
-              %a{ href: see.reference }= see.reference
+              %a{href: @reference(see.reference, @path)}= see.reference
             - else
               = see.label
 

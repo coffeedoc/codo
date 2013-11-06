@@ -81,7 +81,7 @@
         - if @entity.properties.length > 0
           %dl.properties
             - for property in @entity.properties
-              %dt{ id: "#{property.name}-property" }
+              %dt{id: @anchorFor(property)}
                 %span.signature
                   - if property.documentation?.property
                     = "(#{property.documentation.property})"
@@ -102,7 +102,7 @@
             %a{href: @pathFor('class', @entity.parent, @path)}= @entity.parent.name
           %p.inherited
             - for property in @entity.inheritedProperties()
-              %a{href: "#{@pathFor('class', @entity.parent, @path)}##{property.name}-property"}= property.name
+              %a{href: "#{@pathFor('class', @entity.parent, @path)}##{@anchorFor(property)}"}= property.name
 
 
       - if @entity.variables.length > 0 || @entity.inheritedVariables().length > 0
@@ -115,7 +115,7 @@
             %a{href: @pathFor('class', @entity.parent, @path)}= @entity.parent.name
           %p.inherited
             - for variable in @entity.inheritedVariables()
-              %a{href: "#{@pathFor('class', @entity.parent, @path)}##{variable.name}-variable"}= variable.name
+              %a{href: "#{@pathFor('class', @entity.parent, @path)}##{@anchorFor(variable)}"}= variable.name
 
 
       - staticMethods  = @entity.effectiveMethods().filter (m) -> m.kind == 'static'
@@ -139,7 +139,7 @@
             %a{href: @pathFor('class', @entity.parent, @path)}= @entity.parent.name
           %p.inherited
             - for method in @entity.inheritedMethods()
-              %a{href: "#{@pathFor 'class', @entity.parent, @path}##{method.name}-#{method.kind}"}= method.shortSignature()
+              %a{href: "#{@pathFor 'class', @entity.parent, @path}##{@anchorFor(method)}"}= method.shortSignature()
 
       - if @entity.extends.length > 0
         %h2
@@ -152,7 +152,7 @@
               %a{href: @pathFor('mixin', mixin, @path)}= mixin.name
             %p.inherited
               - for method in mixin.effectiveExtensionMethods()
-                %a{href: "#{@pathFor 'mixin', mixin, @path}##{method.name}-#{method.kind}"}= method.shortSignature()
+                %a{href: "#{@pathFor 'mixin', mixin, @path}##{@anchorFor(method)}"}= method.shortSignature()
           - else
             %h3.inherited
               Methods extended from
@@ -169,7 +169,7 @@
               %a{href: @pathFor('mixin', mixin, @path)}= mixin.name
             %p.inherited
               - for method in mixin.effectiveInclusionMethods()
-                %a{href: "#{@pathFor 'mixin', mixin, @path}##{method.name}-#{method.kind}"}= method.shortSignature()
+                %a{href: "#{@pathFor 'mixin', mixin, @path}##{@anchorFor(method)}"}= method.shortSignature()
           - else
             %h3.inherited
               Methods included from
@@ -187,7 +187,7 @@
               %a{href: @pathFor('mixin', mixin, @path)}= mixin.name
             %p.inherited
               - for method in mixin.effectiveConcernMethods()
-                %a{href: "#{@pathFor 'mixin', mixin, @path}##{method.name}-#{method.kind}"}= method.shortSignature()
+                %a{href: "#{@pathFor 'mixin', mixin, @path}##{@anchorFor(method)}"}= method.shortSignature()
           - else
             %h3.inherited
               Methods concerned from

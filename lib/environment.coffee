@@ -36,9 +36,10 @@ module.exports = class Environment
     @options.output  ?= 'doc'
     @options.basedir ?= process.cwd()
 
-    @needles  = []
-    @entities = []
-    @parsed   = {}
+    @needles    = []
+    @entities   = []
+    @references = {}
+    @parsed     = {}
 
     @needles.push Class
     @needles.push Method
@@ -63,12 +64,15 @@ module.exports = class Environment
     Winston.info("Parsing Extra file #{file}") if @options.verbose
 
     try
-      @entities.push(new Extra @, file)
+      @registerEntity(new Extra @, file)
     catch error
       throw error if @options.debug
       Winston.error("Cannot parse Extra file #{file}: #{error.message}") unless @options.quiet
     finally
       @parsed[file] = true
+
+  registerEntity: (entity) ->
+    @entities.push entity
 
   all: (Entity, haystack = []) ->
     for entity in @entities
@@ -104,6 +108,22 @@ module.exports = class Environment
 
   linkify: ->
     entity.linkify() for entity in @entities
+
+    for basics in [@allFiles(), @allClasses(), @allMixins()]
+      for basic in basics
+        @references[basic.name] = basic
+
+    for method in @allMethods()
+      keyword = method.owner.name + method.entity.shortSignature()
+      @references[keyword] = method
+
+  reference: (needle) ->
+    needle = needle.split(' ')[0]
+
+    if @references[needle]
+      @references[needle]
+    else
+      needle
 
   inspect: ->
     @entities.map (entity) -> entity.inspect()

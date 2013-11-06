@@ -3,30 +3,24 @@ Path        = require 'path'
 walkdir     = require 'walkdir'
 Winston     = require 'winston'
 
-Environment = require './environment'
-Markdown    = require './markdown'
-File        = require './entities/file'
-Class       = require './entities/class'
-Method      = require './entities/method'
-Variable    = require './entities/variable'
-Property    = require './entities/property'
-Mixin       = require './entities/mixin'
-Extra       = require './entities/extra'
-
-
 module.exports = Codo =
-  Environment: Environment
 
-  Markdown: Markdown
+  Environment: require './environment'
+
+  Markdown:    require './markdown'
 
   Entities:
-    File: File
-    Class: Class
-    Method: Method
-    Variable: Variable
-    Property: Property
-    Mixin: Mixin
-    Extra: Extra
+    File:      require './entities/file'
+    Class:     require './entities/class'
+    Method:    require './entities/method'
+    Variable:  require './entities/variable'
+    Property:  require './entities/property'
+    Mixin:     require './entities/mixin'
+    Extra:     require './entities/extra'
+
+  Meta:
+    Method:    require './meta/method'
+    Parameter: require './meta/parameter'
 
   version: ->
     JSON.parse(

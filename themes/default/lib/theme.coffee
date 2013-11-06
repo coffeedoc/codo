@@ -36,19 +36,35 @@ module.exports = class Theme.Theme
   #
   # HELPERS
   #
+  reference: (needle, prefix) ->
+    @pathFor(@environment.reference(needle), undefined, prefix)
+
+  anchorFor: (entity) ->
+    if entity instanceof Codo.Meta.Method
+      "#{entity.name}-#{entity.kind}"
+    else if entity instanceof Codo.Entities.Property
+      "#{entity.name}-property"
+    else if entity instanceof Codo.Entities.Variable
+      "#{entity.name}-variable"
+
   pathFor: (kind, entity, prefix='') ->
     unless entity?
       entity = kind
-      kind = 'class' if entity instanceof Codo.Entities.Class
-      kind = 'mixin' if entity instanceof Codo.Entities.Mixin
-      kind = 'file'  if entity instanceof Codo.Entities.File
-      kind = 'extra' if entity instanceof Codo.Entities.Extra
+      kind = 'class'  if entity instanceof Codo.Entities.Class
+      kind = 'mixin'  if entity instanceof Codo.Entities.Mixin
+      kind = 'file'   if entity instanceof Codo.Entities.File
+      kind = 'extra'  if entity instanceof Codo.Entities.Extra
+      kind = 'method' if entity.entity instanceof Codo.Meta.Method
 
     switch kind
       when 'file', 'extra'
         prefix + kind + '/' + entity.name + '.html'
       when 'class', 'mixin'
         prefix + kind + '/' + entity.name.replace(/\./, '/') + '.html'
+      when 'method'
+        @pathFor(entity.owner, undefined, prefix) + '#' + @anchorFor(entity.entity)
+      else
+        entity
 
   activate: (text, limit=false) ->
     Codo.Markdown.convert(text, limit)
@@ -80,7 +96,9 @@ module.exports = class Theme.Theme
     globalContext =
       environment: @environment
       path:        @calculatePath(destination)
+      anchorFor:   @anchorFor
       pathFor:     @pathFor
+      reference:   @reference
       activate:    @activate
       render:      (template, context={}) =>
         context[key] = value for key, value of globalContext

@@ -14,7 +14,7 @@
       %ul
         - for method in @environment.allMethods()
           %li{deprecated: if method.documentation?.deprecated then true else false}
-            %a{href: "#{@pathFor(method.owner, undefined, @path)}##{method.entity.name}-#{method.entity.kind}", target: 'main', title: method.entity.name}
+            %a{href: @pathFor(method), target: 'main', title: method.entity.name}
               = method.entity.shortSignature()              
             %small
               = surround '(', ')', -> method.owner.name

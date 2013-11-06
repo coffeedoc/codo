@@ -3,7 +3,7 @@
     %li{deprecated: if method.documentation?.deprecated then true else false}
 
       %span.signature
-        %a{href: "##{method.name}-#{method.kind}"}
+        %a{href: '#'+@anchorFor(method)}
           != @render 'partials/method_signature', method: method
 
       - if method.name == 'constructor'
