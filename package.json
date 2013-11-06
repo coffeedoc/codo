@@ -52,7 +52,9 @@
   },
   "devDependencies": {
     "jasmine-node": ">= 1.0.13",
-    "rimraf": "~2.2.2"
+    "rimraf": "~2.2.2",
+    "grunt": "~0.4.1",
+    "grunt-release": "~0.6.0"
   },
   "homepage": "https://github.com/coffeedoc/codo",
   "repository": {
