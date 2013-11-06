@@ -21,7 +21,7 @@
                 - if entry.entity.parent
                   %small.parent
                     <
-                    = entry.entity.parent.name
+                    = entry.entity.parent.name || entry.entity.parent
                 %small.namespace
                   = entry.entity.namespace
               - else

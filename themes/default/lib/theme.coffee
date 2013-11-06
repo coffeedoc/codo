@@ -1,3 +1,4 @@
+strftime    = require 'strftime'
 Path        = require 'path'
 Templater   = require './templater'
 TreeBuilder = require './tree_builder'
@@ -101,6 +102,7 @@ module.exports = class Theme.Theme
     globalContext =
       environment: @environment
       path:        @calculatePath(destination)
+      strftime:    strftime
       anchorFor:   @anchorFor
       pathFor:     @pathFor
       reference:   @reference

@@ -14,7 +14,7 @@
       "name": "Boris Staal"
     }
   ],
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "licenses": [
     {
       "type": "MIT",
@@ -48,7 +48,8 @@
     "stylus": "~0.38.0",
     "nib": "~1.0.0",
     "winston": "~0.7.2",
-    "cli-table": "~0.2.0"
+    "cli-table": "~0.2.0",
+    "strftime": "~0.6.2"
   },
   "devDependencies": {
     "jasmine-node": ">= 1.0.13",

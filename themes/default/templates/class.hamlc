@@ -30,7 +30,7 @@
               - if @entity.parent.name?
                 %a{href: @pathFor('class', @entity.parent, @path)}= @entity.parent.name
               - else
-                @entity.parent
+                = @entity.parent
 
         - if @entity.extends.length > 0
           %tr

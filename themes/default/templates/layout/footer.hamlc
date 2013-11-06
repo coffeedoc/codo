@@ -1,6 +1,6 @@
 #footer
 
-  Generated on #{new Date().toString()} by
+  #{@strftime '%B %d, %y %H:%M:%S'} by
   %a{href: 'https://github.com/coffeescript/codo', title: 'CoffeeScript API documentation generator'}
     Codo
   = @environment.version
@@ -11,12 +11,12 @@
 
   &#10034;
 
-  %a{href: 'http://twitter.com/netzpirat'} @netzpirat
+  %a{href: 'http://twitter.com/netzpirat', target: '_parent'} @netzpirat
 
   &#10034;
 
-  %a{href: 'http://twitter.com/_inossidabile'} @_inossidabile
+  %a{href: 'http://twitter.com/_inossidabile', target: '_parent'} @_inossidabile
 
   &#10034;
 
-  %a{href: 'https://mksoft.ch'} mksoft.ch
+  %a{href: 'https://mksoft.ch', target: '_parent'} mksoft.ch
