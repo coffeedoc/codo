@@ -1,7 +1,7 @@
 FS       = require 'fs'
 Path     = require 'path'
 Entities = require '../_entities'
-Markdown = require '../markdown'
+Markdown = require '../tools/markdown'
 
 module.exports = class Entities.Extra
 

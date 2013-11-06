@@ -98,6 +98,19 @@ module.exports = class Environment
       return 1  if a.entity.name > b.entity.name
       return 0
 
+  allVariables: ->
+    return @_allVariables if @_allVariables?
+
+    @_allVariables = []
+
+    for source in [@allFiles(), @allClasses(), @allMixins()]
+      for entry in source
+        for variable in entry.variables
+          @_allVariables.push {entity: variable, owner: entry}
+
+    @_allVariables
+
+
   find: (Entity, name) ->
     for entity in @entities
       if entity instanceof Entity && entity.name == name
@@ -112,6 +125,10 @@ module.exports = class Environment
     for basics in [@allFiles(), @allClasses(), @allMixins()]
       for basic in basics
         @references[basic.name] = basic
+
+    for variable in @allVariables()
+      keyword = variable.owner.name + '.' + variable.entity.name
+      @references[keyword] = variable
 
     for method in @allMethods()
       keyword = method.owner.name + method.entity.shortSignature()

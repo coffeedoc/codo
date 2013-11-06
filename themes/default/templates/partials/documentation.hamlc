@@ -9,7 +9,7 @@
       - if @documentation.deprecated?
         .note.deprecated
           %strong Deprecated.
-          != @activate @documentation.deprecated, true
+          != @activate @documentation.deprecated, @path, true
 
       - if @documentation.abstract?
         .note.abstract
@@ -17,21 +17,21 @@
             This
             = @kind
             is abstract.
-          != @activate @documentation.abstract, true
+          != @activate @documentation.abstract, @path, true
 
       - if @documentation.todos
         - for todo in @documentation.todos
           .note.todo
             %strong TODO:
-            != @activate todo, true
+            != @activate todo, @path, true
 
       - if @documentation.notes
         - for note in @documentation.notes
           .note
             %strong Note:
-            != @activate note, true
+            != @activate note, @path, true
 
-      != @activate @documentation.comment
+      != @activate @documentation.comment, @path
 
       - if @documentation.examples
         .examples
@@ -56,7 +56,7 @@
               )
             - if param.desc
               &mdash;
-              %span.desc!= @activate param.desc, true
+              %span.desc!= @activate param.desc, @path, true
 
     - if @documentation.options
       - for hash, options of @documentation.options
@@ -73,7 +73,7 @@
                 )
               - if option.desc
                 &mdash;
-                %span.desc!= @activate option.desc, true
+                %span.desc!= @activate option.desc, @path, true
 
     - if @documentation.throws
       %h3 Throws:
@@ -86,7 +86,7 @@
                 %tt>= throws.type
               )
               &mdash;
-              %span.desc!= @activate throws.desc, true
+              %span.desc!= @activate throws.desc, @path, true
             - else
               %tt>= throws.type
 
@@ -100,7 +100,7 @@
               %tt>= @documentation.returns.type
             )
             &mdash;
-            %span.desc!= @activate @documentation.returns.desc, true
+            %span.desc!= @activate @documentation.returns.desc, @path, true
           - else
             %tt>= @documentation.returns.type
 
@@ -109,25 +109,25 @@
       %ul.author
         - for author in @documentation.authors
           %li
-            != @activate author, true
+            != @activate author, @path, true
 
     - if @documentation.copyright
       %h3 Copyright:
       %ul.copyright
         %li
-          != @activate @documentation.copyright, true
+          != @activate @documentation.copyright, @path, true
 
     - if @documentation.since
       %h3 Since:
       %ul.since
         %li
-          != @activate @documentation.since, true
+          != @activate @documentation.since, @path, true
 
     - if @documentation.version
       %h3 Version:
       %ul.version
         %li
-          != @activate @documentation.version, true
+          != @activate @documentation.version, @path, true
 
     - if @documentation.see
       %h3 See also:

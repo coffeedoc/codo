@@ -18,7 +18,8 @@ module.exports = class Theme.Theme
     theme.compile()
 
   constructor: (@environment) ->
-    @templater = new Templater(@environment.options.output)
+    @templater  = new Templater(@environment.options.output)
+    @referencer = new Codo.Tools.Referencer(@environment)
 
   compile: ->
     @templater.compileAsset('javascript/application.js')
@@ -55,19 +56,23 @@ module.exports = class Theme.Theme
       kind = 'file'   if entity instanceof Codo.Entities.File
       kind = 'extra'  if entity instanceof Codo.Entities.Extra
       kind = 'method' if entity.entity instanceof Codo.Meta.Method
+      kind = 'variable' if entity.entity instanceof Codo.Entities.Variable
 
     switch kind
       when 'file', 'extra'
         prefix + kind + '/' + entity.name + '.html'
       when 'class', 'mixin'
         prefix + kind + '/' + entity.name.replace(/\./, '/') + '.html'
-      when 'method'
+      when 'method', 'variable'
         @pathFor(entity.owner, undefined, prefix) + '#' + @anchorFor(entity.entity)
       else
         entity
 
-  activate: (text, limit=false) ->
-    Codo.Markdown.convert(text, limit)
+  activate: (text, prefix, limit=false) ->
+    text = @referencer.resolve text, (link, label) =>
+      "<a href='#{@pathFor link, undefined, prefix}'>#{label}</a>"
+
+    Codo.Tools.Markdown.convert(text, limit)
 
   generateBreadcrumbs: (entries = []) ->
     entries     = [entries] unless Array.isArray(entries)
@@ -99,7 +104,7 @@ module.exports = class Theme.Theme
       anchorFor:   @anchorFor
       pathFor:     @pathFor
       reference:   @reference
-      activate:    @activate
+      activate:    => @activate(arguments...)
       render:      (template, context={}) =>
         context[key] = value for key, value of globalContext
         @templater.render template, context

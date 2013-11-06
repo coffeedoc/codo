@@ -1,11 +1,12 @@
 marked = require 'marked'
+Tools  = require '../_tools'
 
 # It looks like all the markdown libraries for node doesn't get
 # GitHub flavored markdown right. This helper class post-processes
 # the best available output from the marked library to conform to
 # GHM. In addition the allowed tags can be limited.
 #
-module.exports = class Markdown
+module.exports = class Tools.Markdown
 
   # Tags to keep when parsing is limited
   @limitedTags: 'a,abbr,acronym,b,big,cite,code,del,em,i,ins,sub,sup,span,small,strike,strong,q,tt,u'

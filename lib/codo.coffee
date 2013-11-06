@@ -7,7 +7,9 @@ module.exports = Codo =
 
   Environment: require './environment'
 
-  Markdown:    require './markdown'
+  Tools:
+    Markdown:   require './tools/markdown'
+    Referencer: require './tools/referencer'
 
   Entities:
     File:      require './entities/file'
