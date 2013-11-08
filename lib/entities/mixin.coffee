@@ -81,6 +81,7 @@ module.exports = class Entities.Mixin extends require('../entity')
     methods
 
   effectiveMethods: ->
+    return @effectiveConcernMethods() if @concern
     @_effectiveMethods ||= @aggregateEffectiveMethods()
 
   effectiveInclusionMethods: ->
