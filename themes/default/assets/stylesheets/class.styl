@@ -34,13 +34,18 @@
     }
   }
 
-  h1 .note, li .note, .properties .note {
+  h1 .note, li .note, .properties .note, .method_details .signature .note {
     font-weight: normal;
     padding: 3px 5px;
     position: relative;
     top: -3px;
     text-transform: capitalize;
     display: inline;
+  }
+
+  .method_details .signature .note {
+    font-size: 0.6em;
+    top: -1px;
   }
 
   h1 .note {

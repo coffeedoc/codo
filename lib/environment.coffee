@@ -134,11 +134,13 @@ module.exports = class Environment
       keyword = method.owner.name + method.entity.shortSignature()
       @references[keyword] = method
 
-  reference: (needle) ->
+  reference: (needle, context='') ->
     needle = needle.split(' ')[0]
 
     if @references[needle]
       @references[needle]
+    else if @references[context+needle]
+      @references[context+needle]
     else
       needle
 

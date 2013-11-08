@@ -5,9 +5,9 @@
         - for overload in method.effectiveOverloads()
           != @render 'partials/method_signature', method: overload
           - if overload.bound
-            (bound)
+            %span.bound.note Bound
           - if overload.documentation?.private
-            (private)
+            %span.private.note Private
           %br
 
       != @render 'partials/documentation', documentation: method.documentation, kind: 'method', entity: method
