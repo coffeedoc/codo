@@ -24,6 +24,6 @@
       %span.desc
         - if method.documentation?.deprecated
           %strong Deprecated.
-          != method.documentation?.deprecated
-        - else
-          != method.documentation?.summary
+          != @activate method.documentation?.deprecated, @path, true
+        - else if method.documentation?.summary
+          != @activate method.documentation?.summary, @path, true
