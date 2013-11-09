@@ -18,6 +18,9 @@
         - if @entity.concern
           %span.note.concern Concern
 
+        - if @entity.documentation?.private
+          %span.note.private Private
+
       %table.box
         %tr
           %td Defined in:
