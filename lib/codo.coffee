@@ -89,11 +89,11 @@ module.exports = Codo =
     if FS.existsSync(Path.join path, 'package.json')
       name = JSON.parse(FS.readFileSync Path.join(path, 'package.json'), 'utf-8')['name']
 
-    else if FS.existsSync(Path.join path, '.git', 'config')
-      config = fs.readFileSync(Path.join(path, '.git', 'config'), 'utf-8')
+    if !name && FS.existsSync(Path.join path, '.git', 'config')
+      config = FS.readFileSync(Path.join(path, '.git', 'config'), 'utf-8')
       name   = /github\.com[:/][^/]+\/(.*)\.git/.exec(config)?[1]
 
-    else
+    if !name
       name = Path.basename(path)
 
     return name.charAt(0).toUpperCase() + name.slice(1)
