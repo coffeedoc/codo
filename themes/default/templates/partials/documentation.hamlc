@@ -54,9 +54,9 @@
               (
                 %tt>= param.type
               )
-            - if param.desc
+            - if param.description
               &mdash;
-              %span.desc!= @activate param.desc, @path, true
+              %span.desc!= @activate param.description, @path, true
 
     - if @documentation.options
       - for hash, options of @documentation.options
@@ -71,9 +71,9 @@
                 (
                   %tt>= option.type
                 )
-              - if option.desc
+              - if option.description
                 &mdash;
-                %span.desc!= @activate option.desc, @path, true
+                %span.desc!= @activate option.description, @path, true
 
     - if @documentation.throws
       %h3 Throws:

@@ -4,7 +4,7 @@
 
       %span.signature
         %a{href: '#'+@anchorFor(method)}
-          != @render 'partials/method_signature', method: method
+          != @render 'partials/method_signature', method: method.effectiveOverloads()[0]
 
       - if method.name == 'constructor'
         %span.constructor.note.title Constructor
