@@ -49,7 +49,7 @@ $ ->
   #
   $('body #content.list ul').on 'click', 'li', (event) ->
     link = $(@).find('a:not(.toggle)').attr('href')
-    top.frames['main'].location.href = link unless link is '#' if link
+    top.frames['main'].location.href = link if link && link != '#'
     event.preventDefault()
 
   #
