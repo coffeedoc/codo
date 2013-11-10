@@ -162,6 +162,14 @@ module.exports = class Entities.Class extends require('../entity')
 
     @_effectiveMethods
 
+  allMethods: ->
+    methods = @effectiveMethods()
+    methods = methods.concat mixin.effectiveInclusionMethods() for mixin in @includes
+    methods = methods.concat mixin.effectiveExtensionMethods() for mixin in @extends
+    methods = methods.concat mixin.effectiveConcernMethods() for mixin in @concerns
+
+    methods
+
   inherited: (getter) ->
     return [] if !@parent || !@parent.name?
 
@@ -173,7 +181,7 @@ module.exports = class Entities.Class extends require('../entity')
 
   inheritedMethods: ->
     @_inheritedMethods ||= @inherited =>
-      @parent.effectiveMethods().concat(@parent.inheritedMethods())
+      @parent.allMethods().concat(@parent.inheritedMethods())
 
   inheritedVariables: ->
     @_inheritedVariables ||= @inherited =>
