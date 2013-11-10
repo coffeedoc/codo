@@ -163,10 +163,23 @@ module.exports = class Entities.Class extends require('../entity')
     @_effectiveMethods
 
   allMethods: ->
-    methods = @effectiveMethods()
-    methods = methods.concat mixin.effectiveInclusionMethods() for mixin in @includes
-    methods = methods.concat mixin.effectiveExtensionMethods() for mixin in @extends
-    methods = methods.concat mixin.effectiveConcernMethods() for mixin in @concerns
+    methods = @effectiveMethods().map (method) =>
+      {
+        entity: method
+        owner: @
+      }
+
+    resolvers =
+      includes: 'effectiveInclusionMethods'
+      extends: 'effectiveExtensionMethods'
+      concerns: 'effectiveConcernMethods'
+
+    for storage, resolver of resolvers
+      for mixin in @[storage]
+        for method in mixin[resolver]()
+          methods.push
+            entity: method
+            owner: mixin
 
     methods
 
@@ -177,19 +190,31 @@ module.exports = class Entities.Class extends require('../entity')
     entries = getter()
 
     entries.filter (entry) ->
-      found[entry.name] = true unless found[entry.name]
+      found[entry.entity.name] = true unless found[entry.entity.name]
 
   inheritedMethods: ->
     @_inheritedMethods ||= @inherited =>
-      @parent.allMethods().concat(@parent.inheritedMethods())
+      @parent.allMethods().concat @parent.inheritedMethods()
 
   inheritedVariables: ->
     @_inheritedVariables ||= @inherited =>
-      @parent.variables.concat(@parent.inheritedVariables())
+      variables = @parent.variables.map (variable) =>
+        {
+          entity: variable
+          owner: @parent
+        }
+
+      variables.concat @parent.inheritedVariables()
 
   inheritedProperties: ->
     @_inheritedProperties ||= @inherited =>
-      @parent.properties.concat(@parent.inheritedProperties())
+      properties = @parent.properties.map (property) =>
+        {
+          entity: property
+          owner: @parent
+        }
+
+      properties.concat @parent.inheritedProperties()
 
   inspect: ->
     {

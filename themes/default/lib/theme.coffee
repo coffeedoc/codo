@@ -60,6 +60,7 @@ module.exports = class Theme.Theme
       kind = 'extra'  if entity instanceof Codo.Entities.Extra
       kind = 'method' if entity.entity instanceof Codo.Meta.Method
       kind = 'variable' if entity.entity instanceof Codo.Entities.Variable
+      kind = 'property' if entity.entity instanceof Codo.Entities.Property
 
     switch kind
       when 'file', 'extra'

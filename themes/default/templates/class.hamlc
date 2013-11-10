@@ -102,7 +102,7 @@
             %a{href: @pathFor('class', @entity.parent, @path)}= @entity.parent.name
           %p.inherited
             - for property in @entity.inheritedProperties()
-              %a{href: "#{@pathFor('class', @entity.parent, @path)}##{@anchorFor(property)}"}= property.name
+              %a{href: @pathFor(property, undefined, @path)}= property.entity.name
 
 
       - if @entity.variables.length > 0 || @entity.inheritedVariables().length > 0
@@ -115,7 +115,7 @@
             %a{href: @pathFor('class', @entity.parent, @path)}= @entity.parent.name
           %p.inherited
             - for variable in @entity.inheritedVariables()
-              %a{href: "#{@pathFor('class', @entity.parent, @path)}##{@anchorFor(variable)}"}= variable.name
+              %a{href: @pathFor(variable, undefined, @path)}= variable.entity.name
 
 
       - staticMethods  = @entity.effectiveMethods().filter (m) -> m.kind == 'static'
@@ -139,7 +139,7 @@
             %a{href: @pathFor('class', @entity.parent, @path)}= @entity.parent.name
           %p.inherited
             - for method in @entity.inheritedMethods()
-              %a{href: "#{@pathFor 'class', @entity.parent, @path}##{@anchorFor(method)}"}= method.shortSignature()
+              %a{href: @pathFor(method, undefined, @path)}= method.entity.shortSignature()
 
       - if @entity.extends.length > 0
         %h2
