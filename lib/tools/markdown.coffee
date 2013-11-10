@@ -24,7 +24,7 @@ module.exports = class Tools.Markdown
     html = marked(markdown)
 
     if limit
-      html = html.replace(/\n/, '')
+      html = html.replace(/\n/, ' ')
       html = Markdown.limit(html, allowed)
 
     # Remove newlines around open and closing paragraph tags
