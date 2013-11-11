@@ -3,16 +3,6 @@
 Codo is a [CoffeeScript](http://coffeescript.org/) API documentation generator, similar to [YARD](http://yardoc.org/).
 Its generated documentation is focused on CoffeeScript class syntax for classical inheritance.
 
-## :scissors::scissors::scissors: WARNING :scissors::scissors::scissors:
-
-Codo is at the moment being rewritten from scratch. We are accepting feature requests but don't expect it happen fast.
-
-Besides new maintainable codebase the newer version is going to feature full-stack themes, better support for virtual methods and more predictable documentation blocks parsing.
-
-For the stable release please refer to the [branch 1.x](https://github.com/coffeedoc/codo/tree/1.x).
-
-----------------
-
 ## Features
 
 * Detects classes, methods, constants, mixins & concerns.
@@ -68,7 +58,7 @@ Codo is available in NPM and can be installed with:
 $ npm install -g codo
 ```
 
-Please have a look at the [CHANGELOG](https://github.com/netzpirat/codo/blob/master/CHANGELOG.md) when upgrading to a newer Codo version with `npm update`.
+Please have a look at the [CHANGELOG](https://github.com/coffeedoc/codo/releases) when upgrading to a newer Codo version with `npm update`.
 
 ## Tags
 
@@ -340,16 +330,16 @@ class Classmate
   # @param {string} name Full name (first + last)
   # @param {string} phone Phone number
   # @param {obj} picture JPG of the person
-  constructor : ( {@name, @phone, picture} ) ->
+  constructor: ( {@name, @phone, picture} ) ->
 
   # @param {string} reason Why I'm no longer friends
-  # param {Date} revisit_decision_on When to reconsider
-  unfriend : ( {reason, revisit_decision_on} ) ->
+  # @param {Date} revisit_decision_on When to reconsider
+  unfriend: ( {reason, revisit_decision_on} ) ->
 ```
 
 ### Options
 
-If you have an object as parameter and you like to defined the accepted properties as options to the method, you can use the `@options` tag:
+If you have an object as parameter and you like to define the accepted properties as options to the method, you can use the `@options` tag:
 
 
 ```CoffeeScript
@@ -551,8 +541,6 @@ There are several ways of link types supported and all can take an optional labe
 * Direct link to an instance method: `{Animal.Lion#walk}` or `{Animal.Lion#walk The lion walks}`
 * Direct link to a class method: `{Animal.Lion.constructor}` or `{Animal.Lion.constructor} A new king was born`
 
-If you are referring to a method within the same class, you can omit the class name: `{#walk}`.
-
 The `@see` tag supports the same link types, just without the curly braces:
 
 ```CoffeeScript
@@ -587,7 +575,7 @@ Codo wants to be smart and tries to detect the best default settings for the sou
 
 ### Project defaults
 
-You can define your project defaults by write your command line options to a `.codoopts` file:
+You can define your project defaults by writing your command line options to a `.codoopts` file:
 
 ```bash
 --name       "Codo"
@@ -608,23 +596,23 @@ Put each option flag on a separate line, followed by the source directories or f
 
 You can quickly search and jump through the documentation by using the fuzzy finder dialog:
 
-* Open fuzzy finder dialog: `Ctrl-T`
+* Open fuzzy finder dialog: `T`
 
 In frame mode you can toggle the list naviation frame on the left side:
 
-* Toggle list view: `Ctrl-L`
+* Toggle list view: `L`
 
 You can focus a list in frame mode or toggle a tab in frameless mode:
 
-* Class list: `Ctrl-C`
-* Mixin list: `Ctrl-I`
-* File list: `Ctrl-F`
-* Method list: `Ctrl-M`
-* Extras list: `Ctrl-E`
+* Class list: `C`
+* Mixin list: `I`
+* File list: `F`
+* Method list: `M`
+* Extras list: `E`
 
 You can focus and blur the search input:
 
-* Focus search input: `Ctrl-S`
+* Focus search input: `S`
 * Blur search input: `Esc`
 
 In frameless mode you can close the list tab:
@@ -633,14 +621,14 @@ In frameless mode you can close the list tab:
 
 ## Report issues
 
-Issues hosted at [GitHub Issues](https://github.com/netzpirat/codo/issues).
+Issues hosted at [GitHub Issues](https://github.com/coffeedoc/codo/issues).
 
 The Codo specs are template based, so make sure you provide a code snippet that can be added as failing spec to the
 project when reporting an issue with parsing your CoffeeScript code. The other thing that might be useful is the actual exception happening (run with `-d`).
 
 ## Development
 
-Source hosted at [GitHub](https://github.com/netzpirat/codo).
+Source hosted at [GitHub](https://github.com/coffeedoc/codo).
 
 Pull requests are very welcome! Please try to follow these simple rules if applicable:
 
