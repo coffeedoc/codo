@@ -570,7 +570,7 @@ Usage: codo [options] [source_files [- extra_files]]
 Options:
   --help, -h          Show this help                          
   --version           Show version                            
-  --destination, -o   The output directory                      [default: "./doc"]
+  --output, -o        The output directory                      [default: "./doc"]
   --theme             The theme to be used                      [default: "default"]
   --name, -n          The project name used                   
   --readme, -r        The readme file used                    
