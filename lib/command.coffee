@@ -9,6 +9,7 @@ module.exports = class Command
     {name: 'help', alias: 'h', describe: 'Show this help'}
     {name: 'version', describe: 'Show version'}
     {name: 'output', alias: 'o', describe: 'The output directory', default: './doc'}
+    {name: 'output-dir'}
     {name: 'theme', describe: 'The theme to be used', default: 'default'}
     {name: 'name', alias: 'n', describe: 'The project name used'}
     {name: 'readme', alias: 'r', describe: 'The readme file used'}
@@ -69,6 +70,10 @@ module.exports = class Command
     @extendOptimist(optimist, defaults, @theme::options)
 
     @options = @prepareOptions(optimist, defaults)
+
+    if @options['output-dir']
+      console.log "The usage of outdated `--output-dir` option detected. Please switch to `--output`."
+      process.exit()
 
     if @options.help
       console.log optimist.help()
