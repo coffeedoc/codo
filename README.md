@@ -583,7 +583,7 @@ You can define your project defaults by writing your command line options to a `
 --title      "Codo Documentation"
 --private
 --quiet
---destination ./doc
+--output     ./doc
 ./src
 -
 LICENSE
