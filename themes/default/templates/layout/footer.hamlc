@@ -1,7 +1,7 @@
 #footer
 
   #{@strftime '%B %d, %y %H:%M:%S'} by
-  %a{href: 'https://github.com/coffeescript/codo', title: 'CoffeeScript API documentation generator'}
+  %a{href: 'https://github.com/coffeedoc/codo', title: 'CoffeeScript API documentation generator'}
     Codo
   = @environment.version
 
