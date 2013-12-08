@@ -62,19 +62,19 @@ module.exports = class Documentation
           description: param[3]
 
       else if option = /^@option\s+([^ ]+)\s+[\[\{](.+?)[\]\}]\s+([^ ]+)(?:\s+(.+))?/i.exec line
-        @paramsOptions ?= {}
-        @paramsOptions[option[1]] ?= []
+        @options ?= {}
+        @options[option[1]] ?= []
 
-        @paramsOptions[option[1]].push
+        @options[option[1]].push
           type: option[2]
           name: option[3]
           description: option[4]
 
       else if option = /^@option\s+([^ ]+)\s+([^ ]+)\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
-        @paramsOptions ?= {}
-        @paramsOptions[option[1]] ?= []
+        @options ?= {}
+        @options[option[1]] ?= []
 
-        @paramsOptions[option[1]].push
+        @options[option[1]].push
           type: option[3]
           name: option[2]
           description: option[4]

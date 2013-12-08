@@ -55,6 +55,25 @@
               "description": "The do options"
             }
           ],
+          "options": {
+            "options": [
+              {
+                "type": "String",
+                "name": "speed",
+                "description": "The speed"
+              },
+              {
+                "type": "Number",
+                "name": "repeat",
+                "description": "How wany time to repeat"
+              },
+              {
+                "type": "Array<Tasks>",
+                "name": "tasks",
+                "description": "The tasks to do"
+              }
+            ]
+          },
           "returns": {
             "type": "Boolean",
             "description": "When successful executed"
@@ -107,6 +126,25 @@
               "description": "The do options"
             }
           ],
+          "options": {
+            "options": [
+              {
+                "type": "String",
+                "name": "speed",
+                "description": "The speed"
+              },
+              {
+                "type": "Number",
+                "name": "repeat",
+                "description": "How wany time to repeat"
+              },
+              {
+                "type": "Array<Tasks>",
+                "name": "tasks",
+                "description": "The tasks to do"
+              }
+            ]
+          },
           "returns": {
             "type": "Boolean",
             "description": "When successful executed"
@@ -154,6 +192,25 @@
               "description": "The do options"
             }
           ],
+          "options": {
+            "options": [
+              {
+                "type": "String",
+                "name": "speed",
+                "description": "The speed"
+              },
+              {
+                "type": "Number",
+                "name": "repeat",
+                "description": "How wany time to repeat"
+              },
+              {
+                "type": "Array<Tasks>",
+                "name": "tasks",
+                "description": "The tasks to do"
+              }
+            ]
+          },
           "returns": {
             "type": "Boolean",
             "description": "When successful executed"
@@ -225,6 +282,25 @@
           "description": "The do options"
         }
       ],
+      "options": {
+        "options": [
+          {
+            "type": "String",
+            "name": "speed",
+            "description": "The speed"
+          },
+          {
+            "type": "Number",
+            "name": "repeat",
+            "description": "How wany time to repeat"
+          },
+          {
+            "type": "Array<Tasks>",
+            "name": "tasks",
+            "description": "The tasks to do"
+          }
+        ]
+      },
       "returns": {
         "type": "Boolean",
         "description": "When successful executed"
@@ -277,6 +353,25 @@
           "description": "The do options"
         }
       ],
+      "options": {
+        "options": [
+          {
+            "type": "String",
+            "name": "speed",
+            "description": "The speed"
+          },
+          {
+            "type": "Number",
+            "name": "repeat",
+            "description": "How wany time to repeat"
+          },
+          {
+            "type": "Array<Tasks>",
+            "name": "tasks",
+            "description": "The tasks to do"
+          }
+        ]
+      },
       "returns": {
         "type": "Boolean",
         "description": "When successful executed"
@@ -324,6 +419,25 @@
           "description": "The do options"
         }
       ],
+      "options": {
+        "options": [
+          {
+            "type": "String",
+            "name": "speed",
+            "description": "The speed"
+          },
+          {
+            "type": "Number",
+            "name": "repeat",
+            "description": "How wany time to repeat"
+          },
+          {
+            "type": "Array<Tasks>",
+            "name": "tasks",
+            "description": "The tasks to do"
+          }
+        ]
+      },
       "returns": {
         "type": "Boolean",
         "description": "When successful executed"
