@@ -25,7 +25,7 @@ module.exports = class Meta.Method
         'static'
 
     options =
-      name: entry.signature.replace /^.([^\(]+)\(.+/, '$1'
+      name: entry.signature.replace /^[\#\.]?([^\(]+)\(.+/, '$1'
       kind: kind || ''
       parameters: Parameter.fromSignature(entry.signature).map (x) -> x.toString()
       documentation: entry.documentation
