@@ -22,9 +22,15 @@ module.exports = class Entities.File extends require('../entity')
     super
 
     for node in @node.expressions
+      # Checking direct members
+      unless entities = node.entities
+        # And members prefixed with `module.exports =`
+        if node.variable?.base?.value == 'module'
+          if node.variable?.properties?[0]?.name?.value == 'exports'
+            entities = node.value?.entities
 
-      if node.entities?
-        for entity in node.entities
+      if entities
+        for entity in entities
           if entity instanceof Method
             @methods.push(entity) if entity.name.length > 0
           if entity instanceof Variable

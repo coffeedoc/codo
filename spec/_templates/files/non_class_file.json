@@ -13,7 +13,7 @@
             {
               "type": "String",
               "name": "name",
-              "description": "the name of the persion"
+              "description": "the name of the person"
             }
           ]
         },
@@ -35,7 +35,7 @@
             {
               "type": "String",
               "name": "name",
-              "description": "the name of the persion"
+              "description": "the name of the person"
             }
           ]
         },
@@ -57,13 +57,31 @@
             {
               "type": "String",
               "name": "name",
-              "description": "the name of the persion"
+              "description": "the name of the person"
             }
           ]
         },
         "parameters": [
           {
             "name": "hi",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "file": "spec/_templates/files/non_class_file.coffee",
+        "name": "foo",
+        "bound": false,
+        "documentation": {
+          "comment": "A fooer for fooing foos.",
+          "summary": "A fooer for fooing foos.",
+          "notes": [
+            "Foo"
+          ]
+        },
+        "parameters": [
+          {
+            "name": "foos",
             "splat": false
           }
         ]
@@ -78,6 +96,16 @@
         "documentation": {
           "comment": "The greeting",
           "summary": "The greeting"
+        }
+      },
+      {
+        "file": "spec/_templates/files/non_class_file.coffee",
+        "name": "FOO",
+        "constant": true,
+        "value": "'Foo constant!'",
+        "documentation": {
+          "comment": "Hey, check this out!",
+          "summary": "Hey, check this out!"
         }
       }
     ]
@@ -94,6 +122,16 @@
   },
   {
     "file": "spec/_templates/files/non_class_file.coffee",
+    "name": "FOO",
+    "constant": true,
+    "value": "'Foo constant!'",
+    "documentation": {
+      "comment": "Hey, check this out!",
+      "summary": "Hey, check this out!"
+    }
+  },
+  {
+    "file": "spec/_templates/files/non_class_file.coffee",
     "name": "hello",
     "bound": false,
     "documentation": {
@@ -103,7 +141,7 @@
         {
           "type": "String",
           "name": "name",
-          "description": "the name of the persion"
+          "description": "the name of the person"
         }
       ]
     },
@@ -125,7 +163,7 @@
         {
           "type": "String",
           "name": "name",
-          "description": "the name of the persion"
+          "description": "the name of the person"
         }
       ]
     },
@@ -147,13 +185,31 @@
         {
           "type": "String",
           "name": "name",
-          "description": "the name of the persion"
+          "description": "the name of the person"
         }
       ]
     },
     "parameters": [
       {
         "name": "hi",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/files/non_class_file.coffee",
+    "name": "foo",
+    "bound": false,
+    "documentation": {
+      "comment": "A fooer for fooing foos.",
+      "summary": "A fooer for fooing foos.",
+      "notes": [
+        "Foo"
+      ]
+    },
+    "parameters": [
+      {
+        "name": "foos",
         "splat": false
       }
     ]
