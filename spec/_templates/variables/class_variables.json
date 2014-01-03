@@ -11,6 +11,14 @@
     "variables": [
       {
         "file": "spec/_templates/variables/class_variables.coffee",
+        "name": "empty",
+        "constant": false,
+        "value": "undefined",
+        "selfish": true,
+        "kind": "static"
+      },
+      {
+        "file": "spec/_templates/variables/class_variables.coffee",
         "name": "test",
         "constant": false,
         "value": "'Hi'",
@@ -38,6 +46,14 @@
     "includes": [],
     "extends": [],
     "concerns": []
+  },
+  {
+    "file": "spec/_templates/variables/class_variables.coffee",
+    "name": "empty",
+    "constant": false,
+    "value": "undefined",
+    "selfish": true,
+    "kind": "static"
   },
   {
     "file": "spec/_templates/variables/class_variables.coffee",

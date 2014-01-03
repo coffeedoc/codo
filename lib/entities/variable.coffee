@@ -18,6 +18,10 @@ module.exports = class Entities.Variable extends Entity
       @value = @node.value.base.compile
         indent: ''
 
+      # Workaround to replace CoffeeScript internal
+      # representations with something reasonable
+      @value = 'undefined' if @value == 'void 0'
+
     @documentation = @node.documentation
 
   inspect: ->

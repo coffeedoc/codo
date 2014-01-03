@@ -1,5 +1,7 @@
 class TestClassVariables
 
+  @empty = undefined
+
   @test = 'Hi'
 
   @another = ['a', 'b']

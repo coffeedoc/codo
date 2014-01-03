@@ -1,5 +1,7 @@
 class TestInstanceVariables
 
+  empty: undefined
+
   test: 'Hi'
 
   another: ['a', 'b']

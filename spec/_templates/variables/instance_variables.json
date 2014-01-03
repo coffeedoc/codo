@@ -11,6 +11,13 @@
     "variables": [
       {
         "file": "spec/_templates/variables/instance_variables.coffee",
+        "name": "empty",
+        "constant": false,
+        "value": "undefined",
+        "kind": "dynamic"
+      },
+      {
+        "file": "spec/_templates/variables/instance_variables.coffee",
         "name": "test",
         "constant": false,
         "value": "'Hi'",
@@ -35,6 +42,13 @@
     "includes": [],
     "extends": [],
     "concerns": []
+  },
+  {
+    "file": "spec/_templates/variables/instance_variables.coffee",
+    "name": "empty",
+    "constant": false,
+    "value": "undefined",
+    "kind": "dynamic"
   },
   {
     "file": "spec/_templates/variables/instance_variables.coffee",
