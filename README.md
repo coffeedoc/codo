@@ -166,6 +166,13 @@ The following table shows the list of all available tags in alphabetical order w
       <td>&#10004;</td>
     </tr>
     <tr>
+      <td><strong>@event</strong> name [description]<br />&nbsp;&nbsp;Event tags</td>
+      <td>&#10004;</td>
+      <td></td>
+      <td></td>
+      <td>&#10004;</td>
+    </tr>
+    <tr>
       <td><strong>@overload</strong> signature<br/>&nbsp;&nbsp;Method tags</td>
       <td>&#10004;</td>
       <td></td>
