@@ -75,6 +75,15 @@
                 &mdash;
                 %span.desc!= @activate option.description, @path, true
 
+    - if @documentation.events
+      .events
+        %h3 Events:
+        - for event in @documentation.events
+          .event
+            %p.signature
+              = event.name
+            != @render('partials/documentation', documentation: event.documentation)
+
     - if @documentation.throws
       %h3 Throws:
       %ul.throw

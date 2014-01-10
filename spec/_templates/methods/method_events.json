@@ -18,21 +18,21 @@
           "events": [
             {
               "name": "theBasicOne",
-              "doc": {
+              "documentation": {
                 "comment": "",
                 "summary": ""
               }
             },
             {
               "name": "theWeirdOne",
-              "doc": {
+              "documentation": {
                 "comment": "Omg this event is so weird o_O",
                 "summary": "Omg this event is so weird o_O"
               }
             },
             {
               "name": "theComplicatedOne",
-              "doc": {
+              "documentation": {
                 "params": [
                   {
                     "type": "String",
@@ -71,21 +71,21 @@
       "events": [
         {
           "name": "theBasicOne",
-          "doc": {
+          "documentation": {
             "comment": "",
             "summary": ""
           }
         },
         {
           "name": "theWeirdOne",
-          "doc": {
+          "documentation": {
             "comment": "Omg this event is so weird o_O",
             "summary": "Omg this event is so weird o_O"
           }
         },
         {
           "name": "theComplicatedOne",
-          "doc": {
+          "documentation": {
             "params": [
               {
                 "type": "String",

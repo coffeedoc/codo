@@ -58,6 +58,11 @@ class OverDocumentedClass
   # @param [String] foo                 The first parameter
   # @param [Integer] bar                The second parameter (all of a sudden)
   # @option options [String] option     The only option (wtf?)
+  # @event simpleEvent
+  # @event notSoSimpleEvent             Having description
+  # @event complicatedEvent
+  #   Having description and parameters
+  #   @param [String]                   The string
   @class_method: (foo, bar, options={}) ->
 
   # @abstract It's so abstract! ^_^ {http://www.github.com}

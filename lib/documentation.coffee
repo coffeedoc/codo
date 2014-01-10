@@ -157,7 +157,7 @@ module.exports = class Documentation
 
         @events.push
           name: event[1]
-          doc: doc
+          documentation: doc
 
       else if overload = /^@overload\s+(.+)/i.exec line
         signature = overload[1]
