@@ -14,7 +14,7 @@ module.exports = class Documentation
     while (line = lines.shift()) isnt undefined
 
       # Look ahead
-      unless /^@example|@overload|@method/.exec line
+      unless /^@example|@overload|@method|@event/.exec line
         while /^\s{2}\S+/.test(lines[0])
           line += lines.shift().substring(1)
 
@@ -143,14 +143,30 @@ module.exports = class Documentation
         @extends ?= []
         @extends.push extend[1]
 
+      else if event = /^@event\s+(\S+)(\s+(.+))?/i.exec line
+        @events ?= []
+
+        innerComment = []
+        innerComment.push(event[2]) if event[2]
+        doc = {}
+
+        while /^\s{2}.*/.test(lines[0]) || /^\s*$/.test(lines[0])
+          innerComment.push lines.shift().substring(2)
+
+        @parseTags.call(doc, innerComment) if innerComment
+
+        @events.push
+          name: event[1]
+          doc: doc
+
       else if overload = /^@overload\s+(.+)/i.exec line
         signature = overload[1]
         innerComment = []
 
-        while /^\s{2}.*/.test(lines[0]) or /^\s*$/.test(lines[0])
+        while /^\s{2}.*/.test(lines[0]) || /^\s*$/.test(lines[0])
           innerComment.push lines.shift().substring(2)
 
-        if innerComment.length isnt 0
+        if innerComment.length != 0
           @overloads ?= []
 
           doc = {}
@@ -215,6 +231,7 @@ module.exports = class Documentation
       throws: @throws
       overloads: @overloads
 
+      events: @events
       methods: @methods
       property: @property
     }

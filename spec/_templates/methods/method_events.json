@@ -1,0 +1,110 @@
+[
+  {
+    "file": "spec/_templates/methods/method_events.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/methods/method_events.coffee",
+    "name": "Example.Events",
+    "methods": [
+      {
+        "file": "spec/_templates/methods/method_events.coffee",
+        "name": "emit",
+        "bound": false,
+        "documentation": {
+          "comment": "This is a generic Events emit method.\n\nThis should be more description for the method itself, and events\nshouldn't have messed it up.",
+          "summary": "This is a generic Events emit method.",
+          "events": [
+            {
+              "name": "theBasicOne",
+              "doc": {
+                "comment": "",
+                "summary": ""
+              }
+            },
+            {
+              "name": "theWeirdOne",
+              "doc": {
+                "comment": "Omg this event is so weird o_O",
+                "summary": "Omg this event is so weird o_O"
+              }
+            },
+            {
+              "name": "theComplicatedOne",
+              "doc": {
+                "params": [
+                  {
+                    "type": "String",
+                    "name": "the",
+                    "description": "incredible string"
+                  }
+                ],
+                "comment": "This is the complicated event yo",
+                "summary": "This is the complicated event yo"
+              }
+            }
+          ]
+        },
+        "kind": "dynamic",
+        "parameters": [
+          {
+            "name": "args",
+            "splat": true
+          }
+        ]
+      }
+    ],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  },
+  {
+    "file": "spec/_templates/methods/method_events.coffee",
+    "name": "emit",
+    "bound": false,
+    "documentation": {
+      "comment": "This is a generic Events emit method.\n\nThis should be more description for the method itself, and events\nshouldn't have messed it up.",
+      "summary": "This is a generic Events emit method.",
+      "events": [
+        {
+          "name": "theBasicOne",
+          "doc": {
+            "comment": "",
+            "summary": ""
+          }
+        },
+        {
+          "name": "theWeirdOne",
+          "doc": {
+            "comment": "Omg this event is so weird o_O",
+            "summary": "Omg this event is so weird o_O"
+          }
+        },
+        {
+          "name": "theComplicatedOne",
+          "doc": {
+            "params": [
+              {
+                "type": "String",
+                "name": "the",
+                "description": "incredible string"
+              }
+            ],
+            "comment": "This is the complicated event yo",
+            "summary": "This is the complicated event yo"
+          }
+        }
+      ]
+    },
+    "kind": "dynamic",
+    "parameters": [
+      {
+        "name": "args",
+        "splat": true
+      }
+    ]
+  }
+]
