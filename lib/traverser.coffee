@@ -84,7 +84,7 @@ module.exports = class Traverser
             # Push here comments only before certain lines
             if ///
                  ( # Class
-                   class\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
+                   class\s*@?[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
                  | # Mixin or assignment
                    ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff.]*\s+\=
                  | # Function

@@ -6,6 +6,10 @@
   },
   {
     "file": "spec/_templates/classes/global_class.coffee",
+    "documentation": {
+      "comment": "This is a test class",
+      "summary": "This is a test class"
+    },
     "selfish": true,
     "name": "GlobalTestClass",
     "methods": [],

@@ -6,7 +6,26 @@
   },
   {
     "file": "spec/_templates/classes/namespaced_class.coffee",
+    "documentation": {
+      "comment": "Test description",
+      "summary": "Test description"
+    },
     "name": "Some.Namespace.MyClass",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  },
+  {
+    "file": "spec/_templates/classes/namespaced_class.coffee",
+    "documentation": {
+      "comment": "Test description",
+      "summary": "Test description"
+    },
+    "selfish": true,
+    "name": "Another.Namespace.MyClass",
     "methods": [],
     "variables": [],
     "properties": [],
