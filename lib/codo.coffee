@@ -30,9 +30,10 @@ module.exports = Codo =
     )['version']
 
   parseProject: (path, options={}) ->
-    options.name    ||= @detectName(path)
-    options.readme  ||= @detectReadme(path)
-    options.basedir ||= path
+    options.name      ||= @detectName(path)
+    options.readme    ||= @detectReadme(path)
+    options.basedir   ||= path
+    options.extension ||= 'coffee'
 
     environment = new @Environment(options)
 
