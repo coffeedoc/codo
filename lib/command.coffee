@@ -8,6 +8,7 @@ module.exports = class Command
   options: [
     {name: 'help', alias: 'h', describe: 'Show this help'}
     {name: 'version', describe: 'Show version'}
+    {name: 'extension', alias: 'x', describe: 'Coffee files extension', default: 'coffee'}
     {name: 'output', alias: 'o', describe: 'The output directory', default: './doc'}
     {name: 'output-dir'}
     {name: 'theme', describe: 'The theme to be used', default: 'default'}
@@ -33,7 +34,7 @@ module.exports = class Command
 
   lookupTheme: (name) ->
     if name == 'default'
-      @theme = Theme 
+      @theme = Theme
     else
       try
         @theme = require "codo-theme-#{name}"
