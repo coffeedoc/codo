@@ -656,7 +656,7 @@ Pull requests are very welcome! Please try to follow these simple rules if appli
 ## Core Team
 
 * [Boris Staal](https://github.com/inossidabile) ([@_inossidabile](http://twitter.com/#!/_inossidabile))
-* [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat), [mksoft.ch](https://mksoft.ch))
+* [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat), [FlinkFinger](http://www.flinkfinger.com))
 
 ## Acknowledgment
 
