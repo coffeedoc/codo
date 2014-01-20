@@ -17,10 +17,6 @@
 
   %a{href: 'http://twitter.com/_inossidabile', target: '_parent'} @_inossidabile
 
-  &#10034;
-
-  %a{href: 'https://mksoft.ch', target: '_parent'} mksoft.ch
-
 %iframe#search_frame
 
 #fuzzySearch
