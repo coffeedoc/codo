@@ -2,7 +2,7 @@ class Example.Events
 
   # This is a generic Events emit method.
   #
-  # @event theBasicOne
+  # @event theBasic.One
   # @event theWeirdOne Omg this event is so weird o_O
   # @event theComplicatedOne
   #   This is the complicated event yo

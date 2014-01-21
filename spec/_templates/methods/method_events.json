@@ -17,7 +17,7 @@
           "summary": "This is a generic Events emit method.",
           "events": [
             {
-              "name": "theBasicOne",
+              "name": "theBasic.One",
               "documentation": {
                 "comment": "",
                 "summary": ""
@@ -70,7 +70,7 @@
       "summary": "This is a generic Events emit method.",
       "events": [
         {
-          "name": "theBasicOne",
+          "name": "theBasic.One",
           "documentation": {
             "comment": "",
             "summary": ""
