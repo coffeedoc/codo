@@ -30,9 +30,10 @@ module.exports = Codo =
     )['version']
 
   parseProject: (path, options={}) ->
-    options.name    ||= @detectName(path)
-    options.readme  ||= @detectReadme(path)
-    options.basedir ||= path
+    options.name      ||= @detectName(path)
+    options.readme    ||= @detectReadme(path)
+    options.basedir   ||= path
+    options.extension ||= 'coffee'
 
     environment = new @Environment(options)
 
@@ -45,7 +46,7 @@ module.exports = Codo =
     for input in (options.inputs || [path])
       if FS.existsSync(input)
         if FS.lstatSync(input).isDirectory()
-          for filename in walkdir.sync(input) when filename.match(/\._?coffee$/)
+          for filename in walkdir.sync(input) when filename.match("\\._?#{options.extension}")
             environment.readCoffee(filename)
         else
           environment.readCoffee(Path.resolve input)

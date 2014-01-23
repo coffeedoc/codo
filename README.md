@@ -565,6 +565,7 @@ Usage: codo [options] [source_files [- extra_files]]
 Options:
   --help, -h          Show this help                          
   --version           Show version                            
+  --extension, -x     Coffee files extension                    [default: "coffee"]
   --output, -o        The output directory                      [default: "./doc"]
   --theme             The theme to be used                      [default: "default"]
   --name, -n          The project name used                   
@@ -590,6 +591,7 @@ You can define your project defaults by writing your command line options to a `
 --title      "Codo Documentation"
 --private
 --quiet
+--extension  coffee
 --output     ./doc
 ./src
 -
