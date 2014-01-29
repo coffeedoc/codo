@@ -2,9 +2,13 @@
 
 'use strict';
 
+var compiler = require('coffee-script');
 var location = require('path').join(
   __dirname, '..', 'lib', 'command'
 )
 
-require('coffee-script');
+if (compiler.register) {
+  compiler.register();
+}
+
 require(location).run();
