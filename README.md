@@ -672,7 +672,7 @@ dynamic programming languages.
 
 (The MIT License)
 
-Copyright (c) 2012-2013 Michael Kessler, Boris Staal
+Copyright (c) 2012-2014 Michael Kessler, Boris Staal
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
