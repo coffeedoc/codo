@@ -28,6 +28,7 @@ describe 'Templater', ->
         'partials/method_list',
         'partials/method_signature',
         'partials/method_summary',
+        'partials/type_link',
         'partials/variable_list'
       ]
     )

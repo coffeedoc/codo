@@ -147,7 +147,7 @@
     "file": "spec/_templates/mixins/concern.coffee",
     "name": "ClassMethods",
     "constant": false,
-    "value": "{\n  /*\n  @param [String] a This is the a parameter\n  @param [String] b This is the a parameter\n  @param [String] c This is the a parameter\n  */\n\n  a: function(a, b, c) {},\n  /*\n  @param [String] x This is the x parameter\n  @param [String] y This is the y parameter\n  @param [String] z This is the z parameter\n  */\n\n  z: function(x, y, z) {}\n}"
+    "value": "{\n\n  /*\n  @param [String] a This is the a parameter\n  @param [String] b This is the a parameter\n  @param [String] c This is the a parameter\n   */\n  a: function(a, b, c) {},\n\n  /*\n  @param [String] x This is the x parameter\n  @param [String] y This is the y parameter\n  @param [String] z This is the z parameter\n   */\n  z: function(x, y, z) {}\n}"
   },
   {
     "file": "spec/_templates/mixins/concern.coffee",
@@ -233,7 +233,7 @@
     "file": "spec/_templates/mixins/concern.coffee",
     "name": "InstanceMethods",
     "constant": false,
-    "value": "{\n  /*\n  Say hi\n  @param [String] to the name\n  */\n\n  hi: function(to) {},\n  /*\n  Say goodbye\n  @param [String] to the name\n  */\n\n  goodbye: function(to) {}\n}"
+    "value": "{\n\n  /*\n  Say hi\n  @param [String] to the name\n   */\n  hi: function(to) {},\n\n  /*\n  Say goodbye\n  @param [String] to the name\n   */\n  goodbye: function(to) {}\n}"
   },
   {
     "file": "spec/_templates/mixins/concern.coffee",

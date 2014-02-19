@@ -1,0 +1,7 @@
+- if @awareOf(@type)
+  %tt<>
+    %a{href: @reference(@type, @path)}<>
+      = @type
+- else
+  %tt<>
+    = @type

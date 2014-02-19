@@ -52,7 +52,7 @@
             %span.name= param.name
             %span.type
               (
-                %tt>= param.type
+                != @render('partials/type_link', type: param.type)
               )
             - if param.description
               &mdash;
@@ -69,7 +69,7 @@
               %span.name= option.name
               %span.type
                 (
-                  %tt>= option.type
+                  != @render('partials/type_link', type: option.type)
                 )
               - if option.description
                 &mdash;
@@ -92,12 +92,12 @@
             %span.type
             - if throws.description
               (
-                %tt>= throws.type
+                != @render('partials/type_link', type: throws.type)
               )
               &mdash;
               %span.desc!= @activate throws.description, @path, true
             - else
-              %tt>= throws.type
+              != @render('partials/type_link', type: throws.type)
 
     - if @documentation.returns
       %h3 Returns:
@@ -106,12 +106,12 @@
           %span.type
           - if @documentation.returns.description
             (
-              %tt>= @documentation.returns.type
+              != @render('partials/type_link', type: @documentation.returns.type)
             )
             &mdash;
             %span.desc!= @activate @documentation.returns.description, @path, true
           - else
-            %tt>= @documentation.returns.type
+            != @render('partials/type_link', type: @documentation.returns.type)
 
     - if @documentation.authors
       %h3 Author:

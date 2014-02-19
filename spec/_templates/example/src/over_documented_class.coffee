@@ -53,8 +53,8 @@ class OverDocumentedClass
   # @since 1.0
   # @todo Run with the wolves {http://www.github.com}
   # @version 1.1
-  # @throw EXCEPTION OMG
-  # @return RETVAL OMG
+  # @throw [OverDocumentedClass] EXCEPTION OMG
+  # @return [OverDocumentedClass] RETVAL OMG
   # @param [String] foo                 The first parameter
   # @param [Integer] bar                The second parameter (all of a sudden)
   # @option options [String] option     The only option (wtf?)

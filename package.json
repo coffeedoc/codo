@@ -14,7 +14,7 @@
       "name": "Boris Staal"
     }
   ],
-  "version": "2.0.6",
+  "version": "2.0.7",
   "licenses": [
     {
       "type": "MIT",
@@ -52,7 +52,7 @@
     "strftime": "~0.6.2"
   },
   "devDependencies": {
-    "jasmine-node": ">= 1.0.13",
+    "jasmine-node": ">= 1.13.1",
     "rimraf": "~2.2.2",
     "grunt": "~0.4.1",
     "grunt-release": "~0.6.0"

@@ -40,6 +40,9 @@ module.exports = class Theme.Theme
   #
   # HELPERS
   #
+  awareOf: (needle) ->
+    @environment.references[needle]?
+
   reference: (needle, prefix) ->
     @pathFor(@environment.reference(needle), undefined, prefix)
 
@@ -109,6 +112,7 @@ module.exports = class Theme.Theme
       anchorFor:   @anchorFor
       pathFor:     @pathFor
       reference:   @reference
+      awareOf:     @awareOf
       activate:    => @activate(arguments...)
       render:      (template, context={}) =>
         context[key] = value for key, value of globalContext
