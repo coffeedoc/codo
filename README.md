@@ -674,6 +674,9 @@ dynamic programming languages.
 
 Copyright (c) 2012-2014 Michael Kessler, Boris Staal
 
+Template components are derivative works of YARD (http://yardoc.org)  
+Copyright (c) Loren Segal and licensed under the MIT license
+
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 'Software'), to deal in the Software without restriction, including
