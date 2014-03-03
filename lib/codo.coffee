@@ -46,7 +46,7 @@ module.exports = Codo =
     for input in (options.inputs || [path])
       if FS.existsSync(input)
         if FS.lstatSync(input).isDirectory()
-          for filename in walkdir.sync(input) when filename.match("\\._?#{options.extension}")
+          for filename in walkdir.sync(input) when filename.match("\\._?#{options.extension}$")
             environment.readCoffee(filename)
         else
           environment.readCoffee(Path.resolve input)
