@@ -103,6 +103,39 @@
       },
       {
         "file": "spec/_templates/properties/properties.coffee",
+        "name": "test",
+        "getter": true,
+        "setter": true,
+        "documentation": {
+          "comment": "Something different",
+          "summary": "Something different",
+          "property": "String"
+        }
+      },
+      {
+        "file": "spec/_templates/properties/properties.coffee",
+        "name": "test2",
+        "getter": true,
+        "setter": false,
+        "documentation": {
+          "comment": "Something different 2",
+          "summary": "Something different 2",
+          "property": "String"
+        }
+      },
+      {
+        "file": "spec/_templates/properties/properties.coffee",
+        "name": "test3",
+        "getter": true,
+        "setter": false,
+        "documentation": {
+          "comment": "Something different 3",
+          "summary": "Something different 3",
+          "property": "String"
+        }
+      },
+      {
+        "file": "spec/_templates/properties/properties.coffee",
         "name": "email",
         "getter": false,
         "setter": true,
@@ -306,6 +339,66 @@
         "splat": false
       }
     ]
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "test",
+    "getter": true,
+    "setter": true,
+    "documentation": {
+      "comment": "Something different",
+      "summary": "Something different",
+      "property": "String"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "get",
+    "bound": false,
+    "parameters": []
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "set",
+    "bound": false,
+    "parameters": [
+      {
+        "name": "k",
+        "splat": false
+      },
+      {
+        "name": "v",
+        "splat": false
+      }
+    ]
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "test2",
+    "getter": true,
+    "setter": false,
+    "documentation": {
+      "comment": "Something different 2",
+      "summary": "Something different 2",
+      "property": "String"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "test3",
+    "getter": true,
+    "setter": false,
+    "documentation": {
+      "comment": "Something different 3",
+      "summary": "Something different 3",
+      "property": "String"
+    }
+  },
+  {
+    "file": "spec/_templates/properties/properties.coffee",
+    "name": "set",
+    "bound": false,
+    "parameters": []
   },
   {
     "file": "spec/_templates/properties/properties.coffee",

@@ -83,18 +83,21 @@ module.exports = class Traverser
 
             # Push here comments only before certain lines
             if ///
-                 ( # Class
+                 ( # class Foo
                    class\s*@?[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
-                 | # Mixin or assignment
+                 | # variable =
                    ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff.]*\s+\=
-                 | # Function
+                 | # method: ->
                    [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s*(\(.*\)\s*)?[-=]>
-                 | # Function
+                 | # @method = ->
                    @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
-                 | # Constant
-                   ^\s*@[$A-Z_][A-Z_]*)
-                 | # Properties
+                 | # CONSTANT
+                   ^\s*@[$A-Z_][A-Z_]*
+                 | # property:
                    ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*:
+                 | # @property 'foo'
+                   @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s+['"].+['"]
+                 )
                ///.exec line
 
               result.push c for c in comment

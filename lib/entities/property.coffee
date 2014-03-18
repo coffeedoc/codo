@@ -1,9 +1,24 @@
 Entities = require '../_entities'
 
+#
+# Supported formats:
+#
+#   foo: []
+#
+#   get foo: ->
+#   set foo: (value) ->
+#
+#   @property 'foo'
+#   @property 'foo', ->
+#   @property 'foo',
+#     get: ->
+#     set: (value) ->
+#
 module.exports = class Entities.Property extends require('../entity')
 
   @looksLike: (node) ->
     (node.constructor.name == 'Assign' && node.value?.constructor.name == 'Value') ||
+    (node.constructor.name == 'Call' && node.variable?.base?.value == 'this') ||
     (
       node.constructor.name == 'Call' &&
       node.args?[0]?.base?.properties?[0]?.variable?.base?.value &&
@@ -11,17 +26,39 @@ module.exports = class Entities.Property extends require('../entity')
     )
 
   @is: (node) ->
-    (node.constructor.name == 'Call' || node.documentation?.property) && super(node)
+    super(node) && (
+      node.documentation?.property || 
+      (node.constructor.name == 'Call' && node.variable?.base?.value != 'this')
+    )
 
   constructor: (@environment, @file, @node) ->
-    if @node.constructor.name != 'Call'
-      [@name, @selfish] = @fetchVariableName()
-      @setter = true
-      @getter = true
-    else
+    if @node.constructor.name == 'Call' && @node.variable?.base?.value != 'this'
       @name   = @node.args[0].base.properties[0].variable.base.value
       @setter = @node.variable.base.value == 'set'
       @getter = @node.variable.base.value == 'get'
+    else if @node.constructor.name == 'Call' && @node.variable?.base?.value == 'this'
+      @name = @node.args[0].base.value.replace(/["']/g, '')
+
+      if @node.args.length > 1
+        if @node.args[1].constructor.name == 'Value'
+          # @property 'test', {set: ->, get: ->}
+          @setter = false
+          @getter = false
+          for property in @node.args[1].base?.properties
+            @setter = true if property.variable.base.value == 'get'
+            @getter = true if property.variable.base.value == 'set'
+        else
+          # @property 'test', ->
+          @setter = false
+          @getter = true
+      else
+        # @property 'test'
+        @setter = true
+        @getter = true
+    else
+      [@name, @selfish] = @fetchVariableName()
+      @setter = true
+      @getter = true
 
     @documentation = @node.documentation
 

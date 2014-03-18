@@ -33,6 +33,17 @@ module.exports = class Person
   # @property [String] The confession
   set confession: (@_confession) ->
 
+  # @property [String] Something different
+  @property 'test', 
+    get: -> 'test'
+    set: (k,v) ->
+
+  # @property [String] Something different 2
+  @property 'test2', -> 'test'
+
+  # @property [String] Something different 3
+  @property 'test3', set: -> 'test'
+
   # The email address offer
   set email: (@_email) ->
 
