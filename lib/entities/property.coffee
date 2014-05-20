@@ -45,8 +45,8 @@ module.exports = class Entities.Property extends require('../entity')
           @setter = false
           @getter = false
           for property in @node.args[1].base?.properties
-            @setter = true if property.variable.base.value == 'get'
-            @getter = true if property.variable.base.value == 'set'
+            @setter = true if property.variable.base.value == 'set'
+            @getter = true if property.variable.base.value == 'get'
         else
           # @property 'test', ->
           @setter = false
