@@ -126,8 +126,8 @@
       {
         "file": "spec/_templates/properties/properties.coffee",
         "name": "test3",
-        "getter": true,
-        "setter": false,
+        "getter": false,
+        "setter": true,
         "documentation": {
           "comment": "Something different 3",
           "summary": "Something different 3",
@@ -386,8 +386,8 @@
   {
     "file": "spec/_templates/properties/properties.coffee",
     "name": "test3",
-    "getter": true,
-    "setter": false,
+    "getter": false,
+    "setter": true,
     "documentation": {
       "comment": "Something different 3",
       "summary": "Something different 3",
