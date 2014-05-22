@@ -88,7 +88,7 @@ module.exports = class Traverser
                  | # variable =
                    ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff.]*\s+\=
                  | # method: ->
-                   [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s*(\(.*\)\s*)?[-=]>
+                   (?:[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*|["'].*["'])\s*:\s*(\(.*\)\s*)?[-=]>
                  | # @method = ->
                    @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
                  | # CONSTANT
