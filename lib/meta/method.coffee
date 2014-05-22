@@ -9,12 +9,11 @@ module.exports = class Meta.Method
 
   @fromMethodEntity: (entity, overrides={}) ->
     options =
-      name: entity.name
+      name: entity.name.match(/[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*/)?[0]
       kind: entity.kind || ''
       bound: entity.bound
       parameters: entity.parameters.map (x) -> x.toString()
       documentation: entity.documentation
-
     new @(@override options, overrides)
 
   @fromDocumentationMethod: (entry, overrides={}) ->
@@ -25,11 +24,10 @@ module.exports = class Meta.Method
         'static'
 
     options =
-      name: entry.signature.replace /^[\#\.]?([^\(]+)\(.+/, '$1'
+      name: entry.signature.replace /^[\#\.]?["']?([^\("']+)\(.+/, '$1'
       kind: kind || ''
       parameters: Parameter.fromSignature(entry.signature).map (x) -> x.toString()
       documentation: entry.documentation
-
     new @(@override options, overrides)
 
   constructor: (options={}) ->
