@@ -94,7 +94,7 @@
                 - unless property.getter
                   %span.writeonly.note.title Writeonly
               %dd.desc
-                != property.documentation.comment
+                != @activate property.documentation.comment, @path, true
 
         - if @entity.inheritedProperties().length > 0
           %h3.inherited

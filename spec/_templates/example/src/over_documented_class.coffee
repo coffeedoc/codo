@@ -41,6 +41,10 @@ class OverDocumentedClass
   CONSTANT:
     foo: 'bar'
 
+  # @property [OverDocumentedClass] Returns the {OverDocumentedClass clone}.
+  @property 'clone',
+    get: -> new OverDocumentedClass
+
   # @abstract It's so abstract! ^_^ {http://www.github.com}
   # @author The great Yoda {http://www.github.com}
   # @copyright The great Yoda {http://www.github.com}
