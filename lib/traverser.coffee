@@ -149,7 +149,7 @@ module.exports = class Traverser
             previous = @history[@history.length-6]
             doc = previous if previous?.constructor.name is 'Comment'
 
-      if doc?.comment?
+      if doc?.comment? and doc.comment.trim().length >0
         node.documentation = new Documentation(@leftTrimBlock doc.comment)
 
     if Entity.is(node)
