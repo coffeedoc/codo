@@ -565,7 +565,7 @@ Usage: codo [options] [source_files [- extra_files]]
 Options:
   --help, -h          Show this help                          
   --version           Show version                            
-  --extension, -x     Coffee files extension                    [default: "coffee"]
+  --extension, -x     Coffee files extension(s)                 [default: "coffee"]
   --output, -o        The output directory                      [default: "./doc"]
   --theme             The theme to be used                      [default: "default"]
   --name, -n          The project name used                   
@@ -600,6 +600,8 @@ CHANGELOG.md
 ```
 
 Put each option flag on a separate line, followed by the source directories or files, and optionally any extra file that should be included into the documentation separated by a dash (`-`). If your extra file has the extension `.md`, it'll be rendered as Markdown.
+
+You may specify multiple source extensions by separating them with a comma.
 
 ## Keyboard navigation
 
