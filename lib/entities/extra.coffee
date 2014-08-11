@@ -6,13 +6,16 @@ Markdown = require '../tools/markdown'
 module.exports = class Entities.Extra
 
   constructor: (@environment, @path) ->
-    @name    = Path.relative(@environment.options.basedir, @path)
-    @content = FS.readFileSync @path, 'utf-8'
+    @name   = Path.relative(@environment.options.basedir, @path)
+    @buffer = null
 
-    @parsed = if /\.(markdown|md)$/.test @path
-      Markdown.convert(@content)
+    @parsed = if /\.(markdown|md)$/.test @name
+      Markdown.convert(FS.readFileSync @path, 'utf-8')
+    else if /(^[^.]+)$/.test @name
+      "<p>"+FS.readFileSync(@path, 'utf-8').replace(/\n/g, '<br/>')+"</p>"
     else
-      "<p>"+@content.replace(/\n/g, '<br/>')+"</p>"
+      @buffer = FS.readFileSync(@path)
+      null
 
   linkify: ->
 
@@ -20,4 +23,5 @@ module.exports = class Entities.Extra
     {
       path: @path,
       parsed: @parsed
+      buffer: @buffer
     }
