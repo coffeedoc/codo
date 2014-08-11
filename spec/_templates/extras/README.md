@@ -9,3 +9,5 @@ And even more content
 ### Actually...
 
 I feel terribly sick writing this. It's like talking to myself.
+
+[With relative markdown links too](SomeOtherFile.md)

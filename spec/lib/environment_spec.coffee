@@ -41,6 +41,7 @@ describe 'Environment', ->
       expect(@environment.allExtras().map (e) -> e.inspect()).toEqual([{
         path: 'spec/_templates/extras/README.md',
         parsed: '<h1 id="this-is-a-test-readme">This is a test README</h1><p>We even have some content here. <a href="http://github.com">With links!</a></p><h2 id="and-nested-menus">And nested menus</h2><p>And even more content</p><h3 id="actually-">Actually...</h3><p>I feel terribly sick writing this. It&#39;s like talking to myself.</p>'
+        parsed: '<h1 id="this-is-a-test-readme">This is a test README</h1><p>We even have some content here. <a href="http://github.com">With links!</a></p><h2 id="and-nested-menus">And nested menus</h2><p>And even more content</p><h3 id="actually-">Actually...</h3><p>I feel terribly sick writing this. It&#39;s like talking to myself.</p><p><a href="SomeOtherFile.md.html">With relative markdown links too</a></p>'
       }])
 
   describe 'Class', ->
