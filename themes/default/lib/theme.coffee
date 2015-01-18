@@ -102,7 +102,7 @@ module.exports = class Theme.Theme
 
   calculatePath: (filename) ->
     dirname = Path.dirname(filename)
-    dirname.split('/').map(-> '..').join('/')+'/' unless dirname == '.'
+    dirname.split(/[\/\\]/).map(-> '..').join('/')+'/' unless dirname == '.'
 
   render: (source, destination, context={}) ->
     globalContext =
