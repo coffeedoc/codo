@@ -62,7 +62,10 @@ module.exports = class Traverser
       blockComment = /^\s*#{3}/.exec(line) && !/^\s*#{3}.+#{3}/.exec(line)
 
       if blockComment || inBlockComment
-        line = line.replace /#{3}\*/, "###" if closure
+        if closure
+          line = line
+            .replace /#{3}\*/, "###"
+            .replace /\s{2}\*/, ""
         inBlockComment = !inBlockComment if blockComment
         result.push line
       else
