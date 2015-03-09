@@ -48,7 +48,7 @@ class Example.Animal
 Then generate the documentation with the `codo` command line tool. You can browse some
 generated Codo documentation on [CoffeeDoc.info](http://coffeedoc.info) to get a feeling how you can navigate in various ways through your code layers.
 
-In the `Example` namespace you'll find some classes and mixins that makes absolutely no sense, its purpose is only to show the many features Code offers.
+In the `Example` namespace you'll find some classes and mixins that makes absolutely no sense, its purpose is only to show the many features Codo offers.
 
 ## Installation
 
