@@ -48,18 +48,25 @@ module.exports = class Theme.Templater
   # global context object merged as template data. Writes
   # the file as the output filename.
   #
+  # If context contains a buffer it will write the file directly.
+  #
   # @param [String] template the template name
   # @param [Object] context the context object
   # @param [String] filename the output file name
+  # @return [String|Buffer] content written to file
   #
   render: (template, context = {}, filename = '') ->
-    html = @JST[template](context)
+
+    content = if context.entity? and context.entity.buffer?
+      context.entity.buffer
+    else
+      @JST[template](context)
 
     if filename.length > 0
       file = Path.join @destination, filename
       dir  = Path.dirname(file)
 
       mkdirp.sync(dir)
-      FS.writeFileSync(file, html)
+      FS.writeFileSync(file, content)
 
-    html
+    content

@@ -66,8 +66,13 @@ module.exports = class Theme.Theme
       kind = 'property' if entity.entity instanceof Codo.Entities.Property
 
     switch kind
-      when 'file', 'extra'
+      when 'file'
         prefix + kind + '/' + entity.name + '.html'
+      when 'extra'
+        if entity.buffer
+          prefix + kind + '/' + entity.name
+        else
+          prefix + kind + '/' + entity.name + '.html'
       when 'class', 'mixin'
         prefix + kind + '/' + entity.name.replace(/\./, '/') + '.html'
       when 'method', 'variable'
