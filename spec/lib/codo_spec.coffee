@@ -4,14 +4,15 @@ Codo = require '../../lib/codo'
 describe 'Codo', ->
 
   it 'parses project', ->
-    environment = Codo.parseProject(Path.join __dirname, '../_templates/example')
-    
+    environment = Codo.parseProject(Path.join(__dirname, '../_templates/example'), { extension: 'coffee,iced' })
+
     expect(environment.allFiles().map (file) -> file.inspect().file).toEqual [
       'src/angry_animal.coffee',
       'src/animal.coffee',
       'src/lion.coffee',
       'src/over_documented_class.coffee',
-      'src/over_documented_mixin.coffee'
+      'src/over_documented_mixin.coffee',
+      'src/penguin.iced'
     ]
 
     expect(environment.allExtras().map (e) -> e.name).toEqual [

@@ -35,6 +35,9 @@ module.exports = Codo =
     options.basedir   ||= path
     options.extension ||= 'coffee'
 
+    # Check if there are multiple comma-seperated extensions
+    options.extension = options.extension.replace(/\s*,\s*/, '|')
+
     environment = new @Environment(options)
 
     if environment.options.readme
