@@ -83,6 +83,13 @@ The following table shows the list of all available tags in alphabetical order w
   </thead>
   <tbody>
     <tr>
+      <td><strong>@namespace</strong> namespace</td>
+      <td></td>
+      <td>&#10004;</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
       <td><strong>@abstract</strong> (message)</td>
       <td></td>
       <td>&#10004;</td>

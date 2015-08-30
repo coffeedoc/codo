@@ -113,6 +113,9 @@ module.exports = class Documentation
             title: title
             code: code.join '\n'
 
+      else if namespace = /^@namespace\s+(.+)/i.exec line
+        @namespace = namespace[1] || ''
+
       else if abstract = /^@abstract(?:\s+(.+))?/i.exec line
         @abstract = abstract[1] || ''
 
@@ -209,6 +212,7 @@ module.exports = class Documentation
       notes: @notes
       see: @see
 
+      namespace: @namespace
       abstract: @abstract
       private: @private
       deprecated: @deprecated

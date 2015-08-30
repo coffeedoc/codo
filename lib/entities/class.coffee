@@ -29,7 +29,7 @@ module.exports = class Entities.Class extends require('../entity')
 
     name = @name.split('.')
     @basename  = name.pop()
-    @namespace = name.join('.')
+    @namespace = @documentation?.namespace or name.join('.')
 
     if @environment.options.debug
       Winston.info "Creating new Class Entity"
