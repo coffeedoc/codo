@@ -1,25 +1,35 @@
 FS          = require 'fs'
+jsdiff      = require 'diff'
 walkdir     = require 'walkdir'
 Environment = require '../../lib/environment'
 
 beforeEach ->
   @addMatchers
-    toTraverseTo: (expected) ->
+    toTraverseTo: (expectedFile) ->
       environment = new Environment
       parser      = environment.readCoffee(@actual)
 
       environment.linkify()
 
       actual   = JSON.stringify(environment.inspect(), null, 2)
-      expected = FS.readFileSync(expected, 'utf8')
+      expected = FS.readFileSync(expectedFile, 'utf8')
+
+      createJsonDiff = (expected, actual) ->
+        ret = ""
+        for part in jsdiff.diffJson(expected, actual)
+          if part.added
+            ret += part.value.green
+          else if part.removed
+            ret += part.value.red
+          else
+            ret += part.value
+        ret
 
       @message = ->
         report = "\n-------------------- CoffeeScript ----------------------\n"
         report += parser.content
-        report += "\n------------------- Expected JSON ---------------------\n"
-        report += expected
-        report += "\n-------------------- Parsed JSON ------------------------\n"
-        report += actual
+        report += "\n-------------------- JSON Diff ------------------------\n"
+        report += createJsonDiff(require(expectedFile), environment.inspect())
         report += "\n-------------------------------------------------------\n"
 
       expected == actual
