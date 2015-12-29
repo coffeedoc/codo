@@ -139,7 +139,7 @@ module.exports = class Traverser
       previous = @history[@history.length-1]
 
       switch previous?.constructor.name
-        # A comment is preveding the entity declaration
+        # A comment is preceding the entity declaration
         when 'Comment'
           doc = previous
 
