@@ -12,7 +12,7 @@ describe 'Codo', ->
       'src/lion.coffee',
       'src/over_documented_class.coffee',
       'src/over_documented_mixin.coffee'
-    ]
+    ].map (file) -> Path.normalize file
 
     expect(environment.allExtras().map (e) -> e.name).toEqual [
       'README.md', 'CHANGELOG'
