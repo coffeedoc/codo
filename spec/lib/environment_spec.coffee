@@ -95,6 +95,13 @@ describe 'Environment', ->
           expect(filename.substring process.cwd().length + 1)
             .toTraverseTo(filename.replace(/\.coffee$/, '.json'))
 
+  describe 'Angular', ->
+    for filename in walkdir.sync './spec/_templates/angular' when filename.match /\.coffee$/
+      do (filename) ->
+        it "parses #{filename}", ->
+          expect(filename.substring process.cwd().length + 1)
+            .toTraverseTo(filename.replace(/\.coffee$/, '.json'))
+
   describe 'Environment', ->
     it 'handles multiple files', ->
       environment = Environment.read [
