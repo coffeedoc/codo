@@ -6,7 +6,7 @@ module.exports = class Entities.Variable extends Entity
   @name: "Variable"
 
   @looksLike: (node) ->
-    node.constructor.name == 'Assign' && node.value?.constructor.name == 'Value' && node.variable?.base?.value?
+    node.constructor.name == 'Assign' && node.value?.constructor.name == 'Value' && node.variable?.base?.value? && node.value.base.constructor.name isnt 'Call'
 
   @is: (node) ->
     !node.documentation?.property && !node.documentation?.mixin && super(node)
