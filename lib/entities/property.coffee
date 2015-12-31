@@ -1,4 +1,5 @@
 Entities = require '../_entities'
+Winston  = require 'winston'
 
 #
 # Supported formats:
@@ -15,6 +16,7 @@ Entities = require '../_entities'
 #     set: (value) ->
 #
 module.exports = class Entities.Property extends require('../entity')
+  @name: "Property"
 
   @looksLike: (node) ->
     (node.constructor.name == 'Assign' && node.value?.constructor.name == 'Value') ||
@@ -61,6 +63,11 @@ module.exports = class Entities.Property extends require('../entity')
       @getter = true
 
     @documentation = @node.documentation
+    if @environment.options.debug
+      Winston.info "Creating new Property Entity"
+      Winston.info " name: " + @name
+      Winston.info " documentation: " + @documentation
+
 
   fetchVariableName: ->
     @fetchName()

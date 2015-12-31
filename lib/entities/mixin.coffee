@@ -2,8 +2,10 @@ Method     = require './method'
 Variable   = require './variable'
 MetaMethod = require '../meta/method'
 Entities   = require '../_entities'
+Winston    = require 'winston'
 
 module.exports = class Entities.Mixin extends require('../entity')
+  @name: "Mixin"
 
   @looksLike: (node) ->
     node.constructor.name == 'Assign' && node.value?.base?.properties?
@@ -40,6 +42,11 @@ module.exports = class Entities.Mixin extends require('../entity')
     name = @name.split('.')
     @basename  = name.pop()
     @namespace = name.join('.')
+    if @environment.options.debug
+      Winston.info "Creating new Mixin Entity"
+      Winston.info " name: " + @name
+      Winston.info " documentation: " + @documentation
+
 
   linkify: ->
     super

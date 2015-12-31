@@ -1,7 +1,9 @@
 Entity   = require '../entity'
 Entities = require '../_entities'
+Winston  = require 'winston'
 
 module.exports = class Entities.Variable extends Entity
+  @name: "Variable"
 
   @looksLike: (node) ->
     node.constructor.name == 'Assign' && node.value?.constructor.name == 'Value' && node.variable?.base?.value?
@@ -23,6 +25,10 @@ module.exports = class Entities.Variable extends Entity
       @value = 'undefined' if @value == 'void 0'
 
     @documentation = @node.documentation
+    if @environment.options.debug
+      Winston.info "Creating new Variable Entity"
+      Winston.info " name: " + @name
+      Winston.info " documentation: " + @documentation
 
   inspect: ->
     {

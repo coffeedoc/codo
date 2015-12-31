@@ -1,12 +1,16 @@
 Parameter = require '../meta/parameter'
 Entities  = require '../_entities'
+Winston = require 'winston'
 
 module.exports = class Entities.Method extends require('../entity')
+  @name: "Method"
 
   @looksLike: (node) ->
     node.constructor.name == 'Assign' && node.value?.constructor.name == 'Code'
 
   constructor: (@environment, @file, @node) ->
+    Winston.info "Creating new Method Entity" if @environment.options.debug
+
     @name = [@node.variable.base.value]
     @name.push prop.name.value for prop in @node.variable.properties when prop.name?
 
@@ -27,6 +31,10 @@ module.exports = class Entities.Method extends require('../entity')
 
     @parameters = @node.value.params.map (node) ->
       Parameter.fromNode(node)
+
+    if @environment.options.debug
+      Winston.info " name: " + @name
+      Winston.info " documentation: " + @documentation
 
   inspect: ->
     {

@@ -5,8 +5,10 @@ Mixin      = require './mixin'
 Class      = require './class'
 MetaMethod = require '../meta/method'
 Entities   = require '../_entities'
+Winston    = require 'winston'
 
 module.exports = class Entities.File extends require('../entity')
+  @Name: "File"
 
   constructor: (@environment, @path, @node) ->
     @file      = @
@@ -17,6 +19,10 @@ module.exports = class Entities.File extends require('../entity')
     @variables = []
     @mixins    = []
     @classes   = []
+    if @environment.options.debug
+      Winston.info "Creating new File Entity"
+      Winston.info " name: " + @name
+      Winston.info " path: " + @path
 
   linkify: ->
     super
