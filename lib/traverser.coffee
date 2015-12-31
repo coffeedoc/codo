@@ -161,6 +161,11 @@ module.exports = class Traverser
             previous = @history[@history.length-3]
             doc = previous if previous?.constructor.name is 'Comment'
 
+        # An operator precedes the definition, e.g. `new class ClassName`
+        when 'Op'
+          previous = @history[@history.length-2]
+          doc = previous if previous?.constructor.name is 'Comment'
+
       Winston.info "Doc is " + doc?.comment if @environment.options.debug
       if doc?.comment?
         node.documentation = new Documentation(@leftTrimBlock doc.comment)
