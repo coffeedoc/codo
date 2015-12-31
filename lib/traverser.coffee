@@ -155,6 +155,12 @@ module.exports = class Traverser
             previous = @history[@history.length-6]
             doc = previous if previous?.constructor.name is 'Comment'
 
+        # An assign that is handled as an object by CoffeeScript
+        when 'Obj'
+          if @history[@history.length-2]?.constructor.name is 'Value'
+            previous = @history[@history.length-3]
+            doc = previous if previous?.constructor.name is 'Comment'
+
       Winston.info "Doc is " + doc?.comment if @environment.options.debug
       if doc?.comment?
         node.documentation = new Documentation(@leftTrimBlock doc.comment)
