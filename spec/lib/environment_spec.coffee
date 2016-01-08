@@ -1,4 +1,5 @@
 FS          = require 'fs'
+jsdiff      = require 'diff'
 Path        = require 'path'
 walkdir     = require 'walkdir'
 Environment = require '../../lib/environment'
@@ -24,13 +25,21 @@ beforeEach ->
 
       expected.forEach (entry) -> normalizePathsInObject entry
 
+      diff = ""
+      for part in jsdiff.diffJson(expected, actual)
+        if part.added
+          diff += part.value.green
+        else if part.removed
+          diff += part.value.red
+        else
+          diff += part.value
+      diff
+
       @message = ->
         report = "\n-------------------- CoffeeScript ----------------------\n"
         report += parser.content
-        report += "\n------------------- Expected JSON ---------------------\n"
-        report += JSON.stringify expected, null, 2
-        report += "\n-------------------- Parsed JSON ------------------------\n"
-        report += JSON.stringify actual, null, 2
+        report += "\n--------------------- JSON diff -----------------------\n"
+        report += diff
         report += "\n-------------------------------------------------------\n"
 
       require('deep-eql')(expected, actual)

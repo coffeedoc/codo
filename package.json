@@ -52,6 +52,7 @@
     "strftime": "~0.6.2"
   },
   "devDependencies": {
+    "diff": ">=2.1.1",
     "jasmine-node": ">= 1.13.1",
     "deep-eql": "*",
     "rimraf": "~2.2.2",
