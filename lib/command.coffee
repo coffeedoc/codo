@@ -3,6 +3,7 @@ Codo     = require './codo'
 Optimist = require 'optimist'
 Theme    = require '../themes/default/lib/theme'
 Table    = require 'cli-table'
+colors   = require 'colors/safe'
 
 module.exports = class Command
   options: [
@@ -10,6 +11,7 @@ module.exports = class Command
     {name: 'version', describe: 'Show version'}
     {name: 'extension', alias: 'x', describe: 'Coffee files extension', default: 'coffee'}
     {name: 'output', alias: 'o', describe: 'The output directory', default: './doc'}
+    {name: 'min-coverage', alias: 'm', describe: 'Require a minimum percentage to be documented or fail', default: '0'}
     {name: 'output-dir'}
     {name: 'theme', describe: 'The theme to be used', default: 'default'}
     {name: 'name', alias: 'n', describe: 'The project name used'}
@@ -108,6 +110,14 @@ module.exports = class Command
 
     @theme.compile(environment)
 
+
+    overall      = 0
+    undocumented = 0
+
+    for section, data of sections
+      overall      += data.total
+      undocumented += data.undocumented.length
+
     if @options.undocumented
       for section, data of sections when data.undocumented.length != 0
         table = new Table
@@ -117,13 +127,6 @@ module.exports = class Command
         console.log table.toString()
         console.log ''
     else
-      overall      = 0
-      undocumented = 0
-
-      for section, data of sections
-        overall      += data.total
-        undocumented += data.undocumented.length
-
       table = new Table
         head: ['', 'Total', 'Undocumented']
 
@@ -139,3 +142,9 @@ module.exports = class Command
       console.log ''
       console.log "  Totally documented: #{(100 - 100/overall*undocumented).toFixed(2)}%"
       console.log ''
+
+    documentedRatio = 100 - (100*undocumented/overall).toFixed(2)
+    if documentedRatio < @options["min-coverage"]
+      console.error colors.red("  Expected " + @options["min-coverage"] +
+                     "% to be documented, but only " + documentedRatio + "% were.")
+      process.exitCode = 1
