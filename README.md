@@ -9,6 +9,7 @@ Its generated documentation is focused on CoffeeScript class syntax for classica
 * Many tags to add semantics to your code.
 * Generates a nice site to browse your code documentation in various ways.
 * Documentation generation and hosting as a service on [CoffeeDoc.info](http://coffeedoc.info).
+* Can be used to assure minimum documentation
 
 ## Codo in action
 
@@ -565,18 +566,20 @@ Usage: codo [options] [source_files [- extra_files]]
 Options:
   --help, -h          Show this help                          
   --version           Show version                            
-  --extension, -x     Coffee files extension                    [default: "coffee"]
-  --output, -o        The output directory                      [default: "./doc"]
-  --theme             The theme to be used                      [default: "default"]
+  --extension, -x     Coffee files extension                                 [default: "coffee"]
+  --output, -o        The output directory                                   [default: "./doc"]
+  --min-coverage, -m  Require a minimum percentage to be documented or fail  [default: 0]
+  --test, -t          Do not create any output files. Use with min-coverage  [default: 0]
+  --theme             The theme to be used                                   [default: "default"]
   --name, -n          The project name used                   
   --readme, -r        The readme file used                    
-  --quiet, -q         Supress warnings                          [default: false]
-  --verbose, -v       Show parsing errors                       [default: false]
-  --undocumented, -u  List undocumented objects                 [default: false]
-  --closure           Try to parse closure-like block comments  [default: false]
-  --private, -p       Show privates                             [default: false]
-  --analytics, -a     The Google analytics ID                   [default: false]
-  --title, -t         HTML Title                                [default: "Codo Documentation"]
+  --quiet, -q         Supress warnings                                       [default: false]
+  --verbose, -v       Show parsing errors                                    [default: false]
+  --undocumented, -u  List undocumented objects                              [default: false]
+  --closure           Try to parse closure-like block comments               [default: false]
+  --private, -p       Show privates                                          [default: false]
+  --analytics, -a     The Google analytics ID                                [default: false]
+  --title, -t         HTML Title                                             [default: "Codo Documentation"]
 ```
 
 Codo wants to be smart and tries to detect the best default settings for the sources, the readme, the extra files and the project name, so the above defaults may be different on your project.

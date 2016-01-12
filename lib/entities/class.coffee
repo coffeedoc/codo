@@ -4,8 +4,10 @@ Property   = require './property'
 Mixin      = require './mixin'
 MetaMethod = require '../meta/method'
 Entities   = require '../_entities'
+Winston    = require 'winston'
 
 module.exports = class Entities.Class extends require('../entity')
+  @name = "Class"
 
   @looksLike: (node) ->
     node.constructor.name is 'Class' && node.variable?.base?.value?
@@ -28,6 +30,11 @@ module.exports = class Entities.Class extends require('../entity')
     name = @name.split('.')
     @basename  = name.pop()
     @namespace = name.join('.')
+
+    if @environment.options.debug
+      Winston.info "Creating new Class Entity"
+      Winston.info " name: " + @name
+      Winston.info " documentation: " + @documentation
 
     @
 

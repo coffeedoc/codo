@@ -1,0 +1,21 @@
+[
+  {
+    "file": "spec/_templates/angular/angular-with-new.coffee",
+    "methods": [],
+    "variables": []
+  },
+  {
+    "file": "spec/_templates/angular/angular-with-new.coffee",
+    "documentation": {
+      "comment": "This is a testy test class with a documenty documentation",
+      "summary": "This is a testy test class with a documenty documentation"
+    },
+    "name": "MyTestClass",
+    "methods": [],
+    "variables": [],
+    "properties": [],
+    "includes": [],
+    "extends": [],
+    "concerns": []
+  }
+]

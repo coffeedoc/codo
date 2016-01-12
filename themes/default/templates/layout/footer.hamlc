@@ -1,6 +1,6 @@
 #footer
 
-  #{@strftime '%B %d, %y %H:%M:%S'} by
+  By
   %a{href: 'https://github.com/coffeedoc/codo', title: 'CoffeeScript API documentation generator'}
     Codo
   = @environment.version

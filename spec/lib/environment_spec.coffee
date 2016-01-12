@@ -1,6 +1,16 @@
 FS          = require 'fs'
+jsdiff      = require 'diff'
+Path        = require 'path'
 walkdir     = require 'walkdir'
 Environment = require '../../lib/environment'
+
+normalizePathsInObject = (obj) ->
+  return if typeof obj is "string"
+  if obj.file? then obj.file = Path.normalize obj.file
+  for key, val of obj # ['variables', 'methods', 'properties', 'includes', 'container', 'parent', 'extends']
+    if Array.isArray val
+      val.forEach normalizePathsInObject
+    else normalizePathsInObject obj[key]
 
 beforeEach ->
   @addMatchers
@@ -10,19 +20,29 @@ beforeEach ->
 
       environment.linkify()
 
-      actual   = JSON.stringify(environment.inspect(), null, 2)
-      expected = FS.readFileSync(expected, 'utf8')
+      actual = JSON.parse JSON.stringify environment.inspect()
+      expected = JSON.parse FS.readFileSync(expected, 'utf8')
+
+      expected.forEach (entry) -> normalizePathsInObject entry
+
+      diff = ""
+      for part in jsdiff.diffJson(expected, actual)
+        if part.added
+          diff += part.value.green
+        else if part.removed
+          diff += part.value.red
+        else
+          diff += part.value
+      diff
 
       @message = ->
         report = "\n-------------------- CoffeeScript ----------------------\n"
         report += parser.content
-        report += "\n------------------- Expected JSON ---------------------\n"
-        report += expected
-        report += "\n-------------------- Parsed JSON ------------------------\n"
-        report += actual
+        report += "\n--------------------- JSON diff -----------------------\n"
+        report += diff
         report += "\n-------------------------------------------------------\n"
 
-      expected == actual
+      require('deep-eql')(expected, actual)
 
 describe 'Environment', ->
 
@@ -66,7 +86,7 @@ describe 'Environment', ->
 
   describe 'File', ->
     it 'parses non-class file', ->
-      expect('spec/_templates/files/non_class_file.coffee').toTraverseTo(
+      expect(Path.normalize 'spec/_templates/files/non_class_file.coffee').toTraverseTo(
         'spec/_templates/files/non_class_file.json'
       )
 
@@ -84,17 +104,27 @@ describe 'Environment', ->
           expect(filename.substring process.cwd().length + 1)
             .toTraverseTo(filename.replace(/\.coffee$/, '.json'))
 
+  describe 'Angular', ->
+    for filename in walkdir.sync './spec/_templates/angular' when filename.match /\.coffee$/
+      do (filename) ->
+        it "parses #{filename}", ->
+          expect(filename.substring process.cwd().length + 1)
+            .toTraverseTo(filename.replace(/\.coffee$/, '.json'))
+
   describe 'Environment', ->
     it 'handles multiple files', ->
       environment = Environment.read [
         'spec/_templates/environment/class.coffee',
         'spec/_templates/environment/mixin.coffee'
-      ]
+      ].map Path.normalize
 
       actual = JSON.stringify(environment.inspect(), null, 2)
-      expect(FS.readFileSync('spec/_templates/environment/result.json', 'utf8')).toEqual actual
+      expected = JSON.parse FS.readFileSync 'spec/_templates/environment/result.json', 'utf8'
+      expected.forEach normalizePathsInObject
+      expected = JSON.stringify expected, null, 2
+      expect(actual).toEqual expected
       expect(Object.keys environment.references).toEqual [ 
         'spec/_templates/environment/class.coffee',
         'spec/_templates/environment/mixin.coffee',
         'Fluffy', 'LookAndFeel', 'LookAndFeel~feel', 'LookAndFeel~look'
-      ]
+      ].map Path.normalize

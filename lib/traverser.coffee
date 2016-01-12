@@ -5,6 +5,7 @@ CoffeeScript  = require 'coffee-script'
 Environment   = require './environment'
 Documentation = require './documentation'
 File          = require './entities/file'
+Winston       = require 'winston'
 
 #
 # The class takes CS nodes tree and recursively injects
@@ -127,6 +128,7 @@ module.exports = class Traverser
 
     @root.traverseChildren true, (node) =>
       for Entity in @environment.needles when Entity.looksLike(node)
+        Winston.info "Adding entity " + Entity.name if @environment.options.debug
         @prepare(node, @file, Entity)
 
       @history.push node
@@ -138,8 +140,12 @@ module.exports = class Traverser
       # Find actual comment node
       previous = @history[@history.length-1]
 
+      if @environment.options.debug
+        Winston.info "Type of previous is " + previous?.constructor.name
+        Winston.info "History is " + @history.map (entry) -> entry.constructor.name
+
       switch previous?.constructor.name
-        # A comment is preveding the entity declaration
+        # A comment is preceding the entity declaration
         when 'Comment'
           doc = previous
 
@@ -149,6 +155,18 @@ module.exports = class Traverser
             previous = @history[@history.length-6]
             doc = previous if previous?.constructor.name is 'Comment'
 
+        # An assign that is handled as an object by CoffeeScript
+        when 'Obj'
+          if @history[@history.length-2]?.constructor.name is 'Value'
+            previous = @history[@history.length-3]
+            doc = previous if previous?.constructor.name is 'Comment'
+
+        # An operator precedes the definition, e.g. `new class ClassName`
+        when 'Op'
+          previous = @history[@history.length-2]
+          doc = previous if previous?.constructor.name is 'Comment'
+
+      Winston.info "Doc is " + doc?.comment if @environment.options.debug
       if doc?.comment?
         node.documentation = new Documentation(@leftTrimBlock doc.comment)
 
