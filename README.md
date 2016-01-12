@@ -569,6 +569,7 @@ Options:
   --extension, -x     Coffee files extension                                 [default: "coffee"]
   --output, -o        The output directory                                   [default: "./doc"]
   --min-coverage, -m  Require a minimum percentage to be documented or fail  [default: 0]
+  --test, -t          Do not create any output files. Use with min-coverage  [default: 0]
   --theme             The theme to be used                                   [default: "default"]
   --name, -n          The project name used                   
   --readme, -r        The readme file used                    

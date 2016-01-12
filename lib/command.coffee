@@ -12,6 +12,7 @@ module.exports = class Command
     {name: 'extension', alias: 'x', describe: 'Coffee files extension', default: 'coffee'}
     {name: 'output', alias: 'o', describe: 'The output directory', default: './doc'}
     {name: 'min-coverage', alias: 'm', describe: 'Require a minimum percentage to be documented or fail', default: '0'}
+    {name: 'test', alias: 't', describe: 'Do not create any output files. Use with min-coverage'}
     {name: 'output-dir'}
     {name: 'theme', describe: 'The theme to be used', default: 'default'}
     {name: 'name', alias: 'n', describe: 'The project name used'}
@@ -108,7 +109,8 @@ module.exports = class Command
     environment = Codo.parseProject(process.cwd(), @options)
     sections    = @collectStats(environment)
 
-    @theme.compile(environment)
+    unless @options.test
+      @theme.compile(environment)
 
 
     overall      = 0
