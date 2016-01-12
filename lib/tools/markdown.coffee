@@ -30,6 +30,9 @@ module.exports = class Tools.Markdown
     # Remove newlines around open and closing paragraph tags
     html = html.replace /(?:\n+)?<(\/?p)>(?:\n+)?/mg, '<$1>'
 
+    # Add '.html' to relative markdown links
+    html = html.replace /href="(?!https?:\/\/)(.*\.md)"/mg, 'href="$1.html"'
+
     html
 
   # Strips all unwanted tag from the html
