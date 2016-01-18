@@ -1,3 +1,4 @@
+Entity     = require '../entity'
 Path       = require 'path'
 Method     = require './method'
 Variable   = require './variable'
@@ -7,7 +8,7 @@ MetaMethod = require '../meta/method'
 Entities   = require '../_entities'
 Winston    = require 'winston'
 
-module.exports = class Entities.File extends require('../entity')
+module.exports = class Entities.File extends Entity
   @Name: "File"
 
   constructor: (@environment, @path, @node) ->

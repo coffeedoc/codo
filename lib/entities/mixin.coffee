@@ -1,10 +1,11 @@
+Entity     = require '../entity'
 Method     = require './method'
 Variable   = require './variable'
 MetaMethod = require '../meta/method'
 Entities   = require '../_entities'
 Winston    = require 'winston'
 
-module.exports = class Entities.Mixin extends require('../entity')
+module.exports = class Entities.Mixin extends Entity
   @name: "Mixin"
 
   @looksLike: (node) ->

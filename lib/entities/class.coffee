@@ -1,3 +1,4 @@
+Entity     = require '../entity'
 Method     = require './method'
 Variable   = require './variable'
 Property   = require './property'
@@ -6,7 +7,7 @@ MetaMethod = require '../meta/method'
 Entities   = require '../_entities'
 Winston    = require 'winston'
 
-module.exports = class Entities.Class extends require('../entity')
+module.exports = class Entities.Class extends Entity
   @name = "Class"
 
   @looksLike: (node) ->
@@ -183,10 +184,11 @@ module.exports = class Entities.Class extends require('../entity')
 
     for storage, resolver of resolvers
       for mixin in @[storage]
-        for method in mixin[resolver]()
-          methods.push
-            entity: method
-            owner: mixin
+        if mixin[resolver]
+          for method in mixin[resolver]()
+            methods.push
+              entity: method
+              owner: mixin
 
     methods
 

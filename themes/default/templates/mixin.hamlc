@@ -26,25 +26,25 @@
           %td Defined in:
           %td= @entity.file.name
 
-        - if @entity.extensions.length > 0
+        - if @entity.extensions.filter((x) -> x.visible()).length > 0
           %tr
             %td Extended in:
             %td
-              - for klass in @entity.extensions
+              - for klass in @entity.extensions.filter((x) -> x.visible())
                 %a{href: @pathFor('class', klass, @path)}= klass.name
 
-        - if @entity.inclusions.length > 0
+        - if @entity.inclusions.filter((x) -> x.visible()).length > 0
           %tr
             %td Included in:
             %td
-              - for klass in @entity.inclusions
+              - for klass in @entity.inclusions.filter((x) -> x.visible())
                 %a{href: @pathFor('class', klass, @path)}= klass.name
 
-        - if @entity.concerns.length > 0
+        - if @entity.concerns.filter((x) -> x.visible()).length > 0
           %tr
             %td Concerned in:
             %td
-              - for klass in @entity.concerns
+              - for klass in @entity.concerns.filter((x) -> x.visible())
                 %a{href: @pathFor('class', klass, @path)}= klass.name
 
 
@@ -55,8 +55,8 @@
 
       - if @entity.concern
 
-        - staticMethods  = @entity.effectiveConcernMethods().filter (m) -> m.kind == 'static'
-        - dynamicMethods = @entity.effectiveConcernMethods().filter (m) -> m.kind == 'dynamic'
+        - staticMethods  = @entity.effectiveConcernMethods().filter (m) -> m.kind == 'static' && m.visible
+        - dynamicMethods = @entity.effectiveConcernMethods().filter (m) -> m.kind == 'dynamic' && m.visible
 
         - if staticMethods.length > 0
           %h2 Class Method Summary
@@ -77,9 +77,9 @@
       - else
         - if @entity.effectiveMethods().length > 0
           %h2 Method Summary
-          != @render 'partials/method_summary', methods: @entity.effectiveMethods()
+          != @render 'partials/method_summary', methods: @entity.effectiveMethods().filter((m) -> m.visible)
 
           %h2 Method Details
-          != @render 'partials/method_list', methods: @entity.effectiveMethods()
+          != @render 'partials/method_list', methods: @entity.effectiveMethods().filter((m) -> m.visible)
 
     != @render 'layout/footer'

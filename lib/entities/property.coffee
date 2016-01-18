@@ -1,3 +1,4 @@
+Entity   = require '../entity'
 Entities = require '../_entities'
 Winston  = require 'winston'
 
@@ -15,7 +16,7 @@ Winston  = require 'winston'
 #     get: ->
 #     set: (value) ->
 #
-module.exports = class Entities.Property extends require('../entity')
+module.exports = class Entities.Property extends Entity
   @name: "Property"
 
   @looksLike: (node) ->

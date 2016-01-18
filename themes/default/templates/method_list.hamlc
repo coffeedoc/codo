@@ -12,7 +12,7 @@
         %input{ type: 'text' }
 
       %ul
-        - for method in @environment.allMethods()
+        - for method in @environment.visibleMethods()
           %li{deprecated: if method.documentation?.deprecated then true else false}
             %a{href: @pathFor(method), target: 'main', title: method.entity.name}
               = method.entity.shortSignature()              

@@ -1,8 +1,9 @@
+Entity    = require '../entity'
 Parameter = require '../meta/parameter'
 Entities  = require '../_entities'
 Winston = require 'winston'
 
-module.exports = class Entities.Method extends require('../entity')
+module.exports = class Entities.Method extends Entity
   @name: "Method"
 
   @looksLike: (node) ->

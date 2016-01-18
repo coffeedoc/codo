@@ -7,6 +7,9 @@ module.exports = class Entity
 
   linkify: ->
 
+  visible: ->
+    @environment.options.private || !@node.documentation?.private
+
   fetchName: ->
     name = [@node.variable.base.value]
     name.push prop.name.value for prop in @node.variable.properties when prop.name?

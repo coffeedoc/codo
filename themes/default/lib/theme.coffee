@@ -136,9 +136,9 @@ module.exports = class Theme.Theme
     for code in [97..122]
       char = String.fromCharCode(code)
       map  = [
-        [@environment.allClasses(), classes],
-        [@environment.allMixins(), mixins],
-        [@environment.allFiles(), files]
+        [@environment.visibleClasses(), classes],
+        [@environment.visibleMixins(), mixins],
+        [@environment.visibleFiles(), files]
       ]
 
       for [list, storage] in map
@@ -153,13 +153,13 @@ module.exports = class Theme.Theme
       files:   files
 
   renderIndex: ->
-    list = if @environment.allClasses().length > 0
+    list = if @environment.visibleClasses().length > 0
         'class_list.html'
-      else if @environment.allFiles().length > 0
+      else if @environment.visibleFiles().length > 0
         'file_list.html'
-      else if @environment.allMixins().length > 0
+      else if @environment.visibleMixins().length > 0
         'mixin_list.html'
-      else if @environment.allExtras().length > 0
+      else if @environment.visibleExtras().length > 0
         'extra_list.html'
       else
         'method_list.html'
@@ -175,41 +175,41 @@ module.exports = class Theme.Theme
 
   renderClasses: ->
     @render 'class_list', 'class_list.html',
-      tree: TreeBuilder.build @environment.allClasses(), (klass) ->
+      tree: TreeBuilder.build @environment.visibleClasses(), (klass) ->
         [klass.basename, klass.namespace.split('.')]
 
-    for klass in @environment.allClasses()
+    for klass in @environment.visibleClasses()
       @render 'class', @pathFor('class', klass),
         entity: klass,
         breadcrumbs: @generateBreadcrumbs(klass.name.split '.')
 
   renderMixins: ->
     @render 'mixin_list', 'mixin_list.html',
-      tree: TreeBuilder.build @environment.allMixins(), (klass) ->
+      tree: TreeBuilder.build @environment.visibleMixins(), (klass) ->
         [klass.basename, klass.namespace.split('.')]
 
-    for mixin in @environment.allMixins()
+    for mixin in @environment.visibleMixins()
       @render 'mixin', @pathFor('mixin', mixin),
         entity: mixin
         breadcrumbs: @generateBreadcrumbs(mixin.name.split '.')
 
   renderFiles: ->
     @render 'file_list', 'file_list.html',
-      tree: TreeBuilder.build @environment.allFiles(), (file) ->
+      tree: TreeBuilder.build @environment.visibleFiles(), (file) ->
         [file.basename, file.dirname.split('/')]
 
-    for file in @environment.allFiles()
+    for file in @environment.visibleFiles()
       @render 'file', @pathFor('file', file),
         entity: file,
         breadcrumbs: @generateBreadcrumbs(file.name.split '/')
 
   renderExtras: ->
     @render 'extra_list', 'extra_list.html',
-      tree: TreeBuilder.build @environment.allExtras(), (extra) ->
+      tree: TreeBuilder.build @environment.visibleExtras(), (extra) ->
         result = extra.name.split('/')
         [result.pop(), result]
 
-    for extra in @environment.allExtras()
+    for extra in @environment.visibleExtras()
       @render 'extra', @pathFor('extra', extra),
         entity: extra
         breadcrumbs: @generateBreadcrumbs(extra.name.split '/')
@@ -217,10 +217,10 @@ module.exports = class Theme.Theme
   renderFuzzySearchData: ->
     search = []
     everything = [
-      @environment.allClasses(),
-      @environment.allMixins(),
-      @environment.allFiles(),
-      @environment.allExtras()
+      @environment.visibleClasses(),
+      @environment.visibleMixins(),
+      @environment.visibleFiles(),
+      @environment.visibleExtras()
     ]
 
     for basics in everything
@@ -229,7 +229,7 @@ module.exports = class Theme.Theme
           t: basic.name
           p: @pathFor(basic)
 
-    for method in @environment.allMethods()
+    for method in @environment.visibleMethods()
       search.push
         t: "#{method.owner.name}#{method.entity.shortSignature()}"
         p: @pathFor(method)

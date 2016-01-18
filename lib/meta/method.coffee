@@ -13,6 +13,7 @@ module.exports = class Meta.Method
       kind: entity.kind || ''
       bound: entity.bound
       parameters: entity.parameters.map (x) -> x.toString()
+      visible: entity.visible()
       documentation: entity.documentation
     new @(@override options, overrides)
 

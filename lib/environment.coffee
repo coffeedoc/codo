@@ -79,6 +79,13 @@ module.exports = class Environment
       haystack.push(entity) if entity instanceof Entity
     haystack
 
+  visibleFiles:     -> @allFiles()
+  visibleClasses:   -> @allClasses().filter((x) -> x.visible())
+  visibleMixins:    -> @allMixins().filter((x) -> x.visible())
+  visibleExtras:    -> @allExtras()
+  visibleMethods:   -> @allMethods().filter((x) -> x.entity.visible && x.owner.visible())
+  visibleVariables: -> @allVariables()
+
   allFiles:   -> @_allFiles   ||= @all(File)
   allClasses: -> @_allClasses ||= @all(Class)
   allMixins:  -> @_allMixins  ||= @all(Mixin)

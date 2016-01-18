@@ -12,14 +12,14 @@
 
         %h2 Extra File Listing
 
-        - if @environment.allExtras().length > 0
+        - if @environment.visibleExtras().length > 0
           %ul#files
-            - for extra in @environment.allExtras()
+            - for extra in @environment.visibleExtras()
               %li
                 %a{href: @pathFor('extra', extra, @path), title: extra.name}
                   = extra.name
 
-        - if @environment.allClasses().length > 0
+        - if @environment.visibleClasses().length > 0
           %h2 Class Listing A-Z
 
           .index
@@ -36,7 +36,7 @@
                         %small
                           = surround '(', ')', -> klass.namespace
 
-        - if @environment.allMixins().length > 0
+        - if @environment.visibleMixins().length > 0
           %h2 Mixins Listing A-Z
 
           .index
@@ -53,7 +53,7 @@
                         %small
                           = surround '(', ')', -> mixin.namespace
 
-        - if @environment.allFiles().length > 0
+        - if @environment.visibleFiles().length > 0
           %h2 File Listing A-Z
 
           .index

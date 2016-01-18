@@ -1,20 +1,20 @@
 %nav
-  - if @environment.allClasses().length > 0
+  - if @environment.visibleClasses().length > 0
     %a{target: '_self', href: 'class_list.html'}
       Classes
 
-  - if @environment.allMixins().length > 0
+  - if @environment.visibleMixins().length > 0
     %a{target: '_self', href: 'mixin_list.html'}
       Mixins
 
-  - if @environment.allFiles().length > 0
+  - if @environment.visibleFiles().length > 0
     %a{target: '_self', href: 'file_list.html'}
       Files
 
-  - if @environment.allMethods().length > 0
+  - if @environment.visibleMethods().length > 0
     %a{target: '_self', href: 'method_list.html'}
       Methods
 
-  - if @environment.allExtras().length > 0
+  - if @environment.visibleExtras().length > 0
     %a{target: '_self', href: 'extra_list.html'}
       Extras
