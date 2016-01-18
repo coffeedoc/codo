@@ -682,7 +682,7 @@ dynamic programming languages.
 
 (The MIT License)
 
-Copyright (c) 2012-2014 Michael Kessler, Boris Staal
+Copyright (c) 2012-2016 Michael Kessler, Boris Staal
 
 Template components are derivative works of YARD (http://yardoc.org)  
 Copyright (c) Loren Segal and licensed under the MIT license
