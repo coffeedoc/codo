@@ -8,8 +8,8 @@ Its generated documentation is focused on CoffeeScript class syntax for classica
 * Detects classes, methods, constants, mixins & concerns.
 * Many tags to add semantics to your code.
 * Generates a nice site to browse your code documentation in various ways.
-* Documentation generation and hosting as a service on [CoffeeDoc.info](http://coffeedoc.info).
 * Can be used to assure minimum documentation
+* ~~Documentation generation and hosting as a service on [CoffeeDoc.info](http://coffeedoc.info)~~ (we no longer have the access to domain and the service is currently inaccessible)
 
 ## Codo in action
 
