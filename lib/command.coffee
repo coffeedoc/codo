@@ -25,7 +25,8 @@ module.exports = class Command
   ]
 
   @run: ->
-    new @
+    new @().run (code) ->
+      process.exit code
 
   extendOptimist: (optimist, defaults={}, options={}) ->
     for option in options
@@ -64,7 +65,7 @@ module.exports = class Command
 
     options
 
-  constructor: ->
+  run: (cb) ->
     defaults = Codo.detectDefaults(process.cwd())
 
     optimist = Optimist.usage('Usage: $0 [options] [source_files [- extra_files]]')
@@ -84,7 +85,7 @@ module.exports = class Command
     else if @options.version
       console.log Codo.version()
     else
-      @generate()
+      @generate(process.cwd(), @options, cb)
 
   collectStats: (environment) ->
     sections =
@@ -105,11 +106,20 @@ module.exports = class Command
 
     sections
 
-  generate: ->
-    environment = Codo.parseProject(process.cwd(), @options)
+  generate: (dir = process.cwd(), options = @options, cb) ->
+    for option in @options
+      if option.default?
+        options[option.name] ?= option.default
+    @theme ?= @lookupTheme(options.theme)
+
+    for option in @theme::options
+      if option.default?
+        options[option.name] ?= option.default
+
+    environment = Codo.parseProject(dir, options)
     sections    = @collectStats(environment)
 
-    unless @options.test
+    unless options.test
       @theme.compile(environment)
 
 
@@ -120,7 +130,7 @@ module.exports = class Command
       overall      += data.total
       undocumented += data.undocumented.length
 
-    if @options.undocumented
+    if options.undocumented
       for section, data of sections when data.undocumented.length != 0
         table = new Table
           head: [section, 'Path']
@@ -146,7 +156,9 @@ module.exports = class Command
       console.log ''
 
     documentedRatio = 100 - (100*undocumented/overall).toFixed(2)
-    if documentedRatio < @options["min-coverage"]
-      console.error colors.red("  Expected " + @options["min-coverage"] +
+    if documentedRatio < options["min-coverage"]
+      console.error colors.red("  Expected " + options["min-coverage"] +
                      "% to be documented, but only " + documentedRatio + "% were.")
-      process.exitCode = 1
+      cb 1 if cb
+    else
+      cb() if cb

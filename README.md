@@ -611,6 +611,20 @@ CHANGELOG.md
 
 Put each option flag on a separate line, followed by the source directories or files, and optionally any extra file that should be included into the documentation separated by a dash (`-`). If your extra file has the extension `.md`, it'll be rendered as Markdown.
 
+### API usage
+
+If you want to use codo in your build tool, you can require `codo/lib/command.coffee`:
+
+```coffeescript
+CodoCLI = require 'codo/lib/command.coffee'
+codoCLI = new CodoCLI()
+codoCLI.generate "path/to/base/dir", options, (exitCode) -> process.exit exitCode
+```
+
+`option` is an object with options as above. Please note that they are *not* CamelCase (e.g. `min-coverage`
+ instead of `minCoverage`). Furthermore only global defaults will be used, project defaults are ignored
+ if Codo is used via API.
+
 ## Keyboard navigation
 
 You can quickly search and jump through the documentation by using the fuzzy finder dialog:
