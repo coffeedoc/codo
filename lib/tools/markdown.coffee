@@ -44,5 +44,12 @@ module.exports = class Tools.Markdown
   @limit: (html, allowed) ->
     allowed = allowed.split ','
 
-    html.replace /<([a-z]+)>(.+?)<\/\1>/, (match, tag, text) ->
-      if allowed.indexOf(tag) is -1 then text else match
+    replace = (html) ->
+      result = html.replace /<([a-z0-9]+)\s*(?:\s[^>]+)?>([\s\S]+?)<\/\1>/g, (match, tag, text) ->
+        if allowed.indexOf(tag) is -1 then text else match
+      if result == html
+        result
+      else
+        replace(result)
+    replace(html)
+
