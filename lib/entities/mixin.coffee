@@ -42,7 +42,7 @@ module.exports = class Entities.Mixin extends Entity
 
     name = @name.split('.')
     @basename  = name.pop()
-    @namespace = name.join('.')
+    @namespace = @documentation?.namespace or name.join('.')
     if @environment.options.debug
       Winston.info "Creating new Mixin Entity"
       Winston.info " name: " + @name

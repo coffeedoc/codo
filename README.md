@@ -86,7 +86,7 @@ The following table shows the list of all available tags in alphabetical order w
       <td><strong>@namespace</strong> namespace</td>
       <td></td>
       <td>&#10004;</td>
-      <td></td>
+      <td>&#10004;</td>
       <td></td>
     </tr>
     <tr>
