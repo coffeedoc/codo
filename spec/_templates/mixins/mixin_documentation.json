@@ -32,7 +32,8 @@
           "title": "Use it in this way",
           "code": "class Rumba\n  @include Foo.Bar"
         }
-      ]
+      ],
+      "namespace": "Manual.Namespace"
     },
     "methods": [],
     "variables": []
