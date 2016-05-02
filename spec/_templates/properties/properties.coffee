@@ -3,7 +3,9 @@
 #
 module.exports = class Person
 
-  # @property [Array<String>] the nicknames
+  # @property [Array<String>] The nicknames
+  #
+  # All the nicknames the person is known by.
   nicknames: []
 
   # @property [Object] The entity's position

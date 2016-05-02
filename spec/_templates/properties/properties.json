@@ -32,8 +32,8 @@
         "getter": true,
         "setter": true,
         "documentation": {
-          "comment": "the nicknames",
-          "summary": "the nicknames",
+          "comment": "The nicknames\n\nAll the nicknames the person is known by.",
+          "summary": "The nicknames\n\nAll the nicknames the person is known by.",
           "property": "Array<String>"
         }
       },
@@ -155,8 +155,8 @@
     "getter": true,
     "setter": true,
     "documentation": {
-      "comment": "the nicknames",
-      "summary": "the nicknames",
+      "comment": "The nicknames\n\nAll the nicknames the person is known by.",
+      "summary": "The nicknames\n\nAll the nicknames the person is known by.",
       "property": "Array<String>"
     }
   },
