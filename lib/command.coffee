@@ -142,6 +142,8 @@ module.exports = class Command
       table = new Table
         head: ['', 'Total', 'Undocumented']
 
+      undocumented_percent = 100/overall*undocumented || 0
+
       table.push(
         ['Files', environment.allFiles().length, ''],
         ['Extras', environment.allExtras().length, ''],
@@ -152,7 +154,7 @@ module.exports = class Command
 
       console.log table.toString()
       console.log ''
-      console.log "  Totally documented: #{(100 - 100/overall*undocumented).toFixed(2)}%"
+      console.log "  Totally documented: #{(100 - undocumented_percent).toFixed(2)}%"
       console.log ''
 
     documentedRatio = 100 - (100*undocumented/overall).toFixed(2)
