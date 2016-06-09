@@ -25,8 +25,9 @@ module.exports = class Meta.Parameter
           if v.base
             if v.base.value is 'this' then v.properties[0].name.value
             else v.base.value
-          else
+          else if v.variable && v.value
             "#{v.variable.base.value}:#{v.value.base.value}"
+          else throw new Error('Unhandled syntax')
         name = "{#{vars.join ', '}}"
 
     # Assigned attributes `do: (@it) ->`
