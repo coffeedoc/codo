@@ -22,8 +22,11 @@ module.exports = class Meta.Parameter
     unless name
       if (o = node.name.objects)?
         vars = for v in o
-          if v.base.value is 'this' then v.properties[0].name.value
-          else v.base.value
+          if v.base
+            if v.base.value is 'this' then v.properties[0].name.value
+            else v.base.value
+          else
+            "#{v.variable.base.value}:#{v.value.base.value}"
         name = "{#{vars.join ', '}}"
 
     # Assigned attributes `do: (@it) ->`
