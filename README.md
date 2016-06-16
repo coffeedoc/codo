@@ -1,4 +1,4 @@
-# Codo [![Build Status](https://secure.travis-ci.org/coffeedoc/codo.png)](http://travis-ci.org/coffeedoc/codo)
+# Codo [![Build Status](https://secure.travis-ci.org/coffeedoc/codo.png)](https://travis-ci.org/coffeedoc/codo)
 
 Codo is a [CoffeeScript](http://coffeescript.org/) API documentation generator, similar to [YARD](http://yardoc.org/).
 Its generated documentation is focused on CoffeeScript class syntax for classical inheritance.
@@ -456,7 +456,7 @@ by any method tag indented by two spaces. The difference to the `@overload` tag 
 ### Mixins
 
 It's common practice to mix in objects to share common logic when inheritance is not suited. You can read
-more about mixins in the [The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/03_classes.html).
+more about mixins in the [The Little Book on CoffeeScript](http://arcturo.github.io/library/coffeescript/03_classes.html).
 
 Simply mark any plain CoffeeScript object with the `@mixin` tag to have a mixin page generated that supports many tags:
 
@@ -540,7 +540,7 @@ You can also document your non-class, top level functions and constants within a
 
 Codo class, mixin and method documentation and extra files written in
 [Markdown](http://daringfireball.net/projects/markdown/) syntax are rendered as full
-[GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/).
+[GitHub Flavored Markdown](https://github.github.com/github-flavored-markdown/).
 
 The `@return`, `@param`, `@option`, `@see`, `@author`, `@copyright`, `@note`, `@todo`, `@since`, `@version` and
 `@deprecated` tags rendered with a limited Markdown syntax, which means that only inline elements will be returned.
@@ -559,7 +559,7 @@ There are several ways of link types supported and all can take an optional labe
 The `@see` tag supports the same link types, just without the curly braces:
 
 ```CoffeeScript
-@see http://en.wikipedia.org/wiki/Lion The wikipedia page about lions
+@see https://en.wikipedia.org/wiki/Lion The wikipedia page about lions
 ```
 
 ## Generate
@@ -674,15 +674,15 @@ Pull requests are very welcome! Please try to follow these simple rules if appli
 
 ## Alternatives
 
-* [Docco](http://jashkenas.github.com/docco/) is a quick-and-dirty, literate-programming-style documentation generator.
+* [Docco](http://jashkenas.github.io/docco/) is a quick-and-dirty, literate-programming-style documentation generator.
 * [CoffeeDoc](https://github.com/omarkhan/coffeedoc) an alternative API documentation generator for CoffeeScript.
 * [JsDoc](https://github.com/micmath/jsdoc) an automatic documentation generator for JavaScript.
-* [Dox](https://github.com/visionmedia/dox) JavaScript documentation generator for node using markdown and jsdoc.
+* [Dox](https://github.com/tj/dox) JavaScript documentation generator for node using markdown and jsdoc.
 
 ## Core Team
 
 * [Boris Staal](https://github.com/inossidabile) ([@_inossidabile](http://twitter.com/#!/_inossidabile))
-* [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat), [FlinkFinger](http://www.flinkfinger.com))
+* [Michael Kessler](https://github.com/netzpirat) ([@netzpirat](http://twitter.com/#!/netzpirat), [FlinkFinger](http://www.blackbeans.ch))
 
 ## Acknowledgment
 
