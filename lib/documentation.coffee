@@ -47,6 +47,20 @@ module.exports = class Documentation
           type: '?'
           description: throws[1]
 
+      else if param = /^@param\s+[\[\{](.+?)[\]}]\s+\[([^\]]+)](?:\s+(.+))?/i.exec line
+        if paramNameVal = /^([^ ]+)\s*=\s*([^ ]+)/.exec param[2]
+          paramName = paramNameVal[1]
+          defValue = paramNameVal[2]
+        else
+          defValue = null
+          paramName = param[2]
+        @params.push
+          type: param[1]
+          name: paramName
+          description: param[3]
+          defaultState: defValue
+          optional: yes
+
       else if param = /^@param\s+([^ ]+)\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @params ?= []
         @params.push

@@ -49,11 +49,16 @@
       %ul.param
         - for param in @documentation.params
           %li
-            %span.name= param.name
+            - if param.optional
+              %span.name= '['+param.name+']'
+            - else
+              %span.name= param.name
             %span.type
               (
                 != @render('partials/type_link', type: param.type)
               )
+            - if param.defaultState
+              %span.defaultState= ' = '+param.defaultState
             - if param.description
               &mdash;
               %span.desc!= @activate param.description, @path, true
