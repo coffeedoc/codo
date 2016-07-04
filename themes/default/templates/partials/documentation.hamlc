@@ -1,7 +1,7 @@
 - if @documentation
 
   - show_description = false
-  - show_description ||= @documentation[field] for field in ['comment', 'todos', 'notes', 'examples']
+  - show_description ||= @documentation[field] for field in ['deprecated', 'abstract', 'todos', 'notes', 'comment', 'examples']
 
   - if show_description
     .docstring
