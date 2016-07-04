@@ -12,7 +12,6 @@ module.exports = class Command
     {name: 'extension', alias: 'x', describe: 'Coffee files extension', default: 'coffee'}
     {name: 'output', alias: 'o', describe: 'The output directory', default: './doc'}
     {name: 'min-coverage', alias: 'm', describe: 'Require a minimum percentage to be documented or fail', default: '0'}
-    {name: 'test', alias: 't', describe: 'Do not create any output files. Use with min-coverage'}
     {name: 'output-dir'}
     {name: 'theme', describe: 'The theme to be used', default: 'default'}
     {name: 'name', alias: 'n', describe: 'The project name used'}
@@ -122,7 +121,6 @@ module.exports = class Command
     unless options.test
       @theme.compile(environment)
 
-
     overall      = 0
     undocumented = 0
 
@@ -136,8 +134,9 @@ module.exports = class Command
           head: [section, 'Path']
 
         table.push(entry) for entry in data.undocumented
-        console.log table.toString()
-        console.log ''
+        unless options.test
+          console.log table.toString()
+          console.log ''
     else
       table = new Table
         head: ['', 'Total', 'Undocumented']
@@ -152,15 +151,17 @@ module.exports = class Command
         ['Methods', sections['Methods'].total, sections['Methods'].undocumented.length]
       )
 
-      console.log table.toString()
-      console.log ''
-      console.log "  Totally documented: #{(100 - undocumented_percent).toFixed(2)}%"
-      console.log ''
+      unless options.test
+        console.log table.toString()
+        console.log ''
+        console.log "  Totally documented: #{(100 - undocumented_percent).toFixed(2)}%"
+        console.log ''
 
     documentedRatio = 100 - (100*undocumented/overall).toFixed(2)
     if documentedRatio < options["min-coverage"]
-      console.error colors.red("  Expected " + options["min-coverage"] +
-                     "% to be documented, but only " + documentedRatio + "% were.")
+      unless options.test
+        console.error colors.red("  Expected " + options["min-coverage"] +
+                       "% to be documented, but only " + documentedRatio + "% were.")
       cb 1 if cb
     else
       cb() if cb
