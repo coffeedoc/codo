@@ -70,7 +70,7 @@ module.exports = class Theme.Theme
         prefix + kind + '/' + entity.name + '.html'
       when 'class', 'mixin'
         prefix + kind + '/' + entity.name.replace(/\./, '/') + '.html'
-      when 'method', 'variable'
+      when 'method', 'variable', 'property'
         @pathFor(entity.owner, undefined, prefix) + '#' + @anchorFor(entity.entity)
       else
         entity
