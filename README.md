@@ -554,7 +554,8 @@ There are several ways of link types supported and all can take an optional labe
 * Normal URL links: `{http://coffeescript.org/}` or `{http://coffeescript.org/ Try CoffeeScript}`
 * Link to a class or mixin: `{Animal.Lion}` or `{Animal.Lion The mighty lion}`
 * Direct link to an instance method: `{Animal.Lion#walk}` or `{Animal.Lion#walk The lion walks}`
-* Direct link to a class method: `{Animal.Lion.constructor}` or `{Animal.Lion.constructor} A new king was born`
+* Direct link to a class method: `{Animal.Lion.constructor}` or `{Animal.Lion.constructor A new king was born}`
+* Direct link to a module method: `{MyModule~method}` or `{MyModule~method ZOMG I can even refer modules!}`
 
 The `@see` tag supports the same link types, just without the curly braces:
 
