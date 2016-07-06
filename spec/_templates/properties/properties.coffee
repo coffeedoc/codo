@@ -8,7 +8,8 @@ module.exports = class Person
   # All the nicknames the person is known by.
   nicknames: []
 
-  # @property [Object] The entity's position
+  # @property [Object]
+  # The entity's position
   position:
     x: 0
     y: 0

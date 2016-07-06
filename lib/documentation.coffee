@@ -23,7 +23,7 @@ module.exports = class Documentation
 
       if property = /^@property\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @property = property[1]
-        lines.unshift property[2]
+        lines.unshift property[2] if property[2]?
 
       else if returns = /^@return\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
         @returns =
