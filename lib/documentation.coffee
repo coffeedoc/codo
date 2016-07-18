@@ -48,6 +48,7 @@ module.exports = class Documentation
           description: throws[1]
 
       else if param = /^@param\s+[\[\{](.+?)[\]}]\s+\[([^\]]+)](?:\s+(.+))?/i.exec line
+        @params ?= []
         if paramNameVal = /^([^ ]+)\s*=\s*([^ ]+)/.exec param[2]
           paramName = paramNameVal[1]
           defValue = paramNameVal[2]
