@@ -21,6 +21,7 @@
 # @author Plasticman
 # @abstract Each listener implementation must inherit
 # @private
+# @public
 # @deprecated Use other class
 #   which is thread safe
 # @since 1.0.0

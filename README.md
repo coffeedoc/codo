@@ -212,6 +212,13 @@ The following table shows the list of all available tags in alphabetical order w
       <td>&#10004;</td>
     </tr>
     <tr>
+      <td><strong>@public</strong></td>
+      <td></td>
+      <td>&#10004;</td>
+      <td></td>
+      <td>&#10004;</td> 
+    </tr> 
+    <tr>
       <td><strong>@return</strong> [type] description</td>
       <td></td>
       <td></td>
