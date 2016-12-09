@@ -2,6 +2,7 @@ class App.TestMethodDocumentation extends App.Doc
 
   # Should be overloaded to change fetch limit.
   #
+  # @public
   # @return Number of items per fetch
   #
   fetchLimit: () -> 5

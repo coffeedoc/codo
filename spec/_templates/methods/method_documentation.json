@@ -16,6 +16,7 @@
         "documentation": {
           "comment": "Should be overloaded to change fetch limit.",
           "summary": "Should be overloaded to change fetch limit.",
+          "public": true,
           "returns": {
             "type": "?",
             "description": "Number of items per fetch"
@@ -249,6 +250,7 @@
     "documentation": {
       "comment": "Should be overloaded to change fetch limit.",
       "summary": "Should be overloaded to change fetch limit.",
+      "public": true,
       "returns": {
         "type": "?",
         "description": "Number of items per fetch"

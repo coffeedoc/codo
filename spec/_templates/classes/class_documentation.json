@@ -15,6 +15,7 @@
       ],
       "abstract": "Each listener implementation must inherit",
       "private": true,
+      "public": true,
       "deprecated": "Use other class which is thread safe",
       "version": "1.0.2",
       "since": "1.0.0",

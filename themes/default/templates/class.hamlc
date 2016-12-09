@@ -18,6 +18,9 @@
         - if @entity.documentation?.private?
           %span.private.note.title Private
 
+        - if @entity.documentation?.public?
+          %span.public.note.title Public
+
       %table.box
         %tr
           %td Defined in:

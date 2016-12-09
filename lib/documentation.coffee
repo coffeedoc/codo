@@ -137,6 +137,9 @@ module.exports = class Documentation
       else if /^@private/.exec line
         @private = true
 
+      else if /^@public/.exec line
+        @public = true
+      
       else if since = /^@since\s+(.+)/i.exec line
         @since = since[1] || ''
 
@@ -230,6 +233,7 @@ module.exports = class Documentation
       namespace: @namespace
       abstract: @abstract
       private: @private
+      public: @public
       deprecated: @deprecated
       version: @version
       since: @since
