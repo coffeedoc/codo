@@ -149,7 +149,7 @@ module.exports = class Traverser
         when 'Comment'
           doc = previous
 
-        when 'Literal'
+        when 'Literal', 'PropertyName'
           # The node is exported `module.exports = ...`, take the comment before `module`
           if previous.value is 'exports'
             previous = @history[@history.length-6]
