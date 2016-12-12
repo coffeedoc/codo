@@ -2,6 +2,12 @@ Markdown = require '../../../lib/tools/markdown'
 jsdiff      = require 'diff'
 
 describe 'Markdown', ->
+
+  describe 'Input sanitizing', ->
+    it "won't allow javascript:.* links", ->
+      markdown = "x[URL](javascript&#58document;alert&#40;1&#41;)x"
+      expect(Markdown.convert(markdown, true)).toEqual("xx ")
+
   describe 'limited markdown conversion', ->
     limit = true
 

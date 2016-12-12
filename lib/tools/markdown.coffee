@@ -1,6 +1,10 @@
 marked = require 'marked'
 Tools  = require '../_tools'
 
+marked.setOptions(
+  sanitize: true
+)
+
 # It looks like all the markdown libraries for node doesn't get
 # GitHub flavored markdown right. This helper class post-processes
 # the best available output from the marked library to conform to

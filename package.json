@@ -32,7 +32,7 @@
     "coffee-script": ">= 1.6.0",
     "walkdir": ">= 0.0.2",
     "optimist": ">= 0.3.0",
-    "marked": ">= 0.2.10",
+    "marked": ">= 0.3.6",
     "underscore": ">= 0.1.0",
     "underscore.string": ">= 0.1.0",
     "haml-coffee": ">= 0.6.0",
