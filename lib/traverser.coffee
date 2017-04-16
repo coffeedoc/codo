@@ -65,7 +65,7 @@ module.exports = class Traverser
       if blockComment || inBlockComment
         line = line.replace /#{3}\*/, "###" if closure
         inBlockComment = !inBlockComment if blockComment
-        result.push line
+        result.push line if line.trim().length > 3
       else
         commentLine = /^(\s*#)\s?(\s*.*)/.exec(line)
         if commentLine
