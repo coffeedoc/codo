@@ -15,6 +15,7 @@ module.exports = class Meta.Method
       parameters: entity.parameters.map (x) -> x.toString()
       visible: entity.visible()
       documentation: entity.documentation
+
     new @(@override options, overrides)
 
   @fromDocumentationMethod: (entry, overrides={}) ->
@@ -29,6 +30,8 @@ module.exports = class Meta.Method
       kind: kind || ''
       parameters: Parameter.fromSignature(entry.signature).map (x) -> x.toString()
       documentation: entry.documentation
+      visible: true # force this to be always visible
+
     new @(@override options, overrides)
 
   constructor: (options={}) ->
