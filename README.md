@@ -631,7 +631,21 @@ codoCLI.generate "path/to/base/dir", options, (exitCode) -> process.exit exitCod
 
 `option` is an object with options as above. Please note that they are *not* CamelCase (e.g. `min-coverage`
  instead of `minCoverage`). Furthermore only global defaults will be used, project defaults are ignored
- if Codo is used via API.
+ if Codo is used via API. Source files and extra files are lists called `inputs` and `extras` respectively.
+ An equivalent to the `.codoopts` file above would be:
+ 
+```coffeescript
+options =
+    name: 'Codo'
+    readme: 'README.md'
+    title: 'Codo Documentation'
+    private: true
+    quiet: true
+    extension: 'coffee'
+    output: './doc'
+    inputs: ['./src']
+    extras: ['LICENSE', 'CHANGELOG.md']
+```
 
 ## Keyboard navigation
 
