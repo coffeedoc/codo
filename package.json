@@ -38,7 +38,7 @@
     "haml-coffee": ">= 0.6.0",
     "mkdirp": ">= 0.1.0",
     "connect": ">= 0.1.0",
-    "colors": ">= 1.1.2",
+    "@dabh/colors": "^1.4.0",
     "async": ">= 0.1.22",
     "mincer": "~0.5.11",
     "stylus": "~0.38.0",
